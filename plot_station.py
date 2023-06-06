@@ -24,10 +24,12 @@ path_gcn= '../GC-Net-Level-1-data-processing/L1/'
 
     # 'KAN_M','SCO_U', 'SCO_L', 'TAS_A', 
 df_meta = pd.read_csv(path_l3+'../AWS_station_locations.csv')
-var_list = ['rh_u', 't_u','wspd_u','p_u',
-            'rh_l','t_l','wspd_l','p_l',
-            'rh_i','t_i','wspd_i','p_i',
-            'z_boom_u','z_boom_l']
+# var_list = ['rh_u', 't_u','wspd_u','p_u',
+#             'rh_i','t_i','wspd_i','p_i',
+#             'z_boom_u']
+# var_list = ['wdir_u','wdir_i','dsr','usr']
+var_list = ['batt_v']
+
 # var_list2 = ['RH1', 'RH2']
 
 plt.close('all')
