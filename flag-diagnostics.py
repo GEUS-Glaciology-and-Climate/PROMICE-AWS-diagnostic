@@ -97,3 +97,6 @@ tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()
 os.remove(filename)
 os.rename(filename[:-3]+"_toc.md", filename)
+
+if __name__ == '__main__':
+    main()
