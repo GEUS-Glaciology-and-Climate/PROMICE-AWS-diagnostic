@@ -60,29 +60,32 @@ for station in os.listdir(path_to_qc_files+'flags'):
     df_L1 = pAWS_all.L1A.combine_first(pAWS_gc.L1A).to_dataframe()
     df_L1.index = pd.to_datetime(df_L1.index, utc=True)
     var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
+    Msg('# '+station)
     
-    fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,10))
-    if len(var_list)==1:
-        ax_list = [ax_list]
-    Msg(df_flags.to_markdown())
-    for var, ax in zip(var_list, ax_list):
-        ax.plot(df_L1[var].index, 
-                df_L1[var].values,
-                marker='.',color='tab:blue', linestyle='None', label='L1')
-        for t0, t1, variable in zip(df_flags.t0, df_flags.t1, df_flags.variable):
-            if var in variable:
-                if not isinstance(t0, str):
-                    t0 = pd.to_datetime(df_L1.index[0], utc=True)
-                if not isinstance(t1, str):
-                    t1 = pd.to_datetime(df_L1.index[-1], utc=True)
-                ax.plot(df_L1.loc[t0:t1, var].index,
-                        df_L1.loc[t0:t1, var].values,
-                        marker='.',color='tab:red', 
-                        linestyle='None', label='removed')
-        ax.set_ylabel(var)
-        # ax.legend()
-
-    plt.suptitle(station)
-    plt.suptitle(station)
-    fig.savefig('figures/flags/%s.png'%station)
-    Msg('1[%s](../figures/flags/%s.png'%(station, station))
+    var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
+    for i, var_list in enumerate(var_list_list):
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,len(var_list)*2))
+        if len(var_list)==1:
+            ax_list = [ax_list]
+        Msg(df_flags.to_markdown())
+        for var, ax in zip(var_list, ax_list):
+            ax.plot(df_L1[var].index, 
+                    df_L1[var].values,
+                    marker='.',color='tab:blue', linestyle='None', label='L1')
+            for t0, t1, variable in zip(df_flags.t0, df_flags.t1, df_flags.variable):
+                if var in variable:
+                    if not isinstance(t0, str):
+                        t0 = pd.to_datetime(df_L1.index[0], utc=True)
+                    if not isinstance(t1, str):
+                        t1 = pd.to_datetime(df_L1.index[-1], utc=True)
+                    ax.plot(df_L1.loc[t0:t1, var].index,
+                            df_L1.loc[t0:t1, var].values,
+                            marker='.',color='tab:red', 
+                            linestyle='None', label='removed')
+            ax.set_ylabel(var)
+            # ax.legend()
+    
+        plt.suptitle(station+'_%i/%i'%(i+1,len(var_list_list)))
+        fig.savefig('figures/flags/%s_%i.png'%(station,i))
+        Msg(' ')
+        Msg('1[%s](../figures/flags/%s_%i.png'%(station, station,i))
