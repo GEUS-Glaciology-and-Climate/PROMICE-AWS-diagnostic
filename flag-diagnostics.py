@@ -14,6 +14,9 @@ from sklearn.linear_model import LinearRegression
 import nead
 from pypromice.process import AWS
 import os
+import matplotlib
+matplotlib.use('Agg')
+import tocgen
 
 path_to_l0 = '../aws-l0/'
 path_l3 = '../aws-l3/level_3/'
@@ -88,4 +91,8 @@ for station in os.listdir(path_to_qc_files+'flags'):
         plt.suptitle(station+'_%i/%i'%(i+1,len(var_list_list)))
         fig.savefig('figures/flags/%s_%i.png'%(station,i))
         Msg(' ')
-        Msg('1[%s](../figures/flags/%s_%i.png'%(station, station,i))
+        Msg('![%s](../figures/flags/%s_%i.png)'%(station, station,i))
+tocgen.processFile(filename, filename[:-3]+"_toc.md")
+f.close()
+os.remove(filename)
+os.rename(filename[:-3]+"_toc.md", filename)
