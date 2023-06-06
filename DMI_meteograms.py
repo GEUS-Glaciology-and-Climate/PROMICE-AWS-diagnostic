@@ -33,3 +33,5 @@ for k in stations.keys():
     Msg('# %s'%k)
     Msg('![%s](https://nwp.dmi.govcloud.dk/dmi-hirlam/plots/met%s00e.png)'%(k,stations[k][1:]))
 tocgen.processFile(filename, filename[:-3]+'_toc.md')
+f.close()
+os.remove(filename)

@@ -64,13 +64,14 @@ for station in os.listdir(path_to_qc_files+'flags'):
     df_L1.index = pd.to_datetime(df_L1.index, utc=True)
     var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
     Msg('# '+station)
+    Msg(df_flags.to_markdown())
+    Msg(' ')
     
     var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
     for i, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,len(var_list)*2))
         if len(var_list)==1:
             ax_list = [ax_list]
-        Msg(df_flags.to_markdown())
         for var, ax in zip(var_list, ax_list):
             ax.plot(df_L1[var].index, 
                     df_L1[var].values,
@@ -90,8 +91,8 @@ for station in os.listdir(path_to_qc_files+'flags'):
     
         plt.suptitle(station+'_%i/%i'%(i+1,len(var_list_list)))
         fig.savefig('figures/flags/%s_%i.png'%(station,i))
-        Msg(' ')
         Msg('![%s](../figures/flags/%s_%i.png)'%(station, station,i))
+    Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()
 os.remove(filename)
