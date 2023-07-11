@@ -23,8 +23,8 @@ import tocgen
 def advanced_filters(ds2, station, station_type):
     # specific filters for tripods2
     ds3 = ds2.copy()
-    if station_type == 'one boom':
-        ds3['z_boom_u'] = ds3['z_boom_u'].where(ds3['z_boom_u']<2.9)
+    # if station_type == 'one boom':
+    #     ds3['z_boom_u'] = ds3['z_boom_u'].where(ds3['z_boom_u']<2.9)
         
     # frozen filter on altitude
     # ds3['msk'] = np.abs(ds3['gps_alt'].ffill(dim='time').bfill(dim='time').diff(dim='time'))<0.005
@@ -64,7 +64,7 @@ def Msg(txt):
 # plt.close('all')
 
 
-for station in ['QAS_U']: #os.listdir(path_to_qc_files+'flags'):
+for station in ['NEM']: #os.listdir(path_to_qc_files+'flags'):
     station = station.replace('.csv','')
     # loading flags
     try:
