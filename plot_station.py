@@ -24,10 +24,13 @@ path_gcn= '../GC-Net-Level-1-data-processing/L1/'
 
     # 'KAN_M','SCO_U', 'SCO_L', 'TAS_A', 
 df_meta = pd.read_csv(path_l3+'../AWS_station_locations.csv')
-var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
-            'rh_l','t_l','wspd_l','p_l','z_boom_l',
-            'rh_i','t_i','wspd_i','p_i','batt_v',
-            't_i_all']
+# var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
+#             'rh_l','t_l','wspd_l','p_l','z_boom_l',
+#             'rh_i','t_i','wspd_i','p_i','batt_v',
+#             't_i_all']
+var_list = ['wspd_u','wdir_u',
+            'wspd_l','wdir_l',
+            'wspd_i','wdir_i']
 # var_list = ['msg_lat', 'gps_lat',
 #             'msg_lon', 'gps_lon' ,
 #             'gps_alt']
