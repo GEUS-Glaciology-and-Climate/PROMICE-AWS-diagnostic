@@ -23,22 +23,27 @@ path_gcn= '../GC-Net-Level-1-data-processing/L1/'
 # df_gcn=df_gcn.set_index('timestamp')
 
     # 'KAN_M','SCO_U', 'SCO_L', 'TAS_A', 
-df_meta = pd.read_csv(path_l3+'../AWS_station_locations.csv')
+df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
 #             'rh_l','t_l','wspd_l','p_l','z_boom_l',
 #             'rh_i','t_i','wspd_i','p_i','batt_v',
 #             't_i_all']
-var_list = ['wspd_u','wdir_u',
-            'wspd_l','wdir_l',
-            'wspd_i','wdir_i']
-# var_list = ['msg_lat', 'gps_lat',
-#             'msg_lon', 'gps_lon' ,
-#             'gps_alt']
+# var_list = ['rh_u','t_u',
+#             'rh_l','t_l',
+#             'rh_i']
+var_list = ['rh_u','t_u',
+            'wspd_u','wdir_u',
+            'dsr','usr', 'z_boom_u']
+# var_list = ['p_u','p_l','p_i']
+# var_list = ['t_u','t_l']
+# var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','gps_lat','gps_lon','gps_alt']
+# var_list = ['gps_geounit']
+# var_list = ['gps_lat','gps_lon' ,'gps_alt']
 
-station_list = ['NEM']
+station_list = ['TAS_L']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
-# plt.close('all')
+plt.close('all')
 
 
 # for var,var2, ax in zip(var_list, var_list2, ax_list):
@@ -48,9 +53,12 @@ for station in station_list:
     df_l3 = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
-    df_tx = pd.read_csv(path_tx+station+'/'+station+'_hour.csv')
-    df_tx.time = pd.to_datetime(df_tx.time, utc=True)
-    df_tx = df_tx.set_index('time')
+    if station not in ['NUK_N', 'QAS_A','TAS_U', 'ZAK_L']:
+        df_tx = pd.read_csv(path_tx+station+'/'+station+'_hour.csv')
+        df_tx.time = pd.to_datetime(df_tx.time, utc=True)
+        df_tx = df_tx.set_index('time')
+    else:
+        df_tx = pd.DataFrame()
     # df_l3=df_l3.loc['2021-09-01':'2022-06-10',:]
     # df_l3=df_l3.loc['2022-09-01':,:]
     # appending fieldwork date
@@ -63,6 +71,16 @@ for station in station_list:
             ax_list = [ax_list]
     
         for var, ax in zip(var_list, ax_list):
+            if (var not in df_l3.columns) & (var not in df_tx.columns):
+                print(var, 'not in L3 or tx data at', station)
+                if len(var_list) == 1:
+                    plt.close(fig)
+                continue
+            # if df_l3[var].isnull().all():
+            #     print(var, 'all nan at', station)
+            #     if len(var_list) == 1:
+            #         plt.close(fig)
+            #     continue
             print(var)
                 # X = df_l3.index.values.astype(float)
                 # Y = df_l3[var].values
