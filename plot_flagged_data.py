@@ -168,7 +168,7 @@ for station in os.listdir(path_to_qc_files+'flags'):
             ax.set_ylabel(var)
         ax_list[0].legend(loc='lower left')
         plt.suptitle(station+'_%i/%i'%(i+1,len(var_list_list)))
-        # fig.savefig('figures/flags/%s_%i.png'%(station,i), dpi=300)
+        fig.savefig('figures/flags/%s_%i.png'%(station,i), dpi=300)
         Msg('![%s](../figures/flags/%s_%i.png)'%(station, station,i))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")

@@ -269,17 +269,15 @@
 | 2014-12-05T00:00:00+00:00 | 2015-04-06T00:00:00+00:00 | z_stake                                         | CHECKME | noisy while SR50 on station has good quality (bav)                       |           nan |
 | 2020-11-03T00:00:00+00:00 | 2021-09-11T00:00:00+00:00 | z_stake                                         | CHECKME | noisy while SR50 on station has good quality (bav)                       |           nan |
 | 2008-08-01T00:00:00+00:00 | 2009-01-01T00:00:00+00:00 | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8 | NAN     | manually flagged (bav)                                                   |           nan |
-| 2010-08-07T00:00:00+00:00 | 2011-05-08T00:00:00+00:00 | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8 | NAN     | manually flagged (bav)                                                   |           nan |
-| 2012-08-01T00:00:00+00:00 | 2013-08-01T00:00:00+00:00 | t_i_7                                           | NAN     | manually flagged (bav)                                                   |           nan |
+| 2012-08-01T00:00:00+00:00 | 2013-08-01T00:00:00+00:00 | t_i_7                                           | NAN     | positive ice temperature (bav)                                           |           nan |
  
 ![NUK_U](../figures/flags/NUK_U_0.png)
 ![NUK_U](../figures/flags/NUK_U_1.png)
  
 # NUK_Uv3
-| t0                        | t1                        | variable   | flag      | comment                                  |   URL_graphic |
-|:--------------------------|:--------------------------|:-----------|:----------|:-----------------------------------------|--------------:|
-| 2021-09-22T00:00:00+00:00 | 2021-11-01T00:00:00+00:00 | z_pt_cor   | CONFIRMED | unlikely peak (bav)                      |           nan |
-| 2020-01-01T00:00:00+00:00 | 2023-01-01T00:00:00+00:00 | t_i_8      | CHECKME   | increasing constently through the summer |           nan |
+| t0                        | t1                        | variable   | flag      | comment             |   URL_graphic |
+|:--------------------------|:--------------------------|:-----------|:----------|:--------------------|--------------:|
+| 2021-09-22T00:00:00+00:00 | 2021-11-01T00:00:00+00:00 | z_pt_cor   | CONFIRMED | unlikely peak (bav) |           nan |
  
 ![NUK_Uv3](../figures/flags/NUK_Uv3_0.png)
  
@@ -347,10 +345,10 @@
 ![QAS_U](../figures/flags/QAS_U_2.png)
  
 # QAS_Uv3
-| t0                        | t1                        | variable                                        | flag      | comment                                        |   URL_graphic |
-|:--------------------------|:--------------------------|:------------------------------------------------|:----------|:-----------------------------------------------|--------------:|
-| 2020-01-01T00:00:00+00:00 | 2023-05-01T00:00:00+00:00 | z_pt_cor                                        | CHECKME   | manually flagged by bav                        |           nan |
-| 2022-12-01T07:00:00+00:00 | nan                       | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8 | CONFIRMED | constant ice temperature after that date (bav) |           nan |
+|   t0 |   t1 | variable                                        | flag      | comment                      |   URL_graphic |
+|-----:|-----:|:------------------------------------------------|:----------|:-----------------------------|--------------:|
+|  nan |  nan | z_pt_cor                                        | NAN       | instrument not working(bav)  |           nan |
+|  nan |  nan | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8 | CONFIRMED | instrument not working (bav) |           nan |
  
 ![QAS_Uv3](../figures/flags/QAS_Uv3_0.png)
 ![QAS_Uv3](../figures/flags/QAS_Uv3_1.png)
@@ -369,7 +367,7 @@
 | 2011-09-07T00:00:00+00:00 | 2011-09-27T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
 | 2020-10-24T00:00:00+00:00 | 2021-04-17T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
 | 2021-09-03T00:00:00+00:00 | 2022-06-05T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
-| 2008-06-07T00:00:00+00:00 | 2008-09-11T00:00:00+00:00 | z_surf_1   | CHECKME | manually flagged by bav |           nan |
+| 2008-06-07T00:00:00+00:00 | 2008-09-11T00:00:00+00:00 | z_boom_u   | CHECKME | manually flagged by bav |           nan |
 | 2011-08-25T00:00:00+00:00 | 2012-08-29T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
 | 2014-06-29T00:00:00+00:00 | 2014-10-29T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
 | 2014-06-29T00:00:00+00:00 | 2014-10-29T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
@@ -455,4 +453,47 @@
 | 2016-06-01T00:00:00+00:00 | 2016-07-23T00:00:00+00:00 | z_stake    | CHECKME | flagged by bav |           nan |
  
 ![THU_L](../figures/flags/THU_L_0.png)
+ 
+# THU_U
+| t0                        | t1                        | variable   | flag    | comment                 |   URL_graphic |
+|:--------------------------|:--------------------------|:-----------|:--------|:------------------------|--------------:|
+| 2010-01-30T00:00:00+00:00 | 2010-09-05T00:00:00+00:00 | z_boom_u   | CHECKME | manually flagged by bav |           nan |
+| 2012-08-16T00:00:00+00:00 | 2014-07-14T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
+| 2018-09-13T00:00:00+00:00 | 2019-05-13T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
+ 
+![THU_U](../figures/flags/THU_U_0.png)
+ 
+# THU_U2
+| t0                        | t1                        | variable   | flag      | comment                    |   URL_graphic |
+|:--------------------------|:--------------------------|:-----------|:----------|:---------------------------|--------------:|
+| 2018-01-01T00:00:00+00:00 | 2023-05-01T00:00:00+00:00 | z_pt_cor   | CONFIRMED | very unlikely values (bav) |           nan |
+ 
+![THU_U2](../figures/flags/THU_U2_0.png)
+ 
+# UPE_L
+| t0                        | t1                        | variable   | flag    | comment                 |   URL_graphic |
+|:--------------------------|:--------------------------|:-----------|:--------|:------------------------|--------------:|
+| 2008-07-15T00:00:00+00:00 | 2008-07-18T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2011-09-17T00:00:00+00:00 | 2011-11-16T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2012-08-12T10:00:00+00:00 | 2013-08-03T01:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2015-09-07T00:00:00+00:00 | 2015-09-19T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2021-09-01T00:00:00+00:00 | 2021-11-19T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2012-08-12T10:00:00+00:00 | 2013-08-03T01:00:00+00:00 | z_boom_u   | CHECKME | manually flagged by bav |           nan |
+| 2012-08-12T10:00:00+00:00 | 2013-08-03T01:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
+| 2012-08-09T13:00:00+00:00 | 2013-01-01T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
+| 2016-09-07T00:00:00+00:00 | 2017-01-17T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
+ 
+![UPE_L](../figures/flags/UPE_L_0.png)
+ 
+# UPE_U
+| t0                        | t1                        | variable   | flag    | comment                 |   URL_graphic |
+|:--------------------------|:--------------------------|:-----------|:--------|:------------------------|--------------:|
+| 2011-06-02T00:00:00+00:00 | 2011-07-29T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
+| 2015-06-30T00:00:00+00:00 | 2015-08-13T00:00:00+00:00 | z_stake    | CHECKME | manually flagged by bav |           nan |
+| 2011-09-02T00:00:00+00:00 | 2011-09-12T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2012-08-27T00:00:00+00:00 | 2012-11-06T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2019-09-07T00:00:00+00:00 | 2019-09-17T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+| 2021-09-03T00:00:00+00:00 | 2021-09-12T00:00:00+00:00 | z_pt_cor   | CHECKME | manually flagged by bav |           nan |
+ 
+![UPE_U](../figures/flags/UPE_U_0.png)
  
