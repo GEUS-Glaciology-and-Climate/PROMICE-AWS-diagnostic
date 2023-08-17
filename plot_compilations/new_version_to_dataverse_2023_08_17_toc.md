@@ -1,4 +1,6 @@
-* [Comparison of data v9 (new) to v8 (old).](#s1)
+# Comparison of data v9 (new) to v8 (old).
+**version name is as defined in AWS_changelog.txt**
+
   * [CEN1](#s1-1)
   * [CEN2](#s1-2)
   * [CP1](#s1-3)
@@ -60,8 +62,7 @@
   * [ZAK_Lv3](#s1-59)
   * [ZAK_U](#s1-60)
   * [ZAK_Uv3](#s1-61)
-# <a id='s1' />Comparison of data v9 (new) to v8 (old).
-~version name is as defined in AWS_changelog.txt~
+
 ## <a id='s1-1' />CEN1
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, t_surf, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_numsat, gps_q, batt_v, batt_v_ini, batt_v_ss, fan_dc_u, freq_vw, t_log, t_rad, msg_lat, msg_lon
