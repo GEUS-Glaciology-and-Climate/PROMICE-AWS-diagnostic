@@ -1,5 +1,17 @@
-# Comparison of data v9 (new) to v8 (old).
-**version name is as defined in AWS_changelog.txt**
+# Comparison of AWS data V9 (new, on THREDDS and AWS_L3) to V8 (old, currently on dataverse).
+**version name is as defined in AWS_changelog.txt**:
+```
+[9.0] - Now on THREDDS and gitlab. Not yet released on dataverse.
+Added:		Most recent data
+Changed:	- UWN, Roof_PROMICE, Roof_GEUS now have positive longitudes
+			- Removed upper limit at 100% for relative humidity
+Fixed:		- More quality checks
+			- Data from CP1 was removed from CEN2
+			- At tundra sites, removed cloud cover, SHF/LHF calculation and upper limit on surface temperature
+			- removed gps_geounit, z_stake_q, z_boom_u_q, z_boom_l_q variables from both csv and netcdf files
+			- added directional wind speeds to the csv files
+			- Averaged wind direction was previously wrongly calculated as averaged of the angle. Now it is recalculated from the averaged directional wind speeds.
+```
 
   * [CEN1](#s1-1)
   * [CEN2](#s1-2)
