@@ -22,7 +22,6 @@ path_gcn= '../GC-Net-Level-1-data-processing/L1/'
 # df_gcn.timestamp = pd.to_datetime(df_gcn.timestamp, utc=True)
 # df_gcn=df_gcn.set_index('timestamp')
 
-    # 'KAN_M','SCO_U', 'SCO_L', 'TAS_A', 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
 #             'rh_l','t_l','wspd_l','p_l','z_boom_l',
@@ -31,16 +30,16 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['rh_u','t_u',
 #             'rh_l','t_l',
 #             'rh_i']
-var_list = ['rh_u','t_u',
-            'wspd_u','wdir_u',
-            'dsr','usr', 'z_boom_u']
+# var_list = ['rh_u','t_u',
+#             'wspd_u','wdir_u',
+#             'dsr','usr', 'z_boom_u']
 # var_list = ['p_u','p_l','p_i']
 # var_list = ['t_u','t_l']
 # var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
-# var_list = ['gps_lat','gps_lon' ,'gps_alt']
+var_list = ['t_u', 'gps_lat','gps_lon' ,'gps_alt']
 
-station_list = ['TAS_L']  #df_meta.stid  #
+station_list = ['SCO_U', 'SCO_L']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
 plt.close('all')

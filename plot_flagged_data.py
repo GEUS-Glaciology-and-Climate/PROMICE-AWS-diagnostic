@@ -64,15 +64,12 @@ def Msg(txt):
 plt.close('all')
 
 
-for station in os.listdir(path_to_qc_files+'flags'):
+for station in ['TAS_A']:  #os.listdir(path_to_qc_files+'flags'):
     station = station.replace('.csv','')
     # loading flags
-    # try:
     df_flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
                            comment='#',
                            skipinitialspace=True)
-    # except:
-    #     print('no flag file')
         
     if len(df_flags)==0:
         print('no flag listed in file')
@@ -80,19 +77,19 @@ for station in os.listdir(path_to_qc_files+'flags'):
     
     # Loading the L1 data:
     config_file = path_to_l0 + '/tx/config/{}.toml'.format(station)
-    if os.path.isfile('../aws-l1/'+station+'.nc'):
+    if False:  #os.path.isfile('../aws-l1/'+station+'.nc'):
         print('found L1 file')
         ds = xr.open_dataset('../aws-l1/'+station+'.nc')
     else:
         if os.path.isfile(config_file):
             inpath = path_to_l0 + '/tx/'
             pAWS_tx = AWS(config_file, inpath, var_file=vari)
-            pAWS_tx.getL1()
+            pAWS_tx.process()
             try:
                 config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
                 inpath = path_to_l0 + '/raw/'+station+'/'
                 pAWS_raw = AWS(config_file, inpath)
-                pAWS_raw.getL1()
+                pAWS_raw.process()
                 # pAWS_raw.write('.')
                 # print(wtf)
                 ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A)
