@@ -43,7 +43,7 @@ def advanced_filters(ds2, station, station_type):
 #          path_to_qc_files = '../PROMICE-AWS-data-issues/',
 #          vari = '../pypromice/src/pypromice/process/variables.csv',
 #          filename="./plot_compilations/flags.md"):
-path_to_l0 = '../aws-l0/'
+path_to_l0 = 'C:/Users/bav/GitHub/aws-l0/'
 path_to_l1 = '../aws-l1/'
 path_l3 = '../aws-l3/level_3/'
 path_tx = '../aws-l3/tx/'
@@ -84,12 +84,13 @@ for station in ['TAS_A']:  #os.listdir(path_to_qc_files+'flags'):
         if os.path.isfile(config_file):
             inpath = path_to_l0 + '/tx/'
             pAWS_tx = AWS(config_file, inpath, var_file=vari)
-            pAWS_tx.process()
+            pAWS_tx.getL1()
             try:
                 config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
                 inpath = path_to_l0 + '/raw/'+station+'/'
                 pAWS_raw = AWS(config_file, inpath)
-                pAWS_raw.process()
+                pAWS_raw.getL1()
+                # pAWS_raw.process()
                 # pAWS_raw.write('.')
                 # print(wtf)
                 ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A)

@@ -1,24 +1,9 @@
-# TAS_A
-| t0                        | t1                        | variable                                                                       | flag      | comment                 | URL_graphic                                                                      |
-|:--------------------------|:--------------------------|:-------------------------------------------------------------------------------|:----------|:------------------------|:---------------------------------------------------------------------------------|
-| 2017-12-20T00:00:00+00:00 | 2018-09-01T00:00:00+00:00 | rh_u t_u wspd_u wdir_u p_u rh_i t_i wspd_i wdir_i p_i dsr usr dlr ulr z_boom_u | NAN       | station fallen (bav)    | https://github.com/GEUS-Glaciology-and-Climate/PROMICE-AWS-data-issues/issues/30 |
-| 2022-03-04T00:00:00+00:00 | 2022-09-03T00:00:00+00:00 | t_u t_i rh_u rh_i p_u p_i dsr usr dlr ulr wspd_u wspd_i wdir_u wdir_i z_boom_u | CONFIRMED | flagged by bav          | https://github.com/GEUS-Glaciology-and-Climate/PROMICE-AWS-data-issues/issues/30 |
-| 2014-01-01T00:00:00+00:00 | 2014-05-07T00:00:00+00:00 | z_stake                                                                        | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2016-08-10T00:00:00+00:00 | 2016-08-14T00:00:00+00:00 | z_stake                                                                        | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2018-04-10T00:00:00+00:00 | 2018-06-05T00:00:00+00:00 | z_stake                                                                        | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2018-12-14T00:00:00+00:00 | 2019-02-11T00:00:00+00:00 | z_stake                                                                        | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2017-08-13T00:00:00+00:00 | 2018-10-02T15:00:00+00:00 | z_boom_u                                                                       | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2022-01-23T00:00:00+00:00 | 2022-04-02T15:00:00+00:00 | z_boom_u                                                                       | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2017-10-07T00:00:00+00:00 | 2017-11-26T00:00:00+00:00 | z_pt_cor                                                                       | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2017-11-24T00:00:00+00:00 | 2018-10-14T00:00:00+00:00 | z_pt_cor                                                                       | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2021-09-17T00:00:00+00:00 | 2022-02-01T00:00:00+00:00 | z_pt_cor                                                                       | CONFIRMED | flagged by bav          | nan                                                                              |
-| 2022-09-01T00:00:00+00:00 | 2023-05-01T00:00:00+00:00 | z_pt_cor                                                                       | CONFIRMED | flagged by bav          | nan                                                                              |
-| 2018-06-02T00:00:00+00:00 | 2018-09-08T00:00:00+00:00 | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8                                | CHECKME   | manually flagged by bav | nan                                                                              |
-| 2020-07-02T00:00:00+00:00 | 2022-09-03T00:00:00+00:00 | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8                                | CHECKME   | manually flagged by bav | nan                                                                              |
+# SWC_O
+| t0                        | t1                        | variable                                        |   flag | comment                 |   URL_graphic |
+|:--------------------------|:--------------------------|:------------------------------------------------|-------:|:------------------------|--------------:|
+| nan                       | 2022-08-05T00:00:00+00:00 | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8 |    nan | manually flagged by bav |           nan |
+| 2022-12-03T00:00:00+00:00 | nan                       | t_i_1 t_i_2 t_i_3 t_i_4 t_i_5 t_i_6 t_i_7 t_i_8 |    nan | manually flagged by bav |           nan |
  
-![TAS_A](../figures/flags/TAS_A_0.png)
-![TAS_A](../figures/flags/TAS_A_1.png)
-![TAS_A](../figures/flags/TAS_A_2.png)
-![TAS_A](../figures/flags/TAS_A_3.png)
-![TAS_A](../figures/flags/TAS_A_4.png)
+![SWC_O](../figures/flags/SWC_O_0.png)
+![SWC_O](../figures/flags/SWC_O_1.png)
  

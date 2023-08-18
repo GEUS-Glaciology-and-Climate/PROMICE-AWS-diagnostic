@@ -9,9 +9,9 @@ no data forgps_q
 no data forbatt_v_ini
  
 ## CP1
-no data forgps_numsat
-no data forgps_q
-no data forbatt_v_ini
+no data for gps_numsat
+no data for gps_q
+no data for batt_v_ini
  
 ## DY2
 no data forgps_numsat
