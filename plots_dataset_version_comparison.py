@@ -81,7 +81,7 @@ for station in df_meta.stid:
             
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig('figures/new_dataverse_upload/%s_%i.png'%(station,k))
-        Msg('![%s](../figures/flags/%s_%i.png)'%(station, station,k))
+        Msg('![%s](../figures/new_dataverse_upload/%s_%i.png)'%(station, station,k))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()
