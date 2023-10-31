@@ -13,9 +13,9 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import nead
 
-path_l3 = '../aws-l3/level_3/'
-path_tx = '../aws-l3/tx/'
-path_gcn= '../GC-Net-Level-1-data-processing/L1/'
+path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3/level_3/'
+path_tx = 'C:/Users/bav/GitHub/PROMICE data/aws-l3/tx/'
+path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 # df_gcn = nead.read(path_gcn+'24-EastGRIP.csv').to_dataframe()
 # df_gcn = nead.read(path_gcn+'04-GITS.csv').to_dataframe()
@@ -37,9 +37,9 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['t_u','t_l']
 # var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
-var_list = ['t_u', 'gps_lat','gps_lon' ,'gps_alt']
+var_list = ['t_u', 't_l','ts']
 
-station_list = ['SCO_U', 'SCO_L']  #df_meta.stid  #
+station_list = ['EGP']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
 plt.close('all')
