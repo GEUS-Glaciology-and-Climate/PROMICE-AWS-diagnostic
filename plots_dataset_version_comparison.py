@@ -19,9 +19,9 @@ matplotlib.use('Agg')
 import tocgen
 
 # def main(
-path_new = '../aws-l3/level_3/'
-path_old = 'C:/Users/bav/Downloads/dataverse_files/day'
-filename = 'plot_compilations/new_version_to_dataverse_2023_08_17.md'
+path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+path_old = 'C:/Users/bav/Downloads/dataverse_day'
+filename = 'plot_compilations/new_version_to_dataverse_2023_11_01.md'
 df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
 
 f = open(filename, "w")
@@ -30,7 +30,7 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
     
-Msg('# Comparison of data v9 (new) to v8 (old).')
+Msg('# Comparison of data v11 (new) to v10 (old).')
 Msg('~version name is as defined in AWS_changelog.txt~')
 
 for station in df_meta.stid:
