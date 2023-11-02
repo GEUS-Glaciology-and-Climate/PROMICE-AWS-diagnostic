@@ -16,8 +16,8 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 def advanced_filters(ds2, station, station_type):
@@ -43,10 +43,10 @@ def advanced_filters(ds2, station, station_type):
 #          path_to_qc_files = '../PROMICE-AWS-data-issues/',
 #          vari = '../pypromice/src/pypromice/process/variables.csv',
 #          filename="./plot_compilations/flags.md"):
-path_to_l0 = 'C:/Users/bav/GitHub/aws-l0/'
-path_to_l1 = '../aws-l1/'
-path_l3 = '../aws-l3/level_3/'
-path_tx = '../aws-l3/tx/'
+path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
+path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
+path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+path_tx = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/tx/'
 path_gcn= '../GC-Net-Level-1-data-processing/L1/'
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 vari = '../pypromice/src/pypromice/process/variables.csv'
@@ -61,10 +61,10 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
     
-plt.close('all')
+# plt.close('all')
 
 
-for station in ['TAS_A']:  #os.listdir(path_to_qc_files+'flags'):
+for station in os.listdir(path_to_qc_files+'flags'): #['NUK_Uv3']:  #
     station = station.replace('.csv','')
     # loading flags
     df_flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
@@ -109,7 +109,7 @@ for station in ['TAS_A']:  #os.listdir(path_to_qc_files+'flags'):
         print('writing L1 file')
         
         ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
-        ds.to_netcdf('../aws-l1/'+station+'.nc')
+        # ds.to_netcdf('../aws-l1/'+station+'.nc')
 
     ds = resampleL3(ds, 'H')
     ds = adjustTime(ds, adj_url='https://use_local_file',
