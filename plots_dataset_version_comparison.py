@@ -20,7 +20,7 @@ import tocgen
 
 # def main(
 path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
-path_old = 'C:/Users/bav/Downloads/dataverse_day'
+path_old = 'C:/Users/bav/Downloads/day'
 from datetime import date
 today = date.today().strftime("%Y_%m_%d")
 filename = 'plot_compilations/new_version_to_dataverse_'+today+'.md'
