@@ -64,7 +64,7 @@ def Msg(txt):
 # plt.close('all')
 
 
-for station in ['NUK_L']:  # os.listdir(path_to_qc_files+'flags'):
+for station in ['TAS_U']:  # os.listdir(path_to_qc_files+'flags'):
     station = station.replace('.csv','')
     # loading flags
     df_flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
@@ -129,9 +129,9 @@ for station in ['NUK_L']:  # os.listdir(path_to_qc_files+'flags'):
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.columns)
         elif '*' in var_list:
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
-    
+    #%%
     var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
-    var_list = ['gps_lat','gps_lon','gps_alt']
+    # var_list = ['gps_lat','gps_lon','gps_alt']
     Msg('# '+station)
     Msg(df_flags.set_index('t0').to_markdown())
     Msg(' ')

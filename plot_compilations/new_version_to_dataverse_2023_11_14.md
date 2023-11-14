@@ -115,7 +115,7 @@ Old variables removed from new files:
 ![EGP](../figures/new_dataverse_upload_2023_11_14/EGP_9.png)
  
 ## FRE
-C:/Users/bav/Downloads/dataverse_day/FRE_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/FRE_day.csv cannot be found in old data
 ## HUM
 Variables in new file:
 p_u, p_l, t_u, t_l, rh_u, rh_u_cor, qh_u, rh_l, rh_l_cor, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_hdop, batt_v, fan_dc_u, fan_dc_l, t_rad, msg_lat, msg_lon
@@ -225,7 +225,26 @@ Old variables removed from new files:
 ![KAN_L](../figures/new_dataverse_upload_2023_11_14/KAN_L_9.png)
  
 ## KAN_Lv3
-C:/Users/bav/Downloads/dataverse_day/KAN_Lv3_day.csv cannot be found in old data
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_0.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_1.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_2.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_3.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_4.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_5.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_6.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_7.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_8.png)
+![KAN_Lv3](../figures/new_dataverse_upload_2023_11_14/KAN_Lv3_9.png)
+ 
 ## KAN_M
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -290,7 +309,26 @@ Old variables removed from new files:
 ![KPC_L](../figures/new_dataverse_upload_2023_11_14/KPC_L_9.png)
  
 ## KPC_Lv3
-C:/Users/bav/Downloads/dataverse_day/KPC_Lv3_day.csv cannot be found in old data
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_0.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_1.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_2.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_3.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_4.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_5.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_6.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_7.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_8.png)
+![KPC_Lv3](../figures/new_dataverse_upload_2023_11_14/KPC_Lv3_9.png)
+ 
 ## KPC_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -313,11 +351,30 @@ Old variables removed from new files:
 ![KPC_U](../figures/new_dataverse_upload_2023_11_14/KPC_U_9.png)
  
 ## KPC_Uv3
-C:/Users/bav/Downloads/dataverse_day/KPC_Uv3_day.csv cannot be found in old data
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_0.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_1.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_2.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_3.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_4.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_5.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_6.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_7.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_8.png)
+![KPC_Uv3](../figures/new_dataverse_upload_2023_11_14/KPC_Uv3_9.png)
+ 
 ## LYN_L
-C:/Users/bav/Downloads/dataverse_day/LYN_L_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/LYN_L_day.csv cannot be found in old data
 ## LYN_T
-C:/Users/bav/Downloads/dataverse_day/LYN_T_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/LYN_T_day.csv cannot be found in old data
 ## MIT
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -436,7 +493,26 @@ Old variables removed from new files:
 ![NSE](../figures/new_dataverse_upload_2023_11_14/NSE_12.png)
  
 ## NUK_B
-C:/Users/bav/Downloads/dataverse_day/NUK_B_day.csv cannot be found in old data
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, t_surf, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_0.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_1.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_2.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_3.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_4.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_5.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_6.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_7.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_8.png)
+![NUK_B](../figures/new_dataverse_upload_2023_11_14/NUK_B_9.png)
+ 
 ## NUK_K
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -585,7 +661,7 @@ Old variables removed from new files:
 ![QAS_L](../figures/new_dataverse_upload_2023_11_14/QAS_L_9.png)
  
 ## QAS_Lv3
-C:/Users/bav/Downloads/dataverse_day/QAS_Lv3_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/QAS_Lv3_day.csv cannot be found in old data
 ## QAS_M
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -608,7 +684,26 @@ Old variables removed from new files:
 ![QAS_M](../figures/new_dataverse_upload_2023_11_14/QAS_M_9.png)
  
 ## QAS_Mv3
-C:/Users/bav/Downloads/dataverse_day/QAS_Mv3_day.csv cannot be found in old data
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_0.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_1.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_2.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_3.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_4.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_5.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_6.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_7.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_8.png)
+![QAS_Mv3](../figures/new_dataverse_upload_2023_11_14/QAS_Mv3_9.png)
+ 
 ## QAS_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -652,9 +747,9 @@ Old variables removed from new files:
 ![QAS_Uv3](../figures/new_dataverse_upload_2023_11_14/QAS_Uv3_9.png)
  
 ## Roof_GEUS
-C:/Users/bav/Downloads/dataverse_day/Roof_GEUS_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/Roof_GEUS_day.csv cannot be found in old data
 ## Roof_PROMICE
-C:/Users/bav/Downloads/dataverse_day/Roof_PROMICE_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/Roof_PROMICE_day.csv cannot be found in old data
 ## SCO_L
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -1043,15 +1138,15 @@ Old variables removed from new files:
 ![WEG_B](../figures/new_dataverse_upload_2023_11_14/WEG_B_9.png)
  
 ## WEG_L
-C:/Users/bav/Downloads/dataverse_day/WEG_L_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/WEG_L_day.csv cannot be found in old data
 ## ZAK_A
-C:/Users/bav/Downloads/dataverse_day/ZAK_A_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/ZAK_A_day.csv cannot be found in old data
 ## ZAK_L
-C:/Users/bav/Downloads/dataverse_day/ZAK_L_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/ZAK_L_day.csv cannot be found in old data
 ## ZAK_Lv3
-C:/Users/bav/Downloads/dataverse_day/ZAK_Lv3_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/ZAK_Lv3_day.csv cannot be found in old data
 ## ZAK_U
-C:/Users/bav/Downloads/dataverse_day/ZAK_U_day.csv cannot be found in old data
+C:/Users/bav/Downloads/day/ZAK_U_day.csv cannot be found in old data
 ## ZAK_Uv3
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon

@@ -1,0 +1,8 @@
+# TAS_U
+| t0                        | t1                        | variable   |   flag | comment        | URL_graphic                                                                       |
+|:--------------------------|:--------------------------|:-----------|-------:|:---------------|:----------------------------------------------------------------------------------|
+| 2008-09-17T10:00:00+00:00 | 2010-08-06T21:00:00+00:00 | wspd_u     |    nan | flagged by bav | https://github.com/GEUS-Glaciology-and-Climate/PROMICE-AWS-data-issues/issues/117 |
+| 2010-12-07T10:00:00+00:00 | 2011-08-12T00:00:00+00:00 | wspd_u     |    nan | flagged by bav | https://github.com/GEUS-Glaciology-and-Climate/PROMICE-AWS-data-issues/issues/117 |
+ 
+![TAS_U](../figures/flags/TAS_U_0.png)
+ 

@@ -9,10 +9,6 @@ tip list:
 """
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
-from sklearn.linear_model import LinearRegression
-import nead
-from pypromice.process import AWS
 import os
 import matplotlib
 matplotlib.use('Agg')
@@ -40,7 +36,7 @@ def Msg(txt):
 Msg('# Comparison of data v11 (new) to v10 (old).')
 Msg('~version name is as defined in AWS_changelog.txt~')
 
-for station in df_meta.stid:
+for station in df_meta.stid:  # ['NUK_L','NUK_U']: #
     Msg('## '+station)
     df_new = pd.read_csv(path_new+station+'/'+station+'_day.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
