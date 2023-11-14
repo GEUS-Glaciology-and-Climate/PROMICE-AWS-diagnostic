@@ -16,8 +16,8 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 def advanced_filters(ds2, station, station_type):
@@ -64,7 +64,7 @@ def Msg(txt):
 # plt.close('all')
 
 
-for station in os.listdir(path_to_qc_files+'flags'): #['NUK_Uv3']:  #
+for station in ['NUK_L']:  # os.listdir(path_to_qc_files+'flags'):
     station = station.replace('.csv','')
     # loading flags
     df_flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
@@ -106,7 +106,7 @@ for station in os.listdir(path_to_qc_files+'flags'): #['NUK_Uv3']:  #
             # pAWS_raw.write('.')
             # print(wtf)
             ds = pAWS_raw.L1A
-        print('writing L1 file')
+        # print('writing L1 file')
         
         ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
         # ds.to_netcdf('../aws-l1/'+station+'.nc')
@@ -131,6 +131,7 @@ for station in os.listdir(path_to_qc_files+'flags'): #['NUK_Uv3']:  #
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
     
     var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
+    var_list = ['gps_lat','gps_lon','gps_alt']
     Msg('# '+station)
     Msg(df_flags.set_index('t0').to_markdown())
     Msg(' ')

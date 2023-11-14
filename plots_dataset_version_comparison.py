@@ -21,7 +21,14 @@ import tocgen
 # def main(
 path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 path_old = 'C:/Users/bav/Downloads/dataverse_day'
-filename = 'plot_compilations/new_version_to_dataverse_2023_11_01.md'
+from datetime import date
+today = date.today().strftime("%Y_%m_%d")
+filename = 'plot_compilations/new_version_to_dataverse_'+today+'.md'
+figure_folder='figures/new_dataverse_upload_'+today
+try:
+    os.mkdir(figure_folder)
+except:
+    pass
 df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
 
 f = open(filename, "w")
@@ -80,8 +87,8 @@ for station in df_meta.stid:
             ax.grid()
             
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
-        fig.savefig('figures/new_dataverse_upload/%s_%i.png'%(station,k))
-        Msg('![%s](../figures/new_dataverse_upload/%s_%i.png)'%(station, station,k))
+        fig.savefig(figure_folder+'/%s_%i.png'%(station,k))
+        Msg('![%s](../%s/%s_%i.png)'%(station, figure_folder, station,k))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()

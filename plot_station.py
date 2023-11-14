@@ -27,9 +27,7 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 #             'rh_l','t_l','wspd_l','p_l','z_boom_l',
 #             'rh_i','t_i','wspd_i','p_i','batt_v',
 #             't_i_all']
-# var_list = ['rh_u','t_u',
-#             'rh_l','t_l',
-#             'rh_i']
+var_list = ['rh_u','rh_u_cor']
 # var_list = ['rh_u','t_u',
 #             'wspd_u','wdir_u',
 #             'dsr','usr', 'z_boom_u']
@@ -38,14 +36,17 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
 # var_list = ['t_u', 't_l','ts']
-var_list = ['gps_lat', 'gps_lon','gps_alt']
+# var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = ['SDL']  #df_meta.stid  #
+station_list = ['TAS_L']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
 plt.close('all')
 
-
+df_dmi = pd.read_csv('436000.csv', sep=';')
+df_dmi['Hour'] = df_dmi['Hour(utc)']
+df_dmi['time'] = pd.to_datetime(df_dmi[['Year','Month','Day','Hour']])
+df_dmi = df_dmi.set_index('time')
 # for var,var2, ax in zip(var_list, var_list2, ax_list):
 #     ax.plot(df_gcn.index, df_gcn[var2].values, marker='.',linestyle='None', label='GC-Net')
 #     ax.plot(df_gcn.index, df_gcn[var2.replace('1','2')].values, marker='.',linestyle='None', label='GC-Net')
@@ -105,7 +106,12 @@ for station in station_list:
                     ax.plot(df_l3[var].index, df_l3[var].values, marker='.',markeredgecolor='None', linestyle='None', label='l3',alpha=0.5)
                 except:
                     print(var,'not in L3 files')
-            
+            df_dmi['201'].plot(ax=ax,
+                               label='dmi 436000',
+                               marker='.',
+                               markeredgecolor='None', 
+                               # linestyle='None', 
+                               alpha=0.7)
             ax.legend()
             ax.grid()
                 # ax.plot(df_l3[var].index,Y_pred)
