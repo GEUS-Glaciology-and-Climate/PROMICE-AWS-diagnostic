@@ -36,9 +36,9 @@ var_list = ['rh_u','t_u',
 # var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
 # var_list = ['t_u', 't_l','ts']
-# var_list = ['gps_lat', 'gps_lon','gps_alt']
+var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = ['TAS_U']  #df_meta.stid  #
+station_list = ['UPE_L']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
 plt.close('all')
