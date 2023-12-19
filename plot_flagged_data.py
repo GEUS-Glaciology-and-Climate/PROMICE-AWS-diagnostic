@@ -16,8 +16,8 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 def advanced_filters(ds2, station, station_type):
@@ -53,7 +53,7 @@ vari = '../pypromice/src/pypromice/process/variables.csv'
 
 from datetime import date
 today = date.today().strftime("%Y_%m_%d")
-filename = './plot_compilations/flags_CEN2_'+today+'.md'
+filename = './plot_compilations/flags_'+today+'.md'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
@@ -67,15 +67,16 @@ def Msg(txt):
 plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
-for station in ['FRE']:  # os.listdir(path_to_qc_files+'adjustments'): 
+# for station in ['QAS_Uv3']:  # os.listdir(path_to_qc_files+'adjustments'): 
 
-# for station in np.unique(np.array(all_dirs))[-2:]: 
+for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
         flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
                                 comment='#',
                                 skipinitialspace=True)
+        flags['what was done'] = 'flag'
     except:
         flags = pd.DataFrame()
     
@@ -83,12 +84,10 @@ for station in ['FRE']:  # os.listdir(path_to_qc_files+'adjustments'):
         adj = pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv',
                          comment='#',
                          skipinitialspace=True)
+        adj['what was done'] = adj['adjust_function'] + ' ' + adj['adjust_value'].astype(str)
     except:
         adj = pd.DataFrame()
         
-    flags['what was done'] = 'flag'
-    adj['what was done'] = adj['adjust_function'] + ' ' + adj['adjust_value'].astype(str)
-    
     df_flags = pd.concat((flags,adj))[['t0', 't1', 'variable', 'what was done', 'comment', 'URL_graphic']].reset_index(drop=True)
         
     if len(df_flags)==0:
@@ -110,9 +109,6 @@ for station in ['FRE']:  # os.listdir(path_to_qc_files+'adjustments'):
                 inpath = path_to_l0 + '/raw/'+station+'/'
                 pAWS_raw = AWS(config_file, inpath)
                 pAWS_raw.getL1()
-                # pAWS_raw.process()
-                # pAWS_raw.write('.')
-                # print(wtf)
                 ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A)
             except:
                 print('No raw logger file for',station)
@@ -162,7 +158,7 @@ for station in ['FRE']:  # os.listdir(path_to_qc_files+'adjustments'):
             
         if ds_save[v].isnull().all():
             var_list = var_list[~np.isin(var_list, v)]
-    # var_list = ['gps_lat','gps_lon','gps_alt']
+
     Msg('# '+station)
     Msg(df_flags.set_index('t0').to_markdown())
     Msg(' ')

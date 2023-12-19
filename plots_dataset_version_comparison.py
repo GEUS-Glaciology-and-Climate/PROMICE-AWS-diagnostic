@@ -10,8 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 # def main(
@@ -36,7 +36,7 @@ def Msg(txt):
 Msg('# Comparison of data v11 (new) to v10 (old).')
 Msg('~version name is as defined in AWS_changelog.txt~')
 
-for station in ['CEN1','SWC_O']: #
+for station in ['QAS_U']: #
     Msg('## '+station)
     df_new = pd.read_csv(path_new+station+'/'+station+'_day.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
