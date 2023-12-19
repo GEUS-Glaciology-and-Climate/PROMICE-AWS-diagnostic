@@ -16,8 +16,8 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 def advanced_filters(ds2, station, station_type):
@@ -67,7 +67,7 @@ def Msg(txt):
 plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
-for station in ['CEN2']:  # os.listdir(path_to_qc_files+'adjustments'): 
+for station in ['FRE']:  # os.listdir(path_to_qc_files+'adjustments'): 
 
 # for station in np.unique(np.array(all_dirs))[-2:]: 
     station = station.replace('.csv','')
