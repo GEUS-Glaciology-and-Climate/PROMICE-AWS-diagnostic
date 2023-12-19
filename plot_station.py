@@ -30,18 +30,19 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['t_i_'+str(i) for i in range(1,12)]
 var_list = ['rh_u','t_u',
             'wspd_u','wdir_u',
-            'dsr','usr', 'z_boom_u']
+            'dsr','usr', 'z_boom_u'
+            ]
 # var_list = ['p_u','p_l','p_i']
 # var_list = ['z_boom_u','z_stake']
-# var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','gps_lat','gps_lon','gps_alt']
+var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','z_boom_u', 'z_boom_l', 'gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
 # var_list = ['t_u', 't_l','ts']
-var_list = ['gps_lat', 'gps_lon','gps_alt']
+# var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = ['UPE_L']  #df_meta.stid  #
+station_list = ['NEM']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
-plt.close('all')
+# plt.close('all')
 
 # df_dmi = pd.read_csv('436000.csv', sep=';')
 # df_dmi['Hour'] = df_dmi['Hour(utc)']

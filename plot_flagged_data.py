@@ -53,7 +53,7 @@ vari = '../pypromice/src/pypromice/process/variables.csv'
 
 from datetime import date
 today = date.today().strftime("%Y_%m_%d")
-filename = './plot_compilations/flags_'+today+'.md'
+filename = './plot_compilations/flags5_'+today+'.md'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
@@ -66,9 +66,10 @@ def Msg(txt):
     
 plt.close('all')
 
+all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
+# for station in ['NUK_N']:  # os.listdir(path_to_qc_files+'adjustments'): 
 
-# for station in ['NUK_N']:  # os.listdir(path_to_qc_files+'adjustments'): # 
-for station in os.listdir(path_to_qc_files+'adjustments'): # 
+for station in np.unique(np.array(all_dirs))[-2:]: 
     station = station.replace('.csv','')
     # loading flags
     try:
@@ -137,10 +138,10 @@ for station in os.listdir(path_to_qc_files+'adjustments'): #
                  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_url='https://use_local_file',
                     adj_dir=path_to_qc_files+'adjustments')
-    ds3 = advanced_filters(ds2, 
-                          station=station,
-                          station_type=df_metadata.loc[df_metadata.stid==station, 
-                                                       'station_type'].values[0])
+    # ds3 = advanced_filters(ds2, 
+    #                       station=station,
+    #                       station_type=df_metadata.loc[df_metadata.stid==station, 
+    #                                                    'station_type'].values[0])
     df_L1 = ds.to_dataframe().copy()
 
     for ind, var_list in zip(df_flags.index, df_flags.variable):
@@ -150,14 +151,22 @@ for station in os.listdir(path_to_qc_files+'adjustments'): #
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
     #%%
     var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
+    for v in var_list:
+        if v not in ds_save.data_vars:
+            Msg(v+' not in variables')
+            var_list = var_list[~np.isin(var_list, v)]
+            continue
+            
+        if ds_save[v].isnull().all():
+            var_list = var_list[~np.isin(var_list, v)]
     # var_list = ['gps_lat','gps_lon','gps_alt']
     Msg('# '+station)
     Msg(df_flags.set_index('t0').to_markdown())
     Msg(' ')
 
-    # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
-    var_list_list = [np.array([v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in var_list]),
-                      np.array([v for v in var_list if 't_i' in v])]
+    var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
+    # var_list_list = [np.array([v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in var_list]),
+    #                   np.array([v for v in var_list if 't_i' in v])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
@@ -190,10 +199,7 @@ for station in os.listdir(path_to_qc_files+'adjustments'): #
             ax.set_xlim(df_L1.index[[0,-1]])
             ax.set_ylabel(var)
             ax.grid()
-        if len(var_list_list[1])==0:
-            title = station
-        else:   
-            title = station+'_%i/%i'%(i+1,len(var_list_list))
+        title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('figures/flags/%s_%i.png'%(station,i), dpi=300)
         Msg('![%s](../figures/flags/%s_%i.png)'%(station, station,i))
