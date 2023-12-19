@@ -71,14 +71,22 @@ plt.close('all')
 for station in os.listdir(path_to_qc_files+'adjustments'): # 
     station = station.replace('.csv','')
     # loading flags
-    tmp = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
-                            comment='#',
-                            skipinitialspace=True)
-    tmp['adj_func'] = 'flag'
-    df_flags = pd.concat((tmp,
-                          pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv',
-                           comment='#',
-                           skipinitialspace=True)))
+    try:
+        flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
+                                comment='#',
+                                skipinitialspace=True)
+    except:
+        flags = pd.DataFrame()
+    
+    try:
+        adj = pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv',
+                         comment='#',
+                         skipinitialspace=True)
+    except:
+        adj = pd.DataFrame()
+        
+    flags['adj_func'] = 'flag'
+    df_flags = pd.concat((flags,adj))
         
     if len(df_flags)==0:
         print('no flag listed in file')

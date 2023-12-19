@@ -17683,3 +17683,1242 @@ INFO:pypromice.process.L1toL2:---> 2019-08-04 00:00:00 2019-11-13 00:00:00 z_boo
 INFO:pypromice.process.L1toL2:---> 2019-11-13 00:00:00 2020-09-01 00:00:00 z_boom_u max_filter 2.33
 INFO:pypromice.process.L1toL2:---> 2020-09-01 00:00:00 2021-03-06 00:00:00 z_boom_u max_filter 1.93
 INFO:pypromice.process.L1toL2:---> 2021-03-06 00:00:00 2021-04-26 00:00:00 z_boom_u max_filter 1.7
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CEN1_300234061473490_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN1_300234061473490_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CEN1_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN1_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CEN1_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN1_2021_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CEN1.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\CEN1.csv
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CEN1.csv
+INFO:pypromice.process.L1toL2:---> 2017-06-07 16:10:00 2021-08-12 20:40:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2019-10-24 14:00:00 2020-03-28 14:00:00 z_boom_u min_filter 1.7
+INFO:pypromice.process.L1toL2:---> 2017-06-07 16:10:00 2021-08-12 20:40:00 z_stake max_filter 3.0
+INFO:pypromice.process.L1toL2:---> 2017-07-01 00:00:00 2017-08-15 00:00:00 z_stake min_filter 2.56
+INFO:pypromice.process.L1toL2:---> 2019-10-24 14:00:00 2020-03-28 14:00:00 z_stake min_filter 1.81
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CEN1_300234061473490_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN1_300234061473490_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CEN1_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN1_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CEN1_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN1_2021_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CEN1.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\CEN1.csv
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2017-06-07T16:10:00.000000000 2017-07-27 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CEN1.csv
+INFO:pypromice.process.L1toL2:---> 2017-06-07 16:10:00 2021-08-12 20:40:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2019-10-24 14:00:00 2020-03-28 14:00:00 z_boom_u min_filter 1.7
+INFO:pypromice.process.L1toL2:---> 2017-06-07 16:10:00 2021-08-12 20:40:00 z_stake max_filter 3.0
+INFO:pypromice.process.L1toL2:---> 2017-07-01 00:00:00 2017-08-15 00:00:00 z_stake min_filter 2.56
+INFO:pypromice.process.L1toL2:---> 2019-10-24 14:00:00 2020-03-28 14:00:00 z_stake min_filter 1.81
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN2_300534062418810_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CEN2_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CEN2_2022_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CEN2.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\CEN2.csv
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rec
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 p_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rh_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wdir_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_rad
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 z_boom_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i_11
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 tilt_y
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 tilt_x
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rot
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 precip_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 precip_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_time
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_lat
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_lon
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_alt
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_geoid
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_geounit
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_q
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_numsat
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 gps_hdop
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 fan_dc_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 fan_dc_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 batt_v
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_log
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rh_u_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 qh_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rh_l_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 qh_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_x_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_y_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_x_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_y_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 dsr_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 usr_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 albedo
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 cc
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_surf
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 dlhf_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 dlhf_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 dshf_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 dshf_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 precip_u_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 precip_u_rate
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 precip_l_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 precip_l_rate
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 msg_lat
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 msg_lon
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 msg_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 rh_i_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_x_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2021-08-12 20:00:00 wspd_y_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2021-08-07T11:10:00.000000000 2022-06-19 00:00:00 t_i_11
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 00:00:00 2023-12-18T11:00:00.000000000 t_i_11
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CEN2.csv
+INFO:pypromice.process.L1toL2:---> 2021-08-07 11:10:00 2023-12-18 11:00:00 z_boom_l min_filter 1.5
+INFO:pypromice.process.L1toL2:---> 2021-08-07 11:10:00 2023-12-18 11:00:00 z_boom_l max_filter 3.0
+INFO:pypromice.process.L1toL2:---> 2022-10-14 18:00:00 2023-01-01 18:00:00 z_boom_l min_filter 1.8
+INFO:pypromice.process.L1toL2:---> 2021-08-07 11:10:00 2023-12-18 11:00:00 z_boom_u min_filter 2.0
+INFO:pypromice.process.L1toL2:---> 2021-08-07 11:10:00 2023-12-18 11:00:00 z_boom_u max_filter 4.3
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CP1_300534062418810_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CP1_300534062418810_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CP1_300534062024750_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CP1_2022_raw_corrected.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CP1_2022_raw_corrected.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for CP1_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from CP1_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CP1.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\CP1.csv
+INFO:pypromice.process.L1toL2:---> flagging 2023-01-02 14:00:00 2023-01-05 00:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2023-01-02 14:00:00 2023-01-05 00:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2023-01-02 14:00:00 2023-01-05 00:00:00 p_l
+INFO:pypromice.process.L1toL2:---> flagging 2023-01-18 00:00:00 2023-01-22 19:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2023-01-19 19:00:00 2023-01-22 19:00:00 p_l
+INFO:pypromice.process.L1toL2:---> flagging 2023-01-20 00:00:00 2023-01-22 19:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rec
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 p_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rh_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wdir_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_rad
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 z_boom_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i_11
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 tilt_y
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 tilt_x
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rot
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 precip_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 precip_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_time
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_lat
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_lon
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_alt
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_geoid
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_geounit
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_q
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_numsat
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 gps_hdop
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 fan_dc_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 fan_dc_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 batt_v
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_log
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rh_u_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 qh_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rh_l_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 qh_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_x_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_y_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_x_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_y_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 dsr_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 usr_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 albedo
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 cc
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_surf
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 dlhf_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 dlhf_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 dshf_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 dshf_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 precip_u_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 precip_u_rate
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 precip_l_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 precip_l_rate
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 msg_lat
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 msg_lon
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 msg_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 rh_i_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_x_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-02-15 00:00:00 2022-06-15 14:00:00 wspd_y_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-03 00:00:00 2023-06-20 00:00:00 t_i_11
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2023-09-14 03:00:00 2023-12-18T11:00:00.000000000 t_i_11
+INFO:pypromice.process.L1toL2:---> flagging 2021-06-17T16:00:00.000000000 2021-06-17 18:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-06-17T16:00:00.000000000 2021-06-17 18:00:00 z_boom_l
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\CP1.csv
+INFO:pypromice.process.L1toL2:---> 2021-06-17 16:00:00 2023-04-21 00:00:00 z_boom_l min_filter 1.3
+INFO:pypromice.process.L1toL2:---> 2021-06-17 16:00:00 2023-12-18 11:00:00 z_boom_l max_filter 3.0
+INFO:pypromice.process.L1toL2:---> 2021-06-17 16:00:00 2023-04-21 00:00:00 z_boom_u min_filter 2.3
+INFO:pypromice.process.L1toL2:---> 2021-06-17 16:00:00 2023-12-18 11:00:00 z_boom_u max_filter 4.3
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_300234061627590_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_300234061627590_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2016_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2017_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2017_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2017_raw_2.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2017_raw_2.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2018_raw_2.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2018_raw_2.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2019_raw1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2019_raw1.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for EGP_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from EGP_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\EGP.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\EGP.csv
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2020-01-01 00:00:00 2023-12-18T00:00:00.000000000 z_stake
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\EGP.csv
+INFO:pypromice.process.L1toL2:---> 2016-05-01 14:30:00 2023-06-21 00:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2019-08-04 00:00:00 2019-11-13 00:00:00 z_boom_u max_filter 2.6
+INFO:pypromice.process.L1toL2:---> 2019-11-13 00:00:00 2020-09-01 00:00:00 z_boom_u max_filter 2.33
+INFO:pypromice.process.L1toL2:---> 2020-09-01 00:00:00 2021-03-06 00:00:00 z_boom_u max_filter 1.93
+INFO:pypromice.process.L1toL2:---> 2021-03-06 00:00:00 2021-04-26 00:00:00 z_boom_u max_filter 1.7
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from JAR_300534060520350_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for JAR_2022_raw.dat
+INFO:pypromice.process.aws:L0 data successfully loaded from JAR_2022_raw.dat
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\JAR.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\JAR.csv
+INFO:pypromice.process.L1toL2:No PROMICE-AWS-data-issue file to read.
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\JAR.csv
+INFO:pypromice.process.L1toL2:---> 2021-05-26 13:00:00 2023-01-26 16:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from JAR_O_300534063814490_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from JAR_O_300534063814490_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for JAR_O_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from JAR_O_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\JAR_O.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\JAR_O.csv
+INFO:pypromice.process.L1toL2:---> flagging 2022-01-01 00:00:00 2023-07-07 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\JAR_O.csv
+INFO:pypromice.process.L1toL2:---> 2022-08-03 14:00:00 2023-12-18 11:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_300234061293280_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_300234061293280_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_300234061293280_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2009_1_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2009_2_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2009_2_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2010_1_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2010_1_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2010_2_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2010_2_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2011_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2011_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2012_1_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2012_1_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2012_2_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2012_2_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2013_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2013_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2014_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2014_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2015_1_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2015_1_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2015_2_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2015_2_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2016_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2017_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2017_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2020_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2020_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2022_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2022_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_L_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_L_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KAN_L.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\KAN_L.csv
+INFO:pypromice.process.L1toL2:---> flagging 2009-08-27 00:00:00 2010-06-01 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2011-11-01 00:00:00 2012-05-20 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2014-06-25 00:00:00 2014-08-15 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2015-10-20 00:00:00 2016-07-16 17:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2009-09-17 00:00:00 2009-10-07 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2010-10-02 00:00:00 2010-10-12 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2012-10-06 00:00:00 2012-10-26 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2014-10-08 00:00:00 2014-11-16 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2019-10-07 00:00:00 2019-10-27 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-09-18 00:00:00 2022-06-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-10-01 00:00:00 2022-11-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KAN_L.csv
+INFO:pypromice.process.L1toL2:---> 2008-09-01 20:00:00 2023-12-18 00:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2008-09-01 20:00:00 2023-12-18 00:00:00 z_boom_u min_filter 2.0
+INFO:pypromice.process.L1toL2:---> 2010-10-07 00:00:00 2023-12-18 00:00:00 z_pt_cor add -0.1
+INFO:pypromice.process.L1toL2:---> 2011-06-04 00:00:00 2023-12-18 00:00:00 z_pt_cor add -4.0
+INFO:pypromice.process.L1toL2:---> 2012-08-21 00:00:00 2023-12-18 00:00:00 z_pt_cor add -11.7
+INFO:pypromice.process.L1toL2:---> 2014-05-13 00:00:00 2023-12-18 00:00:00 z_pt_cor add 0.07
+INFO:pypromice.process.L1toL2:---> 2015-04-29 00:00:00 2023-12-18 00:00:00 z_pt_cor add -7.08
+INFO:pypromice.process.L1toL2:---> 2015-07-07 00:00:00 2023-12-18 00:00:00 z_pt_cor add -0.4
+INFO:pypromice.process.L1toL2:---> 2016-07-16 00:00:00 2023-12-18 00:00:00 z_pt_cor add -1.6
+INFO:pypromice.process.L1toL2:---> 2017-09-01 00:00:00 2023-12-18 00:00:00 z_pt_cor add -3.5
+INFO:pypromice.process.L1toL2:---> 2018-08-29 00:00:00 2023-12-18 00:00:00 z_pt_cor add -11.3
+INFO:pypromice.process.L1toL2:---> 2021-08-17 00:00:00 2023-12-18 00:00:00 z_pt_cor add -13.0
+INFO:pypromice.process.L1toL2:---> 2022-05-15 13:00:00 2023-12-18 00:00:00 z_pt_cor add 2.9
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_300234061476520_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_300234061476520_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_300234061476520_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2009_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2010_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2010_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2011_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2011_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2012_raw_modtilt.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2012_raw_modtilt.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2013_raw_modtilt.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2013_raw_modtilt.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2014_raw_modlots.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2014_raw_modlots.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2015_raw_modtilt.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2015_raw_modtilt.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2020_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2020_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2022_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_M_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_M_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KAN_M.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\KAN_M.csv
+INFO:pypromice.process.L1toL2:---> flagging 2010-08-18 00:00:00 2011-04-21 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2013-10-28 21:00:00 2013-10-01 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2011-11-13 21:00:00 2012-05-03 22:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2014-09-14 00:00:00 2015-06-19 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2017-02-10 00:00:00 2017-02-16 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2016-07-16 00:00:00 2018-06-01 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2014-12-06 20:00:00 2014-12-23 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2018-06-05 00:00:00 2018-06-09 20:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2014-09-17 00:00:00 2015-07-19 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2008-09-02T14:30:00.000000000 2010-05-21 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-29 00:00:00 2022-08-21 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KAN_M.csv
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_1 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_2 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_3 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_4 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_5 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_6 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_7 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 t_i_8 min_filter -25.0
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2008-09-02 14:30:00 2023-12-18 00:00:00 z_boom_u min_filter 1.0
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_300234061165160_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_300534062415410_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2010_1_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2010_1_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2010_2_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2010_2_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2010-2012_raw_transmitted_tilt_adjusted.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2012_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2012_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2013_1_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2013_1_raw_tilt_adjusted.csv
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2014_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2014_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2015_1_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2015_1_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2015_3_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2015_3_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2016_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2017_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2017_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2020_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2020_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KAN_U_2023_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KAN_U_2023_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KAN_U.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\KAN_U.csv
+INFO:pypromice.process.L1toL2:---> flagging 2021-12-20 00:00:00 2023-06-09 04:00:00 gps_lon
+INFO:pypromice.process.L1toL2:---> flagging 2021-12-20 00:00:00 2023-06-09 04:00:00 gps_lat
+INFO:pypromice.process.L1toL2:---> flagging 2021-12-20 00:00:00 2023-06-09 04:00:00 gps_alt
+INFO:pypromice.process.L1toL2:---> flagging 2011-05-26 00:00:00 2012-05-03 00:00:00 gps_lon
+INFO:pypromice.process.L1toL2:---> flagging 2011-05-26 00:00:00 2012-05-03 00:00:00 gps_lat
+INFO:pypromice.process.L1toL2:---> flagging 2011-05-26 00:00:00 2012-05-03 00:00:00 gps_alt
+INFO:pypromice.process.L1toL2:---> flagging 2015-10-27 00:00:00 2016-04-09 00:00:00 gps_lon
+INFO:pypromice.process.L1toL2:---> flagging 2015-10-27 00:00:00 2016-04-09 00:00:00 gps_lat
+INFO:pypromice.process.L1toL2:---> flagging 2015-10-27 00:00:00 2016-04-09 00:00:00 gps_alt
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KAN_U.csv
+INFO:pypromice.process.L1toL2:---> 2009-04-04 21:40:00 2023-06-08 12:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_L_300234064126980_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_L_2012_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KPC_L_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_L_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_L_2016_raw_transmitted_3.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KPC_L_2016_raw_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_L_2016_raw_1.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KPC_L_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_L_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KPC_L_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_L_2022_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KPC_L.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\KPC_L.csv
+INFO:pypromice.process.L1toL2:---> flagging 2012-07-19 00:00:00 2012-07-30 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2012-07-19 00:00:00 2012-07-19 16:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2019-08-25 12:00:00 2019-08-27 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2019-09-07 00:00:00 2019-09-11 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2019-09-15 00:00:00 2020-01-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2020-04-01 00:00:00 2020-06-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-04-01 00:00:00 2021-06-04 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2022-04-01 00:00:00 2022-06-04 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2009-08-20 00:00:00 2010-01-31 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2013-08-27 00:00:00 2016-06-28 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2014-07-20 00:00:00 2015-02-28 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2020-04-02 15:00:00 2023-12-18T00:00:00.000000000 z_stake
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KPC_L.csv
+INFO:pypromice.process.L1toL2:---> 2008-07-17 15:10:00 2023-12-18 00:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2012-01-01 00:00:00 2023-12-18 00:00:00 z_pt_cor add -6.0
+INFO:pypromice.process.L1toL2:---> 2016-07-27 00:00:00 2023-12-18 00:00:00 z_pt_cor add -6.297
+INFO:pypromice.process.L1toL2:---> 2016-07-29 00:00:00 2023-12-18 00:00:00 z_pt_cor add -0.1
+INFO:pypromice.process.L1toL2:---> 2019-07-12 13:00:00 2023-12-18 00:00:00 z_pt_cor add -4.478
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_U_300234066319330_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_U_2012_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KPC_U_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_U_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_U_2016_raw_transmitted_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_U_2017_raw_transmitted.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KPC_U_2019_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_U_2019_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for KPC_U_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_U_2022_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KPC_U.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\KPC_U.csv
+INFO:pypromice.process.L1toL2:---> flagging 2006-07-10 00:00:00 2023-12-18T00:00:00.000000000 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2019-06-28 00:00:00 2023-12-18T00:00:00.000000000 t_i_8
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KPC_U.csv
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_1 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_2 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_3 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_4 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_5 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_6 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_7 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 t_i_8 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2008-07-17 18:20:00 2023-12-18 00:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from KPC_Uv3_300534063810550_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KPC_Uv3.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\KPC_Uv3.csv
+INFO:pypromice.process.L1toL2:---> flagging 2021-07-10 00:00:00 2023-06-10 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\KPC_Uv3.csv
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from MIT_300234061218580_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from MIT_300234061218580_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\MIT.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\MIT.csv
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2013-03-07 00:00:00 2013-06-21 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-25 11:00:00 2015-07-21 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2019-04-01 00:00:00 2019-07-31 00:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2008-06-01 00:00:00 2010-01-01 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2010-12-14 00:00:00 2011-08-12 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2012-02-03 00:00:00 2012-06-03 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-01 00:00:00 2013-09-09 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2014-09-20 00:00:00 2015-08-14 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2015-09-15 00:00:00 2015-12-14 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2016-06-15 00:00:00 2016-07-14 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2008-06-01 00:00:00 2009-08-12 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2015-12-31 00:00:00 2016-05-29 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2016-01-02 00:00:00 2017-07-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2017-10-01 00:00:00 2018-07-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2018-10-01 00:00:00 2018-11-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2019-01-02 00:00:00 2019-07-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2019-09-10 00:00:00 2020-05-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2020-09-10 00:00:00 2021-05-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2021-09-01 00:00:00 2023-09-01T21:00:00.000000000 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2021-09-01 00:00:00 2023-09-01T21:00:00.000000000 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2023-08-01 00:00:00 2023-09-01T21:00:00.000000000 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2023-08-01 00:00:00 2023-09-01T21:00:00.000000000 rh_i
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\MIT.csv
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_1 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_2 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_3 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_4 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_5 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_6 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_7 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 t_i_8 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-09-01 21:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2009-08-12 00:00:00 2023-09-01 21:00:00 z_pt_cor add -12.0
+INFO:pypromice.process.L1toL2:---> 2010-09-01 00:00:00 2023-09-01 21:00:00 z_pt_cor add 2.0
+INFO:pypromice.process.L1toL2:---> 2011-08-11 00:00:00 2023-09-01 21:00:00 z_pt_cor add -0.08
+INFO:pypromice.process.L1toL2:---> 2012-09-06 00:00:00 2023-09-01 21:00:00 z_pt_cor add -13.7
+INFO:pypromice.process.L1toL2:---> 2018-07-01 00:00:00 2023-09-01 21:00:00 z_pt_cor add -2.0
+INFO:pypromice.process.L1toL2:---> 2019-01-12 00:00:00 2023-09-01 21:00:00 z_pt_cor add -2.0
+INFO:pypromice.process.L1toL2:could not adjust z_surf_2 not in dataset
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from NAU_300534062412950_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NAU_300534062927000_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NAU_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NAU_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NAU.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\NAU.csv
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-23 00:00:00 2022-12-28 00:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-23 00:00:00 2022-12-28 00:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-23 00:00:00 2022-12-28 00:00:00 p_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-30 20:00:00 2023-04-04 00:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-30 20:00:00 2023-04-04 00:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2022-12-30 20:00:00 2023-04-04 00:00:00 p_l
+INFO:pypromice.process.L1toL2:---> flagging 2021-12-08 00:00:00 2021-12-21 00:00:00 t_i_11
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2023-10-04 00:00:00 2023-12-18T11:00:00.000000000 t_i_11
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NAU.csv
+INFO:pypromice.process.L1toL2:---> 2021-06-04 13:10:00 2023-04-01 00:00:00 z_boom_l min_filter 1.0
+INFO:pypromice.process.L1toL2:---> 2021-06-04 13:10:00 2023-04-01 00:00:00 z_boom_l max_filter 3.0
+INFO:pypromice.process.L1toL2:---> 2021-06-04 13:10:00 2023-04-01 00:00:00 z_boom_u min_filter 2.3
+INFO:pypromice.process.L1toL2:---> 2021-06-04 13:10:00 2023-04-01 00:00:00 z_boom_u max_filter 4.3
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from NEM_300534062417910_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NEM_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NEM_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NEM.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\NEM.csv
+INFO:pypromice.process.L1toL2:---> flagging 2022-10-31 06:00:00 2022-11-26 03:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2022-10-31 06:00:00 2022-11-26 03:00:00 wspd_l
+INFO:pypromice.process.L1toL2:---> flagging 2022-10-31 06:00:00 2022-11-26 03:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2023-04-29 06:00:00 2023-12-18T11:00:00.000000000 wdir_l
+INFO:pypromice.process.L1toL2:---> flagging 2023-04-29 06:00:00 2023-12-18T11:00:00.000000000 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_9
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_10
+INFO:pypromice.process.L1toL2:---> flagging 2023-07-01 14:00:00 2023-12-18T11:00:00.000000000 t_i_11
+INFO:pypromice.process.L1toL2:---> flagging 2023-06-01 11:00:00 2023-06-28 05:00:00 t_i_6
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NEM.csv
+INFO:pypromice.process.L1toL2:---> 2021-08-13 16:40:00 2023-11-01 00:00:00 z_boom_u min_filter 3
+INFO:pypromice.process.L1toL2:---> 2021-08-13 16:40:00 2023-11-01 00:00:00 z_boom_u max_filter 4
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_300234061299270_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_300234061299270_2.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_300534062923450_3.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2015_raw_2.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2015_raw_2.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2016_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2017_raw_SlimTableMem_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2017_raw_SlimTableMem_1.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2017_raw_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2017_raw_1.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2017_raw_2.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2017_raw_2.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2020_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2020_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_K_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_K_2021_raw_transmitted.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_K.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\NUK_K.csv
+INFO:pypromice.process.L1toL2:---> flagging 2015-04-01 00:00:00 2015-06-20 00:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2015-04-01 00:00:00 2015-06-20 00:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2015-04-01 00:00:00 2015-06-20 00:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2015-04-01 00:00:00 2015-06-20 00:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2015-10-17 00:00:00 2016-01-16 00:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-10-17 00:00:00 2016-01-16 00:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2017-04-01 16:00:00 2017-05-10 00:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2017-04-01 16:00:00 2017-05-10 00:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2017-04-01 16:00:00 2017-05-10 00:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2017-04-01 16:00:00 2017-05-10 00:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2020-09-01 00:00:00 2021-07-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_K.csv
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_1 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_2 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_3 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_4 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_5 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_6 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_7 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 t_i_8 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2014-07-28 14:20:00 2023-12-18 11:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2014-08-12 00:00:00 2023-12-18 11:00:00 z_pt_cor add 1.25
+INFO:pypromice.process.L1toL2:---> 2014-08-28 00:00:00 2023-12-18 11:00:00 z_pt_cor add -1.25
+INFO:pypromice.process.L1toL2:---> 2018-06-26 00:00:00 2023-12-18 11:00:00 z_pt_cor add 0.07
+INFO:pypromice.process.L1toL2:---> 2019-08-17 00:00:00 2023-12-18 11:00:00 z_pt_cor add 1.0
+INFO:pypromice.process.L1toL2:---> 2019-09-12 00:00:00 2023-12-18 11:00:00 z_pt_cor add -1.0
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_300234066310260_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_300234066310260_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_300234066310260_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2008_raw_timewrong.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2008_raw_timewrong.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2009_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2009_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2009-2010_raw_transmitted.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2010_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2010-2011_raw_transmitted.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2011_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2011_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2012_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2012_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2013_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2013_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2014_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2014_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2015_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2015_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2017_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2017_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2020_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2020_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_L_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_L_2022_raw_transmitted.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_L.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\NUK_L.csv
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25 00:00:00 2011-08-25 17:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-23 10:00:00 2013-07-23 19:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-09-01 00:00:00 2023-12-18T00:00:00.000000000 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2021-09-01 00:00:00 2023-12-18T00:00:00.000000000 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2010-09-22 00:00:00 2010-10-18 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2018-02-10 00:00:00 2018-07-16 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2007-08-20T19:30:00.000000000 2011-08-27 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2013-01-24 00:00:00 2014-07-31 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2018-07-16 00:00:00 2019-12-31 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-24 00:00:00 2011-08-30 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2008-06-16 00:00:00 2008-07-31 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-19 00:00:00 2012-08-21 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2013-11-03 00:00:00 2014-07-25 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2015-06-15 00:00:00 2015-07-23 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2016-08-01 00:00:00 2017-04-26 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2017-11-24 00:00:00 2018-05-16 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2019-07-01 00:00:00 2019-09-18 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2018-01-26 02:00:00 2018-01-28 21:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2018-02-01 08:00:00 2018-02-02 20:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2018-02-03 14:00:00 2018-02-06 00:00:00 ulr
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_L.csv
+INFO:pypromice.process.L1toL2:---> 2007-08-20 19:30:00 2023-12-18 00:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2008-07-29 00:00:00 2023-12-18 00:00:00 z_pt_cor add -5.0
+INFO:pypromice.process.L1toL2:---> 2008-07-30 00:00:00 2023-12-18 00:00:00 z_pt_cor add -7.1
+INFO:pypromice.process.L1toL2:---> 2009-08-24 00:00:00 2023-12-18 00:00:00 z_pt_cor add -0.5
+INFO:pypromice.process.L1toL2:---> 2010-07-25 00:00:00 2023-12-18 00:00:00 z_pt_cor add -11.1
+INFO:pypromice.process.L1toL2:---> 2010-11-21 12:00:00 2023-12-18 00:00:00 z_pt_cor add 2.6
+INFO:pypromice.process.L1toL2:---> 2011-07-28 00:00:00 2023-12-18 00:00:00 z_pt_cor add -1.15
+INFO:pypromice.process.L1toL2:---> 2011-08-26 00:00:00 2023-12-18 00:00:00 z_pt_cor add -1.2
+INFO:pypromice.process.L1toL2:---> 2011-08-29 00:00:00 2023-12-18 00:00:00 z_pt_cor add 1.0
+INFO:pypromice.process.L1toL2:---> 2012-08-28 00:00:00 2023-12-18 00:00:00 z_pt_cor add -12.0
+INFO:pypromice.process.L1toL2:---> 2013-01-24 00:00:00 2023-12-18 00:00:00 z_pt_cor add 2.6
+INFO:pypromice.process.L1toL2:---> 2013-07-23 00:00:00 2023-12-18 00:00:00 z_pt_cor add -5.25
+INFO:pypromice.process.L1toL2:---> 2014-07-25 00:00:00 2023-12-18 00:00:00 z_pt_cor add -2.5
+INFO:pypromice.process.L1toL2:---> 2014-07-26 00:00:00 2023-12-18 00:00:00 z_pt_cor add -3.35
+INFO:pypromice.process.L1toL2:---> 2017-04-27 00:00:00 2023-12-18 00:00:00 z_pt_cor add -14.92
+INFO:pypromice.process.L1toL2:---> 2017-05-22 00:00:00 2023-12-18 00:00:00 z_pt_cor add -0.5
+INFO:pypromice.process.L1toL2:---> 2018-07-30 11:00:00 2023-12-18 00:00:00 z_pt_cor add -7.0
+INFO:pypromice.process.L1toL2:---> 2021-06-18 11:00:00 2023-12-18 00:00:00 z_pt_cor add -14.0
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2010_raw_transmitted.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_N_2011_raw_logger.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2011_raw_logger.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_N_2011_raw_SDcard.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2011_raw_SDcard.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2011_raw_transmitted.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_N_2012_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2012_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2012_raw_transmitted.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_N_2013_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2013_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_N_2014_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_N_2014_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_N.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\NUK_N.csv
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25T23:00:00.000000000 2011-08-01 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2010-07-25T23:00:00.000000000 2011-04-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2011-10-01 00:00:00 2011-12-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2012-08-29 00:00:00 2013-07-21 15:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_N.csv
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_1 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_2 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_3 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_4 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_5 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_6 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_7 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 t_i_8 min_filter -30.0
+INFO:pypromice.process.L1toL2:---> 2010-07-25 23:00:00 2014-07-25 11:20:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2013-01-01 00:00:00 2014-07-25 11:20:00 z_pt_cor add -8.5
+INFO:pypromice.process.L1toL2:---> 2013-10-11 12:00:00 2014-07-25 11:20:00 z_pt_cor add 1.0
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_300234061295270_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_300234061295270_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_300234061295270_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2008_raw_timewrong.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2008_raw_timewrong.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2009_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2009_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2010_1_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2010_1_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2010_2_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2010-2011_raw_transmitted.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2011_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2011_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2012_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2012_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2013_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2013_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2014_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2014_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2015_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2015_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2017_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2017_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2020_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2020_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_U_2022_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2022_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_U_2022_raw_transmitted.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_U.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\NUK_U.csv
+INFO:pypromice.process.L1toL2:---> flagging 2010-06-22 00:00:00 2010-07-31 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2011-10-02 00:00:00 2011-10-27 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2014-02-09 00:00:00 2014-04-10 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2016-09-21 00:00:00 2016-10-26 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2012-10-22 00:00:00 2012-10-27 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2011-05-01 00:00:00 2011-06-11 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2011-06-15 00:00:00 2011-08-24 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2014-12-05 00:00:00 2015-04-06 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2020-11-03 00:00:00 2021-09-11 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2008-08-01 00:00:00 2009-01-01 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2012-08-01 00:00:00 2013-08-01 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_U.csv
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_1 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_2 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_3 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_4 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_5 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_6 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_7 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 t_i_8 min_filter -20.0
+INFO:pypromice.process.L1toL2:---> 2007-08-20 22:00:00 2023-08-05 20:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2010-07-23 00:00:00 2023-08-05 20:00:00 z_pt_cor add -2.6
+INFO:pypromice.process.L1toL2:---> 2010-07-24 00:00:00 2023-08-05 20:00:00 z_pt_cor add -7.8
+INFO:pypromice.process.L1toL2:---> 2011-04-01 00:00:00 2023-08-05 20:00:00 z_pt_cor add 1.6
+INFO:pypromice.process.L1toL2:---> 2011-08-24 00:00:00 2023-08-05 20:00:00 z_pt_cor add -2.0
+INFO:pypromice.process.L1toL2:---> 2013-07-21 00:00:00 2023-08-05 20:00:00 z_pt_cor add -2.0
+INFO:pypromice.process.L1toL2:---> 2013-07-22 00:00:00 2023-08-05 20:00:00 z_pt_cor add -5.8
+INFO:pypromice.process.L1toL2:---> 2018-07-31 00:00:00 2023-08-05 20:00:00 z_pt_cor add -8.7
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_Uv3_300234068420030_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_Uv3_300234068420030_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_Uv3_300234068420030_2.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_Uv3_300534062923450_3.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_Uv3_300534063817730_4.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_Uv3_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_Uv3_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for NUK_Uv3_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from NUK_Uv3_2022_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_Uv3.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\NUK_Uv3.csv
+INFO:pypromice.process.L1toL2:---> flagging 2021-09-22 00:00:00 2021-11-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-31T15:18:00.000000000 2023-08-20 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\NUK_Uv3.csv
+INFO:pypromice.process.L1toL2:---> 2020-08-31 15:18:00 2023-12-18 11:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2022-08-19 12:00:00 2023-12-18 11:00:00 z_pt_cor add -0.5
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_A_2013_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_A_2013_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_A_2014_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_A_2014_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_A_2015_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_A_2015_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\QAS_A.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\QAS_A.csv
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 p_u
+INFO:pypromice.process.L1toL2:---> could not flag rh_i not in dataset
+INFO:pypromice.process.L1toL2:---> could not flag t_i not in dataset
+INFO:pypromice.process.L1toL2:---> could not flag wspd_i not in dataset
+INFO:pypromice.process.L1toL2:---> could not flag wdir_i not in dataset
+INFO:pypromice.process.L1toL2:---> could not flag p_i not in dataset
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\QAS_A.csv
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_1 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_2 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_3 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_4 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_5 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_6 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_7 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2013-12-01 00:00:00 2013-12-31 00:00:00 t_i_7 min_filter -1.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 t_i_8 min_filter -2.0
+INFO:pypromice.process.L1toL2:---> 2013-12-01 00:00:00 2013-12-31 00:00:00 t_i_8 min_filter -1.0
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2014-03-15 00:00:00 2014-05-15 00:00:00 z_boom_u max_filter 0.6
+INFO:pypromice.process.L1toL2:---> 2012-08-20 17:00:00 2015-08-24 17:00:00 z_stake max_filter 3.6
+INFO:pypromice.process.L1toL2:---> 2014-01-01 00:00:00 2014-04-15 00:00:00 z_stake max_filter 3.4
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_300034012930510_1.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_300034012930510_1.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_300034012930510_2.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_300034012930510_2.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2017_raw_transmitted_1.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_2017_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2017_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_2019_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2019_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_2020_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2020_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2022_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_M_2023_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_M_2023_raw.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\QAS_M.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\QAS_M.csv
+INFO:pypromice.process.L1toL2:---> flagging 2017-07-15 00:00:00 2017-08-08 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2017-11-11 00:00:00 2017-12-06 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2018-08-30 00:00:00 2018-08-31 23:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2017-12-15 00:00:00 2018-02-15 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2018-12-30 00:00:00 2019-01-10 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2019-08-29 00:00:00 2019-12-06 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2019-01-29 00:00:00 2019-02-15 00:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_1
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_2
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_3
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_4
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_5
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_6
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:---> flagging 2017-05-18 00:00:00 2017-08-27 00:00:00 t_i_8
+INFO:pypromice.process.L1toL2:---> flagging 2017-10-01 00:00:00 2018-09-18 00:00:00 t_i_7
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\QAS_M.csv
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_1 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_2 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_3 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_4 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_5 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_6 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_7 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 t_i_8 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2016-08-11 17:00:00 2023-09-02 12:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2018-08-31 14:00:00 2023-09-02 12:00:00 z_pt_cor add -5.3
+INFO:pypromice.process.L1toL2:---> 2019-08-29 16:00:00 2023-09-02 12:00:00 z_pt_cor add -1.4
+INFO:pypromice.process.L1toL2:---> 2021-08-31 15:00:00 2023-09-02 12:00:00 z_pt_cor add -18.7
+INFO:pypromice.process.L1toL2:---> 2022-09-01 15:00:00 2023-09-02 12:00:00 z_pt_cor add 5.0
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_300234061470510_1.txt
+INFO:pypromice.process.aws:Level 1 processing...
+INFO:pypromice.process.aws:AWS object initialising...
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2009_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2010_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2010_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2011_1_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2011_1_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2011_2_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2011_2_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2012_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2012_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2013_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2013_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2014_raw_SlimTableMem_mod.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2014_raw_SlimTableMem_mod.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2015_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2015_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2016_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2016_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2018_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2018_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2019_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2019_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2019_raw_transmitted1.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2021_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2021_raw_SlimTableMem.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2021_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2021_raw.txt
+INFO:pypromice.process.aws:-----> No msg_lat or msg_lon for QAS_U_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2022_raw.txt
+INFO:pypromice.process.aws:L0 data successfully loaded from QAS_U_2022_raw_transmitted.txt
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\QAS_U.csv
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/flags\QAS_U.csv
+INFO:pypromice.process.L1toL2:---> flagging 2008-10-15 00:00:00 2009-02-18 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2010-10-19 00:00:00 2010-10-22 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2016-08-10 00:00:00 2017-05-20 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2020-08-29 12:00:00 2021-10-01 00:00:00 z_pt_cor
+INFO:pypromice.process.L1toL2:---> flagging 2020-11-03 06:00:00 2021-04-01 00:00:00 z_stake
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 rh_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 t_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 wspd_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 wdir_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 p_u
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 rh_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 t_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 wspd_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 wdir_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 p_i
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 dsr
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 usr
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 dlr
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 ulr
+INFO:pypromice.process.L1toL2:---> flagging 2015-02-04 00:00:00 2015-08-23 12:00:00 z_boom_u
+INFO:pypromice.process.L1toL2:Unable to download ('PROMICE-AWS-data-issue',) file, using local file: ../PROMICE-AWS-data-issues/adjustments\QAS_U.csv
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_1 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_2 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_3 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_4 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_5 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_6 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_7 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 t_i_8 min_filter -10.0
+INFO:pypromice.process.L1toL2:---> 2021-09-01 00:00:00 2023-08-31 15:00:00 z_boom_u max_filter 2.8
+INFO:pypromice.process.L1toL2:---> 2021-09-02 00:00:00 2022-10-24 00:00:00 z_boom_u biweekly_upper_range_filter 0.5
