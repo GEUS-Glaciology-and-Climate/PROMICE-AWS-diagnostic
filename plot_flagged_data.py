@@ -53,7 +53,7 @@ vari = '../pypromice/src/pypromice/process/variables.csv'
 
 from datetime import date
 today = date.today().strftime("%Y_%m_%d")
-filename = './plot_compilations/flags5_'+today+'.md'
+filename = './plot_compilations/flags_CEN2_'+today+'.md'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
@@ -67,9 +67,9 @@ def Msg(txt):
 plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
-# for station in ['NUK_N']:  # os.listdir(path_to_qc_files+'adjustments'): 
+for station in ['CEN2']:  # os.listdir(path_to_qc_files+'adjustments'): 
 
-for station in np.unique(np.array(all_dirs))[-2:]: 
+# for station in np.unique(np.array(all_dirs))[-2:]: 
     station = station.replace('.csv','')
     # loading flags
     try:
@@ -86,8 +86,10 @@ for station in np.unique(np.array(all_dirs))[-2:]:
     except:
         adj = pd.DataFrame()
         
-    flags['adj_func'] = 'flag'
-    df_flags = pd.concat((flags,adj))
+    flags['what was done'] = 'flag'
+    adj['what was done'] = adj['adjust_function'] + ' ' + adj['adjust_value'].astype(str)
+    
+    df_flags = pd.concat((flags,adj))[['t0', 't1', 'variable', 'what was done', 'comment', 'URL_graphic']].reset_index(drop=True)
         
     if len(df_flags)==0:
         print('no flag listed in file')
@@ -143,12 +145,13 @@ for station in np.unique(np.array(all_dirs))[-2:]:
     #                       station_type=df_metadata.loc[df_metadata.stid==station, 
     #                                                    'station_type'].values[0])
     df_L1 = ds.to_dataframe().copy()
-
+#%%
     for ind, var_list in zip(df_flags.index, df_flags.variable):
         if var_list == '*':
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.columns)
         elif '*' in var_list:
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
+
     #%%
     var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
     for v in var_list:
