@@ -10,22 +10,28 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
-# def main(
-path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
-path_old = 'C:/Users/bav/Downloads/day/day'
-from datetime import date
-today = date.today().strftime("%Y_%m_%d")
-filename = 'plot_compilations/new_version_to_dataverse_'+today+'.md'
-figure_folder='figures/new_dataverse_upload_'+today
+path_old = 'C:/Users/bav/Downloads/AWS_dataverse_v12/hour'
+
+new_version = 'aws-l3'
+old_version = 'V12'
+
+if 'dev' in new_version:
+    path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+else:
+    path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
+
+    
+filename = 'plot_compilations/new_version_to_dataverse_'+new_version+'.md'
+figure_folder='figures/new_dataverse_upload_'+new_version
 try:
     os.mkdir(figure_folder)
 except:
     pass
-df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
+df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_latest_locations.csv')
 
 f = open(filename, "w")
 def Msg(txt):
@@ -33,19 +39,23 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
     
-Msg('# Comparison of data v11 (new) to v10 (old).')
-Msg('~version name is as defined in AWS_changelog.txt~')
+Msg('# Comparison of data '+new_version+' to v12 (old).')
 
-for station in ['QAS_U']: #
+
+#%%
+# for station in ['QAS_U']: #
+for station in df_meta.stid:
     Msg('## '+station)
-    df_new = pd.read_csv(path_new+station+'/'+station+'_day.csv')
+
+        
+    df_new = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
     
-    if not os.path.isfile(path_old+'/'+station+'_day.csv'):
-        Msg(path_old+'/'+station+'_day.csv cannot be found in old data')
+    if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
+        Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
         continue
-    df_old = pd.read_csv(path_old+'/'+station+'_day.csv')
+    df_old = pd.read_csv(path_old+'/'+station+'_hour.csv')
     df_old.time = pd.to_datetime(df_old.time, utc=True)
     df_old = df_old.set_index('time')
     
@@ -70,14 +80,14 @@ for station in ['QAS_U']: #
 
             try:
                 ax.plot(df_old[var].index, df_old[var].values,
-                        marker='^',linestyle='None', label='Old',
+                        marker='^',linestyle='None', label=old_version,
                         alpha=0.7, color='tab:blue')
             except:
                 print(var,'not in old data')
         
             ax.plot(df_new[var].index, df_new[var].values, 
                     marker='.',markeredgecolor='None', linestyle='None', 
-                    label='New',alpha=0.7,
+                    label=new_version, alpha=0.7,
                     color='tab:orange')            
             ax.legend()
             ax.grid()
