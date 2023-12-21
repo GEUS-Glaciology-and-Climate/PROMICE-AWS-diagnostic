@@ -44,11 +44,16 @@ Msg('# Comparison of data '+new_version+' to v12 (old).')
 
 #%%
 # for station in ['QAS_U']: #
-for station in df_meta.stid:
+for station in df_meta.stid[40:]:
     Msg('## '+station)
 
         
-    df_new = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
+    try:
+        df_new = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
+    except Exception as e:
+        Msg(str(e))
+    
+        
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
     
