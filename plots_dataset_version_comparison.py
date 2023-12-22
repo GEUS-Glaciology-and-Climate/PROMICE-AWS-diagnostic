@@ -43,8 +43,8 @@ Msg('# Comparison of data '+new_version+' to v12 (old).')
 
 
 #%%
-# for station in ['QAS_U']: #
-for station in df_meta.stid[40:]:
+# for station in ['CP1']: #
+for station in df_meta.stid:
     Msg('## '+station)
 
         

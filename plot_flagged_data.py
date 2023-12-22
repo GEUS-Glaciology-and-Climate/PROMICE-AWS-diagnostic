@@ -66,8 +66,8 @@ def Msg(txt):
 plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
-# for station in ['EGP']:  # os.listdir(path_to_qc_files+'adjustments'): 
 
+# for station in ['CP1']:
 for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -102,12 +102,14 @@ for station in np.unique(np.array(all_dirs)):
         if os.path.isfile(config_file):
             inpath = path_to_l0 + '/tx/'
             pAWS_tx = AWS(config_file, inpath, var_file=vari)
-            pAWS_tx.process()
+            pAWS_tx.getL1()
+            # pAWS_tx.process()
             try:
                 config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
                 inpath = path_to_l0 + '/raw/'+station+'/'
                 pAWS_raw = AWS(config_file, inpath)
-                pAWS_raw.process()
+                pAWS_raw.getL1()
+                # pAWS_raw.process()
                 ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A)
             except:
                 print('No raw logger file for',station)
@@ -117,7 +119,8 @@ for station in np.unique(np.array(all_dirs)):
             config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
             inpath = path_to_l0 + '/raw/'+station+'/'
             pAWS_raw = AWS(config_file, inpath)
-            pAWS_raw.process()
+            pAWS_raw.getL1()
+            # pAWS_raw.process()
             # pAWS_raw.write('.')
             # print(wtf)
             ds = pAWS_raw.L1A
@@ -135,7 +138,7 @@ for station in np.unique(np.array(all_dirs)):
                  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_url='https://use_local_file',
                     adj_dir=path_to_qc_files+'adjustments')
-    ds3 = pAWS_raw.L3
+    # ds3 = pAWS_raw.L3
     
     df_L1 = ds.to_dataframe().copy()
 #%%
@@ -187,10 +190,10 @@ for station in np.unique(np.array(all_dirs)):
                     ds2[var].values,
                     marker='.',color='tab:green', linestyle='None',
                     label='final')
-            ax.plot(ds3.time, 
-                    ds3[var].values,
-                    marker='.',color='tab:pink', alpha=0.5, linestyle='None',
-                    label='after advanced filters')
+            # ax.plot(ds3.time, 
+            #         ds3[var].values,
+            #         marker='.',color='tab:pink', alpha=0.5, linestyle='None',
+            #         label='after advanced filters')
 
             ax.set_xlim(df_L1.index[[0,-1]])
             ax.set_ylabel(var)
