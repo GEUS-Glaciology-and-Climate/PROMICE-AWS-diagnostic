@@ -1,4 +1,4 @@
-* [Comparison of data aws-l3-dev (new) to v12 (old).](#s1)
+* [Comparison of data aws-l3-dev to v12 (old).](#s1)
   * [CEN1](#s1-1)
   * [CEN2](#s1-2)
   * [CP1](#s1-3)
@@ -63,7 +63,7 @@
   * [ZAK_Lv3](#s1-62)
   * [ZAK_U](#s1-63)
   * [ZAK_Uv3](#s1-64)
-# <a id='s1' />Comparison of data aws-l3-dev (new) to v12 (old).
+# <a id='s1' />Comparison of data aws-l3-dev to v12 (old).
 ## <a id='s1-1' />CEN1
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -179,7 +179,7 @@ Old variables removed from new files:
 ![EGP](../figures/new_dataverse_upload_aws-l3-dev/EGP_9.png)
  
 ## <a id='s1-6' />FRE
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/FRE_hour.csv cannot be found in old data
+../dataverse_v12/hour/FRE_hour.csv cannot be found in old data
 ## <a id='s1-7' />HUM
 Variables in new file:
 p_u, p_l, t_u, t_l, rh_u, rh_u_cor, qh_u, rh_l, rh_l_cor, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_hdop, batt_v, fan_dc_u, fan_dc_l, t_rad, msg_lat, msg_lon
@@ -436,9 +436,9 @@ Old variables removed from new files:
 ![KPC_Uv3](../figures/new_dataverse_upload_aws-l3-dev/KPC_Uv3_9.png)
  
 ## <a id='s1-19' />LYN_L
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/LYN_L_hour.csv cannot be found in old data
+../dataverse_v12/hour/LYN_L_hour.csv cannot be found in old data
 ## <a id='s1-20' />LYN_T
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/LYN_T_hour.csv cannot be found in old data
+../dataverse_v12/hour/LYN_T_hour.csv cannot be found in old data
 ## <a id='s1-21' />MIT
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -725,7 +725,7 @@ Old variables removed from new files:
 ![QAS_L](../figures/new_dataverse_upload_aws-l3-dev/QAS_L_9.png)
  
 ## <a id='s1-34' />QAS_Lv3
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/QAS_Lv3_hour.csv cannot be found in old data
+../dataverse_v12/hour/QAS_Lv3_hour.csv cannot be found in old data
 ## <a id='s1-35' />QAS_M
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -811,9 +811,9 @@ Old variables removed from new files:
 ![QAS_Uv3](../figures/new_dataverse_upload_aws-l3-dev/QAS_Uv3_9.png)
  
 ## <a id='s1-39' />Roof_GEUS
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/Roof_GEUS_hour.csv cannot be found in old data
+../dataverse_v12/hour/Roof_GEUS_hour.csv cannot be found in old data
 ## <a id='s1-40' />Roof_PROMICE
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/Roof_PROMICE_hour.csv cannot be found in old data
+../dataverse_v12/hour/Roof_PROMICE_hour.csv cannot be found in old data
 ## <a id='s1-41' />SCO_L
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
@@ -1202,15 +1202,15 @@ Old variables removed from new files:
 ![WEG_B](../figures/new_dataverse_upload_aws-l3-dev/WEG_B_9.png)
  
 ## <a id='s1-59' />WEG_L
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/WEG_L_hour.csv cannot be found in old data
+../dataverse_v12/hour/WEG_L_hour.csv cannot be found in old data
 ## <a id='s1-60' />ZAK_A
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/ZAK_A_hour.csv cannot be found in old data
+../dataverse_v12/hour/ZAK_A_hour.csv cannot be found in old data
 ## <a id='s1-61' />ZAK_L
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/ZAK_L_hour.csv cannot be found in old data
+../dataverse_v12/hour/ZAK_L_hour.csv cannot be found in old data
 ## <a id='s1-62' />ZAK_Lv3
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/ZAK_Lv3_hour.csv cannot be found in old data
+../dataverse_v12/hour/ZAK_Lv3_hour.csv cannot be found in old data
 ## <a id='s1-63' />ZAK_U
-C:/Users/bav/Downloads/AWS_dataverse_v12/hour/ZAK_U_hour.csv cannot be found in old data
+../dataverse_v12/hour/ZAK_U_hour.csv cannot be found in old data
 ## <a id='s1-64' />ZAK_Uv3
 Variables in new file:
 p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon

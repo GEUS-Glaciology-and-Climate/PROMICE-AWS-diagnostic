@@ -14,13 +14,13 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-path_old = 'C:/Users/bav/Downloads/AWS_dataverse_v12/hour'
+path_old = '../dataverse_v12/hour'
 
-new_version = 'aws-l3'
+new_version = 'aws-l3-dev'
 old_version = 'V12'
 
 if 'dev' in new_version:
-    path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+    path_l3 = '../aws-l3/level_3/'
 else:
     path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
 
@@ -31,7 +31,7 @@ try:
     os.mkdir(figure_folder)
 except:
     pass
-df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_latest_locations.csv')
+df_meta = pd.read_csv('../aws-l3/AWS_latest_locations.csv')
 
 f = open(filename, "w")
 def Msg(txt):

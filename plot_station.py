@@ -9,18 +9,10 @@ tip list:
 """
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
-from sklearn.linear_model import LinearRegression
-import nead
 
-path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
-path_tx = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/tx/'
+path_l3 = '../aws-l3/level_3/'
+path_tx = '../aws-l3/tx/'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
-
-# df_gcn = nead.read(path_gcn+'24-EastGRIP.csv').to_dataframe()
-# df_gcn = nead.read(path_gcn+'04-GITS.csv').to_dataframe()
-# df_gcn.timestamp = pd.to_datetime(df_gcn.timestamp, utc=True)
-# df_gcn=df_gcn.set_index('timestamp')
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
@@ -28,9 +20,8 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 #             'rh_i','t_i','wspd_i','p_i','batt_v',
 #             't_i_all']
 # var_list = ['t_i_'+str(i) for i in range(1,12)]
-var_list = ['rh_u','t_u',
+var_list = [
             'wspd_u','wdir_u',
-            'dsr','usr', 'z_boom_u'
             ]
 # var_list = ['p_u','p_l','p_i']
 # var_list = ['z_boom_u','z_stake']
@@ -39,7 +30,7 @@ var_list = ['rh_u','t_u',
 # var_list = ['t_u', 't_l','ts']
 # var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = ['TAS_A']  #df_meta.stid  #
+station_list = ['KAN_U']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
 # plt.close('all')
@@ -52,7 +43,10 @@ station_list = ['TAS_A']  #df_meta.stid  #
 #     ax.plot(df_gcn.index, df_gcn[var2].values, marker='.',linestyle='None', label='GC-Net')
 #     ax.plot(df_gcn.index, df_gcn[var2.replace('1','2')].values, marker='.',linestyle='None', label='GC-Net')
 for station in station_list:
-    df_l3 = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
+    if 'level_3' in path_l3:
+        df_l3 = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
+    else:
+        df_l3 = pd.read_csv(path_l3+station+'/'+station+'_10min.csv')
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
     if station not in ['NUK_N', 'QAS_A','TAS_U', 'ZAK_L']:

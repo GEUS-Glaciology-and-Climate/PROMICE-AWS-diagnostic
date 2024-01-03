@@ -10,7 +10,7 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
+# from sklearn.linear_model import LinearRegression
 from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
@@ -42,11 +42,10 @@ def advanced_filters(ds2, station, station_type):
 #          path_to_qc_files = '../PROMICE-AWS-data-issues/',
 #          vari = '../pypromice/src/pypromice/process/variables.csv',
 #          filename="./plot_compilations/flags.md"):
-path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
+path_to_l0 = '../aws-l0/'
 path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
-path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
-path_tx = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/tx/'
-path_gcn= '../GC-Net-Level-1-data-processing/L1/'
+path_l3 = '../aws-l3/level_3/'
+path_tx = '../aws-l3/tx/'
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 vari = '../pypromice/src/pypromice/process/variables.csv'
 
@@ -67,7 +66,7 @@ plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
 
-# for station in ['CP1']:
+# for station in ['CEN1']:
 for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
