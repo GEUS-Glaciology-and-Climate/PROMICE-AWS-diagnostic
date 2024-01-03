@@ -10,8 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 path_old = '../dataverse_v12/hour'
@@ -21,6 +21,8 @@ old_version = 'V12'
 
 if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
+    path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+
 else:
     path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
 
@@ -31,7 +33,7 @@ try:
     os.mkdir(figure_folder)
 except:
     pass
-df_meta = pd.read_csv('../aws-l3/AWS_latest_locations.csv')
+df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 
 f = open(filename, "w")
 def Msg(txt):
@@ -43,8 +45,8 @@ Msg('# Comparison of data '+new_version+' to v12 (old).')
 
 
 #%%
-# for station in ['CP1']: #
-for station in df_meta.stid:
+for station in ['KAN_U']: #
+# for station in df_meta.stid:
     Msg('## '+station)
 
         

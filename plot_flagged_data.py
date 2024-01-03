@@ -15,8 +15,8 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 def advanced_filters(ds2, station, station_type):
@@ -43,8 +43,10 @@ def advanced_filters(ds2, station, station_type):
 #          vari = '../pypromice/src/pypromice/process/variables.csv',
 #          filename="./plot_compilations/flags.md"):
 path_to_l0 = '../aws-l0/'
+path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
 path_l3 = '../aws-l3/level_3/'
+path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 path_tx = '../aws-l3/tx/'
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 vari = '../pypromice/src/pypromice/process/variables.csv'
@@ -66,8 +68,8 @@ plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
 
-# for station in ['CEN1']:
-for station in np.unique(np.array(all_dirs)): 
+for station in ['THU_L']:
+# for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
@@ -93,61 +95,58 @@ for station in np.unique(np.array(all_dirs)):
         continue
     
     # Loading the L1 data:
-    config_file = path_to_l0 + '/tx/config/{}.toml'.format(station)
     if False:  #os.path.isfile('../aws-l1/'+station+'.nc'):
         print('found L1 file')
         ds = xr.open_dataset('../aws-l1/'+station+'.nc')
     else:
+        config_file = path_to_l0 + '/tx/config/{}.toml'.format(station)
         if os.path.isfile(config_file):
             inpath = path_to_l0 + '/tx/'
             pAWS_tx = AWS(config_file, inpath, var_file=vari)
-            pAWS_tx.getL1()
-            # pAWS_tx.process()
+            # pAWS_tx.getL1()
+            pAWS_tx.process()
+            pAWS_tx.write('.')
             try:
                 config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
                 inpath = path_to_l0 + '/raw/'+station+'/'
                 pAWS_raw = AWS(config_file, inpath)
-                pAWS_raw.getL1()
-                # pAWS_raw.process()
-                ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A)
+                # pAWS_raw.getL1()
+                pAWS_raw.process()
+                ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
+                # ds3 = pAWS_raw.L3.combine_first(pAWS_tx.L3)
             except:
                 print('No raw logger file for',station)
-                ds = pAWS_tx.L1A
+                ds = pAWS_tx.L1A.copy(deep=True)
+                # ds3 = pAWS_tx.L3
         else:
             print('No transmission toml file for',station)
             config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
             inpath = path_to_l0 + '/raw/'+station+'/'
             pAWS_raw = AWS(config_file, inpath)
-            pAWS_raw.getL1()
-            # pAWS_raw.process()
-            # pAWS_raw.write('.')
-            # print(wtf)
-            ds = pAWS_raw.L1A
-        # print('writing L1 file')
+            # pAWS_raw.getL1()
+            pAWS_raw.process()
+            ds = pAWS_raw.L1A.copy(deep=True)
+            # ds3 = pAWS_raw.L3
         
         ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
 
     ds_save = ds.copy(deep=True)
-
-#     ds = resampleL3(ds, 'H')
     
-    ds = adjustTime(ds, adj_url='https://use_local_file',
+    ds = adjustTime(ds, 
                     adj_dir=path_to_qc_files+'adjustments')
-    ds1 = flagNAN(ds, flag_url='https://use_local_file',
+    ds1 = flagNAN(ds, 
                  flag_dir=path_to_qc_files+'flags')
-    ds2 = adjustData(ds1, adj_url='https://use_local_file',
+    ds2 = adjustData(ds1,
                     adj_dir=path_to_qc_files+'adjustments')
-    # ds3 = pAWS_raw.L3
     
     df_L1 = ds.to_dataframe().copy()
-#%%
+
     for ind, var_list in zip(df_flags.index, df_flags.variable):
         if var_list == '*':
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.columns)
         elif '*' in var_list:
             df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
 
-    #%%
     var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
     for v in var_list:
         if v not in ds_save.data_vars:
@@ -157,12 +156,13 @@ for station in np.unique(np.array(all_dirs)):
             
         if ds_save[v].isnull().all():
             var_list = var_list[~np.isin(var_list, v)]
-
+# %%
     Msg('# '+station)
     Msg(df_flags.set_index('t0').to_markdown())
     Msg(' ')
 
     var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
+    var_list_list = [np.array(['wspd_i','wspd_u','z_pt_cor', 'z_pt'])]
     # var_list_list = [np.array([v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in var_list]),
     #                   np.array([v for v in var_list if 't_i' in v])]
     for i, var_list in enumerate(var_list_list):
@@ -177,8 +177,8 @@ for station in np.unique(np.array(all_dirs)):
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             
-            ax.plot(ds_save.time, 
-                    ds_save[var].values,
+            ax.plot(ds.time, 
+                    ds[var].values,
                     marker='.',color='tab:red', linestyle='None', 
                     label='removed by flag')
             ax.plot(ds1.time, 
@@ -192,9 +192,9 @@ for station in np.unique(np.array(all_dirs)):
             # ax.plot(ds3.time, 
             #         ds3[var].values,
             #         marker='.',color='tab:pink', alpha=0.5, linestyle='None',
-            #         label='after advanced filters')
+            #         label='level_3')
 
-            ax.set_xlim(df_L1.index[[0,-1]])
+            # ax.set_xlim(df_L1.index[[0,-1]])
             ax.set_ylabel(var)
             ax.grid()
         title = station+'_%i/%i'%(i+1,len(var_list_list))
