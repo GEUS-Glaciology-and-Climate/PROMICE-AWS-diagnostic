@@ -48,12 +48,17 @@ path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
 path_l3 = '../aws-l3/level_3/'
 path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 path_tx = '../aws-l3/tx/'
-path_to_qc_files = '../PROMICE-AWS-data-issues/'
-vari = '../pypromice/src/pypromice/process/variables.csv'
+path_to_qc_files = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/PROMICE-AWS-data-issues/'
+vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
 
 from datetime import date
-today = date.today().strftime("%Y_%m_%d")
+today = date.today().strftime("%Y%m%d")
 filename = './plot_compilations/flags_'+today+'.md'
+figure_folder='figures/flags_'+today
+try:
+    os.mkdir(figure_folder)
+except:
+    pass
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
@@ -68,8 +73,8 @@ plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
 
-for station in ['THU_L']:
-# for station in np.unique(np.array(all_dirs)): 
+# for station in ['THU_L']:
+for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
@@ -103,15 +108,15 @@ for station in ['THU_L']:
         if os.path.isfile(config_file):
             inpath = path_to_l0 + '/tx/'
             pAWS_tx = AWS(config_file, inpath, var_file=vari)
-            # pAWS_tx.getL1()
-            pAWS_tx.process()
-            pAWS_tx.write('.')
+            pAWS_tx.getL1()
+            # pAWS_tx.process()
+            # pAWS_tx.write('.')
             try:
                 config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
                 inpath = path_to_l0 + '/raw/'+station+'/'
                 pAWS_raw = AWS(config_file, inpath)
-                # pAWS_raw.getL1()
-                pAWS_raw.process()
+                pAWS_raw.getL1()
+                # pAWS_raw.process()
                 ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
                 # ds3 = pAWS_raw.L3.combine_first(pAWS_tx.L3)
             except:
@@ -123,8 +128,8 @@ for station in ['THU_L']:
             config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
             inpath = path_to_l0 + '/raw/'+station+'/'
             pAWS_raw = AWS(config_file, inpath)
-            # pAWS_raw.getL1()
-            pAWS_raw.process()
+            pAWS_raw.getL1()
+            # pAWS_raw.process()
             ds = pAWS_raw.L1A.copy(deep=True)
             # ds3 = pAWS_raw.L3
         
@@ -162,7 +167,7 @@ for station in ['THU_L']:
     Msg(' ')
 
     var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
-    var_list_list = [np.array(['wspd_i','wspd_u','z_pt_cor', 'z_pt'])]
+    # var_list_list = [np.array(['wspd_i','wspd_u','z_pt_cor', 'z_pt'])]
     # var_list_list = [np.array([v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in var_list]),
     #                   np.array([v for v in var_list if 't_i' in v])]
     for i, var_list in enumerate(var_list_list):
@@ -199,8 +204,8 @@ for station in ['THU_L']:
             ax.grid()
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
-        fig.savefig('figures/flags/%s_%i.png'%(station,i), dpi=300)
-        Msg('![%s](../figures/flags/%s_%i.png)'%(station, station,i))
+        fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120)
+        Msg('![%s](../%s/%s_%i.png)'%(figure_folder, station, station,i))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 # f.close()

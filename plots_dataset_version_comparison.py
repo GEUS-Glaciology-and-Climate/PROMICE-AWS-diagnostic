@@ -10,14 +10,14 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
-path_old = '../dataverse_v12/hour'
+path_old = 'C:/Users/bav/Downloads/AWS_dataverse_v12/hour'
 
 new_version = 'aws-l3-dev'
-old_version = 'V12'
+old_version = 'dataverseV12'
 
 if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
@@ -26,9 +26,11 @@ if 'dev' in new_version:
 else:
     path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
 
+from datetime import date
+today = date.today().strftime("%Y%m%d")
     
-filename = 'plot_compilations/new_version_to_dataverse_'+new_version+'.md'
-figure_folder='figures/new_dataverse_upload_'+new_version
+filename = 'plot_compilations/'+old_version+'_versus_'+new_version+'_'+today+'.md'
+figure_folder='figures/'+old_version+'_versus_'+new_version+'_'+today
 try:
     os.mkdir(figure_folder)
 except:
@@ -41,12 +43,12 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
     
-Msg('# Comparison of data '+new_version+' to v12 (old).')
+Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 
 
 #%%
-for station in ['KAN_U']: #
-# for station in df_meta.stid:
+# for station in ['KAN_U']: #
+for station in df_meta.stid:
     Msg('## '+station)
 
         
@@ -100,7 +102,7 @@ for station in ['KAN_U']: #
             ax.grid()
             
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
-        fig.savefig(figure_folder+'/%s_%i.png'%(station,k))
+        fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
         Msg('![%s](../%s/%s_%i.png)'%(station, figure_folder, station,k))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
