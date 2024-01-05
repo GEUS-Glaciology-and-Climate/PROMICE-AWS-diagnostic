@@ -653,3 +653,265 @@ Old variables removed from new files:
 ![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_2.png)
 ![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_3.png)
 ![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_4.png)
+![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_5.png)
+![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_6.png)
+![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_7.png)
+![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_8.png)
+![QAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_L_9.png)
+ 
+## QAS_Lv3
+C:/Users/bav/Downloads/AWS_dataverse_v12/hour/QAS_Lv3_hour.csv cannot be found in old data
+## QAS_M
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_0.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_1.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_2.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_3.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_4.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_5.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_6.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_7.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_8.png)
+![QAS_M](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_M_9.png)
+ 
+## QAS_Mv3
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_0.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_1.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_2.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_3.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_4.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_5.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_6.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_7.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_8.png)
+![QAS_Mv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Mv3_9.png)
+ 
+## QAS_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_0.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_1.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_2.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_3.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_4.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_5.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_6.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_7.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_8.png)
+![QAS_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_U_9.png)
+ 
+## QAS_Uv3
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_0.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_1.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_2.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_3.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_4.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_5.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_6.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_7.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_8.png)
+![QAS_Uv3](../figures/dataverseV12_versus_aws-l3-dev_20240105/QAS_Uv3_9.png)
+ 
+## Roof_GEUS
+C:/Users/bav/Downloads/AWS_dataverse_v12/hour/Roof_GEUS_hour.csv cannot be found in old data
+## Roof_PROMICE
+C:/Users/bav/Downloads/AWS_dataverse_v12/hour/Roof_PROMICE_hour.csv cannot be found in old data
+## SCO_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_0.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_1.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_2.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_3.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_4.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_5.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_6.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_7.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_8.png)
+![SCO_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_L_9.png)
+ 
+## SCO_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_0.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_1.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_2.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_3.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_4.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_5.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_6.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_7.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_8.png)
+![SCO_U](../figures/dataverseV12_versus_aws-l3-dev_20240105/SCO_U_9.png)
+ 
+## SDL
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_cor, qh_u, rh_l, rh_l_cor, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_hdop, batt_v, fan_dc_u, fan_dc_l, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_0.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_1.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_2.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_3.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_4.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_5.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_6.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_7.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_8.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_9.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_10.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_11.png)
+![SDL](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDL_12.png)
+ 
+## SDM
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_cor, qh_u, rh_l, rh_l_cor, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_hdop, batt_v, fan_dc_u, fan_dc_l, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_0.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_1.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_2.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_3.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_4.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_5.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_6.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_7.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_8.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_9.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_10.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_11.png)
+![SDM](../figures/dataverseV12_versus_aws-l3-dev_20240105/SDM_12.png)
+ 
+## SWC
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_0.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_1.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_2.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_3.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_4.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_5.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_6.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_7.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_8.png)
+![SWC](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_9.png)
+ 
+## SWC_O
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_0.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_1.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_2.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_3.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_4.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_5.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_6.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_7.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_8.png)
+![SWC_O](../figures/dataverseV12_versus_aws-l3-dev_20240105/SWC_O_9.png)
+ 
+## TAS_A
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_0.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_1.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_2.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_3.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_4.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_5.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_6.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_7.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_8.png)
+![TAS_A](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_A_9.png)
+ 
+## TAS_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, msg_lat, msg_lon
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![TAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_L_0.png)
+![TAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_L_1.png)
+![TAS_L](../figures/dataverseV12_versus_aws-l3-dev_20240105/TAS_L_2.png)
