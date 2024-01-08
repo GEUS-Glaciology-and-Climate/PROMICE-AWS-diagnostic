@@ -73,8 +73,10 @@ plt.close('all')
 
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
 
-# for station in ['THU_L']:
-for station in np.unique(np.array(all_dirs)): 
+for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
+                'NEM', 'NSE', 'NUK_K', 'NUK_Uv3', 'QAS_Mv3', 'QAS_Uv3', 'SDL',
+                'SDM', 'SWC_O', 'TUN', 'ZAC_A']:
+# for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
@@ -93,11 +95,14 @@ for station in np.unique(np.array(all_dirs)):
     except:
         adj = pd.DataFrame()
         
-    df_flags = pd.concat((flags,adj))[['t0', 't1', 'variable', 'what was done', 'comment', 'URL_graphic']].reset_index(drop=True)
+    try:
+        df_flags = pd.concat((flags,adj))[['t0', 't1', 'variable', 'what was done', 'comment', 'URL_graphic']].reset_index(drop=True)
+    except:
+        df_flags = pd.concat((flags,adj))
         
-    if len(df_flags)==0:
-        print('no flag listed in file')
-        continue
+    # if len(df_flags)==0:
+    #     print('no flag listed in file')
+    #     continue
     
     # Loading the L1 data:
     if False:  #os.path.isfile('../aws-l1/'+station+'.nc'):
@@ -145,31 +150,35 @@ for station in np.unique(np.array(all_dirs)):
                     adj_dir=path_to_qc_files+'adjustments')
     
     df_L1 = ds.to_dataframe().copy()
+    
+    if len(df_flags)>0:
+        for ind, var_list in zip(df_flags.index, df_flags.variable):
+            if var_list == '*':
+                df_flags.loc[ind,'variable'] = ' '.join(df_L1.columns)
+            elif '*' in var_list:
+                df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
 
-    for ind, var_list in zip(df_flags.index, df_flags.variable):
-        if var_list == '*':
-            df_flags.loc[ind,'variable'] = ' '.join(df_L1.columns)
-        elif '*' in var_list:
-            df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
-
-    var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
-    for v in var_list:
-        if v not in ds_save.data_vars:
-            Msg(v+' not in variables')
-            var_list = var_list[~np.isin(var_list, v)]
-            continue
-            
-        if ds_save[v].isnull().all():
-            var_list = var_list[~np.isin(var_list, v)]
+        var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
+        for v in var_list:
+            if v not in ds_save.data_vars:
+                Msg(v+' not in variables')
+                var_list = var_list[~np.isin(var_list, v)]
+                continue
+                
+            if ds_save[v].isnull().all():
+                var_list = var_list[~np.isin(var_list, v)]
 # %%
     Msg('# '+station)
-    Msg(df_flags.set_index('t0').to_markdown())
+    if len(df_flags)>0: 
+        Msg(df_flags.set_index('t0').to_markdown())
+    else:
+        Msg('No flag defined for '+station)
     Msg(' ')
 
-    var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
+    # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
     # var_list_list = [np.array(['wspd_i','wspd_u','z_pt_cor', 'z_pt'])]
-    # var_list_list = [np.array([v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in var_list]),
-    #                   np.array([v for v in var_list if 't_i' in v])]
+    var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(5)]),
+                     np.array(['t_u']+['t_i_'+str(i+1) for i in range(5,12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
