@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 # from sklearn.linear_model import LinearRegression
+
+from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
@@ -48,8 +50,8 @@ path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
 path_l3 = '../aws-l3/level_3/'
 path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 path_tx = '../aws-l3/tx/'
-path_to_qc_files = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/PROMICE-AWS-data-issues/'
-vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
+path_to_qc_files = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/PROMICE-AWS-data-issues/'
+vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
 
 from datetime import date
 today = date.today().strftime("%Y%m%d")
@@ -148,6 +150,9 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
                  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1,
                     adj_dir=path_to_qc_files+'adjustments')
+    temp_var = ['t_i_'+str(i) for i in range(12)]
+    variable_thresholds =  {x:{"max_diff": 0.0001, "period": 2} for x in temp_var}
+    ds3 = persistence_qc(ds2, variable_thresholds)
     
     df_L1 = ds.to_dataframe().copy()
     
@@ -202,13 +207,14 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
             ax.plot(ds2.time, 
                     ds2[var].values,
                     marker='.',color='tab:green', linestyle='None',
+                    label='before persistence')
+            ax.plot(ds3.time, 
+                    ds3[var].values,
+                    marker='.',color='tab:pink', alpha=0.5, linestyle='None',
                     label='final')
-            # ax.plot(ds3.time, 
-            #         ds3[var].values,
-            #         marker='.',color='tab:pink', alpha=0.5, linestyle='None',
-            #         label='level_3')
 
             # ax.set_xlim(df_L1.index[[0,-1]])
+            ax.set_ylim(ds3[var].min(),ds2[var].max())
             ax.set_ylabel(var)
             ax.grid()
         title = station+'_%i/%i'%(i+1,len(var_list_list))
