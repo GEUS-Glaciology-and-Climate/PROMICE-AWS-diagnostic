@@ -17,8 +17,8 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 def advanced_filters(ds2, station, station_type):
@@ -77,7 +77,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
                 'NEM', 'NSE', 'NUK_K', 'NUK_Uv3', 'QAS_Mv3', 'QAS_Uv3', 'SDL',
-                'SDM', 'SWC_O', 'TUN', 'ZAC_A']:
+                'SDM', 'SWC_O', 'TUN', 'ZAK_A']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -182,8 +182,7 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
 
     # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
     # var_list_list = [np.array(['wspd_i','wspd_u','z_pt_cor', 'z_pt'])]
-    var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(5)]),
-                     np.array(['t_u']+['t_i_'+str(i+1) for i in range(5,12)])]
+    var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
@@ -214,12 +213,12 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
                     label='final')
 
             # ax.set_xlim(df_L1.index[[0,-1]])
-            ax.set_ylim(ds3[var].min(),ds2[var].max())
+            # ax.set_ylim(ds3[var].min(),ds2[var].max())
             ax.set_ylabel(var)
             ax.grid()
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
-        fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120)
+        fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
         Msg('![%s](../%s/%s_%i.png)'%(figure_folder, station, station,i))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
