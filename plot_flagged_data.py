@@ -179,11 +179,11 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
                 var_list = var_list[~np.isin(var_list, v)]
 # %%
     Msg('# '+station)
-    if len(df_flags)>0: 
-        Msg(df_flags.set_index('t0').to_markdown())
-    else:
-        Msg('No flag defined for '+station)
-    Msg(' ')
+    # if len(df_flags)>0: 
+    #     Msg(df_flags.set_index('t0').to_markdown())
+    # else:
+    #     Msg('No flag defined for '+station)
+    # Msg(' ')
 
     # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
     # var_list_list = [np.array(['wspd_i','wspd_u','z_pt_cor', 'z_pt'])]
@@ -224,7 +224,7 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
-        Msg('![](../figures/%s/%s_%i.png)'%(figure_folder, station,i))
+        Msg('![](../%s/%s_%i.png)'%(figure_folder, station,i))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 # f.close()
