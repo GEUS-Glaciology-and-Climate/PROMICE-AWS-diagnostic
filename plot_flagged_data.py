@@ -50,8 +50,6 @@ path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
 path_l3 = '../aws-l3/level_3/'
 path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 path_tx = '../aws-l3/tx/'
-path_to_qc_files = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/PROMICE-AWS-data-issues/'
-vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
 
 from datetime import date
 today = date.today().strftime("%Y%m%d")
@@ -73,8 +71,15 @@ def Msg(txt):
     
 plt.close('all')
 
-all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
-
+try:
+    path_to_qc_files = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/PROMICE-AWS-data-issues/'
+    vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
+    all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
+except:
+    path_to_qc_files = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/PROMICE-AWS-data-issues/'
+    vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
+    all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
+    
 for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
                 'NEM', 'NSE', 'NUK_K', 'NUK_Uv3', 'QAS_Mv3', 'QAS_Uv3', 'SDL',
                 'SDM', 'SWC_O', 'TUN', 'ZAK_A']:
@@ -219,7 +224,7 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
-        Msg('![%s](../%s/%s_%i.png)'%(figure_folder, station, station,i))
+        Msg('![](../figures/%s/%s_%i.png)'%(figure_folder, station,i))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 # f.close()
