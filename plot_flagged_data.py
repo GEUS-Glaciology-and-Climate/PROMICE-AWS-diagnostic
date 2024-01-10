@@ -82,7 +82,7 @@ except:
     
 for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
                 'NEM', 'NSE', 'NUK_K', 'NUK_Uv3', 'QAS_Mv3', 'QAS_Uv3', 'SDL',
-                'SDM', 'SWC_O', 'TUN', 'ZAK_A']:
+                'SDM', 'SWC_O', 'TUN', 'ZAK_A', 'Roof_GEUS']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -200,6 +200,16 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             
+            for tmp in pAWS_tx.L0+pAWS_raw.L0:
+                ax.plot(tmp.time, 
+                        tmp[var].values,
+                        marker='.',color='lightgray', linestyle='None', 
+                        label='__nolegend__')
+            ax.plot(tmp.time, 
+                    tmp[var].values,
+                    marker='.',color='lightgray', linestyle='None', 
+                    label='L0')
+
             ax.plot(ds.time, 
                     ds[var].values,
                     marker='.',color='tab:red', linestyle='None', 
