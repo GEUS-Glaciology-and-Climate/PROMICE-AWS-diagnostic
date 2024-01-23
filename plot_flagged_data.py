@@ -17,8 +17,8 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
 import xarray as xr
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 def advanced_filters(ds2, station, station_type):
@@ -80,9 +80,7 @@ except:
     vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
     all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
     
-for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
-                'NEM', 'NSE', 'NUK_K', 'NUK_Uv3', 'QAS_Mv3', 'QAS_Uv3', 'SDL',
-                'SDM', 'SWC_O', 'TUN', 'ZAK_A', 'Roof_GEUS']:
+for station in ['DY2']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -200,11 +198,11 @@ for station in ['CEN2', 'CP1', 'DY2', 'HUM', 'JAR_O', 'KAN_Lv3', 'NAE', 'NAU',
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             
-            for tmp in pAWS_tx.L0+pAWS_raw.L0:
-                ax.plot(tmp.time, 
-                        tmp[var].values,
-                        marker='.',color='lightgray', linestyle='None', 
-                        label='__nolegend__')
+            # for tmp in pAWS_tx.L0+pAWS_raw.L0:
+            #     ax.plot(tmp.time, 
+            #             tmp[var].values,
+            #             marker='.',color='lightgray', linestyle='None', 
+            #             label='__nolegend__')
             ax.plot(tmp.time, 
                     tmp[var].values,
                     marker='.',color='lightgray', linestyle='None', 

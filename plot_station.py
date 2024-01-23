@@ -10,8 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 
-path_l3 = '../aws-l3/level_3/'
-path_tx = '../aws-l3/tx/'
+path_l3 = '../aws-l3-dev/level_3/'
+path_tx = '../aws-l3-dev/tx/'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
@@ -20,17 +20,19 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 #             'rh_i','t_i','wspd_i','p_i','batt_v',
 #             't_i_all']
 # var_list = ['t_i_'+str(i) for i in range(1,12)]
-var_list = [
-            'wspd_u','wdir_u',
+var_list = ['batt_v', 't_u',
+            'wspd_u',
+            # 'z_boom_u',
+            't_i_all'
             ]
 # var_list = ['p_u','p_l','p_i']
-# var_list = ['z_boom_u','z_stake']
+# var_list = []
 # var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','z_boom_u', 'z_boom_l', 'gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
 # var_list = ['t_u', 't_l','ts']
 # var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = ['KAN_U']  #df_meta.stid  #
+station_list = ['EGP']  #df_meta.stid  #
 # var_list2 = ['RH1', 'RH2']
 
 # plt.close('all')
@@ -55,12 +57,8 @@ for station in station_list:
         df_tx = df_tx.set_index('time')
     else:
         df_tx = pd.DataFrame()
-    # df_l3=df_l3.loc['2021-09-01':'2022-06-10',:]
-    # df_l3=df_l3.loc['2022-09-01':,:]
-    # appending fieldwork date
-    # df_l3 = (pd.concat([df_l3, pd.DataFrame(index=[pd.to_datetime('2023-06-10', utc=True)])]).sort_index(kind='stable', ignore_index=False))
-    
-    var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
+
+    var_list_list = [var_list[i:i+6] for i in range(0, len(var_list),6)]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
         if len(var_list)==1:
@@ -71,19 +69,9 @@ for station in station_list:
                 print(var, 'not in L3 or tx data at', station)
                 if len(var_list) == 1:
                     plt.close(fig)
-                continue
-            # if df_l3[var].isnull().all():
-            #     print(var, 'all nan at', station)
-            #     if len(var_list) == 1:
-            #         plt.close(fig)
-            #     continue
+
             print(var)
-                # X = df_l3.index.values.astype(float)
-                # Y = df_l3[var].values
-                # linear_regressor = LinearRegression()  # create object for the class
-                # linear_regressor.fit(X[~np.isnan(X+Y)].reshape(-1, 1),
-                #                      Y[~np.isnan(X+Y)].reshape(-1, 1))  # perform linear regression
-                # Y_pred = linear_regressor.predict(X.reshape(-1, 1))  # make predictions
+
             ax.set_ylabel(var)
             if var == 't_i_all':
                 var = ['t_i_%i'%i for i in range(1,12) if 't_i_%i'%i in df_l3.columns]
@@ -101,13 +89,8 @@ for station in station_list:
                     ax.plot(df_l3[var].index, df_l3[var].values, marker='.',markeredgecolor='None', linestyle='None', label='l3',alpha=0.5)
                 except:
                     print(var,'not in L3 files')
-            # df_dmi['201'].plot(ax=ax,
-            #                    label='dmi 436000',
-            #                    marker='.',
-            #                    markeredgecolor='None', 
-            #                    # linestyle='None', 
-            #                    alpha=0.7)
-            ax.legend()
+
+            ax.legend(loc='center right', bbox_to_anchor=(1.13, 0.5))
             ax.grid()
                 # ax.plot(df_l3[var].index,Y_pred)
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
