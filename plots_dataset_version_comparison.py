@@ -16,7 +16,7 @@ import tocgen
 
 path_old = 'C:/Users/bav/Downloads/aws_data/hour'
 
-new_version = 'aws-l3-dev'
+new_version = 'aws-l3'
 old_version = 'dataverseV14'
 
 if 'dev' in new_version:
@@ -24,7 +24,7 @@ if 'dev' in new_version:
     path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 
 else:
-    path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
+    path_l3 = '../aws-l3/level_3/'
 
 from datetime import date
 today = date.today().strftime("%Y%m%d")

@@ -56,7 +56,7 @@ vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/proces
 if not os.path.isfile(vari):
     vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
     
-for station in ['ZAK_Uv3']:
+for station in ['CEN2']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -155,10 +155,10 @@ for station in ['ZAK_Uv3']:
     Msg('# '+station)
 
 
-    # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
+    var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
     # var_list_list = [np.array(['wspd_i','wspd_u','wspd_l', 'wdir_u', 'wdir_l', 'wdir_i'])]
     # var_list_list = [np.array(['p_u','p_l','p_i'])]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
-    var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
+    # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
