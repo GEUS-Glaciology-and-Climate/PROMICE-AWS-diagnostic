@@ -21,29 +21,7 @@ import os
 # matplotlib.use('Agg')
 import tocgen
 
-def advanced_filters(ds2, station, station_type):
-    # specific filters for tripods2
-    ds3 = ds2.copy()
-    # if station_type == 'one boom':
-    #     ds3['z_boom_u'] = ds3['z_boom_u'].where(ds3['z_boom_u']<2.9)
-        
-    # frozen filter on altitude
-    # ds3['msk'] = np.abs(ds3['gps_alt'].ffill(dim='time').bfill(dim='time').diff(dim='time'))<0.005
-    # ds3['gps_alt'] = ds3.gps_alt.where(ds3['msk'] )
-    
-    # # range filter on elevation
-    # ds3['gps_alt'] = ds3['gps_alt'].where(ds3['gps_alt']<ds3['gps_alt'].median()+ds3['gps_alt'].std()*5)
-    # ds3['gps_alt'] = ds3['gps_alt'].where(ds3['gps_alt']>ds3['gps_alt'].median()-ds3['gps_alt'].std()*5)
-    
-    return ds3
-    
-# def main(path_to_l0 = '../aws-l0/',
-#          path_l3 = '../aws-l3/level_3/',
-#          path_tx = '../aws-l3/tx/',
-#          path_gcn= '../GC-Net-Level-1-data-processing/L1/',
-#          path_to_qc_files = '../PROMICE-AWS-data-issues/',
-#          vari = '../pypromice/src/pypromice/process/variables.csv',
-#          filename="./plot_compilations/flags.md"):
+
 path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
@@ -71,16 +49,14 @@ def Msg(txt):
     
 plt.close('all')
 
-try:
-    path_to_qc_files = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/PROMICE-AWS-data-issues/'
-    vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
-    all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
-except:
-    path_to_qc_files = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/PROMICE-AWS-data-issues/'
+path_to_qc_files = '../PROMICE-AWS-data-issues/'
+all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
+
+vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
+if not os.path.isfile(vari):
     vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
-    all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
     
-for station in ['DY2']:
+for station in ['ZAK_Uv3']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -159,6 +135,7 @@ for station in ['DY2']:
     
     df_L1 = ds.to_dataframe().copy()
     
+# %%
     if len(df_flags)>0:
         for ind, var_list in zip(df_flags.index, df_flags.variable):
             if var_list == '*':
@@ -175,16 +152,12 @@ for station in ['DY2']:
                 
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
-# %%
     Msg('# '+station)
-    # if len(df_flags)>0: 
-    #     Msg(df_flags.set_index('t0').to_markdown())
-    # else:
-    #     Msg('No flag defined for '+station)
-    # Msg(' ')
+
 
     # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
-    # var_list_list = [np.array(['wspd_i','wspd_u','z_pt_cor', 'z_pt'])]
+    # var_list_list = [np.array(['wspd_i','wspd_u','wspd_l', 'wdir_u', 'wdir_l', 'wdir_i'])]
+    # var_list_list = [np.array(['p_u','p_l','p_i'])]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
@@ -198,16 +171,6 @@ for station in ['DY2']:
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             
-            # for tmp in pAWS_tx.L0+pAWS_raw.L0:
-            #     ax.plot(tmp.time, 
-            #             tmp[var].values,
-            #             marker='.',color='lightgray', linestyle='None', 
-            #             label='__nolegend__')
-            ax.plot(tmp.time, 
-                    tmp[var].values,
-                    marker='.',color='lightgray', linestyle='None', 
-                    label='L0')
-
             ax.plot(ds.time, 
                     ds[var].values,
                     marker='.',color='tab:red', linestyle='None', 
@@ -216,10 +179,10 @@ for station in ['DY2']:
                     ds1[var].values,
                     marker='.',color='tab:orange', linestyle='None',
                     label='removed or changed by adjustment')
-            ax.plot(ds2.time, 
-                    ds2[var].values,
-                    marker='.',color='tab:green', linestyle='None',
-                    label='before persistence')
+            # ax.plot(ds2.time, 
+                    # ds2[var].values,
+                    # marker='.',color='tab:green', linestyle='None',
+                    # label='before persistence')
             ax.plot(ds3.time, 
                     ds3[var].values,
                     marker='.',color='tab:pink', alpha=0.5, linestyle='None',
@@ -235,9 +198,3 @@ for station in ['DY2']:
         Msg('![](../%s/%s_%i.png)'%(figure_folder, station,i))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
-# f.close()
-# os.remove(filename)
-# os.rename(filename[:-3]+"_toc.md", filename)
-
-# if __name__ == '__main__':
-#     main()

@@ -15,36 +15,33 @@ path_tx = '../aws-l3-dev/tx/'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-# var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
-#             'rh_l','t_l','wspd_l','p_l','z_boom_l',
-#             'rh_i','t_i','wspd_i','p_i','batt_v',
-#             't_i_all']
+var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
+            'rh_l','t_l','wspd_l','p_l','z_boom_l',
+            'rh_i','t_i','wspd_i','p_i','batt_v',
+            't_i_all']
 # var_list = ['t_i_'+str(i) for i in range(1,12)]
-var_list = ['batt_v', 't_u',
-            'wspd_u',
-            # 'z_boom_u',
-            't_i_all'
-            ]
+# var_list = ['batt_v', 't_u',
+#             'wspd_u',
+#             # 'z_boom_u',
+#             't_i_all'
+#             ]
 # var_list = ['p_u','p_l','p_i']
-# var_list = []
+# var_list = ['rh_l','rh_i','rh_l_cor',]
 # var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','z_boom_u', 'z_boom_l', 'gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
 # var_list = ['t_u', 't_l','ts']
 # var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = ['EGP']  #df_meta.stid  #
-# var_list2 = ['RH1', 'RH2']
+station_list = df_meta.stid  #['HUM']
 
 # plt.close('all')
 
-# df_dmi = pd.read_csv('436000.csv', sep=';')
-# df_dmi['Hour'] = df_dmi['Hour(utc)']
-# df_dmi['time'] = pd.to_datetime(df_dmi[['Year','Month','Day','Hour']])
-# df_dmi = df_dmi.set_index('time')
-# for var,var2, ax in zip(var_list, var_list2, ax_list):
-#     ax.plot(df_gcn.index, df_gcn[var2].values, marker='.',linestyle='None', label='GC-Net')
-#     ax.plot(df_gcn.index, df_gcn[var2.replace('1','2')].values, marker='.',linestyle='None', label='GC-Net')
 for station in station_list:
+    var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
+                'rh_l','t_l','wspd_l','p_l','z_boom_l',
+                'rh_i','t_i','wspd_i','p_i','batt_v',
+                't_i_all']
+    print(station)
     if 'level_3' in path_l3:
         df_l3 = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
     else:
@@ -57,7 +54,12 @@ for station in station_list:
         df_tx = df_tx.set_index('time')
     else:
         df_tx = pd.DataFrame()
-
+    try:
+        df_l3 = df_l3.loc['2023':'2024']
+        df_tx = df_tx.loc['2023':'2024']
+    except:
+        print('No data for 2023-2024')
+        continue
     var_list_list = [var_list[i:i+6] for i in range(0, len(var_list),6)]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
@@ -97,3 +99,5 @@ for station in station_list:
                 # print(station, Y_pred[-1] - Y[~np.isnan(X+Y)][0])
             
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
+        fig.savefig('figures/'+station+'_'+str( k+1)+'.png',dpi=300)
+

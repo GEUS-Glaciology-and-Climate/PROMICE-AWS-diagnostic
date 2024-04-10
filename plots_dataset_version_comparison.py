@@ -14,10 +14,10 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-path_old = 'C:/Users/bav/Downloads/AWS_dataverse_v12/hour'
+path_old = 'C:/Users/bav/Downloads/aws_data/hour'
 
 new_version = 'aws-l3-dev'
-old_version = 'dataverseV12'
+old_version = 'dataverseV14'
 
 if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
