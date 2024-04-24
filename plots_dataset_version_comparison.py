@@ -10,22 +10,29 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
-path_old = 'C:/Users/bav/Downloads/aws_data/hour'
+path_old = 'C:/Users/bav/Downloads/V16/hour'
 
 new_version = 'aws-l3'
-old_version = 'dataverseV14'
+old_version = 'dataverseV16'
 
 if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
     path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+    df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 
 else:
-    path_l3 = '../aws-l3/level_3/'
-
+    path_l3 = '../aws-l3/'
+    df_meta = pd.read_csv(path_l3+'/AWS_latest_locations.csv')
+    # path_l3 = '../aws-l3/level_3/'
+    # path_l3 = 'C:/Users/bav/Downloads/V15/hour/'
+    path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
+    # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_time_csv/level_3/hour/'
+    # path_l3 = 'https://thredds.geus.dk/thredds/dodsC/aws_l3_time_netcdf/level_3/hour/'
+    
 from datetime import date
 today = date.today().strftime("%Y%m%d")
     
@@ -35,7 +42,6 @@ try:
     os.mkdir(figure_folder)
 except:
     pass
-df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 
 f = open(filename, "w")
 def Msg(txt):
@@ -47,19 +53,27 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 
 
 #%%
-# for station in ['KAN_U']: #
-for station in df_meta.stid:
+from pypromice.process import getVars, getMeta, addMeta, getColNames, \
+    roundValues, resampleL3, writeAll
+import xarray as xr
+for station in ['MIT']: #
+# for station in df_meta.stid:
     Msg('## '+station)
-
-        
+    file = path_l3+station+'_hour.csv'
     try:
-        df_new = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
-    except Exception as e:
-        Msg(str(e))
-    
+        df_new = pd.read_csv(file, index_col=0, parse_dates=True)
+    except:
+        file = path_l3+station+'/'+station+'_hour.csv'
+        try:
+            df_new = pd.read_csv(file, index_col=0, parse_dates=True)
+        except:
+            file = path_l3+station+'/'+station+'_10min.csv'
+            df_new = pd.read_csv(file, index_col=0, parse_dates=True)
         
-    df_new.time = pd.to_datetime(df_new.time, utc=True)
-    df_new = df_new.set_index('time')
+    # df_new = pd.read_csv('../aws-l3/'+station+'_hour.csv', index_col=0, parse_dates=True)
+    # df_new = pd.read_csv(
+    #     'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'+station+'/'+station+'_hour.csv', 
+    #     index_col=0, parse_dates=True)
     
     if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
         Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
@@ -78,6 +92,7 @@ for station in df_meta.stid:
     Msg(' ')
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
+    # var_list_list = [['gps_lat','gps_lon','gps_alt']]
     
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))

@@ -11,7 +11,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 # from sklearn.linear_model import LinearRegression
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
 from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
@@ -56,22 +64,20 @@ vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/proces
 if not os.path.isfile(vari):
     vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
     
-for station in ['CEN2']:
+for station in ['MIT']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
         flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
-                                comment='#',
-                                skipinitialspace=True)
+                                comment='#', skipinitialspace=True)
         flags['what was done'] = 'flag'
     except:
         flags = pd.DataFrame()
     
     try:
         adj = pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv',
-                         comment='#',
-                         skipinitialspace=True)
+                         comment='#', skipinitialspace=True)
         adj['what was done'] = adj['adjust_function'] + ' ' + adj['adjust_value'].astype(str)
     except:
         adj = pd.DataFrame()
@@ -81,57 +87,41 @@ for station in ['CEN2']:
     except:
         df_flags = pd.concat((flags,adj))
         
-    # if len(df_flags)==0:
-    #     print('no flag listed in file')
-    #     continue
-    
     # Loading the L1 data:
-    if False:  #os.path.isfile('../aws-l1/'+station+'.nc'):
-        print('found L1 file')
-        ds = xr.open_dataset('../aws-l1/'+station+'.nc')
-    else:
-        config_file = path_to_l0 + '/tx/config/{}.toml'.format(station)
-        if os.path.isfile(config_file):
-            inpath = path_to_l0 + '/tx/'
-            pAWS_tx = AWS(config_file, inpath, var_file=vari)
-            pAWS_tx.getL1()
-            # pAWS_tx.process()
-            # pAWS_tx.write('.')
-            try:
-                config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
-                inpath = path_to_l0 + '/raw/'+station+'/'
-                pAWS_raw = AWS(config_file, inpath)
-                pAWS_raw.getL1()
-                # pAWS_raw.process()
-                ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
-                # ds3 = pAWS_raw.L3.combine_first(pAWS_tx.L3)
-            except:
-                print('No raw logger file for',station)
-                ds = pAWS_tx.L1A.copy(deep=True)
-                # ds3 = pAWS_tx.L3
-        else:
-            print('No transmission toml file for',station)
+    config_file = path_to_l0 + '/tx/config/{}.toml'.format(station)
+    if os.path.isfile(config_file):
+        inpath = path_to_l0 + '/tx/'
+        pAWS_tx = AWS(config_file, inpath, var_file=vari)
+        pAWS_tx.getL1()
+        try:
             config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
             inpath = path_to_l0 + '/raw/'+station+'/'
             pAWS_raw = AWS(config_file, inpath)
             pAWS_raw.getL1()
             # pAWS_raw.process()
-            ds = pAWS_raw.L1A.copy(deep=True)
-            # ds3 = pAWS_raw.L3
+            ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
+        except:
+            print('No raw logger file for',station)
+            ds = pAWS_tx.L1A.copy(deep=True)
+    else:
+        print('No transmission toml file for',station)
+        config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
+        inpath = path_to_l0 + '/raw/'+station+'/'
+        pAWS_raw = AWS(config_file, inpath)
+        # pAWS_raw.getL1()
+        pAWS_raw.process()
+        ds = pAWS_raw.L1A.copy(deep=True)
         
         ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
 
     ds_save = ds.copy(deep=True)
     
-    ds = adjustTime(ds, 
-                    adj_dir=path_to_qc_files+'adjustments')
-    ds1 = flagNAN(ds, 
-                 flag_dir=path_to_qc_files+'flags')
-    ds2 = adjustData(ds1,
-                    adj_dir=path_to_qc_files+'adjustments')
-    temp_var = ['t_i_'+str(i) for i in range(12)]
-    variable_thresholds =  {x:{"max_diff": 0.0001, "period": 2} for x in temp_var}
-    ds3 = persistence_qc(ds2, variable_thresholds)
+    ds = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
+    ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
+    ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
+    # temp_var = ['t_i_'+str(i) for i in range(12)]
+    # variable_thresholds =  {x:{"max_diff": 0.0001, "period": 2} for x in temp_var}
+    # ds3 = persistence_qc(ds2, variable_thresholds)
     
     df_L1 = ds.to_dataframe().copy()
     
@@ -156,7 +146,8 @@ for station in ['CEN2']:
 
 
     var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
-    # var_list_list = [np.array(['wspd_i','wspd_u','wspd_l', 'wdir_u', 'wdir_l', 'wdir_i'])]
+    # var_list_list = [np.array(['gps_lat','gps_lon','gps_alt'])]
+    # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     # var_list_list = [np.array(['p_u','p_l','p_i'])]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
@@ -179,14 +170,14 @@ for station in ['CEN2']:
                     ds1[var].values,
                     marker='.',color='tab:orange', linestyle='None',
                     label='removed or changed by adjustment')
-            # ax.plot(ds2.time, 
-                    # ds2[var].values,
-                    # marker='.',color='tab:green', linestyle='None',
-                    # label='before persistence')
-            ax.plot(ds3.time, 
-                    ds3[var].values,
-                    marker='.',color='tab:pink', alpha=0.5, linestyle='None',
+            ax.plot(ds2.time, 
+                    ds2[var].values,
+                    marker='.',color='tab:green', linestyle='None',
                     label='final')
+            # ax.plot(ds3.time, 
+            #         ds3[var].values,
+            #         marker='.',color='tab:pink', alpha=0.5, linestyle='None',
+            #         label='final')
 
             # ax.set_xlim(df_L1.index[[0,-1]])
             # ax.set_ylim(ds3[var].min(),ds2[var].max())

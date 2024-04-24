@@ -15,10 +15,11 @@ path_tx = '../aws-l3-dev/tx/'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
-            'rh_l','t_l','wspd_l','p_l','z_boom_l',
-            'rh_i','t_i','wspd_i','p_i','batt_v',
-            't_i_all']
+var_list = [
+    # 'rh_u', 't_u','wspd_u','p_u','z_boom_u',
+    # 'rh_i', 't_i','wspd_i','p_i',
+            # 'dsr',
+            'gps_lat', 'gps_lon', 'gps_alt']
 # var_list = ['t_i_'+str(i) for i in range(1,12)]
 # var_list = ['batt_v', 't_u',
 #             'wspd_u',
@@ -32,15 +33,12 @@ var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
 # var_list = ['t_u', 't_l','ts']
 # var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = df_meta.stid  #['HUM']
+# station_list = df_meta.stid#
+station_list = ['NUK_L']
 
 # plt.close('all')
 
 for station in station_list:
-    var_list = ['rh_u', 't_u','wspd_u','p_u','z_boom_u',
-                'rh_l','t_l','wspd_l','p_l','z_boom_l',
-                'rh_i','t_i','wspd_i','p_i','batt_v',
-                't_i_all']
     print(station)
     if 'level_3' in path_l3:
         df_l3 = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
@@ -54,12 +52,12 @@ for station in station_list:
         df_tx = df_tx.set_index('time')
     else:
         df_tx = pd.DataFrame()
-    try:
-        df_l3 = df_l3.loc['2023':'2024']
-        df_tx = df_tx.loc['2023':'2024']
-    except:
-        print('No data for 2023-2024')
-        continue
+    # try:
+    #     df_l3 = df_l3.loc['2023':'2024']
+    #     df_tx = df_tx.loc['2023':'2024']
+    # except:
+    #     print('No data for 2023-2024')
+    #     continue
     var_list_list = [var_list[i:i+6] for i in range(0, len(var_list),6)]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
