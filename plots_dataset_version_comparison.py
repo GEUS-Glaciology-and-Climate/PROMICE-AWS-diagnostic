@@ -14,10 +14,10 @@ import os
 # matplotlib.use('Agg')
 import tocgen
 
-path_old = 'C:/Users/bav/Downloads/V16/hour'
+path_old = 'C:/Users/bav/Downloads/V17/hour'
 
 new_version = 'aws-l3'
-old_version = 'dataverseV16'
+old_version = 'V17'
 
 if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
@@ -56,7 +56,7 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 from pypromice.process import getVars, getMeta, addMeta, getColNames, \
     roundValues, resampleL3, writeAll
 import xarray as xr
-for station in ['MIT']: #
+for station in ['NUK_Uv3']: #
 # for station in df_meta.stid:
     Msg('## '+station)
     file = path_l3+station+'_hour.csv'
@@ -92,7 +92,7 @@ for station in ['MIT']: #
     Msg(' ')
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
-    # var_list_list = [['gps_lat','gps_lon','gps_alt']]
+    var_list_list = [['gps_lat','gps_lon','gps_alt']]
     
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
