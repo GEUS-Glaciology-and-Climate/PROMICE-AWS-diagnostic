@@ -56,8 +56,10 @@ for station in df_meta.stid:
             ax.set_ylabel(var)       
             ax.plot(df_new[var].index, df_new[var].values, 
                     marker='.',markeredgecolor='None', linestyle='None', 
-                    color='tab:orange')            
-            ax.legend()
+                    color='tab:orange')  
+            smoothed = df_new[var].rolling(2*7*24, center=True, min_periods=6).median().interpolate()
+            ax.plot(smoothed.index, smoothed.values, 
+                    color='tab:green')  
             ax.grid()
         
         no_save = 1

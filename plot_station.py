@@ -36,8 +36,8 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 # var_list = ['t_u', 't_l','ts']
 var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-station_list = df_meta.stid#
-# station_list = ['FRE']
+# station_list = df_meta.stid#
+station_list = ['NUK_L']
 
 # plt.close('all')
 
