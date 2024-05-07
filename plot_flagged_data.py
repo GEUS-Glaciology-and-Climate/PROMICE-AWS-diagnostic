@@ -63,9 +63,11 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
 if not os.path.isfile(vari):
     vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
-    
-for station in ['TAS_L']:
-# for station in np.unique(np.array(all_dirs)): 
+
+zoom_to_good = True
+
+# for station in ['THU_U']:
+for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
@@ -120,12 +122,20 @@ for station in ['TAS_L']:
     ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
     # temp_var = ['t_i_'+str(i) for i in range(12)]
-    # variable_thresholds =  {x:{"max_diff": 0.0001, "period": 2} for x in temp_var}
-    # ds3 = persistence_qc(ds2, variable_thresholds)
-    
+    #%%
+
+    ds3 = persistence_qc(ds2)
+    ds4 = ds3.copy()
+    for v in ['gps_alt','gps_lon', 'gps_lat']:
+        baseline_elevation = (ds3.gps_alt.resample(time='M').median()
+                              .interp(time=ds3.time,method='nearest')
+                              .ffill(dim='time').bfill(dim='time'))
+        ds[v] = ds[v].where(
+        (np.abs(ds.gps_alt - baseline_elevation) < 100) | ds.gps_alt.isnull()
+        )
+        
     df_L1 = ds.to_dataframe().copy()
     
-# %%
     if len(df_flags)>0:
         for ind, var_list in zip(df_flags.index, df_flags.variable):
             if var_list == '*':
@@ -145,10 +155,9 @@ for station in ['TAS_L']:
     Msg('# '+station)
 
 
-    var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
+    # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
     var_list_list = [np.array(['gps_lat','gps_lon','gps_alt'])]
-    # var_list_list = [np.array(['t_u','rh_u','p_u','z_boom_u','z_stake']),
-    #                  np.array([v for v in ds.keys() if 't_i_' in v])]
+    # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     # var_list_list = [np.array(['p_u','p_l','p_i'])]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
@@ -174,11 +183,23 @@ for station in ['TAS_L']:
             ax.plot(ds2.time, 
                     ds2[var].values,
                     marker='.',color='tab:green', linestyle='None',
+                    label='before persistence')
+            ax.plot(ds3.time, 
+                    ds3[var].values,
+                    marker='.',color='tab:pink', alpha=0.5, linestyle='None',
                     label='final')
-            # ax.plot(ds3.time, 
-            #         ds3[var].values,
-            #         marker='.',color='tab:pink', alpha=0.5, linestyle='None',
-            #         label='final')
+            ax.plot(ds4.time, 
+                    ds4[var].values,
+                    marker='.',color='tab:blue', alpha=0.5, linestyle='None',
+                    label='gps_alt filter')
+            if var == 'gps_alt':
+                ax.plot(ds3.time,
+                        baseline_elevation,
+                        ls='--', c='k')
+        for var, ax in zip(var_list, ax_list):
+
+            if zoom_to_good:
+                ax.set_ylim(ds4[var].min(), ds4[var].max())
 
             # ax.set_xlim(df_L1.index[[0,-1]])
             # ax.set_ylim(ds3[var].min(),ds2[var].max())
