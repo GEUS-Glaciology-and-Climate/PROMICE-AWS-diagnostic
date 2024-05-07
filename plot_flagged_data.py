@@ -66,7 +66,7 @@ if not os.path.isfile(vari):
 
 zoom_to_good = True
 
-# for station in ['THU_U']:
+# for station in ['KPC_U']:
 for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -126,13 +126,11 @@ for station in np.unique(np.array(all_dirs)):
 
     ds3 = persistence_qc(ds2)
     ds4 = ds3.copy()
-    for v in ['gps_alt','gps_lon', 'gps_lat']:
-        baseline_elevation = (ds3.gps_alt.resample(time='M').median()
-                              .interp(time=ds3.time,method='nearest')
-                              .ffill(dim='time').bfill(dim='time'))
-        ds[v] = ds[v].where(
-        (np.abs(ds.gps_alt - baseline_elevation) < 100) | ds.gps_alt.isnull()
-        )
+    baseline_elevation = (ds3.gps_alt.resample(time='M').median()
+                          .interp(time=ds3.time,method='nearest')
+                          .ffill(dim='time').bfill(dim='time'))
+    mask = (np.abs(ds3.gps_alt - baseline_elevation) < 100) & ds3.gps_alt.notnull()
+    ds4[['gps_alt','gps_lon', 'gps_lat']] = ds4[['gps_alt','gps_lon', 'gps_lat']].where(mask)
         
     df_L1 = ds.to_dataframe().copy()
     
@@ -183,15 +181,15 @@ for station in np.unique(np.array(all_dirs)):
             ax.plot(ds2.time, 
                     ds2[var].values,
                     marker='.',color='tab:green', linestyle='None',
-                    label='before persistence')
+                    label='filtered with persistence')
             ax.plot(ds3.time, 
                     ds3[var].values,
-                    marker='.',color='tab:pink', alpha=0.5, linestyle='None',
-                    label='final')
+                    marker='.',color='tab:pink', linestyle='None',
+                    label='filtered with gps')
             ax.plot(ds4.time, 
                     ds4[var].values,
-                    marker='.',color='tab:blue', alpha=0.5, linestyle='None',
-                    label='gps_alt filter')
+                    marker='.',color='tab:blue', linestyle='None',
+                    label='final')
             if var == 'gps_alt':
                 ax.plot(ds3.time,
                         baseline_elevation,
