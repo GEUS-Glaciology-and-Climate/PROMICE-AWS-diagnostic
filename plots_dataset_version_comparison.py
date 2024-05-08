@@ -60,7 +60,7 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 from pypromice.process import getVars, getMeta, addMeta, getColNames, \
     roundValues, resampleL3, writeAll
 import xarray as xr
-# for station in ['MIT']: #
+# for station in ['FRE']: #
 for station in df_meta.stid:
     Msg('## '+station)
     file = path_l3+station+'_hour.csv'
@@ -98,9 +98,9 @@ for station in df_meta.stid:
     Msg(' ')
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
-    var_list_list = [['gps_lat','gps_lon','gps_alt'],
-                     ['dlr','ulr','t_rad'],
-                     ['rh_u','rh_l','rh_u_cor','rh_l_cor']]
+    # var_list_list = [['gps_lat','gps_lon','gps_alt'],
+    #                  ['dlr','ulr','t_rad'],
+    #                  ['rh_u','rh_l','rh_u_cor','rh_l_cor']]
     
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))

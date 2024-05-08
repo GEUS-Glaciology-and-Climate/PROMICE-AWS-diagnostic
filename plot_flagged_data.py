@@ -23,6 +23,8 @@ logging.basicConfig(
 from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS, resampleL3
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
+from pypromice.qc.percentiles.outlier_detector import ThresholdBasedOutlierDetector
+
 import xarray as xr
 import os
 # import matplotlib
@@ -64,22 +66,20 @@ vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/proces
 if not os.path.isfile(vari):
     vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
 
-zoom_to_good = True
+zoom_to_good = False
 
-for station in ['KPC_U']:
+for station in ['CP1']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
-        flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv',
-                                comment='#', skipinitialspace=True)
+        flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv', comment='#', skipinitialspace=True)
         flags['what was done'] = 'flag'
     except:
         flags = pd.DataFrame()
     
     try:
-        adj = pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv',
-                         comment='#', skipinitialspace=True)
+        adj = pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv', comment='#', skipinitialspace=True)
         adj['what was done'] = adj['adjust_function'] + ' ' + adj['adjust_value'].astype(str)
     except:
         adj = pd.DataFrame()
@@ -94,13 +94,14 @@ for station in ['KPC_U']:
     if os.path.isfile(config_file):
         inpath = path_to_l0 + '/tx/'
         pAWS_tx = AWS(config_file, inpath, var_file=vari)
-        pAWS_tx.getL1()
+        # pAWS_tx.getL1()
+        pAWS_tx.process()
         try:
             config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
             inpath = path_to_l0 + '/raw/'+station+'/'
             pAWS_raw = AWS(config_file, inpath)
-            pAWS_raw.getL1()
-            # pAWS_raw.process()
+            # pAWS_raw.getL1()
+            pAWS_raw.process()
             ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
         except:
             print('No raw logger file for',station)
@@ -124,12 +125,19 @@ for station in ['KPC_U']:
     # temp_var = ['t_i_'+str(i) for i in range(12)]
     #%%
 
+    # persistence QC
     ds3 = persistence_qc(ds2)
-    ds4 = ds3.copy()
-    baseline_elevation = (ds3.gps_alt.to_series().resample('M').median()
+    
+    # percentile QC
+    ds3b = ds3.copy()
+    outlier_detector = ThresholdBasedOutlierDetector.default()
+    ds3b = outlier_detector.filter_data(ds3) 
+    
+    ds4 = ds3b.copy()
+    baseline_elevation = (ds3b.gps_alt.to_series().resample('M').median()
                           .reindex(ds3.time.to_series().index, method='nearest')
                           .ffill().bfill())
-    mask = (np.abs(ds3.gps_alt - baseline_elevation) < 100) & ds3.gps_alt.notnull()
+    mask = (np.abs(ds3b.gps_alt - baseline_elevation) < 100) & ds3b.gps_alt.notnull()
     ds4[['gps_alt','gps_lon', 'gps_lat']] = ds4[['gps_alt','gps_lon', 'gps_lat']].where(mask)
         
     df_L1 = ds.to_dataframe().copy()
@@ -151,12 +159,17 @@ for station in ['KPC_U']:
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
     Msg('# '+station)
+    var_list = list(ds4.keys())
 
 
-    # var_list_list = [var_list[i:(i+6)] for i in range(0,len(var_list),6)]
-    var_list_list = [np.array(['gps_lat','gps_lon','gps_alt'])]
+    var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
+    # var_list_list = [np.array(['gps_lat','gps_lon','gps_alt'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array(['p_u','p_l','p_i'])]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
+    var_list_list = [
+                     np.array(['p_u','p_l','p_i']),
+                     # np.array(['rh_u','rh_l','rh_i']),
+                     # np.array(['wspd_u','wspd_l','wspd_i']),
+                     ]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
@@ -185,7 +198,12 @@ for station in ['KPC_U']:
             ax.plot(ds3.time, 
                     ds3[var].values,
                     marker='.',color='tab:pink', linestyle='None',
-                    label='filtered with gps')
+                    label='filtered with percentile QC')
+            if 'gps' in var:
+                ax.plot(ds3b.time, 
+                        ds3b[var].values,
+                        marker='.',color='tab:pink', linestyle='None',
+                        label='filtered with gps_alt filter')
             ax.plot(ds4.time, 
                     ds4[var].values,
                     marker='.',color='tab:blue', linestyle='None',
