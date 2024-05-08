@@ -66,8 +66,8 @@ if not os.path.isfile(vari):
 
 zoom_to_good = True
 
-# for station in ['KPC_U']:
-for station in np.unique(np.array(all_dirs)): 
+for station in ['KPC_U']:
+# for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
     try:
@@ -126,9 +126,9 @@ for station in np.unique(np.array(all_dirs)):
 
     ds3 = persistence_qc(ds2)
     ds4 = ds3.copy()
-    baseline_elevation = (ds3.gps_alt.resample(time='M').median()
-                          .interp(time=ds3.time,method='nearest')
-                          .ffill(dim='time').bfill(dim='time'))
+    baseline_elevation = (ds3.gps_alt.to_series().resample('M').median()
+                          .reindex(ds3.time.to_series().index, method='nearest')
+                          .ffill().bfill())
     mask = (np.abs(ds3.gps_alt - baseline_elevation) < 100) & ds3.gps_alt.notnull()
     ds4[['gps_alt','gps_lon', 'gps_lat']] = ds4[['gps_alt','gps_lon', 'gps_lat']].where(mask)
         

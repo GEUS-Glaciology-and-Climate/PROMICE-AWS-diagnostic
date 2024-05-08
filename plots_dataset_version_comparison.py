@@ -14,10 +14,14 @@ import os
 # matplotlib.use('Agg')
 import tocgen
 
-path_old = 'C:/Users/bav/Downloads/V17/hour'
 
-new_version = 'aws-l3'
-old_version = 'V17'
+new_version = 'aws-l3-dev'
+old_version = 'aws-l3'
+
+if old_version == 'aws-l3':
+    path_old = '../aws-l3/level_3/'
+else:
+    path_old = 'C:/Users/bav/Downloads/V17/hour'
 
 if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
@@ -56,8 +60,8 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 from pypromice.process import getVars, getMeta, addMeta, getColNames, \
     roundValues, resampleL3, writeAll
 import xarray as xr
-for station in ['NUK_Uv3']: #
-# for station in df_meta.stid:
+# for station in ['MIT']: #
+for station in df_meta.stid:
     Msg('## '+station)
     file = path_l3+station+'_hour.csv'
     try:
@@ -77,8 +81,10 @@ for station in ['NUK_Uv3']: #
     
     if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
         Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
-        continue
-    df_old = pd.read_csv(path_old+'/'+station+'_hour.csv')
+        # continue
+    file = path_old+station+'/'+station+'_hour.csv'
+
+    df_old = pd.read_csv(file)
     df_old.time = pd.to_datetime(df_old.time, utc=True)
     df_old = df_old.set_index('time')
     
@@ -92,7 +98,9 @@ for station in ['NUK_Uv3']: #
     Msg(' ')
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
-    var_list_list = [['gps_lat','gps_lon','gps_alt']]
+    var_list_list = [['gps_lat','gps_lon','gps_alt'],
+                     ['dlr','ulr','t_rad'],
+                     ['rh_u','rh_l','rh_u_cor','rh_l_cor']]
     
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
@@ -108,6 +116,7 @@ for station in ['NUK_Uv3']: #
                         alpha=0.7, color='tab:blue')
             except:
                 print(var,'not in old data')
+                continue
         
             ax.plot(df_new[var].index, df_new[var].values, 
                     marker='.',markeredgecolor='None', linestyle='None', 
