@@ -19,7 +19,7 @@ matplotlib.use('Agg')
 import tocgen
 
 # def main(
-path_new = '../aws-l3/level_3/'
+path_new = '../aws-l3-dev/level_3/'
 filename = 'plot_compilations/GPS_data.md'
 df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
 

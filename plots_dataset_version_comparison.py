@@ -10,18 +10,18 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 
 new_version = 'aws-l3-dev'
-old_version = 'aws-l3'
+old_version = 'V18'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
 else:
-    path_old = 'C:/Users/bav/Downloads/V17/hour'
+    path_old = 'C:/Users/bav/Downloads/'+old_version+'/hour/'
 
 if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
@@ -60,7 +60,7 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 from pypromice.process import getVars, getMeta, addMeta, getColNames, \
     roundValues, resampleL3, writeAll
 import xarray as xr
-# for station in ['FRE']: #
+# for station in ['NAE']: #
 for station in df_meta.stid:
     Msg('## '+station)
     file = path_l3+station+'_hour.csv'
@@ -81,10 +81,13 @@ for station in df_meta.stid:
     
     if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
         Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
-        # continue
-    file = path_old+station+'/'+station+'_hour.csv'
-
-    df_old = pd.read_csv(file)
+        continue
+    try:
+        file = path_old+station+'/'+station+'_hour.csv'
+        df_old = pd.read_csv(file)
+    except:
+        file = path_old+station+'_hour.csv'
+        df_old = pd.read_csv(file)
     df_old.time = pd.to_datetime(df_old.time, utc=True)
     df_old = df_old.set_index('time')
     
