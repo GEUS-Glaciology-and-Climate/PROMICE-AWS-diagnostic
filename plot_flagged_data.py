@@ -22,7 +22,7 @@ logging.basicConfig(
 )
 from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS, resampleL3
-from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN
+from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN, smoothTilt, smoothRot
 from pypromice.qc.percentiles.outlier_detector import ThresholdBasedOutlierDetector
 
 import xarray as xr
@@ -145,26 +145,9 @@ for station in ['SDM']:
     ds4[['gps_alt','gps_lon', 'gps_lat']] = ds4[['gps_alt','gps_lon', 'gps_lat']].where(mask)
 
     # smoothing tilt
-    for v in ['tilt_x','tilt_y']:
-        threshold = 0.2
-
-        ds4[v] = ds4[v].where(
-                    ds4[v].to_series().resample('H').median().rolling(
-                        3*24, center=True, min_periods=2
-                        ).std().reindex(ds4.time, method='bfill').values <threshold
-                    ).ffill(dim='time').bfill(dim='time')
-
-    # rotation gets harsher treatment
-    v = 'rot'
-    ds4[v] = ('time', (ds4[v].where(
-                        ds4[v].to_series().resample('H').median().rolling(
-                            3*24, center=True, min_periods=2
-                            ).std().reindex(ds4.time, method='bfill').values <4
-                        ).ffill(dim='time')
-            .to_series().resample('D').median()
-            .rolling(7*2,center=True,min_periods=2).median()
-            .reindex(ds4.time, method='bfill').values
-            ))
+    ds4['tilt_x'] = smoothTilt(ds4['tilt_x'])
+    ds4['tilt_y'] = smoothTilt(ds4['tilt_y'])
+    ds4['rot'] = smoothRot(ds4['rot'])
     
     df_L1 = ds.to_dataframe().copy()
     
@@ -192,10 +175,10 @@ for station in ['SDM']:
     # var_list_list = [np.array(['gps_lat','gps_lon','gps_alt'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     var_list_list = [
-                     np.array(['usr','usr_cor','dsr','dsr_cor', 'tilt_x','tilt_y','rot']),
-                     # np.array(['p_u','p_l','p_i']),
-                     # np.array(['rh_u','rh_l','rh_i']),
-                     # np.array(['wspd_u','wspd_l','wspd_i']),
+                      np.array(['usr','usr_cor','dsr','dsr_cor', 'tilt_x','tilt_y','rot']),
+                      # np.array(['p_u','p_l','p_i']),
+                      # np.array(['rh_u','rh_l','rh_i']),
+                      # np.array(['wspd_u','wspd_l','wspd_i']),
                      ]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
