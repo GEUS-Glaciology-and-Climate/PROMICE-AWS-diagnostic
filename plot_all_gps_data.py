@@ -19,17 +19,18 @@ matplotlib.use('Agg')
 import tocgen
 
 # def main(
-path_new = '../aws-l3-dev/level_3/'
+path_new = '../aws-l3/level_3/'
 filename = 'plot_compilations/GPS_data.md'
 df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
+df_meta2 = pd.read_csv(path_new+'../AWS_metadata.csv')
 
 f = open(filename, "w")
 def Msg(txt):
     f = open(filename, "a")
     print(txt)
     f.write(txt + "\n")
-
-for station in df_meta.stid:
+station_list = np.unique(pd.concat((df_meta.stid,df_meta2.stid)))
+for station in station_list:
     Msg('## '+station)
     df_new = pd.read_csv(path_new+station+'/'+station+'_hour.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)

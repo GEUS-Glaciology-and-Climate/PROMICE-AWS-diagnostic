@@ -15,7 +15,7 @@ matplotlib.use('Agg')
 import tocgen
 
 
-new_version = 'aws-l3-dev'
+new_version = 'aws-l3'
 old_version = 'V18'
 
 if old_version == 'aws-l3':
@@ -31,9 +31,9 @@ if 'dev' in new_version:
 else:
     path_l3 = '../aws-l3/'
     df_meta = pd.read_csv(path_l3+'/AWS_latest_locations.csv')
-    # path_l3 = '../aws-l3/level_3/'
+    path_l3 = '../aws-l3/level_3/'
     # path_l3 = 'C:/Users/bav/Downloads/V15/hour/'
-    path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
+    # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
     # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_time_csv/level_3/hour/'
     # path_l3 = 'https://thredds.geus.dk/thredds/dodsC/aws_l3_time_netcdf/level_3/hour/'
     

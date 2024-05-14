@@ -57,6 +57,9 @@ no data for gps_alt
 ## LYN_L
 ![LYN_L](../figures/GPS/LYN_L_0.png)
  
+## LYN_T
+![LYN_T](../figures/GPS/LYN_T_0.png)
+ 
 ## MIT
 ![MIT](../figures/GPS/MIT_0.png)
  
@@ -65,6 +68,9 @@ no data for gps_alt
  
 ## NAU
 ![NAU](../figures/GPS/NAU_0.png)
+ 
+## NEM
+![NEM](../figures/GPS/NEM_0.png)
  
 ## NSE
 ![NSE](../figures/GPS/NSE_0.png)
@@ -123,6 +129,9 @@ no data for gps_alt
 ## SDL
 ![SDL](../figures/GPS/SDL_0.png)
  
+## SDM
+![SDM](../figures/GPS/SDM_0.png)
+ 
 ## SWC
 ![SWC](../figures/GPS/SWC_0.png)
  
@@ -143,6 +152,9 @@ no data for gps_alt
  
 ## THU_L2
 ![THU_L2](../figures/GPS/THU_L2_0.png)
+ 
+## THU_U
+![THU_U](../figures/GPS/THU_U_0.png)
  
 ## THU_U2
 ![THU_U2](../figures/GPS/THU_U2_0.png)
@@ -165,12 +177,11 @@ no data for gps_alt
 ## WEG_L
 ![WEG_L](../figures/GPS/WEG_L_0.png)
  
-## XXX
-no data for gps_lat
-![XXX](../figures/GPS/XXX_0.png)
- 
 ## ZAK_A
 ![ZAK_A](../figures/GPS/ZAK_A_0.png)
+ 
+## ZAK_L
+![ZAK_L](../figures/GPS/ZAK_L_0.png)
  
 ## ZAK_Lv3
 ![ZAK_Lv3](../figures/GPS/ZAK_Lv3_0.png)
