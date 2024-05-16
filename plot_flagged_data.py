@@ -68,7 +68,7 @@ if not os.path.isfile(vari):
 
 zoom_to_good = False
 
-for station in ['SDM']:
+for station in ['EGP']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -174,8 +174,9 @@ for station in ['SDM']:
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [np.array(['gps_lat','gps_lon','gps_alt'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    var_list_list = [
-                      np.array(['usr','usr_cor','dsr','dsr_cor', 'tilt_x','tilt_y','rot']),
+    var_list_list = [        
+                      # np.array(['z_boom_u','z_stake']),
+                       np.array(['usr','usr_cor','dsr','dsr_cor', 'tilt_x','tilt_y','rot']),
                       # np.array(['p_u','p_l','p_i']),
                       # np.array(['rh_u','rh_l','rh_i']),
                       # np.array(['wspd_u','wspd_l','wspd_i']),

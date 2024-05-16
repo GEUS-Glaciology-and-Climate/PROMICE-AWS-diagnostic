@@ -31,6 +31,7 @@ if 'dev' in new_version:
 else:
     path_l3 = '../aws-l3/'
     df_meta = pd.read_csv(path_l3+'/AWS_latest_locations.csv')
+    df_meta2 = pd.read_csv(path_l3+'/AWS_metadata.csv')
     path_l3 = '../aws-l3/level_3/'
     # path_l3 = 'C:/Users/bav/Downloads/V15/hour/'
     # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
@@ -60,8 +61,9 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 from pypromice.process import getVars, getMeta, addMeta, getColNames, \
     roundValues, resampleL3, writeAll
 import xarray as xr
-# for station in ['NAE']: #
-for station in df_meta.stid:
+import numpy as np
+for station in ['SDM']: #
+# for station in np.unique(pd.concat((df_meta.stid,df_meta2.stid))):
     Msg('## '+station)
     file = path_l3+station+'_hour.csv'
     try:
