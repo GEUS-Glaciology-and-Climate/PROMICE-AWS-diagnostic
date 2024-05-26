@@ -148,20 +148,21 @@ def makeL3(station):
     
 
 for station in ['EGP']:
-# for station in df_metadata.stid: 
+# for station in df_metadata.stid[9:]: 
     station = station.replace('.csv','')
     infile = 'L3_test/'+station+'/'+station+'_hour.nc'
+    print(station)
 
-    makeL3(station)
+    if not os.path.isfile(infile):
+        makeL3(station)
     ds1, n1 = loadArr(infile)
     ds1 = toL4(ds1)
     
-    print(station)
     var_list_list = [np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor','z_surf_combined'])]
     # %%
     plt.close('all')
-    fig, ax = plt.subplots(2,1,sharex=True,figsize=(8,8))
-    for v in ['z_surf_1', 'z_surf_2', 'z_pt_cor']:
+    fig, ax = plt.subplots(3,1,sharex=True,figsize=(8,12))
+    for v in ['z_boom_u', 'z_boom_l', 'z_stake', 'z_pt_cor']:
         if v in ds1.data_vars:
             ds1[v].plot(label=v, ax=ax[0])
     
@@ -171,11 +172,161 @@ for station in ['EGP']:
     ax[0].set_title(station)
     
     
-    for v in ['snow_height', 'z_ice_surf', 'z_surf_combined']:
-        ds1[v].plot(label=v, ax=ax[1])
+    for v in ['z_surf_1', 'z_surf_2', 'z_pt_cor']:
+        if v in ds1.data_vars:
+            ds1[v].plot(label=v, ax=ax[1])
     
     ax[1].legend()
     ax[1].set_ylabel('height (m)')
-    ax[1].set_title('')
     ax[1].grid()
+    ax[1].set_title(station)
+    
+    for v in ['snow_height', 'z_ice_surf', 'z_surf_combined']:
+        ds1[v].plot(label=v, ax=ax[2])
+    
+    ax[2].legend()
+    ax[2].set_ylabel('height (m)')
+    ax[2].set_title('')
+    ax[2].grid()
+    
+    # %% plot thermistor depth:
+    z_surf_interp = ds1["z_surf_combined"].interpolate_na(dim='time')
+    depth_cols_name = ['d_t_i'+str(i) for i in range(12) if 'd_t_i'+str(i) in ds1.data_vars]
+    temp_cols_name = ['t_i'+str(i) for i in range(12) if 'tt_i'+str(i) in ds1.data_vars]
     fig.savefig('figures/surface_heights/'+station+'.png',dpi=300)
+
+    fig, ax = plt.subplots(1, 2, figsize=(15, 6))
+    plt.subplots_adjust(left=0.05, right=0.95, wspace=0.15, top=0.95)
+    
+    z_surf_interp.plot(
+        ax=ax[0], color="lightgray", label="__nolegend__", linewidth=1
+    )
+    ds1["z_surf_combined"].plot(
+        ax=ax[0], color="black", label="surface", linewidth=3
+    )
+    (z_surf_interp - 10).plot(
+        ax=ax[0],  color="red", linestyle="-", linewidth=4,  
+        label="10 m depth",
+    )
+    
+    maintenance_string = pd.read_csv("fieldwork_summary_PROMICE.csv")
+    maintenance_string = maintenance_string.replace("OUT", np.nan)
+    maintenance_string[
+        "Length of thermistor string on surface from surface marking"
+    ] = maintenance_string[
+        "Length of thermistor string on surface from surface marking"
+    ].astype(
+        float
+    )
+    maintenance_string["date"] = pd.to_datetime(maintenance_string["Date visit"])
+    maintenance = maintenance_string.loc[maintenance_string.Station == station]
+
+    if len(maintenance.date) > 0:
+        for date in maintenance.date:
+            index = ds1.time
+            date2 = pd.to_datetime(index.sel(time=[date], method="nearest")[0].data)
+            if np.abs(date - date2) <= pd.Timedelta("7 days"):
+                depth_top_therm_found = (
+                    maintenance.loc[
+                        maintenance.date == date,
+                        "Length of thermistor string on surface from surface marking",
+                    ]
+                    / 100 - 1 + z_surf_interp.sel(time=date2).item()
+                )
+                tmp = pd.DataFrame(depth_top_therm_found.values,
+                                   index=[date],
+                                   columns=['length_therm_out'])
+                tmp['length_therm_out'].plot(ax = ax[0], 
+                                             markersize=10, 
+                                             marker="o", 
+                                             linestyle="None",
+                                             label='_no_legend_')
+                if isinstance(
+                    maintenance.loc[maintenance.date == date].depth_new_thermistor_m.values[0],
+                    str,
+                ):
+                    ax[0].axvline(np.datetime64(date), color='r')
+    for i, col in enumerate(depth_cols_name):
+        (z_surf_interp - ds1[col]).plot(ax=ax[0], label="_nolegend_")
+
+    ax[0].set_ylim(
+        ds1["z_surf_combined"].min() - 11,
+        ds1["z_surf_combined"].max() + 1,
+    )
+
+    for i in range(len(temp_cols_name)):
+        ds1[temp_cols_name[i]].plot(
+            ax=ax[1], label="_nolegend_"
+        )
+
+        tmp = df_in[temp_cols_name[i]].copy()
+        # variance filter
+        ind_filter = (
+            df_in[temp_cols_name[i]]
+            .interpolate(limit=14)
+            .rolling(window=7)
+            .var()
+            > 0.5
+        )
+        month = (
+            df_in[temp_cols_name[i]]
+            .interpolate(limit=14)
+            .index.month.values
+        )
+        ind_filter.loc[np.isin(month, [5, 6, 7])] = False
+        if any(ind_filter):
+            tmp.loc[ind_filter].plot(
+                ax=ax[1], marker="o", linestyle="none",
+                color="lightgray", label="_nolegend_",
+            )
+
+        # before and after maintenance adaptation filter
+        if len(maintenance.date) > 0:
+            for date in maintenance.date:
+                if isinstance(
+                    maintenance.loc[
+                        maintenance.date == date
+                    ].depth_new_thermistor_m.values[0],
+                    str,
+                ):
+                    ind_adapt = np.abs(
+                        tmp.interpolate(limit=14).index.values
+                        - pd.to_datetime(date).to_datetime64()
+                    ) < np.timedelta64(7, "D")
+                    if any(ind_adapt):
+                        tmp.loc[ind_adapt].plot(
+                            ax=ax[1], marker="o", linestyle="none",
+                            color="lightgray", label="_nolegend_",
+                        )
+
+        # surfaced thermistor
+        ind_pos = ds1[depth_cols_name[i]] < 0.1
+        if any(ind_pos):
+            tmp.loc[ind_pos].plot(
+                ax=ax[1], marker="o", linestyle="none", color="lightgray",
+                label="_nolegend_",
+            )
+    if len(ds1["t_i_10m"]) == 0:
+        print("No 10m temp for ", station)
+    else:
+        ds1["t_i_10m"].resample(time="D").mean().plot(ax=ax[1], 
+                                                               color="red", 
+                                                               linewidth=5, 
+                                                               label="10 m temperature")
+    ax[1].plot(
+        np.nan, np.nan,  marker="o", linestyle="none", color="lightgray",
+        label="filtered",
+    )
+    ax[1].plot(
+        np.nan, np.nan, marker="o", linestyle="none",
+        color="purple", label="maintenance",
+    )
+    ax[1].plot(
+        np.nan, np.nan, marker="o", linestyle="none", color="pink", label="var filter"
+    )
+    ax[1].legend()
+    ax[0].legend()
+    ax[0].set_ylabel("Height (m)")
+    ax[1].set_ylabel("Subsurface temperature ($^o$C)")
+    fig.suptitle(station)
+    fig.savefig("figures/string_processing/" + station + ".png", dpi=300)
