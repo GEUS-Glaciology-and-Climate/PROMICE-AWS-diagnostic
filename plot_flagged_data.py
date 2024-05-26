@@ -57,7 +57,7 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
     
-# plt.close('all')
+plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
@@ -68,7 +68,7 @@ if not os.path.isfile(vari):
 
 zoom_to_good = False
 
-for station in ['EGP']:
+for station in ['JAR_O']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -96,6 +96,8 @@ for station in ['EGP']:
         pAWS_tx = AWS(config_file, inpath, var_file=vari)
         # pAWS_tx.getL1()
         pAWS_tx.process()
+        ds = pAWS_tx.L1A.copy(deep=True)
+        ds_l3 = pAWS_tx.L3.copy(deep=True)
         try:
             config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
             inpath = path_to_l0 + '/raw/'+station+'/'
@@ -106,8 +108,7 @@ for station in ['EGP']:
             ds_l3 = pAWS_raw.L3.combine_first(pAWS_tx.L3).copy(deep=True)
         except:
             print('No raw logger file for',station)
-            ds = pAWS_tx.L1A.copy(deep=True)
-            ds_l3 = pAWS_tx.L3.copy(deep=True)
+
     else:
         print('No transmission toml file for',station)
         config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
@@ -116,11 +117,10 @@ for station in ['EGP']:
         # pAWS_raw.getL1()
         pAWS_raw.process()
         ds = pAWS_raw.L1A.copy(deep=True)
+        ds_l3 = pAWS_raw.L3
         
         ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
-        
-        ds_l3 = pAWS_raw.L3
-
+            
     ds_save = ds.copy(deep=True)
     
     ds = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
@@ -133,9 +133,9 @@ for station in ['EGP']:
     ds3 = persistence_qc(ds2)
     
     # percentile QC
-    # ds3b = ds3.copy()
-    # outlier_detector = ThresholdBasedOutlierDetector.default()
-    # ds3b = outlier_detector.filter_data(ds3) 
+    ds3b = ds3.copy()
+    outlier_detector = ThresholdBasedOutlierDetector.default()
+    ds3b = outlier_detector.filter_data(ds3) 
     
     ds4 = ds3.copy()
     baseline_elevation = (ds3.gps_alt.to_series().resample('M').median()
@@ -168,19 +168,20 @@ for station in ['EGP']:
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
     Msg('# '+station)
-    var_list = list(ds4.keys())
+    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'rh_u_cor', 'rh_l_cor', 'dsr_cor', 'usr_cor',  'precip_u_cor', 'precip_u_rate', 'precip_l_cor', 'precip_l_rate', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 't_u_interp', 't_l_interp', 'gps_lat_i', 'gps_lon_i']
 
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [np.array(['gps_lat','gps_lon','gps_alt'])]
+    var_list_list = [np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    var_list_list = [        
-                      # np.array(['z_boom_u','z_stake']),
-                       np.array(['usr','usr_cor','dsr','dsr_cor', 'tilt_x','tilt_y','rot']),
-                      # np.array(['p_u','p_l','p_i']),
-                      # np.array(['rh_u','rh_l','rh_i']),
-                      # np.array(['wspd_u','wspd_l','wspd_i']),
-                     ]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
+    # var_list_list = [        
+    #                    np.array(['dlr','ulr']),
+    #                     # np.array(['usr','usr_cor','dsr','dsr_cor', 'tilt_x','tilt_y','rot']),
+    #                   # np.array(['p_u','p_l','p_i']),
+    #                   # np.array(['rh_u','rh_l','rh_i']),
+    #                   # np.array(['wspd_u','wspd_l','wspd_i']),
+    #                   ]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
@@ -223,7 +224,7 @@ for station in ['EGP']:
                 ax.plot(ds3.time,
                         baseline_elevation,
                         ls='--', c='k')
-            if 'cor' in var:
+            if ('cor' in var) or (var == 'z_surf_combined'):
                 ax.plot(ds_l3.time,
                          ds_l3[var],       
                          marker='.',color='tab:blue', linestyle='None')
@@ -237,6 +238,7 @@ for station in ['EGP']:
             # ax.set_ylim(ds3[var].min(),ds2[var].max())
             ax.set_ylabel(var)
             ax.grid()
+            # ax.set_xlim(pd.to_datetime('2024-05-01'),pd.to_datetime('2024-06-01'))
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')

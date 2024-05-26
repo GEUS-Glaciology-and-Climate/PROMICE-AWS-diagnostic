@@ -15,22 +15,22 @@ path_tx = '../aws-l3/tx/'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-# var_list = [
-    # 'rh_u', 't_u','wspd_u','p_u','z_boom_u',
-    # 'rh_i', 't_i','wspd_i','p_i',
-            # 'dsr',
-            # 'gps_lat', 'gps_lon', 'gps_alt']
+var_list = [
+    'rh_u', 't_u','wspd_u','p_u','z_boom_u',
+    'rh_i', 't_i','wspd_i','p_i',
+            'dsr',
+            'gps_lat', 'gps_lon', 'gps_alt']
 # var_list = ['t_i_'+str(i) for i in range(1,12)]
 # var_list = [
 #             # 'batt_v', 't_u',
 #             # 'wspd_u',
 #             'z_boom_u',
-#             'z_stake',
-#             'z_pt_cor',
-#             't_i_all'
+#             'z_boom_l',
+#             # 'z_pt_cor',
+#             # 't_i_all'
 #             ]
 # var_list = ['p_u','p_l','p_i']
-var_list = ['t_u','t_l','t_i']
+# var_list = ['t_u','t_l','t_i']
 # var_list = ['rh_l','rh_i','rh_l_cor',]
 # var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','z_boom_u', 'z_boom_l', 'gps_lat','gps_lon','gps_alt']
 # var_list = ['gps_geounit']
@@ -38,7 +38,7 @@ var_list = ['t_u','t_l','t_i']
 # var_list = ['gps_lat', 'gps_lon','gps_alt']
 
 # station_list = df_meta.stid#
-station_list = ['NSE']
+station_list = ['KAN_U']
 
 # plt.close('all')
 

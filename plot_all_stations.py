@@ -14,13 +14,12 @@ from sklearn.linear_model import LinearRegression
 import nead
 from pypromice.process import AWS
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 # def main(
 path_new = '../aws-l3/level_3/'
-path_old = 'C:/Users/bav/Downloads/dataverse_files/day'
 filename = 'plot_compilations/plot_all.md'
 df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
 
@@ -30,14 +29,16 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
 
-for station in df_meta.stid:
+# for station in df_meta.stid:
+for station in ['DY2']:
     Msg('## '+station)
-    df_new = pd.read_csv(path_new+station+'/'+station+'_day.csv')
+    df_new = pd.read_csv(path_new+station+'/'+station+'_hour.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
-    
-    var_list = ['gps_numsat', 'gps_q', 'batt_v_ini'] #df_new.columns.values
-    var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
+    df_new=df_new.loc['2024']
+    var_list = ['cc','dlr','ulr','dsr','usr','t_u'] #df_new.columns.values
+    # var_list = df_new.columns.values
+    var_list_list = [var_list[i:i+7] for i in range(0, len(var_list), 7)]
     
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
@@ -51,8 +52,8 @@ for station in df_meta.stid:
                 continue
             if df_new[var].isnull().all():
                 Msg('no data for '+var)
-                plt.close(fig)
-                continue
+                # plt.close(fig)
+                # continue
             if var == 'gps_q':
                 if len(df_new[var].unique())==1:
                     Msg('only one value for '+var+': '+str(df_new[var].unique()[0]))
@@ -65,10 +66,10 @@ for station in df_meta.stid:
             
             ax.set_ylabel(var)       
             ax.plot(df_new[var].index, df_new[var].values, 
-                    marker='.',markeredgecolor='None', linestyle='None', 
-                    label='New',alpha=0.7,
+                    marker='o',#markeredgecolor='None', linestyle='None', 
+                    # label='',alpha=0.7,
                     color='tab:orange')            
-            ax.legend()
+            # ax.legend()
             ax.grid()
         
         no_save = 1
