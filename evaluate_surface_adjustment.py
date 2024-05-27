@@ -32,7 +32,6 @@ import os
 # import matplotlib
 # matplotlib.use('Agg')
 
-
 path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
@@ -147,8 +146,8 @@ def makeL3(station):
     writeNC(outfile_h+'.nc', l3_h)
     
 
-for station in ['EGP']:
-# for station in df_metadata.stid[9:]: 
+# for station in ['EGP']:
+for station in df_metadata.stid: 
     station = station.replace('.csv','')
     infile = 'L3_test/'+station+'/'+station+'_hour.nc'
     print(station)
@@ -191,8 +190,8 @@ for station in ['EGP']:
     
     # %% plot thermistor depth:
     z_surf_interp = ds1["z_surf_combined"].interpolate_na(dim='time')
-    depth_cols_name = ['d_t_i'+str(i) for i in range(12) if 'd_t_i'+str(i) in ds1.data_vars]
-    temp_cols_name = ['t_i'+str(i) for i in range(12) if 'tt_i'+str(i) in ds1.data_vars]
+    depth_cols_name = ['d_t_i_'+str(i) for i in range(12) if 'd_t_i_'+str(i) in ds1.data_vars]
+    temp_cols_name = ['t_i_'+str(i) for i in range(12) if 't_i_'+str(i) in ds1.data_vars]
     fig.savefig('figures/surface_heights/'+station+'.png',dpi=300)
 
     fig, ax = plt.subplots(1, 2, figsize=(15, 6))
@@ -242,7 +241,9 @@ for station in ['EGP']:
                                              linestyle="None",
                                              label='_no_legend_')
                 if isinstance(
-                    maintenance.loc[maintenance.date == date].depth_new_thermistor_m.values[0],
+                    maintenance.loc[
+                        maintenance.date == date
+                        ].depth_new_thermistor_m.values[0],
                     str,
                 ):
                     ax[0].axvline(np.datetime64(date), color='r')
@@ -259,53 +260,53 @@ for station in ['EGP']:
             ax=ax[1], label="_nolegend_"
         )
 
-        tmp = df_in[temp_cols_name[i]].copy()
-        # variance filter
-        ind_filter = (
-            df_in[temp_cols_name[i]]
-            .interpolate(limit=14)
-            .rolling(window=7)
-            .var()
-            > 0.5
-        )
-        month = (
-            df_in[temp_cols_name[i]]
-            .interpolate(limit=14)
-            .index.month.values
-        )
-        ind_filter.loc[np.isin(month, [5, 6, 7])] = False
-        if any(ind_filter):
-            tmp.loc[ind_filter].plot(
-                ax=ax[1], marker="o", linestyle="none",
-                color="lightgray", label="_nolegend_",
-            )
+        # tmp = ds1[temp_cols_name[i]].copy()
+        # # variance filter
+        # ind_filter = (
+        #     ds1[temp_cols_name[i]]
+        #     .interpolate_na(dim='time',limit=14)
+        #     .rolling(time=7)
+        #     .var()
+        #     > 0.5
+        # )
+        # month = (
+        #     ds1[temp_cols_name[i]]
+        #     .interpolate_na(dim='time',limit=14)
+        #     .time.dt.month.values
+        # )
+        # ind_filter.loc[np.isin(month, [5, 6, 7])] = False
+        # if any(ind_filter):
+        #     tmp.loc[ind_filter].plot(
+        #         ax=ax[1], marker="o", linestyle="none",
+        #         color="lightgray", label="_nolegend_",
+        #     )
 
         # before and after maintenance adaptation filter
-        if len(maintenance.date) > 0:
-            for date in maintenance.date:
-                if isinstance(
-                    maintenance.loc[
-                        maintenance.date == date
-                    ].depth_new_thermistor_m.values[0],
-                    str,
-                ):
-                    ind_adapt = np.abs(
-                        tmp.interpolate(limit=14).index.values
-                        - pd.to_datetime(date).to_datetime64()
-                    ) < np.timedelta64(7, "D")
-                    if any(ind_adapt):
-                        tmp.loc[ind_adapt].plot(
-                            ax=ax[1], marker="o", linestyle="none",
-                            color="lightgray", label="_nolegend_",
-                        )
+        # if len(maintenance.date) > 0:
+        #     for date in maintenance.date:
+        #         if isinstance(
+        #             maintenance.loc[
+        #                 maintenance.date == date
+        #             ].depth_new_thermistor_m.values[0],
+        #             str,
+        #         ):
+        #             ind_adapt = np.abs(
+        #                 tmp.interpolate_na(dim='time', limit=14).time.values
+        #                 - pd.to_datetime(date).to_datetime64()
+        #             ) < np.timedelta64(7, "D")
+        #             if any(ind_adapt):
+        #                 tmp.loc[ind_adapt].plot(
+        #                     ax=ax[1], marker="o", linestyle="none",
+        #                     color="lightgray", label="_nolegend_",
+        #                 )
 
-        # surfaced thermistor
-        ind_pos = ds1[depth_cols_name[i]] < 0.1
-        if any(ind_pos):
-            tmp.loc[ind_pos].plot(
-                ax=ax[1], marker="o", linestyle="none", color="lightgray",
-                label="_nolegend_",
-            )
+        # # surfaced thermistor
+        # ind_pos = ds1[depth_cols_name[i]] < 0.1
+        # if any(ind_pos):
+        #     tmp.loc[ind_pos].plot(
+        #         ax=ax[1], marker="o", linestyle="none", color="lightgray",
+        #         label="_nolegend_",
+        #     )
     if len(ds1["t_i_10m"]) == 0:
         print("No 10m temp for ", station)
     else:
@@ -313,17 +314,17 @@ for station in ['EGP']:
                                                                color="red", 
                                                                linewidth=5, 
                                                                label="10 m temperature")
-    ax[1].plot(
-        np.nan, np.nan,  marker="o", linestyle="none", color="lightgray",
-        label="filtered",
-    )
-    ax[1].plot(
-        np.nan, np.nan, marker="o", linestyle="none",
-        color="purple", label="maintenance",
-    )
-    ax[1].plot(
-        np.nan, np.nan, marker="o", linestyle="none", color="pink", label="var filter"
-    )
+    # ax[1].plot(
+    #     np.nan, np.nan,  marker="o", linestyle="none", color="lightgray",
+    #     label="filtered",
+    # )
+    # ax[1].plot(
+    #     np.nan, np.nan, marker="o", linestyle="none",
+    #     color="purple", label="maintenance",
+    # )
+    # ax[1].plot(
+    #     np.nan, np.nan, marker="o", linestyle="none", color="pink", label="var filter"
+    # )
     ax[1].legend()
     ax[0].legend()
     ax[0].set_ylabel("Height (m)")
