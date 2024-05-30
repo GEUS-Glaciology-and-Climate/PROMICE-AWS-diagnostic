@@ -66,9 +66,9 @@ vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/proces
 if not os.path.isfile(vari):
     vari = 'C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'
 
-zoom_to_good = False
+zoom_to_good = True
 
-for station in ['JAR_O']:
+for station in ['EGP']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -120,7 +120,7 @@ for station in ['JAR_O']:
         ds_l3 = pAWS_raw.L3
         
         ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
-            
+      #%%      
     ds_save = ds.copy(deep=True)
     
     ds = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
@@ -168,7 +168,7 @@ for station in ['JAR_O']:
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
     Msg('# '+station)
-    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'rh_u_cor', 'rh_l_cor', 'dsr_cor', 'usr_cor',  'precip_u_cor', 'precip_u_rate', 'precip_l_cor', 'precip_l_rate', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 't_u_interp', 't_l_interp', 'gps_lat_i', 'gps_lon_i']
+    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'rh_u_cor', 'rh_l_cor', 'dsr_cor', 'usr_cor',  'precip_u_cor', 'precip_u_rate', 'precip_l_cor', 'precip_l_rate', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
@@ -238,7 +238,7 @@ for station in ['JAR_O']:
             # ax.set_ylim(ds3[var].min(),ds2[var].max())
             ax.set_ylabel(var)
             ax.grid()
-            # ax.set_xlim(pd.to_datetime('2024-05-01'),pd.to_datetime('2024-06-01'))
+            # ax.set_xlim(pd.to_datetime('2024-05-15'),pd.to_datetime('2024-06-01'))
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')

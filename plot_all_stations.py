@@ -30,7 +30,7 @@ def Msg(txt):
     f.write(txt + "\n")
 
 # for station in df_meta.stid:
-for station in ['DY2']:
+for station in ['KAN_U']:
     Msg('## '+station)
     df_new = pd.read_csv(path_new+station+'/'+station+'_hour.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)

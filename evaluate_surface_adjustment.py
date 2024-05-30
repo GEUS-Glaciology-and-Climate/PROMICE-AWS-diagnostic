@@ -146,14 +146,15 @@ def makeL3(station):
     writeNC(outfile_h+'.nc', l3_h)
     
 
-# for station in ['EGP']:
-for station in df_metadata.stid: 
+for station in ['KAN_Lv3']:
+# for station in df_metadata.stid: 
     station = station.replace('.csv','')
     infile = 'L3_test/'+station+'/'+station+'_hour.nc'
     print(station)
 
-    if not os.path.isfile(infile):
-        makeL3(station)
+    # if not os.path.isfile(infile):
+    #     makeL3(station)
+    makeL3(station)
     ds1, n1 = loadArr(infile)
     ds1 = toL4(ds1)
     
@@ -163,7 +164,7 @@ for station in df_metadata.stid:
     fig, ax = plt.subplots(3,1,sharex=True,figsize=(8,12))
     for v in ['z_boom_u', 'z_boom_l', 'z_stake', 'z_pt_cor']:
         if v in ds1.data_vars:
-            ds1[v].plot(label=v, ax=ax[0])
+            ds1[v].plot(label=v,marker='.', ax=ax[0])
     
     ax[0].legend()
     ax[0].set_ylabel('height (m)')
@@ -173,7 +174,7 @@ for station in df_metadata.stid:
     
     for v in ['z_surf_1', 'z_surf_2', 'z_pt_cor']:
         if v in ds1.data_vars:
-            ds1[v].plot(label=v, ax=ax[1])
+            ds1[v].plot(label=v,marker='.', ax=ax[1])
     
     ax[1].legend()
     ax[1].set_ylabel('height (m)')
@@ -181,7 +182,7 @@ for station in df_metadata.stid:
     ax[1].set_title(station)
     
     for v in ['snow_height', 'z_ice_surf', 'z_surf_combined']:
-        ds1[v].plot(label=v, ax=ax[2])
+        ds1[v].plot(label=v,marker='.', ax=ax[2])
     
     ax[2].legend()
     ax[2].set_ylabel('height (m)')
@@ -208,17 +209,17 @@ for station in df_metadata.stid:
         label="10 m depth",
     )
     
-    maintenance_string = pd.read_csv("fieldwork_summary_PROMICE.csv")
+    maintenance_string = pd.read_csv("../PROMICE-AWS-data-issues/fieldwork_summary_PROMICE_GC-Net.csv")
     maintenance_string = maintenance_string.replace("OUT", np.nan)
     maintenance_string[
-        "Length of thermistor string on surface from surface marking"
+        "length_of_thermistor_string_on_surface_from_surface_marking"
     ] = maintenance_string[
-        "Length of thermistor string on surface from surface marking"
+        "length_of_thermistor_string_on_surface_from_surface_marking"
     ].astype(
         float
     )
-    maintenance_string["date"] = pd.to_datetime(maintenance_string["Date visit"])
-    maintenance = maintenance_string.loc[maintenance_string.Station == station]
+    maintenance_string["date"] = pd.to_datetime(maintenance_string["date_visit"])
+    maintenance = maintenance_string.loc[maintenance_string.station == station]
 
     if len(maintenance.date) > 0:
         for date in maintenance.date:
@@ -228,7 +229,7 @@ for station in df_metadata.stid:
                 depth_top_therm_found = (
                     maintenance.loc[
                         maintenance.date == date,
-                        "Length of thermistor string on surface from surface marking",
+                        "length_of_thermistor_string_on_surface_from_surface_marking",
                     ]
                     / 100 - 1 + z_surf_interp.sel(time=date2).item()
                 )
