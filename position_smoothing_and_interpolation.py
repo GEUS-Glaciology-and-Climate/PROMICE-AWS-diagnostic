@@ -45,6 +45,14 @@ except:
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
+
+filename = 'plot_compilations/surface_height_overview.md'
+f = open(filename, "w")
+def Msg(txt):
+    f = open(filename, "a")
+    print(txt)
+    f.write(txt + "\n")
+    
 plt.close('all')
 
 vari = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/pypromice/src/pypromice/process/variables.csv'

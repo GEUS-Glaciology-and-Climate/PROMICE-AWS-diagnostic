@@ -50,13 +50,21 @@ except:
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
-filename = 'plot_compilations/thermistor_depths_overview.md'
+filename = 'plot_compilations/surface_height_overview.md'
 
 f = open(filename, "w")
-def Msg(txt):
+def Msg1(txt):
     f = open(filename, "a")
     print(txt)
     f.write(txt + "\n")
+
+filename2 = 'plot_compilations/thermistor_depths_overview.md'
+
+f2 = open(filename2, "w")
+def Msg2(txt):
+    f2 = open(filename2, "a")
+    print(txt)
+    f2.write(txt + "\n")
     
 plt.close('all')
 
@@ -196,12 +204,13 @@ for station in df_metadata.stid:
     ax[2].set_title('')
     ax[2].grid()
     
-    # %% plot thermistor depth:
     z_surf_interp = ds1["z_surf_combined"].interpolate_na(dim='time')
     depth_cols_name = ['d_t_i_'+str(i) for i in range(12) if 'd_t_i_'+str(i) in ds1.data_vars]
     temp_cols_name = ['t_i_'+str(i) for i in range(12) if 't_i_'+str(i) in ds1.data_vars]
     fig.savefig('figures/surface_heights/'+station+'.png',dpi=300)
+    Msg1('![%s](../figures/surface_heights/%s.png)'%(station, station))
 
+    # %% plot thermistor depth:
     fig, ax = plt.subplots(1, 2, figsize=(15, 6))
     plt.subplots_adjust(left=0.05, right=0.95, wspace=0.15, top=0.95)
     
@@ -339,4 +348,4 @@ for station in df_metadata.stid:
     ax[1].set_ylabel("Subsurface temperature ($^o$C)")
     fig.suptitle(station)
     fig.savefig("figures/string_processing/" + station + ".png", dpi=300)
-    Msg('![%s](../figures/string_processing/%s.png)'%(station, station))
+    Msg2('![%s](../figures/string_processing/%s.png)'%(station, station))
