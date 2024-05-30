@@ -46,7 +46,7 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
 
-filename = 'plot_compilations/surface_height_overview.md'
+filename = 'plot_compilations/GPS_postproc_overview.md'
 f = open(filename, "w")
 def Msg(txt):
     f = open(filename, "a")
@@ -148,8 +148,46 @@ def makeL3(station):
     writeCSV(outfile_h+'.csv', l3_h, csv_order=None)
     writeNC(outfile_h+'.nc', l3_h)
 
-# for station in ['EGP']:
-for station in df_metadata.stid[10:]:
+
+def find_breaks(df,alpha):
+    diff = df.resample('D').median().interpolate(
+        method='linear', limit_area='inside', limit_direction='forward').diff()        
+    thresh = diff.std() * alpha
+    list_diff = diff.loc[diff.abs()>thresh].reset_index()
+    list_diff = list_diff.loc[list_diff.time.dt.month.isin([5,6,7,8,9])]
+    list_diff['year']=list_diff.time.dt.year
+    list_diff=list_diff.groupby('year').max()
+    return diff, [None]+list_diff.time.to_list()+[None]
+
+
+def piecewise_smoothing_and_interpolation(df_in, breaks):
+    df_all = pd.Series() # dataframe gathering all the smoothed pieces
+    for i in range(len(breaks)-1):
+        df = df_in.loc[slice(breaks[i], breaks[i+1])].copy()
+        
+        y_sm = lowess(df,
+                      pd.to_numeric(df.index),
+                      is_sorted=True, frac=1/3, it=0,
+                      )
+        df.loc[df.notnull()] = y_sm[:,1]
+        df = df.interpolate(method='linear', limit_area='inside')
+        
+        last_valid_6_months = slice(df.last_valid_index()-pd.to_timedelta('180D'),None)
+        df.loc[last_valid_6_months] = (df.loc[last_valid_6_months].interpolate( axis=0,
+            method='spline',order=1, limit_direction='forward', fill_value="extrapolate")).values
+        
+        first_valid_6_months = slice(None, df.first_valid_index()+pd.to_timedelta('180D'))
+        df.loc[first_valid_6_months] = (df.loc[first_valid_6_months].interpolate( axis=0,
+            method='spline',order=1, limit_direction='backward', fill_value="extrapolate")).values
+        df_all=pd.concat((df_all, df))
+        
+    df_all = df_all[~df_all.index.duplicated(keep='first')]
+    return df_all.values
+
+# for station in ['KAN_L']:
+for station in df_metadata.stid:
+    plt.close('all')
+
     station = station.replace('.csv','')
     infile = 'L3_test/'+station+'/'+station+'_hour.nc'
     print(station)
@@ -160,7 +198,7 @@ for station in df_metadata.stid[10:]:
     ds1, n1 = loadArr(infile)
     # %%
     # ds1 = toL4(ds1)
-    
+        
     from statsmodels.nonparametric.smoothers_lowess import lowess
     for v in ['lat', 'lon', 'alt']:
         ds1=ds1.drop_vars(v)
@@ -171,73 +209,43 @@ for station in df_metadata.stid[10:]:
         if ds1[var].isnull().all(): 
             print('no',var,'at',station)
             continue
-        print(var)
+
         var_out = var
         
         # finding station relocation (above GPS accuracy)
         # diff = ds1[var].to_series().interpolate(method='linear', limit_area='inside', limit_direction='forward').diff()
         # diff = (ds1[var].to_series().resample('12H').asfreq().ffill() - \
         #         ds1[var].to_series().resample('12H').asfreq().bfill())
-        diff = ds1[var].to_series().resample('D').median().interpolate(method='linear', limit_area='inside', limit_direction='forward').diff()        
         if var == 'gps_alt':
-            thresh = diff.std()*8
+            _, breaks = find_breaks(ds1[var].to_series(), alpha=8)
         else:
-            thresh = diff.std()*6
-        list_diff = diff.loc[diff.abs()>thresh].reset_index()
-        list_diff['year']=list_diff.time.dt.year
-        list_diff=list_diff.groupby('year').max()
-        breaks = [None]+list_diff.time.to_list()+[None]
-
-        df_all = pd.Series() # dataframe gathering all the smoothed pieces
-        for i in range(len(breaks)-1):
-            df = ds1[var].to_series().loc[slice(breaks[i], breaks[i+1])].copy()
-            
-            y_sm = lowess(df,
-                          pd.to_numeric(df.index),
-                          is_sorted=True, frac=1/3, it=0,
-                          )
-            df.loc[df.notnull()] = y_sm[:,1]
-            df = df.interpolate(method='linear', limit_area='inside')
-            
-            last_valid_6_months = slice(df.last_valid_index()-pd.to_timedelta('180D'),None)
-            df.loc[last_valid_6_months] = (df.loc[last_valid_6_months].interpolate( axis=0,
-                method='spline',order=1, limit_direction='forward', fill_value="extrapolate")).values
-            
-            first_valid_6_months = slice(None, df.first_valid_index()+pd.to_timedelta('180D'))
-            df.loc[first_valid_6_months] = (df.loc[first_valid_6_months].interpolate( axis=0,
-                method='spline',order=1, limit_direction='backward', fill_value="extrapolate")).values
-            df_all=pd.concat((df_all, df))
-            
-        print(var_out.replace('gps_','').replace('alt','elev'))
-        df_all = df_all[~df_all.index.duplicated(keep='first')]
-        ds1[var_out.replace('gps_','').replace('alt','elev')] = ('time', df_all.values)
+            _, breaks = find_breaks(ds1[var].to_series(), alpha=6)
+        
+        ds1[var_out.replace('gps_','').replace('alt','elev')] = \
+            ('time', 
+             piecewise_smoothing_and_interpolation(ds1[var].to_series(), breaks))
     
     # %% plotting thresholding of diff
     # fig, ax = plt.subplots(3,1,sharex=True,figsize=(8,12))
     # for i, v in enumerate(['gps_lat', 'gps_lon', 'gps_alt']):
-    #     diff = ds1[v].to_series().resample('D').median().interpolate(method='linear', limit_area='inside', limit_direction='forward').diff()
+    #     if v == 'gps_alt':
+    #         alpha=8
+    #     else:
+    #         alpha=6
+    #     diff, breaks = find_breaks(ds1[v].to_series(), alpha=alpha)
     #     diff.plot(ax=ax[i])
-    #     ax[i].axhline(diff.std()*4, c='k')
-    #     ax[i].axhline(-diff.std()*4, c='k')
+    #     ax[i].axhline(diff.std()*alpha, c='k')
+    #     ax[i].axhline(-diff.std()*alpha, c='k')
 
 #%%
-    plt.close('all')
     fig, ax = plt.subplots(3,1,sharex=True,figsize=(8,12))
     for i, v in enumerate(['gps_lat', 'gps_lon', 'gps_alt']):
         ds1[v].plot(label='observed', marker='.', ax=ax[i])
-        
-        # diff = (ds1[v].to_series().resample('12H').asfreq().ffill() - \
-        #         ds1[v].to_series().resample('12H').asfreq().bfill())
-        diff = ds1[v].to_series().resample('D').median().interpolate(method='linear', limit_area='inside', limit_direction='forward').diff()
         if v == 'gps_alt':
-            thresh = diff.std()*8
+            alpha=8
         else:
-            thresh = diff.std()*6
-
-        list_diff = diff.loc[diff.abs()>thresh].reset_index()
-        list_diff['year']=list_diff.time.dt.year
-        list_diff=list_diff.groupby('year').max()
-        breaks = [None]+list_diff.time.to_list()+[None]
+            alpha=6
+        _, breaks = find_breaks(ds1[v].to_series(), alpha=alpha)
         
         v=v.replace('gps_','').replace('alt','elev')
         if v not in ds1.data_vars: 
@@ -247,8 +255,9 @@ for station in df_metadata.stid[10:]:
             print('no',v,'at',station)
             continue
         ds1[v].plot(label='smoothed and interpolated', alpha=0.8, ax=ax[i])
-        for time in list_diff.time:
-            ax[i].axvline(time,ls='--',c='k')
+        for time in breaks:
+            if time:
+                ax[i].axvline(time,ls='--',c='k')
         ax[i].axvline(np.nan,ls='--',label='detected maintenance',c='k')
         ax[i].set_ylabel(v)
         ax[i].legend()
@@ -256,3 +265,4 @@ for station in df_metadata.stid[10:]:
 
     ax[0].set_title(station)
     fig.savefig('figures/GPS_postproc/'+station+'.png',dpi=300)
+    Msg('![%s](../figures/GPS_postproc/%s.png)'%(station, station))
