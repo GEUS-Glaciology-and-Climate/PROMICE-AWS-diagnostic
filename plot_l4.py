@@ -25,6 +25,7 @@ from pypromice.process import AWS, resampleL3
 from pypromice.process.L3toL4 import toL4
 from pypromice.process import getVars, getMeta, addMeta, getColNames, \
     roundValues,  writeCSV, writeNC
+from pypromice.process.join_l4 import join_l4
 import xarray as xr
 import os
 
@@ -47,7 +48,7 @@ df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
 
-filename = 'plot_compilations/GPS_postproc_overview.md'
+filename = 'plot_compilations/L4_overview.md'
 f = open(filename, "w")
 def Msg(txt):
     f = open(filename, "a")
@@ -150,42 +151,7 @@ def makeL3(station):
     writeNC(outfile_h+'.nc', l3_h)
 
 
-def find_breaks(df,alpha):
-    diff = df.resample('D').median().interpolate(
-        method='linear', limit_area='inside', limit_direction='forward').diff()        
-    thresh = diff.std() * alpha
-    list_diff = diff.loc[diff.abs()>thresh].reset_index()
-    list_diff = list_diff.loc[list_diff.time.dt.month.isin([5,6,7,8,9])]
-    list_diff['year']=list_diff.time.dt.year
-    list_diff=list_diff.groupby('year').max()
-    return diff, [None]+list_diff.time.to_list()+[None]
-
-
-def piecewise_smoothing_and_interpolation(df_in, breaks):
-    df_all = pd.Series() # dataframe gathering all the smoothed pieces
-    for i in range(len(breaks)-1):
-        df = df_in.loc[slice(breaks[i], breaks[i+1])].copy()
-        
-        y_sm = lowess(df,
-                      pd.to_numeric(df.index),
-                      is_sorted=True, frac=1/3, it=0,
-                      )
-        df.loc[df.notnull()] = y_sm[:,1]
-        df = df.interpolate(method='linear', limit_area='inside')
-        
-        last_valid_6_months = slice(df.last_valid_index()-pd.to_timedelta('180D'),None)
-        df.loc[last_valid_6_months] = (df.loc[last_valid_6_months].interpolate( axis=0,
-            method='spline',order=1, limit_direction='forward', fill_value="extrapolate")).values
-        
-        first_valid_6_months = slice(None, df.first_valid_index()+pd.to_timedelta('180D'))
-        df.loc[first_valid_6_months] = (df.loc[first_valid_6_months].interpolate( axis=0,
-            method='spline',order=1, limit_direction='backward', fill_value="extrapolate")).values
-        df_all=pd.concat((df_all, df))
-        
-    df_all = df_all[~df_all.index.duplicated(keep='first')]
-    return df_all.values
-
-# for station in ['KAN_L']:
+# for station in ['KAN_B']:
 for station in df_metadata.stid:
     plt.close('all')
 
@@ -196,73 +162,88 @@ for station in df_metadata.stid:
     if not os.path.isfile(infile):
         makeL3(station)
     # makeL3(station)
-    ds1, n1 = loadArr(infile)
+    # ds1, n1 = loadArr(infile)
+    debug_args=['-s=L3_test/'+station+'/'+station+'_hour.nc',
+        # '-g=C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly/',
+        # '-p=L3_test/',
+        '-o=L4_test/']
+    join_l4(debug_args)
     
     # %%
-    # ds1 = toL4(ds1)
-        
-    for v in ['lat', 'lon', 'alt']:
-        ds1=ds1.drop_vars(v)
-    for var in ['gps_lat', 'gps_lon', 'gps_alt']:
-        if var not in ds1.data_vars: 
-            print('no',var,'at',station)
-            continue
-        if ds1[var].isnull().all(): 
-            print('no',var,'at',station)
-            continue
-
-        var_out = var
-        
-        # finding station relocation (above GPS accuracy)
-        # diff = ds1[var].to_series().interpolate(method='linear', limit_area='inside', limit_direction='forward').diff()
-        # diff = (ds1[var].to_series().resample('12H').asfreq().ffill() - \
-        #         ds1[var].to_series().resample('12H').asfreq().bfill())
-        if var == 'gps_alt':
-            _, breaks = find_breaks(ds1[var].to_series(), alpha=8)
-        else:
-            _, breaks = find_breaks(ds1[var].to_series(), alpha=6)
-        
-        ds1[var_out.replace('gps_','').replace('alt','elev')] = \
-            ('time', 
-             piecewise_smoothing_and_interpolation(ds1[var].to_series(), breaks))
+    ds_l4, _ = loadArr('L4_test/'+station.replace('v3','').replace('CEN2','CEN')+'/'+station.replace('v3','').replace('CEN2','CEN')+'_hour.nc')
     
-    #  plotting thresholding of diff
-    # fig, ax = plt.subplots(3,1,sharex=True,figsize=(8,12))
-    # for i, v in enumerate(['gps_lat', 'gps_lon', 'gps_alt']):
-    #     if v == 'gps_alt':
-    #         alpha=8
-    #     else:
-    #         alpha=6
-    #     diff, breaks = find_breaks(ds1[v].to_series(), alpha=alpha)
-    #     diff.plot(ax=ax[i])
-    #     ax[i].axhline(diff.std()*alpha, c='k')
-    #     ax[i].axhline(-diff.std()*alpha, c='k')
+    Msg('## '+station)
+    list_del = list(ds_l4.attrs.keys())
+    for a in list_del:
+        del ds_l4.attrs[a]
+    df_l4 = ds_l4.to_dataframe()
+    
+    var_list = []
+    for v in df_l4.columns:
+        if 'd_t_i_' in v:
+            continue
+        if 't_i_' in v:
+            continue
 
-    fig, ax = plt.subplots(3,1,sharex=True,figsize=(8,12))
-    for i, v in enumerate(['gps_lat', 'gps_lon', 'gps_alt']):
-        ds1[v].plot(label='observed', marker='.', ax=ax[i])
-        if v == 'gps_alt':
-            alpha=8
-        else:
-            alpha=6
-        _, breaks = find_breaks(ds1[v].to_series(), alpha=alpha)
+        if '_std' in v:
+            continue
+        if '_q' in v:
+            continue
+        if 'gps' in v:
+            continue
+        if v in ['rec','min_y','lat','lon','alt','lat_avg','lon_avg','alt_avg',
+                 'rh_i_cor', 'msg_lat','msg_lon','msg_i', 'batt_v_ss', 'fan_dc_u', 
+                 'fan_dc_l']:
+            continue
+        if df_l4[v].isnull().all():
+            print(v, 'full of NaN')
+            continue
+        var_list.append(v)
         
-        v=v.replace('gps_','').replace('alt','elev')
-        if v not in ds1.data_vars: 
-            print('no',v,'at',station)
-            continue
-        if ds1[v].isnull().all(): 
-            print('no',v,'at',station)
-            continue
-        ds1[v].plot(label='smoothed and interpolated', alpha=0.8, ax=ax[i])
-        for time in breaks:
-            if time:
-                ax[i].axvline(time,ls='--',c='k')
-        ax[i].axvline(np.nan,ls='--',label='detected maintenance',c='k')
-        ax[i].set_ylabel(v)
-        ax[i].legend()
-        ax[i].grid()
+    # var_list = var_list + ['gps_lat', 'gps_lon','gps_alt','t_i_all', 'd_t_i_all']
+    # var_list_list = [var_list[i:i+7] for i in range(0, len(var_list), 7)]
+    var_list_list = [np.array(['gps_lat', 'gps_lon','gps_alt','t_i_all', 'd_t_i_all']),
+                 np.array([v for v in var_list if 'z_' in v]+['snow_height'])]
+    for k, var_list in enumerate(var_list_list):
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
+        if len(var_list)==1:
+            ax_list = [ax_list]
+        
+        for var, ax in zip(var_list, ax_list):
+            if 'all' in var:
+                var_name = '_'.join(var.split('_')[:-1])+'_'
+                var = [var_name+str(i) for i in range(1,12) if var_name+str(i) in df_l4.columns]
+            if 'gps_' in var:
+                var_name = var.split('_')[-1]
+                var = ['gps_'+var_name, var_name, var_name+'_avg']
+            if isinstance(var, list):
+                for v in var:
+                    if '_avg' in v:
+                        ax.plot(df_l4[v].index, df_l4[v].values, 
+                                c='k', ls='--',
+                                label=v,alpha=0.7)
+                    else:
+                        ax.plot(df_l4[v].index, df_l4[v].values, 
+                                marker='.',markeredgecolor='None', ls='None',
+                                label=v,alpha=0.7)                
+                try:
+                    ax.set_ylabel(ds_l4[var[0]].units)
+                except:
+                    print(var[0], 'does not have unit')
+                ax.legend(ncol=3)
+            else:
+                ax.plot(df_l4[var].index, df_l4[var].values, 
+                        label=var,
+                        marker='.', color='tab:orange')            
+                try:
+                    ax.set_ylabel(ds_l4[var].units)
+                except:
+                    print(var, 'does not have unit')
+                ax.legend()
+            ax.grid()
 
-    ax[0].set_title(station)
-    fig.savefig('figures/GPS_postproc/'+station+'.png',dpi=300)
-    Msg('![%s](../figures/GPS_postproc/%s.png)'%(station, station))
+        plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
+        fig.savefig('figures/plot_l4/%s_%i.png'%(station,k), dpi=300)
+        Msg('![%s](../figures/plot_l4/%s_%i.png)'%(station, station,k))
+    Msg(' ')
+f.close()
