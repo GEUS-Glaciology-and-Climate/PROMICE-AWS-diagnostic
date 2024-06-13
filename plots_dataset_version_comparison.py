@@ -15,8 +15,8 @@ import os
 import tocgen
 
 
-new_version = 'aws-l3'
-old_version = 'V18'
+new_version = 'aws-l3-dev'
+old_version = 'aws-l3'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
@@ -27,6 +27,7 @@ if 'dev' in new_version:
     path_l3 = '../aws-l3/level_3/'
     path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
     df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
+    df_meta2 = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
 else:
     path_l3 = '../aws-l3/'
@@ -34,7 +35,7 @@ else:
     df_meta2 = pd.read_csv(path_l3+'/AWS_metadata.csv')
     path_l3 = '../aws-l3/level_3/'
     # path_l3 = 'C:/Users/bav/Downloads/V15/hour/'
-    path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
+    # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
     # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_time_csv/level_3/hour/'
     # path_l3 = 'https://thredds.geus.dk/thredds/dodsC/aws_l3_time_netcdf/level_3/hour/'
     
@@ -59,12 +60,11 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 plt.close('all')
 
 #%%
-from pypromice.process import getVars, getMeta, addMeta, getColNames, \
-    roundValues, resampleL3, writeAll
+
 import xarray as xr
 import numpy as np
-for station in ['KAN_U']: #
-# for station in np.unique(pd.concat((df_meta.stid,df_meta2.stid))):
+# for station in ['KAN_U']: #
+for station in np.unique(pd.concat((df_meta.stid,df_meta2.stid))):
     Msg('## '+station)
     file = path_l3+station+'_hour.csv'
     try:
@@ -82,9 +82,9 @@ for station in ['KAN_U']: #
     #     'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'+station+'/'+station+'_hour.csv', 
     #     index_col=0, parse_dates=True)
     
-    if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
-        Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
-        continue
+    # if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
+    #     Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
+    #     continue
     try:
         file = path_old+station+'/'+station+'_hour.csv'
         df_old = pd.read_csv(file)

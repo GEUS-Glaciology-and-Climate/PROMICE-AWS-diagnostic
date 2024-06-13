@@ -21,11 +21,13 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-from pypromice.process import AWS, resampleL3
-from pypromice.process.L3toL4 import toL4
-from pypromice.process import getVars, getMeta, addMeta, getColNames, \
-    roundValues,  writeCSV, writeNC
-from pypromice.process.join_l4 import join_l4
+from pypromice.process import AWS
+from pypromice.process.resample import resample_dataset
+from pypromice.process.write import getColNames, writeCSV, writeNC, prepare_and_write
+from pypromice.process.join_levels import join_levels
+from pypromice.process.load import getVars, getMeta
+from pypromice.process.utilities import roundValues, addVars, addMeta
+from pypromice.process.L2toL3 import toL3
 import xarray as xr
 import os
 
@@ -80,89 +82,67 @@ def loadArr(infile):
     print(f'{name} array loaded from {infile}')
     return ds, name
 
-def makeL3(station):
+def makeL2_merged(station):
     config_file = path_to_l0 + '/tx/config/{}.toml'.format(station)
     if os.path.isfile(config_file):
         inpath = path_to_l0 + '/tx/'
         pAWS_all = AWS(config_file, inpath, var_file=vari)
-        pAWS_all.process()
+        pAWS_all.getL1()
+        pAWS_all.getL2()
         try:
             config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
             inpath = path_to_l0 + '/raw/'+station+'/'
             pAWS_raw = AWS(config_file, inpath)
-            pAWS_raw.process()
-            all_ds = pAWS_raw.L3.combine_first(pAWS_all.L3)
+            pAWS_raw.getL1()
+            pAWS_raw.getL2()
+            all_ds = pAWS_raw.L2.combine_first(pAWS_all.L2)
         except:
             print('No raw logger file for',station)
-            all_ds = pAWS_all.L3
+            all_ds = pAWS_all.L2
     else:
         print('No transmission toml file for',station)
         config_file = path_to_l0 + '/raw/config/{}.toml'.format(station)
         inpath = path_to_l0 + '/raw/'+station+'/'
         pAWS_raw = AWS(config_file, inpath)
-        # pAWS_raw.getL1()
-        pAWS_raw.process()
-        ds = pAWS_raw.L1A.copy(deep=True)
-        
-        ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
-        
-        all_ds = pAWS_raw.L3
+        pAWS_raw.getL1()
+        pAWS_raw.getL2()
+        all_ds = pAWS_raw.L2
 
     # Get hourly, daily and monthly datasets
-    print('Resampling L3 data to hourly, daily and monthly resolutions...')
-    l3_h = resampleL3(all_ds, '60min')
-    # l3_d = resampleL3(all_ds, '1D')
-    # l3_m = resampleL3(all_ds, 'M')
-    
-    print(f'Adding variable information...')
-    # Load variables look-up table
-    var = getVars()
-        	
-    # Round all values to specified decimals places
-    l3_h = roundValues(l3_h, var)
-    # l3_d = roundValues(l3_d, var)
-    # l3_m = roundValues(l3_m, var)
-        
-    # Get columns to keep
-    if hasattr(all_ds, 'p_l'):
-        col_names = getColNames(var, 2, 'raw')  
-    else:
-        col_names = getColNames(var, 1, 'raw')    
-
-    # Assign station id
-    l3_h.attrs['station_id'] = station
-    
-    # Assign metadata
-    print(f'Adding metadata...')
+    print('Resampling L2 data to hourly and printing to file')
+    # Define variables and metadata (either from file or pypromice package defaults)
+    v = getVars()
     m = getMeta()
-    l3_h = addMeta(l3_h, m)
-    # l3_d = addMeta(l3_d, m)
-    # l3_m = addMeta(l3_m, m)
-      
-    # Set up output path
-    outpath = os.path.join('L3_test', station)
+
+    # Write Level 2 dataset to file if output directory given
+
+    prepare_and_write(all_ds, 'L2_test', v, m, '60min', resample = True)
+        
     
-    # Write to files
-    if not os.path.isdir(outpath):
-        os.mkdir(outpath)
-    outfile_h = os.path.join(outpath, station + '_hour')
 
-    writeCSV(outfile_h+'.csv', l3_h, csv_order=None)
-    writeNC(outfile_h+'.nc', l3_h)
-
-
-# for station in ['KAN_B']:
-for station in df_metadata.stid:
+# %%
+for station in ['CEN1']:
+# for station in df_metadata.stid:
     plt.close('all')
 
     station = station.replace('.csv','')
-    infile = 'L3_test/'+station+'/'+station+'_hour.nc'
+    infile = 'L2_test/'+station+'/'+station+'_hour.nc'
     print(station)
 
-    if not os.path.isfile(infile):
-        makeL3(station)
-    # makeL3(station)
-    # ds1, n1 = loadArr(infile)
+    # if not os.path.isfile(infile):
+    makeL2_merged(station)
+
+    l2 = xr.open_dataset(infile)
+    l2.attrs['bedrock'] = l2.attrs['bedrock'] == 'True'
+    l2.attrs['number_of_booms'] = int(l2.attrs['number_of_booms'] )
+
+    l3 = toL3(l2)
+    l2.close()
+    print('Resampling L3 data to hourly and printing to file')
+
+    # Write Level 2 dataset to file if output directory given
+    prepare_and_write(l3, 'L3_test', getVars(), getMeta(), '60min')
+    # %% 
     debug_args=['-s=L3_test/'+station+'/'+station+'_hour.nc',
         # '-g=C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly/',
         # '-p=L3_test/',
