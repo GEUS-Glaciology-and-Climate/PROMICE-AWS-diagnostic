@@ -913,3 +913,316 @@ Old variables removed from new files:
 ![TAS_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TAS_U_0.png)
 ![TAS_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TAS_U_1.png)
 ![TAS_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TAS_U_2.png)
+![TAS_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TAS_U_3.png)
+![TAS_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TAS_U_4.png)
+![TAS_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TAS_U_5.png)
+![TAS_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TAS_U_6.png)
+ 
+## THU_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_q, batt_v, batt_v_ss, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_q, batt_v_ss
+
+Old variables removed from new files:
+
+ 
+![THU_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L_0.png)
+![THU_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L_1.png)
+![THU_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L_2.png)
+![THU_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L_3.png)
+![THU_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L_4.png)
+![THU_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L_5.png)
+![THU_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L_6.png)
+ 
+## THU_L2
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_q, batt_v, batt_v_ss, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_q, batt_v_ss
+
+Old variables removed from new files:
+
+ 
+![THU_L2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L2_0.png)
+![THU_L2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L2_1.png)
+![THU_L2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L2_2.png)
+![THU_L2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L2_3.png)
+![THU_L2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L2_4.png)
+![THU_L2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L2_5.png)
+![THU_L2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_L2_6.png)
+ 
+## THU_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_q, batt_v, batt_v_ss, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_q, batt_v_ss
+
+Old variables removed from new files:
+
+ 
+![THU_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U_0.png)
+![THU_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U_1.png)
+![THU_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U_2.png)
+![THU_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U_3.png)
+![THU_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U_4.png)
+![THU_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U_5.png)
+![THU_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U_6.png)
+ 
+## THU_U2
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_q, batt_v, batt_v_ss, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_q, batt_v_ss
+
+Old variables removed from new files:
+
+ 
+![THU_U2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2_0.png)
+![THU_U2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2_1.png)
+![THU_U2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2_2.png)
+![THU_U2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2_3.png)
+![THU_U2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2_4.png)
+![THU_U2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2_5.png)
+![THU_U2](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2_6.png)
+ 
+## THU_U2v3
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![THU_U2v3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2v3_0.png)
+![THU_U2v3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2v3_1.png)
+![THU_U2v3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2v3_2.png)
+![THU_U2v3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2v3_3.png)
+![THU_U2v3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2v3_4.png)
+![THU_U2v3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2v3_5.png)
+![THU_U2v3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/THU_U2v3_6.png)
+ 
+## TUN
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_cor, qh_u, rh_l, rh_l_cor, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_numsat, gps_q, batt_v, fan_dc_u, fan_dc_l, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_geoid, gps_numsat, gps_q, t_log
+
+Old variables removed from new files:
+
+ 
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_0.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_1.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_2.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_3.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_4.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_5.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_6.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_7.png)
+![TUN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/TUN_8.png)
+ 
+## UPE_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_q, batt_v, batt_v_ss, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_q, batt_v_ss
+
+Old variables removed from new files:
+
+ 
+![UPE_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_L_0.png)
+![UPE_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_L_1.png)
+![UPE_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_L_2.png)
+![UPE_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_L_3.png)
+![UPE_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_L_4.png)
+![UPE_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_L_5.png)
+![UPE_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_L_6.png)
+ 
+## UPE_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_q, batt_v, batt_v_ss, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_q, batt_v_ss
+
+Old variables removed from new files:
+
+ 
+![UPE_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_U_0.png)
+![UPE_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_U_1.png)
+![UPE_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_U_2.png)
+![UPE_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_U_3.png)
+![UPE_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_U_4.png)
+![UPE_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_U_5.png)
+![UPE_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UPE_U_6.png)
+ 
+## UWN
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![UWN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UWN_0.png)
+![UWN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UWN_1.png)
+![UWN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UWN_2.png)
+![UWN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UWN_3.png)
+![UWN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UWN_4.png)
+![UWN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UWN_5.png)
+![UWN](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/UWN_6.png)
+ 
+## WEG_B
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, t_surf, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![WEG_B](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_B_0.png)
+![WEG_B](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_B_1.png)
+![WEG_B](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_B_2.png)
+![WEG_B](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_B_3.png)
+![WEG_B](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_B_4.png)
+![WEG_B](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_B_5.png)
+ 
+## WEG_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![WEG_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_L_0.png)
+![WEG_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_L_1.png)
+![WEG_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_L_2.png)
+![WEG_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_L_3.png)
+![WEG_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_L_4.png)
+![WEG_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_L_5.png)
+![WEG_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/WEG_L_6.png)
+ 
+## XXX
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![XXX](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/XXX_0.png)
+![XXX](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/XXX_1.png)
+![XXX](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/XXX_2.png)
+![XXX](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/XXX_3.png)
+![XXX](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/XXX_4.png)
+![XXX](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/XXX_5.png)
+![XXX](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/XXX_6.png)
+ 
+## ZAK_A
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_cor, qh_u, rh_l, rh_l_cor, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_hdop, batt_v, fan_dc_u, fan_dc_l, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_0.png)
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_1.png)
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_2.png)
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_3.png)
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_4.png)
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_5.png)
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_6.png)
+![ZAK_A](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_A_7.png)
+ 
+## ZAK_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, gps_numsat, gps_q, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+gps_numsat, gps_q
+
+Old variables removed from new files:
+
+ 
+![ZAK_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_L_0.png)
+![ZAK_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_L_1.png)
+![ZAK_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_L_2.png)
+![ZAK_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_L_3.png)
+![ZAK_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_L_4.png)
+![ZAK_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_L_5.png)
+![ZAK_L](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_L_6.png)
+ 
+## ZAK_Lv3
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![ZAK_Lv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Lv3_0.png)
+![ZAK_Lv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Lv3_1.png)
+![ZAK_Lv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Lv3_2.png)
+![ZAK_Lv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Lv3_3.png)
+![ZAK_Lv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Lv3_4.png)
+![ZAK_Lv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Lv3_5.png)
+![ZAK_Lv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Lv3_6.png)
+ 
+## ZAK_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![ZAK_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_U_0.png)
+![ZAK_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_U_1.png)
+![ZAK_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_U_2.png)
+![ZAK_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_U_3.png)
+![ZAK_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_U_4.png)
+![ZAK_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_U_5.png)
+![ZAK_U](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_U_6.png)
+ 
+## ZAK_Uv3
+Variables in new file:
+p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, gps_time, gps_geoid, gps_hdop, batt_v, fan_dc_u, t_log, t_rad, p_i, t_i, rh_i, rh_i_cor, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![ZAK_Uv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Uv3_0.png)
+![ZAK_Uv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Uv3_1.png)
+![ZAK_Uv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Uv3_2.png)
+![ZAK_Uv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Uv3_3.png)
+![ZAK_Uv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Uv3_4.png)
+![ZAK_Uv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Uv3_5.png)
+![ZAK_Uv3](../figures/aws-l3_versus_aws-l3-dev_20240613_scatter/ZAK_Uv3_6.png)
+ 
