@@ -19,7 +19,7 @@ matplotlib.use('Agg')
 import tocgen
 
 # def main(
-path_new = '../aws-l3/level_3/'
+path_new = '../aws-l3-dev/stations/'
 filename = 'plot_compilations/GPS_data.md'
 df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
 df_meta2 = pd.read_csv(path_new+'../AWS_metadata.csv')
@@ -30,14 +30,12 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
 station_list = np.unique(pd.concat((df_meta.stid,df_meta2.stid)))
-for station in station_list:
+for station in station_list[18:]:
     Msg('## '+station)
     df_new = pd.read_csv(path_new+station+'/'+station+'_hour.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
     
-    var_list = ['gps_numsat', 'gps_q', 'batt_v_ini'] #df_new.columns.values
-    var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
     var_list_list = [['gps_lat','gps_lon','gps_alt']]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
@@ -45,23 +43,18 @@ for station in station_list:
             ax_list = [ax_list]
         
         for var, ax in zip(var_list, ax_list):
-            if var not in df_new.columns:
-                Msg('no data for '+var)
-                plt.close(fig)
-                continue
-            if df_new[var].isnull().all():
-                Msg('no data for '+var)
-                plt.close(fig)
-                continue
-            
-            ax.set_ylabel(var)       
-            ax.plot(df_new[var].index, df_new[var].values, 
-                    marker='.',markeredgecolor='None', linestyle='None', 
-                    color='tab:orange')  
-            smoothed = df_new[var].rolling(2*7*24, center=True, min_periods=6).median().interpolate()
-            ax.plot(smoothed.index, smoothed.values, 
-                    color='tab:green')  
+            if var in df_new.columns:
+                if not df_new[var].isnull().all():                
+                    ax.plot(df_new.index, df_new[var].values, 
+                            marker='.',markeredgecolor='None', linestyle='None', 
+                            color='tab:orange',label=var)  
+            if var.replace('gps_','') in df_new.columns:
+                ax.plot(df_new.index, df_new[var.replace('gps_','')].values, 
+                        marker='.',markeredgecolor='None', linestyle='None', 
+                        color='tab:green', label=var.replace('gps_',''))  
+            ax.set_ylabel(var.replace('gps_',''))       
             ax.grid()
+            ax.legend()
         
         no_save = 1
         for ax in ax_list:
@@ -72,6 +65,10 @@ for station in station_list:
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig('figures/GPS/%s_%i.png'%(station,k))
         Msg('![%s](../figures/GPS/%s_%i.png)'%(station, station,k))
+    df_m = pd.read_csv(path_new+station+'/'+station+'_month.csv')
+    df_m.time = pd.to_datetime(df_m.time, utc=True)
+    df_m = df_m.set_index('time')
+    df_m[[v for v in ['lat','lon','alt'] if v in df_m.columns]].to_csv('figures/GPS/coordinates/%s.csv'%station)
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()

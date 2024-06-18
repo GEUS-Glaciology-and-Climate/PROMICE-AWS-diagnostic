@@ -1,56 +1,3 @@
-## CEN1
-![CEN1](../figures/GPS/CEN1_0.png)
- 
-## CEN2
-![CEN2](../figures/GPS/CEN2_0.png)
- 
-## CP1
-![CP1](../figures/GPS/CP1_0.png)
- 
-## DY2
-![DY2](../figures/GPS/DY2_0.png)
- 
-## EGP
-![EGP](../figures/GPS/EGP_0.png)
- 
-## FRE
-![FRE](../figures/GPS/FRE_0.png)
- 
-## HUM
-![HUM](../figures/GPS/HUM_0.png)
- 
-## JAR
-![JAR](../figures/GPS/JAR_0.png)
- 
-## JAR_O
-![JAR_O](../figures/GPS/JAR_O_0.png)
- 
-## KAN_B
-no data for gps_lat
-no data for gps_lon
-no data for gps_alt
- 
-## KAN_L
-![KAN_L](../figures/GPS/KAN_L_0.png)
- 
-## KAN_Lv3
-![KAN_Lv3](../figures/GPS/KAN_Lv3_0.png)
- 
-## KAN_M
-![KAN_M](../figures/GPS/KAN_M_0.png)
- 
-## KAN_U
-![KAN_U](../figures/GPS/KAN_U_0.png)
- 
-## KPC_L
-![KPC_L](../figures/GPS/KPC_L_0.png)
- 
-## KPC_Lv3
-![KPC_Lv3](../figures/GPS/KPC_Lv3_0.png)
- 
-## KPC_U
-![KPC_U](../figures/GPS/KPC_U_0.png)
- 
 ## KPC_Uv3
 ![KPC_Uv3](../figures/GPS/KPC_Uv3_0.png)
  
@@ -158,6 +105,9 @@ no data for gps_alt
  
 ## THU_U2
 ![THU_U2](../figures/GPS/THU_U2_0.png)
+ 
+## THU_U2v3
+![THU_U2v3](../figures/GPS/THU_U2v3_0.png)
  
 ## TUN
 ![TUN](../figures/GPS/TUN_0.png)
