@@ -24,24 +24,25 @@ path_l2 = 'L2_test/'
 df_latest_loc = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
-for station in ['KPC_Uv3']:
+for station in ['KPC_U']:
 # for station in np.unique(np.array(all_dirs)): 
         
     # Loading the L1 data:
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
     output_path = 'L2_test'
+    
     print("\n ======== test get_l2 ========= \n")
     if os.path.isfile(config_file_tx):
         inpath = path_to_l0 + '/tx/'
-        # pAWS_tx = get_l2(config_file_tx, inpath, output_path+'/tx/',None,None)
+        pAWS_tx = get_l2(config_file_tx, inpath, output_path+'/tx/',None,None)
 
     else:
         pAWS_tx = None
         
     if os.path.isfile(config_file_raw):
         inpath = path_to_l0 + '/raw/'+station+'/'
-        # pAWS_raw = get_l2(config_file_raw, inpath,  output_path+'/raw/',None,None)
+        pAWS_raw = get_l2(config_file_raw, inpath,  output_path+'/raw/',None,None)
     else:
         pAWS_raw = None
         
@@ -63,7 +64,8 @@ df_latest_loc = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_lat
 df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_metadata.csv')
     
 outpath = 'L3_test/stations/'
-for station in ['KAN_L']:
+print("\n ======== test l2tol3 ========= \n")
+for station in ['KPC_U']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
@@ -80,8 +82,9 @@ df_metadata = pd.read_csv('../aws-l3-dev/AWS_metadata.csv')
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/sites/'
 folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly'
+print("\n ======== test join_l3 ========= \n")
 
-for site in ['KAN_L']:
+for site in ['KPC_U']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
     
