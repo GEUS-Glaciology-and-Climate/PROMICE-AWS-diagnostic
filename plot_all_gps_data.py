@@ -77,11 +77,17 @@ f.close()
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
-import os
-import tocgen
+import sys
+import matplotlib
+matplotlib.use('Agg')
 import xarray as xr
 from pypromice.process.L2toL3 import toL3
+import logging
+logging.basicConfig(
+    format="%(asctime)s; %(levelname)s; %(name)s; %(message)s",
+    level=logging.INFO,
+    stream=sys.stdout,
+)
 
 path_l2 = '../aws-l2-dev/level_2/'
 path_l3 = '../aws-l3-dev/'
@@ -90,7 +96,7 @@ df_meta2 = pd.read_csv(path_l3+'/AWS_metadata.csv')
 plt.close('all')
 station_list = np.unique(pd.concat((df_meta.stid,df_meta2.stid)))
 for station in station_list:
-# for station in [ 'KPC_L']:
+# for station in [ 'KAN_L']:
     print(station)
     inpath = path_l2 + station+'/'+station+ '_hour.nc'
     # Define Level 2 dataset from file
@@ -128,4 +134,5 @@ for station in station_list:
             ax.set_ylabel(var.replace('gps_',''))       
             ax.grid()
             ax.legend()
+        plt.suptitle(station)
         fig.savefig('figures/GPS_postproc/'+station+'.png',dpi=300)
