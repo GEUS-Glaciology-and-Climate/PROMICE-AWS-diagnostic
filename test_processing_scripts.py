@@ -24,7 +24,7 @@ path_l2 = 'L2_test/'
 df_latest_loc = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
-for station in ['KPC_U']:
+for station in ['KAN_Lv3']:
 # for station in np.unique(np.array(all_dirs)): 
         
     # Loading the L1 data:
@@ -65,7 +65,7 @@ df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_metad
     
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
-for station in ['KPC_U']:
+for station in ['KAN_L']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
@@ -84,7 +84,7 @@ outpath = 'L3_test/sites/'
 folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['KPC_U']:
+for site in ['CEN']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
     

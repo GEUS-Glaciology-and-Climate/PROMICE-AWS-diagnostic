@@ -72,8 +72,60 @@ for station in station_list[18:]:
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()
-# os.remove(filename)
-# os.rename(filename[:-3]+"_toc.md", filename)
 
-# if __name__ == '__main__':
-#     main()
+# %% reprocessing
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import os
+import tocgen
+import xarray as xr
+from pypromice.process.L2toL3 import toL3
+
+path_l2 = '../aws-l2-dev/level_2/'
+path_l3 = '../aws-l3-dev/'
+df_meta = pd.read_csv(path_l3+'/AWS_latest_locations.csv')
+df_meta2 = pd.read_csv(path_l3+'/AWS_metadata.csv')
+plt.close('all')
+station_list = np.unique(pd.concat((df_meta.stid,df_meta2.stid)))
+for station in station_list:
+# for station in [ 'KPC_L']:
+    print(station)
+    inpath = path_l2 + station+'/'+station+ '_hour.nc'
+    # Define Level 2 dataset from file
+    with xr.open_dataset(inpath) as l2:
+        l2.load()
+    
+    # Remove encoding attributes from NetCDF
+    for varname in l2.variables:
+       if l2[varname].encoding!={}:
+           l2[varname].encoding = {}  
+            
+    if 'bedrock' in l2.attrs.keys():
+        l2.attrs['bedrock'] = l2.attrs['bedrock'] == 'True'
+    if 'number_of_booms' in l2.attrs.keys():
+        l2.attrs['number_of_booms'] = int(l2.attrs['number_of_booms'])
+
+    l3 = toL3(l2).to_dataframe()
+
+    var_list_list = [['gps_lat','gps_lon','gps_alt']]
+    for k, var_list in enumerate(var_list_list):
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
+        if len(var_list)==1:
+            ax_list = [ax_list]
+        
+        for var, ax in zip(var_list, ax_list):
+            if var in l3.columns:
+                if not l3[var].isnull().all():                
+                    ax.plot(l3.index, l3[var].values, 
+                            marker='o',markeredgecolor='None', linestyle='None', 
+                            color='tab:orange',label=var)  
+            if var.replace('gps_','') in l3.columns:
+                ax.plot(l3.index, l3[var.replace('gps_','')].values, 
+                        color='tab:green', label=var.replace('gps_',''))  
+
+            ax.set_ylabel(var.replace('gps_',''))       
+            ax.grid()
+            ax.legend()
+        fig.savefig('figures/GPS_postproc/'+station+'.png',dpi=300)
