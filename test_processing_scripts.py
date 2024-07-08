@@ -24,7 +24,7 @@ path_l2 = 'L2_test/'
 df_latest_loc = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
-for station in ['KAN_Lv3']:
+for station in ['EGP']:
 # for station in np.unique(np.array(all_dirs)): 
         
     # Loading the L1 data:
@@ -58,11 +58,12 @@ for station in ['KAN_Lv3']:
 import pandas as pd
 import logging, os
 from pypromice.process.get_l2tol3 import get_l2tol3
-
+import matplotlib.pyplot as plt
 path_l2 = 'L2_test/level_2/'
 df_latest_loc = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_latest_locations.csv')
 df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_metadata.csv')
     
+config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 for station in ['KAN_L']:
@@ -70,8 +71,14 @@ for station in ['KAN_L']:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
     print(station)
-    l3 = get_l2tol3(inpath, outpath, None, None)
-    
+    l3 = get_l2tol3(config_folder, inpath, outpath, None, None)
+    plt.figure()
+    l3['z_surf_1'].plot()
+    l3['z_surf_2'].plot()
+    l3['z_surf_combined'].plot()
+    plt.figure()
+    l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()    
+    plt.gca().invert_yaxis()
 # %% test join_l3
 from pypromice.process.join_l3 import join_l3
 import pandas as pd
@@ -84,7 +91,7 @@ outpath = 'L3_test/sites/'
 folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['CEN']:
+for site in ['DY2']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
     
