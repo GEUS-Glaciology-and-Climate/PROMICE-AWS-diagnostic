@@ -24,20 +24,19 @@ else:
     path_old = 'C:/Users/bav/Downloads/'+old_version+'/hour/'
 
 if 'dev' in new_version:
-    path_l3 = '../aws-l3/level_3/'
-    path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
-    df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-    df_meta2 = pd.read_csv(path_l3+'../AWS_metadata.csv')
+    path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/stations/'
+    df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
+    df_meta2 = pd.read_csv(path_new+'../AWS_metadata.csv')
 
 else:
-    path_l3 = '../aws-l3/'
-    df_meta = pd.read_csv(path_l3+'/AWS_latest_locations.csv')
-    df_meta2 = pd.read_csv(path_l3+'/AWS_metadata.csv')
-    path_l3 = '../aws-l3/level_3/'
-    # path_l3 = 'C:/Users/bav/Downloads/V15/hour/'
-    # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
-    # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_time_csv/level_3/hour/'
-    # path_l3 = 'https://thredds.geus.dk/thredds/dodsC/aws_l3_time_netcdf/level_3/hour/'
+    path_new = '../aws-l3/'
+    df_meta = pd.read_csv(path_new+'/AWS_latest_locations.csv')
+    df_meta2 = pd.read_csv(path_new+'/AWS_metadata.csv')
+    path_new = '../aws-l3/level_3/'
+    # path_new = 'C:/Users/bav/Downloads/V15/hour/'
+    # path_new = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
+    # path_new = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_time_csv/level_3/hour/'
+    # path_new = 'https://thredds.geus.dk/thredds/dodsC/aws_l3_time_netcdf/level_3/hour/'
     
 from datetime import date
 today = date.today().strftime("%Y%m%d")
@@ -60,21 +59,28 @@ Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 plt.close('all')
 
 #%%
-
+import toml
 import xarray as xr
 import numpy as np
 # for station in ['KAN_U']: #
 for station in np.unique(pd.concat((df_meta.stid,df_meta2.stid))):
     Msg('## '+station)
-    file = path_l3+station+'_hour.csv'
+    # if path_new == 'aws-l3-dev':
+    #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
+    #     with open(config_path, 'r') as file:
+    #         data = toml.load(file)  # Load the TOML file
+    #     station_save=station
+    #     station = data.get("station_site")  # Get the station site
+
+    file = path_new+station+'_hour.csv'
     try:
         df_new = pd.read_csv(file, index_col=0, parse_dates=True)
     except:
-        file = path_l3+station+'/'+station+'_hour.csv'
+        file = path_new+station+'/'+station+'_hour.csv'
         try:
             df_new = pd.read_csv(file, index_col=0, parse_dates=True)
         except:
-            file = path_l3+station+'/'+station+'_10min.csv'
+            file = path_new+station+'/'+station+'_10min.csv'
             df_new = pd.read_csv(file, index_col=0, parse_dates=True)
         
     # df_new = pd.read_csv('../aws-l3/'+station+'_hour.csv', index_col=0, parse_dates=True)
@@ -85,6 +91,9 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.stid))):
     # if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
     #     Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
     #     continue
+    # if path_l3 == 'aws-l3-dev':
+    #     station = station_save
+
     try:
         file = path_old+station+'/'+station+'_hour.csv'
         df_old = pd.read_csv(file)
@@ -122,7 +131,7 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.stid))):
                         alpha=0.7, color='tab:blue')
             except:
                 print(var,'not in old data')
-                continue
+                
         
             ax.plot(df_new[var].index, df_new[var].values, 
                     marker='.',markeredgecolor='None', linestyle='None', 
@@ -161,18 +170,18 @@ else:
     path_old = 'C:/Users/bav/Downloads/'+old_version+'/hour/'
 
 if 'dev' in new_version:
-    path_l3 = '../aws-l3/level_3/'
-    path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
-    df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-    df_meta2 = pd.read_csv(path_l3+'../AWS_metadata.csv')
+    path_new = '../aws-l3/level_3/'
+    path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+    df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
+    df_meta2 = pd.read_csv(path_new+'../AWS_metadata.csv')
 
 else:
-    path_l3 = '../aws-l3/'
+    path_new = '../aws-l3/'
     df_meta = pd.read_csv(path_l3+'/AWS_latest_locations.csv')
     df_meta2 = pd.read_csv(path_l3+'/AWS_metadata.csv')
     path_l3 = '../aws-l3/level_3/'
     # path_l3 = 'C:/Users/bav/Downloads/V15/hour/'
-    # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
+    # path_new = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
     # path_l3 = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_time_csv/level_3/hour/'
     # path_l3 = 'https://thredds.geus.dk/thredds/dodsC/aws_l3_time_netcdf/level_3/hour/'
     

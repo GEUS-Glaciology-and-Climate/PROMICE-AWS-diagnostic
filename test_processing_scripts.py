@@ -24,7 +24,7 @@ path_l2 = 'L2_test/'
 df_latest_loc = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
 
-for station in ['EGP']:
+for station in ['XXX']:
 # for station in np.unique(np.array(all_dirs)): 
         
     # Loading the L1 data:
@@ -66,7 +66,7 @@ df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_metad
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
-for station in ['KAN_L']:
+for station in ['XXX']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
