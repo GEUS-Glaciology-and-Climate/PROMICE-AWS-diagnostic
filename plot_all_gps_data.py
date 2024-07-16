@@ -29,10 +29,15 @@ def Msg(txt):
     f = open(filename, "a")
     print(txt)
     f.write(txt + "\n")
-
+plt.close('all')
+gnss_df = pd.read_csv('ancil/GEUS_GC-Net_precise_locations.csv').set_index(data_type[:-1])
+gnss_df['date'] = pd.to_datetime(gnss_df.date,dayfirst=True)
 # for station in df_meta.index:
-for station in ['SCO_L']:
+# for station in ['SCO_L']:
+for station in np.unique(gnss_df.index):
     Msg('## '+station)
+    if not os.path.isfile(path_new+station+'/'+station+'_hour.csv'):
+        continue
     df_new = pd.read_csv(path_new+station+'/'+station+'_hour.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
@@ -51,19 +56,28 @@ for station in ['SCO_L']:
                             color='tab:orange',label=var)  
             if var.replace('gps_','') in df_new.columns:
                 ax.plot(df_new.index, df_new[var.replace('gps_','')].values, 
-                        marker='.',markeredgecolor='None', linestyle='None', 
-                        color='tab:green', label=var.replace('gps_',''))  
+                        color='tab:green', label=var.replace('gps_',''))
+            if var == 'gps_alt':
+                ax.plot(gnss_df.loc[station,'date'],
+                        gnss_df.loc[station,var.replace('gps_','').replace('alt','orthometric_height_m')],
+                        marker='o',ls='None', label='GNSS survey: orthometric height')
+                ax.plot(gnss_df.loc[station,'date'],
+                        gnss_df.loc[station,var.replace('gps_','').replace('alt','ellipsoid_height_m')], 
+                        marker='^',ls='None', color='tab:green', label='GNSS survey: ellipsoid height')
+            else:
+                ax.plot(gnss_df.loc[station,'date'],
+                        gnss_df.loc[station,var.replace('gps_','')],
+                        marker='o',ls='None', label='GNSS survey')
             ax.set_ylabel(var.replace('gps_',''))       
             ax.grid()
-            ax.legend()
-        
+            ax.legend()        
         no_save = 1
         for ax in ax_list:
             if ax.lines: no_save=0
             if ax.collections: no_save=0
         if no_save == 1:
             continue
-        plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
+        plt.suptitle(station)
         fig.savefig('figures/GPS/%s/%s_%i.png'%(data_type, station,k), dpi=300)
         Msg('![%s](../figures/GPS/%s/%s_%i.png)'%(station,data_type, station,k))
     df_m = pd.read_csv(path_new+station+'/'+station+'_month.csv')
