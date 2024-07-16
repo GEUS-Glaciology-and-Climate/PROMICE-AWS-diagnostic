@@ -14,13 +14,13 @@ from sklearn.linear_model import LinearRegression
 import nead
 from pypromice.process import AWS
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 # def main(
 data_type = 'sites'
-path_new = '../tmp/aws-l3-dev/'+data_type+'/'
+path_new = '../aws-l3-dev/'+data_type+'/'
 filename = 'plot_compilations/GPS_'+data_type+'.md'
 df_meta = pd.read_csv(path_new+'../AWS_'+data_type+'_metadata.csv')
 df_meta = df_meta.set_index(data_type[:-1]+'_id')
@@ -30,7 +30,8 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
 
-for station in df_meta.index:
+# for station in df_meta.index:
+for station in ['SCO_L']:
     Msg('## '+station)
     df_new = pd.read_csv(path_new+station+'/'+station+'_hour.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
@@ -38,7 +39,7 @@ for station in df_meta.index:
     
     var_list_list = [['gps_lat','gps_lon','gps_alt']]
     for k, var_list in enumerate(var_list_list):
-        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(8,8))
         if len(var_list)==1:
             ax_list = [ax_list]
         
@@ -63,12 +64,12 @@ for station in df_meta.index:
         if no_save == 1:
             continue
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
-        fig.savefig('figures/GPS/%s/%s_%i.png'%(data_type, station,k))
+        fig.savefig('figures/GPS/%s/%s_%i.png'%(data_type, station,k), dpi=300)
         Msg('![%s](../figures/GPS/%s/%s_%i.png)'%(station,data_type, station,k))
-    # df_m = pd.read_csv(path_new+station+'/'+station+'_month.csv')
-    # df_m.time = pd.to_datetime(df_m.time, utc=True)
-    # df_m = df_m.set_index('time')
-    # df_m[[v for v in ['lat','lon','alt'] if v in df_m.columns]].to_csv('figures/GPS/coordinates/%s.csv'%station)
+    df_m = pd.read_csv(path_new+station+'/'+station+'_month.csv')
+    df_m.time = pd.to_datetime(df_m.time, utc=True)
+    df_m = df_m.set_index('time')
+    df_m[[v for v in ['lat','lon','alt'] if v in df_m.columns]].to_csv('figures/GPS/coordinates_'+data_type+'/%s.csv'%station)
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()
