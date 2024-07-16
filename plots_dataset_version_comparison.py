@@ -26,7 +26,7 @@ else:
 if 'dev' in new_version:
     path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/stations/'
     df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
-    df_meta2 = pd.read_csv(path_new+'../AWS_metadata.csv')
+    df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
 
 else:
     path_new = '../aws-l3/'
@@ -63,7 +63,7 @@ import toml
 import xarray as xr
 import numpy as np
 # for station in ['KAN_U']: #
-for station in np.unique(pd.concat((df_meta.stid,df_meta2.stid))):
+for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'

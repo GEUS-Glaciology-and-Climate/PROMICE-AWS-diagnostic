@@ -21,11 +21,10 @@ path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 
 path_l2 = 'L2_test/'
 
-df_latest_loc = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
+df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
-for station in ['KAN_B']:
-# for station in np.unique(np.array(all_dirs)): 
+for station in ['EGP']:
+# for station in np.unique(np.array(df_metadata.station_id)): 
         
     # Loading the L1 data:
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
@@ -60,20 +59,19 @@ import logging, os
 from pypromice.process.get_l2tol3 import get_l2tol3
 import matplotlib.pyplot as plt
 path_l2 = 'L2_test/level_2/'
-df_latest_loc = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_latest_locations.csv')
-df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_metadata.csv')
+df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_stations_metadata.csv')
     
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
-for station in ['KAN_B']:
+for station in ['EGP']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
     print(station)
     l3 = get_l2tol3(config_folder, inpath, outpath, None, None)
     
-    # %%
+# %% plotting L3 lat, lon alt
     var_list = ['lat','lon','alt']
     fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
     if len(var_list)==1:
@@ -89,30 +87,33 @@ for station in ['KAN_B']:
         ax.set_ylabel(var.replace('gps_',''))       
         ax.grid()
         ax.legend()
-    # %% 
+        
+# %% plotting L3 surface heighta
     plt.figure()
     l3['z_surf_1'].plot()
     l3['z_surf_2'].plot()
     l3['z_surf_combined'].plot()
-    plt.figure()
-    l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()    
-    plt.gca().invert_yaxis()
+    plt.title(station)
+    
+    # plt.figure()
+    # l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()    
+    # plt.gca().invert_yaxis()
 # %% test join_l3
 from pypromice.process.join_l3 import join_l3
 import pandas as pd
 
 path_l3_stations = 'L3_test/stations/'
-df_latest_loc = pd.read_csv('../aws-l3-dev/AWS_latest_locations.csv')
-df_metadata = pd.read_csv('../aws-l3-dev/AWS_metadata.csv')
+df_metadata = pd.read_csv('../aws-l3-dev/AWS_sites_metadata.csv')
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/sites/'
 folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['DY2']:
+for site in ['EGP']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
     
     print(site)
-    l3_merged = join_l3(config_folder, site, path_l3_stations, 
+    l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations, 
                         folder_gcnet, outpath, None, None)
+    
