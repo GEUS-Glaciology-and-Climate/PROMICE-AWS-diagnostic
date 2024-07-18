@@ -10,16 +10,12 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 
-path_l3 = '../aws-l3/level_3/'
+path_l3 = '../aws-l2-dev/level_2/'
 path_tx = '../aws-l3/tx/'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-var_list = [
-    'rh_u', 't_u','wspd_u','p_u','z_boom_u',
-    'rh_i', 't_i','wspd_i','p_i',
-            'dsr',
-            'gps_lat', 'gps_lon', 'gps_alt']
+var_list = ['gps_geoid']
 # var_list = ['t_i_'+str(i) for i in range(1,12)]
 # var_list = [
 #             # 'batt_v', 't_u',
@@ -37,17 +33,19 @@ var_list = [
 # var_list = ['t_u', 't_l','ts']
 # var_list = ['gps_lat', 'gps_lon','gps_alt']
 
-# station_list = df_meta.stid#
-station_list = ['KAN_U']
+station_list = df_meta.stid
+station_list = ['KPC_U']
 
 # plt.close('all')
-
+# gps_info=[]
 for station in station_list:
     print(station)
-    if 'level_3' in path_l3:
+    if 'level' in path_l3:
         df_l3 = pd.read_csv(path_l3+station+'/'+station+'_hour.csv')
     else:
         df_l3 = pd.read_csv(path_l3+station+'/'+station+'_10min.csv')
+    # gps_info=gps_info.append(df_l3['gps_geoid'].drop_duplicates())
+        
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
     if station not in ['NUK_N', 'QAS_A','TAS_U', 'ZAK_L']:

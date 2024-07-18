@@ -23,7 +23,7 @@ path_l2 = 'L2_test/'
 
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
-for station in ['EGP']:
+for station in ['CP1']:
 # for station in np.unique(np.array(df_metadata.station_id)): 
         
     # Loading the L1 data:
@@ -64,26 +64,26 @@ df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_stati
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
-for station in ['EGP']:
+for station in ['CP1']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
     print(station)
     l3 = get_l2tol3(config_folder, inpath, outpath, None, None)
     
-# %% plotting L3 lat, lon alt
+# % plotting L3 lat, lon alt
     var_list = ['lat','lon','alt']
     fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
     if len(var_list)==1:
         ax_list = [ax_list]
     
     for var, ax in zip(var_list, ax_list):
+        if 'gps_'+var in l3.data_vars:
+            l3['gps_'+var].plot(ax=ax,
+                         marker='.',markeredgecolor='None', linestyle='None', 
+                    color='tab:green', label=var.replace('gps_',''))
         l3[var].plot(ax=ax, marker='.',markeredgecolor='None', linestyle='None', 
                         color='tab:orange',label=var)  
-        if 'gps_'+var in l3.data_vars:
-            l3[var].plot(ax=ax,
-                         marker='.',markeredgecolor='None', linestyle='None', 
-                    color='tab:green', label=var.replace('gps_',''))  
         ax.set_ylabel(var.replace('gps_',''))       
         ax.grid()
         ax.legend()

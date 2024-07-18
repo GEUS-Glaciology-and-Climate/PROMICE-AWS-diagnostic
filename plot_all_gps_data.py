@@ -14,8 +14,8 @@ from sklearn.linear_model import LinearRegression
 import nead
 from pypromice.process import AWS
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 # def main(
@@ -30,11 +30,17 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
 plt.close('all')
+
 gnss_df = pd.read_csv('ancil/GEUS_GC-Net_precise_locations.csv').set_index(data_type[:-1])
 gnss_df['date'] = pd.to_datetime(gnss_df.date,dayfirst=True)
+
+gps_obs = pd.read_csv('ancil/GC-Net_observed_coordinates.csv').set_index('name')
+gps_obs['date'] = pd.to_datetime(gps_obs.date,errors='coerce')
+for v in ['lat','lon','elev']:
+    gps_obs[v] = pd.to_numeric(gps_obs[v], errors='coerce')
 # for station in df_meta.index:
-# for station in ['SCO_L']:
-for station in np.unique(gnss_df.index):
+for station in ['JAR']:
+# for station in np.unique(gnss_df.index):
     Msg('## '+station)
     if not os.path.isfile(path_new+station+'/'+station+'_hour.csv'):
         continue
@@ -44,7 +50,8 @@ for station in np.unique(gnss_df.index):
     
     var_list_list = [['gps_lat','gps_lon','gps_alt']]
     for k, var_list in enumerate(var_list_list):
-        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(8,8))
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,8))
+        plt.subplots_adjust(right=0.75,left=0.08)
         if len(var_list)==1:
             ax_list = [ax_list]
         
@@ -57,20 +64,25 @@ for station in np.unique(gnss_df.index):
             if var.replace('gps_','') in df_new.columns:
                 ax.plot(df_new.index, df_new[var.replace('gps_','')].values, 
                         color='tab:green', label=var.replace('gps_',''))
-            if var == 'gps_alt':
-                ax.plot(gnss_df.loc[station,'date'],
-                        gnss_df.loc[station,var.replace('gps_','').replace('alt','orthometric_height_m')],
-                        marker='o',ls='None', label='GNSS survey: orthometric height')
-                ax.plot(gnss_df.loc[station,'date'],
-                        gnss_df.loc[station,var.replace('gps_','').replace('alt','ellipsoid_height_m')], 
-                        marker='^',ls='None', color='tab:green', label='GNSS survey: ellipsoid height')
-            else:
-                ax.plot(gnss_df.loc[station,'date'],
-                        gnss_df.loc[station,var.replace('gps_','')],
-                        marker='o',ls='None', label='GNSS survey')
+            if station in gnss_df.index:
+                if var == 'gps_alt':
+                    ax.plot(gnss_df.loc[station,'date'],
+                            gnss_df.loc[station,var.replace('gps_','').replace('alt','orthometric_height_m')],
+                            marker='o',ls='None', label='GNSS survey: orthometric height')
+                    ax.plot(gnss_df.loc[station,'date'],
+                            gnss_df.loc[station,var.replace('gps_','').replace('alt','ellipsoid_height_m')], 
+                            marker='^',ls='None', color='tab:green', label='GNSS survey: ellipsoid height')
+                else:
+                    ax.plot(gnss_df.loc[station,'date'],
+                            gnss_df.loc[station,var.replace('gps_','')],
+                            marker='o',ls='None', label='GNSS survey')
+            if data_type=='sites' and station in gps_obs.index:
+                ax.plot(gps_obs.loc[station,'date'],
+                        gps_obs.loc[station,var.replace('gps_','').replace('alt','elev')],
+                        marker='d',color='tab:red',ls='None', label='handheld survey')
             ax.set_ylabel(var.replace('gps_',''))       
             ax.grid()
-            ax.legend()        
+            ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))        
         no_save = 1
         for ax in ax_list:
             if ax.lines: no_save=0

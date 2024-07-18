@@ -11,7 +11,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import xarray as xr
-import logging
+import logging, toml
+from pypromice.process.L2toL3 import process_surface_height
 
 logging.basicConfig(
     level=logging.INFO,
@@ -30,6 +31,7 @@ path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
 # path_l3 = '../aws-l3/level_3/'
 path_l2 = 'C:/Users/bav/GitHub/PROMICE data/aws-l2-dev/level_2/'
 path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+config_folder = '../aws-l0/metadata/station_configurations/'
 
 
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
@@ -61,13 +63,11 @@ for station in ['KAN_Lv3']:
     with open(config_file) as fp:
         station_config = toml.load(fp)
     # Perform Level 3 processing
-    l3 = toL3(l2, station_config)
+    l3 = process_surface_height(l2, station_config).to_dataframe()
 
-    # Write Level 3 dataset to file if output directory given
-    v = getVars(variables)
-    m = getMeta(metadata)
-    if outpath is not None:
-        prepare_and_write(l3, outpath, v, m, '60min')
-        prepare_and_write(l3, outpath, v, m, '1D')
-        prepare_and_write(l3, outpath, v, m, 'M')
-    return l3
+    # %%
+    plt.figure()
+    l3[['z_surf_1','z_surf_2','z_surf_combined','z_ice_surf','snow_height','z_pt_cor']].plot()
+    plt.title(station)
+
+
