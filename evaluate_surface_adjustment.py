@@ -11,37 +11,59 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import xarray as xr
-import logging, toml
+import logging, toml, os
 from pypromice.process.L2toL3 import process_surface_height
+from pypromice.process.get_l2 import get_l2
+from pypromice.process.join_l2 import join_l2
+from pypromice.process.join_l2 import loadArr
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler()
     ]
 )
 
-# import matplotlib
-# matplotlib.use('Agg')
-
-# path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
-path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
-# path_l3 = '../aws-l3/level_3/'
-path_l2 = 'C:/Users/bav/GitHub/PROMICE data/aws-l2-dev/level_2/'
-path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 config_folder = '../aws-l0/metadata/station_configurations/'
+df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_stations_metadata.csv')
 
-
-df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
+path_l2 = 'L2_test/'
     
-plt.close('all')
+# plt.close('all')
 
-for station in ['KAN_Lv3']:
-# for station in df_metadata.stid: 
-    station = station.replace('.csv','')
-    inpath = path_l2+'/'+station+'/'+station+'_hour.nc'
+for station in ['QAS_U']:
+# for station in np.unique(np.array(df_metadata.station_id)): 
+        
+    config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
+    config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
+    
+    print("\n ======== Processing L2 ========= \n")
+    if os.path.isfile(config_file_tx):
+        inpath = path_to_l0 + '/tx/'
+        pAWS_tx = get_l2(config_file_tx, inpath, path_l2+'/tx/',None,None)
+
+    else:
+        pAWS_tx = None
+        
+    if os.path.isfile(config_file_raw):
+        inpath = path_to_l0 + '/raw/'+station+'/'
+        pAWS_raw = get_l2(config_file_raw, inpath,  path_l2+'/raw/',None,None)
+    else:
+        pAWS_raw = None
+        
+    print("\n ======== Joining L2 ========= \n")
+    inpath_raw = path_l2 + '/raw/'+station+'/'+station+'_hour.nc'
+    inpath_tx = path_l2 + '/tx/'+station+'/'+station+'_hour.nc'
+    
+
+    print(station)
+    l2_merged = join_l2(inpath_raw, inpath_tx, path_l2+'/level_2/', None, None)
+
+    print("\n ======== Processing L3 surface heights ========= \n")
+
+    inpath = path_l2+'/level_2/'+station+'/'+station+'_hour.nc'
     print(station)
   
     # Define Level 2 dataset from file
@@ -65,9 +87,10 @@ for station in ['KAN_Lv3']:
     # Perform Level 3 processing
     l3 = process_surface_height(l2, station_config).to_dataframe()
 
-    # %%
-    plt.figure()
-    l3[['z_surf_1','z_surf_2','z_surf_combined','z_ice_surf','snow_height','z_pt_cor']].plot()
+    # %% 
+    fig = plt.figure()
+    l3[['z_surf_1','z_surf_2','z_surf_combined','z_ice_surf','snow_height','z_pt_cor']].plot(ax=plt.gca(),marker='.')
     plt.title(station)
+    fig.savefig('')
 
 

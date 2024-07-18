@@ -19,7 +19,7 @@ import os
 import tocgen
 
 # def main(
-path_new = '../aws-l3/level_3/'
+path_new = '../aws-l3-dev/sites/'
 filename = 'plot_compilations/plot_all.md'
 df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
 
