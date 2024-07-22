@@ -33,8 +33,8 @@ path_l2 = 'L2_test/'
     
 # plt.close('all')
 
-for station in ['QAS_U']:
-# for station in np.unique(np.array(df_metadata.station_id)): 
+for station in ['KPC_L']:
+# for station in df_metadata.station_id[[5]]: 
         
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
@@ -84,13 +84,17 @@ for station in ['QAS_U']:
     config_file = config_folder+l2.attrs['station_id']+'.toml'
     with open(config_file) as fp:
         station_config = toml.load(fp)
-    # Perform Level 3 processing
+    
+    # %% Perform Level 3 processing
     l3 = process_surface_height(l2, station_config).to_dataframe()
 
-    # %% 
-    fig = plt.figure()
-    l3[['z_surf_1','z_surf_2','z_surf_combined','z_ice_surf','snow_height','z_pt_cor']].plot(ax=plt.gca(),marker='.')
-    plt.title(station)
-    fig.savefig('')
+    fig, ax = plt.subplots(2,1, sharex=True, figsize=(10,10))
+    var_list = [v for v in ['z_surf_1','z_surf_2','z_surf_combined','snow_height','z_ice_surf',] if v in l3.columns]
+    l3[var_list].plot(ax=ax[1],marker='.',alpha=0.6)
+    ax[0].set_title(station)
+    
+    var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in l3.columns]
+    l3[var_list].plot(ax=ax[0],marker='.')
+    fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
 
 
