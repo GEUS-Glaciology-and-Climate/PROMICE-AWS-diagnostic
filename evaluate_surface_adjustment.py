@@ -16,7 +16,7 @@ from pypromice.process.L2toL3 import process_surface_height
 from pypromice.process.get_l2 import get_l2
 from pypromice.process.join_l2 import join_l2
 from pypromice.process.join_l2 import loadArr
-
+logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -33,8 +33,8 @@ path_l2 = 'L2_test/'
     
 # plt.close('all')
 
-for station in ['KPC_L']:
-# for station in df_metadata.station_id[[5]]: 
+# for station in ['KPC_L']:
+for station in df_metadata.station_id[[27]]:
         
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
@@ -89,12 +89,15 @@ for station in ['KPC_L']:
     l3 = process_surface_height(l2, station_config).to_dataframe()
 
     fig, ax = plt.subplots(2,1, sharex=True, figsize=(10,10))
-    var_list = [v for v in ['z_surf_1','z_surf_2','z_surf_combined','snow_height','z_ice_surf',] if v in l3.columns]
+    var_list = [v for v in ['z_surf_1', 'z_surf_1_adj','z_surf_2_adj','z_surf_combined','snow_height','z_ice_surf',] if v in l3.columns]
     l3[var_list].plot(ax=ax[1],marker='.',alpha=0.6)
     ax[0].set_title(station)
+    ax[1].grid()
     
     var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in l3.columns]
     l3[var_list].plot(ax=ax[0],marker='.')
+    ax[0].grid()
+
     fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
 
 
