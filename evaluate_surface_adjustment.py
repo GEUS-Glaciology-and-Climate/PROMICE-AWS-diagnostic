@@ -34,7 +34,7 @@ path_l2 = 'L2_test/'
 # plt.close('all')
 
 # for station in ['KPC_L']:
-for station in df_metadata.station_id[[27]]:
+for station in df_metadata.station_id[[38]]:
         
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
