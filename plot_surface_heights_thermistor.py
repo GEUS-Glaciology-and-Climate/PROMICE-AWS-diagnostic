@@ -29,7 +29,7 @@ plt.close('all')
 
 
 for station in df_meta.index:
-# for station in ['JAR']:
+# for station in ['EGP']:
     Msg('## '+station)
     if not os.path.isfile(path_new+station+'/'+station+'_hour.csv'):
         continue
@@ -78,7 +78,7 @@ for station in df_meta.index:
     if 't_i_10m' in df_new.columns:
         ax_list[3].plot(df_new.index, df_new['t_i_10m'].values, 
                 marker='o',markeredgecolor='None', linestyle='None', 
-               label=var)  
+               label='t_i_10m')  
                 
     for i in range(4):
         ax_list[i].set_ylabel('Height (m)')       
