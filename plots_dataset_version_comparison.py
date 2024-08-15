@@ -10,8 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 
@@ -98,8 +98,13 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
         file = path_old+station+'/'+station+'_hour.csv'
         df_old = pd.read_csv(file)
     except:
-        file = path_old+station+'_hour.csv'
-        df_old = pd.read_csv(file)
+        try:
+            file = path_old+station+'_hour.csv'
+            df_old = pd.read_csv(file)
+        except Exception as e:
+            print(station,': ', str(e))
+            df_old = pd.DataFrame()
+            df_old['time'] = df_new.time.values
     df_old.time = pd.to_datetime(df_old.time, utc=True)
     df_old = df_old.set_index('time')
     

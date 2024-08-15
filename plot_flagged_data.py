@@ -45,7 +45,7 @@ except:
     pass
 
 df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-df_metadata = pd.read_csv(path_l3+'../AWS_metadata.csv')
+df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 f = open(filename, "w")
 def Msg(txt):
@@ -60,7 +60,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = True
 
-for station in ['UWN']:
+for station in ['CP1']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -159,8 +159,8 @@ for station in ['UWN']:
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [np.array('gps_lat','gps_lon','gps_alt'])]
-    var_list_list = [np.array(['dlr','ulr','t_rad'])]
-    # var_list_list = [np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor'])]
+    # var_list_list = [np.array(['dlr','ulr','t_rad'])]
+    var_list_list = [np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     # var_list_list = [        
     #                    np.array(['dlr','ulr']),
