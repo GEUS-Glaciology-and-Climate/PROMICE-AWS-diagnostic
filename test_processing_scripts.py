@@ -23,7 +23,8 @@ path_l2 = 'L2_test/'
 
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
-for station in ['CEN2']:
+
+for station in ['EGP']:
 # for station in np.unique(np.array(df_metadata.station_id)): 
         
     # Loading the L1 data:
@@ -64,7 +65,8 @@ df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_stati
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
-for station in ['CEN2']:
+
+for station in ['EGP']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
@@ -80,27 +82,27 @@ for station in ['CEN2']:
     for var, ax in zip(var_list, ax_list):
         if 'gps_'+var in l3.data_vars:
             l3['gps_'+var].plot(ax=ax,
-                         marker='.',markeredgecolor='None', linestyle='None', 
-                    color='tab:green', label=var.replace('gps_',''))
+                          marker='.',markeredgecolor='None', linestyle='None', 
+                    color='tab:green', label='gps_'+var)
         l3[var].plot(ax=ax, marker='.',markeredgecolor='None', linestyle='None', 
                         color='tab:orange',label=var)  
         ax.set_ylabel(var.replace('gps_',''))       
         ax.grid()
         ax.legend()
         
-# %% plotting L3 surface heighta
+# %% plotting L3 surface height
     plt.figure()
-    l3['z_surf_1'].plot()
-    l3['z_surf_2'].plot()
-    l3['z_surf_combined'].plot()
+    for v in ['z_surf_1','z_surf_2','z_surf_combined']:
+        l3[v].plot(label=v)
     plt.title(station)
+    plt.legend()
     
-    # plt.figure()
-    # l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()    
-    # plt.gca().invert_yaxis()
+    l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()    
+    plt.gca().invert_yaxis()
 # %% test join_l3
 from pypromice.process.join_l3 import join_l3
 import pandas as pd
+import matplotlib.pyplot as plt
 
 path_l3_stations = 'L3_test/stations/'
 df_metadata = pd.read_csv('../aws-l3-dev/AWS_sites_metadata.csv')
@@ -116,4 +118,7 @@ for site in ['CEN']:
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations, 
                         folder_gcnet, outpath, None, None)
+    
+    plt.figure()
+    l3_merged.z_surf_combined.plot()
     

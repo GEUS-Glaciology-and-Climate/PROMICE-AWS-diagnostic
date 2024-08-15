@@ -16,8 +16,8 @@ from pypromice.process.L2toL3 import process_surface_height
 from pypromice.process.get_l2 import get_l2
 from pypromice.process.join_l2 import join_l2
 from pypromice.process.join_l2 import loadArr
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
@@ -36,8 +36,8 @@ path_l2 = 'L2_test/'
     
 # plt.close('all')
 
-# for station in ['KPC_L']:
-for station in df_metadata.station_id:
+for station in ['EGP']:
+# for station in df_metadata.station_id:
         
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
