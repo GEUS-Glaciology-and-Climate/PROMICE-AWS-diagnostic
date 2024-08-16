@@ -13,6 +13,7 @@ import os, logging
 from pypromice.process.get_l2 import get_l2
 from pypromice.process.join_l2 import join_l2
 from pypromice.process.join_l2 import loadArr
+import matplotlib.pyplot as plt
 
 path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
@@ -24,7 +25,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 
-for station in ['EGP']:
+for station in ['CEN2']:
 # for station in np.unique(np.array(df_metadata.station_id)): 
         
     # Loading the L1 data:
@@ -66,7 +67,7 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in ['EGP']:
+for station in ['CEN2']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     

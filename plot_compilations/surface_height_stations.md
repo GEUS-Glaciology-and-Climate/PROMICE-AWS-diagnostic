@@ -118,14 +118,23 @@
 ## SCO_L
 ![SCO_L](../figures/surface_height/stations/SCO_L.png)
  
+## SCO_Lv3
+![SCO_Lv3](../figures/surface_height/stations/SCO_Lv3.png)
+ 
 ## SCO_U
 ![SCO_U](../figures/surface_height/stations/SCO_U.png)
+ 
+## SCO_Uv3
+![SCO_Uv3](../figures/surface_height/stations/SCO_Uv3.png)
  
 ## SDL
 ![SDL](../figures/surface_height/stations/SDL.png)
  
 ## SDM
 ![SDM](../figures/surface_height/stations/SDM.png)
+ 
+## SER_B
+![SER_B](../figures/surface_height/stations/SER_B.png)
  
 ## SWC
 ![SWC](../figures/surface_height/stations/SWC.png)
@@ -178,11 +187,9 @@
 ## ZAK_A
 ![ZAK_A](../figures/surface_height/stations/ZAK_A.png)
  
-## ZAK_L
 ## ZAK_Lv3
 ![ZAK_Lv3](../figures/surface_height/stations/ZAK_Lv3.png)
  
-## ZAK_U
 ## ZAK_Uv3
 ![ZAK_Uv3](../figures/surface_height/stations/ZAK_Uv3.png)
  

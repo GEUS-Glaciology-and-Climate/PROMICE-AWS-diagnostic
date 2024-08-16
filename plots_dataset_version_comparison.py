@@ -23,7 +23,11 @@ if old_version == 'aws-l3':
 else:
     path_old = 'C:/Users/bav/Downloads/'+old_version+'/hour/'
 
-if 'dev' in new_version:
+if 'thredds' in new_version:
+    path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds-dev/level_3_sites/'
+    df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
+    df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')    
+elif 'dev' in new_version:
     path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/stations/'
     df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
     df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
