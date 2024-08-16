@@ -15,7 +15,7 @@ matplotlib.use('Agg')
 import tocgen
 
 # def main(
-data_type = 'stations'
+data_type = 'sites'
 path_new = '../aws-l3-dev/'+data_type+'/'
 filename = 'plot_compilations/surface_height_'+data_type+'.md'
 df_meta = pd.read_csv(path_new+'../AWS_'+data_type+'_metadata.csv')
