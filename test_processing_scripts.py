@@ -25,7 +25,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 
-for station in ['SDM']:
+for station in ['QAS_Mv3']:
 # for station in np.unique(np.array(df_metadata.station_id)): 
         
     # Loading the L1 data:
@@ -36,14 +36,22 @@ for station in ['SDM']:
     print("\n ======== test get_l2 ========= \n")
     if os.path.isfile(config_file_tx):
         inpath = path_to_l0 + '/tx/'
-        pAWS_tx = get_l2(config_file_tx, inpath, output_path+'/tx/',None,None)
+        pAWS_tx = get_l2(config_file_tx,
+                         inpath, 
+                         output_path+'/tx/',
+                         variables=None, metadata=None, 
+                         data_issues_path='../PROMICE-AWS-data-issues')
 
     else:
         pAWS_tx = None
         
     if os.path.isfile(config_file_raw):
         inpath = path_to_l0 + '/raw/'+station+'/'
-        pAWS_raw = get_l2(config_file_raw, inpath,  output_path+'/raw/',None,None)
+        pAWS_raw = get_l2(config_file_raw, 
+                          inpath,  
+                          output_path+'/raw/',
+                         variables=None, metadata=None, 
+                         data_issues_path='../PROMICE-AWS-data-issues')
     else:
         pAWS_raw = None
         
@@ -67,12 +75,12 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in ['SDM']:
+for station in ['QAS_Mv3']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
     print(station)
-    l3 = get_l2tol3(config_folder, inpath, outpath, None, None)
+    l3 = get_l2tol3(config_folder, inpath, outpath, None, None, None)
     
 # % plotting L3 lat, lon alt
     var_list = ['lat','lon','alt']
@@ -91,7 +99,7 @@ for station in ['SDM']:
         ax.grid()
         ax.legend()
         
-# %% plotting L3 surface height
+# % plotting L3 surface height
     plt.figure()
     for v in ['z_surf_1','z_surf_2','z_surf_combined']:
         l3[v].plot(label=v)
@@ -112,7 +120,7 @@ outpath = 'L3_test/sites/'
 folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['JAR']:
+for site in ['QAS_M']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
     

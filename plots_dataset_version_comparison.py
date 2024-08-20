@@ -98,17 +98,19 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     # if path_l3 == 'aws-l3-dev':
     #     station = station_save
 
-    try:
-        file = path_old+station+'/'+station+'_hour.csv'
+    df_old = pd.DataFrame()
+    df_old['time'] = df_new.index.values
+    
+    file = path_old+station+'/'+station+'_hour.csv'
+    if not os.path.isfile(file):
+        file = path_old+station+'_hour.csv'
+        if not os.path.isfile(file):
+            Msg('cannot find old file for '+station)
+            
+    if os.path.isfile(file):
+        print(file)
         df_old = pd.read_csv(file)
-    except:
-        try:
-            file = path_old+station+'_hour.csv'
-            df_old = pd.read_csv(file)
-        except Exception as e:
-            print(station,': ', str(e))
-            df_old = pd.DataFrame()
-            df_old['time'] = df_new.time.values
+
     df_old.time = pd.to_datetime(df_old.time, utc=True)
     df_old = df_old.set_index('time')
     

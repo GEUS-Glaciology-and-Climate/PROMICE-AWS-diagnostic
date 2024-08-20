@@ -16,6 +16,7 @@ from pypromice.process.L2toL3 import process_surface_height
 from pypromice.process.get_l2 import get_l2
 from pypromice.process.join_l2 import join_l2
 from pypromice.process.join_l2 import loadArr
+from pathlib import Path
 # import matplotlib
 # matplotlib.use('Agg')
 
@@ -36,7 +37,7 @@ path_l2 = 'L2_test/'
     
 # plt.close('all')
 
-for station in ['KPC_L']:
+for station in ['QAS_M']:
 # for station in df_metadata.station_id:
         
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
@@ -45,14 +46,16 @@ for station in ['KPC_L']:
     print("\n ======== Processing L2 ========= \n")
     if os.path.isfile(config_file_tx):
         inpath = path_to_l0 + '/tx/'
-        pAWS_tx = get_l2(config_file_tx, inpath, path_l2+'/tx/',None,None)
+        pAWS_tx = get_l2(config_file_tx, inpath, path_l2+'/tx/',None,None,
+                         data_issues_path='../PROMICE-AWS-data-issues')
 
     else:
         pAWS_tx = None
         
     if os.path.isfile(config_file_raw):
         inpath = path_to_l0 + '/raw/'+station+'/'
-        pAWS_raw = get_l2(config_file_raw, inpath,  path_l2+'/raw/',None,None)
+        pAWS_raw = get_l2(config_file_raw, inpath,  path_l2+'/raw/',None,None,
+                         data_issues_path='../PROMICE-AWS-data-issues')
     else:
         pAWS_raw = None
         
@@ -89,17 +92,27 @@ for station in ['KPC_L']:
         station_config = toml.load(fp)
     
     # %% Perform Level 3 processing
-    l3 = process_surface_height(l2, station_config).to_dataframe()
+    l3 = process_surface_height(l2, Path('../PROMICE-AWS-data-issues')/'adjustments', station_config).to_dataframe()
 
-    fig, ax = plt.subplots(2,1, sharex=True, figsize=(10,10))
-    var_list = [v for v in ['z_surf_1', 'z_surf_1_adj','z_surf_2_adj','z_surf_combined','snow_height','z_ice_surf',] if v in l3.columns]
-    l3[var_list].plot(ax=ax[1],marker='.',alpha=0.6)
-    ax[0].set_title(station)
-    ax[1].grid()
-    
+    # %%
+    fig, ax = plt.subplots(3,1, sharex=True, figsize=(10,10))
     var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in l3.columns]
     l3[var_list].plot(ax=ax[0],marker='.')
+    ax[0].set_title(station)
+    ax[0].set_ylabel('Height (m)')
     ax[0].grid()
+
+    var_list = [v for v in [#'z_surf_1', 'z_surf_1_adj','z_surf_2_adj',
+                            'z_surf_combined','z_ice_surf',] if v in l3.columns]
+    l3[var_list].plot(ax=ax[1],marker='.',alpha=0.6)
+    ax[1].set_ylabel('Height (m)')
+    ax[1].grid()
+
+    var_list = [v for v in ['snow_height'] if v in l3.columns]
+    l3[var_list].plot(ax=ax[2],marker='.',alpha=0.6)
+    ax[2].set_ylabel('Height (m)')
+    ax[2].grid()
+    
 
     fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
 
