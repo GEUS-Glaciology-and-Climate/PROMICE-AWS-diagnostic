@@ -37,7 +37,7 @@ path_l2 = 'L2_test/'
     
 # plt.close('all')
 
-for station in ['QAS_M']:
+for station in ['QAS_U']:
 # for station in df_metadata.station_id:
         
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
@@ -102,8 +102,8 @@ for station in ['QAS_M']:
     ax[0].set_ylabel('Height (m)')
     ax[0].grid()
 
-    var_list = [v for v in [#'z_surf_1', 'z_surf_1_adj','z_surf_2_adj',
-                            'z_surf_combined','z_ice_surf',] if v in l3.columns]
+    var_list = [v for v in ['z_surf_1','z_surf_2','z_ice_surf', 'z_surf_1_adj','z_surf_2_adj',
+                            'z_surf_combined',] if v in l3.columns]
     l3[var_list].plot(ax=ax[1],marker='.',alpha=0.6)
     ax[1].set_ylabel('Height (m)')
     ax[1].grid()

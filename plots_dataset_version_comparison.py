@@ -16,7 +16,7 @@ import tocgen
 
 
 new_version = 'aws-l3-dev'
-old_version = 'aws-l3'
+old_version = 'V19'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
