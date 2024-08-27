@@ -62,7 +62,6 @@
   * [UWN](#s1-61)
   * [WEG_B](#s1-62)
   * [WEG_L](#s1-63)
-  * [XXX](#s1-64)
   * [ZAC_A](#s1-65)
   * [ZAK_A](#s1-66)
   * [ZAK_Lv3](#s1-67)
@@ -1653,30 +1652,6 @@ Old variables removed from new files:
 ![WEG_L](../figures/V19_versus_aws-l3-dev_20240826/WEG_L_12.png)
 ![WEG_L](../figures/V19_versus_aws-l3-dev_20240826/WEG_L_13.png)
  
-## <a id='s1-64' />XXX
-cannot find old file for XXX
-Variables in new file:
-p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-New variables not in old files:
-p_u, t_u, rh_u, rh_u_cor, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-Old variables removed from new files:
-
- 
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_0.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_1.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_2.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_3.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_4.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_5.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_6.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_7.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_8.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_9.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_10.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_11.png)
-![XXX](../figures/V19_versus_aws-l3-dev_20240826/XXX_12.png)
  
 ## <a id='s1-65' />ZAC_A
 cannot find old file for ZAC_A
