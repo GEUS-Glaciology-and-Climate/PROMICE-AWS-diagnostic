@@ -45,8 +45,8 @@ else:
 from datetime import date
 today = date.today().strftime("%Y%m%d")
 
-filename = 'plot_compilations/'+old_version+'_versus_'+new_version+'_'+today+'.md'
-figure_folder='figures/'+old_version+'_versus_'+new_version+'_'+today
+filename = 'plot_compilations/'+old_version+'_versus_'+new_version+'.md' #'_'+today+'.md'
+figure_folder='figures/'+old_version+'_versus_'+new_version #+'_'+today
 try:
     os.mkdir(figure_folder)
 except:
@@ -66,8 +66,8 @@ plt.close('all')
 import toml
 import xarray as xr
 import numpy as np
-# for station in ['KAN_U']: #
-for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
+for station in ['EGP']: #
+# for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
