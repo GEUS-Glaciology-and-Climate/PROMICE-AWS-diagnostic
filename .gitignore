@@ -7,3 +7,4 @@ __pycache__/tocgen.cpython-39.pyc
 /figures/GPS/coordinates
 /figures/GPS/coordinates_stations
 /figures/GPS/coordinates_sites
+*.pyc

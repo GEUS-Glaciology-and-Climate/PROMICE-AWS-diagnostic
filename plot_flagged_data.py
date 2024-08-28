@@ -14,7 +14,7 @@ import numpy as np
 import os, logging, pkg_resources
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.debug,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler()
@@ -58,9 +58,9 @@ plt.close('all')
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
 
-zoom_to_good = True
+zoom_to_good = False
 
-for station in ['CP1']:
+for station in ['ZAC_Uv3']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     # loading flags
@@ -86,7 +86,11 @@ for station in ['CP1']:
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
     if os.path.isfile(config_file_tx):
         inpath = path_to_l0 + '/tx/'
-        pAWS_tx = AWS(config_file_tx, inpath, None)
+        pAWS_tx = AWS(config_file_tx, 
+                      inpath, 
+                      var_file=None, 
+                      meta_file=None, 
+                      data_issues_repository='../PROMICE-AWS-data-issues')
         pAWS_tx.getL1()
 
     else:
@@ -94,7 +98,12 @@ for station in ['CP1']:
         
     if os.path.isfile(config_file_raw):
         inpath = path_to_l0 + '/raw/'+station+'/'
-        pAWS_raw = AWS(config_file_raw, inpath)
+        pAWS_raw = AWS(config_file_raw,
+                      inpath, 
+                      var_file=None, 
+                      meta_file=None, 
+                      data_issues_repository='../PROMICE-AWS-data-issues')
+        pAWS_tx.getL1()
         pAWS_raw.getL1()
 
     else:
