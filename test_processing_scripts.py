@@ -25,7 +25,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 
-for station in ['TUN']:
+for station in ['KAN_U']:
 # for station in np.unique(np.array(df_metadata.station_id)): 
         
     # Loading the L1 data:
