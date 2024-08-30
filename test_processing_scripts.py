@@ -14,6 +14,7 @@ from pypromice.process.get_l2 import get_l2
 from pypromice.process.join_l2 import join_l2
 from pypromice.process.join_l2 import loadArr
 import matplotlib.pyplot as plt
+import xarray as xr
 
 path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
@@ -27,7 +28,7 @@ df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 for station in ['KAN_U']:
 # for station in np.unique(np.array(df_metadata.station_id)): 
-        
+    print(station)
     # Loading the L1 data:
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
@@ -54,14 +55,15 @@ for station in ['KAN_U']:
                          data_issues_path='../PROMICE-AWS-data-issues')
     else:
         pAWS_raw = None
-        
+    
+        # %% 
     print("\n ======== test join_l2 ========= \n")
     inpath_raw = path_l2 + '/raw/'+station+'/'+station+'_hour.nc'
     inpath_tx = path_l2 + '/tx/'+station+'/'+station+'_hour.nc'
     outpath = 'L2_test/level_2/'
 
     print(station)
-    l2_merged = join_l2(inpath_raw,inpath_tx,outpath,None,None)
+    l2_merged = join_l2(inpath_raw, inpath_tx, outpath,None,None)
 
 #%% test l2tol3
 import pandas as pd

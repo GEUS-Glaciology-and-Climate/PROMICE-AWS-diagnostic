@@ -12,20 +12,4 @@ Old variables removed from new files:
 z_pt_cor, gps_time, gps_geoid, gps_hdop, fan_dc_u, t_log
  
 ![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_0.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_1.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_2.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_3.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_4.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_5.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_6.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_7.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_8.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_9.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_10.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_11.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_12.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_13.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_14.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_15.png)
-![KAN_U](../figures/V19_versus_aws-l3-dev/KAN_U_16.png)
  
