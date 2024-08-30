@@ -27,8 +27,8 @@ matplotlib.set_loglevel("warning")
 from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN, smoothTilt, smoothRot
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 
@@ -57,14 +57,14 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
     
-plt.close('all')
+# plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
 
 zoom_to_good = False
 
-for station in ['KAN_U']:
+for station in ['KAN_Lv3']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     
@@ -137,7 +137,12 @@ for station in ['KAN_U']:
     ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
 
     ds_save = ds.copy(deep=True)
-  
+
+    # try:
+    #     pAWS_tx.getL2()
+    # except:
+    #     pass
+
     #%% Flagging, adjusting, filtering 
     
     ds = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
@@ -182,58 +187,74 @@ for station in ['KAN_U']:
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [np.array('gps_lat','gps_lon','gps_alt'])]
-    # var_list_list = [np.array(['dlr','ulr','t_rad'])]
     # var_list_list = [np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     # var_list_list = [        
-    #                    np.array(['dlr','ulr']),
-    #                     # np.array(['usr','usr_cor','dsr','dsr_cor', 'tilt_x','tilt_y','rot']),
+    #                     np.array([
+    #                                 # 'dlr','ulr','t_rad',
+    #                                'usr','dsr', 'albedo',
+    #                               # 'tilt_x','tilt_y','rot',
+    #                               ]),
     #                   # np.array(['p_u','p_l','p_i']),
     #                   # np.array(['rh_u','rh_l','rh_i']),
     #                   # np.array(['wspd_u','wspd_l','wspd_i']),
-    #                   ]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
+                      # ]  #,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
-        var_list = var_list[np.isin(var_list, df_L1.columns)]
+        # var_list = var_list[np.isin(var_list, df_L1.columns)]
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,len(var_list)*2.3))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
             
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
-            
-            ax.plot(ds.time, 
-                    ds[var].values,
-                    marker='.',color='tab:red', linestyle='None', 
-                    label='removed by flag')
-            ax.plot(ds1.time, 
-                    ds1[var].values,
-                    marker='.',color='tab:orange', linestyle='None',
-                    label='removed or changed by adjustment')
-            ax.plot(ds2.time, 
-                    ds2[var].values,
-                    marker='.',color='tab:green', linestyle='None',
-                    label='filtered with persistence')
-            ax.plot(ds3.time, 
-                    ds3[var].values,
-                    marker='.',color='tab:pink', linestyle='None',
-                    label='removed by custom filter (gps_alt, tilt or rot)')
+            if var in ds.data_vars:
+                ax.plot(ds.time, 
+                        ds[var].values,
+                        marker='.',color='tab:red', linestyle='None', 
+                        label='removed by flag')
+            if var in ds1.data_vars:
+                ax.plot(ds1.time, 
+                        ds1[var].values,
+                        marker='.',color='tab:orange', linestyle='None',
+                        label='removed or changed by adjustment')
+            if var in ds2.data_vars:
+                ax.plot(ds2.time, 
+                        ds2[var].values,
+                        marker='.',color='tab:green', linestyle='None',
+                        label='filtered with persistence')
+            if var in ds3.data_vars:
+                ax.plot(ds3.time, 
+                        ds3[var].values,
+                        marker='.',color='tab:pink', linestyle='None',
+                        label='removed by custom filter (gps_alt, tilt or rot)')
+                if var == 'gps_alt':
+                    ax.plot(ds3.time,
+                            baseline_elevation,
+                            ls='--', c='k')
             # if ('gps' in var) | (var in ['tilt_x','tilt_y','rot']):
             #     ax.plot(ds3b.time, 
             #             ds3b[var].values,
             #             marker='.',color='tab:pink', linestyle='None',
             #             label='removed by custom filter (gps_alt, tilt or rot)')
-            ax.plot(ds4.time, 
-                    ds4[var].values,
-                    marker='.',color='tab:blue', linestyle='None',
-                    label='final')
-            if var == 'gps_alt':
-                ax.plot(ds3.time,
-                        baseline_elevation,
-                        ls='--', c='k')
+            if var in ds4.data_vars:
+                ax.plot(ds4.time, 
+                        ds4[var].values,
+                        marker='.',color='tab:blue', linestyle='None',
+                        label='final')
+            if var in ds4.data_vars:
+                ax.plot(ds4.time, 
+                        ds4[var].values,
+                        marker='.',color='tab:blue', linestyle='None',
+                        label='final')
+            # try:
+            #     ax.plot(pAWS_tx.L2.time, pAWS_tx.L2[var],color='gray', label='L2')
+            # except:
+            #     pass
+
             # if ('cor' in var) or (var == 'z_surf_combined'):
             #     ax.plot(ds_l3.time,
             #              ds_l3[var],       
