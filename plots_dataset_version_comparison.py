@@ -124,12 +124,12 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg(' ')
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
-    var_list_list = [
+    # var_list_list = [
         # ['gps_lat','gps_lon','gps_alt'],
                       # ['dlr','ulr','t_rad'],
-                      ['dsr','usr'],
+                      # ['dsr','usr'],
                       # ['rh_u','rh_l','rh_u_cor','rh_l_cor']
-                      ]
+                      # ]
     
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
@@ -213,7 +213,7 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
         [v for v in df_old.columns if v not in df_new.columns]
         ))
     Msg(' ')
-    var_list = df_new.columns.values
+    var_list = df_new.columns.intersection(df_old.columns)
     var_list_list = [var_list[i:i+9] for i in range(0, len(var_list), 9)]
     # var_list_list = [['gps_lat','gps_lon','gps_alt'],
     #                  ['dlr','ulr','t_rad'],
