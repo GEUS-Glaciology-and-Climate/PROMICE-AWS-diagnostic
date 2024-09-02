@@ -81,12 +81,12 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
         df_new = pd.read_csv(file, index_col=0, parse_dates=True)
     except:
         file = path_new+station+'/'+station+'_hour.csv'
-        try:
+        if os.path.isfile(file):
             df_new = pd.read_csv(file, index_col=0, parse_dates=True)
-        except:
-            file = path_new+station+'/'+station+'_10min.csv'
-            df_new = pd.read_csv(file, index_col=0, parse_dates=True)
-        
+        else:
+            Msg('No new file for this station')
+            continue
+
     # df_new = pd.read_csv('../aws-l3/'+station+'_hour.csv', index_col=0, parse_dates=True)
     # df_new = pd.read_csv(
     #     'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'+station+'/'+station+'_hour.csv', 
@@ -190,20 +190,22 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
         df_new = pd.read_csv(file, index_col=0, parse_dates=True)
     except:
         file = path_new+station+'/'+station+'_hour.csv'
-        try:
+        if os.path.isfile(file):
             df_new = pd.read_csv(file, index_col=0, parse_dates=True)
-        except:
-            file = path_new+station+'/'+station+'_10min.csv'
-            df_new = pd.read_csv(file, index_col=0, parse_dates=True)
+        else:
+            Msg('No new file for this station')
+            continue
         
     try:
         file = path_old+station+'/'+station+'_hour.csv'
         df_old = pd.read_csv(file)
     except:
         file = path_old+station+'_hour.csv'
-        df_old = pd.read_csv(file)
-    df_old.time = pd.to_datetime(df_old.time)
-    df_old = df_old.set_index('time')
+        if os.path.isfile(file):
+            df_old = pd.read_csv(file, index_col=0, parse_dates=True)
+        else:
+            Msg('No old file for this station')
+            continue
     
     Msg('Variables in new file:\n'+ ', '.join(df_new.columns.values))
     Msg('\nNew variables not in old files:\n'+ ', '.join(
@@ -214,6 +216,7 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
         ))
     Msg(' ')
     var_list = df_new.columns.intersection(df_old.columns)
+    var_list = [v for v in var_list if df_new[v].notnull().any() and df_old[v].notnull().any()]
     var_list_list = [var_list[i:i+9] for i in range(0, len(var_list), 9)]
     # var_list_list = [['gps_lat','gps_lon','gps_alt'],
     #                  ['dlr','ulr','t_rad'],
@@ -224,6 +227,7 @@ for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
         ax_list = ax_list.flatten()
         
         if len(var_list)==1:
+            fig, ax_list = plt.subplots(1,1, figsize=(15,15))
             ax_list = [ax_list]
     
         for var, ax in zip(var_list, ax_list):
