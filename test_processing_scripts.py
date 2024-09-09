@@ -26,7 +26,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 
-for station in ['KAN_U']:
+for station in ['CEN2']:
 # for station in np.unique(np.array(df_metadata.station_id)): 
     print(station)
     # Loading the L1 data:
@@ -77,7 +77,7 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in ['TUN']:
+for station in ['ZAC_A']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
     
@@ -120,17 +120,22 @@ df_metadata = pd.read_csv('../aws-l3-dev/AWS_sites_metadata.csv')
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/sites/'
 folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly'
+folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['TUN']:
+for site in ['ZAC_A']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
     
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations, 
-                        folder_gcnet, outpath, None, None)
+                        folder_gcnet, folder_glaciobasis, outpath, None, None)
     
     plt.figure()
     l3_merged.z_surf_combined.plot()
     l3_merged.z_ice_surf.plot()
+    l3_merged.z_boom_u.plot()
+        
+    plt.figure()
+    l3_merged.rh_u_cor.plot()
     

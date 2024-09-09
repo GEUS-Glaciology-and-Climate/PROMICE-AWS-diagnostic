@@ -66,8 +66,8 @@ plt.close('all')
 import toml
 import xarray as xr
 import numpy as np
-# for station in ['KAN_U']: #
-for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
+for station in ['CP1']: #
+# for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
@@ -182,8 +182,8 @@ def Msg(txt):
     f.write(txt + "\n")
 import xarray as xr
 import numpy as np
-# for station in ['KAN_U']: #
-for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
+for station in [station]: #
+# for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg('## '+station)
     file = path_new+station+'_hour.csv'
     try:

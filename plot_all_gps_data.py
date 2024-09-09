@@ -17,6 +17,7 @@ import os
 import matplotlib
 matplotlib.use('Agg')
 import tocgen
+import geopandas as gpd
 
 # def main(
 data_type = 'sites'
@@ -38,13 +39,13 @@ gps_obs = pd.read_csv('ancil/GC-Net_observed_coordinates.csv').set_index('name')
 gps_obs['date'] = pd.to_datetime(gps_obs.date,errors='coerce')
 for v in ['lat','lon','elev']:
     gps_obs[v] = pd.to_numeric(gps_obs[v], errors='coerce')
-# for station in df_meta.index:
-for station in ['JAR']:
+for station in df_meta.index:
+# for station in ['JAR']:
 # for station in np.unique(gnss_df.index):
-    Msg('## '+station)
-    if not os.path.isfile(path_new+station+'/'+station+'_hour.csv'):
+    # Msg('## '+station)
+    if not os.path.isfile(path_new+station+'/'+station+'_day.csv'):
         continue
-    df_new = pd.read_csv(path_new+station+'/'+station+'_hour.csv')
+    df_new = pd.read_csv(path_new+station+'/'+station+'_day.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
     
@@ -91,11 +92,24 @@ for station in ['JAR']:
             continue
         plt.suptitle(station)
         fig.savefig('figures/GPS/%s/%s_%i.png'%(data_type, station,k), dpi=300)
-        Msg('![%s](../figures/GPS/%s/%s_%i.png)'%(station,data_type, station,k))
+        # Msg('![%s](../figures/GPS/%s/%s_%i.png)'%(station,data_type, station,k))
+
+        # determination of the range of displacement
+        # gdf = gpd.GeoDataFrame(df_new,
+        #                        geometry=gpd.points_from_xy(df_new['lon'], 
+        #                                                    df_new['lat']), 
+        #                        crs="EPSG:4326")
+        # gdf_3413 = gdf.to_crs(epsg=3413)
+        # radius_km = (gdf_3413.union_all()
+        #              .convex_hull.centroid
+        #              .hausdorff_distance(gdf_3413.union_all())) / 1000
+        
+        # print(station,',', round(radius_km*2, 1))
+
     df_m = pd.read_csv(path_new+station+'/'+station+'_month.csv')
     df_m.time = pd.to_datetime(df_m.time, utc=True)
     df_m = df_m.set_index('time')
     df_m[[v for v in ['lat','lon','alt'] if v in df_m.columns]].to_csv('figures/GPS/coordinates_'+data_type+'/%s.csv'%station)
-    Msg(' ')
+    # Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()

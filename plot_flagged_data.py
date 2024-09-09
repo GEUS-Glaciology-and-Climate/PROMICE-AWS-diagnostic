@@ -64,7 +64,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = False
 
-for station in ['QAS_Mv3']:
+for station in ['CEN2']:
 # for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     
@@ -188,12 +188,12 @@ for station in ['QAS_Mv3']:
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [np.array('gps_lat','gps_lon','gps_alt'])]
     # var_list_list = [np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor'])]
+    var_list_list = [np.array(['tilt_x','tilt_y','rot'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     # var_list_list = [        
                         # np.array([
                                     # 'dlr','ulr','t_rad',
                                     # 'usr','dsr', 'albedo',
-                                   # 'tilt_x','tilt_y','rot',
                                   # ]),
     #                   # np.array(['p_u','p_l','p_i']),
     #                   # np.array(['rh_u','rh_l','rh_i']),
@@ -213,10 +213,16 @@ for station in ['QAS_Mv3']:
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             if var in ds.data_vars:
+                ax.plot( pAWS_raw.L0[-2].time, 
+                        -pAWS_raw.L0[-2][var].values,
+                        marker='.',color='gray', linestyle='None', 
+                        label='L0')
+            if var in ds.data_vars:
                 ax.plot(ds.time, 
                         ds[var].values,
                         marker='.',color='tab:red', linestyle='None', 
                         label='removed by flag')
+                
             if var in ds1.data_vars:
                 ax.plot(ds1.time, 
                         ds1[var].values,
