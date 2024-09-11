@@ -14,7 +14,6 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-
 new_version = 'aws-l3-dev'
 old_version = 'V19'
 
@@ -45,7 +44,7 @@ else:
 from datetime import date
 today = date.today().strftime("%Y%m%d")
 
-filename = 'plot_compilations/'+old_version+'_versus_'+new_version+'2.md' #'_'+today+'.md'
+filename = 'plot_compilations/'+old_version+'_versus_'+new_version+'.md' #'_'+today+'.md'
 figure_folder='figures/'+old_version+'_versus_'+new_version #+'_'+today
 try:
     os.mkdir(figure_folder)
@@ -66,7 +65,7 @@ plt.close('all')
 import toml
 import xarray as xr
 import numpy as np
-for station in ['EGP']: #
+for station in ['NAE']: #
 # for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
@@ -125,7 +124,7 @@ for station in ['EGP']: #
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
     # var_list_list = [ ['gps_lat','gps_lon','gps_alt']]
-    var_list_list = [ ['t_i','p_i','rh_i_cor']]
+    # var_list_list = [ ['t_i','p_i','rh_i_cor']]
                       # ['dlr','ulr','t_rad'],
                       # ['dsr','usr'],
                       # ['rh_u','rh_l','rh_u_cor','rh_l_cor']
@@ -182,8 +181,8 @@ def Msg(txt):
     f.write(txt + "\n")
 import xarray as xr
 import numpy as np
-# for station in [station]: #
-for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
+for station in ['NAE']: #
+# for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg('## '+station)
     file = path_new+station+'_hour.csv'
     try:
