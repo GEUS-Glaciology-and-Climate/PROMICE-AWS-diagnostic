@@ -66,7 +66,7 @@ plt.close('all')
 import toml
 import xarray as xr
 import numpy as np
-for station in ['CP1']: #
+for station in ['CEN2','KPC_L','KPC_U']: #
 # for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':

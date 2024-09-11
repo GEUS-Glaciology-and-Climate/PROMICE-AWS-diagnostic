@@ -36,5 +36,4 @@ for station in df_meta.index:
             verticalalignment='top', bbox=dict(facecolor='white', alpha=0.5))
     ax.grid()
 
-fig.supylabel('albedo')
-fig.savefig(f'figures/albedo/{station}.png', dpi=300)
+    fig.savefig(f'figures/albedo/{station}.png', dpi=300)
