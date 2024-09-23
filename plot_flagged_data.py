@@ -27,8 +27,8 @@ matplotlib.set_loglevel("warning")
 from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN, smoothTilt, smoothRot
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 
@@ -64,8 +64,8 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = False
 
-# for station in ['KPC_U']:
-for station in np.unique(np.array(all_dirs)): 
+for station in ['TAS_Av3']:
+# for station in np.unique(np.array(all_dirs)): 
     station = station.replace('.csv','')
     
     # removing older plots
