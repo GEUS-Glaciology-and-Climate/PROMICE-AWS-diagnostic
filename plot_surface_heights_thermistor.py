@@ -224,6 +224,7 @@ plt.close('all')
 
 # Loop over each station
 for station in df_meta.index:
+# for station in ['QAS_U']:
     Msg('## ' + station)
     
     # Check if the file exists
@@ -264,11 +265,11 @@ for station in df_meta.index:
             if df_year['snow_height'].notnull().any():
                 first_valid_value = df_year['snow_height'].loc[
                     slice(df_year['snow_height'].first_valid_index(), 
-                          df_year['snow_height'].first_valid_index()+pd.to_timedelta('10 days'))].min()
+                          df_year['snow_height'].first_valid_index()+pd.to_timedelta('30 days'))].min()
                 if year == 2024:
                     ax_list[1].plot(df_year['day_of_year'], 
                                      df_year['snow_height'] - first_valid_value, 
-                                     label='_no_legend_', linestyle='-', color='w',lw=4, alpha=0.5)
+                                     label='_no_legend_', linestyle='-', color='w',lw=6, alpha=0.7)
                     ax_list[1].plot(df_year['day_of_year'], 
                                      df_year['snow_height'] - first_valid_value, 
                                      label=str(year), linestyle='-', color='k',lw=2)
