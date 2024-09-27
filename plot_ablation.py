@@ -67,7 +67,7 @@ for station in df_meta.index:
         # caluclating ice surface
         df_new['z_ice_surf'] = df_new['z_surf_combined'].cummin()
         
-        # removing years with too many NaNs
+        # removing years with too many NaNs in JJA
         mask = df_new[df_new.index.month.isin([6, 7, 8])]['z_surf_combined'].isnull().resample('Y').sum().to_frame()
         for index, count in mask.iterrows():
             if count.iloc[0]>15:
