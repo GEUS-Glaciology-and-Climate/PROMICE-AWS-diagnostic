@@ -34,15 +34,15 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_stations_metadata.csv')
 
 path_l2 = 'L2_test/'
-    
+
 # plt.close('all')
 
-for station in ['TAS_L']:
+for station in ['KAN_Lv3']:
 # for station in df_metadata.station_id:
-        
+
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
-    
+
     print("\n ======== Processing L2 ========= \n")
     if os.path.isfile(config_file_tx):
         inpath = path_to_l0 + '/tx/'
@@ -51,18 +51,18 @@ for station in ['TAS_L']:
 
     else:
         pAWS_tx = None
-        
+
     if os.path.isfile(config_file_raw):
         inpath = path_to_l0 + '/raw/'+station+'/'
         pAWS_raw = get_l2(config_file_raw, inpath,  path_l2+'/raw/',None,None,
                          data_issues_path='../PROMICE-AWS-data-issues')
     else:
         pAWS_raw = None
-        
+
     print("\n ======== Joining L2 ========= \n")
     inpath_raw = path_l2 + '/raw/'+station+'/'+station+'_hour.nc'
     inpath_tx = path_l2 + '/tx/'+station+'/'+station+'_hour.nc'
-    
+
 
     print(station)
     l2_merged = join_l2(inpath_raw, inpath_tx, path_l2+'/level_2/', None, None)
@@ -71,11 +71,11 @@ for station in ['TAS_L']:
 
     inpath = path_l2+'/level_2/'+station+'/'+station+'_hour.nc'
     print(station)
-  
+
     # Define Level 2 dataset from file
     with xr.open_dataset(inpath) as l2:
         l2.load()
-    
+
     # Remove encoding attributes from NetCDF
     for varname in l2.variables:
         if l2[varname].encoding!={}:
@@ -85,14 +85,16 @@ for station in ['TAS_L']:
         l2.attrs['bedrock'] = l2.attrs['bedrock'] == 'True'
     if 'number_of_booms' in l2.attrs.keys():
         l2.attrs['number_of_booms'] = int(l2.attrs['number_of_booms'])
-    
+
     # importing station_config (dict) from config_folder (str path)
     config_file = config_folder+l2.attrs['station_id']+'.toml'
     with open(config_file) as fp:
         station_config = toml.load(fp)
-    
+
     # %% Perform Level 3 processing
-    l3 = process_surface_height(l2, Path('../PROMICE-AWS-data-issues')/'adjustments', station_config).to_dataframe()
+    l3 = process_surface_height(l2,
+                                Path('../PROMICE-AWS-data-issues')/'adjustments',
+                                station_config).to_dataframe()
 
     # %%
     fig, ax = plt.subplots(3,1, sharex=True, figsize=(10,10))
@@ -112,8 +114,6 @@ for station in ['TAS_L']:
     l3[var_list].plot(ax=ax[2],marker='.',alpha=0.6)
     ax[2].set_ylabel('Height (m)')
     ax[2].grid()
-    
+
 
     fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
-
-
