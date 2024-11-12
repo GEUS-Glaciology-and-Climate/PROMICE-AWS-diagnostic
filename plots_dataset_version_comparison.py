@@ -14,8 +14,9 @@ import os
 # matplotlib.use('Agg')
 import tocgen
 
+new_version = 'aws-l3-dev'
 # new_version = 'level_3_sites'
-new_version = 'level_2_stations'
+# new_version = 'level_2_stations'
 old_version = 'V19'
 
 if old_version == 'aws-l3':
@@ -75,7 +76,7 @@ import xarray as xr
 import numpy as np
 # plt.close('all')
 # for station in ['QAS_L']: #
-for station in np.unique(df_meta.station_id):
+for station in np.unique(df_meta.stid):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
