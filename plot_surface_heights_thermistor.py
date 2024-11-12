@@ -92,7 +92,8 @@ for station in df_meta.index:
     ax_list[2].invert_yaxis()
     ax_list[3].set_ylabel('Temperature (°C)')
     ax_list[0].set_title(station)
-    fig.savefig('figures/surface_height/%s/%s.png'%(data_type, station), dpi=300)
+
+    fig.savefig('figures/surface_height/%s/%s.png' % (data_type, station), dpi=300, bbox_inches="tight")
     Msg('![%s](../figures/surface_height/%s/%s.png)'%(station,data_type, station))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")

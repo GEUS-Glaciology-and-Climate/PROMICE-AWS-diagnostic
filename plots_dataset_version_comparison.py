@@ -10,11 +10,12 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
-new_version = 'aws-l3-dev'
+# new_version = 'level_3_sites'
+new_version = 'level_2_stations'
 old_version = 'V19'
 
 if old_version == 'aws-l3':
@@ -30,6 +31,13 @@ elif 'dev' in new_version:
     path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/stations/'
     df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
     df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
+
+elif 'level_3' in new_version:
+    path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_3_sites/csv/hour/'
+    df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_sites_metadata.csv')
+elif 'level_2' in new_version:
+    path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_2_stations/csv/hour/'
+    df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_stations_metadata.csv')
 
 else:
     path_new = '../aws-l3/'
@@ -65,8 +73,9 @@ plt.close('all')
 import toml
 import xarray as xr
 import numpy as np
-for station in ['EGP']: #
-# for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
+# plt.close('all')
+# for station in ['QAS_L']: #
+for station in np.unique(df_meta.station_id):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
@@ -124,12 +133,15 @@ for station in ['EGP']: #
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
     # var_list_list = [ ['gps_lat','gps_lon','gps_alt']]
-    # var_list_list = [ ['t_i','p_i','rh_i_cor']]
-                      # ['dlr','ulr','t_rad'],
-                      # ['dsr','usr'],
-                      # ['rh_u','rh_l','rh_u_cor','rh_l_cor']
-                      # ]
-
+    # var_list_list = [
+    #     # ['t_i','p_i','rh_i_cor'],
+    #                     ['tilt_x','tilt_y','z_boom_u'],
+    #                    ['dlr','ulr','t_rad','dsr','usr'],
+    #                     # ['rh_u','rh_l','rh_u_cor','rh_l_cor'],
+    #                    # ['t_u','t_l', 'p_u','p_l'],
+    #                    ]
+    # df_old = df_old.loc['2024-02-01':'2024-05-01',:]
+    # df_new = df_new.loc['2024-02-01':'2024-05-01',:]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
         if len(var_list)==1:
@@ -146,12 +158,16 @@ for station in ['EGP']: #
                 print(var,'not in old data')
 
 
-            ax.plot(df_new[var].index, df_new[var].values,
-                    marker='.',markeredgecolor='None', linestyle='None',
-                    label=new_version, alpha=0.7,
-                    color='tab:orange')
+            try:
+                ax.plot(df_new[var].index, df_new[var].values,
+                        marker='.',markeredgecolor='None', linestyle='None',
+                        label=new_version, alpha=0.7,
+                        color='tab:orange')
+            except:
+                print(var,'not in new data')
             ax.legend(loc='lower left')
             ax.grid()
+            # ax.set_xlim('2024-02-01','2024-05-01')
 
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
