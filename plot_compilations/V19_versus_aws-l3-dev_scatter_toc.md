@@ -28,48 +28,51 @@
   * [NUK_K](#s0-28)
   * [NUK_L](#s0-29)
   * [NUK_N](#s0-30)
-  * [NUK_U](#s0-31)
-  * [NUK_Uv3](#s0-32)
-  * [QAS_A](#s0-33)
-  * [QAS_L](#s0-34)
-  * [QAS_Lv3](#s0-35)
-  * [QAS_M](#s0-36)
-  * [QAS_Mv3](#s0-37)
-  * [QAS_U](#s0-38)
-  * [QAS_Uv3](#s0-39)
-  * [RED_Lv3](#s0-40)
-  * [Roof_GEUS](#s0-41)
-  * [SCO_L](#s0-42)
-  * [SCO_Lv3](#s0-43)
-  * [SCO_U](#s0-44)
-  * [SCO_Uv3](#s0-45)
-  * [SDL](#s0-46)
-  * [SDM](#s0-47)
-  * [SER_B](#s0-48)
-  * [SWC](#s0-49)
-  * [SWC_O](#s0-50)
-  * [TAS_A](#s0-51)
-  * [TAS_Av3](#s0-52)
-  * [TAS_L](#s0-53)
-  * [TAS_U](#s0-54)
-  * [THU_L](#s0-55)
-  * [THU_L2](#s0-56)
-  * [THU_U](#s0-57)
-  * [THU_U2](#s0-58)
-  * [THU_U2v3](#s0-59)
-  * [TUN](#s0-60)
-  * [UPE_L](#s0-61)
-  * [UPE_U](#s0-62)
-  * [UWN](#s0-63)
-  * [WEG_B](#s0-64)
-  * [WEG_L](#s0-65)
-  * [XXX](#s0-66)
-  * [ZAC_A](#s0-67)
-  * [ZAC_Lv3](#s0-68)
-  * [ZAC_Uv3](#s0-69)
-  * [ZAK_A](#s0-70)
-  * [ZAK_Lv3](#s0-71)
-  * [ZAK_Uv3](#s0-72)
+  * [NUK_P](#s0-31)
+  * [NUK_U](#s0-32)
+  * [NUK_Uv3](#s0-33)
+  * [ORO](#s0-34)
+  * [QAS_A](#s0-35)
+  * [QAS_L](#s0-36)
+  * [QAS_Lv3](#s0-37)
+  * [QAS_M](#s0-38)
+  * [QAS_Mv3](#s0-39)
+  * [QAS_U](#s0-40)
+  * [QAS_Uv3](#s0-41)
+  * [RED_Lv3](#s0-42)
+  * [Roof_GEUS](#s0-43)
+  * [Roof_PROMICE](#s0-44)
+  * [SCO_L](#s0-45)
+  * [SCO_Lv3](#s0-46)
+  * [SCO_U](#s0-47)
+  * [SCO_Uv3](#s0-48)
+  * [SDL](#s0-49)
+  * [SDM](#s0-50)
+  * [SER_B](#s0-51)
+  * [SWC](#s0-52)
+  * [SWC_O](#s0-53)
+  * [TAS_A](#s0-54)
+  * [TAS_Av3](#s0-55)
+  * [TAS_L](#s0-56)
+  * [TAS_U](#s0-57)
+  * [THU_L](#s0-58)
+  * [THU_L2](#s0-59)
+  * [THU_U](#s0-60)
+  * [THU_U2](#s0-61)
+  * [THU_U2v3](#s0-62)
+  * [TUN](#s0-63)
+  * [UPE_L](#s0-64)
+  * [UPE_U](#s0-65)
+  * [UWN](#s0-66)
+  * [WEG_B](#s0-67)
+  * [WEG_L](#s0-68)
+  * [XXX](#s0-69)
+  * [ZAC_A](#s0-70)
+  * [ZAC_Lv3](#s0-71)
+  * [ZAC_Uv3](#s0-72)
+  * [ZAK_A](#s0-73)
+  * [ZAK_Lv3](#s0-74)
+  * [ZAK_Uv3](#s0-75)
 ## <a id='s0-1' />CEN1
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
@@ -510,7 +513,9 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![NUK_N](../figures/V19_versus_aws-l3-dev_scatter/NUK_N_3.png)
 ![NUK_N](../figures/V19_versus_aws-l3-dev_scatter/NUK_N_4.png)
  
-## <a id='s0-31' />NUK_U
+## <a id='s0-31' />NUK_P
+No old file for this station
+## <a id='s0-32' />NUK_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -526,7 +531,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![NUK_U](../figures/V19_versus_aws-l3-dev_scatter/NUK_U_3.png)
 ![NUK_U](../figures/V19_versus_aws-l3-dev_scatter/NUK_U_4.png)
  
-## <a id='s0-32' />NUK_Uv3
+## <a id='s0-33' />NUK_Uv3
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -543,7 +548,9 @@ rh_u_cor, gps_time, gps_geoid, gps_hdop, fan_dc_u, t_log, rh_i_cor
 ![NUK_Uv3](../figures/V19_versus_aws-l3-dev_scatter/NUK_Uv3_4.png)
 ![NUK_Uv3](../figures/V19_versus_aws-l3-dev_scatter/NUK_Uv3_5.png)
  
-## <a id='s0-33' />QAS_A
+## <a id='s0-34' />ORO
+No old file for this station
+## <a id='s0-35' />QAS_A
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -558,7 +565,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![QAS_A](../figures/V19_versus_aws-l3-dev_scatter/QAS_A_2.png)
 ![QAS_A](../figures/V19_versus_aws-l3-dev_scatter/QAS_A_3.png)
  
-## <a id='s0-34' />QAS_L
+## <a id='s0-36' />QAS_L
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -574,9 +581,9 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![QAS_L](../figures/V19_versus_aws-l3-dev_scatter/QAS_L_3.png)
 ![QAS_L](../figures/V19_versus_aws-l3-dev_scatter/QAS_L_4.png)
  
-## <a id='s0-35' />QAS_Lv3
+## <a id='s0-37' />QAS_Lv3
 No old file for this station
-## <a id='s0-36' />QAS_M
+## <a id='s0-38' />QAS_M
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -592,7 +599,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![QAS_M](../figures/V19_versus_aws-l3-dev_scatter/QAS_M_3.png)
 ![QAS_M](../figures/V19_versus_aws-l3-dev_scatter/QAS_M_4.png)
  
-## <a id='s0-37' />QAS_Mv3
+## <a id='s0-39' />QAS_Mv3
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -609,7 +616,7 @@ rh_u_cor, gps_time, gps_geoid, gps_hdop, fan_dc_u, t_log, rh_i_cor
 ![QAS_Mv3](../figures/V19_versus_aws-l3-dev_scatter/QAS_Mv3_4.png)
 ![QAS_Mv3](../figures/V19_versus_aws-l3-dev_scatter/QAS_Mv3_5.png)
  
-## <a id='s0-38' />QAS_U
+## <a id='s0-40' />QAS_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -625,7 +632,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![QAS_U](../figures/V19_versus_aws-l3-dev_scatter/QAS_U_3.png)
 ![QAS_U](../figures/V19_versus_aws-l3-dev_scatter/QAS_U_4.png)
  
-## <a id='s0-39' />QAS_Uv3
+## <a id='s0-41' />QAS_Uv3
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -642,11 +649,13 @@ rh_u_cor, gps_time, gps_geoid, gps_hdop, fan_dc_u, t_log, rh_i_cor
 ![QAS_Uv3](../figures/V19_versus_aws-l3-dev_scatter/QAS_Uv3_4.png)
 ![QAS_Uv3](../figures/V19_versus_aws-l3-dev_scatter/QAS_Uv3_5.png)
  
-## <a id='s0-40' />RED_Lv3
+## <a id='s0-42' />RED_Lv3
 No old file for this station
-## <a id='s0-41' />Roof_GEUS
+## <a id='s0-43' />Roof_GEUS
 No old file for this station
-## <a id='s0-42' />SCO_L
+## <a id='s0-44' />Roof_PROMICE
+No old file for this station
+## <a id='s0-45' />SCO_L
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -662,9 +671,9 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![SCO_L](../figures/V19_versus_aws-l3-dev_scatter/SCO_L_3.png)
 ![SCO_L](../figures/V19_versus_aws-l3-dev_scatter/SCO_L_4.png)
  
-## <a id='s0-43' />SCO_Lv3
+## <a id='s0-46' />SCO_Lv3
 No old file for this station
-## <a id='s0-44' />SCO_U
+## <a id='s0-47' />SCO_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -680,9 +689,9 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![SCO_U](../figures/V19_versus_aws-l3-dev_scatter/SCO_U_3.png)
 ![SCO_U](../figures/V19_versus_aws-l3-dev_scatter/SCO_U_4.png)
  
-## <a id='s0-45' />SCO_Uv3
+## <a id='s0-48' />SCO_Uv3
 No old file for this station
-## <a id='s0-46' />SDL
+## <a id='s0-49' />SDL
 Variables in new file:
 p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -700,7 +709,7 @@ rh_u_cor, rh_l_cor, gps_time, gps_hdop, fan_dc_u, fan_dc_l, rh_i_cor
 ![SDL](../figures/V19_versus_aws-l3-dev_scatter/SDL_5.png)
 ![SDL](../figures/V19_versus_aws-l3-dev_scatter/SDL_6.png)
  
-## <a id='s0-47' />SDM
+## <a id='s0-50' />SDM
 Variables in new file:
 p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -718,9 +727,9 @@ rh_u_cor, rh_l_cor, gps_time, gps_hdop, fan_dc_u, fan_dc_l, rh_i_cor
 ![SDM](../figures/V19_versus_aws-l3-dev_scatter/SDM_5.png)
 ![SDM](../figures/V19_versus_aws-l3-dev_scatter/SDM_6.png)
  
-## <a id='s0-48' />SER_B
+## <a id='s0-51' />SER_B
 No old file for this station
-## <a id='s0-49' />SWC
+## <a id='s0-52' />SWC
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -737,7 +746,7 @@ rh_u_cor, gps_time, gps_geoid, gps_hdop, fan_dc_u, t_log, rh_i_cor
 ![SWC](../figures/V19_versus_aws-l3-dev_scatter/SWC_4.png)
 ![SWC](../figures/V19_versus_aws-l3-dev_scatter/SWC_5.png)
  
-## <a id='s0-50' />SWC_O
+## <a id='s0-53' />SWC_O
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -754,7 +763,7 @@ rh_u_cor, gps_time, gps_geoid, gps_hdop, fan_dc_u, t_log, rh_i_cor
 ![SWC_O](../figures/V19_versus_aws-l3-dev_scatter/SWC_O_4.png)
 ![SWC_O](../figures/V19_versus_aws-l3-dev_scatter/SWC_O_5.png)
  
-## <a id='s0-51' />TAS_A
+## <a id='s0-54' />TAS_A
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -770,9 +779,9 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![TAS_A](../figures/V19_versus_aws-l3-dev_scatter/TAS_A_3.png)
 ![TAS_A](../figures/V19_versus_aws-l3-dev_scatter/TAS_A_4.png)
  
-## <a id='s0-52' />TAS_Av3
+## <a id='s0-55' />TAS_Av3
 No old file for this station
-## <a id='s0-53' />TAS_L
+## <a id='s0-56' />TAS_L
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -788,7 +797,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![TAS_L](../figures/V19_versus_aws-l3-dev_scatter/TAS_L_3.png)
 ![TAS_L](../figures/V19_versus_aws-l3-dev_scatter/TAS_L_4.png)
  
-## <a id='s0-54' />TAS_U
+## <a id='s0-57' />TAS_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -804,7 +813,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![TAS_U](../figures/V19_versus_aws-l3-dev_scatter/TAS_U_3.png)
 ![TAS_U](../figures/V19_versus_aws-l3-dev_scatter/TAS_U_4.png)
  
-## <a id='s0-55' />THU_L
+## <a id='s0-58' />THU_L
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -820,7 +829,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![THU_L](../figures/V19_versus_aws-l3-dev_scatter/THU_L_3.png)
 ![THU_L](../figures/V19_versus_aws-l3-dev_scatter/THU_L_4.png)
  
-## <a id='s0-56' />THU_L2
+## <a id='s0-59' />THU_L2
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -836,7 +845,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![THU_L2](../figures/V19_versus_aws-l3-dev_scatter/THU_L2_3.png)
 ![THU_L2](../figures/V19_versus_aws-l3-dev_scatter/THU_L2_4.png)
  
-## <a id='s0-57' />THU_U
+## <a id='s0-60' />THU_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -852,7 +861,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![THU_U](../figures/V19_versus_aws-l3-dev_scatter/THU_U_3.png)
 ![THU_U](../figures/V19_versus_aws-l3-dev_scatter/THU_U_4.png)
  
-## <a id='s0-58' />THU_U2
+## <a id='s0-61' />THU_U2
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -868,9 +877,9 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![THU_U2](../figures/V19_versus_aws-l3-dev_scatter/THU_U2_3.png)
 ![THU_U2](../figures/V19_versus_aws-l3-dev_scatter/THU_U2_4.png)
  
-## <a id='s0-59' />THU_U2v3
+## <a id='s0-62' />THU_U2v3
 No old file for this station
-## <a id='s0-60' />TUN
+## <a id='s0-63' />TUN
 Variables in new file:
 p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -888,7 +897,7 @@ rh_u_cor, rh_l_cor, gps_time, gps_hdop, fan_dc_u, fan_dc_l, rh_i_cor
 ![TUN](../figures/V19_versus_aws-l3-dev_scatter/TUN_5.png)
 ![TUN](../figures/V19_versus_aws-l3-dev_scatter/TUN_6.png)
  
-## <a id='s0-61' />UPE_L
+## <a id='s0-64' />UPE_L
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -904,7 +913,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![UPE_L](../figures/V19_versus_aws-l3-dev_scatter/UPE_L_3.png)
 ![UPE_L](../figures/V19_versus_aws-l3-dev_scatter/UPE_L_4.png)
  
-## <a id='s0-62' />UPE_U
+## <a id='s0-65' />UPE_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -920,7 +929,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![UPE_U](../figures/V19_versus_aws-l3-dev_scatter/UPE_U_3.png)
 ![UPE_U](../figures/V19_versus_aws-l3-dev_scatter/UPE_U_4.png)
  
-## <a id='s0-63' />UWN
+## <a id='s0-66' />UWN
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -936,7 +945,7 @@ rh_u_cor, precip_u_cor, precip_u_rate, gps_time, gps_geoid, gps_hdop, fan_dc_u, 
 ![UWN](../figures/V19_versus_aws-l3-dev_scatter/UWN_3.png)
 ![UWN](../figures/V19_versus_aws-l3-dev_scatter/UWN_4.png)
  
-## <a id='s0-64' />WEG_B
+## <a id='s0-67' />WEG_B
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_pt, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
@@ -951,19 +960,19 @@ rh_u_cor, z_pt_cor, gps_time, gps_geoid, gps_hdop, fan_dc_u, t_log, rh_i_cor
 ![WEG_B](../figures/V19_versus_aws-l3-dev_scatter/WEG_B_2.png)
 ![WEG_B](../figures/V19_versus_aws-l3-dev_scatter/WEG_B_3.png)
  
-## <a id='s0-65' />WEG_L
+## <a id='s0-68' />WEG_L
 No old file for this station
-## <a id='s0-66' />XXX
+## <a id='s0-69' />XXX
 No old file for this station
-## <a id='s0-67' />ZAC_A
+## <a id='s0-70' />ZAC_A
 No old file for this station
-## <a id='s0-68' />ZAC_Lv3
+## <a id='s0-71' />ZAC_Lv3
 No old file for this station
-## <a id='s0-69' />ZAC_Uv3
+## <a id='s0-72' />ZAC_Uv3
 No old file for this station
-## <a id='s0-70' />ZAK_A
+## <a id='s0-73' />ZAK_A
 No new file for this station
-## <a id='s0-71' />ZAK_Lv3
+## <a id='s0-74' />ZAK_Lv3
 No new file for this station
-## <a id='s0-72' />ZAK_Uv3
+## <a id='s0-75' />ZAK_Uv3
 No new file for this station
