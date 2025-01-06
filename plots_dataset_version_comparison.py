@@ -10,14 +10,14 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 # new_version = 'aws-l3-dev'
-# new_version = 'level_3_sites'
-new_version = 'level_2_stations'
-old_version = 'V19'
+new_version = 'level_3_sites'
+# new_version = 'level_2_stations'
+old_version = 'V20'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
@@ -34,7 +34,8 @@ elif 'dev' in new_version:
     df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
 
 elif 'level_3' in new_version:
-    path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_3_sites/csv/hour/'
+    # path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_3_sites/csv/hour/'
+    path_new = 'C:/Users/bav/Downloads/level_3_sites/hour/'
     df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_sites_metadata.csv')
 elif 'level_2' in new_version:
     path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_2_stations/csv/hour/'
@@ -75,9 +76,9 @@ import toml
 import xarray as xr
 import numpy as np
 # plt.close('all')
-for station in ['JAR_O']: #
+# for station in ['JAR_O']: #
 # for station in np.unique(df_meta.station_id):
-# for station in np.unique(df_meta.site_id):
+for station in np.unique(df_meta.site_id):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
@@ -169,7 +170,7 @@ for station in ['JAR_O']: #
                 print(var,'not in new data')
             ax.legend(loc='lower left')
             ax.grid()
-            # ax.set_xlim('2024-02-01','2024-05-01')
+            ax.set_xlim('2024-02-01','2025-01-07')
 
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
@@ -200,7 +201,8 @@ def Msg(txt):
 import xarray as xr
 import numpy as np
 # for station in ['NAE']: #
-for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
+# for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
+for station in df_meta.site_id:
     Msg('## '+station)
     file = path_new+station+'_hour.csv'
     try:

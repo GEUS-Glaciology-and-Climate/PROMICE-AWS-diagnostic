@@ -15,11 +15,14 @@ matplotlib.use('Agg')
 import tocgen
 
 # def main(
-data_type = 'stations'
-path_new = '../aws-l3-dev/'+data_type+'/'
+data_type = 'sites'
+if data_type == 'sites':
+    path_new = 'C:/Users/bav/Downloads/level_3_sites/day/'
+else:
+    path_new = 'C:/Users/bav/Downloads/level_2_stations/day/'
+
 filename = 'plot_compilations/surface_height_'+data_type+'.md'
-df_meta = pd.read_csv(path_new+'../AWS_'+data_type+'_metadata.csv')
-df_meta = df_meta.set_index(data_type[:-1]+'_id')
+
 f = open(filename, "w")
 def Msg(txt):
     f = open(filename, "a")
@@ -28,12 +31,14 @@ def Msg(txt):
 plt.close('all')
 
 
-for station in df_meta.index:
-# for station in ['KAN_M']:
+for file in os.listdir(path_new):
+    station = file.replace('_day.csv','')
     Msg('## '+station)
-    if not os.path.isfile(path_new+station+'/'+station+'_day.csv'):
+    if not os.path.isfile(path_new+file):
+        Msg("cannot find",path_new+file)
         continue
-    df_new = pd.read_csv(path_new+station+'/'+station+'_day.csv')
+
+    df_new = pd.read_csv(path_new+file)
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
 
@@ -92,6 +97,7 @@ for station in df_meta.index:
     ax_list[2].invert_yaxis()
     ax_list[3].set_ylabel('Temperature (°C)')
     ax_list[0].set_title(station)
+    ax_list[0].set_xlim(pd.to_datetime(['2024-05-01','2025-01-07']))
 
     fig.savefig('figures/surface_height/%s/%s.png' % (data_type, station), dpi=300, bbox_inches="tight")
     Msg('![%s](../figures/surface_height/%s/%s.png)'%(station,data_type, station))
