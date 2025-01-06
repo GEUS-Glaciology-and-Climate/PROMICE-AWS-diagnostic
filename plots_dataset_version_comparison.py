@@ -153,27 +153,28 @@ for station in np.unique(df_meta.site_id):
         for var, ax in zip(var_list, ax_list):
             ax.set_ylabel(var)
 
-            try:
+            if var in df_old.columns:
                 ax.plot(df_old[var].index, df_old[var].values,
                         marker='^',linestyle='None', label=old_version,
                         alpha=0.7, color='tab:blue')
-            except:
+            else:
                 print(var,'not in old data')
 
 
-            try:
+            if var in df_new.columns:
                 ax.plot(df_new[var].index, df_new[var].values,
                         marker='.',markeredgecolor='None', linestyle='None',
                         label=new_version, alpha=0.7,
                         color='tab:orange')
-            except:
+            else:
                 print(var,'not in new data')
             ax.legend(loc='lower left')
             ax.grid()
-            ax.set_xlim('2024-02-01','2025-01-07')
+            # ax.set_xlim(pd.to_datetime(['2024-02-01','2025-01-07']))
 
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
+        plt.close(fig)
         Msg('![%s](../%s/%s_%i.png)'%(station, figure_folder, station,k))
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")

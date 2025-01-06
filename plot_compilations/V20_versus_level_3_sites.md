@@ -1136,6 +1136,15 @@ Old variables removed from new files:
 ![THU_U](../figures/V20_versus_level_3_sites/THU_U_12.png)
 ![THU_U](../figures/V20_versus_level_3_sites/THU_U_13.png)
  
+ Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
 ## TUN
 Variables in new file:
 p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
@@ -1162,3 +1171,202 @@ Old variables removed from new files:
 ![TUN](../figures/V20_versus_level_3_sites/TUN_13.png)
 ![TUN](../figures/V20_versus_level_3_sites/TUN_14.png)
 ![TUN](../figures/V20_versus_level_3_sites/TUN_15.png)
+![TUN](../figures/V20_versus_level_3_sites/TUN_16.png)
+ 
+## UPE_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_0.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_1.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_2.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_3.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_4.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_5.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_6.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_7.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_8.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_9.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_10.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_11.png)
+![UPE_L](../figures/V20_versus_level_3_sites/UPE_L_12.png)
+ 
+## UPE_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_0.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_1.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_2.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_3.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_4.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_5.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_6.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_7.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_8.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_9.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_10.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_11.png)
+![UPE_U](../figures/V20_versus_level_3_sites/UPE_U_12.png)
+ 
+## UWN
+cannot find old file for UWN
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+Old variables removed from new files:
+
+ 
+![UWN](../figures/V20_versus_level_3_sites/UWN_0.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_1.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_2.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_3.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_4.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_5.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_6.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_7.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_8.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_9.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_10.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_11.png)
+![UWN](../figures/V20_versus_level_3_sites/UWN_12.png)
+ 
+## WEG_B
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_0.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_1.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_2.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_3.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_4.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_5.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_6.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_7.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_8.png)
+![WEG_B](../figures/V20_versus_level_3_sites/WEG_B_9.png)
+ 
+## WEG_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_0.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_1.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_2.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_3.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_4.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_5.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_6.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_7.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_8.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_9.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_10.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_11.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_12.png)
+![WEG_L](../figures/V20_versus_level_3_sites/WEG_L_13.png)
+ 
+## ZAC_A
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_l, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_0.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_1.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_2.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_3.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_4.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_5.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_6.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_7.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_8.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_9.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_10.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_11.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_12.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_13.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_14.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_15.png)
+![ZAC_A](../figures/V20_versus_level_3_sites/ZAC_A_16.png)
+ 
+## ZAC_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_0.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_1.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_2.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_3.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_4.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_5.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_6.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_7.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_8.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_9.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_10.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_11.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_12.png)
+![ZAC_L](../figures/V20_versus_level_3_sites/ZAC_L_13.png)
+ 
+## ZAC_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_0.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_1.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_2.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_3.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_4.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_5.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_6.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_7.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_8.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_9.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_10.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_11.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_12.png)
+![ZAC_U](../figures/V20_versus_level_3_sites/ZAC_U_13.png)
+ 
