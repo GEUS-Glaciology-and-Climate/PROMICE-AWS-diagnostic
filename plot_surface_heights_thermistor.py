@@ -10,8 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 # def main(
@@ -31,7 +31,8 @@ def Msg(txt):
 plt.close('all')
 
 
-for file in os.listdir(path_new):
+# for file in os.listdir(path_new):
+for file in ['KAN_U_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -97,7 +98,7 @@ for file in os.listdir(path_new):
     ax_list[2].invert_yaxis()
     ax_list[3].set_ylabel('Temperature (°C)')
     ax_list[0].set_title(station)
-    ax_list[0].set_xlim(pd.to_datetime(['2024-05-01','2025-01-07']))
+    # ax_list[0].set_xlim(pd.to_datetime(['2024-05-01','2025-01-07']))
 
     fig.savefig('figures/surface_height/%s/%s.png' % (data_type, station), dpi=300, bbox_inches="tight")
     Msg('![%s](../figures/surface_height/%s/%s.png)'%(station,data_type, station))

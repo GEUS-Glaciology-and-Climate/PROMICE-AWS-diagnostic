@@ -14,8 +14,8 @@ from sklearn.linear_model import LinearRegression
 import nead
 from pypromice.process import AWS
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 import geopandas as gpd
 
@@ -33,7 +33,7 @@ def Msg(txt):
     f = open(filename, "a")
     print(txt)
     f.write(txt + "\n")
-plt.close('all')
+# plt.close('all')
 
 gnss_df = pd.read_csv('ancil/GEUS_GC-Net_precise_locations.csv').set_index(data_type[:-1])
 gnss_df['date'] = pd.to_datetime(gnss_df.date,dayfirst=True)
@@ -42,8 +42,8 @@ gps_obs = pd.read_csv('ancil/GC-Net_observed_coordinates.csv').set_index('name')
 gps_obs['date'] = pd.to_datetime(gps_obs.date,errors='coerce')
 for v in ['lat','lon','elev']:
     gps_obs[v] = pd.to_numeric(gps_obs[v], errors='coerce')
-for file in os.listdir(path_new):
-# for station in ['JAR']:
+# for file in os.listdir(path_new):
+for file in ['NSE_day.csv']:
 # for station in np.unique(gnss_df.index):
     station = file.replace('_day.csv','')
     Msg('## '+station)
@@ -54,6 +54,16 @@ for file in os.listdir(path_new):
     df_new = pd.read_csv(path_new+file)
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
+
+    df_l2 = pd.read_csv('C:/Users/bav/Downloads/level_2_stations/day/'+file.replace('day','hour'))
+    df_l2.time = pd.to_datetime(df_l2.time, utc=True)
+    df_l2 = df_l2.set_index('time')
+    geoid_separation_station = df_l2.gps_geoid.dropna().unique()
+    if len(geoid_separation_station)>1:
+        print('Multiple geoid separation: ', geoid_separation_station)
+
+    geoid_separation_station=geoid_separation_station[0]
+
 
     var_list_list = [['gps_lat','gps_lon','gps_alt']]
     for k, var_list in enumerate(var_list_list):
@@ -75,10 +85,17 @@ for file in os.listdir(path_new):
                 if var == 'gps_alt':
                     ax.plot(gnss_df.loc[station,'date'],
                             gnss_df.loc[station,var.replace('gps_','').replace('alt','orthometric_height_m')],
-                            marker='o',ls='None', label='GNSS survey: orthometric height')
+                            marker='o',ls='None', label='GNSS survey: orthometric height (geoid gr2000g.06)')
+
                     ax.plot(gnss_df.loc[station,'date'],
                             gnss_df.loc[station,var.replace('gps_','').replace('alt','ellipsoid_height_m')],
                             marker='^',ls='None', color='tab:green', label='GNSS survey: ellipsoid height')
+
+                    ax.plot(gnss_df.loc[station,'date'],
+                            gnss_df.loc[station,var.replace('gps_','').replace('alt','ellipsoid_height_m')] \
+                                -geoid_separation_station,
+                            marker='d',ls='None', color='tab:purple',
+                            label='GNSS survey: orthometric height (geoid EGM96?)')
                 else:
                     ax.plot(gnss_df.loc[station,'date'],
                             gnss_df.loc[station,var.replace('gps_','')],

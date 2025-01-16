@@ -56,7 +56,7 @@ def Msg(txt):
     f = open(filename, "a")
     print(txt)
     f.write(txt + "\n")
-    
+
 # plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
@@ -64,10 +64,10 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = False
 
-for station in ['TAS_Av3']:
-# for station in np.unique(np.array(all_dirs)): 
+for station in ['KAN_U']:
+# for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
-    
+
     # removing older plots
     pattern = os.path.join(figure_folder, f'{station}*')
     for file_path in glob.glob(pattern):
@@ -76,7 +76,7 @@ for station in ['TAS_Av3']:
             print(f'Removed: {file_path}')
         except Exception as e:
             print(f'Error removing {file_path}: {e}')
-            
+
 
     # loading flags
     try:
@@ -84,45 +84,45 @@ for station in ['TAS_Av3']:
         flags['what was done'] = 'flag'
     except:
         flags = pd.DataFrame()
-    
+
     try:
         adj = pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv', comment='#', skipinitialspace=True)
         adj['what was done'] = adj['adjust_function'] + ' ' + adj['adjust_value'].astype(str)
     except:
         adj = pd.DataFrame()
-        
+
     try:
         df_flags = pd.concat((flags,adj))[['t0', 't1', 'variable', 'what was done', 'comment', 'URL_graphic']].reset_index(drop=True)
     except:
         df_flags = pd.concat((flags,adj))
-        
+
     # Loading the L1 data:
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
     if os.path.isfile(config_file_tx):
         inpath = path_to_l0 + '/tx/'
-        pAWS_tx = AWS(config_file_tx, 
-                      inpath, 
-                      var_file=None, 
-                      meta_file=None, 
+        pAWS_tx = AWS(config_file_tx,
+                      inpath,
+                      var_file=None,
+                      meta_file=None,
                       data_issues_repository='../PROMICE-AWS-data-issues')
         pAWS_tx.getL1()
 
     else:
         pAWS_tx = None
-        
+
     if os.path.isfile(config_file_raw):
         inpath = path_to_l0 + '/raw/'+station+'/'
         pAWS_raw = AWS(config_file_raw,
-                      inpath, 
-                      var_file=None, 
-                      meta_file=None, 
+                      inpath,
+                      var_file=None,
+                      meta_file=None,
                       data_issues_repository='../PROMICE-AWS-data-issues')
         pAWS_raw.getL1()
 
     else:
         pAWS_raw = None
-    
+
     if pAWS_raw == None:
         print('No raw logger file for',station)
         ds = pAWS_tx.L1A.copy(deep=True)
@@ -133,7 +133,7 @@ for station in ['TAS_Av3']:
         print('Combining L1 data for',station)
         ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
 
-        
+
     ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
 
     ds_save = ds.copy(deep=True)
@@ -143,18 +143,18 @@ for station in ['TAS_Av3']:
     # except:
     #     pass
 
-    #%% Flagging, adjusting, filtering 
-    
+    #%% Flagging, adjusting, filtering
+
     ds = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
     ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
     ds3 = persistence_qc(ds2)
-    
+
     ds4 = ds3.copy()
     baseline_elevation = (ds3.gps_alt.to_series().resample('M').median()
                           .reindex(ds3.time.to_series().index, method='nearest')
                           .ffill().bfill())
-    mask = (np.abs(ds3.gps_alt - baseline_elevation) < 100) & ds3.gps_alt.notnull()
+    mask = (np.abs(ds3.gps_alt - baseline_elevation) < 100) | ds3.gps_alt.isnull()
     ds4[['gps_alt','gps_lon', 'gps_lat']] = ds4[['gps_alt','gps_lon', 'gps_lat']].where(mask)
 
     # smoothing tilt
@@ -164,7 +164,7 @@ for station in ['TAS_Av3']:
 
     # %%  plotting
     df_L1 = ds.to_dataframe().copy()
-    
+
     if len(df_flags)>0:
         for ind, var_list in zip(df_flags.index, df_flags.variable):
             if var_list == '*':
@@ -178,7 +178,7 @@ for station in ['TAS_Av3']:
                 Msg(v+' not in variables')
                 var_list = var_list[~np.isin(var_list, v)]
                 continue
-                
+
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
     Msg('# '+station)
@@ -186,18 +186,21 @@ for station in ['TAS_Av3']:
 
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
-    # var_list_list = [np.array('gps_lat','gps_lon','gps_alt'])]
-    # var_list_list = [np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor'])]
+    # var_list_list = []
     # var_list_list = [np.array(['tilt_x','tilt_y','rot'])]
     # var_list_list = [np.array(['dlr','ulr','t_rad','usr','dsr', 'albedo',])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [        
-    #                   # np.array(['p_u','p_l','p_i']),
-    #                   # np.array(['rh_u','rh_l','rh_i']),
-    #                   # np.array(['wspd_u','wspd_l','wspd_i']),
-                       # ] 
+    # var_list_list = [
+    #                     np.array(['tilt_x','tilt_y']),
+    #                     np.array(['gps_lat','gps_lon','gps_alt']),
+                        # np.array(['z_boom_u','z_boom_l','z_stake','z_pt_cor']),
+                        # np.array(['t_u']+['t_i_'+str(i+1) for i in range(11)]),
+                        # np.array(['p_u','p_l','p_i']),
+    #                     np.array(['rh_u','rh_l','rh_i']),
+    #                     np.array(['wspd_u','wspd_l','wspd_i']),
+    #                     np.array(['wdir_u','wdir_l','wdir_i']),
+                        # ]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
-    # var_list_list = [np.array(['t_u']+['t_i_'+str(i+1) for i in range(12)])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
@@ -206,32 +209,32 @@ for station in ['TAS_Av3']:
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,len(var_list)*2.3))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
-            
+
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             # if var in ds.data_vars:
-            #     ax.plot( pAWS_raw.L0[-2].time, 
+            #     ax.plot( pAWS_raw.L0[-2].time,
             #             -pAWS_raw.L0[-2][var].values,
-            #             marker='.',color='gray', linestyle='None', 
+            #             marker='.',color='gray', linestyle='None',
             #             label='L0')
             if var in ds.data_vars:
-                ax.plot(ds.time, 
+                ax.plot(ds.time,
                         ds[var].values,
-                        marker='.',color='tab:red', linestyle='None', 
+                        marker='.',color='tab:red', linestyle='None',
                         label='removed by flag')
-                
+
             if var in ds1.data_vars:
-                ax.plot(ds1.time, 
+                ax.plot(ds1.time,
                         ds1[var].values,
                         marker='.',color='tab:orange', linestyle='None',
                         label='removed or changed by adjustment')
             if var in ds2.data_vars:
-                ax.plot(ds2.time, 
+                ax.plot(ds2.time,
                         ds2[var].values,
                         marker='.',color='tab:green', linestyle='None',
                         label='filtered with persistence')
             if var in ds3.data_vars:
-                ax.plot(ds3.time, 
+                ax.plot(ds3.time,
                         ds3[var].values,
                         marker='.',color='tab:pink', linestyle='None',
                         label='removed by custom filter (gps_alt, tilt or rot)')
@@ -240,17 +243,17 @@ for station in ['TAS_Av3']:
                             baseline_elevation,
                             ls='--', c='k')
             # if ('gps' in var) | (var in ['tilt_x','tilt_y','rot']):
-            #     ax.plot(ds3b.time, 
+            #     ax.plot(ds3b.time,
             #             ds3b[var].values,
             #             marker='.',color='tab:pink', linestyle='None',
             #             label='removed by custom filter (gps_alt, tilt or rot)')
             if var in ds4.data_vars:
-                ax.plot(ds4.time, 
+                ax.plot(ds4.time,
                         ds4[var].values,
                         marker='.',color='tab:blue', linestyle='None',
                         label='final')
             if var in ds4.data_vars:
-                ax.plot(ds4.time, 
+                ax.plot(ds4.time,
                         ds4[var].values,
                         marker='.',color='tab:blue', linestyle='None',
                         label='final')
@@ -261,7 +264,7 @@ for station in ['TAS_Av3']:
 
             # if ('cor' in var) or (var == 'z_surf_combined'):
             #     ax.plot(ds_l3.time,
-            #              ds_l3[var],       
+            #              ds_l3[var],
             #              marker='.',color='tab:blue', linestyle='None')
 
         for var, ax in zip(var_list, ax_list):
@@ -278,7 +281,7 @@ for station in ['TAS_Av3']:
 
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)
             ax.grid(True, which='major', linestyle='-', linewidth=1)
-            
+
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
