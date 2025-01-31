@@ -38,11 +38,11 @@ plt.close('all')
 for station in df_meta.index:
 # for station in ['QAS_M']:
     Msg('## ' + station)
-    
+
     # Check if the file exists
     if not os.path.isfile(path_new + station + '/' + station + '_day.csv'):
         continue
-    
+
     # Read the station data
     df_new = pd.read_csv(path_new + station + '/' + station + '_day.csv')
     if df_new.loc[df_new.z_surf_combined.last_valid_index(), 'z_surf_combined'] >0:
@@ -50,36 +50,36 @@ for station in df_meta.index:
         continue
     df_new.time = pd.to_datetime(df_new.time)
     df_new = df_new.set_index('time')
-    
+
     # Create a figure with two panels
     fig, ax_list = plt.subplots(2, 1, sharex=False, figsize=(10, 10))
     plt.subplots_adjust(right=0.75, left=0.08, hspace=0.15)
-    
+
     # Top panel: z_surf_combined
     if 'z_surf_combined' in df_new.columns and not df_new['z_surf_combined'].isnull().all():
-        ax_list[0].plot(df_new.index, df_new['z_surf_combined'], 
+        ax_list[0].plot(df_new.index, df_new['z_surf_combined'],
                          marker='.', markeredgecolor='None', linestyle='None', label='z_surf_combined')
         ax_list[0].set_ylabel('Surface Height (m)')
         ax_list[0].set_title(station)
         ax_list[0].grid()
         ax_list[0].legend(loc='center left', bbox_to_anchor=(1, 0.5))
-        
+
         # caluclating ice surface
         df_new['z_ice_surf'] = df_new['z_surf_combined'].cummin()
-        
+
         # removing years with too many NaNs in JJA
         mask = df_new[df_new.index.month.isin([6, 7, 8])]['z_surf_combined'].isnull().resample('Y').sum().to_frame()
         for index, count in mask.iterrows():
             if count.iloc[0]>15:
                 df_new.loc[str(index.year), 'z_ice_surf'] = np.NaN
-                
+
         # Bottom panel: z_ice_surface as function of day of year
         for year in df_new.index.year.unique():
             # Filter data for the year range September to August Y
             start_date = pd.Timestamp(f'{year}-04-01')
             end_date = pd.Timestamp(f'{year}-10-31')
             df_year = df_new.loc[(df_new.index >= start_date) & (df_new.index < end_date), :].copy()
-            
+
             # Calculate the day of the year
             df_year['day_of_year'] = df_year.index.dayofyear.values
             # df_year.loc[df_year['day_of_year'] < 0, 'day_of_year'] = 365 + df_year.loc[df_year['day_of_year'] < 0, 'day_of_year']
@@ -87,22 +87,22 @@ for station in df_meta.index:
             # Plot z_surf_combined adjusted by first valid value
             if df_year['z_surf_combined'].notnull().any():
                 first_valid_value = df_year['z_ice_surf'].loc[
-                    slice(df_year['z_ice_surf'].first_valid_index(), 
+                    slice(df_year['z_ice_surf'].first_valid_index(),
                           df_year['z_ice_surf'].first_valid_index()+pd.to_timedelta('10 days'))].mean()
                 if year == 2024:
-                    ax_list[1].plot(df_year['day_of_year'], 
-                                     df_year['z_ice_surf'] - first_valid_value, 
+                    ax_list[1].plot(df_year['day_of_year'],
+                                     df_year['z_ice_surf'] - first_valid_value,
                                      label='_no_legend_', linestyle='-', color='w',lw=10, alpha=0.7)
-                    ax_list[1].plot(df_year['day_of_year'], 
-                                     df_year['z_ice_surf'] - first_valid_value, 
+                    ax_list[1].plot(df_year['day_of_year'],
+                                     df_year['z_ice_surf'] - first_valid_value,
                                      label=str(year), linestyle='-', color='k',lw=4)
                 else:
-                    ax_list[1].plot(df_year['day_of_year'], 
-                                     df_year['z_ice_surf'] - first_valid_value, 
+                    ax_list[1].plot(df_year['day_of_year'],
+                                     df_year['z_ice_surf'] - first_valid_value,
                                      label=str(year), linestyle='-')
-        
+
         # Set x-axis limits
-        
+
         # Major ticks and labels every 30 days
         labels = []
         tick_positions = []
@@ -123,16 +123,16 @@ for station in df_meta.index:
             elif i < 330: month_label = 'Nov.'
             elif i < 360: month_label = 'Dec.'
             labels.append(month_label)
-        
+
         ax_list[1].set_xticks(tick_positions)
         ax_list[1].set_xticklabels(labels, rotation=45, ha='right')
-        ax_list[1].set_xlim(150, 290)  
+        ax_list[1].set_xlim(150, 290)
 
-        
+
         ax_list[1].set_ylabel('Snow Height (m)')
         ax_list[1].grid()
         ax_list[1].legend(title='Year', loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
-    
+
     # Save the figure
     fig.savefig('figures/snow_height/%s/%s_ice_surface.png' % (data_type, station), dpi=300)
     Msg(f'![{station}](../figures/snow_height/{data_type}/{station}_ice_surface.png)')
@@ -141,7 +141,7 @@ for station in df_meta.index:
 tocgen.processFile(filename, filename[:-3] + "_toc.md")
 f.close()
 
-# %% 
+# %%
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
@@ -150,7 +150,7 @@ import matplotlib
 matplotlib.use('Agg')
 # Initialize
 data_type = 'sites'
-path_new = '../aws-l3-dev/' + data_type + '/'
+path_new = 'C:/Users/bav/Downloads/level_3_sites/day/'
 filename = 'plot_compilations/ablation_' + data_type + '.md'
 df_meta = pd.read_csv(path_new + '../AWS_' + data_type + '_metadata.csv')
 df_meta = df_meta.set_index(data_type[:-1] + '_id')
@@ -170,11 +170,11 @@ plt.close('all')
 for station in df_meta.index:
 # for station in ['KAN_L']:
     Msg('## ' + station)
-    
+
     # Check if the file exists
     if not os.path.isfile(path_new + station + '/' + station + '_day.csv'):
         continue
-    
+
     # Read the station data
     df_new = pd.read_csv(path_new + station + '/' + station + '_day.csv')
     if df_new.loc[df_new.z_surf_combined.last_valid_index(), 'z_surf_combined'] > 0:
@@ -182,7 +182,7 @@ for station in df_meta.index:
         continue
     df_new.time = pd.to_datetime(df_new.time)
     df_new = df_new.set_index('time')
-    
+
     # Filter the ablation data for the current station
     if station not in df_ablation.columns:
         continue
@@ -203,33 +203,33 @@ for station in df_meta.index:
         start_date = pd.Timestamp(f'{year}-04-01')
         end_date = pd.Timestamp(f'{year}-10-31')
         df_year = df_new.loc[(df_new.index >= start_date) & (df_new.index < end_date), :].copy()
-        
+
         if df_year.empty:
             continue
-        
+
         # Calculate the day of the year and first valid value
         df_year['day_of_year'] = df_year.index.dayofyear.values
         df_year = df_year.loc[df_year.day_of_year > 150]
         first_valid_value = (df_year['z_surf_combined'].loc[
-            slice(df_year['z_surf_combined'].first_valid_index(), 
+            slice(df_year['z_surf_combined'].first_valid_index(),
                   df_year['z_surf_combined'].first_valid_index() + pd.to_timedelta('10 days'))
         ] - df_year['snow_height'].loc[
-            slice(df_year['z_surf_combined'].first_valid_index(), 
+            slice(df_year['z_surf_combined'].first_valid_index(),
                   df_year['z_surf_combined'].first_valid_index() + pd.to_timedelta('10 days'))
         ]).mean()
-        
+
         # Plot z_surf_combined adjusted by first valid value
-        ax_list[i].plot(df_year['day_of_year'], df_year['z_surf_combined'] - first_valid_value, 
+        ax_list[i].plot(df_year['day_of_year'], df_year['z_surf_combined'] - first_valid_value,
                         label="Surface height", linestyle='-')
         # Plot snow_height
-        ax_list[i].plot(df_year['day_of_year'], df_year['snow_height'], 
+        ax_list[i].plot(df_year['day_of_year'], df_year['snow_height'],
                         label="Snow height", linestyle='-')
 
         ax_list[i].hlines(0, xmin=0, xmax=350, color='k')
-        
+
         if year in df_selec.index:
-            ax_list[i].annotate('', xy=(255, -df_selec[year] * 1000 / 917), 
-                                xytext=(255, 0), 
+            ax_list[i].annotate('', xy=(255, -df_selec[year] * 1000 / 917),
+                                xytext=(255, 0),
                                 arrowprops=dict(facecolor='black', shrink=0.05, width=2, headwidth=10),
                                 label=f'{year}: {df_selec[year]:.2f} m')
         if i % round(num_years**0.5) == 0:
@@ -241,12 +241,12 @@ for station in df_meta.index:
         tick_positions = np.arange(150, 270, 20)
         ax_list[i].set_xticks(tick_positions)
         ax_list[i].set_xlim(150, 270)
-    
+
     from matplotlib.lines import Line2D  # Import for custom legend marker
-    
+
     # Add a custom legend with arrow marker for "Expert assessment"
     arrow_marker = Line2D([0], [0], color='k', marker='v', markersize=3, linestyle='None', label='Expert assessment')
-    
+
     # Add a single legend on the right side with custom arrow marker
     handles, labels = ax_list[0].get_legend_handles_labels()
     handles.append(arrow_marker)  # Add custom arrow marker to legend
@@ -259,4 +259,3 @@ for station in df_meta.index:
     Msg(' ')
 
 f.close()
-
