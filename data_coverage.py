@@ -35,7 +35,7 @@ def Msg(txt):
     f.write(txt + "\n")
 # plt.close('all')
 
-fig = plt.figure(figsize=(10, 16))
+fig = plt.figure(figsize=(10, 18))
 gs = fig.add_gridspec(2, 1, height_ratios=[2, 1])  # Now it correctly has 2 rows
 
 ax_list = [fig.add_subplot(gs[0]),  # Upper panel (3/4 height)
@@ -44,7 +44,7 @@ ax_list = [fig.add_subplot(gs[0]),  # Upper panel (3/4 height)
 plt.subplots_adjust(left=0.27, right=0.97, top=0.98, bottom=0.1, wspace=0.3, hspace=0.2)
 
 count = 0
-col = ['tab:orange','tab:purple', 'tab:red','tab:blue', 'tab:pink', 'tab:pink','tab:cyan',]
+col = ['tab:orange','tab:purple', 'tab:red','tab:blue', 'tab:pink','tab:cyan',]
 xtick_loc = np.array([1.5])
 
 file_list_GCNet = ['CEN_day.csv', 'CP1_day.csv', 'DY2_day.csv', 'EGP_day.csv',
@@ -87,26 +87,24 @@ for ax, file_list in zip(ax_list,[file_list_PROMICE,file_list_GCNet]):
         df['t'] = df[[v for v in ['t_u','t_l'] if v in df.columns]].mean(axis=1)
         df['rh'] = df[[v for v in ['rh_u','rh_l'] if v in df.columns]].mean(axis=1)
         df['ws'] = df[[v for v in ['wspd_u','wspd_l'] if v in df.columns]].mean(axis=1)
-        print(site, np.round(df['t'].notnull().sum()/df['t'].shape[0]*100, 1),
-              np.round(df['rh'].notnull().sum()/df['t'].shape[0]*100, 1),
-              np.round(df['ws'].notnull().sum()/df['t'].shape[0]*100, 1),
-              np.round(df['sw_rad'].notnull().sum()/df['t'].shape[0]*100, 1),
-              np.round(df['lw_rad'].notnull().sum()/df['t'].shape[0]*100, 1))
-        for i, var in enumerate(['sw_rad','lw_rad','t','rh','ws']):
+        fields = ['t', 'p_u', 'rh', 'ws', 'sw_rad', 'lw_rad']
+        percentages = [np.round(df[field].notnull().sum() / df['t'].shape[0] * 100, 1) for field in fields]
+        print(site, *percentages)
+
+        for i, var in enumerate(['sw_rad','lw_rad','t','rh','ws','p_u']):
             # print(site, var,df[var].first_valid_index(), df[var].last_valid_index())
-            tmp = df[var].notnull() *(-count + (i-2)/8)
+            tmp = df[var].notnull() *(-count + (i-2)/9)
             tmp[tmp==0] = np.nan
             ax.plot(tmp.index, tmp.values, color = col[i], marker='s',markersize=2)
             count = count+1
 
-    ax.set_yticks(np.arange(len(PROMICE_sites))*(-4) - 1.5,
+    ax.set_yticks(np.arange(len(PROMICE_sites))*(-6) - 1.5,
                PROMICE_sites, fontsize=18)
     from matplotlib.ticker import AutoMinorLocator
-    ax.plot(np.nan,np.nan, color = col[0], label='shortwave irradiance', linewidth = 4.5)
-    ax.plot(np.nan,np.nan, color = col[1], label='longwave irradiance', linewidth = 4.5)
-    ax.plot(np.nan,np.nan, color = col[2], label='temperature', linewidth = 4.5)
-    ax.plot(np.nan,np.nan, color = col[3], label='humidity', linewidth = 4.5)
-    ax.plot(np.nan,np.nan, color = col[4], label='wind', linewidth = 4.5)
+    labels = ['shortwave irradiance', 'longwave irradiance', 'temperature',
+              'humidity', 'wind', 'pressure']
+    for i, label in enumerate(labels):
+        ax.plot(np.nan, np.nan, color=col[i], label=label, linewidth=4.5)
     ax.xaxis.set_minor_locator(AutoMinorLocator(5))
     if len(file_list) >14:
         ax.legend(loc='lower center', fontsize=14, bbox_to_anchor=(0.5,1))
@@ -121,10 +119,9 @@ for ax, file_list in zip(ax_list,[file_list_PROMICE,file_list_GCNet]):
         ax.set_xlim(pd.to_datetime('1990'),pd.to_datetime('2025'))
 
     ax.grid(axis='x')
-
     ax.grid(which='minor', color='lightgray', linestyle=':')
     ax.set_ylim(-count+1/4, 1)
-    ax.set_xlabel('Year', fs=14)
+    ax.set_xlabel('Year', fontsize=18)
     # ax.set_tick_params(labelbottom=True, which="both", labeltop=True, bottom=True, top=True)
     for y in np.arange(len(PROMICE_sites))*(-4) - 3.65:
       ax.axhline(y=y, color='gray', alpha=0.5)

@@ -170,7 +170,7 @@ for station in np.unique(df_meta.site_id):
                 print(var,'not in new data')
             ax.legend(loc='lower left')
             ax.grid()
-            # ax.set_xlim(pd.to_datetime(['2024-02-01','2025-01-07']))
+            ax.set_xlim(pd.to_datetime(['2024-02-01','2025-02-07']))
 
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
@@ -184,88 +184,3 @@ f.close()
 
 # if __name__ == '__main__':
 #     main()
-# %% scatter version
-
-figure_folder='figures/'+old_version+'_versus_'+new_version +'_scatter'
-filename = 'plot_compilations/'+old_version+'_versus_'+new_version+'_scatter.md' #'_'+today+'.md'
-
-try:
-    os.mkdir(figure_folder)
-except:
-    pass
-
-f = open(filename, "w")
-def Msg(txt):
-    f = open(filename, "a")
-    print(txt)
-    f.write(txt + "\n")
-import xarray as xr
-import numpy as np
-# for station in ['NAE']: #
-# for station in np.unique(pd.concat((df_meta.stid,df_meta2.station_id))):
-for station in df_meta.site_id:
-    Msg('## '+station)
-    file = path_new+station+'_hour.csv'
-    try:
-        df_new = pd.read_csv(file, index_col=0, parse_dates=True)
-    except:
-        file = path_new+station+'/'+station+'_hour.csv'
-        if os.path.isfile(file):
-            df_new = pd.read_csv(file, index_col=0, parse_dates=True)
-        else:
-            Msg('No new file for this station')
-            continue
-
-    try:
-        file = path_old+station+'/'+station+'_hour.csv'
-        df_old = pd.read_csv(file)
-    except:
-        file = path_old+station+'_hour.csv'
-        if os.path.isfile(file):
-            df_old = pd.read_csv(file, index_col=0, parse_dates=True)
-        else:
-            Msg('No old file for this station')
-            continue
-
-    Msg('Variables in new file:\n'+ ', '.join(df_new.columns.values))
-    Msg('\nNew variables not in old files:\n'+ ', '.join(
-        [v for v in df_new.columns if v not in df_old.columns]
-        ))
-    Msg('\nOld variables removed from new files:\n'+ ', '.join(
-        [v for v in df_old.columns if v not in df_new.columns]
-        ))
-    Msg(' ')
-    var_list = df_new.columns.intersection(df_old.columns)
-    var_list = [v for v in var_list if df_new[v].notnull().any() and df_old[v].notnull().any()]
-    var_list_list = [var_list[i:i+9] for i in range(0, len(var_list), 9)]
-    # var_list_list = [['gps_lat','gps_lon','gps_alt'],
-    #                  ['dlr','ulr','t_rad'],
-    #                  ['rh_u','rh_l','rh_u_cor','rh_l_cor']]
-
-    for k, var_list in enumerate(var_list_list):
-        fig, ax_list = plt.subplots(3,3, figsize=(15,15))
-        ax_list = ax_list.flatten()
-
-        if len(var_list)==1:
-            fig, ax_list = plt.subplots(1,1, figsize=(15,15))
-            ax_list = [ax_list]
-
-        for var, ax in zip(var_list, ax_list):
-            ax.set_xlabel(var +' old')
-            ax.set_ylabel(var +' new')
-
-            try:
-                msk = df_old[var].index.intersection(df_new[var].index)
-                ax.plot(df_old.loc[msk, var].values, df_new.loc[msk,var].values,
-                    marker='.',markeredgecolor='None', linestyle='None',
-                    label='_nolegend_',  alpha=0.7, c='k')
-            except:
-                print('error',var)
-            ax.grid()
-
-        plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
-        fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
-        Msg('![%s](../%s/%s_%i.png)'%(station, figure_folder, station,k))
-    Msg(' ')
-tocgen.processFile(filename, filename[:-3]+"_toc.md")
-f.close()

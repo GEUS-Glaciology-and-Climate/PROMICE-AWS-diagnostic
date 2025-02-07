@@ -15,6 +15,14 @@ from pypromice.process.join_l2 import join_l2
 from pypromice.process.join_l2 import loadArr
 import matplotlib.pyplot as plt
 import xarray as xr
+logging.getLogger('matplotlib.font_manager').disabled = True
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
 
 path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
@@ -26,7 +34,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 
-for station in ['TAS_Av3']:
+for station in ['KPC_L','KPC_Lv3']:
 # for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
@@ -78,7 +86,7 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in ['TAS_Av3']:
+for station in ['KPC_L','KPC_Lv3']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
@@ -124,7 +132,7 @@ folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-pr
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['TAS_A']:
+for site in ['KPC_L']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
 
@@ -136,7 +144,16 @@ for site in ['TAS_A']:
     plt.figure()
     l3_merged.z_surf_combined.plot()
     l3_merged.z_ice_surf.plot()
-    l3_merged.z_boom_u.plot()
+    l3_merged.z_boom_u.plot(marker='.')
+    plt.title(site)
 
     plt.figure()
     l3_merged.rh_u_wrt_ice_or_water.plot()
+    plt.title(site)
+
+    plt.figure()
+    for tmp in sorted_list_station_data[::-1]:
+        tmp[0].z_surf_combined.plot(label=tmp[1]['stid'])
+        tmp[0].z_ice_surf.plot(label=tmp[1]['stid'])
+
+    plt.legend()
