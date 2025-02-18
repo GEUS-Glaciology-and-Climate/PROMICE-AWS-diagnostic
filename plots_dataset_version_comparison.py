@@ -15,7 +15,7 @@ matplotlib.use('Agg')
 import tocgen
 
 # new_version = 'aws-l3-dev'
-new_version = 'level_3_sites'
+new_version = 'thredds'
 # new_version = 'level_2_stations'
 old_version = 'V20'
 
@@ -25,21 +25,21 @@ else:
     path_old = 'C:/Users/bav/Downloads/'+old_version+'/hour/'
 
 if 'thredds' in new_version:
-    path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds-dev/level_3_sites/'
-    df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
-    df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
-elif 'dev' in new_version:
-    path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/stations/'
-    df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
-    df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
+    path_new = '../thredds-data/level_3_sites/csv/hour/'
+    df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
+    df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
+# elif 'dev' in new_version:
+#     path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/stations/'
+#     df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
+#     df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
 
-elif 'level_3' in new_version:
-    # path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_3_sites/csv/hour/'
-    path_new = 'C:/Users/bav/Downloads/level_3_sites/hour/'
-    df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_sites_metadata.csv')
-elif 'level_2' in new_version:
-    path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_2_stations/csv/hour/'
-    df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_stations_metadata.csv')
+# elif 'level_3' in new_version:
+#     # path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_3_sites/csv/hour/'
+#     path_new = 'C:/Users/bav/Downloads/level_3_sites/hour/'
+#     df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_sites_metadata.csv')
+# elif 'level_2' in new_version:
+#     path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_2_stations/csv/hour/'
+#     df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_stations_metadata.csv')
 
 else:
     path_new = '../aws-l3/'
@@ -76,9 +76,9 @@ import toml
 import xarray as xr
 import numpy as np
 # plt.close('all')
-# for station in ['JAR_O']: #
+for station in ['DY2']: #
 # for station in np.unique(df_meta.station_id):
-for station in np.unique(df_meta.site_id):
+# for station in np.unique(df_meta.site_id):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
