@@ -46,8 +46,8 @@ for v in ['lat','lon','elev']:
     gps_obs[v] = pd.to_numeric(gps_obs[v], errors='coerce')
 
 
-for file in os.listdir(path_new): # for all sites, even though where there's no GNSS survey
-# for file in ['DY2_day.csv']: # for a specific site
+# for file in os.listdir(path_new): # for all sites, even though where there's no GNSS survey
+for file in ['SWC_day.csv']: # for a specific site
 
     site = file.replace('_day.csv','')
 

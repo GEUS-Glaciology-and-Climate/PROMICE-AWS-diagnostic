@@ -73,8 +73,14 @@
 ## NUK_N
 ![NUK_N](../figures/snow_height/sites/NUK_N.png)
  
+## NUK_P
+![NUK_P](../figures/snow_height/sites/NUK_P.png)
+ 
 ## NUK_U
 ![NUK_U](../figures/snow_height/sites/NUK_U.png)
+ 
+## ORO
+![ORO](../figures/snow_height/sites/ORO.png)
  
 ## QAS_A
 ![QAS_A](../figures/snow_height/sites/QAS_A.png)
@@ -87,6 +93,9 @@
  
 ## QAS_U
 ![QAS_U](../figures/snow_height/sites/QAS_U.png)
+ 
+## RED_L
+![RED_L](../figures/snow_height/sites/RED_L.png)
  
 ## SCO_L
 ![SCO_L](../figures/snow_height/sites/SCO_L.png)
@@ -115,11 +124,11 @@
 ## TAS_U
 ![TAS_U](../figures/snow_height/sites/TAS_U.png)
  
-## THU_L
-![THU_L](../figures/snow_height/sites/THU_L.png)
- 
 ## THU_L2
 ![THU_L2](../figures/snow_height/sites/THU_L2.png)
+ 
+## THU_L
+![THU_L](../figures/snow_height/sites/THU_L.png)
  
 ## THU_U
 ![THU_U](../figures/snow_height/sites/THU_U.png)
