@@ -32,7 +32,7 @@ plt.close('all')
 
 
 # for file in os.listdir(path_new):
-for file in ['KAN_L_day.csv','KAN_M_day.csv','QAS_L_day.csv','QAS_M_day.csv']:
+for file in ['DY2_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -253,8 +253,8 @@ def Msg(txt):
 plt.close('all')
 
 # Loop over each station
-for file in os.listdir(path_new):
-# for station in ['QAS_U']:
+# for file in os.listdir(path_new):
+for station in ['DY2']:
     station = file.replace('_day.csv','')
 
     Msg('## ' + station)

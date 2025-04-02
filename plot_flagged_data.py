@@ -64,7 +64,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = False
 
-for station in ['KAN_M']:
+for station in ['KAN_U']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
 
@@ -182,25 +182,25 @@ for station in ['KAN_M']:
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
     Msg('# '+station)
-    # var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'rh_u_cor', 'rh_l_cor', 'dsr_cor', 'usr_cor',  'precip_u_cor', 'precip_u_rate', 'precip_l_cor', 'precip_l_rate', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
+    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
-    # var_list_list = []
+    # var_list_list = [['']]
     # var_list_list = [np.array(['tilt_x','tilt_y','rot'])]
     # var_list_list = [np.array(['dlr','ulr','t_rad','usr','dsr', 'albedo',])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    var_list_list = [
+    # var_list_list = [
     #                     np.array(['tilt_x','tilt_y']),
     #                     np.array(['gps_lat','gps_lon','gps_alt']),
-                        np.array(['z_boom_u','z_stake']),
+                        # np.array(['z_boom_u','z_boom_l','z_stake']),
                         # np.array(['t_u']+['t_i_'+str(i+1) for i in range(11)]),
                         # np.array(['p_u','p_l','p_i']),
                         # np.array(['rh_u','rh_l','rh_i']),
                         # np.array(['wspd_u','wspd_l','wspd_i']),
                         # np.array(['wdir_u','wdir_l','wdir_i']),
-                        # np.array(['t_u','p_u','rh_u']),
-                        ]
+                        # np.array(['t_l','p_l','rh_l','fan_dc_l']),
+                        # ]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
