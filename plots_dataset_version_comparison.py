@@ -17,7 +17,7 @@ import tocgen
 # new_version = 'aws-l3-dev'
 new_version = 'thredds'
 # new_version = 'level_2_stations'
-old_version = 'V20'
+old_version = 'V22'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
@@ -76,9 +76,9 @@ import toml
 import xarray as xr
 import numpy as np
 # plt.close('all')
-for station in ['DY2']: #
+# for station in ['DY2']: #
 # for station in np.unique(df_meta.station_id):
-# for station in np.unique(df_meta.site_id):
+for station in np.unique(df_meta.site_id):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
@@ -170,7 +170,7 @@ for station in ['DY2']: #
                 print(var,'not in new data')
             ax.legend(loc='lower left')
             ax.grid()
-            ax.set_xlim(pd.to_datetime(['2024-02-01','2025-02-07']))
+            ax.set_xlim(pd.to_datetime(['2024-02-01','2025-04-03']))
 
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
