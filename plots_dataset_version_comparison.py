@@ -173,7 +173,7 @@ for station in np.unique(df_meta.site_id):
                 print(var,'not in new data')
             ax.legend(loc='lower left')
             ax.grid()
-            ax.set_xlim(pd.to_datetime(['2024-02-01','2025-04-03']))
+            ax.set_xlim(pd.to_datetime(['2022-02-01','2025-04-03']))
 
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)

@@ -34,7 +34,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 
-for station in ['NAE']:
+for station in ['KPC_L','KPC_Lv3']:
 # for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
@@ -86,7 +86,7 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in ['NAE']:
+for station in  ['KPC_L','KPC_Lv3']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
@@ -132,7 +132,7 @@ folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-pr
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['NAE']:
+for site in ['KPC_L']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
 
@@ -157,3 +157,35 @@ for site in ['NAE']:
         tmp[0].z_ice_surf.plot(label=tmp[1]['stid'])
 
     plt.legend()
+
+# %%
+var_list = [ 'p_u', 't_u', 'rh_u', 'wspd_u',  'wdir_u', 'dsr', 'usr', 'dlr', 'ulr',  'z_boom_u',
+            #'t_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8',
+            'tilt_y', 'tilt_x', 'rot',  'precip_u', 'gps_lat', 'gps_lon', 'gps_alt',  'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i']
+import matplotlib.pyplot as plt
+import math
+
+n_vars = len(var_list)
+ncols = 2
+nrows = math.ceil(n_vars / ncols)
+
+fig, axs = plt.subplots(nrows, ncols, figsize=(14, 4 * nrows), sharex=True)
+axs = axs.flatten()
+
+for i, var in enumerate(var_list):
+    for tmp in sorted_list_station_data[::-1]:
+        tmp[0][var].plot(ax=axs[i], marker='.', label=tmp[1]['stid'])
+    axs[i].set_title(var)
+    axs[i].set_ylabel('')
+    if i < len(var_list) - 2:
+        axs[i].set_xticklabels([])
+        axs[i].set_xlabel('')
+
+# Hide any unused subplots
+for j in range(i + 1, len(axs)):
+    axs[j].set_visible(False)
+
+
+axs[0].legend(loc='upper right')
+axs[0].set_xlim(pd.to_datetime(['2022-01-01', '2025-04-03']))
+plt.tight_layout()
