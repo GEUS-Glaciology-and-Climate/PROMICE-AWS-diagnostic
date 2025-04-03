@@ -87,6 +87,9 @@ for station in np.unique(df_meta.site_id):
     #     station_save=station
     #     station = data.get("station_site")  # Get the station site
 
+    if station in ['UWN','ORO','NUK_P']:
+        continue
+
     file = path_new+station+'_hour.csv'
     try:
         df_new = pd.read_csv(file, index_col=0, parse_dates=True)
