@@ -367,13 +367,13 @@ Old variables removed from new files:
  
 ## <a id='s1-13' />KPC_L
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
 
 
 Old variables removed from new files:
-
+precip_u, precip_u_cor, precip_u_rate, rot
  
 ![KPC_L](../figures/V22_versus_thredds/KPC_L_0.png)
 ![KPC_L](../figures/V22_versus_thredds/KPC_L_1.png)
@@ -388,17 +388,16 @@ Old variables removed from new files:
 ![KPC_L](../figures/V22_versus_thredds/KPC_L_10.png)
 ![KPC_L](../figures/V22_versus_thredds/KPC_L_11.png)
 ![KPC_L](../figures/V22_versus_thredds/KPC_L_12.png)
-![KPC_L](../figures/V22_versus_thredds/KPC_L_13.png)
  
 ## <a id='s1-14' />KPC_U
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
 
 
 Old variables removed from new files:
-
+precip_u, precip_u_cor, precip_u_rate, rot
  
 ![KPC_U](../figures/V22_versus_thredds/KPC_U_0.png)
 ![KPC_U](../figures/V22_versus_thredds/KPC_U_1.png)
@@ -694,27 +693,6 @@ Old variables removed from new files:
 ![NUK_N](../figures/V22_versus_thredds/NUK_N_12.png)
  
 ## <a id='s1-26' />NUK_P
-cannot find old file for NUK_P
-Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, usr_cor, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt_cor, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-New variables not in old files:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, usr_cor, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt_cor, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-Old variables removed from new files:
-
- 
-![NUK_P](../figures/V22_versus_thredds/NUK_P_0.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_1.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_2.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_3.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_4.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_5.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_6.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_7.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_8.png)
-![NUK_P](../figures/V22_versus_thredds/NUK_P_9.png)
- 
 ## <a id='s1-27' />NUK_U
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
@@ -741,28 +719,6 @@ Old variables removed from new files:
 ![NUK_U](../figures/V22_versus_thredds/NUK_U_13.png)
  
 ## <a id='s1-28' />ORO
-cannot find old file for ORO
-Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-New variables not in old files:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-Old variables removed from new files:
-
- 
-![ORO](../figures/V22_versus_thredds/ORO_0.png)
-![ORO](../figures/V22_versus_thredds/ORO_1.png)
-![ORO](../figures/V22_versus_thredds/ORO_2.png)
-![ORO](../figures/V22_versus_thredds/ORO_3.png)
-![ORO](../figures/V22_versus_thredds/ORO_4.png)
-![ORO](../figures/V22_versus_thredds/ORO_5.png)
-![ORO](../figures/V22_versus_thredds/ORO_6.png)
-![ORO](../figures/V22_versus_thredds/ORO_7.png)
-![ORO](../figures/V22_versus_thredds/ORO_8.png)
-![ORO](../figures/V22_versus_thredds/ORO_9.png)
-![ORO](../figures/V22_versus_thredds/ORO_10.png)
- 
 ## <a id='s1-29' />QAS_A
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
@@ -1263,30 +1219,6 @@ Old variables removed from new files:
 ![UPE_U](../figures/V22_versus_thredds/UPE_U_12.png)
  
 ## <a id='s1-49' />UWN
-cannot find old file for UWN
-Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-New variables not in old files:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
-
-Old variables removed from new files:
-
- 
-![UWN](../figures/V22_versus_thredds/UWN_0.png)
-![UWN](../figures/V22_versus_thredds/UWN_1.png)
-![UWN](../figures/V22_versus_thredds/UWN_2.png)
-![UWN](../figures/V22_versus_thredds/UWN_3.png)
-![UWN](../figures/V22_versus_thredds/UWN_4.png)
-![UWN](../figures/V22_versus_thredds/UWN_5.png)
-![UWN](../figures/V22_versus_thredds/UWN_6.png)
-![UWN](../figures/V22_versus_thredds/UWN_7.png)
-![UWN](../figures/V22_versus_thredds/UWN_8.png)
-![UWN](../figures/V22_versus_thredds/UWN_9.png)
-![UWN](../figures/V22_versus_thredds/UWN_10.png)
-![UWN](../figures/V22_versus_thredds/UWN_11.png)
-![UWN](../figures/V22_versus_thredds/UWN_12.png)
- 
 ## <a id='s1-50' />WEG_B
 Variables in new file:
 p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
