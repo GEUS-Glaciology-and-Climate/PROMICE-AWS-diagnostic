@@ -32,7 +32,7 @@ plt.close('all')
 
 
 # for file in os.listdir(path_new):
-for file in ['DY2_day.csv']:
+for file in ['TAS_L_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -96,7 +96,6 @@ for file in ['DY2_day.csv']:
             ax_list[i].legend(loc='center left', bbox_to_anchor=(1, 0.5),ncols=2)
 
     ax_list[2].set_ylabel('Depth (m)')
-    ax_list[2].invert_yaxis()
     ax_list[2].set_ylabel('Temperature (°C)')
     ax_list[0].set_title(station)
 

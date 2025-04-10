@@ -64,7 +64,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = False
 
-for station in ['KAN_U']:
+for station in ['KAN_B']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
 
@@ -76,7 +76,6 @@ for station in ['KAN_U']:
             print(f'Removed: {file_path}')
         except Exception as e:
             print(f'Error removing {file_path}: {e}')
-
 
     # loading flags
     try:
@@ -162,6 +161,10 @@ for station in ['KAN_U']:
     ds4['tilt_y'] = smoothTilt(ds4['tilt_y'])
     ds4['rot'] = smoothRot(ds4['rot'])
 
+    from pypromice.process.L1toL2 import  calcCloudCoverage, process_sw_radiation
+    ds4['cc'] = calcCloudCoverage(ds4['t_u'], ds4['dlr'], ds4.attrs['station_id'], T_0=273.15)
+    ds4, OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass = process_sw_radiation(ds4)
+
     # %%  plotting
     df_L1 = ds.to_dataframe().copy()
 
@@ -182,13 +185,16 @@ for station in ['KAN_U']:
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
     Msg('# '+station)
-    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
+    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
+    # var_list = [ 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u',  'tilt_y', 'tilt_x', 'rot',  'gps_lat', 'gps_lon', 'gps_alt',  'batt_v',]
+    var_list = [v for v in var_list if v in ds1.data_vars]
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [['']]
     # var_list_list = [np.array(['tilt_x','tilt_y','rot'])]
-    # var_list_list = [np.array(['dlr','ulr','t_rad','usr','dsr', 'albedo',])]
+    var_list_list = [np.array([#'dlr','ulr','t_rad',
+                               'dsr_cor','usr_cor', 'albedo','tilt_x','tilt_y','rot'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     # var_list_list = [
     #                     np.array(['tilt_x','tilt_y']),
@@ -243,46 +249,42 @@ for station in ['KAN_U']:
                     ax.plot(ds3.time,
                             baseline_elevation,
                             ls='--', c='k')
-            # if ('gps' in var) | (var in ['tilt_x','tilt_y','rot']):
-            #     ax.plot(ds3b.time,
-            #             ds3b[var].values,
-            #             marker='.',color='tab:pink', linestyle='None',
-            #             label='removed by custom filter (gps_alt, tilt or rot)')
-            if var in ds4.data_vars:
-                ax.plot(ds4.time,
-                        ds4[var].values,
-                        marker='.',color='tab:blue', linestyle='None',
-                        label='final')
-            if var in ds4.data_vars:
-                ax.plot(ds4.time,
-                        ds4[var].values,
-                        marker='.',color='tab:blue', linestyle='None',
-                        label='final')
-            # try:
-            #     ax.plot(pAWS_tx.L2.time, pAWS_tx.L2[var],color='gray', label='L2')
-            # except:
-            #     pass
 
-            # if ('cor' in var) or (var == 'z_surf_combined'):
-            #     ax.plot(ds_l3.time,
-            #              ds_l3[var],
-            #              marker='.',color='tab:blue', linestyle='None')
+            if var in ds4.data_vars:
+                if var in ['dsr_cor','usr_cor']:
+                    if var == 'dsr_cor':
+                        ax.plot(ds3.time,(0.95 * isr_toa + 10),
+                                c='tab:red')
+                        ax_list[0].plot(np.nan,np.nan,
+                                c='tab:red',label='TOA irradiance + margin of 10 (W m-2)')
+                    ax.plot(ds3.time,
+                            ds3[var[:-4]].values,
+                            marker='.',color='tab:pink', linestyle='None',
+                            label='value before tilt correction')
+                    ax.plot(ds3.time,
+                            ds3[var[:-4]].where(TOA_crit_nopass).values,
+                            marker='.',color='tab:red', linestyle='None',
+                            label='removed above TOA')
+
+                    ax.plot(ds3.time,
+                            ds3[var[:-4]].where(bad).values,
+                            marker='.',color='tab:green', linestyle='None',
+                            label='sun below horizon zenith angle or negative reading')
+
+
+                ax.plot(ds4.time,
+                        ds4[var].values,
+                        marker='.',color='tab:blue', linestyle='None',
+                        label='final')
 
         for var, ax in zip(var_list, ax_list):
-
             if zoom_to_good:
                 ax.set_ylim(ds4[var].min(), ds4[var].max())
-
-
             ax.set_ylabel(var)
-            # ax.xaxis.set_major_locator(mdates.YearLocator())
-
-            # ax.xaxis.set_minor_locator(mdates.MonthLocator())
-            # ax.set_xticklabels([], minor=True)
-
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)
             ax.grid(True, which='major', linestyle='-', linewidth=1)
 
+        # ax.set_xlim(pd.to_datetime(['2024-05-01','2025-04-13']))
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')

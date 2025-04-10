@@ -34,7 +34,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
 
 
-for station in ['KPC_L','KPC_Lv3']:
+for station in ['SER_B']:
 # for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
@@ -86,7 +86,7 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in  ['KPC_L','KPC_Lv3']:
+for station in  ['SER_B']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
@@ -94,31 +94,51 @@ for station in  ['KPC_L','KPC_Lv3']:
     l3 = get_l2tol3(config_folder, inpath, outpath, None, None, None)
 
 # % plotting L3 lat, lon alt
-    var_list = ['lat','lon','alt']
-    fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
-    if len(var_list)==1:
-        ax_list = [ax_list]
+    try:
+        var_list = ['lat','lon','alt']
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
+        if len(var_list)==1:
+            ax_list = [ax_list]
 
-    for var, ax in zip(var_list, ax_list):
-        if 'gps_'+var in l3.data_vars:
-            l3['gps_'+var].plot(ax=ax,
-                          marker='.',markeredgecolor='None', linestyle='None',
-                    color='tab:green', label='gps_'+var)
-        l3[var].plot(ax=ax, marker='.',markeredgecolor='None', linestyle='None',
-                        color='tab:orange',label=var)
-        ax.set_ylabel(var.replace('gps_',''))
-        ax.grid()
-        ax.legend()
+        for var, ax in zip(var_list, ax_list):
+            if 'gps_'+var in l3.data_vars:
+                l3['gps_'+var].plot(ax=ax,
+                              marker='.',markeredgecolor='None', linestyle='None',
+                        color='tab:green', label='gps_'+var)
+            l3[var].plot(ax=ax, marker='.',markeredgecolor='None', linestyle='None',
+                            color='tab:orange',label=var)
+            ax.set_ylabel(var.replace('gps_',''))
+            ax.grid()
+            ax.legend()
+    except:
+        pass
 
-# % plotting L3 surface height
-    plt.figure()
-    for v in ['z_surf_1','z_surf_2','z_surf_combined']:
-        l3[v].plot(label=v)
-    plt.title(station)
-    plt.legend()
+    try:
+        plt.figure()
+        for v in ['z_surf_1','z_surf_2','z_surf_combined']:
+            l3[v].plot(label=v)
+        plt.title(station)
+        plt.legend()
+    except:
+        pass
+    try:
+        l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()
+        plt.gca().invert_yaxis()
+        l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()
+        plt.gca().invert_yaxis()
+    except:
+        pass
+    try:
+        plt.figure()
+        for v in [ 'usr', 'dsr',]:
+            l3[v].plot(label=v, marker='x')
+        for v in ['usr_cor', 'dsr_cor',]:
+            l3[v].plot(label=v, marker='o')
+        plt.title(station)
+        plt.legend()
+    except:
+        pass
 
-    l3.to_dataframe()[[v for v in l3.keys() if 'd_t_' in v]].plot()
-    plt.gca().invert_yaxis()
 # %% test join_l3
 from pypromice.process.join_l3 import join_l3
 import pandas as pd
@@ -132,7 +152,7 @@ folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-pr
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['KPC_L']:
+for site in ['TAS_L']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
 
@@ -162,6 +182,7 @@ for site in ['KPC_L']:
 var_list = [ 'p_u', 't_u', 'rh_u', 'wspd_u',  'wdir_u', 'dsr', 'usr', 'dlr', 'ulr',  'z_boom_u',
             #'t_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8',
             'tilt_y', 'tilt_x', 'rot',  'precip_u', 'gps_lat', 'gps_lon', 'gps_alt',  'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i']
+
 import matplotlib.pyplot as plt
 import math
 
@@ -184,7 +205,6 @@ for i, var in enumerate(var_list):
 # Hide any unused subplots
 for j in range(i + 1, len(axs)):
     axs[j].set_visible(False)
-
 
 axs[0].legend(loc='upper right')
 axs[0].set_xlim(pd.to_datetime(['2022-01-01', '2025-04-03']))
