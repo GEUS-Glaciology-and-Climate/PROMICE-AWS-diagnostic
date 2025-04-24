@@ -14,10 +14,10 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-# new_version = 'aws-l3-dev'
-new_version = 'thredds'
+new_version = 'aws-l3-dev'
+# new_version = 'thredds'
 # new_version = 'level_2_stations'
-old_version = 'V22'
+old_version = 'V23'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
@@ -28,10 +28,9 @@ if 'thredds' in new_version:
     path_new = '../thredds-data/level_3_sites/csv/hour/'
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-# elif 'dev' in new_version:
-#     path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/stations/'
-#     df_meta = pd.read_csv(path_new+'../AWS_latest_locations.csv')
-#     df_meta2 = pd.read_csv(path_new+'../AWS_stations_metadata.csv')
+elif 'dev' in new_version:
+    path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/csv/hour/'
+    df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 
 # elif 'level_3' in new_version:
 #     # path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_3_sites/csv/hour/'
@@ -173,7 +172,7 @@ for station in np.unique(df_meta.site_id):
                 print(var,'not in new data')
             ax.legend(loc='lower left')
             ax.grid()
-            ax.set_xlim(pd.to_datetime(['2022-02-01','2025-04-03']))
+            # ax.set_xlim(pd.to_datetime(['2022-02-01','2025-04-03']))
 
         plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)

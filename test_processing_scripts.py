@@ -26,15 +26,14 @@ logging.basicConfig(
 
 path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
-path_l3 = '../aws-l3/level_3/'
-path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
+path_l3 = 'C:/Users/bav/GitHub/PROMICE data/thredds-data/metadata/'
 
 path_l2 = 'L2_test/'
 
-df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
+df_metadata = pd.read_csv(path_l3+'AWS_stations_metadata.csv')
 
 
-for station in ['SER_B']:
+for station in ['WEG_B']:
 # for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
@@ -80,13 +79,11 @@ import logging, os
 from pypromice.process.get_l2tol3 import get_l2tol3
 import matplotlib.pyplot as plt
 path_l2 = 'L2_test/level_2/'
-df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_stations_metadata.csv')
-
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in  ['SER_B']:
+for station in  ['WEG_B']:
 # for station in df_metadata.stid:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
@@ -152,7 +149,7 @@ folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-pr
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("\n ======== test join_l3 ========= \n")
 
-for site in ['TAS_L']:
+for site in ['WEG_B']:
 # for station in df_metadata.stid:
     inpath = path_l3_stations + '/'+site+'/'+site+'_hour.nc'
 
