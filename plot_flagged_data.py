@@ -35,8 +35,6 @@ import tocgen
 path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
-path_l3 = '../aws-l3/level_3/'
-path_l3 = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/level_3/'
 path_tx = '../aws-l3/tx/'
 
 from datetime import date
@@ -48,8 +46,7 @@ try:
 except:
     pass
 
-df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-df_metadata = pd.read_csv(path_l3+'../AWS_stations_metadata.csv')
+df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
 f = open(filename, "w")
 def Msg(txt):
@@ -163,7 +160,7 @@ for station in ['KAN_B']:
 
     from pypromice.process.L1toL2 import  calcCloudCoverage, process_sw_radiation
     ds4['cc'] = calcCloudCoverage(ds4['t_u'], ds4['dlr'], ds4.attrs['station_id'], T_0=273.15)
-    ds4, OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass = process_sw_radiation(ds4)
+    ds4, (OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass_cor, TOA_crit_nopass) = process_sw_radiation(ds4)
 
     # %%  plotting
     df_L1 = ds.to_dataframe().copy()
@@ -250,7 +247,7 @@ for station in ['KAN_B']:
                             baseline_elevation,
                             ls='--', c='k')
 
-            if var in ds4.data_vars:
+            if var[:-4] in ds4.data_vars:
                 if var in ['dsr_cor','usr_cor']:
                     if var == 'dsr_cor':
                         ax.plot(ds3.time,(0.95 * isr_toa + 10),
@@ -272,6 +269,7 @@ for station in ['KAN_B']:
                             label='sun below horizon zenith angle or negative reading')
 
 
+            if var in ds4.data_vars:
                 ax.plot(ds4.time,
                         ds4[var].values,
                         marker='.',color='tab:blue', linestyle='None',
