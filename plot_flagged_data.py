@@ -61,7 +61,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = False
 
-for station in ['KAN_B']:
+for station in ['NUK_B']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
 
@@ -250,10 +250,14 @@ for station in ['KAN_B']:
             if var[:-4] in ds4.data_vars:
                 if var in ['dsr_cor','usr_cor']:
                     if var == 'dsr_cor':
-                        ax.plot(ds3.time,(0.95 * isr_toa + 10),
-                                c='tab:red')
+                        ax.plot(ds3.time,(1.3* isr_toa + 50),
+                                c='k', alpha=0.7)
                         ax_list[0].plot(np.nan,np.nan,
                                 c='tab:red',label='TOA irradiance + margin of 10 (W m-2)')
+                    ax.plot(ds.time,
+                            ds[var[:-4]].values,
+                            marker='.',color='tab:red', linestyle='None',
+                            label='removed by flag')
                     ax.plot(ds3.time,
                             ds3[var[:-4]].values,
                             marker='.',color='tab:pink', linestyle='None',
