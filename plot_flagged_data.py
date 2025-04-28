@@ -191,7 +191,7 @@ for station in ['NUK_B']:
     # var_list_list = [['']]
     # var_list_list = [np.array(['tilt_x','tilt_y','rot'])]
     var_list_list = [np.array([#'dlr','ulr','t_rad',
-                               'dsr_cor','usr_cor', 'albedo','tilt_x','tilt_y','rot'])]
+                               'dsr_cor','usr_cor', 'albedo','tilt_x','tilt_y','cc'])]
     # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     # var_list_list = [
     #                     np.array(['tilt_x','tilt_y']),
@@ -226,6 +226,14 @@ for station in ['NUK_B']:
                         ds[var].values,
                         marker='.',color='tab:red', linestyle='None',
                         label='removed by flag')
+                if var == 'albedo':
+                    albedo_raw = ds['usr'] / ds['dsr']
+                    albedo_raw = albedo_raw.where(albedo_raw>0).where(albedo_raw<1)
+
+                    ax.plot(ds.time,
+                            albedo_raw.values,
+                            marker='.',color='tab:pink', linestyle='None',
+                            label='unfiltered, uncorrected')
 
             if var in ds1.data_vars:
                 ax.plot(ds1.time,
@@ -263,9 +271,9 @@ for station in ['NUK_B']:
                             marker='.',color='tab:pink', linestyle='None',
                             label='value before tilt correction')
                     ax.plot(ds3.time,
-                            ds3[var[:-4]].where(TOA_crit_nopass).values,
-                            marker='.',color='tab:red', linestyle='None',
-                            label='removed above TOA')
+                            ds3[var[:-4]].where(TOA_crit_nopass | TOA_crit_nopass_cor).values,
+                            marker='.',color='k', linestyle='None',
+                            label='removed, above TOA irradiance')
 
                     ax.plot(ds3.time,
                             ds3[var[:-4]].where(bad).values,

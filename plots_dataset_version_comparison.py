@@ -29,7 +29,7 @@ if 'thredds' in new_version:
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 elif 'dev' in new_version:
-    path_new = 'C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/csv/hour/'
+    path_new = '../aws-l3-dev/csv/hour/'
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 
 # elif 'level_3' in new_version:
