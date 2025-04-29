@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 # from sklearn.linear_model import LinearRegression
-import os, logging, sys, glob
-import matplotlib.dates as mdates
+import os, logging, glob
 import matplotlib
+matplotlib.use('Agg')
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -27,12 +27,8 @@ matplotlib.set_loglevel("warning")
 from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN, smoothTilt, smoothRot
-# import matplotlib
-# matplotlib.use('Agg')
 import tocgen
 
-
-path_to_l0 = '../aws-l0/'
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
 path_tx = '../aws-l3/tx/'
@@ -61,8 +57,8 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_file
 
 zoom_to_good = False
 
-for station in ['NUK_B']:
-# for station in np.unique(np.array(all_dirs)):
+# for station in ['NEM']:
+for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
 
     # removing older plots
@@ -160,7 +156,7 @@ for station in ['NUK_B']:
 
     from pypromice.process.L1toL2 import  calcCloudCoverage, process_sw_radiation
     ds4['cc'] = calcCloudCoverage(ds4['t_u'], ds4['dlr'], ds4.attrs['station_id'], T_0=273.15)
-    ds4, (OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass_cor, TOA_crit_nopass) = process_sw_radiation(ds4)
+    ds4, (OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass_cor, TOA_crit_nopass,TOA_crit_nopass_usr) = process_sw_radiation(ds4)
 
     # %%  plotting
     df_L1 = ds.to_dataframe().copy()
@@ -257,11 +253,7 @@ for station in ['NUK_B']:
 
             if var[:-4] in ds4.data_vars:
                 if var in ['dsr_cor','usr_cor']:
-                    if var == 'dsr_cor':
-                        ax.plot(ds3.time,(1.3* isr_toa + 50),
-                                c='k', alpha=0.7)
-                        ax_list[0].plot(np.nan,np.nan,
-                                c='tab:red',label='TOA irradiance + margin of 10 (W m-2)')
+
                     ax.plot(ds.time,
                             ds[var[:-4]].values,
                             marker='.',color='tab:red', linestyle='None',
@@ -270,10 +262,28 @@ for station in ['NUK_B']:
                             ds3[var[:-4]].values,
                             marker='.',color='tab:pink', linestyle='None',
                             label='value before tilt correction')
-                    ax.plot(ds3.time,
-                            ds3[var[:-4]].where(TOA_crit_nopass | TOA_crit_nopass_cor).values,
-                            marker='.',color='k', linestyle='None',
-                            label='removed, above TOA irradiance')
+                    if var == 'dsr_cor':
+                        ax.plot(ds3.time,(1.2* isr_toa + 150),
+                                c='k', alpha=0.7)
+                        ax_list[0].plot(np.nan,np.nan,
+                                c='k',label='TOA irradiance + margin (W m-2)')
+                        ax.plot(ds3.time,
+                                ds3[var[:-4]].where(TOA_crit_nopass | TOA_crit_nopass_cor).values,
+                                marker='.',color='k', linestyle='None',
+                                label='removed, dsr above TOA irradiance')
+                    else:
+                        ax.plot(ds3.time, 0.8*(1.2 * isr_toa + 150),
+                                c='k', alpha=0.7)
+                        ax.plot(ds3.time,
+                                ds3[var[:-4]].where(TOA_crit_nopass | TOA_crit_nopass_cor).values,
+                                marker='.',color='k', linestyle='None',
+                                label='removed, dsr above TOA irradiance')
+                        if TOA_crit_nopass_usr.any():
+                            ax.plot(ds3.time,
+                                ds3[var[:-4]].where(TOA_crit_nopass_usr).values,
+                                marker='.',color='tab:orange', linestyle='None')
+                            ax_list[0].plot(np.nan,np.nan,marker='.',ls='None',
+                                    c='tab:orange',label='removed, usr above TOA irradiance')
 
                     ax.plot(ds3.time,
                             ds3[var[:-4]].where(bad).values,
