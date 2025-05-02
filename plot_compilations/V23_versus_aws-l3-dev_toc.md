@@ -140,13 +140,13 @@ Old variables removed from new files:
  
 ## <a id='s1-8' />KAN_B
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, t_i_1, t_i_3, t_i_5, t_i_7, tilt_y, gps_lat, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, albedo, dlr, ulr, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, t_i_1, t_i_3, t_i_5, t_i_7, tilt_y, gps_lat, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
 
 
 Old variables removed from new files:
-dsr_cor, usr_cor, tilt_x
+dsr_cor, usr_cor, cc, tilt_x
  
 ![KAN_B](../figures/V23_versus_aws-l3-dev/KAN_B_0.png)
  
@@ -308,13 +308,13 @@ Old variables removed from new files:
  
 ## <a id='s1-22' />NUK_B
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, albedo, dlr, ulr, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
-dsr_cor, albedo
+albedo
 
 Old variables removed from new files:
-
+usr_cor, cc
  
 ![NUK_B](../figures/V23_versus_aws-l3-dev/NUK_B_0.png)
  
@@ -478,13 +478,13 @@ Old variables removed from new files:
  
 ## <a id='s1-38' />SER_B
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, albedo, dlr, ulr, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
 
 
 Old variables removed from new files:
-
+dsr_cor, usr_cor, cc
  
 ![SER_B](../figures/V23_versus_aws-l3-dev/SER_B_0.png)
  
@@ -611,13 +611,13 @@ Old variables removed from new files:
 ## <a id='s1-49' />UWN
 ## <a id='s1-50' />WEG_B
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, albedo, dlr, ulr, t_surf, z_boom_u, z_stake, z_surf_combined, snow_height, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
 
 
 Old variables removed from new files:
-
+dsr_cor, usr_cor, cc
  
 ![WEG_B](../figures/V23_versus_aws-l3-dev/WEG_B_0.png)
  
