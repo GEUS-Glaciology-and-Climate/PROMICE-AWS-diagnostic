@@ -14,8 +14,8 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'aws-l3-dev'
-# new_version = 'thredds'
+# new_version = 'aws-l3-dev'
+new_version = 'thredds'
 # new_version = 'level_2_stations'
 old_version = 'V23'
 
