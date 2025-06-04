@@ -21,9 +21,9 @@ import numpy as np
 
 # Initialize
 data_type = 'sites'
-path_new = '../aws-l3-dev/' + data_type + '/'
+path_new = '../thredds-data/level_3_sites/'
 filename = 'plot_compilations/ablation_' + data_type + '.md'
-df_meta = pd.read_csv(path_new + '../AWS_' + data_type + '_metadata.csv')
+df_meta = pd.read_csv(path_new + '../metadata/AWS_' + data_type + '_metadata.csv')
 df_meta = df_meta.set_index(data_type[:-1] + '_id')
 f = open(filename, "w")
 
@@ -40,11 +40,11 @@ for station in df_meta.index:
     Msg('## ' + station)
 
     # Check if the file exists
-    if not os.path.isfile(path_new + station + '/' + station + '_day.csv'):
-        continue
+    # if not os.path.isfile(path_new + station + '/' + station + '_day.csv'):
+    #     continue
 
     # Read the station data
-    df_new = pd.read_csv(path_new + station + '/' + station + '_day.csv')
+    df_new = pd.read_csv(path_new +'/csv/day/' + station + '_day.csv')
     if df_new.loc[df_new.z_surf_combined.last_valid_index(), 'z_surf_combined'] >0:
         Msg('accumulation site')
         continue
@@ -89,7 +89,7 @@ for station in df_meta.index:
                 first_valid_value = df_year['z_ice_surf'].loc[
                     slice(df_year['z_ice_surf'].first_valid_index(),
                           df_year['z_ice_surf'].first_valid_index()+pd.to_timedelta('10 days'))].mean()
-                if year == 2024:
+                if year == 2025:
                     ax_list[1].plot(df_year['day_of_year'],
                                      df_year['z_ice_surf'] - first_valid_value,
                                      label='_no_legend_', linestyle='-', color='w',lw=10, alpha=0.7)
@@ -126,7 +126,7 @@ for station in df_meta.index:
 
         ax_list[1].set_xticks(tick_positions)
         ax_list[1].set_xticklabels(labels, rotation=45, ha='right')
-        ax_list[1].set_xlim(150, 290)
+        ax_list[1].set_xlim(120, 290)
 
 
         ax_list[1].set_ylabel('Snow Height (m)')
@@ -150,9 +150,9 @@ import matplotlib
 matplotlib.use('Agg')
 # Initialize
 data_type = 'sites'
-path_new = 'C:/Users/bav/Downloads/level_3_sites/day/'
+path_new = '../thredds-data/level_3_sites/csv/day/'
 filename = 'plot_compilations/ablation_' + data_type + '.md'
-df_meta = pd.read_csv(path_new + '../AWS_' + data_type + '_metadata.csv')
+df_meta = pd.read_csv('../thredds-data/metadata/AWS_' + data_type + '_metadata.csv')
 df_meta = df_meta.set_index(data_type[:-1] + '_id')
 f = open(filename, "w")
 
@@ -171,12 +171,9 @@ for station in df_meta.index:
 # for station in ['KAN_L']:
     Msg('## ' + station)
 
-    # Check if the file exists
-    if not os.path.isfile(path_new + station + '/' + station + '_day.csv'):
-        continue
 
     # Read the station data
-    df_new = pd.read_csv(path_new + station + '/' + station + '_day.csv')
+    df_new = pd.read_csv(path_new + '/' + station + '_day.csv')
     if df_new.loc[df_new.z_surf_combined.last_valid_index(), 'z_surf_combined'] > 0:
         Msg('accumulation site')
         continue

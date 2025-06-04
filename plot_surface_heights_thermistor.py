@@ -120,12 +120,9 @@ import os
 
 # Define data type and paths
 data_type = 'sites'
-if data_type == 'sites':
-    path_new = 'C:/Users/bav/Downloads/level_3_sites/day/'
-else:
-    path_new = 'C:/Users/bav/Downloads/level_2_stations/day/'
-filename = 'plot_compilations/surface_height_' + data_type + '.md'
-df_meta = pd.read_csv('../thredds/metadata/AWS_' + data_type + '_metadata.csv')
+path_new = '../thredds-data/level_3_sites/csv/day/'
+filename = 'plot_compilations/ablation_' + data_type + '.md'
+df_meta = pd.read_csv('../thredds-data/metadata/AWS_' + data_type + '_metadata.csv')
 df_meta = df_meta.set_index(data_type[:-1] + '_id')
 
 plt.close('all')
@@ -149,8 +146,6 @@ for i, station_list in enumerate(station_list_list[:9]):  # Limit to the first 9
         if station in ['KAN_B', 'NUK_K','NUK_P','NUK_B']:
             continue
         print('## ' + station)
-        if not os.path.isfile(path_new + '/' + station + '_day.csv'):
-            continue
         df_new = pd.read_csv(path_new + '/' + station + '_day.csv')
         df_new.time = pd.to_datetime(df_new.time, utc=True)
         df_new = df_new.set_index('time')
