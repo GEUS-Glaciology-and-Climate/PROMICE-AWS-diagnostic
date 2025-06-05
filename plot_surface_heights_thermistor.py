@@ -32,7 +32,7 @@ plt.close('all')
 
 
 # for file in os.listdir(path_new):
-for file in ['TAS_L_day.csv']:
+for file in ['NAU_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -99,13 +99,14 @@ for file in ['TAS_L_day.csv']:
     ax_list[2].set_ylabel('Temperature (°C)')
     ax_list[0].set_title(station)
 
-    xlim1 = '2018-03-01'
-    xlim2 = '2025-01-27'
+    xlim1 = '1996-03-01'
+    xlim2 = '2025-06-27'
     ax_list[0].set_xlim(pd.to_datetime([xlim1,xlim2]))
-    ax_list[1].set_ylim(
-                       (df_new['z_surf_combined'].min() - df_new.loc[slice(xlim1, xlim2),depth_var].max().max())-0.5,
-                           df_new.loc[slice(xlim1, xlim2), 'z_surf_combined'].max()+0.5
-                           )
+    if len(depth_var)>0:
+        ax_list[1].set_ylim(
+                           (df_new['z_surf_combined'].min() - df_new.loc[slice(xlim1, xlim2),depth_var].max().max())-0.5,
+                               df_new.loc[slice(xlim1, xlim2), 'z_surf_combined'].max()+0.5
+                               )
 
     fig.savefig('figures/surface_height/%s/%s.png' % (data_type, station), dpi=300, bbox_inches="tight")
     Msg('![%s](../figures/surface_height/%s/%s.png)'%(station,data_type, station))
@@ -223,7 +224,7 @@ import os
 import matplotlib
 import matplotlib.dates as mdates
 from datetime import datetime
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 import tocgen
 import numpy as np
 
@@ -247,8 +248,8 @@ def Msg(txt):
 plt.close('all')
 
 # Loop over each station
-# for file in os.listdir(path_new):
-for station in ['DY2']:
+for file in os.listdir(path_new):
+# for station in ['DY2']:
     station = file.replace('_day.csv','')
 
     Msg('## ' + station)

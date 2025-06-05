@@ -28,16 +28,17 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-
+import logging
+logging.getLogger('numba').setLevel(logging.WARNING)
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
-df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/aws-l3-dev/AWS_stations_metadata.csv')
+df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds-data/metadata/AWS_stations_metadata.csv')
 
 path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['NAE']:
+for station in ['THU_U']:
 # for station in df_metadata.station_id:
 
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
@@ -96,7 +97,7 @@ for station in ['NAE']:
                                 Path('../PROMICE-AWS-data-issues')/'adjustments',
                                 station_config).to_dataframe()
 
-    # %%
+
     fig, ax = plt.subplots(3,1, sharex=True, figsize=(10,10))
     var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in l3.columns]
     l3[var_list].plot(ax=ax[0],marker='.')
