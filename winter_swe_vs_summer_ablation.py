@@ -120,7 +120,6 @@ for station in station_list:
     ax2.grid(True)
 
     fig.tight_layout()
-    fig.savefig(f'figures/surface_height/by_station/{station}_surface_height.png', dpi=150)
 
 # %% SWE vs ablation
 import matplotlib.pyplot as plt
@@ -149,6 +148,7 @@ fig.savefig('figures/surface_height/SWE_vs_ablation.png', dpi=150)
 (df_result['SWE / ablation [%]'] > 50).sum()
 
 # %%
+import matplotlib.pyplot as plt
 
 import pandas as pd
 import os
