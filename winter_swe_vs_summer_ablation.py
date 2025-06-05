@@ -122,7 +122,7 @@ for station in station_list:
     fig.tight_layout()
     fig.savefig(f'figures/surface_height/by_station/{station}_surface_height.png', dpi=150)
 
-# %%
+# %% SWE vs ablation
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -147,3 +147,46 @@ fig.tight_layout()
 fig.savefig('figures/surface_height/SWE_vs_ablation.png', dpi=150)
 
 (df_result['SWE / ablation [%]'] > 50).sum()
+
+# %%
+
+import pandas as pd
+import os
+import numpy as np
+data_type = 'sites'
+if data_type == 'sites':
+    path_new = '../thredds-data/level_3_sites/csv/day/'
+else:
+    path_new = 'C:/Users/bav/Downloads/level_2_stations/day/'
+
+df_meta = pd.read_csv('../thredds-data/metadata/AWS_' + data_type + '_metadata.csv')
+df_meta = df_meta.set_index(data_type[:-1] + '_id')
+
+station_list = [v for v in df_meta.index if v not in [
+    'CP1','CEN','DY2','HUM','NAE','NAU','NEM','NSE', 'SDM','SDL','TUN','EGP',
+    'NUK_K','LYN_L','LYN_T','ZAC_A','ZAC_L','ZAC_U','MIT','FRE',
+    'KAN_B','WEG_B','SER_B','NUK_P','NUK_B','RED_L',
+    'ORO','UWN']]
+
+results = []
+
+fig,axs=plt.subplots(4,4, sharex=True)
+axs=axs.flatten()
+for station,ax in zip(station_list,axs):
+    file_path = os.path.join(path_new, f"{station}_day.csv")
+    if not os.path.isfile(file_path):
+        continue
+
+    df = pd.read_csv(file_path)
+    if not {'z_surf_combined', 'snow_height'}.issubset(df.columns):
+        continue
+
+    df['time'] = pd.to_datetime(df['time'], utc=True)
+    df = df.set_index('time')
+    df = df[['z_surf_combined', 'snow_height']].dropna()
+    print(station)
+    diff = -df.z_surf_combined.diff().clip(-1e12,0)*1000
+    diff.hist(ax=ax)
+    ax.set_title(station)
+    # ax.set_xscale('log')
+    ax.set_yscale('log')

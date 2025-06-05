@@ -36,7 +36,7 @@ df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds-data/metadat
 
 path_l2 = 'L2_test/'
 
-# plt.close('all')
+plt.close('all')
 
 for station in ['THU_U']:
 # for station in df_metadata.station_id:
