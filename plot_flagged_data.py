@@ -13,7 +13,7 @@ import numpy as np
 # from sklearn.linear_model import LinearRegression
 import os, logging, glob
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -53,13 +53,13 @@ def Msg(txt):
 # plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
-all_dirs = os.listdir(path_to_qc_files+'adjustments')+os.listdir(path_to_qc_files+'flags')
+all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 
-zoom_to_good = False
+zoom_to_good = True
 
-# for station in ['NEM']:
-for station in np.unique(np.array(all_dirs)):
-    station = station.replace('.csv','')
+for station in ['KAN_U']:
+# for station in np.unique(np.array(all_dirs)):
+    station = station.rqeplace('.csv','')
 
     # removing older plots
     pattern = os.path.join(figure_folder, f'{station}*')
@@ -155,10 +155,14 @@ for station in np.unique(np.array(all_dirs)):
     ds4['rot'] = smoothRot(ds4['rot'])
 
     from pypromice.process.L1toL2 import  calcCloudCoverage, process_sw_radiation
-    ds4['cc'] = calcCloudCoverage(ds4['t_u'], ds4['dlr'], ds4.attrs['station_id'], T_0=273.15)
+    is_bedrock = (ds4.attrs['bedrock'] == True) | (ds4.attrs['bedrock']=='True')| (ds4.attrs['bedrock']=='true')
+    if not is_bedrock:
+        ds4['cc'] = calcCloudCoverage(ds4['t_u'], ds4['dlr'], ds4.attrs['station_id'], T_0=273.15)
+    else:
+        ds4['cc'] = ds['t_u'].copy() * np.nan
     ds4, (OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass_cor, TOA_crit_nopass,TOA_crit_nopass_usr) = process_sw_radiation(ds4)
 
-    # %%  plotting
+    # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
     if len(df_flags)>0:
@@ -178,28 +182,29 @@ for station in np.unique(np.array(all_dirs)):
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
     Msg('# '+station)
-    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
+    # var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
     # var_list = [ 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u',  'tilt_y', 'tilt_x', 'rot',  'gps_lat', 'gps_lon', 'gps_alt',  'batt_v',]
-    var_list = [v for v in var_list if v in ds1.data_vars]
+    # var_list = [v for v in var_list if v in ds1.data_vars]
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [['']]
-    # var_list_list = [np.array(['tilt_x','tilt_y','rot'])]
-    var_list_list = [np.array([#'dlr','ulr','t_rad',
-                               'dsr_cor','usr_cor', 'albedo','tilt_x','tilt_y','cc'])]
-    # var_list_list = [np.array(['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [
-    #                     np.array(['tilt_x','tilt_y']),
-    #                     np.array(['gps_lat','gps_lon','gps_alt']),
-                        # np.array(['z_boom_u','z_boom_l','z_stake']),
-                        # np.array(['t_u']+['t_i_'+str(i+1) for i in range(11)]),
-                        # np.array(['p_u','p_l','p_i']),
-                        # np.array(['rh_u','rh_l','rh_i']),
-                        # np.array(['wspd_u','wspd_l','wspd_i']),
-                        # np.array(['wdir_u','wdir_l','wdir_i']),
-                        # np.array(['t_l','p_l','rh_l','fan_dc_l']),
-                        # ]
+    # var_list_list = ['tilt_x','tilt_y','rot'])]
+    # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
+    # var_list_list = [np.array([
+                        # 'tilt_x','tilt_y',
+                        # 'gps_lat','gps_lon','gps_alt'
+                        # 'z_boom_u', 't_u'
+                        # 't_u']+['t_i_'+str(i+1) for i in range(11)
+                        # 'p_u','p_l','p_i'
+                        # 'rh_u','rh_l','rh_i'
+                        # 'wspd_u','wspd_l','wspd_i','t_u'
+                        # 'wdir_u','wdir_l','wdir_i'
+                        # 't_l','p_l','rh_l','fan_dc_l'
+                        #  'precip_l', 'precip_u'
+                        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor',
+                        #           'albedo','tilt_x','tilt_y','cc','t_surf'])
+                        # ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
@@ -212,11 +217,16 @@ for station in np.unique(np.array(all_dirs)):
 
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
-            # if var in ds.data_vars:
-            #     ax.plot( pAWS_raw.L0[-2].time,
-            #             -pAWS_raw.L0[-2][var].values,
-            #             marker='.',color='gray', linestyle='None',
-            #             label='L0')
+            if var in ['z_boom_u']:
+                for L0 in  pAWS_raw.L0+pAWS_tx.L0:
+                    ax.plot(L0.time,
+                            L0[var].values,
+                            marker='.',color='gray', linestyle='None',
+                            label='__nolegend__')
+                ax.plot(L0.time,
+                        L0[var].values,
+                        marker='.',color='gray', linestyle='None',
+                        label='L0')
             if var in ds.data_vars:
                 ax.plot(ds.time,
                         ds[var].values,
@@ -253,7 +263,14 @@ for station in np.unique(np.array(all_dirs)):
 
             if var[:-4] in ds4.data_vars:
                 if var in ['dsr_cor','usr_cor']:
-
+                    if var == 'dsr_cor':
+                        ax.plot(ds3.time,(1.2* isr_toa + 150),
+                                c='k', alpha=0.7)
+                        ax_list[0].plot(np.nan,np.nan,
+                                c='k',label='TOA irradiance + margin (W m-2)')
+                    else:
+                        ax.plot(ds3.time, 0.8*(1.2 * isr_toa + 150),
+                                c='k', alpha=0.7)
                     ax.plot(ds.time,
                             ds[var[:-4]].values,
                             marker='.',color='tab:red', linestyle='None',
@@ -263,19 +280,15 @@ for station in np.unique(np.array(all_dirs)):
                             marker='.',color='tab:pink', linestyle='None',
                             label='value before tilt correction')
                     if var == 'dsr_cor':
-                        ax.plot(ds3.time,(1.2* isr_toa + 150),
-                                c='k', alpha=0.7)
-                        ax_list[0].plot(np.nan,np.nan,
-                                c='k',label='TOA irradiance + margin (W m-2)')
                         ax.plot(ds3.time,
-                                ds3[var[:-4]].where(TOA_crit_nopass | TOA_crit_nopass_cor).values,
+                                ds3[var[:-4]].where(
+                                    TOA_crit_nopass | TOA_crit_nopass_cor).values,
                                 marker='.',color='k', linestyle='None',
                                 label='removed, dsr above TOA irradiance')
                     else:
-                        ax.plot(ds3.time, 0.8*(1.2 * isr_toa + 150),
-                                c='k', alpha=0.7)
                         ax.plot(ds3.time,
-                                ds3[var[:-4]].where(TOA_crit_nopass | TOA_crit_nopass_cor).values,
+                                ds3[var[:-4]].where(
+                                    TOA_crit_nopass | TOA_crit_nopass_cor).values,
                                 marker='.',color='k', linestyle='None',
                                 label='removed, dsr above TOA irradiance')
                         if TOA_crit_nopass_usr.any():

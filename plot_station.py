@@ -12,34 +12,32 @@ import pandas as pd
 
 # path_l3 = '../aws-l3-dev/sites/'
 # path_tx = '../aws-l3/tx/'
-path_thredds = '../thredds/level_3_sites/csv/hour'
+path_thredds = '../thredds-data/level_3_sites/csv/hour'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 # df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
-# var_list = ['gps_geoid']
-# var_list = ['t_i_'+str(i) for i in range(1,12)]
-# var_list = [
-#             # 'batt_v', 't_u',
-#             # 'wspd_u',
-#             'z_boom_u',
-#             'z_boom_l',
-#             # 'z_pt_cor',
-#             # 't_i_all'
-#             ]
-# var_list = ['p_u','p_l','p_i']
-# var_list = ['t_u','t_l','t_i']
-# var_list = ['rh_l','rh_i','rh_l_cor',]
-# var_list = ['t_i','rh_i','p_i','wspd_i','wdir_i','z_boom_u', 'z_boom_l', 'gps_lat','gps_lon','gps_alt']
-# var_list = ['gps_geounit']
-# var_list = ['t_u', 't_l','ts']
-# var_list = ['gps_lat', 'gps_lon','gps_alt']
-# var_list = ['z_surf_combined','z_ice_surf','snow_height','z_pt_cor']
-# var_list = ['p_u','t_u','z_surf_combined', 'lat', 'lon']
-var_list = ['z_surf_combined', 'd_t_i_all']
-# var_labels = ['pressure (hPa)','air temperature\n (°C)','snow height (m)', 'latitude (ºN)', 'longitude (ºE)']
+var_list = [
+    # 'gps_geoid']
+        # 't_i_'+str(i) for i in range(1,12)
+        # 'p_u','p_l','p_i'
+        # 't_u','t_l','t_i'
+        # 'rh_l','rh_i','rh_l_cor',
+        # 't_i','rh_i','p_i','wspd_i','wdir_i',
+        # 'z_boom_u', 'z_boom_l', 'gps_lat','gps_lon','gps_alt'
+        # 'gps_geounit'
+        # 't_u', 't_l','ts'
+        # 'gps_lat', 'gps_lon','gps_alt'
+        # 'z_surf_combined','z_ice_surf','snow_height','z_pt_cor'
+        # 'p_u','t_u','z_surf_combined', 'lat', 'lon'
+        # 't_u','z_boom_u','z_stake'
+        'wspd_u','wspd_l',
+        # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
+        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor','albedo','tilt_x','tilt_y','cc','t_surf'
+        ]
+
 
 # station_list = df_meta.stid
-station_list = ['KAN_U']
+station_list = ['DY2']
 
 # plt.close('all')
 # gps_info=[]

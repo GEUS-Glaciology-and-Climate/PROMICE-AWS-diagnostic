@@ -23,7 +23,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-
+logging.getLogger('numba').setLevel(logging.WARNING)
 path_to_l0 = '../aws-l0/'
 path_l3 = '../thredds-data/metadata/'
 path_l2 = 'L2_test/'
@@ -31,8 +31,8 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'AWS_stations_metadata.csv')
 
 
-# for station in ['WEG_B']:
-for station in np.unique(np.array(df_metadata.station_id)):
+for station in ['KAN_Tv3']:
+# for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
@@ -81,8 +81,8 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-# for station in  ['WEG_B']:
-for station in df_metadata.station_id:
+for station in  ['KAN_Tv3']:
+# for station in df_metadata.station_id:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
     print(station)
@@ -143,12 +143,12 @@ path_l3_stations = 'L3_test/stations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/sites/'
-folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
+folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-processing/L1/hourly'
 folder_glaciobasis = '../GlacioBasis_ESSD/'
-print("\n ======== test join_l3 ========= \n")
+print("/n ======== test join_l3 ========= \n")
 
-# for site in ['WEG_B']:
-for site in df_metadata.site_id:
+for site in ['KAN_T']:
+# for site in df_metadata.site_id:
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
                         folder_gcnet, # folder_glaciobasis,
