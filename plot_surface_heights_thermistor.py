@@ -28,15 +28,15 @@ def Msg(txt):
     f = open(filename, "a")
     print(txt)
     f.write(txt + "\n")
-plt.close('all')
+# plt.close('all')
 
 
 # for file in os.listdir(path_new):
-for file in ['NAU_day.csv']:
+for file in ['NUK_L_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
-        Msg("cannot find",path_new+file)
+        Msg("cannot find"+path_new+file)
         continue
 
     df_new = pd.read_csv(path_new+file)

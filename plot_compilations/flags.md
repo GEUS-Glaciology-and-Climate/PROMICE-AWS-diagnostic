@@ -1,12 +1,10 @@
- not in variables
-z_surf_1 not in variables
+z_ice_surf not in variables
 z_surf_2 not in variables
-# KAN_U
-![](../figures/flags/KAN_U_0.png)
-![](../figures/flags/KAN_U_1.png)
-![](../figures/flags/KAN_U_2.png)
-![](../figures/flags/KAN_U_3.png)
-![](../figures/flags/KAN_U_4.png)
-![](../figures/flags/KAN_U_5.png)
-![](../figures/flags/KAN_U_6.png)
+# NUK_L
+![](../figures/flags/NUK_L_0.png)
+![](../figures/flags/NUK_L_1.png)
+![](../figures/flags/NUK_L_2.png)
+![](../figures/flags/NUK_L_3.png)
+![](../figures/flags/NUK_L_4.png)
+![](../figures/flags/NUK_L_5.png)
  

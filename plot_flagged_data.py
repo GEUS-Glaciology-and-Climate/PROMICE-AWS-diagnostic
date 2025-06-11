@@ -57,9 +57,9 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 
 zoom_to_good = True
 
-for station in ['KAN_U']:
+for station in ['NUK_L']:
 # for station in np.unique(np.array(all_dirs)):
-    station = station.rqeplace('.csv','')
+    station = station.replace('.csv','')
 
     # removing older plots
     pattern = os.path.join(figure_folder, f'{station}*')
