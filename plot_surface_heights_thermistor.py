@@ -10,11 +10,11 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
-# def main(
+# %% Surface height reconstruction + thermistor depth + subsurface temperature
 data_type = 'sites'
 if data_type == 'sites':
     path_new = '../thredds-data/level_3_sites/csv/day/'
@@ -31,8 +31,8 @@ def Msg(txt):
 # plt.close('all')
 
 
-# for file in os.listdir(path_new):
-for file in ['NUK_L_day.csv']:
+for file in os.listdir(path_new):
+# for file in ['NUK_L_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -99,8 +99,8 @@ for file in ['NUK_L_day.csv']:
     ax_list[2].set_ylabel('Temperature (°C)')
     ax_list[0].set_title(station)
 
-    xlim1 = '1996-03-01'
-    xlim2 = '2025-06-27'
+    xlim1 = df_new.index[0]  #'1996-03-01'
+    xlim2 = df_new.index[-1]  #'2025-06-27'
     ax_list[0].set_xlim(pd.to_datetime([xlim1,xlim2]))
     if len(depth_var)>0:
         ax_list[1].set_ylim(
@@ -114,7 +114,7 @@ for file in ['NUK_L_day.csv']:
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()
 
-# %%
+# %% Surface height overview plot
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
@@ -217,7 +217,7 @@ for ax in [ax_large, ax_list[0], ax_list[3],]:
 # Save the figure with tight layout to remove excess white space
 fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')
 
-# %%
+# %% Snow height climatology plots
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
