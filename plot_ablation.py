@@ -68,7 +68,7 @@ for station in df_meta.index:
         df_new['z_ice_surf'] = df_new['z_surf_combined'].cummin()
 
         # removing years with too many NaNs in JJA
-        mask = df_new[df_new.index.month.isin([6, 7, 8])]['z_surf_combined'].isnull().resample('Y').sum().to_frame()
+        mask = df_new[df_new.index.month.isin([6, 7, 8])]['z_surf_combined'].isnull().resample('YE').sum().to_frame()
         for index, count in mask.iterrows():
             if count.iloc[0]>15:
                 df_new.loc[str(index.year), 'z_ice_surf'] = np.NaN
@@ -141,7 +141,7 @@ for station in df_meta.index:
 tocgen.processFile(filename, filename[:-3] + "_toc.md")
 f.close()
 
-# %%
+# %% Comparison ablation with Robert's product
 import matplotlib.pyplot as plt
 import pandas as pd
 import os

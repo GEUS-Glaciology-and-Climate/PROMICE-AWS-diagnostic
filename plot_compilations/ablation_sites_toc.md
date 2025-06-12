@@ -116,7 +116,8 @@ accumulation site
 ![NUK_N](../figures/snow_height/sites/NUK_N_ice_surface.png)
  
 ## <a id='s0-26' />NUK_P
-accumulation site
+![NUK_P](../figures/snow_height/sites/NUK_P_ice_surface.png)
+ 
 ## <a id='s0-27' />NUK_U
 ![NUK_U](../figures/snow_height/sites/NUK_U_ice_surface.png)
  
