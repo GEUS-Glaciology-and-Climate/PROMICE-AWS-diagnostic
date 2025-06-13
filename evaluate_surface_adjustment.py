@@ -36,9 +36,9 @@ df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds-data/metadat
 
 path_l2 = 'L2_test/'
 
-plt.close('all')
+# plt.close('all')
 
-for station in ['THU_U']:
+for station in ['NUK_B']:
 # for station in df_metadata.station_id:
 
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)

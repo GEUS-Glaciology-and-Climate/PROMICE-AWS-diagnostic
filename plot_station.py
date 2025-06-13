@@ -30,14 +30,14 @@ var_list = [
         # 'z_surf_combined','z_ice_surf','snow_height','z_pt_cor'
         # 'p_u','t_u','z_surf_combined', 'lat', 'lon'
         # 't_u','z_boom_u','z_stake'
-        'wspd_u','wspd_l',
+        # 'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
-        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor','albedo','tilt_x','tilt_y','cc','t_surf'
+        'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
         ]
 
 
 # station_list = df_meta.stid
-station_list = ['DY2']
+station_list = ['NUK_B']
 
 # plt.close('all')
 # gps_info=[]

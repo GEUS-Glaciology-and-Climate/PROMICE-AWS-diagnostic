@@ -14,6 +14,7 @@ import numpy as np
 import os, logging, glob
 import matplotlib
 # matplotlib.use('Agg')
+
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -24,6 +25,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 matplotlib.set_loglevel("warning")
+logging.getLogger('numba').setLevel(logging.WARNING)
+
 from pypromice.qc.persistence import persistence_qc
 from pypromice.process import AWS
 from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN, smoothTilt, smoothRot
