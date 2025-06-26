@@ -134,8 +134,8 @@ for station in df_meta.index:
         ax_list[1].legend(title='Year', loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
 
     # Save the figure
-    fig.savefig('figures/snow_height/%s/%s_ice_surface.png' % (data_type, station), dpi=300)
-    Msg(f'![{station}](../figures/snow_height/{data_type}/{station}_ice_surface.png)')
+    fig.savefig('figures/ablation/%s_ice_surface.png' % ( station), dpi=300)
+    Msg(f'![{station}](../figures/ablation/{station}_ice_surface.png)')
     Msg(' ')
 
 tocgen.processFile(filename, filename[:-3] + "_toc.md")
