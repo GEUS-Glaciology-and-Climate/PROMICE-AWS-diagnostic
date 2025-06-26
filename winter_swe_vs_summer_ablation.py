@@ -147,7 +147,7 @@ fig.savefig('figures/surface_height/SWE_vs_ablation.png', dpi=150)
 
 (df_result['SWE / ablation [%]'] > 50).sum()
 
-# %%
+# %% Plot of smoothed ablation at all sites
 import matplotlib.pyplot as plt
 
 import pandas as pd
@@ -169,7 +169,7 @@ station_list = [v for v in df_meta.index if v not in [
     'ORO','UWN']]
 
 results = []
-
+plt.close('all')
 fig,axs=plt.subplots(4,4, sharex=True)
 axs=axs.flatten()
 for station,ax in zip(station_list,axs):
@@ -184,9 +184,55 @@ for station,ax in zip(station_list,axs):
     df['time'] = pd.to_datetime(df['time'], utc=True)
     df = df.set_index('time')
     df = df[['z_surf_combined', 'snow_height']].dropna()
+    from statsmodels.nonparametric.smoothers_lowess import lowess
+
+    df['z_surf_smooth'] = lowess(df['z_surf_combined'], df.index, frac=0.01, return_sorted=False)
+    # df['snow_height_smooth'] = lowess(df['snow_height'], df.index, frac=0.05, return_sorted=False)
     print(station)
-    diff = -df.z_surf_combined.diff().clip(-1e12,0)*1000
+    diff = -(df.resample('D').asfreq().z_surf_smooth.diff()*1000).clip(-1e12,0)
     diff.hist(ax=ax)
     ax.set_title(station)
     # ax.set_xscale('log')
     ax.set_yscale('log')
+    # fig2 = plt.figure()
+    # df.z_surf_combined.plot(title=f"{station} z_surf_combined", c='k',alpha=0.5, ax=plt.gca())
+    # df.z_surf_smooth.plot(title=f"{station} z_surf_combined", ax=plt.gca())
+    # ax = plt.gca()
+    # ax2 = ax.twinx()
+    # (df.resample('D').asfreq().z_surf_smooth.diff()*1000).plot(ax=ax2, color='orange',marker='.', title=f"{station} z_surf_combined")
+    # plt.grid(True)
+    # plt.tight_layout()
+    # plt.show()
+# %% Histogram of all ablation values
+all_diffs = []
+
+for station in station_list:
+    file_path = os.path.join(path_new, f"{station}_day.csv")
+    if not os.path.isfile(file_path):
+        continue
+
+    df = pd.read_csv(file_path)
+    if not {'z_surf_combined', 'snow_height'}.issubset(df.columns):
+        continue
+
+    df['time'] = pd.to_datetime(df['time'], utc=True)
+    df = df.set_index('time')
+    df = df[['z_surf_combined', 'snow_height']].dropna()
+
+    from statsmodels.nonparametric.smoothers_lowess import lowess
+    df['z_surf_smooth'] = lowess(df['z_surf_combined'], df.index, frac=0.01, return_sorted=False)
+
+    diff = -(df.resample('D').asfreq().z_surf_smooth.diff()*1000).clip(-1e12,0)
+    all_diffs.append(diff.dropna())
+
+#  Combine and plot
+plt.close('all')
+plt.figure()
+pd.concat(all_diffs).hist(bins=100)
+plt.yscale('log')
+plt.title('Daily surface lowering across all stations')
+plt.xlabel('Surface lowering (mm/day)')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
