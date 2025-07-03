@@ -47,8 +47,6 @@
 ![LYN_T](../figures/surface_height/sites/LYN_T.png)
  
 ## MIT
-![MIT](../figures/surface_height/sites/MIT.png)
- 
 ## NAE
 ![NAE](../figures/surface_height/sites/NAE.png)
  
@@ -71,8 +69,6 @@
 ![NUK_L](../figures/surface_height/sites/NUK_L.png)
  
 ## NUK_N
-![NUK_N](../figures/surface_height/sites/NUK_N.png)
- 
 ## NUK_P
 ![NUK_P](../figures/surface_height/sites/NUK_P.png)
  
@@ -83,8 +79,6 @@
 ![ORO](../figures/surface_height/sites/ORO.png)
  
 ## QAS_A
-![QAS_A](../figures/surface_height/sites/QAS_A.png)
- 
 ## QAS_L
 ![QAS_L](../figures/surface_height/sites/QAS_L.png)
  
@@ -122,8 +116,6 @@
 ![TAS_L](../figures/surface_height/sites/TAS_L.png)
  
 ## TAS_U
-![TAS_U](../figures/surface_height/sites/TAS_U.png)
- 
 ## THU_L2
 ![THU_L2](../figures/surface_height/sites/THU_L2.png)
  

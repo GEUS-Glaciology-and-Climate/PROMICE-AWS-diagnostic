@@ -38,7 +38,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['NUK_B']:
+for station in ['NUK_L']:
 # for station in df_metadata.station_id:
 
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
