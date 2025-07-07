@@ -17,7 +17,7 @@ import tocgen
 # new_version = 'aws-l3-dev'
 new_version = 'thredds'
 # new_version = 'level_2_stations'
-old_version = 'V23'
+old_version = 'V25'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
@@ -138,16 +138,16 @@ for station in np.unique(df_meta.site_id):
     var_list = df_new.columns.values
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
     # var_list_list = [ ['gps_lat','gps_lon','gps_alt']]
-    var_list_list = [
+    # var_list_list = [
     #     # ['t_i','p_i','rh_i_cor'],
     #                     ['tilt_x','tilt_y','z_boom_u'],
     #                    ['dlr','ulr','t_rad','dsr','usr'],
-                        ['dsr','usr','dsr_cor','usr_cor','albedo','tilt_x','tilt_y','cc'],
+                        # ['dsr','usr','dsr_cor','usr_cor','albedo','tilt_x','tilt_y','cc'],
     #                     # ['rh_u','rh_l','rh_u_cor','rh_l_cor'],
     #                    # ['t_u','t_l', 'p_u','p_l'],
-                        ]
-    # df_old = df_old.loc['2024-02-01':'2024-05-01',:]
-    # df_new = df_new.loc['2024-02-01':'2024-05-01',:]
+                        # ]
+    df_old = df_old.loc['2020-02-01':'2025-08-01',:]
+    df_new = df_new.loc['2020-02-01':'2025-08-01',:]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(13,13))
         if len(var_list)==1:
