@@ -31,7 +31,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'AWS_stations_metadata.csv')
 
 
-for station in ['KAN_Tv3']:
+for station in ['SWC_O','SWC']:
 # for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
@@ -68,8 +68,17 @@ for station in ['KAN_Tv3']:
 
     print(station)
     l2_merged = join_l2(inpath_raw, inpath_tx, outpath,None,None)
+    # import pypromice
+    # from pypromice.process.write import prepare_and_write
+    # v = pypromice.resources.load_variables(None)
+    # m = pypromice.resources.load_metadata(None)
 
-    l2_merged.to_dataframe()[[v for v in l2_merged.data_vars if v.endswith('_i')]].plot(marker='o')
+    # if outpath is not None:
+    #     # prepare_and_write(l2_merged, outpath, v, m, "60min", nc_compression=True)
+    #     prepare_and_write(l2_merged, outpath, v, m, "1D", nc_compression=True)
+    #     prepare_and_write(l2_merged, outpath, v, m, "M", nc_compression=True)
+
+
 
 #%% test l2tol3
 import pandas as pd
@@ -81,7 +90,7 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in  ['KAN_Tv3']:
+for station in  ['SWC_O','SWC']:
 # for station in df_metadata.station_id:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
@@ -147,58 +156,83 @@ folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-pr
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("/n ======== test join_l3 ========= \n")
 
-for site in ['KAN_T']:
+for site in ['SWC']:
 # for site in df_metadata.site_id:
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
                         folder_gcnet, # folder_glaciobasis,
                         outpath, None, None)
 
-    plt.figure()
-    l3_merged.z_surf_combined.plot()
-    l3_merged.z_ice_surf.plot()
-    l3_merged.z_boom_u.plot(marker='.')
-    plt.title(site)
+    # plt.figure()
+    # l3_merged.z_surf_combined.plot()
+    # l3_merged.z_ice_surf.plot()
+    # l3_merged.z_boom_u.plot(marker='.')
+    # plt.title(site)
 
-    plt.figure()
-    l3_merged.rh_u_wrt_ice_or_water.plot()
-    plt.title(site)
+    # plt.figure()
+    # l3_merged.rh_u_wrt_ice_or_water.plot()
+    # plt.title(site)
 
-    plt.figure()
-    for tmp in sorted_list_station_data[::-1]:
-        tmp[0].z_surf_combined.plot(label=tmp[1]['stid'])
-        tmp[0].z_ice_surf.plot(label=tmp[1]['stid'])
+    # plt.figure()
+    # for tmp in sorted_list_station_data[::-1]:
+    #     tmp[0].z_surf_combined.plot(label=tmp[1]['stid'])
+    #     tmp[0].z_ice_surf.plot(label=tmp[1]['stid'])
+    #     tmp[0].snow_height.plot(label=tmp[1]['stid'])
 
-    plt.legend()
+    # plt.legend()
+
+# %% Test precipitation
+with xr.open_dataset(f'L3_test/sites/{site}/{site}_hour.nc', lock=False) as ds_h, \
+      xr.open_dataset(f'L3_test/sites/{station}/{station}_day.nc', lock=False) as ds_d, \
+      xr.open_dataset(f'L3_test/sites/{station}/{station}_month.nc', lock=False) as ds_m:
+
+    ds_h.load()
+    ds_d.load()
+    ds_m.load()
+# %%
+plt.figure()
+ds_h.precip_u.plot(ax=plt.gca())
+ds_d.precip_u.plot(ax=plt.gca())
+ds_m.precip_u.plot(ax=plt.gca())
+
+plt.figure()
+(ds_h.precip_rate_u*24).plot(ax=plt.gca(), marker='o')
+ds_d.precip_rate_u.plot(ax=plt.gca(), marker='o')
+(ds_m.precip_rate_u/30).plot(ax=plt.gca(), marker='o')
+
+plt.figure()
+ds_h.precip_rate_u.cumsum().plot(ax=plt.gca(), marker='o')
+ds_d.precip_rate_u.cumsum().plot(ax=plt.gca(), marker='o')
+ds_m.precip_rate_u.cumsum().plot(ax=plt.gca(), marker='o')
 
 # %%
-var_list = [ 'p_u', 't_u', 'rh_u', 'wspd_u',  'wdir_u', 'dsr', 'usr', 'dlr', 'ulr',  'z_boom_u',
-            #'t_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8',
-            'tilt_y', 'tilt_x', 'rot',  'precip_u', 'gps_lat', 'gps_lon', 'gps_alt',  'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i']
+# var_list = [ 'p_u', 't_u', 'rh_u', 'wspd_u',  'wdir_u', 'dsr', 'usr', 'dlr', 'ulr',  'z_boom_u',
+#             #'t_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8',
+#             'tilt_y', 'tilt_x', 'rot',  'precip_u', 'gps_lat', 'gps_lon', 'gps_alt',  'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i']
 
-import matplotlib.pyplot as plt
-import math
+# import matplotlib.pyplot as plt
+# import math
 
-n_vars = len(var_list)
-ncols = 2
-nrows = math.ceil(n_vars / ncols)
+# n_vars = len(var_list)
+# ncols = 2
+# nrows = math.ceil(n_vars / ncols)
 
-fig, axs = plt.subplots(nrows, ncols, figsize=(14, 4 * nrows), sharex=True)
-axs = axs.flatten()
+# fig, axs = plt.subplots(nrows, ncols, figsize=(14, 4 * nrows), sharex=True)
+# axs = axs.flatten()
 
-for i, var in enumerate(var_list):
-    for tmp in sorted_list_station_data[::-1]:
-        tmp[0][var].plot(ax=axs[i], marker='.', label=tmp[1]['stid'])
-    axs[i].set_title(var)
-    axs[i].set_ylabel('')
-    if i < len(var_list) - 2:
-        axs[i].set_xticklabels([])
-        axs[i].set_xlabel('')
+# for i, var in enumerate(var_list):
+#     for tmp in sorted_list_station_data[::-1]:
+#         tmp[0][var].plot(ax=axs[i], marker='.', label=tmp[1]['stid'])
+#     axs[i].set_title(var)
+#     axs[i].set_ylabel('')
+#     if i < len(var_list) - 2:
+#         axs[i].set_xticklabels([])
+#         axs[i].set_xlabel('')
 
-# Hide any unused subplots
-for j in range(i + 1, len(axs)):
-    axs[j].set_visible(False)
+# # Hide any unused subplots
+# for j in range(i + 1, len(axs)):
+#     axs[j].set_visible(False)
 
-axs[0].legend(loc='upper right')
-axs[0].set_xlim(pd.to_datetime(['2022-01-01', '2025-04-03']))
-plt.tight_layout()
+# axs[0].legend(loc='upper right')
+# axs[0].set_xlim(pd.to_datetime(['2022-01-01', '2025-04-03']))
+# plt.tight_layout()

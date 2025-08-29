@@ -60,7 +60,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 
 zoom_to_good = True
 
-for station in ['NUK_L']:
+for station in ['TAS_Av3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
 
@@ -165,6 +165,7 @@ for station in ['NUK_L']:
         ds4['cc'] = ds['t_u'].copy() * np.nan
     ds4, (OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass_cor, TOA_crit_nopass,TOA_crit_nopass_usr) = process_sw_radiation(ds4)
 
+
     # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
@@ -194,26 +195,34 @@ for station in ['NUK_L']:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
                         # 'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 'z_boom_u', 't_u'
                         # 't_u']+['t_i_'+str(i+1) for i in range(11)
-                        # 'p_u','p_l','p_i'
-                        # 'rh_u','rh_l','rh_i'
-                        # 'wspd_u','wspd_l','wspd_i','t_u'
+                        'p_u','p_l','p_i',
+                        'rh_u','rh_l','rh_i',
+                        't_u','t_l','t_i',
+                        'wspd_u','wspd_l','wspd_i',
+                        'wdir_u','wdir_l','wdir_i',
+                        'z_boom_l', 'z_boom_u', 'z_stake',
+                        # 't_u','t_rad',
+                        # 'p_u','t_u','z_pt','z_pt_cor',
                         # 'wdir_u','wdir_l','wdir_i'
                         # 't_l','p_l','rh_l','fan_dc_l'
-                        #  'precip_l', 'precip_u'
-                        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor',
-                        #           'albedo','tilt_x','tilt_y','cc','t_surf'])
-                        # ])]
+                          # 'precip_l', 'precip_u',
+                          # 'precip_l_cor', 'precip_u_cor',
+                        # 'dlr','ulr','t_rad',
+                        # 'dsr_cor','usr_cor',
+                        #           'albedo','tilt_x','tilt_y','cc',
+                        ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
+
     for i, var_list in enumerate(var_list_list):
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
-        # var_list = var_list[np.isin(var_list, df_L1.columns)]
+        var_list = var_list[np.isin(var_list, ds4.data_vars)]
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,len(var_list)*2.3))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
@@ -221,7 +230,11 @@ for station in ['NUK_L']:
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             if var in ['z_boom_u']:
-                for L0 in  pAWS_raw.L0+pAWS_tx.L0:
+                if pAWS_raw is None:
+                    data =pAWS_tx.L0
+                else:
+                    data =  pAWS_raw.L0+pAWS_tx.L0
+                for L0 in  data:
                     ax.plot(L0.time,
                             L0[var].values,
                             marker='.',color='gray', linestyle='None',

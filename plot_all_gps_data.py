@@ -47,8 +47,8 @@ for v in ['lat','lon','elev']:
 
 
 # for file in os.listdir(path_new): # for all sites, even though where there's no GNSS survey
-for file in ['SWC_day.csv']: # for a specific site
-
+for file in ['SDM_day.csv']: # for a specific site
+    date = '2025-05-19'
     site = file.replace('_day.csv','')
 
     # if you want only the sites where there's accurate GNSS survey
@@ -79,7 +79,8 @@ for file in ['SWC_day.csv']: # for a specific site
         if len(geoid_separation_station)>0:
             geoid_separation_station=geoid_separation_station[0]
 
-
+    print(site, date, df_new.loc[date,['lat','lon','alt']].values)
+    #%%
     var_list_list = [['gps_lat','gps_lon','gps_alt']]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,8))

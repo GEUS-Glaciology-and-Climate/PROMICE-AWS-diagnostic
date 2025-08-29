@@ -9,7 +9,7 @@ tip list:
 """
 import matplotlib.pyplot as plt
 import pandas as pd
-
+import numpy as np
 # path_l3 = '../aws-l3-dev/sites/'
 # path_tx = '../aws-l3/tx/'
 path_thredds = '../thredds-data/level_3_sites/csv/hour'
@@ -19,7 +19,7 @@ path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 var_list = [
     # 'gps_geoid']
         # 't_i_'+str(i) for i in range(1,12)
-        # 'p_u','p_l','p_i'
+        # 'p_u','p_l','p_i',
         # 't_u','t_l','t_i'
         # 'rh_l','rh_i','rh_l_cor',
         # 't_i','rh_i','p_i','wspd_i','wdir_i',
@@ -32,12 +32,12 @@ var_list = [
         # 't_u','z_boom_u','z_stake'
         # 'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
-        'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
+        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
         ]
 
 
 # station_list = df_meta.stid
-station_list = ['NUK_B']
+station_list = ['TAS_A']
 
 # plt.close('all')
 # gps_info=[]
@@ -47,6 +47,12 @@ for station in station_list:
 
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
+    df_l3=df_l3.loc['2025':]
+    if len(var_list) == 0:
+        var_list=df_l3.columns
+    var_list = np.array(var_list)
+    var_list = var_list[np.isin(var_list, df_l3.columns)]
+
 
     var_list_list = [var_list[i:i+6] for i in range(0, len(var_list),6)]
     for k, var_list in enumerate(var_list_list):
@@ -75,11 +81,7 @@ for station in station_list:
                 try:
                     ax.plot(df_l3[var].index, df_l3[var].values, marker='.',
                             color='tab:blue', markeredgecolor='None',
-                            linestyle='None', label='GEUS station',alpha=0.5)
-                    ax.plot(df_l3.loc[:'2021', var].index,
-                            df_l3.loc[:'2021', var].values, marker='.',
-                            color='tab:orange', markeredgecolor='None',
-                            linestyle='None', label='CIRES/WSL station',alpha=0.5)
+                            linestyle='None')
                 except:
                     print(var,'not in L3 files')
             ax.set_ylabel(var_label)

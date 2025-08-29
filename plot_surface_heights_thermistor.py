@@ -31,8 +31,8 @@ def Msg(txt):
 # plt.close('all')
 
 
-for file in os.listdir(path_new):
-# for file in ['NUK_L_day.csv']:
+# for file in os.listdir(path_new):
+for file in ['SWC_day.csv']:
     try:
         station = file.replace('_day.csv','')
         Msg('## '+station)
@@ -102,8 +102,8 @@ for file in os.listdir(path_new):
 
         # xlim1 = df_new.index[0]
         xlim1 = '2022-03-01'
-        # xlim2 = df_new.index[-1]
-        xlim2 = '2025-07-03'
+        xlim2 = df_new.index[-1]
+        # xlim2 = '2025-07-03'
         ax_list[0].set_xlim(pd.to_datetime([xlim1,xlim2]))
         if len(depth_var)>0:
             ax_list[1].set_ylim(
