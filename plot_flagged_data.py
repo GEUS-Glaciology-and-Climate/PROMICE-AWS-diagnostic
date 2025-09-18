@@ -27,9 +27,10 @@ logger = logging.getLogger(__name__)
 matplotlib.set_loglevel("warning")
 logging.getLogger('numba').setLevel(logging.WARNING)
 
-from pypromice.qc.persistence import persistence_qc
-from pypromice.process import AWS
-from pypromice.process.L1toL2 import adjustTime, adjustData, flagNAN, smoothTilt, smoothRot
+from pypromice.core.qc.persistence import persistence_qc
+from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
+from pypromice.pipeline import AWS
+from pypromice.pipeline.L1toL2 import smoothTilt, smoothRot
 import tocgen
 
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
@@ -58,9 +59,9 @@ def Msg(txt):
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 
-zoom_to_good = True
+zoom_to_good = False
 
-for station in ['TAS_Av3']:
+for station in ['JAR_O']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
 
@@ -157,7 +158,7 @@ for station in ['TAS_Av3']:
     ds4['tilt_y'] = smoothTilt(ds4['tilt_y'])
     ds4['rot'] = smoothRot(ds4['rot'])
 
-    from pypromice.process.L1toL2 import  calcCloudCoverage, process_sw_radiation
+    from pypromice.pipeline.L1toL2 import  calcCloudCoverage, process_sw_radiation
     is_bedrock = (ds4.attrs['bedrock'] == True) | (ds4.attrs['bedrock']=='True')| (ds4.attrs['bedrock']=='true')
     if not is_bedrock:
         ds4['cc'] = calcCloudCoverage(ds4['t_u'], ds4['dlr'], ds4.attrs['station_id'], T_0=273.15)
@@ -189,23 +190,23 @@ for station in ['TAS_Av3']:
     # var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
     # var_list = [ 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u',  'tilt_y', 'tilt_x', 'rot',  'gps_lat', 'gps_lon', 'gps_alt',  'batt_v',]
-    # var_list = [v for v in var_list if v in ds1.data_vars]
+    var_list = [v for v in var_list if v in ds1.data_vars]
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    var_list_list = [np.array([
-                        # 'tilt_x','tilt_y',
+    # var_list_list = [np.array([
+    #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 'z_boom_u', 't_u'
                         # 't_u']+['t_i_'+str(i+1) for i in range(11)
-                        'p_u','p_l','p_i',
-                        'rh_u','rh_l','rh_i',
-                        't_u','t_l','t_i',
-                        'wspd_u','wspd_l','wspd_i',
-                        'wdir_u','wdir_l','wdir_i',
-                        'z_boom_l', 'z_boom_u', 'z_stake',
+                        # 'p_u','p_l','p_i',
+                        # 'rh_u','rh_l','rh_i',
+                        #'t_u','t_l','t_i',
+                        # 'wspd_u','wspd_l','wspd_i',
+                        # 'wdir_u','wdir_l','wdir_i',
+                        # 'z_boom_l', 'z_boom_u', 'z_stake',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
                         # 'wdir_u','wdir_l','wdir_i'
@@ -214,8 +215,8 @@ for station in ['TAS_Av3']:
                           # 'precip_l_cor', 'precip_u_cor',
                         # 'dlr','ulr','t_rad',
                         # 'dsr_cor','usr_cor',
-                        #           'albedo','tilt_x','tilt_y','cc',
-                        ])]
+                        #            'albedo',#'tilt_x','tilt_y','cc',
+                        # ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
@@ -229,7 +230,7 @@ for station in ['TAS_Av3']:
 
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
-            if var in ['z_boom_u']:
+            if var in ['z_boom_u','z_boom_l','z_stake']:
                 if pAWS_raw is None:
                     data =pAWS_tx.L0
                 else:
@@ -333,7 +334,7 @@ for station in ['TAS_Av3']:
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)
             ax.grid(True, which='major', linestyle='-', linewidth=1)
 
-        # ax.set_xlim(pd.to_datetime(['2024-05-01','2025-04-13']))
+        # ax.set_xlim(pd.to_datetime(['2025-06-01','2025-09-08']))
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')

@@ -10,9 +10,9 @@ tip list:
 import pandas as pd
 import numpy as np
 import os, logging
-from pypromice.process.get_l2 import get_l2
-from pypromice.process.join_l2 import join_l2
-from pypromice.process.join_l2 import loadArr
+from pypromice.pipeline.get_l2 import get_l2
+from pypromice.pipeline.join_l2 import join_l2
+from pypromice.pipeline.join_l2 import loadArr
 import matplotlib.pyplot as plt
 import xarray as xr
 logging.getLogger('matplotlib.font_manager').disabled = True
@@ -31,7 +31,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'AWS_stations_metadata.csv')
 
 
-for station in ['SWC_O','SWC']:
+for station in ['TAS_L']:
 # for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
@@ -83,14 +83,14 @@ for station in ['SWC_O','SWC']:
 #%% test l2tol3
 import pandas as pd
 import logging, os
-from pypromice.process.get_l2tol3 import get_l2tol3
+from pypromice.pipeline.get_l2tol3 import get_l2tol3
 import matplotlib.pyplot as plt
 path_l2 = 'L2_test/level_2/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in  ['SWC_O','SWC']:
+for station in  ['SCO_L']:
 # for station in df_metadata.station_id:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
@@ -144,7 +144,7 @@ for station in  ['SWC_O','SWC']:
         pass
 
 # %% test join_l3
-from pypromice.process.join_l3 import join_l3
+from pypromice.pipeline.join_l3 import join_l3
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -156,7 +156,7 @@ folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-pr
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("/n ======== test join_l3 ========= \n")
 
-for site in ['SWC']:
+for site in ['SCO_L']:
 # for site in df_metadata.site_id:
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
