@@ -31,7 +31,7 @@ path_l2 = 'L2_test/'
 df_metadata = pd.read_csv(path_l3+'AWS_stations_metadata.csv')
 
 
-for station in ['TAS_L']:
+for station in ['KAN_U']:
 # for station in np.unique(np.array(df_metadata.station_id)):
     print(station)
     # Loading the L1 data:
@@ -62,23 +62,12 @@ for station in ['TAS_L']:
         pAWS_raw = None
 
     print("\n ======== test join_l2 ========= \n")
-    inpath_raw = path_l2 + '/raw/'+station+'/'+station+'_hour.nc'
+    inpath_raw = path_l2 + '/raw/'+station+'/'+station+'_10min.nc'
     inpath_tx = path_l2 + '/tx/'+station+'/'+station+'_hour.nc'
     outpath = 'L2_test/level_2/'
 
     print(station)
     l2_merged = join_l2(inpath_raw, inpath_tx, outpath,None,None)
-    # import pypromice
-    # from pypromice.process.write import prepare_and_write
-    # v = pypromice.resources.load_variables(None)
-    # m = pypromice.resources.load_metadata(None)
-
-    # if outpath is not None:
-    #     # prepare_and_write(l2_merged, outpath, v, m, "60min", nc_compression=True)
-    #     prepare_and_write(l2_merged, outpath, v, m, "1D", nc_compression=True)
-    #     prepare_and_write(l2_merged, outpath, v, m, "M", nc_compression=True)
-
-
 
 #%% test l2tol3
 import pandas as pd
@@ -90,7 +79,7 @@ config_folder = '../aws-l0/metadata/station_configurations/'
 outpath = 'L3_test/stations/'
 print("\n ======== test l2tol3 ========= \n")
 
-for station in  ['SCO_L']:
+for station in  ['KAN_U']:
 # for station in df_metadata.station_id:
     inpath = path_l2 + '/'+station+'/'+station+'_hour.nc'
 
@@ -156,7 +145,7 @@ folder_gcnet = 'C:/Users/bav/OneDrive - GEUS/Code/PROMICE/GC-Net-Level-1-data-pr
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("/n ======== test join_l3 ========= \n")
 
-for site in ['SCO_L']:
+for site in ['KAN_U']:
 # for site in df_metadata.site_id:
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
@@ -190,20 +179,108 @@ with xr.open_dataset(f'L3_test/sites/{site}/{site}_hour.nc', lock=False) as ds_h
     ds_d.load()
     ds_m.load()
 # %%
-plt.figure()
-ds_h.precip_u.plot(ax=plt.gca())
-ds_d.precip_u.plot(ax=plt.gca())
-ds_m.precip_u.plot(ax=plt.gca())
+with xr.open_dataset(f'L2_test/level_2/{site}/{site}_hour.nc', lock=False) as ds_h:
+    plt.figure()
+    ds_h.precip_u.plot(ax=plt.gca())
 
 plt.figure()
-(ds_h.precip_rate_u*24).plot(ax=plt.gca(), marker='o')
-ds_d.precip_rate_u.plot(ax=plt.gca(), marker='o')
-(ds_m.precip_rate_u/30).plot(ax=plt.gca(), marker='o')
+(ds_h.rainfall_cor_u*24).plot(ax=plt.gca(), marker='o')
+ds_d.rainfall_cor_u.plot(ax=plt.gca(), marker='o')
+(ds_m.rainfall_cor_u/30).plot(ax=plt.gca(), marker='o')
 
 plt.figure()
-ds_h.precip_rate_u.cumsum().plot(ax=plt.gca(), marker='o')
-ds_d.precip_rate_u.cumsum().plot(ax=plt.gca(), marker='o')
-ds_m.precip_rate_u.cumsum().plot(ax=plt.gca(), marker='o')
+ds_h.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
+ds_d.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
+ds_m.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
+
+# %% Testing resampling
+
+with xr.open_dataset(f'L2_test/raw/{station}/{station}_10min.nc', lock=False) as ds_l2_10min, \
+      xr.open_dataset(f'L2_test/raw/{station}/{station}_hour.nc', lock=False) as ds_l2_h:
+
+    ds_l2_10min.load()
+    ds_l2_h.load()
+
+with xr.open_dataset(f'L3_test/stations/{station}/{station}_hour.nc', lock=False) as ds_h, \
+      xr.open_dataset(f'L3_test/stations/{station}/{station}_day.nc', lock=False) as ds_d, \
+      xr.open_dataset(f'L3_test/stations/{station}/{station}_month.nc', lock=False) as ds_m:
+
+    ds_h.load()
+    ds_d.load()
+    ds_m.load()
+
+with xr.open_dataset(f'L3_test/stations/{station}_comp_filt/{station}_hour.nc', lock=False) as ds_h_f, \
+      xr.open_dataset(f'L3_test/stations/{station}_comp_filt/{station}_day.nc', lock=False) as ds_d_f, \
+      xr.open_dataset(f'L3_test/stations/{station}_comp_filt/{station}_month.nc', lock=False) as ds_m_f:
+
+    ds_h_f.load()
+    ds_d_f.load()
+    ds_m_f.load()
+
+import matplotlib.pyplot as plt
+import math
+
+
+vars_list = ['t_u'] #[v for v in ds_h.data_vars if ds_h[v].notnull().any()]
+nvars = len(vars_list)
+ncols = 1
+nrows = math.ceil(nvars / 6)  # groups of 6 plots per figure
+
+for g in range(nrows):
+    fig, axes = plt.subplots(1, 1, figsize=(10, 12), sharex=True)
+    axes = np.atleast_1d(axes)
+
+    for i in range(6):
+        idx = g * 6 + i
+        if idx >= nvars:
+            axes[i].set_visible(False)
+            continue
+        var = vars_list[idx]
+        ds_l2_10min[var].plot(ax=axes[i], marker=".", ls="None", label="L2 10min w/o completeness")
+        ds_l2_h[var].plot(ax=axes[i], marker="o", ls="None", label="L2 hourly w/o completeness")
+        ds_h[var].plot(ax=axes[i], marker=".", ls="None", label="L3 hourly w/o completeness")
+        ds_h_f[var].plot(ax=axes[i], marker="o", ls="None", label="L3 hourly filtered")
+        axes[i].set_title(var)
+        axes[i].legend()
+
+    plt.tight_layout()
+    plt.show()
+    break
+# %%
+
+import matplotlib.pyplot as plt
+import math
+
+
+vars_list = ['t_u'] #[v for v in ds_h.data_vars if ds_h[v].notnull().any()]
+nvars = len(vars_list)
+ncols = 1
+nrows = math.ceil(nvars / 6)  # groups of 6 plots per figure
+
+for g in range(nrows):
+    fig, axes = plt.subplots(1, 1, figsize=(10, 12), sharex=True)
+    axes = np.atleast_1d(axes)
+
+    for i in range(6):
+        idx = g * 6 + i
+        if idx >= nvars:
+            axes[i].set_visible(False)
+            continue
+        var = vars_list[idx]
+        # ds_l2_10min[var].plot(ax=axes[i], marker=".", ls="None", label="L2 10min w/o completeness")
+        # ds_l2_h[var].plot(ax=axes[i], marker=".", ls="None", label="L2 hourly w/o completeness")
+        # ds_d[var].plot(ax=axes[i], marker="o", ls="None", label="L3 daily w/o completeness")
+        ds_d_f[var].plot(ax=axes[i], marker="o", ls="None", label="__nolegend__")
+        ds_d_f[var].plot(ax=axes[i], marker="o", ls="None", label="__nolegend__")
+        ds_d_f[var].plot(ax=axes[i], marker="o", ls="None", label="L3 daily filtered")
+        axes[i].set_title(var)
+        axes[i].legend()
+
+    plt.tight_layout()
+    plt.show()
+    break
+
+
 
 # %%
 # var_list = [ 'p_u', 't_u', 'rh_u', 'wspd_u',  'wdir_u', 'dsr', 'usr', 'dlr', 'ulr',  'z_boom_u',
