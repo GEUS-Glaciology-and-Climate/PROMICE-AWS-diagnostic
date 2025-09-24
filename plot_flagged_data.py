@@ -26,7 +26,9 @@ logger = logging.getLogger(__name__)
 
 matplotlib.set_loglevel("warning")
 logging.getLogger('numba').setLevel(logging.WARNING)
-
+import os, pypromice.resources
+from pypromice.core.qc.value_clipping import clip_values
+from pypromice.resources import load_variables
 from pypromice.core.qc.persistence import persistence_qc
 from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
 from lib import (remove_old_plots, load_flags_and_adjustments, load_L1,
@@ -59,10 +61,10 @@ def Msg(txt):
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
-
+var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['KAN_Lv3']:
+for station in ['QAS_Mv3']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -76,14 +78,16 @@ for station in ['KAN_Lv3']:
 
     #%% Flagging, adjusting, filtering
 
-    # ds, ds1, ds2, ds3 as before
+    # The following steps are from L1toL2
     ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
     ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
-    ds3 = persistence_qc(ds2)
+    ds22 = persistence_qc(ds2)
+    vars_df = load_variables(var_file)
+    ds3 = clip_values(ds22.copy(), vars_df)
 
-    # ds4 and subsequent steps using the new functions
-    ds4 = clean_gps(ds3)
+    # The following steps are from L2toL3
+    ds4, baseline_elevation = clean_gps(ds3)
     ds4 = smooth_pose(ds4)
     ds4 = compute_cloud_cover(ds4)
 
@@ -122,11 +126,12 @@ for station in ['KAN_Lv3']:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 'z_boom_u', 't_u'
                         # 't_u']+['t_i_'+str(i+1) for i in range(11)
+                        'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
                         # 'rh_u','rh_l','rh_i',
                         #'t_u','t_l','t_i',
@@ -142,7 +147,7 @@ for station in ['KAN_Lv3']:
                         # 'dlr','ulr','t_rad',
                         # 'dsr_cor','usr_cor',
                         #            'albedo',#'tilt_x','tilt_y','cc',
-                        # ])]
+                        ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
@@ -157,19 +162,15 @@ for station in ['KAN_Lv3']:
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             if var in ['z_boom_u','z_boom_l','z_stake']:
-                if pAWS_raw is None:
-                    data =pAWS_tx.L0
-                else:
-                    data =  pAWS_raw.L0+pAWS_tx.L0
-                for L0 in  data:
-                    ax.plot(L0.time,
-                            L0[var].values,
-                            marker='.',color='gray', linestyle='None',
-                            label='__nolegend__')
-                ax.plot(L0.time,
-                        L0[var].values,
+                ax.plot(ds4.time,
+                        ds4[var].values,
                         marker='.',color='gray', linestyle='None',
-                        label='L0')
+                        label='uncorrected for air temperature')
+                var_cor = var.replace('_u','_cor_u').replace('_l','_cor_l')
+                ax.plot(ds4.time,
+                        ds4[var_cor].values,
+                        marker='.', linestyle='None',
+                        label='corrected for air temperature')
             if var in ds.data_vars:
                 ax.plot(ds.time,
                         ds[var].values,
@@ -189,11 +190,18 @@ for station in ['KAN_Lv3']:
                         ds1[var].values,
                         marker='.',color='tab:orange', linestyle='None',
                         label='removed or changed by adjustment')
-            if var in ds2.data_vars:
-                ax.plot(ds2.time,
-                        ds2[var].values,
+            if var in ds2.data_vars and var in ds22.data_vars:
+                mask = np.isnan(ds22[var].values) & ~np.isnan(ds2[var].values)
+                ax.plot(ds22.time[mask],
+                        ds2[var].values[mask],
                         marker='.',color='tab:green', linestyle='None',
                         label='filtered with persistence')
+            if var in ds22.data_vars and var in ds3.data_vars:
+                mask = np.isnan(ds3[var].values) & ~np.isnan(ds22[var].values)
+                ax.plot(ds3.time[mask],
+                        ds22[var].values[mask],
+                        marker='o',color='tab:brown', linestyle='None',
+                        label='filtered with dependency')
             if var in ds3.data_vars:
                 ax.plot(ds3.time,
                         ds3[var].values,

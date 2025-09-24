@@ -16,6 +16,9 @@ from pypromice.core.variables import (station_pose,
                                       radiation,
                                       air_temperature)
 
+from pypromice.pipeline.get_l2 import get_l2
+from pypromice.pipeline.join_l2 import join_l2
+from pypromice.pipeline.join_l2 import loadArr
 
 def remove_old_plots(figure_folder, station):
     pattern = os.path.join(figure_folder, f'{station}*')
@@ -96,7 +99,7 @@ def clean_gps(ds):
                 .ffill().bfill())
     mask = (np.abs(ds.gps_alt - baseline) < 100) | ds.gps_alt.isnull()
     out[['gps_alt','gps_lon','gps_lat']] = out[['gps_alt','gps_lon','gps_lat']].where(mask)
-    return out
+    return out, baseline
 
 def smooth_pose(ds):
     out = ds.copy()
@@ -177,3 +180,46 @@ def compute_albedo(ds, geo):
         geo["ZenithAngle_deg"], geo["AngleDif_deg"]
     )
     return ds, OKalbedos
+
+import xarray as xr
+import toml
+
+def run_L2(path_to_l0, path_l2, station):
+    config_file_tx  = os.path.join(path_to_l0, 'tx',  'config', f'{station}.toml')
+    config_file_raw = os.path.join(path_to_l0, 'raw', 'config', f'{station}.toml')
+
+    pAWS_tx = None
+    if os.path.isfile(config_file_tx):
+        inpath_tx = os.path.join(path_to_l0, 'tx')
+        pAWS_tx = get_l2(config_file_tx, inpath_tx, os.path.join(path_l2, 'tx'), None, None,
+                         data_issues_path='../PROMICE-AWS-data-issues')
+
+    pAWS_raw = None
+    if os.path.isfile(config_file_raw):
+        inpath_raw = os.path.join(path_to_l0, 'raw', station)
+        pAWS_raw = get_l2(config_file_raw, inpath_raw, os.path.join(path_l2, 'raw'), None, None,
+                          data_issues_path='../PROMICE-AWS-data-issues')
+
+    return pAWS_tx, pAWS_raw
+
+def join_L2(path_l2, station):
+    inpath_raw = os.path.join(path_l2, 'raw', station, f'{station}_hour.nc')
+    inpath_tx  = os.path.join(path_l2, 'tx',  station, f'{station}_hour.nc')
+    return join_l2(inpath_raw, inpath_tx, os.path.join(path_l2, 'level_2'), None, None)
+
+def open_l2_clean(path_l2, station):
+    inpath = os.path.join(path_l2, 'level_2', station, f'{station}_hour.nc')
+    with xr.open_dataset(inpath) as l2:
+        l2.load()
+    for varname in l2.variables:
+        if l2[varname].encoding != {}:
+            l2[varname].encoding = {}
+    if 'bedrock' in l2.attrs:
+        l2.attrs['bedrock'] = (l2.attrs['bedrock'] == 'True')
+    if 'number_of_booms' in l2.attrs:
+        l2.attrs['number_of_booms'] = int(l2.attrs['number_of_booms'])
+    return l2
+
+def load_station_config(config_folder, station_id):
+    with open(os.path.join(config_folder, f'{station_id}.toml')) as fp:
+        return toml.load(fp)

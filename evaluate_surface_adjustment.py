@@ -13,9 +13,6 @@ import numpy as np
 import xarray as xr
 import logging, toml, os
 from pypromice.pipeline.L2toL3 import process_surface_height
-from pypromice.pipeline.get_l2 import get_l2
-from pypromice.pipeline.join_l2 import join_l2
-from pypromice.pipeline.join_l2 import loadArr
 from pathlib import Path
 # import matplotlib
 # matplotlib.use('Agg')
@@ -28,7 +25,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-import logging
+import logging, lib
 logging.getLogger('numba').setLevel(logging.WARNING)
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
@@ -38,76 +35,46 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['JAR_O']:
-# for station in df_metadata.station_id:
-
-    config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
-    config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
+for station in ['QAS_Lv3']:
+# for station in df_metadata.station_id[8:]:
 
     print("\n ======== Processing L2 ========= \n")
-    if os.path.isfile(config_file_tx):
-        inpath = path_to_l0 + '/tx/'
-        pAWS_tx = get_l2(config_file_tx, inpath, path_l2+'/tx/',None,None,
-                         data_issues_path='../PROMICE-AWS-data-issues')
-
-    else:
-        pAWS_tx = None
-
-    if os.path.isfile(config_file_raw):
-        inpath = path_to_l0 + '/raw/'+station+'/'
-        pAWS_raw = get_l2(config_file_raw, inpath,  path_l2+'/raw/',None,None,
-                         data_issues_path='../PROMICE-AWS-data-issues')
-    else:
-        pAWS_raw = None
+    pAWS_tx, pAWS_raw = lib.run_L2(path_to_l0, path_l2, station)
 
     print("\n ======== Joining L2 ========= \n")
-    inpath_raw = path_l2 + '/raw/'+station+'/'+station+'_hour.nc'
-    inpath_tx = path_l2 + '/tx/'+station+'/'+station+'_hour.nc'
-
-
-    print(station)
-    l2_merged = join_l2(inpath_raw, inpath_tx, path_l2+'/level_2/', None, None)
+    l2_merged = lib.join_L2(path_l2, station)
 
     print("\n ======== Processing L3 surface heights ========= \n")
+    l2 = lib.open_l2_clean(path_l2, station)
+    station_config = lib.load_station_config(config_folder, l2.attrs['station_id'])
 
-    inpath = path_l2+'/level_2/'+station+'/'+station+'_hour.nc'
-    print(station)
-
-    # Define Level 2 dataset from file
-    with xr.open_dataset(inpath) as l2:
-        l2.load()
-
-    # Remove encoding attributes from NetCDF
-    for varname in l2.variables:
-        if l2[varname].encoding!={}:
-            l2[varname].encoding = {}
-
-    if 'bedrock' in l2.attrs.keys():
-        l2.attrs['bedrock'] = l2.attrs['bedrock'] == 'True'
-    if 'number_of_booms' in l2.attrs.keys():
-        l2.attrs['number_of_booms'] = int(l2.attrs['number_of_booms'])
-
-    # importing station_config (dict) from config_folder (str path)
-    config_file = config_folder+l2.attrs['station_id']+'.toml'
-    with open(config_file) as fp:
-        station_config = toml.load(fp)
 
     # %% Perform Level 3 processing
     l3 = process_surface_height(l2,
                                 Path('../PROMICE-AWS-data-issues')/'adjustments',
                                 station_config).to_dataframe()
 
+    # %%
 
     fig, ax = plt.subplots(3,1, sharex=True, figsize=(10,10))
-    var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] if v in l3.columns]
-    l3[var_list].plot(ax=ax[0],marker='.')
+    plt.subplots_adjust(right=0.8)
+    var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt'] if v in l3.columns]
+    l3[var_list].plot(ax=ax[0],marker='.',color='lightgray', ls='None', legend='__nolabel__')
+    var_list_cor = [(v.replace('_u','_cor_u')
+                     .replace('_l','_cor_l')
+                     .replace('_stake','_stake_cor')
+                     .replace('_pt','_pt_cor')) for v in var_list]
+    var_list_cor = [v for v in var_list_cor if v in l3.columns]
+    l3[var_list_cor].plot(ax=ax[0],marker='.')
     ax[0].set_title(station)
     ax[0].set_ylabel('Height (m)')
     ax[0].grid()
+    ax[0].legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
     var_list = [v for v in ['z_surf_1','z_surf_2','z_ice_surf', 'z_surf_1_adj','z_surf_2_adj',
                             'z_surf_combined',] if v in l3.columns]
     l3[var_list].plot(ax=ax[1],marker='.',alpha=0.6)
+    ax[1].legend(loc='center left', bbox_to_anchor=(1, 0.5))
     ax[1].set_ylabel('Height (m)')
     ax[1].grid()
 
@@ -116,7 +83,7 @@ for station in ['JAR_O']:
     ax[2].set_ylabel('Height (m)')
     ax[2].grid()
     fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
-    # %
+# %%
     time = pd.DatetimeIndex(l3.index.values)
 
     # all September 1st from first to last timestamp
@@ -126,9 +93,9 @@ for station in ['JAR_O']:
         pd.Series([0], index=[abl.index.min() - pd.Timedelta(365, "D")]),
         abl
     ])
-    plt.figure()
-    l3['z_ice_surf'].plot()
-    abl.plot(marker='o')
+    # plt.figure()
+    # l3['z_ice_surf'].plot()
+    # abl.plot(marker='o')
 
     print("Yearly ice ablation:")
     for t, v in abl.diff().dropna().items():
