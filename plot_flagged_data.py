@@ -29,8 +29,9 @@ logging.getLogger('numba').setLevel(logging.WARNING)
 
 from pypromice.core.qc.persistence import persistence_qc
 from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
-from pypromice.pipeline import AWS
-from pypromice.pipeline.L1toL2 import smoothTilt, smoothRot
+from lib import (remove_old_plots, load_flags_and_adjustments, load_L1,
+                 clean_gps, smooth_pose, compute_cloud_cover,
+                 solar_geometry, filter_shortwave, correct_shortwave, compute_albedo)
 import tocgen
 
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
@@ -61,78 +62,12 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 
 zoom_to_good = False
 
-for station in ['JAR_O']:
+for station in ['KAN_Lv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
-
-    # removing older plots
-    pattern = os.path.join(figure_folder, f'{station}*')
-    for file_path in glob.glob(pattern):
-        try:
-            os.remove(file_path)
-            print(f'Removed: {file_path}')
-        except Exception as e:
-            print(f'Error removing {file_path}: {e}')
-
-    # loading flags
-    try:
-        flags = pd.read_csv(path_to_qc_files+'flags/'+station+'.csv', comment='#', skipinitialspace=True)
-        flags['what was done'] = 'flag'
-    except:
-        flags = pd.DataFrame()
-
-    try:
-        adj = pd.read_csv(path_to_qc_files+'adjustments/'+station+'.csv', comment='#', skipinitialspace=True)
-        adj['what was done'] = adj['adjust_function'] + ' ' + adj['adjust_value'].astype(str)
-    except:
-        adj = pd.DataFrame()
-
-    try:
-        df_flags = pd.concat((flags,adj))[['t0', 't1', 'variable', 'what was done', 'comment', 'URL_graphic']].reset_index(drop=True)
-    except:
-        df_flags = pd.concat((flags,adj))
-
-    # Loading the L1 data:
-    config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
-    config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
-    if os.path.isfile(config_file_tx):
-        inpath = path_to_l0 + '/tx/'
-        pAWS_tx = AWS(config_file_tx,
-                      inpath,
-                      var_file=None,
-                      meta_file=None,
-                      data_issues_repository='../PROMICE-AWS-data-issues')
-        pAWS_tx.getL1()
-
-    else:
-        pAWS_tx = None
-
-    if os.path.isfile(config_file_raw):
-        inpath = path_to_l0 + '/raw/'+station+'/'
-        pAWS_raw = AWS(config_file_raw,
-                      inpath,
-                      var_file=None,
-                      meta_file=None,
-                      data_issues_repository='../PROMICE-AWS-data-issues')
-        pAWS_raw.getL1()
-
-    else:
-        pAWS_raw = None
-
-    if pAWS_raw == None:
-        print('No raw logger file for',station)
-        ds = pAWS_tx.L1A.copy(deep=True)
-    elif  pAWS_tx == None:
-        print('No transmission toml file for',station)
-        ds = pAWS_raw.L1A.copy(deep=True)
-    else:
-        print('Combining L1 data for',station)
-        ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
-
-
-    ds.attrs['bedrock'] = str(ds.attrs['bedrock'])
-
-    ds_save = ds.copy(deep=True)
+    remove_old_plots(figure_folder, station)
+    df_flags = load_flags_and_adjustments(path_to_qc_files, station)
+    ds, ds_save, pAWS_tx, pAWS_raw = load_L1(path_to_l0, station)
 
     # try:
     #     pAWS_tx.getL2()
@@ -141,31 +76,22 @@ for station in ['JAR_O']:
 
     #%% Flagging, adjusting, filtering
 
-    ds = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
+    # ds, ds1, ds2, ds3 as before
+    ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
     ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
     ds3 = persistence_qc(ds2)
 
-    ds4 = ds3.copy()
-    baseline_elevation = (ds3.gps_alt.to_series().resample('M').median()
-                          .reindex(ds3.time.to_series().index, method='nearest')
-                          .ffill().bfill())
-    mask = (np.abs(ds3.gps_alt - baseline_elevation) < 100) | ds3.gps_alt.isnull()
-    ds4[['gps_alt','gps_lon', 'gps_lat']] = ds4[['gps_alt','gps_lon', 'gps_lat']].where(mask)
+    # ds4 and subsequent steps using the new functions
+    ds4 = clean_gps(ds3)
+    ds4 = smooth_pose(ds4)
+    ds4 = compute_cloud_cover(ds4)
 
-    # smoothing tilt
-    ds4['tilt_x'] = smoothTilt(ds4['tilt_x'])
-    ds4['tilt_y'] = smoothTilt(ds4['tilt_y'])
-    ds4['rot'] = smoothRot(ds4['rot'])
+    geo = solar_geometry(ds4)
 
-    from pypromice.pipeline.L1toL2 import  calcCloudCoverage, process_sw_radiation
-    is_bedrock = (ds4.attrs['bedrock'] == True) | (ds4.attrs['bedrock']=='True')| (ds4.attrs['bedrock']=='true')
-    if not is_bedrock:
-        ds4['cc'] = calcCloudCoverage(ds4['t_u'], ds4['dlr'], ds4.attrs['station_id'], T_0=273.15)
-    else:
-        ds4['cc'] = ds['t_u'].copy() * np.nan
-    ds4, (OKalbedos, sunonlowerdome, bad, isr_toa, TOA_crit_nopass_cor, TOA_crit_nopass,TOA_crit_nopass_usr) = process_sw_radiation(ds4)
-
+    ds4, flags = filter_shortwave(ds4, geo)
+    ds4, TOA_crit_nopass_cor = correct_shortwave(ds4, geo)
+    ds4, OKalbedos = compute_albedo(ds4, geo)
 
     # %% plotting
     df_L1 = ds.to_dataframe().copy()

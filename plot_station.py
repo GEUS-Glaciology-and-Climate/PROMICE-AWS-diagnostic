@@ -37,7 +37,7 @@ var_list = [
 
 
 # station_list = df_meta.stid
-station_list = ['TAS_A']
+station_list = ['DY2']
 
 # plt.close('all')
 # gps_info=[]
