@@ -1,57 +1,70 @@
 #!/bin/bash
 # run_all.sh
 # Usage: ./run_all.sh N_CORES
+set -euo pipefail
 
-NCORES=$1
-if [ -z "$NCORES" ]; then
-  echo "Usage: $0 N_CORES"
-  exit 1
-fi
+NCORES=${1:-}
+[ -z "$NCORES" ] && { echo "Usage: $0 N_CORES"; exit 1; }
 
-###############################################
-# 1. Run process_l2_l3 for all station_id
-###############################################
+mkdir -p logs
+
+# function to run a python call pinned to a core
+run_task() {
+  core=$1
+  name=$2
+  code=$3
+  log="logs/${name}.log"
+  echo "$name -> core $core | $log"
+  taskset -c "$core" python - <<END >"$log" 2>&1
+$code
+END
+}
+
+# collect all tasks (stations + sites)
+tasks=()
+
+# stations
 stations=$(python - <<'END'
 import pandas as pd, numpy as np
 df = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-stations = np.unique(df["station_id"].to_numpy())
-print(" ".join(stations))
+print(" ".join(np.unique(df["station_id"].to_numpy())))
 END
 )
-
-i=0
 for st in $stations; do
-  core=$(( i % NCORES ))
-  echo "Launching process_l2_l3 for $st on core $core"
-  taskset -c $core python - <<END &
-from test_processing_scripts import process_l2_l3
-process_l2_l3("${st}")
-END
-  i=$((i+1))
+  tasks+=("station_${st};from mymodule import process_l2_l3; process_l2_l3('${st}')")
 done
 
-###############################################
-# 2. Run join_l3 for all site_id
-###############################################
+# sites
 sites=$(python - <<'END'
 import pandas as pd, numpy as np
 df = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-sites = np.unique(df["site_id"].to_numpy())
-print(" ".join(sites))
+print(" ".join(np.unique(df["site_id"].to_numpy())))
 END
 )
-
-j=0
 for site in $sites; do
-  core=$(( j % NCORES ))
-  echo "Launching join_l3 for $site on core $core"
-  taskset -c $core python - <<END &
-from test_processing_scripts import join_l3
-join_l3("${site}")
-END
-  j=$((j+1))
+  tasks+=("site_${site};from mymodule import join_l3; join_l3('${site}')")
 done
 
-# wait for all background jobs
-wait
-echo "All stations and sites processed."
+# run tasks with at most $NCORES concurrent jobs
+i=0
+pids=()
+for task in "${tasks[@]}"; do
+  name="${task%%;*}"
+  code="${task#*;}"
+  core=$(( i % NCORES ))
+
+  run_task "$core" "$name" "$code" &    # launch in background
+  pids+=($!)
+
+  # if we have launched NCORES tasks, wait for all before continuing
+  if (( (i+1) % NCORES == 0 )); then
+    wait "${pids[@]}"
+    pids=()
+  fi
+  i=$((i+1))
+done
+
+# wait for any remaining jobs
+wait "${pids[@]:-}"
+
+echo "All jobs completed."
