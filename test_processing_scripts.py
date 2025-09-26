@@ -28,7 +28,7 @@ logging.basicConfig(
 logging.getLogger('numba').setLevel(logging.WARNING)
 
 path_to_l0 = '../aws-l0/'
-config_folder = '../aws-l0/metadata/station_configurations/'
+config_folder = 'metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
 # for station in []:
@@ -125,14 +125,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 path_l3_stations = 'L3_test/stations/'
-df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
+df_metadata = pd.read_csv('metadata/AWS_sites_metadata.csv')
 config_folder = '../aws-l0/metadata/station_configurations/'
 folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("/n ======== test join_l3 ========= \n")
 
 #for site in ['KAN_U']:
-for site in df_metadata.site_id:
+# for site in df_metadata.site_id:
+def join_l3(site):
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
                         folder_gcnet, # folder_glaciobasis,
