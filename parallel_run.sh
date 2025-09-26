@@ -24,7 +24,7 @@ for st in $stations; do
   core=$(( i % NCORES ))
   echo "Launching process_l2_l3 for $st on core $core"
   taskset -c $core python - <<END &
-from mymodule import process_l2_l3
+from test_processing_scripts import process_l2_l3
 process_l2_l3("${st}")
 END
   i=$((i+1))
@@ -46,7 +46,7 @@ for site in $sites; do
   core=$(( j % NCORES ))
   echo "Launching join_l3 for $site on core $core"
   taskset -c $core python - <<END &
-from mymodule import join_l3
+from test_processing_scripts import join_l3
 join_l3("${site}")
 END
   j=$((j+1))
