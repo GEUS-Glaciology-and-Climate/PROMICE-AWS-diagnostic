@@ -2,6 +2,7 @@
 # run_all.sh
 # Usage: ./run_all.sh N_CORES
 set -euo pipefail
+trap "echo 'Stopping...'; kill 0" SIGINT SIGTERM
 
 NCORES=${1:-}
 [ -z "$NCORES" ] && { echo "Usage: $0 N_CORES"; exit 1; }
@@ -53,10 +54,10 @@ for task in "${tasks[@]}"; do
   code="${task#*;}"
   core=$(( i % NCORES ))
 
-  run_task "$core" "$name" "$code" &    # launch in background
+  run_task "$core" "$name" "$code" &   # launch in background
   pids+=($!)
 
-  # if we have launched NCORES tasks, wait for all before continuing
+  # wait for batch of NCORES jobs to finish before launching new ones
   if (( (i+1) % NCORES == 0 )); then
     wait "${pids[@]}"
     pids=()
