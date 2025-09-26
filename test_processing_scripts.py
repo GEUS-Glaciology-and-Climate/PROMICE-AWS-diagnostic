@@ -31,9 +31,9 @@ path_to_l0 = '../aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
-
-#for station in []:
-for station in np.unique(np.array(df_metadata.station_id)):
+# for station in []:
+# for station in np.unique(np.array(df_metadata.station_id)):
+def process_l2_l3(station):
     print(station)
     # Loading the L1 data:
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
@@ -63,14 +63,11 @@ for station in np.unique(np.array(df_metadata.station_id)):
         pAWS_raw = None
 
     print("\n ======== test join_l2 ========= \n")
-    print(station)
     l2_merged = join_l2('L2_test/raw/'+station+'/'+station+'_hour.nc', 
                         'L2_test/tx/'+station+'/'+station+'_hour.nc', 
                         'L2_test/level_2/',None,None)
 
     print("\n ======== test l2tol3 ========= \n")
-
-    print(station)
     l3 = get_l2tol3(config_folder, 
                     'L2_test/level_2/'+station+'/'+station+'_hour.nc',
                     'L3_test/stations/', None, None, None)
