@@ -64,7 +64,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['QAS_Mv3']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)

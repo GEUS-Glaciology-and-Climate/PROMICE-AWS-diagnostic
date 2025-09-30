@@ -16,13 +16,13 @@ import geopandas as gpd
 from shapely.ops import unary_union
 
 # can be run both for stations or for sites, sites are recommended
-data_type = 'sites'
+data_type = 'stations'
 if data_type == 'sites':
     path_new = '../thredds-data/level_3_sites/csv/day/'
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     os.makedirs("figures/GPS/sites", exist_ok=True)
 else:
-    path_new = '../thredds-data/level_2_stations/csv/day/'
+    path_new = '../thredds-data/level_2_stations/csv/hour/'
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     os.makedirs("figures/GPS/stations", exist_ok=True)
 
@@ -47,9 +47,9 @@ for v in ['lat','lon','elev']:
 
 
 # for file in os.listdir(path_new): # for all sites, even though where there's no GNSS survey
-for file in ['SDM_day.csv']: # for a specific site
+for file in ['NUK_Lv3_hour.csv']: # for a specific site
     date = '2025-05-19'
-    site = file.replace('_day.csv','')
+    site = file.replace('_hour.csv','')
 
     # if you want only the sites where there's accurate GNSS survey
     # if site not in np.unique(gnss_df.index):

@@ -14,8 +14,8 @@ import xarray as xr
 import logging, toml, os
 from pypromice.pipeline.L2toL3 import process_surface_height
 from pathlib import Path
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
@@ -35,9 +35,9 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-# for station in ['QAS_Uv3']:
-for station in df_metadata.station_id:
-
+for station in ['TAS_Av3']:
+# for station in df_metadata.station_id:
+#
     print("\n ======== Processing L2 ========= \n")
     pAWS_tx, pAWS_raw = lib.run_L2(path_to_l0, path_l2, station)
 
