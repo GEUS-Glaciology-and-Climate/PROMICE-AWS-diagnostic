@@ -1,0 +1,159 @@
+2025-09-30 09:19:20,371 [INFO] AWS(config_file=../aws-l0//tx/config/KAN_B.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:20,808 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'KAN_B.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:20,825 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/KAN_B_300034012256830_1.txt
+2025-09-30 09:19:20,943 [INFO] L0 data successfully loaded from KAN_B_300034012256830_1.txt
+2025-09-30 09:19:20,947 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/KAN_B_300034012256830_2.txt
+2025-09-30 09:19:21,003 [INFO] L0 data successfully loaded from KAN_B_300034012256830_2.txt
+2025-09-30 09:19:21,059 [INFO] Level 1 processing...
+2025-09-30 09:19:21,755 [INFO] Level 2 processing...
+2025-09-30 09:19:21,758 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_B.csv
+2025-09-30 09:19:21,766 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/KAN_B.csv
+2025-09-30 09:19:21,766 [INFO] No ../PROMICE-AWS-data-issues/flags/KAN_B.csv file to read.
+2025-09-30 09:19:21,769 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_B.csv
+2025-09-30 09:19:21,780 [DEBUG] ---> None None z_boom_u max_filter 2.63
+2025-09-30 09:19:21,782 [DEBUG] ---> None None z_boom_u min_filter 2.37
+2025-09-30 09:19:21,786 [INFO] ---> None 2011-07-01 00:00:00 z_boom_u min_filter 2.6
+2025-09-30 09:19:21,786 [INFO] Time range does not intersect with dataset
+2025-09-30 09:19:21,797 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:21,803 [DEBUG] Applying persistent QC in t_i. Filtering 0/20512 samples
+2025-09-30 09:19:21,807 [DEBUG] Applying persistent QC in t_u. Filtering 4/20512 samples
+2025-09-30 09:19:21,812 [DEBUG] Applying persistent QC in p_i. Filtering 0/20512 samples
+2025-09-30 09:19:21,920 [DEBUG] Applying persistent QC in p_u. Filtering 0/20512 samples
+2025-09-30 09:19:21,937 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/20512 samples
+2025-09-30 09:19:21,944 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/20512 samples
+2025-09-30 09:19:21,949 [DEBUG] Applying persistent QC in t_rad. Filtering 26/20512 samples
+2025-09-30 09:19:21,953 [DEBUG] Applying persistent QC in rh_i. Filtering 0/20512 samples
+2025-09-30 09:19:21,957 [DEBUG] Applying persistent QC in rh_u. Filtering 619/20512 samples
+2025-09-30 09:19:21,964 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/20512 samples
+2025-09-30 09:19:21,972 [DEBUG] Applying persistent QC in wspd_u. Filtering 110/20512 samples
+2025-09-30 09:19:22,470 [INFO] Resampling to 60min
+2025-09-30 09:19:22,605 [INFO] Writing to files...
+2025-09-30 09:19:23,260 [INFO] Written to L2_test/tx/KAN_B/KAN_B_hour.csv
+2025-09-30 09:19:23,260 [INFO] Written to L2_test/tx/KAN_B/KAN_B_hour.nc
+2025-09-30 09:19:23,261 [INFO] AWS(config_file=../aws-l0//raw/config/KAN_B.toml, inpath=../aws-l0//raw/KAN_B/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:23,614 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'KAN_B.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:23,626 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2012_raw.txt
+2025-09-30 09:19:23,727 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2012_raw.txt
+2025-09-30 09:19:23,897 [INFO] L0 data successfully loaded from KAN_B_2012_raw.txt
+2025-09-30 09:19:24,409 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2012_raw_3.txt
+2025-09-30 09:19:24,436 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2012_raw_3.txt
+2025-09-30 09:19:24,495 [INFO] L0 data successfully loaded from KAN_B_2012_raw_3.txt
+2025-09-30 09:19:25,156 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2013_raw.txt
+2025-09-30 09:19:25,207 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2013_raw.txt
+2025-09-30 09:19:25,358 [INFO] L0 data successfully loaded from KAN_B_2013_raw.txt
+2025-09-30 09:19:25,362 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2014_raw_1.txt
+2025-09-30 09:19:25,469 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2014_raw_1.txt
+2025-09-30 09:19:25,634 [INFO] L0 data successfully loaded from KAN_B_2014_raw_1.txt
+2025-09-30 09:19:25,643 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2014_raw_2.txt
+2025-09-30 09:19:25,644 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2014_raw_2.txt
+2025-09-30 09:19:25,654 [INFO] L0 data successfully loaded from KAN_B_2014_raw_2.txt
+2025-09-30 09:19:25,887 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2014_raw_3.txt
+2025-09-30 09:19:25,900 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2014_raw_3.txt
+2025-09-30 09:19:25,935 [INFO] L0 data successfully loaded from KAN_B_2014_raw_3.txt
+2025-09-30 09:19:26,771 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2015_raw_1.txt
+2025-09-30 09:19:26,821 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2015_raw_1.txt
+2025-09-30 09:19:26,933 [INFO] L0 data successfully loaded from KAN_B_2015_raw_1.txt
+2025-09-30 09:19:27,243 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2015_raw_2.txt
+2025-09-30 09:19:27,268 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2015_raw_2.txt
+2025-09-30 09:19:27,321 [INFO] L0 data successfully loaded from KAN_B_2015_raw_2.txt
+2025-09-30 09:19:27,417 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2015_raw_3.txt
+2025-09-30 09:19:27,425 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2015_raw_3.txt
+2025-09-30 09:19:27,450 [INFO] L0 data successfully loaded from KAN_B_2015_raw_3.txt
+2025-09-30 09:19:28,291 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2016_raw_1.txt
+2025-09-30 09:19:28,359 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2016_raw_1.txt
+2025-09-30 09:19:28,499 [INFO] L0 data successfully loaded from KAN_B_2016_raw_1.txt
+2025-09-30 09:19:28,803 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2016_raw_2.txt
+2025-09-30 09:19:28,825 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2016_raw_2.txt
+2025-09-30 09:19:28,872 [INFO] L0 data successfully loaded from KAN_B_2016_raw_2.txt
+2025-09-30 09:19:28,875 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2017_raw.txt
+2025-09-30 09:19:28,993 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2017_raw.txt
+2025-09-30 09:19:29,193 [INFO] L0 data successfully loaded from KAN_B_2017_raw.txt
+2025-09-30 09:19:29,197 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2018_raw.txt
+2025-09-30 09:19:29,368 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2018_raw.txt
+2025-09-30 09:19:29,720 [INFO] L0 data successfully loaded from KAN_B_2018_raw.txt
+2025-09-30 09:19:29,723 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2021_raw.txt
+2025-09-30 09:19:29,918 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2021_raw.txt
+2025-09-30 09:19:30,324 [INFO] L0 data successfully loaded from KAN_B_2021_raw.txt
+2025-09-30 09:19:31,522 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2022_raw.txt
+2025-09-30 09:19:31,617 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2022_raw.txt
+2025-09-30 09:19:31,786 [INFO] L0 data successfully loaded from KAN_B_2022_raw.txt
+2025-09-30 09:19:33,144 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2023_raw.txt
+2025-09-30 09:19:33,216 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2023_raw.txt
+2025-09-30 09:19:33,371 [INFO] L0 data successfully loaded from KAN_B_2023_raw.txt
+2025-09-30 09:19:33,508 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2024_raw_1.txt
+2025-09-30 09:19:33,514 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2024_raw_1.txt
+2025-09-30 09:19:33,537 [INFO] L0 data successfully loaded from KAN_B_2024_raw_1.txt
+2025-09-30 09:19:34,728 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2024_raw_2.txt
+2025-09-30 09:19:34,802 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_B/KAN_B_2024_raw_2.txt
+2025-09-30 09:19:34,953 [INFO] L0 data successfully loaded from KAN_B_2024_raw_2.txt
+2025-09-30 09:19:35,270 [INFO] Level 1 processing...
+2025-09-30 09:19:42,848 [INFO] Level 2 processing...
+2025-09-30 09:19:42,875 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_B.csv
+2025-09-30 09:19:42,907 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/KAN_B.csv
+2025-09-30 09:19:42,907 [INFO] No ../PROMICE-AWS-data-issues/flags/KAN_B.csv file to read.
+2025-09-30 09:19:42,934 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_B.csv
+2025-09-30 09:19:42,941 [DEBUG] ---> None None z_boom_u max_filter 2.63
+2025-09-30 09:19:42,943 [DEBUG] ---> None None z_boom_u min_filter 2.37
+2025-09-30 09:19:42,964 [DEBUG] ---> None 2011-07-01 00:00:00 z_boom_u min_filter 2.6
+2025-09-30 09:19:43,195 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:43,225 [DEBUG] Applying persistent QC in t_i. Filtering 0/703549 samples
+2025-09-30 09:19:43,249 [DEBUG] Applying persistent QC in t_u. Filtering 0/703549 samples
+2025-09-30 09:19:43,273 [DEBUG] Applying persistent QC in p_i. Filtering 0/703549 samples
+2025-09-30 09:19:43,462 [DEBUG] Applying persistent QC in p_u. Filtering 0/703549 samples
+2025-09-30 09:19:43,528 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/703549 samples
+2025-09-30 09:19:43,565 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/703549 samples
+2025-09-30 09:19:43,588 [DEBUG] Applying persistent QC in t_rad. Filtering 13/703549 samples
+2025-09-30 09:19:43,613 [DEBUG] Applying persistent QC in rh_i. Filtering 0/703549 samples
+2025-09-30 09:19:43,639 [DEBUG] Applying persistent QC in rh_u. Filtering 33/703549 samples
+2025-09-30 09:19:43,674 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/703549 samples
+2025-09-30 09:19:43,709 [DEBUG] Applying persistent QC in wspd_u. Filtering 1395/703549 samples
+2025-09-30 09:19:46,591 [INFO] Resampling to 10min
+2025-09-30 09:19:47,140 [INFO] Writing to files...
+2025-09-30 09:20:01,125 [INFO] Written to L2_test/raw/KAN_B/KAN_B_10min.csv
+2025-09-30 09:20:01,125 [INFO] Written to L2_test/raw/KAN_B/KAN_B_10min.nc
+2025-09-30 09:20:01,898 [INFO] Resampling to 60min
+2025-09-30 09:20:02,020 [INFO] Writing to files...
+2025-09-30 09:20:04,582 [INFO] Written to L2_test/raw/KAN_B/KAN_B_hour.csv
+2025-09-30 09:20:04,582 [INFO] Written to L2_test/raw/KAN_B/KAN_B_hour.nc
+2025-09-30 09:20:04,634 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:20:04,636 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:20:04,636 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:20:04,729 [INFO] KAN_B array loaded from L2_test/raw/KAN_B/KAN_B_hour.nc
+2025-09-30 09:20:04,757 [INFO] KAN_B array loaded from L2_test/tx/KAN_B/KAN_B_hour.nc
+2025-09-30 09:20:04,757 [INFO] Combining L2_test/raw/KAN_B/KAN_B_hour.nc with L2_test/tx/KAN_B/KAN_B_hour.nc...
+2025-09-30 09:20:04,936 [INFO] Writing to files...
+2025-09-30 09:20:07,575 [INFO] Written to L2_test/level_2/KAN_B/KAN_B_hour.csv
+2025-09-30 09:20:07,575 [INFO] Written to L2_test/level_2/KAN_B/KAN_B_hour.nc
+2025-09-30 09:20:07,575 [INFO] Files saved to L2_test/level_2/KAN_B...
+2025-09-30 09:20:07,615 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:20:07,655 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_B.csv
+2025-09-30 09:20:07,662 [INFO] Combining surface height
+2025-09-30 09:20:07,662 [INFO] -> did not find z_ice_surf
+2025-09-30 09:20:07,662 [INFO] -> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2
+2025-09-30 09:20:07,982 [INFO] Resampling to 60min
+2025-09-30 09:20:08,121 [INFO] Writing to files...
+2025-09-30 09:20:10,623 [INFO] Written to L3_test/stations/KAN_B/KAN_B_hour.csv
+2025-09-30 09:20:10,623 [INFO] Written to L3_test/stations/KAN_B/KAN_B_hour.nc
+2025-09-30 09:20:10,721 [INFO] Resampling to 1D
+2025-09-30 09:20:10,784 [INFO] Writing to files...
+2025-09-30 09:20:10,923 [INFO] Written to L3_test/stations/KAN_B/KAN_B_day.csv
+2025-09-30 09:20:10,923 [INFO] Written to L3_test/stations/KAN_B/KAN_B_day.nc
+2025-09-30 09:20:11,031 [INFO] Resampling to ME
+2025-09-30 09:20:11,090 [INFO] Writing to files...
+2025-09-30 09:20:11,137 [INFO] Written to L3_test/stations/KAN_B/KAN_B_month.csv
+2025-09-30 09:20:11,137 [INFO] Written to L3_test/stations/KAN_B/KAN_B_month.nc
+/n ======== test join_l3 ========= 
+
+KAN_B
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+
+no gps_lat at KAN_B
+no gps_lon at KAN_B
+no gps_alt at KAN_B

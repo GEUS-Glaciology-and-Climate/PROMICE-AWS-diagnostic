@@ -1,0 +1,22 @@
+2025-09-30 09:37:05,587 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:05,588 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:05,589 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:05,767 [INFO] joining QAS_A
+2025-09-30 09:37:05,924 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:06,125 [INFO] Resampling to 60min
+2025-09-30 09:37:06,236 [INFO] Writing to files...
+2025-09-30 09:37:07,321 [INFO] Written to L3_test/sites/QAS_A/QAS_A_hour.csv
+2025-09-30 09:37:07,321 [INFO] Written to L3_test/sites/QAS_A/QAS_A_hour.nc
+2025-09-30 09:37:07,365 [INFO] Resampling to 1D
+2025-09-30 09:37:07,441 [INFO] Writing to files...
+2025-09-30 09:37:07,557 [INFO] Written to L3_test/sites/QAS_A/QAS_A_day.csv
+2025-09-30 09:37:07,557 [INFO] Written to L3_test/sites/QAS_A/QAS_A_day.nc
+2025-09-30 09:37:07,599 [INFO] Resampling to MS
+2025-09-30 09:37:07,678 [INFO] Writing to files...
+2025-09-30 09:37:07,783 [INFO] Written to L3_test/sites/QAS_A/QAS_A_month.csv
+2025-09-30 09:37:07,783 [INFO] Written to L3_test/sites/QAS_A/QAS_A_month.nc
+/n ======== test join_l3 ========= 
+
+QAS_A
+QAS_A array loaded from L3_test/stations/QAS_A/QAS_A_hour.nc

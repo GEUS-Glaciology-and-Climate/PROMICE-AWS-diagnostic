@@ -1,0 +1,351 @@
+2025-09-30 09:19:20,322 [INFO] AWS(config_file=../aws-l0//tx/config/KAN_L.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:20,801 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'KAN_L.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:20,818 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/KAN_L_300234061293280_1.txt
+2025-09-30 09:19:20,893 [INFO] L0 data successfully loaded from KAN_L_300234061293280_1.txt
+2025-09-30 09:19:20,901 [INFO] Level 1 processing...
+2025-09-30 09:19:21,090 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:21,232 [INFO] Level 2 processing...
+2025-09-30 09:19:21,234 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_L.csv
+2025-09-30 09:19:21,241 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/KAN_L.csv
+2025-09-30 09:19:21,255 [DEBUG] ---> flagging 2009-08-27 00:00:00 2010-06-01 00:00:00 z_stake
+2025-09-30 09:19:21,261 [DEBUG] ---> flagging 2011-11-01 00:00:00 2012-05-20 00:00:00 z_stake
+2025-09-30 09:19:21,269 [DEBUG] ---> flagging 2014-06-25 00:00:00 2014-08-15 00:00:00 z_stake
+2025-09-30 09:19:21,277 [DEBUG] ---> flagging 2015-10-20 00:00:00 2016-07-16 17:00:00 z_stake
+2025-09-30 09:19:21,283 [DEBUG] ---> flagging 2012-08-22 00:00:00 2012-08-23 00:00:00 z_stake
+2025-09-30 09:19:21,285 [DEBUG] ---> flagging 2009-09-17 00:00:00 2009-10-07 00:00:00 z_pt_cor
+2025-09-30 09:19:21,289 [DEBUG] ---> flagging 2010-10-02 00:00:00 2010-10-12 00:00:00 z_pt_cor
+2025-09-30 09:19:21,293 [DEBUG] ---> flagging 2012-08-22 00:00:00 2012-08-23 00:00:00 z_pt_cor
+2025-09-30 09:19:21,296 [DEBUG] ---> flagging 2012-10-06 00:00:00 2012-10-26 00:00:00 z_pt_cor
+2025-09-30 09:19:21,300 [DEBUG] ---> flagging 2014-10-08 00:00:00 2014-11-16 00:00:00 z_pt_cor
+2025-09-30 09:19:21,306 [DEBUG] ---> flagging 2019-10-07 00:00:00 2019-10-27 00:00:00 z_pt_cor
+2025-09-30 09:19:21,310 [DEBUG] ---> flagging 2020-09-14 00:00:00 2020-09-18 00:00:00 z_pt_cor
+2025-09-30 09:19:21,314 [DEBUG] ---> flagging 2021-09-18 00:00:00 2022-06-01 00:00:00 z_pt_cor
+2025-09-30 09:19:21,316 [DEBUG] ---> flagging 2022-10-01 00:00:00 2022-11-01 00:00:00 z_pt_cor
+2025-09-30 09:19:21,321 [DEBUG] ---> flagging 2023-09-21 00:00:00 2024-08-24T17:00:00.000000000 z_pt
+2025-09-30 09:19:21,324 [DEBUG] ---> flagging 2023-09-21 00:00:00 2024-08-24T17:00:00.000000000 z_pt_cor
+2025-09-30 09:19:21,328 [DEBUG] ---> flagging 2020-09-01 00:00:00 2021-08-17 00:00:00 rh_u
+2025-09-30 09:19:21,331 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_L.csv
+2025-09-30 09:19:21,345 [DEBUG] ---> None None gps_alt min_filter 600.0
+2025-09-30 09:19:21,346 [DEBUG] ---> None None gps_alt max_filter 800.0
+2025-09-30 09:19:21,348 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:19:21,350 [DEBUG] ---> None None z_boom_u min_filter 2.0
+2025-09-30 09:19:21,352 [INFO] could not adjust z_ice_surf not in dataset
+2025-09-30 09:19:21,352 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:19:21,359 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:21,366 [DEBUG] Applying persistent QC in t_i. Filtering 5/10004 samples
+2025-09-30 09:19:21,370 [DEBUG] Applying persistent QC in t_u. Filtering 4/10004 samples
+2025-09-30 09:19:21,377 [DEBUG] Applying persistent QC in p_i. Filtering 15/10004 samples
+2025-09-30 09:19:21,509 [DEBUG] Applying persistent QC in p_u. Filtering 0/10004 samples
+2025-09-30 09:19:21,528 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 98/10004 samples
+2025-09-30 09:19:21,535 [DEBUG] Applying persistent QC in gps_alt. Filtering 99/10004 samples
+2025-09-30 09:19:21,539 [DEBUG] Applying persistent QC in t_rad. Filtering 0/10004 samples
+2025-09-30 09:19:21,543 [DEBUG] Applying persistent QC in rh_i. Filtering 9/10004 samples
+2025-09-30 09:19:21,549 [DEBUG] Applying persistent QC in rh_u. Filtering 4/10004 samples
+2025-09-30 09:19:21,556 [DEBUG] Applying persistent QC in wspd_i. Filtering 21/10004 samples
+2025-09-30 09:19:21,563 [DEBUG] Applying persistent QC in wspd_u. Filtering 24/10004 samples
+2025-09-30 09:19:22,171 [INFO] Resampling to 60min
+2025-09-30 09:19:22,315 [INFO] Writing to files...
+2025-09-30 09:19:22,887 [INFO] Written to L2_test/tx/KAN_L/KAN_L_hour.csv
+2025-09-30 09:19:22,887 [INFO] Written to L2_test/tx/KAN_L/KAN_L_hour.nc
+2025-09-30 09:19:22,887 [INFO] AWS(config_file=../aws-l0//raw/config/KAN_L.toml, inpath=../aws-l0//raw/KAN_L/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:23,274 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'KAN_L.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:23,290 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2009_1_raw.txt
+2025-09-30 09:19:23,514 [INFO] L0 data successfully loaded from KAN_L_2009_1_raw.txt
+2025-09-30 09:19:24,701 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2009_2_raw.txt
+2025-09-30 09:19:24,757 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2009_2_raw.txt
+2025-09-30 09:19:24,883 [INFO] L0 data successfully loaded from KAN_L_2009_2_raw.txt
+2025-09-30 09:19:24,889 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2010_1_raw.txt
+2025-09-30 09:19:24,986 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2010_1_raw.txt
+2025-09-30 09:19:25,197 [INFO] L0 data successfully loaded from KAN_L_2010_1_raw.txt
+2025-09-30 09:19:25,208 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2010_2_raw.txt
+2025-09-30 09:19:25,219 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2010_2_raw.txt
+2025-09-30 09:19:25,307 [INFO] L0 data successfully loaded from KAN_L_2010_2_raw.txt
+2025-09-30 09:19:25,310 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2011_raw.txt
+2025-09-30 09:19:25,458 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2011_raw.txt
+2025-09-30 09:19:25,775 [INFO] L0 data successfully loaded from KAN_L_2011_raw.txt
+2025-09-30 09:19:25,778 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2012_1_raw.txt
+2025-09-30 09:19:25,917 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2012_1_raw.txt
+2025-09-30 09:19:26,206 [INFO] L0 data successfully loaded from KAN_L_2012_1_raw.txt
+2025-09-30 09:19:26,747 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2012_2_raw.txt
+2025-09-30 09:19:26,783 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2012_2_raw.txt
+2025-09-30 09:19:26,858 [INFO] L0 data successfully loaded from KAN_L_2012_2_raw.txt
+2025-09-30 09:19:26,862 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2013_raw.txt
+2025-09-30 09:19:26,982 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2013_raw.txt
+2025-09-30 09:19:27,188 [INFO] L0 data successfully loaded from KAN_L_2013_raw.txt
+2025-09-30 09:19:27,191 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2014_raw.txt
+2025-09-30 09:19:27,355 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2014_raw.txt
+2025-09-30 09:19:27,684 [INFO] L0 data successfully loaded from KAN_L_2014_raw.txt
+2025-09-30 09:19:27,687 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2015_1_raw.txt
+2025-09-30 09:19:27,790 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2015_1_raw.txt
+2025-09-30 09:19:27,990 [INFO] L0 data successfully loaded from KAN_L_2015_1_raw.txt
+2025-09-30 09:19:28,986 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2015_2_raw.txt
+2025-09-30 09:19:29,028 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2015_2_raw.txt
+2025-09-30 09:19:29,112 [INFO] L0 data successfully loaded from KAN_L_2015_2_raw.txt
+2025-09-30 09:19:29,115 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2016_raw.txt
+2025-09-30 09:19:29,225 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2016_raw.txt
+2025-09-30 09:19:29,451 [INFO] L0 data successfully loaded from KAN_L_2016_raw.txt
+2025-09-30 09:19:29,455 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2017_raw.txt
+2025-09-30 09:19:29,613 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2017_raw.txt
+2025-09-30 09:19:29,933 [INFO] L0 data successfully loaded from KAN_L_2017_raw.txt
+2025-09-30 09:19:29,971 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2018_raw.txt
+2025-09-30 09:19:30,113 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2018_raw.txt
+2025-09-30 09:19:30,385 [INFO] L0 data successfully loaded from KAN_L_2018_raw.txt
+2025-09-30 09:19:30,389 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2019_raw.txt
+2025-09-30 09:19:30,516 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2019_raw.txt
+2025-09-30 09:19:30,778 [INFO] L0 data successfully loaded from KAN_L_2019_raw.txt
+2025-09-30 09:19:30,781 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2020_raw.txt
+2025-09-30 09:19:30,917 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2020_raw.txt
+2025-09-30 09:19:31,191 [INFO] L0 data successfully loaded from KAN_L_2020_raw.txt
+2025-09-30 09:19:31,195 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2021_raw.txt
+2025-09-30 09:19:31,321 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2021_raw.txt
+2025-09-30 09:19:31,567 [INFO] L0 data successfully loaded from KAN_L_2021_raw.txt
+2025-09-30 09:19:32,101 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2022_raw_SlimTableMem.txt
+2025-09-30 09:19:32,119 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2022_raw_SlimTableMem.txt
+2025-09-30 09:19:32,172 [INFO] L0 data successfully loaded from KAN_L_2022_raw_SlimTableMem.txt
+2025-09-30 09:19:32,175 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/KAN_L/KAN_L_2022_raw_transmitted.txt
+2025-09-30 09:19:32,180 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/KAN_L/KAN_L_2022_raw_transmitted.txt
+2025-09-30 09:19:32,206 [INFO] L0 data successfully loaded from KAN_L_2022_raw_transmitted.txt
+2025-09-30 09:19:32,209 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2023_raw.txt
+2025-09-30 09:19:32,347 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2023_raw.txt
+2025-09-30 09:19:32,647 [INFO] L0 data successfully loaded from KAN_L_2023_raw.txt
+2025-09-30 09:19:32,652 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2024_raw.txt
+2025-09-30 09:19:32,943 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_L/KAN_L_2024_raw.txt
+2025-09-30 09:19:33,590 [INFO] L0 data successfully loaded from KAN_L_2024_raw.txt
+2025-09-30 09:19:33,715 [INFO] Level 1 processing...
+2025-09-30 09:19:33,876 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:34,088 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:34,307 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:34,480 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:34,663 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:34,857 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:35,024 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:35,199 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:35,663 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:35,991 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:36,247 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:36,599 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:37,034 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:37,466 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:37,912 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:38,295 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:38,726 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:38,930 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:39,093 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:39,539 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:40,305 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:46,060 [INFO] Level 2 processing...
+2025-09-30 09:19:46,093 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_L.csv
+2025-09-30 09:19:46,126 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/KAN_L.csv
+2025-09-30 09:19:46,130 [DEBUG] ---> flagging 2009-08-27 00:00:00 2010-06-01 00:00:00 z_stake
+2025-09-30 09:19:46,134 [DEBUG] ---> flagging 2011-11-01 00:00:00 2012-05-20 00:00:00 z_stake
+2025-09-30 09:19:46,138 [DEBUG] ---> flagging 2014-06-25 00:00:00 2014-08-15 00:00:00 z_stake
+2025-09-30 09:19:46,142 [DEBUG] ---> flagging 2015-10-20 00:00:00 2016-07-16 17:00:00 z_stake
+2025-09-30 09:19:46,146 [DEBUG] ---> flagging 2012-08-22 00:00:00 2012-08-23 00:00:00 z_stake
+2025-09-30 09:19:46,150 [DEBUG] ---> flagging 2009-09-17 00:00:00 2009-10-07 00:00:00 z_pt_cor
+2025-09-30 09:19:46,154 [DEBUG] ---> flagging 2010-10-02 00:00:00 2010-10-12 00:00:00 z_pt_cor
+2025-09-30 09:19:46,158 [DEBUG] ---> flagging 2012-08-22 00:00:00 2012-08-23 00:00:00 z_pt_cor
+2025-09-30 09:19:46,162 [DEBUG] ---> flagging 2012-10-06 00:00:00 2012-10-26 00:00:00 z_pt_cor
+2025-09-30 09:19:46,166 [DEBUG] ---> flagging 2014-10-08 00:00:00 2014-11-16 00:00:00 z_pt_cor
+2025-09-30 09:19:46,170 [DEBUG] ---> flagging 2019-10-07 00:00:00 2019-10-27 00:00:00 z_pt_cor
+2025-09-30 09:19:46,174 [DEBUG] ---> flagging 2020-09-14 00:00:00 2020-09-18 00:00:00 z_pt_cor
+2025-09-30 09:19:46,178 [DEBUG] ---> flagging 2021-09-18 00:00:00 2022-06-01 00:00:00 z_pt_cor
+2025-09-30 09:19:46,182 [DEBUG] ---> flagging 2022-10-01 00:00:00 2022-11-01 00:00:00 z_pt_cor
+2025-09-30 09:19:46,186 [DEBUG] ---> flagging 2023-09-21 00:00:00 2024-08-25T15:10:00.000000000 z_pt
+2025-09-30 09:19:46,190 [DEBUG] ---> flagging 2023-09-21 00:00:00 2024-08-25T15:10:00.000000000 z_pt_cor
+2025-09-30 09:19:46,194 [DEBUG] ---> flagging 2020-09-01 00:00:00 2021-08-17 00:00:00 rh_u
+2025-09-30 09:19:46,242 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_L.csv
+2025-09-30 09:19:46,251 [DEBUG] ---> None None gps_alt min_filter 600.0
+2025-09-30 09:19:46,252 [DEBUG] ---> None None gps_alt max_filter 800.0
+2025-09-30 09:19:46,254 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:19:46,256 [DEBUG] ---> None None z_boom_u min_filter 2.0
+2025-09-30 09:19:46,256 [INFO] could not adjust z_ice_surf not in dataset
+2025-09-30 09:19:46,256 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:19:46,594 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:46,618 [DEBUG] Applying persistent QC in t_i. Filtering 4/796102 samples
+2025-09-30 09:19:46,642 [DEBUG] Applying persistent QC in t_u. Filtering 1/796102 samples
+2025-09-30 09:19:46,669 [DEBUG] Applying persistent QC in p_i. Filtering 5/796102 samples
+2025-09-30 09:19:46,830 [DEBUG] Applying persistent QC in p_u. Filtering 0/796102 samples
+2025-09-30 09:19:46,898 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 363699/796102 samples
+2025-09-30 09:19:46,946 [DEBUG] Applying persistent QC in gps_alt. Filtering 364244/796102 samples
+2025-09-30 09:19:46,978 [DEBUG] Applying persistent QC in t_rad. Filtering 15/796102 samples
+2025-09-30 09:19:47,010 [DEBUG] Applying persistent QC in rh_i. Filtering 2/796102 samples
+2025-09-30 09:19:47,042 [DEBUG] Applying persistent QC in rh_u. Filtering 6/796102 samples
+2025-09-30 09:19:47,084 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/796102 samples
+2025-09-30 09:19:47,115 [DEBUG] Applying persistent QC in wspd_u. Filtering 2638/796102 samples
+2025-09-30 09:19:50,288 [INFO] Resampling to 10min
+2025-09-30 09:19:50,975 [INFO] Writing to files...
+2025-09-30 09:20:11,708 [INFO] Written to L2_test/raw/KAN_L/KAN_L_10min.csv
+2025-09-30 09:20:11,709 [INFO] Written to L2_test/raw/KAN_L/KAN_L_10min.nc
+2025-09-30 09:20:12,868 [INFO] Resampling to 60min
+2025-09-30 09:20:13,005 [INFO] Writing to files...
+2025-09-30 09:20:16,598 [INFO] Written to L2_test/raw/KAN_L/KAN_L_hour.csv
+2025-09-30 09:20:16,598 [INFO] Written to L2_test/raw/KAN_L/KAN_L_hour.nc
+2025-09-30 09:20:16,640 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:20:16,640 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:20:16,641 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:20:16,727 [INFO] KAN_L array loaded from L2_test/raw/KAN_L/KAN_L_hour.nc
+2025-09-30 09:20:16,754 [INFO] KAN_L array loaded from L2_test/tx/KAN_L/KAN_L_hour.nc
+2025-09-30 09:20:16,754 [INFO] Combining L2_test/raw/KAN_L/KAN_L_hour.nc with L2_test/tx/KAN_L/KAN_L_hour.nc...
+2025-09-30 09:20:16,915 [INFO] Writing to files...
+2025-09-30 09:20:20,499 [INFO] Written to L2_test/level_2/KAN_L/KAN_L_hour.csv
+2025-09-30 09:20:20,499 [INFO] Written to L2_test/level_2/KAN_L/KAN_L_hour.nc
+2025-09-30 09:20:20,500 [INFO] Files saved to L2_test/level_2/KAN_L...
+2025-09-30 09:20:20,545 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:20:24,203 [INFO] processing gps_lat with relocation on 2016-07-17T00:00:00, 2018-08-28T20:00:00
+2025-09-30 09:20:24,215 [INFO] processing gps_lon with relocation on 2016-07-17T00:00:00, 2018-08-28T20:00:00
+2025-09-30 09:20:24,223 [INFO] processing gps_alt with relocation on 2016-07-17T00:00:00, 2018-08-28T20:00:00
+2025-09-30 09:20:24,250 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_L.csv
+2025-09-30 09:20:24,260 [DEBUG] ---> 2010-10-07 00:00:00 None z_ice_surf add -0.1
+2025-09-30 09:20:24,261 [DEBUG] ---> 2011-06-04 00:00:00 None z_ice_surf add -4.0
+2025-09-30 09:20:24,262 [DEBUG] ---> 2012-08-21 00:00:00 None z_ice_surf add -11.7
+2025-09-30 09:20:24,263 [DEBUG] ---> 2014-05-13 00:00:00 None z_ice_surf add 0.07
+2025-09-30 09:20:24,264 [DEBUG] ---> 2015-04-29 00:00:00 None z_ice_surf add -7.08
+2025-09-30 09:20:24,265 [DEBUG] ---> 2015-07-07 00:00:00 None z_ice_surf add -0.4
+2025-09-30 09:20:24,266 [DEBUG] ---> 2016-07-16 00:00:00 None z_ice_surf add -1.6
+2025-09-30 09:20:24,267 [DEBUG] ---> 2017-09-01 00:00:00 None z_ice_surf add -3.5
+2025-09-30 09:20:24,268 [DEBUG] ---> 2018-08-29 00:00:00 None z_ice_surf add -11.3
+2025-09-30 09:20:24,269 [DEBUG] ---> 2020-09-09 00:00:00 None z_ice_surf add -0.4
+2025-09-30 09:20:24,270 [DEBUG] ---> 2021-08-17 00:00:00 None z_ice_surf add -13.0
+2025-09-30 09:20:24,271 [DEBUG] ---> 2022-05-15 13:00:00 None z_ice_surf add 2.9
+2025-09-30 09:20:24,273 [DEBUG] ---> 2011-06-03 00:00:00 None z_surf_2 add -3.0
+2025-09-30 09:20:24,274 [DEBUG] ---> 2012-06-01 00:00:00 None z_surf_2 add 2.5
+2025-09-30 09:20:24,275 [DEBUG] ---> 2013-09-15 00:00:00 None z_surf_2 add -2.2
+2025-09-30 09:20:24,276 [DEBUG] ---> 2014-07-15 00:00:00 None z_surf_2 add -4.0
+2025-09-30 09:20:24,278 [DEBUG] ---> 2014-08-09 00:00:00 2015-04-03 00:00:00 z_surf_2 min_filter -9.7
+2025-09-30 09:20:24,279 [DEBUG] ---> 2015-04-27 00:00:00 None z_surf_2 add -0.7
+2025-09-30 09:20:24,280 [DEBUG] ---> 2015-09-15 00:00:00 None z_surf_2 add -2.0
+2025-09-30 09:20:24,281 [DEBUG] ---> 2019-09-05 00:00:00 None z_surf_2 add -5.0
+2025-09-30 09:20:24,282 [DEBUG] ---> 2020-09-09 00:00:00 None z_surf_2 add -2.7
+2025-09-30 09:20:24,283 [DEBUG] ---> 2021-08-17 00:00:00 None z_surf_2 add -3.7
+2025-09-30 09:20:24,284 [DEBUG] ---> 2022-08-24 00:00:00 None z_surf_2 add -3.0
+2025-09-30 09:20:24,285 [INFO] Combining surface height
+2025-09-30 09:20:24,285 [INFO] -> ablation site
+2025-09-30 09:20:24,789 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:20:24,796 [DEBUG] 2008 no z_ice_surf, just using JJA
+2025-09-30 09:20:24,796 [DEBUG] 2008 could not estimate ablation season
+2025-09-30 09:20:24,801 [DEBUG] 2009 derived from z_ice_surf
+2025-09-30 09:20:24,806 [DEBUG] 2010 derived from z_ice_surf
+2025-09-30 09:20:24,811 [DEBUG] 2011 derived from z_ice_surf
+2025-09-30 09:20:24,816 [DEBUG] 2012 derived from z_ice_surf
+2025-09-30 09:20:24,821 [DEBUG] 2013 derived from z_ice_surf
+2025-09-30 09:20:24,826 [DEBUG] 2014 derived from z_ice_surf
+2025-09-30 09:20:24,831 [DEBUG] 2015 derived from z_ice_surf
+2025-09-30 09:20:24,836 [DEBUG] 2016 derived from z_ice_surf
+2025-09-30 09:20:24,841 [DEBUG] 2017 derived from z_ice_surf
+2025-09-30 09:20:24,846 [DEBUG] 2018 derived from z_ice_surf
+2025-09-30 09:20:24,851 [DEBUG] 2019 derived from z_ice_surf
+2025-09-30 09:20:24,855 [DEBUG] 2020 derived from z_ice_surf
+2025-09-30 09:20:24,860 [DEBUG] 2021 derived from z_ice_surf
+2025-09-30 09:20:24,865 [DEBUG] 2022 derived from z_ice_surf
+2025-09-30 09:20:24,870 [DEBUG] 2023 derived from z_ice_surf
+2025-09-30 09:20:24,878 [DEBUG] 2024 no z_ice_surf, just using JJA
+2025-09-30 09:20:24,878 [DEBUG] 2008: Ablation from 2024-07-15 01:00:00 to 2024-07-15 01:00:00
+2025-09-30 09:20:24,888 [DEBUG] no ablation data
+2025-09-30 09:20:24,891 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,891 [DEBUG] to hs2
+2025-09-30 09:20:24,894 [DEBUG] 2009: Ablation from 2009-06-04 00:00:00 to 2009-09-23 07:00:00
+2025-09-30 09:20:24,899 [DEBUG] adjusting z to hs1
+2025-09-30 09:20:24,899 [DEBUG] adjusting hs2 to z
+/home/bav/pypromice/src/pypromice/pipeline/L2toL3.py:620: RuntimeWarning: Mean of empty slice
+  if ~np.isnan(np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])):
+2025-09-30 09:20:24,902 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,902 [DEBUG] to z
+2025-09-30 09:20:24,903 [DEBUG] using end of melt season
+2025-09-30 09:20:24,903 [DEBUG] 2010: Ablation from 2010-06-04 00:00:00 to 2010-09-30 23:00:00
+2025-09-30 09:20:24,910 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,910 [DEBUG] using end of melt season
+2025-09-30 09:20:24,912 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,913 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,914 [DEBUG] 2011: Ablation from 2011-06-04 00:00:00 to 2011-09-14 16:00:00
+2025-09-30 09:20:24,919 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,919 [DEBUG] using end of melt season
+2025-09-30 09:20:24,921 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,922 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,923 [DEBUG] 2012: Ablation from 2012-06-04 00:00:00 to 2012-09-16 02:00:00
+2025-09-30 09:20:24,929 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,929 [DEBUG] using end of melt season
+2025-09-30 09:20:24,931 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,931 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,932 [DEBUG] 2013: Ablation from 2013-06-04 00:00:00 to 2013-09-10 19:00:00
+2025-09-30 09:20:24,938 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,938 [DEBUG] using end of melt season
+2025-09-30 09:20:24,940 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,940 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,942 [DEBUG] 2014: Ablation from 2014-06-04 00:00:00 to 2014-09-14 04:00:00
+2025-09-30 09:20:24,947 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,947 [DEBUG] using end of melt season
+2025-09-30 09:20:24,949 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,949 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,951 [DEBUG] 2015: Ablation from 2015-06-04 00:00:00 to 2015-09-16 18:00:00
+2025-09-30 09:20:24,956 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,956 [DEBUG] using end of melt season
+2025-09-30 09:20:24,958 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,958 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,959 [DEBUG] 2016: Ablation from 2016-06-04 00:00:00 to 2016-09-30 23:00:00
+2025-09-30 09:20:24,965 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,965 [DEBUG] using end of melt season
+2025-09-30 09:20:24,967 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,967 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,969 [DEBUG] 2017: Ablation from 2017-06-04 00:00:00 to 2017-09-01 09:00:00
+2025-09-30 09:20:24,974 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,974 [DEBUG] using end of melt season
+2025-09-30 09:20:24,976 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,976 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,977 [DEBUG] 2018: Ablation from 2018-06-04 00:00:00 to 2018-09-11 21:00:00
+2025-09-30 09:20:24,983 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,983 [DEBUG] using end of melt season
+2025-09-30 09:20:24,985 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,985 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,986 [DEBUG] 2019: Ablation from 2019-06-04 00:00:00 to 2019-08-31 20:00:00
+2025-09-30 09:20:24,992 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:24,992 [DEBUG] using end of melt season
+2025-09-30 09:20:24,994 [DEBUG] adjusting hs1
+2025-09-30 09:20:24,994 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:24,995 [DEBUG] 2020: Ablation from 2020-06-04 00:00:00 to 2020-09-09 02:00:00
+2025-09-30 09:20:25,001 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:25,001 [DEBUG] using end of melt season
+2025-09-30 09:20:25,003 [DEBUG] adjusting hs1
+2025-09-30 09:20:25,003 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:25,004 [DEBUG] 2021: Ablation from 2021-06-04 00:00:00 to 2021-09-08 04:00:00
+2025-09-30 09:20:25,009 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:25,009 [DEBUG] using end of melt season
+2025-09-30 09:20:25,011 [DEBUG] adjusting hs1
+2025-09-30 09:20:25,012 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:25,013 [DEBUG] 2022: Ablation from 2022-06-04 00:00:00 to 2022-09-30 23:00:00
+2025-09-30 09:20:25,018 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:25,019 [DEBUG] using end of melt season
+2025-09-30 09:20:25,021 [DEBUG] adjusting hs1
+2025-09-30 09:20:25,021 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:25,022 [DEBUG] 2023: Ablation from 2023-06-04 00:00:00 to 2023-09-09 00:00:00
+2025-09-30 09:20:25,027 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:25,027 [DEBUG] using end of melt season
+2025-09-30 09:20:25,029 [DEBUG] adjusting hs1
+2025-09-30 09:20:25,029 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:25,031 [DEBUG] 2024: Ablation from 2024-06-01 00:00:00 to 2024-08-25 15:00:00
+2025-09-30 09:20:25,090 [INFO] surface height combination finished
+2025-09-30 09:20:25,168 [INFO] Calculating thermistor depth
+2025-09-30 09:20:25,326 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:20:36,325 [INFO] Resampling to 60min
+2025-09-30 09:20:36,490 [INFO] Writing to files...
+2025-09-30 09:20:40,497 [INFO] Written to L3_test/stations/KAN_L/KAN_L_hour.csv
+2025-09-30 09:20:40,497 [INFO] Written to L3_test/stations/KAN_L/KAN_L_hour.nc
+2025-09-30 09:20:40,597 [INFO] Resampling to 1D
+2025-09-30 09:20:40,676 [INFO] Writing to files...
+2025-09-30 09:20:40,891 [INFO] Written to L3_test/stations/KAN_L/KAN_L_day.csv
+2025-09-30 09:20:40,891 [INFO] Written to L3_test/stations/KAN_L/KAN_L_day.nc
+2025-09-30 09:20:40,994 [INFO] Resampling to ME
+2025-09-30 09:20:41,069 [INFO] Writing to files...
+2025-09-30 09:20:41,127 [INFO] Written to L3_test/stations/KAN_L/KAN_L_month.csv
+2025-09-30 09:20:41,127 [INFO] Written to L3_test/stations/KAN_L/KAN_L_month.nc
+/n ======== test join_l3 ========= 
+
+KAN_L
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

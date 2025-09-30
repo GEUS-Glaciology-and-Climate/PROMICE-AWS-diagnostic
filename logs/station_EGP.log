@@ -1,0 +1,226 @@
+2025-09-30 09:18:25,573 [INFO] AWS(config_file=../aws-l0//tx/config/EGP.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:18:25,939 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'EGP.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:18:25,942 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/EGP_300234061627590_1.txt
+2025-09-30 09:18:25,996 [INFO] L0 data successfully loaded from EGP_300234061627590_1.txt
+2025-09-30 09:18:25,996 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/EGP_300534060529220_2.txt
+2025-09-30 09:18:26,016 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/EGP_300534060529220_2.txt
+2025-09-30 09:18:26,081 [INFO] L0 data successfully loaded from EGP_300534060529220_2.txt
+2025-09-30 09:18:26,081 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/EGP_300234065151610_3.txt
+2025-09-30 09:18:26,124 [INFO] L0 data successfully loaded from EGP_300234065151610_3.txt
+2025-09-30 09:18:26,137 [INFO] Level 1 processing...
+2025-09-30 09:18:26,249 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:26,467 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:26,643 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:26,817 [INFO] Level 2 processing...
+2025-09-30 09:18:26,825 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/EGP.csv
+2025-09-30 09:18:26,834 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/EGP.csv
+2025-09-30 09:18:26,842 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_1
+2025-09-30 09:18:26,847 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_2
+2025-09-30 09:18:26,850 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_3
+2025-09-30 09:18:26,853 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_4
+2025-09-30 09:18:26,855 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_5
+2025-09-30 09:18:26,859 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_6
+2025-09-30 09:18:26,861 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_7
+2025-09-30 09:18:26,862 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_8
+2025-09-30 09:18:26,864 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_9
+2025-09-30 09:18:26,866 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_10
+2025-09-30 09:18:26,868 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_11
+2025-09-30 09:18:26,871 [DEBUG] ---> flagging 2020-01-01 00:00:00 2025-09-28T12:00:00.000000000 z_stake
+2025-09-30 09:18:26,873 [DEBUG] ---> flagging 2023-06-17 00:00:00 2023-06-22 00:00:00 z_boom_u
+2025-09-30 09:18:26,875 [DEBUG] ---> flagging 2022-01-01 00:00:00 2023-06-22 00:00:00 dsr
+2025-09-30 09:18:26,876 [DEBUG] ---> flagging 2022-01-01 00:00:00 2023-06-22 00:00:00 usr
+2025-09-30 09:18:26,878 [DEBUG] ---> could not flag dsr_cor not in dataset
+2025-09-30 09:18:26,878 [DEBUG] ---> could not flag usr_cor not in dataset
+2025-09-30 09:18:26,886 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/EGP.csv
+2025-09-30 09:18:26,897 [DEBUG] ---> None None gps_alt min_filter 500.0
+2025-09-30 09:18:26,899 [DEBUG] ---> None None gps_lon min_filter 35.4
+2025-09-30 09:18:26,903 [INFO] ---> 2019-08-04 00:00:00 2019-11-13 00:00:00 z_boom_u max_filter 2.6
+2025-09-30 09:18:26,903 [INFO] Time range does not intersect with dataset
+2025-09-30 09:18:26,904 [INFO] ---> 2019-11-13 00:00:00 2020-09-01 00:00:00 z_boom_u max_filter 2.33
+2025-09-30 09:18:26,905 [INFO] Time range does not intersect with dataset
+2025-09-30 09:18:26,906 [INFO] ---> 2020-09-01 00:00:00 2021-03-06 00:00:00 z_boom_u max_filter 1.93
+2025-09-30 09:18:26,906 [INFO] Time range does not intersect with dataset
+2025-09-30 09:18:26,907 [INFO] ---> 2021-03-06 00:00:00 2021-04-26 00:00:00 z_boom_u max_filter 1.7
+2025-09-30 09:18:26,908 [INFO] Time range does not intersect with dataset
+2025-09-30 09:18:26,910 [INFO] ---> None 2023-06-21 00:00:00 z_boom_u max_filter 2.8
+2025-09-30 09:18:26,910 [INFO] Time range does not intersect with dataset
+2025-09-30 09:18:26,910 [INFO] ---> None 2016-06-15 00:00:00 z_boom_u min_filter 2.575
+2025-09-30 09:18:26,910 [INFO] Time range does not intersect with dataset
+2025-09-30 09:18:26,910 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:18:26,910 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:18:26,928 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:18:26,933 [DEBUG] Applying persistent QC in t_i. Filtering 64/14602 samples
+2025-09-30 09:18:26,937 [DEBUG] Applying persistent QC in t_u. Filtering 3/14602 samples
+2025-09-30 09:18:26,941 [DEBUG] Applying persistent QC in t_l. Filtering 2/14602 samples
+2025-09-30 09:18:26,944 [DEBUG] Applying persistent QC in p_i. Filtering 291/14602 samples
+2025-09-30 09:18:27,030 [DEBUG] Applying persistent QC in p_u. Filtering 0/14602 samples
+2025-09-30 09:18:27,097 [DEBUG] Applying persistent QC in p_l. Filtering 0/14602 samples
+2025-09-30 09:18:27,106 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 25/14602 samples
+2025-09-30 09:18:27,112 [DEBUG] Applying persistent QC in gps_alt. Filtering 91/14602 samples
+2025-09-30 09:18:27,115 [DEBUG] Applying persistent QC in t_rad. Filtering 1/14602 samples
+2025-09-30 09:18:27,118 [DEBUG] Applying persistent QC in rh_i. Filtering 63/14602 samples
+2025-09-30 09:18:27,121 [DEBUG] Applying persistent QC in rh_u. Filtering 25/14602 samples
+2025-09-30 09:18:27,124 [DEBUG] Applying persistent QC in rh_l. Filtering 17/14602 samples
+2025-09-30 09:18:27,128 [DEBUG] Applying persistent QC in wspd_i. Filtering 20/14602 samples
+2025-09-30 09:18:27,132 [DEBUG] Applying persistent QC in wspd_u. Filtering 16/14602 samples
+2025-09-30 09:18:27,137 [DEBUG] Applying persistent QC in wspd_l. Filtering 0/14602 samples
+2025-09-30 09:18:27,634 [WARNING] Dropping column 'msg_i' because it is of type 'object' and contains unique values: [nan -0.0 '-0.0' '-0.02025-06-16 12:00:00']
+2025-09-30 09:18:27,721 [INFO] Resampling to 60min
+2025-09-30 09:18:27,811 [INFO] Writing to files...
+2025-09-30 09:18:28,474 [INFO] Written to L2_test/tx/EGP/EGP_hour.csv
+2025-09-30 09:18:28,475 [INFO] Written to L2_test/tx/EGP/EGP_hour.nc
+2025-09-30 09:18:28,475 [INFO] AWS(config_file=../aws-l0//raw/config/EGP.toml, inpath=../aws-l0//raw/EGP/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:18:28,794 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'EGP.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:18:28,797 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/EGP/EGP_2016_raw.txt
+2025-09-30 09:18:28,821 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/EGP/EGP_2016_raw.txt
+2025-09-30 09:18:28,889 [INFO] L0 data successfully loaded from EGP_2016_raw.txt
+2025-09-30 09:18:28,889 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2017_raw_SlimTableMem.txt
+2025-09-30 09:18:28,905 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2017_raw_SlimTableMem.txt
+2025-09-30 09:18:28,951 [INFO] L0 data successfully loaded from EGP_2017_raw_SlimTableMem.txt
+2025-09-30 09:18:28,951 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2017_raw_2.txt
+2025-09-30 09:18:28,982 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2017_raw_2.txt
+2025-09-30 09:18:29,060 [INFO] L0 data successfully loaded from EGP_2017_raw_2.txt
+2025-09-30 09:18:29,060 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2018_raw.txt
+2025-09-30 09:18:29,181 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2018_raw.txt
+2025-09-30 09:18:29,407 [INFO] L0 data successfully loaded from EGP_2018_raw.txt
+2025-09-30 09:18:29,407 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2018_raw_2.txt
+2025-09-30 09:18:29,426 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2018_raw_2.txt
+2025-09-30 09:18:29,479 [INFO] L0 data successfully loaded from EGP_2018_raw_2.txt
+2025-09-30 09:18:29,479 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2019_raw.txt
+2025-09-30 09:18:29,590 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2019_raw.txt
+2025-09-30 09:18:29,796 [INFO] L0 data successfully loaded from EGP_2019_raw.txt
+2025-09-30 09:18:29,797 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2019_raw1.txt
+2025-09-30 09:18:29,813 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2019_raw1.txt
+2025-09-30 09:18:29,859 [INFO] L0 data successfully loaded from EGP_2019_raw1.txt
+2025-09-30 09:18:29,859 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2021_raw.txt
+2025-09-30 09:18:30,160 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2021_raw.txt
+2025-09-30 09:18:30,864 [INFO] L0 data successfully loaded from EGP_2021_raw.txt
+2025-09-30 09:18:30,865 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2023_raw.txt
+2025-09-30 09:18:31,080 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2023_raw.txt
+2025-09-30 09:18:31,648 [INFO] L0 data successfully loaded from EGP_2023_raw.txt
+2025-09-30 09:18:31,648 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2024_raw.txt
+2025-09-30 09:18:31,745 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2024_raw.txt
+2025-09-30 09:18:31,975 [INFO] L0 data successfully loaded from EGP_2024_raw.txt
+2025-09-30 09:18:31,976 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2025_DataTable10min.dat
+2025-09-30 09:18:32,084 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/EGP/EGP_2025_DataTable10min.dat
+2025-09-30 09:18:32,304 [INFO] L0 data successfully loaded from EGP_2025_DataTable10min.dat
+2025-09-30 09:18:32,359 [INFO] Level 1 processing...
+2025-09-30 09:18:32,475 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:32,664 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:32,926 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:33,276 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:33,524 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:33,875 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:34,061 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:34,807 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:35,478 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:35,916 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:36,101 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:38,451 [INFO] Level 2 processing...
+2025-09-30 09:18:38,474 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/EGP.csv
+2025-09-30 09:18:38,501 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/EGP.csv
+2025-09-30 09:18:38,507 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_1
+2025-09-30 09:18:38,510 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_2
+2025-09-30 09:18:38,513 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_3
+2025-09-30 09:18:38,516 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_4
+2025-09-30 09:18:38,519 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_5
+2025-09-30 09:18:38,522 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_6
+2025-09-30 09:18:38,526 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_7
+2025-09-30 09:18:38,529 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_8
+2025-09-30 09:18:38,531 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_9
+2025-09-30 09:18:38,534 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_10
+2025-09-30 09:18:38,537 [DEBUG] ---> flagging 2016-05-05 00:00:00 2016-05-21 00:00:00 t_i_11
+2025-09-30 09:18:38,540 [DEBUG] ---> flagging 2020-01-01 00:00:00 2025-06-14T10:10:00.000000000 z_stake
+2025-09-30 09:18:38,544 [DEBUG] ---> flagging 2023-06-17 00:00:00 2023-06-22 00:00:00 z_boom_u
+2025-09-30 09:18:38,547 [DEBUG] ---> flagging 2022-01-01 00:00:00 2023-06-22 00:00:00 dsr
+2025-09-30 09:18:38,549 [DEBUG] ---> flagging 2022-01-01 00:00:00 2023-06-22 00:00:00 usr
+2025-09-30 09:18:38,552 [DEBUG] ---> could not flag dsr_cor not in dataset
+2025-09-30 09:18:38,552 [DEBUG] ---> could not flag usr_cor not in dataset
+2025-09-30 09:18:38,574 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/EGP.csv
+2025-09-30 09:18:38,581 [DEBUG] ---> None None gps_alt min_filter 500.0
+2025-09-30 09:18:38,583 [DEBUG] ---> None None gps_lon min_filter 35.4
+2025-09-30 09:18:38,594 [DEBUG] ---> 2019-08-04 00:00:00 2019-11-13 00:00:00 z_boom_u max_filter 2.6
+2025-09-30 09:18:38,596 [DEBUG] ---> 2019-11-13 00:00:00 2020-09-01 00:00:00 z_boom_u max_filter 2.33
+2025-09-30 09:18:38,598 [DEBUG] ---> 2020-09-01 00:00:00 2021-03-06 00:00:00 z_boom_u max_filter 1.93
+2025-09-30 09:18:38,599 [DEBUG] ---> 2021-03-06 00:00:00 2021-04-26 00:00:00 z_boom_u max_filter 1.7
+2025-09-30 09:18:38,600 [DEBUG] ---> None 2023-06-21 00:00:00 z_boom_u max_filter 2.8
+2025-09-30 09:18:38,601 [DEBUG] ---> None 2016-06-15 00:00:00 z_boom_u min_filter 2.575
+2025-09-30 09:18:38,602 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:18:38,602 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:18:38,664 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:18:38,679 [DEBUG] Applying persistent QC in t_i. Filtering 0/442458 samples
+2025-09-30 09:18:38,694 [DEBUG] Applying persistent QC in t_u. Filtering 13/442458 samples
+2025-09-30 09:18:38,710 [DEBUG] Applying persistent QC in t_l. Filtering 4/442458 samples
+2025-09-30 09:18:38,726 [DEBUG] Applying persistent QC in p_i. Filtering 0/442458 samples
+2025-09-30 09:18:38,890 [DEBUG] Applying persistent QC in p_u. Filtering 0/442458 samples
+2025-09-30 09:18:39,066 [DEBUG] Applying persistent QC in p_l. Filtering 0/442458 samples
+2025-09-30 09:18:39,103 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 136137/442458 samples
+2025-09-30 09:18:39,124 [DEBUG] Applying persistent QC in gps_alt. Filtering 136377/442458 samples
+2025-09-30 09:18:39,140 [DEBUG] Applying persistent QC in t_rad. Filtering 0/442458 samples
+2025-09-30 09:18:39,156 [DEBUG] Applying persistent QC in rh_i. Filtering 0/442458 samples
+2025-09-30 09:18:39,172 [DEBUG] Applying persistent QC in rh_u. Filtering 52/442458 samples
+2025-09-30 09:18:39,188 [DEBUG] Applying persistent QC in rh_l. Filtering 24/442458 samples
+2025-09-30 09:18:39,208 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/442458 samples
+2025-09-30 09:18:39,227 [DEBUG] Applying persistent QC in wspd_u. Filtering 1020/442458 samples
+2025-09-30 09:18:39,247 [DEBUG] Applying persistent QC in wspd_l. Filtering 0/442458 samples
+2025-09-30 09:18:41,412 [INFO] Resampling to 10min
+2025-09-30 09:18:41,844 [INFO] Writing to files...
+2025-09-30 09:18:54,732 [INFO] Written to L2_test/raw/EGP/EGP_10min.csv
+2025-09-30 09:18:54,732 [INFO] Written to L2_test/raw/EGP/EGP_10min.nc
+2025-09-30 09:18:55,479 [INFO] Resampling to 60min
+2025-09-30 09:18:55,609 [INFO] Writing to files...
+2025-09-30 09:18:58,026 [INFO] Written to L2_test/raw/EGP/EGP_hour.csv
+2025-09-30 09:18:58,026 [INFO] Written to L2_test/raw/EGP/EGP_hour.nc
+2025-09-30 09:18:58,080 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:18:58,080 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:18:58,081 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:18:58,202 [INFO] EGP array loaded from L2_test/raw/EGP/EGP_hour.nc
+2025-09-30 09:18:58,251 [INFO] EGP array loaded from L2_test/tx/EGP/EGP_hour.nc
+2025-09-30 09:18:58,251 [INFO] Combining L2_test/raw/EGP/EGP_hour.nc with L2_test/tx/EGP/EGP_hour.nc...
+2025-09-30 09:18:58,519 [INFO] Writing to files...
+2025-09-30 09:19:01,493 [INFO] Written to L2_test/level_2/EGP/EGP_hour.csv
+2025-09-30 09:19:01,494 [INFO] Written to L2_test/level_2/EGP/EGP_hour.nc
+2025-09-30 09:19:01,494 [INFO] Files saved to L2_test/level_2/EGP...
+2025-09-30 09:19:01,540 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:19:05,989 [INFO] processing gps_lat with relocation on 2017-05-17T00:00:00, 2018-05-31T00:00:00, 2019-06-01T00:00:00, 2023-06-22T00:00:00
+2025-09-30 09:19:06,001 [INFO] processing gps_lon with relocation on 2017-05-17T00:00:00, 2018-05-31T00:00:00, 2019-06-01T00:00:00, 2023-06-22T00:00:00
+2025-09-30 09:19:06,012 [INFO] processing gps_alt with relocation on 2017-05-17T00:00:00, 2018-05-31T00:00:00, 2019-06-01T00:00:00, 2023-06-22T00:00:00
+2025-09-30 09:19:06,043 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/EGP.csv
+2025-09-30 09:19:06,052 [DEBUG] ---> 2017-05-18 00:00:00 None z_surf_1 add 0.5
+2025-09-30 09:19:06,053 [DEBUG] ---> 2018-05-30 00:00:00 None z_surf_1 add 0.6
+2025-09-30 09:19:06,054 [DEBUG] ---> 2019-05-31 00:00:00 None z_surf_1 add 0.4
+2025-09-30 09:19:06,055 [DEBUG] ---> 2023-06-09 15:00:00 None z_surf_1 add 1.8
+2025-09-30 09:19:06,057 [DEBUG] ---> 2023-06-21 00:00:00 None z_surf_1 add 1.2
+2025-09-30 09:19:06,058 [DEBUG] ---> 2024-06-11 18:00:00 None z_surf_1 add -1.2
+2025-09-30 09:19:06,059 [DEBUG] ---> 2024-06-17 11:00:00 None z_surf_1 add 1.2
+2025-09-30 09:19:06,060 [DEBUG] ---> 2019-05-31 20:00:00 None z_surf_2 add 0.18
+2025-09-30 09:19:06,061 [DEBUG] ---> 2024-06-17 16:00:00 None z_surf_2 add 3.0
+2025-09-30 09:19:06,062 [INFO] Combining surface height
+2025-09-30 09:19:06,063 [INFO] -> did not find z_ice_surf
+2025-09-30 09:19:06,063 [INFO] -> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2
+2025-09-30 09:19:06,184 [INFO] Calculating thermistor depth
+2025-09-30 09:19:06,257 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:19:13,710 [INFO] Resampling to 60min
+2025-09-30 09:19:13,958 [INFO] Writing to files...
+2025-09-30 09:19:17,220 [INFO] Written to L3_test/stations/EGP/EGP_hour.csv
+2025-09-30 09:19:17,220 [INFO] Written to L3_test/stations/EGP/EGP_hour.nc
+2025-09-30 09:19:17,348 [INFO] Resampling to 1D
+2025-09-30 09:19:17,462 [INFO] Writing to files...
+2025-09-30 09:19:17,637 [INFO] Written to L3_test/stations/EGP/EGP_day.csv
+2025-09-30 09:19:17,637 [INFO] Written to L3_test/stations/EGP/EGP_day.nc
+2025-09-30 09:19:17,771 [INFO] Resampling to ME
+2025-09-30 09:19:17,883 [INFO] Writing to files...
+2025-09-30 09:19:17,952 [INFO] Written to L3_test/stations/EGP/EGP_month.csv
+2025-09-30 09:19:17,952 [INFO] Written to L3_test/stations/EGP/EGP_month.nc
+/n ======== test join_l3 ========= 
+
+EGP
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

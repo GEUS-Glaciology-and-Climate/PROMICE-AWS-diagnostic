@@ -1,0 +1,22 @@
+2025-09-30 09:37:15,963 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:15,964 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:15,964 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:16,166 [INFO] joining TAS_L
+2025-09-30 09:37:16,305 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:16,816 [INFO] Resampling to 60min
+2025-09-30 09:37:17,134 [INFO] Writing to files...
+2025-09-30 09:37:22,595 [INFO] Written to L3_test/sites/TAS_L/TAS_L_hour.csv
+2025-09-30 09:37:22,595 [INFO] Written to L3_test/sites/TAS_L/TAS_L_hour.nc
+2025-09-30 09:37:22,721 [INFO] Resampling to 1D
+2025-09-30 09:37:22,796 [INFO] Writing to files...
+2025-09-30 09:37:23,039 [INFO] Written to L3_test/sites/TAS_L/TAS_L_day.csv
+2025-09-30 09:37:23,039 [INFO] Written to L3_test/sites/TAS_L/TAS_L_day.nc
+2025-09-30 09:37:23,137 [INFO] Resampling to MS
+2025-09-30 09:37:23,203 [INFO] Writing to files...
+2025-09-30 09:37:23,274 [INFO] Written to L3_test/sites/TAS_L/TAS_L_month.csv
+2025-09-30 09:37:23,274 [INFO] Written to L3_test/sites/TAS_L/TAS_L_month.nc
+/n ======== test join_l3 ========= 
+
+TAS_L
+TAS_L array loaded from L3_test/stations/TAS_L/TAS_L_hour.nc

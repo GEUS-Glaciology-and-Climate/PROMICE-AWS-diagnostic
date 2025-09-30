@@ -1,0 +1,26 @@
+2025-09-30 09:37:16,068 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:16,070 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:16,070 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:18,743 [INFO] joining SWC_O SWC SwissCamp SwissCamp10m
+2025-09-30 09:37:19,586 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:20,437 [INFO] wdir_l in dataframe but not wspd_x_l nor wspd_y_l, recalculating them
+2025-09-30 09:37:20,656 [INFO] Resampling to 60min
+2025-09-30 09:37:20,996 [INFO] Writing to files...
+2025-09-30 09:37:31,341 [INFO] Written to L3_test/sites/SWC/SWC_hour.csv
+2025-09-30 09:37:31,341 [INFO] Written to L3_test/sites/SWC/SWC_hour.nc
+2025-09-30 09:37:31,593 [INFO] Resampling to 1D
+2025-09-30 09:37:31,693 [INFO] Writing to files...
+2025-09-30 09:37:32,145 [INFO] Written to L3_test/sites/SWC/SWC_day.csv
+2025-09-30 09:37:32,145 [INFO] Written to L3_test/sites/SWC/SWC_day.nc
+2025-09-30 09:37:32,385 [INFO] Resampling to MS
+2025-09-30 09:37:32,476 [INFO] Writing to files...
+2025-09-30 09:37:32,568 [INFO] Written to L3_test/sites/SWC/SWC_month.csv
+2025-09-30 09:37:32,568 [INFO] Written to L3_test/sites/SWC/SWC_month.nc
+/n ======== test join_l3 ========= 
+
+SWC
+SWC_O array loaded from L3_test/stations/SWC_O/SWC_O_hour.nc
+Swiss Camp 10m array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/SwissCamp10m.csv
+SWC array loaded from L3_test/stations/SWC/SWC_hour.nc
+Swiss Camp array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/SwissCamp.csv

@@ -1,0 +1,127 @@
+2025-09-30 09:20:44,036 [INFO] AWS(config_file=../aws-l0//tx/config/LYN_L.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:20:44,506 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'LYN_L.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:20:44,512 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/LYN_L_300234065156620_1.txt
+2025-09-30 09:20:44,583 [INFO] L0 data successfully loaded from LYN_L_300234065156620_1.txt
+2025-09-30 09:20:44,589 [INFO] Level 1 processing...
+2025-09-30 09:20:44,736 [WARNING] bedrock attribute is not set
+2025-09-30 09:20:44,840 [INFO] Level 2 processing...
+2025-09-30 09:20:44,842 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/LYN_L.csv
+2025-09-30 09:20:44,848 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/LYN_L.csv
+2025-09-30 09:20:44,854 [DEBUG] ---> flagging 2021-09-01T00:00:00.000000000 2022-06-01 00:00:00 z_pt_cor
+2025-09-30 09:20:44,857 [DEBUG] ---> flagging 2024-09-15 00:00:00 2025-09-28T11:00:00.000000000 z_pt_cor
+2025-09-30 09:20:44,861 [DEBUG] ---> flagging 2021-09-01T00:00:00.000000000 2025-09-28T11:00:00.000000000 t_i_8
+2025-09-30 09:20:44,864 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/LYN_L.csv
+2025-09-30 09:20:44,887 [DEBUG] ---> None None t_i_1 min_filter -30.0
+2025-09-30 09:20:44,887 [DEBUG] ---> None None t_i_1 max_filter 0.1
+2025-09-30 09:20:44,889 [DEBUG] ---> None None t_i_2 min_filter -30.0
+2025-09-30 09:20:44,890 [DEBUG] ---> None None t_i_2 max_filter 0.1
+2025-09-30 09:20:44,892 [DEBUG] ---> None None t_i_3 min_filter -30.0
+2025-09-30 09:20:44,893 [DEBUG] ---> None None t_i_3 max_filter 0.1
+2025-09-30 09:20:44,895 [DEBUG] ---> None None t_i_4 min_filter -30.0
+2025-09-30 09:20:44,895 [DEBUG] ---> None None t_i_4 max_filter 0.1
+2025-09-30 09:20:44,897 [DEBUG] ---> None None t_i_5 min_filter -30.0
+2025-09-30 09:20:44,898 [DEBUG] ---> None None t_i_5 max_filter 0.1
+2025-09-30 09:20:44,900 [DEBUG] ---> None None t_i_6 min_filter -30.0
+2025-09-30 09:20:44,901 [DEBUG] ---> None None t_i_6 max_filter 0.1
+2025-09-30 09:20:44,903 [DEBUG] ---> None None t_i_7 min_filter -30.0
+2025-09-30 09:20:44,903 [DEBUG] ---> None None t_i_7 max_filter 0.1
+2025-09-30 09:20:44,905 [DEBUG] ---> None None t_i_8 min_filter -30.0
+2025-09-30 09:20:44,906 [DEBUG] ---> None None t_i_8 max_filter 0.1
+2025-09-30 09:20:44,909 [DEBUG] ---> 2022-08-01 00:00:00 2023-02-01 00:00:00 z_boom_u min_filter 1.65
+2025-09-30 09:20:44,911 [DEBUG] ---> 2023-07-14 00:00:00 2023-11-08 00:00:00 z_boom_u min_filter 1.65
+2025-09-30 09:20:44,913 [DEBUG] ---> 2024-07-04 00:00:00 2024-12-15 00:00:00 z_boom_u min_filter 1.65
+2025-09-30 09:20:44,914 [DEBUG] ---> None None z_boom_u max_filter 2.5
+2025-09-30 09:20:44,917 [DEBUG] ---> 2022-08-01 00:00:00 2023-02-01 00:00:00 z_stake min_filter 1.65
+2025-09-30 09:20:44,919 [DEBUG] ---> 2023-07-14 00:00:00 2023-11-08 00:00:00 z_stake min_filter 1.65
+2025-09-30 09:20:44,921 [DEBUG] ---> 2024-07-04 00:00:00 2024-12-15 00:00:00 z_stake min_filter 1.65
+2025-09-30 09:20:44,921 [DEBUG] ---> None None z_stake max_filter 2.5
+2025-09-30 09:20:44,928 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:20:44,932 [DEBUG] Applying persistent QC in t_i. Filtering 16/20510 samples
+2025-09-30 09:20:44,935 [DEBUG] Applying persistent QC in t_u. Filtering 6/20510 samples
+2025-09-30 09:20:44,939 [DEBUG] Applying persistent QC in p_i. Filtering 35/20510 samples
+2025-09-30 09:20:45,024 [DEBUG] Applying persistent QC in p_u. Filtering 0/20510 samples
+2025-09-30 09:20:45,034 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 804/20510 samples
+2025-09-30 09:20:45,040 [DEBUG] Applying persistent QC in gps_alt. Filtering 851/20510 samples
+2025-09-30 09:20:45,045 [DEBUG] Applying persistent QC in t_rad. Filtering 19/20510 samples
+2025-09-30 09:20:45,047 [DEBUG] Applying persistent QC in rh_i. Filtering 9/20510 samples
+2025-09-30 09:20:45,052 [DEBUG] Applying persistent QC in rh_u. Filtering 10/20510 samples
+2025-09-30 09:20:45,058 [DEBUG] Applying persistent QC in wspd_i. Filtering 162/20510 samples
+2025-09-30 09:20:45,065 [DEBUG] Applying persistent QC in wspd_u. Filtering 214/20510 samples
+2025-09-30 09:20:45,534 [INFO] Resampling to 60min
+2025-09-30 09:20:45,647 [INFO] Writing to files...
+2025-09-30 09:20:46,329 [INFO] Written to L2_test/tx/LYN_L/LYN_L_hour.csv
+2025-09-30 09:20:46,330 [INFO] Written to L2_test/tx/LYN_L/LYN_L_hour.nc
+2025-09-30 09:20:46,437 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:20:46,438 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:20:46,438 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:20:46,572 [INFO] LYN_L array loaded from L2_test/tx/LYN_L/LYN_L_hour.nc
+2025-09-30 09:20:46,572 [INFO] Only one file found L2_test/tx/LYN_L/LYN_L_hour.nc...
+2025-09-30 09:20:46,730 [INFO] Writing to files...
+2025-09-30 09:20:47,348 [INFO] Written to L2_test/level_2/LYN_L/LYN_L_hour.csv
+2025-09-30 09:20:47,348 [INFO] Written to L2_test/level_2/LYN_L/LYN_L_hour.nc
+2025-09-30 09:20:47,350 [INFO] Files saved to L2_test/level_2/LYN_L...
+2025-09-30 09:20:47,418 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:20:48,684 [INFO] processing gps_lat with relocation on 2022-07-02T00:00:00
+2025-09-30 09:20:48,690 [INFO] processing gps_lon with relocation on 2022-07-02T00:00:00
+2025-09-30 09:20:48,695 [INFO] processing gps_alt with relocation on 2022-07-02T00:00:00
+2025-09-30 09:20:48,722 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/LYN_L.csv
+2025-09-30 09:20:48,739 [INFO] Combining surface height
+2025-09-30 09:20:48,739 [INFO] -> ablation site
+2025-09-30 09:20:48,886 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:20:48,889 [DEBUG] 2021 no z_ice_surf, just using JJA
+2025-09-30 09:20:48,889 [DEBUG] 2021 could not estimate ablation season
+2025-09-30 09:20:48,890 [DEBUG] 2022 derived from z_ice_surf
+2025-09-30 09:20:48,892 [DEBUG] 2023 derived from z_ice_surf
+2025-09-30 09:20:48,893 [DEBUG] 2024 derived from z_ice_surf
+2025-09-30 09:20:48,896 [DEBUG] 2025 no z_ice_surf, just using JJA
+2025-09-30 09:20:48,896 [DEBUG] 2021: Ablation from 2025-08-17 21:00:00 to 2025-08-17 21:00:00
+2025-09-30 09:20:48,903 [DEBUG] no ablation data
+2025-09-30 09:20:48,906 [DEBUG] adjusting hs1
+2025-09-30 09:20:48,906 [DEBUG] to hs2
+2025-09-30 09:20:48,909 [DEBUG] 2022: Ablation from 2022-07-22 20:00:00 to 2022-09-21 15:00:00
+2025-09-30 09:20:48,913 [DEBUG] adjusting z to hs1
+2025-09-30 09:20:48,914 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:48,914 [DEBUG] using end of melt season
+2025-09-30 09:20:48,916 [DEBUG] adjusting hs1
+2025-09-30 09:20:48,916 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:48,917 [DEBUG] 2023: Ablation from 2023-06-29 07:00:00 to 2023-09-04 16:00:00
+2025-09-30 09:20:48,923 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:48,923 [DEBUG] using end of melt season
+2025-09-30 09:20:48,925 [DEBUG] adjusting hs1
+2025-09-30 09:20:48,925 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:48,927 [DEBUG] 2024: Ablation from 2024-07-19 10:00:00 to 2024-09-06 00:00:00
+2025-09-30 09:20:48,932 [DEBUG] adjusting hs2 to z
+2025-09-30 09:20:48,932 [DEBUG] using end of melt season
+2025-09-30 09:20:48,934 [DEBUG] adjusting hs1
+2025-09-30 09:20:48,934 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:48,935 [DEBUG] 2025: Ablation from 2025-06-01 00:00:00 to 2025-08-31 23:00:00
+2025-09-30 09:20:48,942 [DEBUG] adjusting hs1
+2025-09-30 09:20:48,942 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:48,963 [INFO] surface height combination finished
+2025-09-30 09:20:48,995 [INFO] Calculating thermistor depth
+2025-09-30 09:20:49,002 [INFO] No maintenance at LYN_L
+2025-09-30 09:20:49,017 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:20:49,544 [INFO] Resampling to 60min
+2025-09-30 09:20:49,643 [INFO] Writing to files...
+2025-09-30 09:20:50,658 [INFO] Written to L3_test/stations/LYN_L/LYN_L_hour.csv
+2025-09-30 09:20:50,658 [INFO] Written to L3_test/stations/LYN_L/LYN_L_hour.nc
+2025-09-30 09:20:50,716 [INFO] Resampling to 1D
+2025-09-30 09:20:50,805 [INFO] Writing to files...
+2025-09-30 09:20:50,911 [INFO] Written to L3_test/stations/LYN_L/LYN_L_day.csv
+2025-09-30 09:20:50,911 [INFO] Written to L3_test/stations/LYN_L/LYN_L_day.nc
+2025-09-30 09:20:50,961 [INFO] Resampling to ME
+2025-09-30 09:20:51,033 [INFO] Writing to files...
+2025-09-30 09:20:51,085 [INFO] Written to L3_test/stations/LYN_L/LYN_L_month.csv
+2025-09-30 09:20:51,086 [INFO] Written to L3_test/stations/LYN_L/LYN_L_month.nc
+/n ======== test join_l3 ========= 
+
+LYN_L
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

@@ -1,0 +1,23 @@
+2025-09-30 09:37:17,519 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:17,521 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:17,521 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:17,661 [INFO] joining SDM SouthDome
+2025-09-30 09:37:18,092 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:19,166 [INFO] Resampling to 60min
+2025-09-30 09:37:19,625 [INFO] Writing to files...
+2025-09-30 09:37:28,691 [INFO] Written to L3_test/sites/SDM/SDM_hour.csv
+2025-09-30 09:37:28,691 [INFO] Written to L3_test/sites/SDM/SDM_hour.nc
+2025-09-30 09:37:28,913 [INFO] Resampling to 1D
+2025-09-30 09:37:29,022 [INFO] Writing to files...
+2025-09-30 09:37:29,466 [INFO] Written to L3_test/sites/SDM/SDM_day.csv
+2025-09-30 09:37:29,466 [INFO] Written to L3_test/sites/SDM/SDM_day.nc
+2025-09-30 09:37:29,696 [INFO] Resampling to MS
+2025-09-30 09:37:29,795 [INFO] Writing to files...
+2025-09-30 09:37:29,882 [INFO] Written to L3_test/sites/SDM/SDM_month.csv
+2025-09-30 09:37:29,882 [INFO] Written to L3_test/sites/SDM/SDM_month.nc
+/n ======== test join_l3 ========= 
+
+SDM
+South Dome array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/SouthDome.csv
+SDM array loaded from L3_test/stations/SDM/SDM_hour.nc

@@ -1,0 +1,22 @@
+2025-09-30 09:37:15,926 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:15,927 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:15,927 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:16,054 [INFO] joining SER_B
+2025-09-30 09:37:16,249 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:16,345 [INFO] Resampling to 60min
+2025-09-30 09:37:16,452 [INFO] Writing to files...
+2025-09-30 09:37:17,043 [INFO] Written to L3_test/sites/SER_B/SER_B_hour.csv
+2025-09-30 09:37:17,043 [INFO] Written to L3_test/sites/SER_B/SER_B_hour.nc
+2025-09-30 09:37:17,078 [INFO] Resampling to 1D
+2025-09-30 09:37:17,140 [INFO] Writing to files...
+2025-09-30 09:37:17,243 [INFO] Written to L3_test/sites/SER_B/SER_B_day.csv
+2025-09-30 09:37:17,243 [INFO] Written to L3_test/sites/SER_B/SER_B_day.nc
+2025-09-30 09:37:17,276 [INFO] Resampling to MS
+2025-09-30 09:37:17,376 [INFO] Writing to files...
+2025-09-30 09:37:17,462 [INFO] Written to L3_test/sites/SER_B/SER_B_month.csv
+2025-09-30 09:37:17,462 [INFO] Written to L3_test/sites/SER_B/SER_B_month.nc
+/n ======== test join_l3 ========= 
+
+SER_B
+SER_B array loaded from L3_test/stations/SER_B/SER_B_hour.nc

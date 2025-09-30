@@ -1,0 +1,23 @@
+2025-09-30 09:36:39,077 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:39,079 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:39,079 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:40,532 [INFO] joining NAE NASA-E
+2025-09-30 09:36:40,925 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:42,175 [INFO] Resampling to 60min
+2025-09-30 09:36:42,531 [INFO] Writing to files...
+2025-09-30 09:36:50,667 [INFO] Written to L3_test/sites/NAE/NAE_hour.csv
+2025-09-30 09:36:50,667 [INFO] Written to L3_test/sites/NAE/NAE_hour.nc
+2025-09-30 09:36:50,898 [INFO] Resampling to 1D
+2025-09-30 09:36:51,001 [INFO] Writing to files...
+2025-09-30 09:36:51,404 [INFO] Written to L3_test/sites/NAE/NAE_day.csv
+2025-09-30 09:36:51,405 [INFO] Written to L3_test/sites/NAE/NAE_day.nc
+2025-09-30 09:36:51,650 [INFO] Resampling to MS
+2025-09-30 09:36:51,745 [INFO] Writing to files...
+2025-09-30 09:36:51,827 [INFO] Written to L3_test/sites/NAE/NAE_month.csv
+2025-09-30 09:36:51,827 [INFO] Written to L3_test/sites/NAE/NAE_month.nc
+/n ======== test join_l3 ========= 
+
+NAE
+NAE array loaded from L3_test/stations/NAE/NAE_hour.nc
+NASA-E array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/NASA-E.csv

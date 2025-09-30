@@ -1,0 +1,319 @@
+2025-09-30 09:25:49,842 [INFO] AWS(config_file=../aws-l0//tx/config/SCO_U.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:25:50,173 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'SCO_U.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:25:50,179 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/SCO_U_300234065157600_1.txt
+2025-09-30 09:25:50,234 [INFO] L0 data successfully loaded from SCO_U_300234065157600_1.txt
+2025-09-30 09:25:50,241 [INFO] Level 1 processing...
+2025-09-30 09:25:50,400 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:50,510 [INFO] Level 2 processing...
+2025-09-30 09:25:50,511 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SCO_U.csv
+2025-09-30 09:25:50,514 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/SCO_U.csv
+2025-09-30 09:25:50,519 [DEBUG] ---> flagging 2009-10-27 00:00:00 2009-11-26 00:00:00 z_pt_cor
+2025-09-30 09:25:50,521 [DEBUG] ---> flagging 2011-09-07 00:00:00 2011-09-27 00:00:00 z_pt_cor
+2025-09-30 09:25:50,523 [DEBUG] ---> flagging 2020-10-24 00:00:00 2021-09-17 00:00:00 z_pt_cor
+2025-09-30 09:25:50,525 [DEBUG] ---> flagging 2021-09-03 00:00:00 2022-06-05 00:00:00 z_pt_cor
+2025-09-30 09:25:50,527 [DEBUG] ---> flagging 2022-09-04 00:00:00 2023-06-15 00:00:00 z_pt_cor
+2025-09-30 09:25:50,529 [DEBUG] ---> flagging 2008-06-07 00:00:00 2008-09-11 00:00:00 z_boom_u
+2025-09-30 09:25:50,532 [DEBUG] ---> flagging 2011-08-25 00:00:00 2012-08-29 00:00:00 z_stake
+2025-09-30 09:25:50,534 [DEBUG] ---> flagging 2014-06-29 00:00:00 2014-10-29 00:00:00 z_stake
+2025-09-30 09:25:50,536 [DEBUG] ---> flagging 2015-09-23 00:00:00 2016-06-29 00:00:00 z_stake
+2025-09-30 09:25:50,537 [DEBUG] ---> flagging 2022-06-22 00:00:00 2022-09-08 00:00:00 z_stake
+2025-09-30 09:25:50,541 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SCO_U.csv
+2025-09-30 09:25:50,556 [DEBUG] ---> None None p_u min_filter 750.0
+2025-09-30 09:25:50,558 [DEBUG] ---> None None t_i_1 min_filter -30.0
+2025-09-30 09:25:50,560 [DEBUG] ---> None None t_i_2 min_filter -30.0
+2025-09-30 09:25:50,561 [DEBUG] ---> None None t_i_3 min_filter -30.0
+2025-09-30 09:25:50,563 [DEBUG] ---> None None t_i_4 min_filter -30.0
+2025-09-30 09:25:50,565 [DEBUG] ---> None None t_i_5 min_filter -30.0
+2025-09-30 09:25:50,567 [DEBUG] ---> None None t_i_6 min_filter -30.0
+2025-09-30 09:25:50,569 [DEBUG] ---> None None t_i_7 min_filter -30.0
+2025-09-30 09:25:50,570 [DEBUG] ---> None None t_i_8 min_filter -30.0
+2025-09-30 09:25:50,571 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:25:50,572 [DEBUG] ---> None None z_boom_u min_filter 1.8
+2025-09-30 09:25:50,572 [INFO] could not adjust z_ice_surf not in dataset
+2025-09-30 09:25:50,575 [INFO] ---> 2011-07-01 00:00:00 2012-06-01 00:00:00 z_stake max_filter 2.02
+2025-09-30 09:25:50,575 [INFO] Time range does not intersect with dataset
+2025-09-30 09:25:50,576 [INFO] ---> 2011-10-01 00:00:00 2012-06-01 00:00:00 z_stake min_filter 1.91
+2025-09-30 09:25:50,576 [INFO] Time range does not intersect with dataset
+2025-09-30 09:25:50,577 [INFO] ---> 2020-12-13 00:00:00 2021-07-18 00:00:00 z_stake max_filter 2.33
+2025-09-30 09:25:50,578 [INFO] Time range does not intersect with dataset
+2025-09-30 09:25:50,579 [INFO] ---> 2021-07-18 00:00:00 2022-06-22 00:00:00 z_stake min_filter 2.6
+2025-09-30 09:25:50,579 [INFO] Time range does not intersect with dataset
+2025-09-30 09:25:50,580 [INFO] ---> 2021-07-29 00:00:00 2022-06-22 00:00:00 z_stake max_filter 4.0
+2025-09-30 09:25:50,580 [INFO] Time range does not intersect with dataset
+2025-09-30 09:25:50,581 [INFO] ---> 2021-07-30 00:00:00 2022-06-22 00:00:00 z_stake min_filter 2.84
+2025-09-30 09:25:50,581 [INFO] Time range does not intersect with dataset
+2025-09-30 09:25:50,583 [INFO] ---> 2021-08-22 00:00:00 2022-06-22 00:00:00 z_stake min_filter 3.24
+2025-09-30 09:25:50,583 [INFO] Time range does not intersect with dataset
+2025-09-30 09:25:50,583 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:25:50,589 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:25:50,592 [DEBUG] Applying persistent QC in t_i. Filtering 7/9378 samples
+2025-09-30 09:25:50,595 [DEBUG] Applying persistent QC in t_u. Filtering 0/9378 samples
+2025-09-30 09:25:50,598 [DEBUG] Applying persistent QC in p_i. Filtering 55/9378 samples
+2025-09-30 09:25:50,667 [DEBUG] Applying persistent QC in p_u. Filtering 0/9378 samples
+2025-09-30 09:25:50,675 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/9378 samples
+2025-09-30 09:25:50,679 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/9378 samples
+2025-09-30 09:25:50,681 [DEBUG] Applying persistent QC in t_rad. Filtering 2/9378 samples
+2025-09-30 09:25:50,684 [DEBUG] Applying persistent QC in rh_i. Filtering 6/9378 samples
+2025-09-30 09:25:50,687 [DEBUG] Applying persistent QC in rh_u. Filtering 2/9378 samples
+2025-09-30 09:25:50,692 [DEBUG] Applying persistent QC in wspd_i. Filtering 10/9378 samples
+2025-09-30 09:25:50,696 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/9378 samples
+2025-09-30 09:25:51,023 [INFO] Resampling to 60min
+2025-09-30 09:25:51,115 [INFO] Writing to files...
+2025-09-30 09:25:51,468 [INFO] Written to L2_test/tx/SCO_U/SCO_U_hour.csv
+2025-09-30 09:25:51,468 [INFO] Written to L2_test/tx/SCO_U/SCO_U_hour.nc
+2025-09-30 09:25:51,469 [INFO] AWS(config_file=../aws-l0//raw/config/SCO_U.toml, inpath=../aws-l0//raw/SCO_U/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:25:51,837 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'SCO_U.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:25:51,849 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2010_1_raw.txt
+2025-09-30 09:25:52,357 [INFO] L0 data successfully loaded from SCO_U_2010_1_raw.txt
+2025-09-30 09:25:52,738 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2010_2_raw.txt
+2025-09-30 09:25:52,753 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2010_2_raw.txt
+2025-09-30 09:25:52,809 [INFO] L0 data successfully loaded from SCO_U_2010_2_raw.txt
+2025-09-30 09:25:52,815 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2012_raw.txt
+2025-09-30 09:25:53,124 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2012_raw.txt
+2025-09-30 09:25:53,835 [INFO] L0 data successfully loaded from SCO_U_2012_raw.txt
+2025-09-30 09:25:53,840 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2014_raw.txt
+2025-09-30 09:25:54,078 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2014_raw.txt
+2025-09-30 09:25:54,690 [INFO] L0 data successfully loaded from SCO_U_2014_raw.txt
+2025-09-30 09:25:54,693 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/SCO_U/SCO_U_2015_raw_transmitted.txt
+2025-09-30 09:25:54,716 [INFO] L0 data successfully loaded from SCO_U_2015_raw_transmitted.txt
+2025-09-30 09:25:55,316 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2017_raw_SlimTableMem.txt
+2025-09-30 09:25:55,337 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2017_raw_SlimTableMem.txt
+2025-09-30 09:25:55,400 [INFO] L0 data successfully loaded from SCO_U_2017_raw_SlimTableMem.txt
+2025-09-30 09:25:55,403 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2020_raw.txt
+2025-09-30 09:25:55,781 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2020_raw.txt
+2025-09-30 09:25:56,681 [INFO] L0 data successfully loaded from SCO_U_2020_raw.txt
+2025-09-30 09:25:57,218 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2022_raw_SlimTableMem.txt
+2025-09-30 09:25:57,239 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2022_raw_SlimTableMem.txt
+2025-09-30 09:25:57,296 [INFO] L0 data successfully loaded from SCO_U_2022_raw_SlimTableMem.txt
+2025-09-30 09:25:57,300 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/SCO_U/SCO_U_2022_raw_transmitted.txt
+2025-09-30 09:25:57,307 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/SCO_U/SCO_U_2022_raw_transmitted.txt
+2025-09-30 09:25:57,339 [INFO] L0 data successfully loaded from SCO_U_2022_raw_transmitted.txt
+2025-09-30 09:25:57,342 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2024_raw.txt
+2025-09-30 09:25:57,534 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SCO_U/SCO_U_2024_raw.txt
+2025-09-30 09:25:58,018 [INFO] L0 data successfully loaded from SCO_U_2024_raw.txt
+2025-09-30 09:25:58,072 [INFO] Level 1 processing...
+2025-09-30 09:25:58,210 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:58,402 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:59,035 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:59,278 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:59,450 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:59,617 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:59,902 [WARNING] bedrock attribute is not set
+2025-09-30 09:26:00,084 [WARNING] bedrock attribute is not set
+2025-09-30 09:26:00,251 [WARNING] bedrock attribute is not set
+2025-09-30 09:26:00,476 [WARNING] bedrock attribute is not set
+2025-09-30 09:26:02,831 [INFO] Level 2 processing...
+2025-09-30 09:26:02,856 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SCO_U.csv
+2025-09-30 09:26:02,882 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/SCO_U.csv
+2025-09-30 09:26:02,886 [DEBUG] ---> flagging 2009-10-27 00:00:00 2009-11-26 00:00:00 z_pt_cor
+2025-09-30 09:26:02,890 [DEBUG] ---> flagging 2011-09-07 00:00:00 2011-09-27 00:00:00 z_pt_cor
+2025-09-30 09:26:02,893 [DEBUG] ---> flagging 2020-10-24 00:00:00 2021-09-17 00:00:00 z_pt_cor
+2025-09-30 09:26:02,897 [DEBUG] ---> flagging 2021-09-03 00:00:00 2022-06-05 00:00:00 z_pt_cor
+2025-09-30 09:26:02,900 [DEBUG] ---> flagging 2022-09-04 00:00:00 2023-06-15 00:00:00 z_pt_cor
+2025-09-30 09:26:02,904 [DEBUG] ---> flagging 2008-06-07 00:00:00 2008-09-11 00:00:00 z_boom_u
+2025-09-30 09:26:02,907 [DEBUG] ---> flagging 2011-08-25 00:00:00 2012-08-29 00:00:00 z_stake
+2025-09-30 09:26:02,911 [DEBUG] ---> flagging 2014-06-29 00:00:00 2014-10-29 00:00:00 z_stake
+2025-09-30 09:26:02,915 [DEBUG] ---> flagging 2015-09-23 00:00:00 2016-06-29 00:00:00 z_stake
+2025-09-30 09:26:02,918 [DEBUG] ---> flagging 2022-06-22 00:00:00 2022-09-08 00:00:00 z_stake
+2025-09-30 09:26:02,946 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SCO_U.csv
+2025-09-30 09:26:02,959 [DEBUG] ---> None None p_u min_filter 750.0
+2025-09-30 09:26:02,961 [DEBUG] ---> None None t_i_1 min_filter -30.0
+2025-09-30 09:26:02,962 [DEBUG] ---> None None t_i_2 min_filter -30.0
+2025-09-30 09:26:02,964 [DEBUG] ---> None None t_i_3 min_filter -30.0
+2025-09-30 09:26:02,965 [DEBUG] ---> None None t_i_4 min_filter -30.0
+2025-09-30 09:26:02,967 [DEBUG] ---> None None t_i_5 min_filter -30.0
+2025-09-30 09:26:02,968 [DEBUG] ---> None None t_i_6 min_filter -30.0
+2025-09-30 09:26:02,970 [DEBUG] ---> None None t_i_7 min_filter -30.0
+2025-09-30 09:26:02,971 [DEBUG] ---> None None t_i_8 min_filter -30.0
+2025-09-30 09:26:02,973 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:26:02,974 [DEBUG] ---> None None z_boom_u min_filter 1.8
+2025-09-30 09:26:02,974 [INFO] could not adjust z_ice_surf not in dataset
+2025-09-30 09:26:02,987 [DEBUG] ---> 2011-07-01 00:00:00 2012-06-01 00:00:00 z_stake max_filter 2.02
+2025-09-30 09:26:02,989 [DEBUG] ---> 2011-10-01 00:00:00 2012-06-01 00:00:00 z_stake min_filter 1.91
+2025-09-30 09:26:02,990 [DEBUG] ---> 2020-12-13 00:00:00 2021-07-18 00:00:00 z_stake max_filter 2.33
+2025-09-30 09:26:02,991 [DEBUG] ---> 2021-07-18 00:00:00 2022-06-22 00:00:00 z_stake min_filter 2.6
+2025-09-30 09:26:02,993 [DEBUG] ---> 2021-07-29 00:00:00 2022-06-22 00:00:00 z_stake max_filter 4.0
+2025-09-30 09:26:02,994 [DEBUG] ---> 2021-07-30 00:00:00 2022-06-22 00:00:00 z_stake min_filter 2.84
+2025-09-30 09:26:02,995 [DEBUG] ---> 2021-08-22 00:00:00 2022-06-22 00:00:00 z_stake min_filter 3.24
+2025-09-30 09:26:02,996 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:26:03,064 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:26:03,085 [DEBUG] Applying persistent QC in t_i. Filtering 4/575658 samples
+2025-09-30 09:26:03,104 [DEBUG] Applying persistent QC in t_u. Filtering 6/575658 samples
+2025-09-30 09:26:03,125 [DEBUG] Applying persistent QC in p_i. Filtering 46/575658 samples
+2025-09-30 09:26:03,343 [DEBUG] Applying persistent QC in p_u. Filtering 0/575658 samples
+2025-09-30 09:26:03,409 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 113925/575658 samples
+2025-09-30 09:26:03,446 [DEBUG] Applying persistent QC in gps_alt. Filtering 113987/575658 samples
+2025-09-30 09:26:03,472 [DEBUG] Applying persistent QC in t_rad. Filtering 12/575658 samples
+2025-09-30 09:26:03,498 [DEBUG] Applying persistent QC in rh_i. Filtering 1/575658 samples
+2025-09-30 09:26:03,523 [DEBUG] Applying persistent QC in rh_u. Filtering 44/575658 samples
+2025-09-30 09:26:03,555 [DEBUG] Applying persistent QC in wspd_i. Filtering 2/575658 samples
+2025-09-30 09:26:03,591 [DEBUG] Applying persistent QC in wspd_u. Filtering 65/575658 samples
+2025-09-30 09:26:06,211 [INFO] Resampling to 10min
+2025-09-30 09:26:06,896 [INFO] Writing to files...
+2025-09-30 09:26:21,895 [INFO] Written to L2_test/raw/SCO_U/SCO_U_10min.csv
+2025-09-30 09:26:21,895 [INFO] Written to L2_test/raw/SCO_U/SCO_U_10min.nc
+2025-09-30 09:26:22,716 [INFO] Resampling to 60min
+2025-09-30 09:26:22,857 [INFO] Writing to files...
+2025-09-30 09:26:26,100 [INFO] Written to L2_test/raw/SCO_U/SCO_U_hour.csv
+2025-09-30 09:26:26,100 [INFO] Written to L2_test/raw/SCO_U/SCO_U_hour.nc
+2025-09-30 09:26:26,144 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:26:26,145 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:26:26,145 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:26:26,234 [INFO] SCO_U array loaded from L2_test/raw/SCO_U/SCO_U_hour.nc
+2025-09-30 09:26:26,265 [INFO] SCO_U array loaded from L2_test/tx/SCO_U/SCO_U_hour.nc
+2025-09-30 09:26:26,265 [INFO] Combining L2_test/raw/SCO_U/SCO_U_hour.nc with L2_test/tx/SCO_U/SCO_U_hour.nc...
+2025-09-30 09:26:26,432 [INFO] Writing to files...
+2025-09-30 09:26:29,891 [INFO] Written to L2_test/level_2/SCO_U/SCO_U_hour.csv
+2025-09-30 09:26:29,891 [INFO] Written to L2_test/level_2/SCO_U/SCO_U_hour.nc
+2025-09-30 09:26:29,891 [INFO] Files saved to L2_test/level_2/SCO_U...
+2025-09-30 09:26:29,935 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:26:33,141 [INFO] processing gps_lat without relocation
+2025-09-30 09:26:33,147 [INFO] processing gps_lon without relocation
+2025-09-30 09:26:33,152 [INFO] processing gps_alt without relocation
+2025-09-30 09:26:33,175 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SCO_U.csv
+2025-09-30 09:26:33,192 [DEBUG] ---> 2012-08-29 00:00:00 None z_ice_surf add -1.47
+2025-09-30 09:26:33,193 [DEBUG] ---> 2017-08-05 00:00:00 None z_ice_surf add -12.08
+2025-09-30 09:26:33,194 [DEBUG] ---> 2020-07-26 12:00:00 None z_ice_surf add -5.8
+2025-09-30 09:26:33,195 [DEBUG] ---> 2021-01-01 00:00:00 None z_ice_surf add 3.0
+2025-09-30 09:26:33,196 [DEBUG] ---> 2022-01-01 00:00:00 None z_ice_surf add -4.6
+2025-09-30 09:26:33,197 [DEBUG] ---> 2022-09-07 00:00:00 None z_ice_surf add -1.0
+2025-09-30 09:26:33,199 [DEBUG] ---> 2009-08-13 00:00:00 None z_surf_2 add -2.0
+2025-09-30 09:26:33,201 [INFO] Combining surface height
+2025-09-30 09:26:33,201 [INFO] -> ablation site
+2025-09-30 09:26:33,673 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:26:33,678 [DEBUG] 2008 derived from z_ice_surf
+2025-09-30 09:26:33,683 [DEBUG] 2009 derived from z_ice_surf
+2025-09-30 09:26:33,689 [DEBUG] 2010 derived from z_ice_surf
+2025-09-30 09:26:33,694 [DEBUG] 2011 derived from z_ice_surf
+2025-09-30 09:26:33,698 [DEBUG] 2012 derived from z_ice_surf
+2025-09-30 09:26:33,703 [DEBUG] 2013 derived from z_ice_surf
+2025-09-30 09:26:33,708 [DEBUG] 2014 derived from z_ice_surf
+2025-09-30 09:26:33,713 [DEBUG] 2015 derived from z_ice_surf
+2025-09-30 09:26:33,718 [DEBUG] 2016 derived from z_ice_surf
+2025-09-30 09:26:33,723 [DEBUG] 2017 derived from z_ice_surf
+2025-09-30 09:26:33,728 [DEBUG] 2018 derived from z_ice_surf
+2025-09-30 09:26:33,733 [DEBUG] 2019 derived from z_ice_surf
+2025-09-30 09:26:33,738 [DEBUG] 2020 derived from z_ice_surf
+2025-09-30 09:26:33,746 [DEBUG] 2021 no z_ice_surf, just using JJA
+2025-09-30 09:26:33,751 [DEBUG] 2022 derived from z_ice_surf
+2025-09-30 09:26:33,756 [DEBUG] 2023 derived from z_ice_surf
+2025-09-30 09:26:33,761 [DEBUG] 2024 derived from z_ice_surf
+2025-09-30 09:26:33,762 [DEBUG] 2008: Ablation from 2008-07-24 23:00:00 to 2008-09-04 17:00:00
+2025-09-30 09:26:33,773 [DEBUG] adjusting z to hs1
+2025-09-30 09:26:33,773 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,774 [DEBUG] using end of melt season
+2025-09-30 09:26:33,776 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,776 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,777 [DEBUG] 2009: Ablation from 2009-06-22 20:00:00 to 2009-08-21 14:00:00
+2025-09-30 09:26:33,783 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,783 [DEBUG] using end of melt season
+2025-09-30 09:26:33,786 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,786 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,787 [DEBUG] 2010: Ablation from 2010-07-15 14:00:00 to 2010-09-05 01:00:00
+2025-09-30 09:26:33,793 [DEBUG] adjusting z to hs1
+2025-09-30 09:26:33,793 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,794 [DEBUG] using end of melt season
+2025-09-30 09:26:33,796 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,796 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,797 [DEBUG] 2011: Ablation from 2011-06-10 08:00:00 to 2011-09-13 00:00:00
+2025-09-30 09:26:33,803 [DEBUG] adjusting hs2 to z
+/home/bav/pypromice/src/pypromice/pipeline/L2toL3.py:620: RuntimeWarning: Mean of empty slice
+  if ~np.isnan(np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])):
+2025-09-30 09:26:33,805 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,805 [DEBUG] to z
+2025-09-30 09:26:33,806 [DEBUG] using end of melt season
+2025-09-30 09:26:33,806 [DEBUG] 2012: Ablation from 2012-06-04 00:00:00 to 2012-08-19 15:00:00
+2025-09-30 09:26:33,812 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,812 [DEBUG] using end of melt season
+2025-09-30 09:26:33,814 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,814 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,816 [DEBUG] 2013: Ablation from 2013-06-04 00:00:00 to 2013-08-21 09:00:00
+2025-09-30 09:26:33,821 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,821 [DEBUG] using end of melt season
+2025-09-30 09:26:33,823 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,823 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,825 [DEBUG] 2014: Ablation from 2014-06-08 06:00:00 to 2014-08-28 18:00:00
+2025-09-30 09:26:33,830 [DEBUG] adjusting hs2 to z
+/home/bav/pypromice/src/pypromice/pipeline/L2toL3.py:620: RuntimeWarning: Mean of empty slice
+  if ~np.isnan(np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])):
+2025-09-30 09:26:33,831 [DEBUG] using end of accumulation season
+2025-09-30 09:26:33,833 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,833 [DEBUG] to z
+2025-09-30 09:26:33,833 [DEBUG] using end of melt season
+2025-09-30 09:26:33,834 [DEBUG] 2015: Ablation from 2015-06-16 13:00:00 to 2015-08-24 00:00:00
+2025-09-30 09:26:33,839 [DEBUG] adjusting z to hs1
+2025-09-30 09:26:33,839 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,839 [DEBUG] using end of melt season
+2025-09-30 09:26:33,841 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,842 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,843 [DEBUG] 2016: Ablation from 2016-06-05 21:00:00 to 2016-08-30 01:00:00
+2025-09-30 09:26:33,849 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,849 [DEBUG] using end of melt season
+2025-09-30 09:26:33,851 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,851 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,853 [DEBUG] 2017: Ablation from 2017-06-04 00:00:00 to 2017-08-31 02:00:00
+2025-09-30 09:26:33,859 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,859 [DEBUG] using end of melt season
+2025-09-30 09:26:33,862 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,862 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,863 [DEBUG] 2018: Ablation from 2018-07-01 16:00:00 to 2018-08-25 07:00:00
+2025-09-30 09:26:33,869 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,869 [DEBUG] using end of melt season
+2025-09-30 09:26:33,871 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,871 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,873 [DEBUG] 2019: Ablation from 2019-06-05 23:00:00 to 2019-08-27 17:00:00
+2025-09-30 09:26:33,878 [DEBUG] adjusting hs2 to z
+/home/bav/pypromice/src/pypromice/pipeline/L2toL3.py:620: RuntimeWarning: Mean of empty slice
+  if ~np.isnan(np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])):
+2025-09-30 09:26:33,880 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,881 [DEBUG] to z
+2025-09-30 09:26:33,881 [DEBUG] using end of melt season
+2025-09-30 09:26:33,881 [DEBUG] 2020: Ablation from 2020-06-04 00:00:00 to 2020-08-28 18:00:00
+2025-09-30 09:26:33,887 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,888 [DEBUG] using end of melt season
+2025-09-30 09:26:33,890 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,890 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,892 [DEBUG] 2021: Ablation from 2021-06-01 00:00:00 to 2021-08-31 23:00:00
+2025-09-30 09:26:33,898 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,898 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,900 [DEBUG] 2022: Ablation from 2022-06-08 07:00:00 to 2022-09-03 01:00:00
+2025-09-30 09:26:33,905 [DEBUG] adjusting z to hs1
+2025-09-30 09:26:33,905 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,906 [DEBUG] using end of melt season
+2025-09-30 09:26:33,908 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,908 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,909 [DEBUG] 2023: Ablation from 2023-06-04 18:00:00 to 2023-09-04 16:00:00
+2025-09-30 09:26:33,915 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,916 [DEBUG] using end of melt season
+2025-09-30 09:26:33,918 [DEBUG] adjusting hs1
+2025-09-30 09:26:33,918 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:26:33,919 [DEBUG] 2024: Ablation from 2024-06-04 00:00:00 to 2024-08-13 12:00:00
+2025-09-30 09:26:33,924 [DEBUG] adjusting hs2 to z
+2025-09-30 09:26:33,924 [DEBUG] using end of melt season
+2025-09-30 09:26:33,999 [INFO] surface height combination finished
+2025-09-30 09:26:34,079 [INFO] Calculating thermistor depth
+2025-09-30 09:26:34,184 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:26:44,709 [INFO] Resampling to 60min
+2025-09-30 09:26:44,873 [INFO] Writing to files...
+2025-09-30 09:26:48,632 [INFO] Written to L3_test/stations/SCO_U/SCO_U_hour.csv
+2025-09-30 09:26:48,632 [INFO] Written to L3_test/stations/SCO_U/SCO_U_hour.nc
+2025-09-30 09:26:48,738 [INFO] Resampling to 1D
+2025-09-30 09:26:48,819 [INFO] Writing to files...
+2025-09-30 09:26:49,029 [INFO] Written to L3_test/stations/SCO_U/SCO_U_day.csv
+2025-09-30 09:26:49,030 [INFO] Written to L3_test/stations/SCO_U/SCO_U_day.nc
+2025-09-30 09:26:49,138 [INFO] Resampling to ME
+2025-09-30 09:26:49,214 [INFO] Writing to files...
+2025-09-30 09:26:49,272 [INFO] Written to L3_test/stations/SCO_U/SCO_U_month.csv
+2025-09-30 09:26:49,272 [INFO] Written to L3_test/stations/SCO_U/SCO_U_month.nc
+/n ======== test join_l3 ========= 
+
+SCO_U
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

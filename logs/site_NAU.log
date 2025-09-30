@@ -1,0 +1,23 @@
+2025-09-30 09:36:39,435 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:39,436 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:39,436 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:40,914 [INFO] joining NAU NASA-U
+2025-09-30 09:36:41,336 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:42,380 [INFO] Resampling to 60min
+2025-09-30 09:36:42,800 [INFO] Writing to files...
+2025-09-30 09:36:51,465 [INFO] Written to L3_test/sites/NAU/NAU_hour.csv
+2025-09-30 09:36:51,465 [INFO] Written to L3_test/sites/NAU/NAU_hour.nc
+2025-09-30 09:36:51,705 [INFO] Resampling to 1D
+2025-09-30 09:36:51,811 [INFO] Writing to files...
+2025-09-30 09:36:52,237 [INFO] Written to L3_test/sites/NAU/NAU_day.csv
+2025-09-30 09:36:52,237 [INFO] Written to L3_test/sites/NAU/NAU_day.nc
+2025-09-30 09:36:52,458 [INFO] Resampling to MS
+2025-09-30 09:36:52,553 [INFO] Writing to files...
+2025-09-30 09:36:52,639 [INFO] Written to L3_test/sites/NAU/NAU_month.csv
+2025-09-30 09:36:52,639 [INFO] Written to L3_test/sites/NAU/NAU_month.nc
+/n ======== test join_l3 ========= 
+
+NAU
+NAU array loaded from L3_test/stations/NAU/NAU_hour.nc
+NASA-U array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/NASA-U.csv

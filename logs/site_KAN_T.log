@@ -1,0 +1,22 @@
+2025-09-30 09:36:27,069 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:27,070 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:27,070 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:27,265 [INFO] joining KAN_Tv3
+2025-09-30 09:36:27,410 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:27,538 [INFO] Resampling to 60min
+2025-09-30 09:36:27,638 [INFO] Writing to files...
+2025-09-30 09:36:28,324 [INFO] Written to L3_test/sites/KAN_T/KAN_T_hour.csv
+2025-09-30 09:36:28,324 [INFO] Written to L3_test/sites/KAN_T/KAN_T_hour.nc
+2025-09-30 09:36:28,363 [INFO] Resampling to 1D
+2025-09-30 09:36:28,447 [INFO] Writing to files...
+2025-09-30 09:36:28,570 [INFO] Written to L3_test/sites/KAN_T/KAN_T_day.csv
+2025-09-30 09:36:28,570 [INFO] Written to L3_test/sites/KAN_T/KAN_T_day.nc
+2025-09-30 09:36:28,622 [INFO] Resampling to MS
+2025-09-30 09:36:28,714 [INFO] Writing to files...
+2025-09-30 09:36:28,813 [INFO] Written to L3_test/sites/KAN_T/KAN_T_month.csv
+2025-09-30 09:36:28,813 [INFO] Written to L3_test/sites/KAN_T/KAN_T_month.nc
+/n ======== test join_l3 ========= 
+
+KAN_T
+KAN_Tv3 array loaded from L3_test/stations/KAN_Tv3/KAN_Tv3_hour.nc

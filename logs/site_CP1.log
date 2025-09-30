@@ -1,0 +1,23 @@
+2025-09-30 09:36:10,303 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:10,304 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:10,304 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:11,894 [INFO] joining CP1 CrawfordPoint1
+2025-09-30 09:36:12,333 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:13,480 [INFO] Resampling to 60min
+2025-09-30 09:36:13,983 [INFO] Writing to files...
+2025-09-30 09:36:23,065 [INFO] Written to L3_test/sites/CP1/CP1_hour.csv
+2025-09-30 09:36:23,065 [INFO] Written to L3_test/sites/CP1/CP1_hour.nc
+2025-09-30 09:36:23,333 [INFO] Resampling to 1D
+2025-09-30 09:36:23,439 [INFO] Writing to files...
+2025-09-30 09:36:23,909 [INFO] Written to L3_test/sites/CP1/CP1_day.csv
+2025-09-30 09:36:23,909 [INFO] Written to L3_test/sites/CP1/CP1_day.nc
+2025-09-30 09:36:24,130 [INFO] Resampling to MS
+2025-09-30 09:36:24,228 [INFO] Writing to files...
+2025-09-30 09:36:24,313 [INFO] Written to L3_test/sites/CP1/CP1_month.csv
+2025-09-30 09:36:24,314 [INFO] Written to L3_test/sites/CP1/CP1_month.nc
+/n ======== test join_l3 ========= 
+
+CP1
+CP1 array loaded from L3_test/stations/CP1/CP1_hour.nc
+Crawford Point 1 array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/CrawfordPoint1.csv

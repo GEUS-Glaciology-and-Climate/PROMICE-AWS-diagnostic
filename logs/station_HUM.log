@@ -1,0 +1,365 @@
+2025-09-30 09:18:25,663 [INFO] AWS(config_file=../aws-l0//tx/config/HUM.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:18:26,014 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'HUM.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:18:26,020 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/HUM_300534063814560_1.txt
+2025-09-30 09:18:26,120 [INFO] L0 data successfully loaded from HUM_300534063814560_1.txt
+2025-09-30 09:18:26,127 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/HUM_300534063814560_2.txt
+2025-09-30 09:18:26,151 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/HUM_300534063814560_2.txt
+2025-09-30 09:18:26,212 [INFO] L0 data successfully loaded from HUM_300534063814560_2.txt
+2025-09-30 09:18:26,219 [INFO] Level 1 processing...
+2025-09-30 09:18:26,347 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:26,575 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:26,757 [INFO] Level 2 processing...
+2025-09-30 09:18:26,759 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/HUM.csv
+2025-09-30 09:18:26,764 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/HUM.csv
+2025-09-30 09:18:26,771 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_1
+2025-09-30 09:18:26,773 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_2
+2025-09-30 09:18:26,775 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_3
+2025-09-30 09:18:26,777 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_4
+2025-09-30 09:18:26,778 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_5
+2025-09-30 09:18:26,780 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_6
+2025-09-30 09:18:26,782 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_7
+2025-09-30 09:18:26,784 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_8
+2025-09-30 09:18:26,786 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_9
+2025-09-30 09:18:26,787 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_10
+2025-09-30 09:18:26,789 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_11
+2025-09-30 09:18:26,792 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_1
+2025-09-30 09:18:26,794 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_2
+2025-09-30 09:18:26,796 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_3
+2025-09-30 09:18:26,798 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_4
+2025-09-30 09:18:26,800 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_5
+2025-09-30 09:18:26,802 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_6
+2025-09-30 09:18:26,804 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_7
+2025-09-30 09:18:26,805 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_8
+2025-09-30 09:18:26,807 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_9
+2025-09-30 09:18:26,809 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_10
+2025-09-30 09:18:26,810 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_11
+2025-09-30 09:18:26,814 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_1
+2025-09-30 09:18:26,816 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_2
+2025-09-30 09:18:26,817 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_3
+2025-09-30 09:18:26,819 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_4
+2025-09-30 09:18:26,821 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_5
+2025-09-30 09:18:26,822 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_6
+2025-09-30 09:18:26,825 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_7
+2025-09-30 09:18:26,827 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_8
+2025-09-30 09:18:26,828 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_9
+2025-09-30 09:18:26,830 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_10
+2025-09-30 09:18:26,832 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_11
+2025-09-30 09:18:26,834 [DEBUG] ---> flagging 2022-11-09 04:00:00 2022-11-10 13:00:00 p_i
+2025-09-30 09:18:26,835 [DEBUG] ---> flagging 2022-11-09 04:00:00 2022-11-10 13:00:00 p_u
+2025-09-30 09:18:26,837 [DEBUG] ---> flagging 2022-11-09 04:00:00 2022-11-10 13:00:00 p_l
+2025-09-30 09:18:26,839 [DEBUG] ---> flagging 2022-12-23 14:00:00 2022-12-27 10:00:00 p_u
+2025-09-30 09:18:26,841 [DEBUG] ---> flagging 2022-12-28 10:00:00 2023-01-01 22:00:00 p_u
+2025-09-30 09:18:26,843 [DEBUG] ---> flagging 2022-12-30 06:00:00 2023-01-01 22:00:00 p_i
+2025-09-30 09:18:26,844 [DEBUG] ---> flagging 2022-12-30 06:00:00 2023-01-01 22:00:00 p_l
+2025-09-30 09:18:26,846 [DEBUG] ---> flagging 2023-01-15 12:00:00 2023-02-01 00:00:00 p_i
+2025-09-30 09:18:26,848 [DEBUG] ---> flagging 2023-01-15 12:00:00 2023-02-01 00:00:00 p_u
+2025-09-30 09:18:26,850 [DEBUG] ---> flagging 2023-01-15 12:00:00 2023-02-01 00:00:00 p_l
+2025-09-30 09:18:26,852 [DEBUG] ---> flagging 2023-12-22 12:00:00 2024-01-11 00:00:00 p_i
+2025-09-30 09:18:26,853 [DEBUG] ---> flagging 2023-12-22 12:00:00 2024-01-11 00:00:00 p_u
+2025-09-30 09:18:26,855 [DEBUG] ---> flagging 2023-12-22 12:00:00 2024-01-11 00:00:00 p_l
+2025-09-30 09:18:26,857 [DEBUG] ---> flagging 2024-01-21 00:00:00 2024-02-07 00:00:00 p_i
+2025-09-30 09:18:26,859 [DEBUG] ---> flagging 2024-01-21 00:00:00 2024-02-07 00:00:00 p_u
+2025-09-30 09:18:26,860 [DEBUG] ---> flagging 2024-01-21 00:00:00 2024-02-07 00:00:00 p_l
+2025-09-30 09:18:26,862 [DEBUG] ---> flagging 2024-02-09 00:00:00 2024-02-19 00:00:00 p_i
+2025-09-30 09:18:26,864 [DEBUG] ---> flagging 2024-02-09 00:00:00 2024-02-19 00:00:00 p_u
+2025-09-30 09:18:26,865 [DEBUG] ---> flagging 2024-02-09 00:00:00 2024-02-19 00:00:00 p_l
+2025-09-30 09:18:26,868 [DEBUG] ---> flagging 2024-02-28 00:00:00 2024-03-02 00:00:00 p_i
+2025-09-30 09:18:26,870 [DEBUG] ---> flagging 2024-02-28 00:00:00 2024-03-02 00:00:00 p_u
+2025-09-30 09:18:26,872 [DEBUG] ---> flagging 2024-02-28 00:00:00 2024-03-02 00:00:00 p_l
+2025-09-30 09:18:26,875 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-25 12:00:00 p_i
+2025-09-30 09:18:26,877 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-25 12:00:00 p_u
+2025-09-30 09:18:26,879 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-25 12:00:00 p_l
+2025-09-30 09:18:26,882 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rec
+2025-09-30 09:18:26,885 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 p_u
+2025-09-30 09:18:26,887 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_l
+2025-09-30 09:18:26,890 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_u
+2025-09-30 09:18:26,892 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rh_l
+2025-09-30 09:18:26,894 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rh_u
+2025-09-30 09:18:26,895 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wspd_l
+2025-09-30 09:18:26,897 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wdir_l
+2025-09-30 09:18:26,899 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wspd_u
+2025-09-30 09:18:26,901 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wdir_u
+2025-09-30 09:18:26,903 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 dsr
+2025-09-30 09:18:26,905 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 usr
+2025-09-30 09:18:26,907 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 dlr
+2025-09-30 09:18:26,909 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 ulr
+2025-09-30 09:18:26,911 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_rad
+2025-09-30 09:18:26,912 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_1
+2025-09-30 09:18:26,914 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_2
+2025-09-30 09:18:26,916 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_3
+2025-09-30 09:18:26,918 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_4
+2025-09-30 09:18:26,920 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_5
+2025-09-30 09:18:26,925 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_6
+2025-09-30 09:18:26,926 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_7
+2025-09-30 09:18:26,928 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_8
+2025-09-30 09:18:26,929 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_9
+2025-09-30 09:18:26,931 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_10
+2025-09-30 09:18:26,933 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_11
+2025-09-30 09:18:26,935 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 tilt_x
+2025-09-30 09:18:26,937 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 tilt_y
+2025-09-30 09:18:26,939 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rot
+2025-09-30 09:18:26,941 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gpd_hdop
+2025-09-30 09:18:26,943 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 msg_i
+2025-09-30 09:18:26,944 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_lat_i
+2025-09-30 09:18:26,946 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_lon_i
+2025-09-30 09:18:26,948 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 p_l
+2025-09-30 09:18:26,950 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_l
+2025-09-30 09:18:26,951 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_u
+2025-09-30 09:18:26,953 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 precip_u
+2025-09-30 09:18:26,955 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_time
+2025-09-30 09:18:26,956 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_lat
+2025-09-30 09:18:26,958 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_lon
+2025-09-30 09:18:26,959 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_alt
+2025-09-30 09:18:26,961 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 fan_dc_l
+2025-09-30 09:18:26,964 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 fan_dc_u
+2025-09-30 09:18:26,965 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 batt_v
+2025-09-30 09:18:26,967 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 p_i
+2025-09-30 09:18:26,969 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i
+2025-09-30 09:18:26,970 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rh_i
+2025-09-30 09:18:26,972 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wspd_i
+2025-09-30 09:18:26,974 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wdir_i
+2025-09-30 09:18:26,975 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_cor_u
+2025-09-30 09:18:26,977 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_q_u
+2025-09-30 09:18:26,979 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_cor_l
+2025-09-30 09:18:26,981 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_q_l
+2025-09-30 09:18:26,982 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 precip_l
+2025-09-30 09:18:26,984 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_geounit
+2025-09-30 09:18:26,986 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_hdop
+2025-09-30 09:18:26,987 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_u_interp
+2025-09-30 09:18:26,989 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_l_interp
+2025-09-30 09:18:26,991 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 msg_lat
+2025-09-30 09:18:26,992 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 msg_lon
+2025-09-30 09:18:26,995 [DEBUG] ---> flagging 2024-02-26 07:00:00 2025-06-08 15:00:00 wdir_l
+2025-09-30 09:18:26,997 [DEBUG] ---> flagging 2024-02-26 07:00:00 2024-05-21 20:00:00 wdir_i
+2025-09-30 09:18:27,000 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/HUM.csv
+2025-09-30 09:18:27,010 [INFO] could not adjust p_u p_l not in dataset
+2025-09-30 09:18:27,013 [DEBUG] ---> None 2022-07-09 00:00:00 z_boom_u min_filter 3.72
+2025-09-30 09:18:27,014 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:18:27,014 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:18:27,027 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:18:27,032 [DEBUG] Applying persistent QC in t_i. Filtering 470/24655 samples
+2025-09-30 09:18:27,037 [DEBUG] Applying persistent QC in t_u. Filtering 19/24655 samples
+2025-09-30 09:18:27,041 [DEBUG] Applying persistent QC in t_l. Filtering 28/24655 samples
+2025-09-30 09:18:27,046 [DEBUG] Applying persistent QC in p_i. Filtering 459/24655 samples
+2025-09-30 09:18:27,144 [DEBUG] Applying persistent QC in p_u. Filtering 0/24655 samples
+2025-09-30 09:18:27,228 [DEBUG] Applying persistent QC in p_l. Filtering 0/24655 samples
+2025-09-30 09:18:27,237 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 12/24655 samples
+2025-09-30 09:18:27,242 [DEBUG] Applying persistent QC in gps_alt. Filtering 23/24655 samples
+2025-09-30 09:18:27,245 [DEBUG] Applying persistent QC in t_rad. Filtering 1/24655 samples
+2025-09-30 09:18:27,248 [DEBUG] Applying persistent QC in rh_i. Filtering 463/24655 samples
+2025-09-30 09:18:27,251 [DEBUG] Applying persistent QC in rh_u. Filtering 114/24655 samples
+2025-09-30 09:18:27,254 [DEBUG] Applying persistent QC in rh_l. Filtering 134/24655 samples
+2025-09-30 09:18:27,258 [DEBUG] Applying persistent QC in wspd_i. Filtering 23/24655 samples
+2025-09-30 09:18:27,263 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/24655 samples
+2025-09-30 09:18:27,270 [DEBUG] Applying persistent QC in wspd_l. Filtering 10/24655 samples
+2025-09-30 09:18:27,851 [INFO] Resampling to 60min
+2025-09-30 09:18:27,951 [INFO] Writing to files...
+2025-09-30 09:18:29,109 [INFO] Written to L2_test/tx/HUM/HUM_hour.csv
+2025-09-30 09:18:29,109 [INFO] Written to L2_test/tx/HUM/HUM_hour.nc
+2025-09-30 09:18:29,110 [INFO] AWS(config_file=../aws-l0//raw/config/HUM.toml, inpath=../aws-l0//raw/HUM/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:18:29,434 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'HUM.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:18:30,451 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/HUM/HUM_2023_raw.txt
+2025-09-30 09:18:30,563 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/HUM/HUM_2023_raw.txt
+2025-09-30 09:18:30,780 [INFO] L0 data successfully loaded from HUM_2023_raw.txt
+2025-09-30 09:18:30,783 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/HUM/HUM_2025_DataTable10min.dat
+2025-09-30 09:18:30,928 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/HUM/HUM_2025_DataTable10min.dat
+2025-09-30 09:18:31,237 [INFO] L0 data successfully loaded from HUM_2025_DataTable10min.dat
+2025-09-30 09:18:31,249 [INFO] Level 1 processing...
+2025-09-30 09:18:31,356 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:31,623 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:31,872 [INFO] Level 2 processing...
+2025-09-30 09:18:31,877 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/HUM.csv
+2025-09-30 09:18:31,884 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/HUM.csv
+2025-09-30 09:18:31,891 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_1
+2025-09-30 09:18:31,894 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_2
+2025-09-30 09:18:31,896 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_3
+2025-09-30 09:18:31,898 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_4
+2025-09-30 09:18:31,900 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_5
+2025-09-30 09:18:31,902 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_6
+2025-09-30 09:18:31,904 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_7
+2025-09-30 09:18:31,906 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_8
+2025-09-30 09:18:31,908 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_9
+2025-09-30 09:18:31,910 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_10
+2025-09-30 09:18:31,912 [DEBUG] ---> flagging 2022-06-19 00:00:00 2022-06-21 00:00:00 t_i_11
+2025-09-30 09:18:31,917 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_1
+2025-09-30 09:18:31,919 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_2
+2025-09-30 09:18:31,921 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_3
+2025-09-30 09:18:31,923 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_4
+2025-09-30 09:18:31,925 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_5
+2025-09-30 09:18:31,928 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_6
+2025-09-30 09:18:31,930 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_7
+2025-09-30 09:18:31,932 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_8
+2025-09-30 09:18:31,934 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_9
+2025-09-30 09:18:31,936 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_10
+2025-09-30 09:18:31,939 [DEBUG] ---> flagging 2022-07-16 12:00:00 2022-07-22 00:00:00 t_i_11
+2025-09-30 09:18:31,943 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_1
+2025-09-30 09:18:31,946 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_2
+2025-09-30 09:18:31,948 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_3
+2025-09-30 09:18:31,950 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_4
+2025-09-30 09:18:31,954 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_5
+2025-09-30 09:18:31,956 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_6
+2025-09-30 09:18:31,959 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_7
+2025-09-30 09:18:31,961 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_8
+2025-09-30 09:18:31,966 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_9
+2025-09-30 09:18:31,969 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_10
+2025-09-30 09:18:31,972 [DEBUG] ---> flagging 2022-10-15 19:00:00 2024-05-22 00:00:00 t_i_11
+2025-09-30 09:18:31,975 [DEBUG] ---> flagging 2022-11-09 04:00:00 2022-11-10 13:00:00 p_i
+2025-09-30 09:18:31,977 [DEBUG] ---> flagging 2022-11-09 04:00:00 2022-11-10 13:00:00 p_u
+2025-09-30 09:18:31,979 [DEBUG] ---> flagging 2022-11-09 04:00:00 2022-11-10 13:00:00 p_l
+2025-09-30 09:18:31,982 [DEBUG] ---> flagging 2022-12-23 14:00:00 2022-12-27 10:00:00 p_u
+2025-09-30 09:18:31,985 [DEBUG] ---> flagging 2022-12-28 10:00:00 2023-01-01 22:00:00 p_u
+2025-09-30 09:18:31,987 [DEBUG] ---> flagging 2022-12-30 06:00:00 2023-01-01 22:00:00 p_i
+2025-09-30 09:18:31,989 [DEBUG] ---> flagging 2022-12-30 06:00:00 2023-01-01 22:00:00 p_l
+2025-09-30 09:18:31,992 [DEBUG] ---> flagging 2023-01-15 12:00:00 2023-02-01 00:00:00 p_i
+2025-09-30 09:18:31,994 [DEBUG] ---> flagging 2023-01-15 12:00:00 2023-02-01 00:00:00 p_u
+2025-09-30 09:18:31,996 [DEBUG] ---> flagging 2023-01-15 12:00:00 2023-02-01 00:00:00 p_l
+2025-09-30 09:18:31,999 [DEBUG] ---> flagging 2023-12-22 12:00:00 2024-01-11 00:00:00 p_i
+2025-09-30 09:18:32,001 [DEBUG] ---> flagging 2023-12-22 12:00:00 2024-01-11 00:00:00 p_u
+2025-09-30 09:18:32,003 [DEBUG] ---> flagging 2023-12-22 12:00:00 2024-01-11 00:00:00 p_l
+2025-09-30 09:18:32,006 [DEBUG] ---> flagging 2024-01-21 00:00:00 2024-02-07 00:00:00 p_i
+2025-09-30 09:18:32,008 [DEBUG] ---> flagging 2024-01-21 00:00:00 2024-02-07 00:00:00 p_u
+2025-09-30 09:18:32,011 [DEBUG] ---> flagging 2024-01-21 00:00:00 2024-02-07 00:00:00 p_l
+2025-09-30 09:18:32,014 [DEBUG] ---> flagging 2024-02-09 00:00:00 2024-02-19 00:00:00 p_i
+2025-09-30 09:18:32,016 [DEBUG] ---> flagging 2024-02-09 00:00:00 2024-02-19 00:00:00 p_u
+2025-09-30 09:18:32,018 [DEBUG] ---> flagging 2024-02-09 00:00:00 2024-02-19 00:00:00 p_l
+2025-09-30 09:18:32,020 [DEBUG] ---> flagging 2024-02-28 00:00:00 2024-03-02 00:00:00 p_i
+2025-09-30 09:18:32,022 [DEBUG] ---> flagging 2024-02-28 00:00:00 2024-03-02 00:00:00 p_u
+2025-09-30 09:18:32,024 [DEBUG] ---> flagging 2024-02-28 00:00:00 2024-03-02 00:00:00 p_l
+2025-09-30 09:18:32,027 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-25 12:00:00 p_i
+2025-09-30 09:18:32,029 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-25 12:00:00 p_u
+2025-09-30 09:18:32,031 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-25 12:00:00 p_l
+2025-09-30 09:18:32,033 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rec
+2025-09-30 09:18:32,035 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 p_l
+2025-09-30 09:18:32,037 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_l
+2025-09-30 09:18:32,039 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rh_l
+2025-09-30 09:18:32,041 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wspd_l
+2025-09-30 09:18:32,043 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wdir_l
+2025-09-30 09:18:32,045 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_u
+2025-09-30 09:18:32,050 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rh_u
+2025-09-30 09:18:32,052 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wspd_u
+2025-09-30 09:18:32,055 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wdir_u
+2025-09-30 09:18:32,057 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 dsr
+2025-09-30 09:18:32,060 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 usr
+2025-09-30 09:18:32,062 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 dlr
+2025-09-30 09:18:32,065 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 ulr
+2025-09-30 09:18:32,067 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_rad
+2025-09-30 09:18:32,069 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_l
+2025-09-30 09:18:32,071 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_u
+2025-09-30 09:18:32,073 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_1
+2025-09-30 09:18:32,075 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_2
+2025-09-30 09:18:32,077 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_3
+2025-09-30 09:18:32,079 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_4
+2025-09-30 09:18:32,081 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_5
+2025-09-30 09:18:32,083 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_6
+2025-09-30 09:18:32,085 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_7
+2025-09-30 09:18:32,088 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_8
+2025-09-30 09:18:32,090 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_9
+2025-09-30 09:18:32,092 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_10
+2025-09-30 09:18:32,094 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i_11
+2025-09-30 09:18:32,096 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 tilt_x
+2025-09-30 09:18:32,098 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 tilt_y
+2025-09-30 09:18:32,100 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rot
+2025-09-30 09:18:32,102 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 precip_u
+2025-09-30 09:18:32,104 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 precip_l
+2025-09-30 09:18:32,106 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_time
+2025-09-30 09:18:32,108 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_lat
+2025-09-30 09:18:32,110 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_lon
+2025-09-30 09:18:32,112 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_alt
+2025-09-30 09:18:32,114 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_geoid
+2025-09-30 09:18:32,116 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_geounit
+2025-09-30 09:18:32,118 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_q
+2025-09-30 09:18:32,119 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_numsat
+2025-09-30 09:18:32,121 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 gps_hdop
+2025-09-30 09:18:32,123 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 fan_dc_l
+2025-09-30 09:18:32,125 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 fan_dc_u
+2025-09-30 09:18:32,127 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 batt_v
+2025-09-30 09:18:32,129 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_log
+2025-09-30 09:18:32,133 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 p_u
+2025-09-30 09:18:32,135 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_cor_u
+2025-09-30 09:18:32,137 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_q_u
+2025-09-30 09:18:32,139 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_cor_l
+2025-09-30 09:18:32,141 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 z_boom_q_l
+2025-09-30 09:18:32,143 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 p_i
+2025-09-30 09:18:32,145 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_i
+2025-09-30 09:18:32,147 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 rh_i
+2025-09-30 09:18:32,149 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wspd_i
+2025-09-30 09:18:32,151 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 wdir_i
+2025-09-30 09:18:32,153 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_u_interp
+2025-09-30 09:18:32,156 [DEBUG] ---> flagging 2024-05-21 14:00:00 2024-05-21 22:00:00 t_l_interp
+2025-09-30 09:18:32,159 [DEBUG] ---> flagging 2024-02-26 07:00:00 2025-06-08 15:00:00 wdir_l
+2025-09-30 09:18:32,161 [DEBUG] ---> flagging 2024-02-26 07:00:00 2024-05-21 20:00:00 wdir_i
+2025-09-30 09:18:32,168 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/HUM.csv
+2025-09-30 09:18:32,174 [INFO] could not adjust p_u p_l not in dataset
+2025-09-30 09:18:32,179 [DEBUG] ---> None 2022-07-09 00:00:00 z_boom_u min_filter 3.72
+2025-09-30 09:18:32,179 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:18:32,180 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:18:32,197 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:18:32,203 [DEBUG] Applying persistent QC in t_i. Filtering 0/87368 samples
+2025-09-30 09:18:32,209 [DEBUG] Applying persistent QC in t_u. Filtering 70/87368 samples
+2025-09-30 09:18:32,214 [DEBUG] Applying persistent QC in t_l. Filtering 72/87368 samples
+2025-09-30 09:18:32,221 [DEBUG] Applying persistent QC in p_i. Filtering 0/87368 samples
+2025-09-30 09:18:32,318 [DEBUG] Applying persistent QC in p_u. Filtering 0/87368 samples
+2025-09-30 09:18:32,416 [DEBUG] Applying persistent QC in p_l. Filtering 0/87368 samples
+2025-09-30 09:18:32,430 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 613/87368 samples
+2025-09-30 09:18:32,437 [DEBUG] Applying persistent QC in gps_alt. Filtering 646/87368 samples
+2025-09-30 09:18:32,441 [DEBUG] Applying persistent QC in t_rad. Filtering 1/87368 samples
+2025-09-30 09:18:32,446 [DEBUG] Applying persistent QC in rh_i. Filtering 0/87368 samples
+2025-09-30 09:18:32,451 [DEBUG] Applying persistent QC in rh_u. Filtering 149/87368 samples
+2025-09-30 09:18:32,456 [DEBUG] Applying persistent QC in rh_l. Filtering 131/87368 samples
+2025-09-30 09:18:32,462 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/87368 samples
+2025-09-30 09:18:32,469 [DEBUG] Applying persistent QC in wspd_u. Filtering 5/87368 samples
+2025-09-30 09:18:32,475 [DEBUG] Applying persistent QC in wspd_l. Filtering 5/87368 samples
+2025-09-30 09:18:33,167 [INFO] Resampling to 10min
+2025-09-30 09:18:33,346 [INFO] Writing to files...
+2025-09-30 09:18:37,451 [INFO] Written to L2_test/raw/HUM/HUM_10min.csv
+2025-09-30 09:18:37,451 [INFO] Written to L2_test/raw/HUM/HUM_10min.nc
+2025-09-30 09:18:37,681 [INFO] Resampling to 60min
+2025-09-30 09:18:37,772 [INFO] Writing to files...
+2025-09-30 09:18:38,744 [INFO] Written to L2_test/raw/HUM/HUM_hour.csv
+2025-09-30 09:18:38,744 [INFO] Written to L2_test/raw/HUM/HUM_hour.nc
+2025-09-30 09:18:38,797 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:18:38,797 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:18:38,798 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:18:38,889 [INFO] HUM array loaded from L2_test/raw/HUM/HUM_hour.nc
+2025-09-30 09:18:38,931 [INFO] HUM array loaded from L2_test/tx/HUM/HUM_hour.nc
+2025-09-30 09:18:38,931 [INFO] Combining L2_test/raw/HUM/HUM_hour.nc with L2_test/tx/HUM/HUM_hour.nc...
+2025-09-30 09:18:39,051 [INFO] Writing to files...
+2025-09-30 09:18:40,187 [INFO] Written to L2_test/level_2/HUM/HUM_hour.csv
+2025-09-30 09:18:40,187 [INFO] Written to L2_test/level_2/HUM/HUM_hour.nc
+2025-09-30 09:18:40,187 [INFO] Files saved to L2_test/level_2/HUM...
+2025-09-30 09:18:40,234 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:18:43,956 [INFO] processing gps_lat with relocation on 2023-06-30T14:00:00
+2025-09-30 09:18:43,962 [INFO] processing gps_lon with relocation on 2023-06-30T14:00:00
+2025-09-30 09:18:43,967 [INFO] processing gps_alt with relocation on 2023-06-30T14:00:00
+2025-09-30 09:18:43,985 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/HUM.csv
+2025-09-30 09:18:43,993 [DEBUG] ---> 2025-06-08 16:00:00 None z_surf_1 add 1.5
+2025-09-30 09:18:43,994 [DEBUG] ---> 2025-06-08 16:00:00 None z_surf_2 add 1.5
+2025-09-30 09:18:43,996 [INFO] Combining surface height
+2025-09-30 09:18:43,996 [INFO] -> did not find z_ice_surf
+2025-09-30 09:18:43,996 [INFO] -> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2
+2025-09-30 09:18:44,052 [INFO] Calculating thermistor depth
+2025-09-30 09:18:44,094 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:18:46,353 [INFO] Resampling to 60min
+2025-09-30 09:18:46,478 [INFO] Writing to files...
+2025-09-30 09:18:47,548 [INFO] Written to L3_test/stations/HUM/HUM_hour.csv
+2025-09-30 09:18:47,549 [INFO] Written to L3_test/stations/HUM/HUM_hour.nc
+2025-09-30 09:18:47,618 [INFO] Resampling to 1D
+2025-09-30 09:18:47,726 [INFO] Writing to files...
+2025-09-30 09:18:47,848 [INFO] Written to L3_test/stations/HUM/HUM_day.csv
+2025-09-30 09:18:47,848 [INFO] Written to L3_test/stations/HUM/HUM_day.nc
+2025-09-30 09:18:47,943 [INFO] Resampling to ME
+2025-09-30 09:18:48,076 [INFO] Writing to files...
+2025-09-30 09:18:48,170 [INFO] Written to L3_test/stations/HUM/HUM_month.csv
+2025-09-30 09:18:48,171 [INFO] Written to L3_test/stations/HUM/HUM_month.nc
+/n ======== test join_l3 ========= 
+
+HUM
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

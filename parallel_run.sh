@@ -46,9 +46,9 @@ df = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 print(" ".join(np.unique(df["station_id"].to_numpy())))
 END
 )
-for st in $stations; do
-  tasks+=("station_${st};from test_processing_scripts import process_l2_l3; process_l2_l3('${st}')")
-done
+# for st in $stations; do
+  # tasks+=("station_${st};from test_processing_scripts import process_l2_l3; process_l2_l3('${st}')")
+# done
 
 # sites -> join_l3
 sites=$(python - <<'END'
@@ -58,7 +58,7 @@ print(" ".join(np.unique(df["site_id"].to_numpy())))
 END
 )
 for site in $sites; do
-  tasks+=("site_${site};from test_processing_scripts import join_l3; join_l3('${site}')")
+  tasks+=("site_${site};from test_processing_scripts import get_join_l3; get_join_l3('${site}')")
 done
 
 # run with at most NCORES concurrent jobs, gather exit statuses

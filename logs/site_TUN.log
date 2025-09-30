@@ -1,0 +1,23 @@
+2025-09-30 09:37:35,624 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:35,624 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:35,624 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:35,760 [INFO] joining TUN Tunu-N
+2025-09-30 09:37:36,295 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:37,445 [INFO] Resampling to 60min
+2025-09-30 09:37:37,865 [INFO] Writing to files...
+2025-09-30 09:37:47,763 [INFO] Written to L3_test/sites/TUN/TUN_hour.csv
+2025-09-30 09:37:47,763 [INFO] Written to L3_test/sites/TUN/TUN_hour.nc
+2025-09-30 09:37:47,961 [INFO] Resampling to 1D
+2025-09-30 09:37:48,069 [INFO] Writing to files...
+2025-09-30 09:37:48,684 [INFO] Written to L3_test/sites/TUN/TUN_day.csv
+2025-09-30 09:37:48,684 [INFO] Written to L3_test/sites/TUN/TUN_day.nc
+2025-09-30 09:37:48,975 [INFO] Resampling to MS
+2025-09-30 09:37:49,116 [INFO] Writing to files...
+2025-09-30 09:37:49,238 [INFO] Written to L3_test/sites/TUN/TUN_month.csv
+2025-09-30 09:37:49,239 [INFO] Written to L3_test/sites/TUN/TUN_month.nc
+/n ======== test join_l3 ========= 
+
+TUN
+Tunu-N array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/Tunu-N.csv
+TUN array loaded from L3_test/stations/TUN/TUN_hour.nc

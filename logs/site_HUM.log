@@ -1,0 +1,23 @@
+2025-09-30 09:36:11,770 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:11,771 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:11,772 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:12,057 [INFO] joining HUM Humboldt
+2025-09-30 09:36:13,003 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:14,413 [INFO] Resampling to 60min
+2025-09-30 09:36:14,854 [INFO] Writing to files...
+2025-09-30 09:36:23,464 [INFO] Written to L3_test/sites/HUM/HUM_hour.csv
+2025-09-30 09:36:23,464 [INFO] Written to L3_test/sites/HUM/HUM_hour.nc
+2025-09-30 09:36:23,687 [INFO] Resampling to 1D
+2025-09-30 09:36:23,794 [INFO] Writing to files...
+2025-09-30 09:36:24,194 [INFO] Written to L3_test/sites/HUM/HUM_day.csv
+2025-09-30 09:36:24,194 [INFO] Written to L3_test/sites/HUM/HUM_day.nc
+2025-09-30 09:36:24,413 [INFO] Resampling to MS
+2025-09-30 09:36:24,512 [INFO] Writing to files...
+2025-09-30 09:36:24,599 [INFO] Written to L3_test/sites/HUM/HUM_month.csv
+2025-09-30 09:36:24,599 [INFO] Written to L3_test/sites/HUM/HUM_month.nc
+/n ======== test join_l3 ========= 
+
+HUM
+Humboldt array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/Humboldt.csv
+HUM array loaded from L3_test/stations/HUM/HUM_hour.nc

@@ -1,0 +1,158 @@
+2025-09-30 09:23:21,357 [INFO] AWS(config_file=../aws-l0//raw/config/NUK_N.toml, inpath=../aws-l0//raw/NUK_N/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:23:21,738 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'NUK_N.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:23:21,754 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/NUK_N/NUK_N_2010_raw_transmitted.txt
+2025-09-30 09:23:21,772 [INFO] L0 data successfully loaded from NUK_N_2010_raw_transmitted.txt
+2025-09-30 09:23:22,706 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2011_raw_logger.txt
+2025-09-30 09:23:22,738 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2011_raw_logger.txt
+2025-09-30 09:23:22,867 [INFO] L0 data successfully loaded from NUK_N_2011_raw_logger.txt
+2025-09-30 09:23:23,795 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2011_raw_SDcard.txt
+2025-09-30 09:23:23,863 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2011_raw_SDcard.txt
+2025-09-30 09:23:24,001 [INFO] L0 data successfully loaded from NUK_N_2011_raw_SDcard.txt
+2025-09-30 09:23:24,006 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/NUK_N/NUK_N_2011_raw_transmitted.txt
+2025-09-30 09:23:24,025 [INFO] L0 data successfully loaded from NUK_N_2011_raw_transmitted.txt
+2025-09-30 09:23:25,282 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2012_raw.txt
+2025-09-30 09:23:25,341 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2012_raw.txt
+2025-09-30 09:23:25,457 [INFO] L0 data successfully loaded from NUK_N_2012_raw.txt
+2025-09-30 09:23:25,460 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/NUK_N/NUK_N_2012_raw_transmitted.txt
+2025-09-30 09:23:25,479 [INFO] L0 data successfully loaded from NUK_N_2012_raw_transmitted.txt
+2025-09-30 09:23:25,482 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2013_raw.txt
+2025-09-30 09:23:25,601 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2013_raw.txt
+2025-09-30 09:23:25,811 [INFO] L0 data successfully loaded from NUK_N_2013_raw.txt
+2025-09-30 09:23:25,814 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2014_raw.txt
+2025-09-30 09:23:25,949 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NUK_N/NUK_N_2014_raw.txt
+2025-09-30 09:23:26,217 [INFO] L0 data successfully loaded from NUK_N_2014_raw.txt
+2025-09-30 09:23:26,256 [INFO] Level 1 processing...
+2025-09-30 09:23:26,352 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:26,584 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:26,793 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:26,948 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:27,203 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:27,360 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:27,769 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:28,145 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:28,816 [INFO] Level 2 processing...
+2025-09-30 09:23:28,822 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NUK_N.csv
+2025-09-30 09:23:28,833 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/NUK_N.csv
+2025-09-30 09:23:28,841 [DEBUG] ---> flagging 2010-07-25T23:00:00.000000000 2011-08-01 00:00:00 z_stake
+2025-09-30 09:23:28,844 [DEBUG] ---> flagging 2010-07-25T23:00:00.000000000 2011-04-01 00:00:00 z_pt_cor
+2025-09-30 09:23:28,847 [DEBUG] ---> flagging 2011-10-01 00:00:00 2011-12-01 00:00:00 z_pt_cor
+2025-09-30 09:23:28,849 [DEBUG] ---> flagging 2012-08-29 00:00:00 2013-07-21 15:00:00 z_pt_cor
+2025-09-30 09:23:28,852 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_1
+2025-09-30 09:23:28,854 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_2
+2025-09-30 09:23:28,856 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_3
+2025-09-30 09:23:28,858 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_4
+2025-09-30 09:23:28,860 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_5
+2025-09-30 09:23:28,861 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_6
+2025-09-30 09:23:28,863 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_7
+2025-09-30 09:23:28,865 [DEBUG] ---> flagging 2011-06-18 00:00:00 2012-08-31 00:00:00 t_i_8
+2025-09-30 09:23:28,867 [DEBUG] ---> flagging 2010-07-25T23:00:00.000000000 2011-08-23 17:00:00 wspd_u
+2025-09-30 09:23:28,874 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NUK_N.csv
+2025-09-30 09:23:28,887 [DEBUG] ---> None None gps_alt min_filter 885.0
+2025-09-30 09:23:28,889 [DEBUG] ---> None None gps_lat max_filter 64.946
+2025-09-30 09:23:28,889 [DEBUG] ---> None None gps_lat min_filter 64.945
+2025-09-30 09:23:28,891 [DEBUG] ---> None None gps_lon max_filter 49.886
+2025-09-30 09:23:28,891 [DEBUG] ---> None None gps_lon min_filter 49.8835
+2025-09-30 09:23:28,893 [DEBUG] ---> None None t_i_1 min_filter -30.0
+2025-09-30 09:23:28,894 [DEBUG] ---> None None t_i_2 min_filter -30.0
+2025-09-30 09:23:28,895 [DEBUG] ---> None None t_i_3 min_filter -30.0
+2025-09-30 09:23:28,896 [DEBUG] ---> None None t_i_4 min_filter -30.0
+2025-09-30 09:23:28,897 [DEBUG] ---> None None t_i_5 min_filter -30.0
+2025-09-30 09:23:28,899 [DEBUG] ---> None None t_i_6 min_filter -30.0
+2025-09-30 09:23:28,900 [DEBUG] ---> None None t_i_7 min_filter -30.0
+2025-09-30 09:23:28,901 [DEBUG] ---> None None t_i_8 min_filter -30.0
+2025-09-30 09:23:28,902 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:23:28,903 [INFO] could not adjust z_ice_surf not in dataset
+2025-09-30 09:23:28,903 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:23:28,918 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:23:28,925 [DEBUG] Applying persistent QC in t_i. Filtering 0/142756 samples
+2025-09-30 09:23:28,930 [DEBUG] Applying persistent QC in t_u. Filtering 0/142756 samples
+2025-09-30 09:23:28,937 [DEBUG] Applying persistent QC in p_i. Filtering 0/142756 samples
+2025-09-30 09:23:29,023 [DEBUG] Applying persistent QC in p_u. Filtering 0/142756 samples
+2025-09-30 09:23:29,038 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 65290/142756 samples
+2025-09-30 09:23:29,047 [DEBUG] Applying persistent QC in gps_alt. Filtering 65425/142756 samples
+2025-09-30 09:23:29,054 [DEBUG] Applying persistent QC in t_rad. Filtering 0/142756 samples
+2025-09-30 09:23:29,060 [DEBUG] Applying persistent QC in rh_i. Filtering 0/142756 samples
+2025-09-30 09:23:29,065 [DEBUG] Applying persistent QC in rh_u. Filtering 2/142756 samples
+2025-09-30 09:23:29,073 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/142756 samples
+2025-09-30 09:23:29,081 [DEBUG] Applying persistent QC in wspd_u. Filtering 826/142756 samples
+2025-09-30 09:23:29,823 [INFO] Resampling to 10min
+2025-09-30 09:23:30,036 [INFO] Writing to files...
+2025-09-30 09:23:33,714 [INFO] Written to L2_test/raw/NUK_N/NUK_N_10min.csv
+2025-09-30 09:23:33,715 [INFO] Written to L2_test/raw/NUK_N/NUK_N_10min.nc
+2025-09-30 09:23:33,926 [INFO] Resampling to 60min
+2025-09-30 09:23:34,001 [INFO] Writing to files...
+2025-09-30 09:23:34,761 [INFO] Written to L2_test/raw/NUK_N/NUK_N_hour.csv
+2025-09-30 09:23:34,761 [INFO] Written to L2_test/raw/NUK_N/NUK_N_hour.nc
+2025-09-30 09:23:34,804 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:23:34,805 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:23:34,805 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:23:34,887 [INFO] NUK_N array loaded from L2_test/raw/NUK_N/NUK_N_hour.nc
+2025-09-30 09:23:34,887 [INFO] Only one file found L2_test/raw/NUK_N/NUK_N_hour.nc...
+2025-09-30 09:23:34,960 [INFO] Writing to files...
+2025-09-30 09:23:35,710 [INFO] Written to L2_test/level_2/NUK_N/NUK_N_hour.csv
+2025-09-30 09:23:35,710 [INFO] Written to L2_test/level_2/NUK_N/NUK_N_hour.nc
+2025-09-30 09:23:35,710 [INFO] Files saved to L2_test/level_2/NUK_N...
+2025-09-30 09:23:35,749 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:23:37,547 [INFO] processing gps_lat with relocation on 2013-07-24T15:00:00
+2025-09-30 09:23:37,553 [INFO] processing gps_lon with relocation on 2013-07-24T15:00:00
+2025-09-30 09:23:37,558 [INFO] processing gps_alt with relocation on 2013-07-24T15:00:00
+2025-09-30 09:23:37,573 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NUK_N.csv
+2025-09-30 09:23:37,587 [DEBUG] ---> 2011-08-23 00:00:00 None z_ice_surf add -0.5
+2025-09-30 09:23:37,588 [DEBUG] ---> 2013-01-01 00:00:00 None z_ice_surf add -8.5
+2025-09-30 09:23:37,589 [DEBUG] ---> 2013-10-11 12:00:00 None z_ice_surf add 1.0
+2025-09-30 09:23:37,591 [DEBUG] ---> 2012-08-28 00:00:00 None z_surf_2 add -5.0
+2025-09-30 09:23:37,592 [DEBUG] ---> 2013-07-24 15:00:00 None z_surf_2 add -1.0
+2025-09-30 09:23:37,593 [INFO] Combining surface height
+2025-09-30 09:23:37,593 [INFO] -> ablation site
+2025-09-30 09:23:37,724 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:23:37,726 [DEBUG] 2010 no z_ice_surf, just using JJA
+2025-09-30 09:23:37,728 [DEBUG] 2011 derived from z_ice_surf
+2025-09-30 09:23:37,730 [DEBUG] 2012 derived from z_ice_surf
+2025-09-30 09:23:37,731 [DEBUG] 2013 derived from z_ice_surf
+2025-09-30 09:23:37,733 [DEBUG] 2014 derived from z_ice_surf
+2025-09-30 09:23:37,733 [DEBUG] 2010: Ablation from 2010-07-25 23:00:00 to 2010-08-31 23:00:00
+2025-09-30 09:23:37,741 [DEBUG] adjusting hs1
+2025-09-30 09:23:37,742 [DEBUG] 2011: Ablation from 2011-06-07 02:00:00 to 2011-09-14 09:00:00
+2025-09-30 09:23:37,747 [DEBUG] adjusting z to hs1
+2025-09-30 09:23:37,747 [DEBUG] adjusting hs2 to z
+2025-09-30 09:23:37,748 [DEBUG] using end of melt season
+2025-09-30 09:23:37,750 [DEBUG] adjusting hs1
+2025-09-30 09:23:37,750 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:23:37,751 [DEBUG] 2012: Ablation from 2012-06-08 16:00:00 to 2012-09-11 15:00:00
+2025-09-30 09:23:37,758 [DEBUG] adjusting hs1
+2025-09-30 09:23:37,759 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:23:37,760 [DEBUG] 2013: Ablation from 2013-07-10 16:00:00 to 2013-08-31 07:00:00
+2025-09-30 09:23:37,766 [DEBUG] adjusting hs2 to z
+2025-09-30 09:23:37,766 [DEBUG] using end of melt season
+2025-09-30 09:23:37,768 [DEBUG] adjusting hs1
+2025-09-30 09:23:37,768 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:23:37,769 [DEBUG] 2014: Ablation from 2014-06-12 04:00:00 to 2014-07-25 11:00:00
+2025-09-30 09:23:37,774 [DEBUG] adjusting hs2 to z
+2025-09-30 09:23:37,775 [DEBUG] using end of melt season
+2025-09-30 09:23:37,798 [INFO] surface height combination finished
+2025-09-30 09:23:37,831 [INFO] Calculating thermistor depth
+2025-09-30 09:23:37,855 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:23:39,772 [INFO] Resampling to 60min
+2025-09-30 09:23:39,876 [INFO] Writing to files...
+2025-09-30 09:23:40,956 [INFO] Written to L3_test/stations/NUK_N/NUK_N_hour.csv
+2025-09-30 09:23:40,956 [INFO] Written to L3_test/stations/NUK_N/NUK_N_hour.nc
+2025-09-30 09:23:41,008 [INFO] Resampling to 1D
+2025-09-30 09:23:41,087 [INFO] Writing to files...
+2025-09-30 09:23:41,187 [INFO] Written to L3_test/stations/NUK_N/NUK_N_day.csv
+2025-09-30 09:23:41,188 [INFO] Written to L3_test/stations/NUK_N/NUK_N_day.nc
+2025-09-30 09:23:41,243 [INFO] Resampling to ME
+2025-09-30 09:23:41,323 [INFO] Writing to files...
+2025-09-30 09:23:41,378 [INFO] Written to L3_test/stations/NUK_N/NUK_N_month.csv
+2025-09-30 09:23:41,378 [INFO] Written to L3_test/stations/NUK_N/NUK_N_month.nc
+/n ======== test join_l3 ========= 
+
+NUK_N
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

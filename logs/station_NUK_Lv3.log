@@ -1,0 +1,81 @@
+2025-09-30 09:23:21,082 [INFO] AWS(config_file=../aws-l0//tx/config/NUK_Lv3.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:23:21,400 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'NUK_Lv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:23:21,414 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/NUK_Lv3_300534063814740_1.txt
+2025-09-30 09:23:21,451 [INFO] L0 data successfully loaded from NUK_Lv3_300534063814740_1.txt
+2025-09-30 09:23:21,456 [INFO] Level 1 processing...
+2025-09-30 09:23:21,572 [WARNING] bedrock attribute is not set
+2025-09-30 09:23:21,696 [INFO] Level 2 processing...
+2025-09-30 09:23:21,697 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NUK_Lv3.csv
+2025-09-30 09:23:21,698 [INFO] No ../PROMICE-AWS-data-issues/adjustments/NUK_Lv3.csv file to read.
+2025-09-30 09:23:21,700 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/NUK_Lv3.csv
+2025-09-30 09:23:21,700 [INFO] No ../PROMICE-AWS-data-issues/flags/NUK_Lv3.csv file to read.
+2025-09-30 09:23:21,700 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NUK_Lv3.csv
+2025-09-30 09:23:21,701 [INFO] No ../PROMICE-AWS-data-issues/adjustments/NUK_Lv3.csv file to read.
+2025-09-30 09:23:21,703 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:23:21,707 [DEBUG] Applying persistent QC in t_i. Filtering 37/2709 samples
+2025-09-30 09:23:21,710 [DEBUG] Applying persistent QC in t_u. Filtering 7/2709 samples
+2025-09-30 09:23:21,714 [DEBUG] Applying persistent QC in p_i. Filtering 25/2709 samples
+2025-09-30 09:23:21,767 [DEBUG] Applying persistent QC in p_u. Filtering 0/2709 samples
+2025-09-30 09:23:21,780 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/2709 samples
+2025-09-30 09:23:21,784 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/2709 samples
+2025-09-30 09:23:21,786 [DEBUG] Applying persistent QC in t_rad. Filtering 0/2709 samples
+2025-09-30 09:23:21,788 [DEBUG] Applying persistent QC in rh_i. Filtering 6/2709 samples
+2025-09-30 09:23:21,790 [DEBUG] Applying persistent QC in rh_u. Filtering 3/2709 samples
+2025-09-30 09:23:21,793 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/2709 samples
+2025-09-30 09:23:21,799 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/2709 samples
+2025-09-30 09:23:22,096 [INFO] Resampling to 60min
+2025-09-30 09:23:22,158 [INFO] Writing to files...
+2025-09-30 09:23:22,383 [INFO] Written to L2_test/tx/NUK_Lv3/NUK_Lv3_hour.csv
+2025-09-30 09:23:22,383 [INFO] Written to L2_test/tx/NUK_Lv3/NUK_Lv3_hour.nc
+2025-09-30 09:23:22,469 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:23:22,469 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:23:22,469 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:23:22,633 [INFO] NUK_Lv3 array loaded from L2_test/tx/NUK_Lv3/NUK_Lv3_hour.nc
+2025-09-30 09:23:22,633 [INFO] Only one file found L2_test/tx/NUK_Lv3/NUK_Lv3_hour.nc...
+2025-09-30 09:23:22,694 [INFO] Writing to files...
+2025-09-30 09:23:22,892 [INFO] Written to L2_test/level_2/NUK_Lv3/NUK_Lv3_hour.csv
+2025-09-30 09:23:22,892 [INFO] Written to L2_test/level_2/NUK_Lv3/NUK_Lv3_hour.nc
+2025-09-30 09:23:22,892 [INFO] Files saved to L2_test/level_2/NUK_Lv3...
+2025-09-30 09:23:22,934 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:23:23,221 [INFO] processing gps_lat without relocation
+2025-09-30 09:23:23,225 [INFO] processing gps_lon without relocation
+2025-09-30 09:23:23,228 [INFO] processing gps_alt without relocation
+2025-09-30 09:23:23,245 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NUK_Lv3.csv
+2025-09-30 09:23:23,245 [INFO] No ../PROMICE-AWS-data-issues/adjustments/NUK_Lv3.csv file to read.
+2025-09-30 09:23:23,246 [INFO] Combining surface height
+2025-09-30 09:23:23,246 [INFO] -> ablation site
+2025-09-30 09:23:23,271 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:23:23,272 [DEBUG] 2025 derived from z_ice_surf
+2025-09-30 09:23:23,272 [DEBUG] 2025: Ablation from 2025-06-10 15:00:00 to 2025-09-28 12:00:00
+2025-09-30 09:23:23,282 [DEBUG] adjusting z to hs1
+2025-09-30 09:23:23,282 [DEBUG] adjusting hs2 to z
+2025-09-30 09:23:23,282 [DEBUG] using end of melt season
+2025-09-30 09:23:23,285 [DEBUG] adjusting hs1
+2025-09-30 09:23:23,285 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:23:23,292 [INFO] surface height combination finished
+2025-09-30 09:23:23,317 [INFO] Calculating thermistor depth
+2025-09-30 09:23:23,340 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:23:23,595 [INFO] Resampling to 60min
+2025-09-30 09:23:23,674 [INFO] Writing to files...
+2025-09-30 09:23:23,859 [INFO] Written to L3_test/stations/NUK_Lv3/NUK_Lv3_hour.csv
+2025-09-30 09:23:23,859 [INFO] Written to L3_test/stations/NUK_Lv3/NUK_Lv3_hour.nc
+2025-09-30 09:23:23,894 [INFO] Resampling to 1D
+2025-09-30 09:23:23,983 [INFO] Writing to files...
+2025-09-30 09:23:24,066 [INFO] Written to L3_test/stations/NUK_Lv3/NUK_Lv3_day.csv
+2025-09-30 09:23:24,066 [INFO] Written to L3_test/stations/NUK_Lv3/NUK_Lv3_day.nc
+2025-09-30 09:23:24,102 [INFO] Resampling to ME
+2025-09-30 09:23:24,193 [INFO] Writing to files...
+2025-09-30 09:23:24,276 [INFO] Written to L3_test/stations/NUK_Lv3/NUK_Lv3_month.csv
+2025-09-30 09:23:24,276 [INFO] Written to L3_test/stations/NUK_Lv3/NUK_Lv3_month.nc
+/n ======== test join_l3 ========= 
+
+NUK_Lv3
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

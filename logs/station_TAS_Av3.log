@@ -1,0 +1,158 @@
+2025-09-30 09:26:55,091 [INFO] AWS(config_file=../aws-l0//tx/config/TAS_Av3.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:26:55,460 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'TAS_Av3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:26:55,466 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/TAS_Av3_300534064381670_1.txt
+2025-09-30 09:26:55,517 [INFO] L0 data successfully loaded from TAS_Av3_300534064381670_1.txt
+2025-09-30 09:26:55,518 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/TAS_Av3_300534064381670_2.txt
+2025-09-30 09:26:55,533 [INFO] L0 data successfully loaded from TAS_Av3_300534064381670_2.txt
+2025-09-30 09:26:55,540 [INFO] Level 1 processing...
+2025-09-30 09:26:55,673 [WARNING] bedrock attribute is not set
+2025-09-30 09:26:55,901 [WARNING] bedrock attribute is not set
+2025-09-30 09:26:56,064 [INFO] Level 2 processing...
+2025-09-30 09:26:56,064 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TAS_Av3.csv
+2025-09-30 09:26:56,067 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/TAS_Av3.csv
+2025-09-30 09:26:56,076 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_1
+2025-09-30 09:26:56,081 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_2
+2025-09-30 09:26:56,082 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_3
+2025-09-30 09:26:56,084 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_4
+2025-09-30 09:26:56,085 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_5
+2025-09-30 09:26:56,086 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_6
+2025-09-30 09:26:56,088 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_7
+2025-09-30 09:26:56,090 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2024-09-18 00:00:00 t_i_8
+2025-09-30 09:26:56,093 [DEBUG] ---> flagging 2024-09-12T06:00:00.000000000 2025-09-18 00:00:00 z_pt_cor
+2025-09-30 09:26:56,096 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wspd_i
+2025-09-30 09:26:56,098 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wspd_u
+2025-09-30 09:26:56,100 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wdir_i
+2025-09-30 09:26:56,103 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wdir_u
+2025-09-30 09:26:56,107 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TAS_Av3.csv
+2025-09-30 09:26:56,126 [DEBUG] ---> None None t_i_1 min_filter -20.0
+2025-09-30 09:26:56,127 [DEBUG] ---> None None t_i_2 min_filter -20.0
+2025-09-30 09:26:56,128 [DEBUG] ---> None None t_i_3 min_filter -20.0
+2025-09-30 09:26:56,132 [DEBUG] ---> None None t_i_4 min_filter -20.0
+2025-09-30 09:26:56,133 [DEBUG] ---> None None t_i_5 min_filter -20.0
+2025-09-30 09:26:56,135 [DEBUG] ---> None None t_i_6 min_filter -20.0
+2025-09-30 09:26:56,137 [DEBUG] ---> None None t_i_7 min_filter -20.0
+2025-09-30 09:26:56,139 [DEBUG] ---> None None t_i_8 min_filter -20.0
+2025-09-30 09:26:56,140 [DEBUG] ---> None None z_boom_u max_filter 3.0
+2025-09-30 09:26:56,148 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:26:56,154 [DEBUG] Applying persistent QC in t_i. Filtering 79/9083 samples
+2025-09-30 09:26:56,158 [DEBUG] Applying persistent QC in t_u. Filtering 12/9083 samples
+2025-09-30 09:26:56,161 [DEBUG] Applying persistent QC in p_i. Filtering 8/9083 samples
+2025-09-30 09:26:56,266 [DEBUG] Applying persistent QC in p_u. Filtering 0/9083 samples
+2025-09-30 09:26:56,278 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 5/9083 samples
+2025-09-30 09:26:56,284 [DEBUG] Applying persistent QC in gps_alt. Filtering 5/9083 samples
+2025-09-30 09:26:56,289 [DEBUG] Applying persistent QC in t_rad. Filtering 0/9083 samples
+2025-09-30 09:26:56,292 [DEBUG] Applying persistent QC in rh_i. Filtering 15/9083 samples
+2025-09-30 09:26:56,294 [DEBUG] Applying persistent QC in rh_u. Filtering 11/9083 samples
+2025-09-30 09:26:56,304 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/9083 samples
+2025-09-30 09:26:56,309 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/9083 samples
+2025-09-30 09:26:56,824 [INFO] Resampling to 60min
+2025-09-30 09:26:56,926 [INFO] Writing to files...
+2025-09-30 09:26:57,314 [INFO] Written to L2_test/tx/TAS_Av3/TAS_Av3_hour.csv
+2025-09-30 09:26:57,314 [INFO] Written to L2_test/tx/TAS_Av3/TAS_Av3_hour.nc
+2025-09-30 09:26:57,314 [INFO] AWS(config_file=../aws-l0//raw/config/TAS_Av3.toml, inpath=../aws-l0//raw/TAS_Av3/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:26:57,624 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'TAS_Av3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:26:57,634 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/TAS_Av3/TAS_Av3_2025_raw.txt
+2025-09-30 09:26:57,762 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/TAS_Av3/TAS_Av3_2025_raw.txt
+2025-09-30 09:26:58,048 [INFO] L0 data successfully loaded from TAS_Av3_2025_raw.txt
+2025-09-30 09:26:58,055 [INFO] Level 1 processing...
+2025-09-30 09:26:58,174 [WARNING] bedrock attribute is not set
+2025-09-30 09:26:58,269 [INFO] Level 2 processing...
+2025-09-30 09:26:58,272 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TAS_Av3.csv
+2025-09-30 09:26:58,277 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/TAS_Av3.csv
+2025-09-30 09:26:58,282 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_1
+2025-09-30 09:26:58,284 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_2
+2025-09-30 09:26:58,285 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_3
+2025-09-30 09:26:58,287 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_4
+2025-09-30 09:26:58,289 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_5
+2025-09-30 09:26:58,290 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_6
+2025-09-30 09:26:58,292 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_7
+2025-09-30 09:26:58,293 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2024-09-18 00:00:00 t_i_8
+2025-09-30 09:26:58,296 [DEBUG] ---> flagging 2024-06-21T12:10:00.000000000 2025-09-18 00:00:00 z_pt_cor
+2025-09-30 09:26:58,298 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wspd_i
+2025-09-30 09:26:58,299 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wspd_u
+2025-09-30 09:26:58,301 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wdir_i
+2025-09-30 09:26:58,302 [DEBUG] ---> flagging 2024-10-25 19:00:00 2025-09-08 15:00:00 wdir_u
+2025-09-30 09:26:58,306 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TAS_Av3.csv
+2025-09-30 09:26:58,319 [DEBUG] ---> None None t_i_1 min_filter -20.0
+2025-09-30 09:26:58,321 [DEBUG] ---> None None t_i_2 min_filter -20.0
+2025-09-30 09:26:58,322 [DEBUG] ---> None None t_i_3 min_filter -20.0
+2025-09-30 09:26:58,323 [DEBUG] ---> None None t_i_4 min_filter -20.0
+2025-09-30 09:26:58,325 [DEBUG] ---> None None t_i_5 min_filter -20.0
+2025-09-30 09:26:58,326 [DEBUG] ---> None None t_i_6 min_filter -20.0
+2025-09-30 09:26:58,327 [DEBUG] ---> None None t_i_7 min_filter -20.0
+2025-09-30 09:26:58,329 [DEBUG] ---> None None t_i_8 min_filter -20.0
+2025-09-30 09:26:58,330 [DEBUG] ---> None None z_boom_u max_filter 3.0
+2025-09-30 09:26:58,339 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:26:58,344 [DEBUG] Applying persistent QC in t_i. Filtering 0/52403 samples
+2025-09-30 09:26:58,348 [DEBUG] Applying persistent QC in t_u. Filtering 4/52403 samples
+2025-09-30 09:26:58,352 [DEBUG] Applying persistent QC in p_i. Filtering 0/52403 samples
+2025-09-30 09:26:58,420 [DEBUG] Applying persistent QC in p_u. Filtering 0/52403 samples
+2025-09-30 09:26:58,431 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/52403 samples
+2025-09-30 09:26:58,437 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/52403 samples
+2025-09-30 09:26:58,440 [DEBUG] Applying persistent QC in t_rad. Filtering 1/52403 samples
+2025-09-30 09:26:58,444 [DEBUG] Applying persistent QC in rh_i. Filtering 0/52403 samples
+2025-09-30 09:26:58,447 [DEBUG] Applying persistent QC in rh_u. Filtering 1/52403 samples
+2025-09-30 09:26:58,453 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/52403 samples
+2025-09-30 09:26:58,458 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/52403 samples
+2025-09-30 09:26:58,852 [INFO] Resampling to 10min
+2025-09-30 09:26:58,940 [INFO] Writing to files...
+2025-09-30 09:27:00,160 [INFO] Written to L2_test/raw/TAS_Av3/TAS_Av3_10min.csv
+2025-09-30 09:27:00,160 [INFO] Written to L2_test/raw/TAS_Av3/TAS_Av3_10min.nc
+2025-09-30 09:27:00,272 [INFO] Resampling to 60min
+2025-09-30 09:27:00,334 [INFO] Writing to files...
+2025-09-30 09:27:00,614 [INFO] Written to L2_test/raw/TAS_Av3/TAS_Av3_hour.csv
+2025-09-30 09:27:00,614 [INFO] Written to L2_test/raw/TAS_Av3/TAS_Av3_hour.nc
+2025-09-30 09:27:00,658 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:27:00,659 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:27:00,659 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:27:00,744 [INFO] TAS_Av3 array loaded from L2_test/raw/TAS_Av3/TAS_Av3_hour.nc
+2025-09-30 09:27:00,772 [INFO] TAS_Av3 array loaded from L2_test/tx/TAS_Av3/TAS_Av3_hour.nc
+2025-09-30 09:27:00,773 [INFO] Combining L2_test/raw/TAS_Av3/TAS_Av3_hour.nc with L2_test/tx/TAS_Av3/TAS_Av3_hour.nc...
+2025-09-30 09:27:00,856 [INFO] Writing to files...
+2025-09-30 09:27:01,141 [INFO] Written to L2_test/level_2/TAS_Av3/TAS_Av3_hour.csv
+2025-09-30 09:27:01,141 [INFO] Written to L2_test/level_2/TAS_Av3/TAS_Av3_hour.nc
+2025-09-30 09:27:01,141 [INFO] Files saved to L2_test/level_2/TAS_Av3...
+2025-09-30 09:27:01,184 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:27:02,638 [INFO] processing gps_lat without relocation
+2025-09-30 09:27:02,642 [INFO] processing gps_lon without relocation
+2025-09-30 09:27:02,645 [INFO] processing gps_alt without relocation
+2025-09-30 09:27:02,657 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TAS_Av3.csv
+2025-09-30 09:27:02,672 [INFO] Combining surface height
+2025-09-30 09:27:02,672 [INFO] -> ablation site
+2025-09-30 09:27:02,720 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:27:02,721 [DEBUG] 2024 no z_ice_surf, just using JJA
+2025-09-30 09:27:02,722 [DEBUG] 2025 no z_ice_surf, just using JJA
+2025-09-30 09:27:02,722 [DEBUG] 2024: Ablation from 2024-06-21 12:00:00 to 2024-08-31 23:00:00
+2025-09-30 09:27:02,730 [DEBUG] adjusting hs1
+2025-09-30 09:27:02,730 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:27:02,732 [DEBUG] 2025: Ablation from 2025-06-01 00:00:00 to 2025-08-31 23:00:00
+2025-09-30 09:27:02,739 [DEBUG] adjusting hs1
+2025-09-30 09:27:02,739 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:27:02,753 [INFO] surface height combination finished
+2025-09-30 09:27:02,775 [INFO] Calculating thermistor depth
+2025-09-30 09:27:02,780 [INFO] No maintenance at TAS_Av3
+2025-09-30 09:27:02,787 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:27:04,504 [INFO] Resampling to 60min
+2025-09-30 09:27:04,604 [INFO] Writing to files...
+2025-09-30 09:27:05,025 [INFO] Written to L3_test/stations/TAS_Av3/TAS_Av3_hour.csv
+2025-09-30 09:27:05,025 [INFO] Written to L3_test/stations/TAS_Av3/TAS_Av3_hour.nc
+2025-09-30 09:27:05,064 [INFO] Resampling to 1D
+2025-09-30 09:27:05,141 [INFO] Writing to files...
+2025-09-30 09:27:05,230 [INFO] Written to L3_test/stations/TAS_Av3/TAS_Av3_day.csv
+2025-09-30 09:27:05,230 [INFO] Written to L3_test/stations/TAS_Av3/TAS_Av3_day.nc
+2025-09-30 09:27:05,267 [INFO] Resampling to ME
+2025-09-30 09:27:05,344 [INFO] Writing to files...
+2025-09-30 09:27:05,402 [INFO] Written to L3_test/stations/TAS_Av3/TAS_Av3_month.csv
+2025-09-30 09:27:05,403 [INFO] Written to L3_test/stations/TAS_Av3/TAS_Av3_month.nc
+/n ======== test join_l3 ========= 
+
+TAS_Av3
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

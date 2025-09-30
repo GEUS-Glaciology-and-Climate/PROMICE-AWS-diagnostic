@@ -1,0 +1,195 @@
+2025-09-30 09:22:19,494 [INFO] AWS(config_file=../aws-l0//tx/config/NAE.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:22:19,926 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'NAE.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:22:19,939 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/NAE_300534063815700_1.txt
+2025-09-30 09:22:19,944 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/NAE_300534063815700_1.txt
+2025-09-30 09:22:19,976 [INFO] L0 data successfully loaded from NAE_300534063815700_1.txt
+2025-09-30 09:22:20,009 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/NAE_300534063819800_2.txt
+2025-09-30 09:22:20,105 [INFO] L0 data successfully loaded from NAE_300534063819800_2.txt
+2025-09-30 09:22:20,110 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/NAE_300534062416350_3.txt
+2025-09-30 09:22:20,140 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/NAE_300534062416350_3.txt
+2025-09-30 09:22:20,208 [INFO] L0 data successfully loaded from NAE_300534062416350_3.txt
+2025-09-30 09:22:20,218 [INFO] Level 1 processing...
+2025-09-30 09:22:20,310 [WARNING] bedrock attribute is not set
+2025-09-30 09:22:20,500 [WARNING] bedrock attribute is not set
+2025-09-30 09:22:20,696 [WARNING] bedrock attribute is not set
+2025-09-30 09:22:20,908 [INFO] Level 2 processing...
+2025-09-30 09:22:20,910 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NAE.csv
+2025-09-30 09:22:20,916 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/NAE.csv
+2025-09-30 09:22:20,929 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_1
+2025-09-30 09:22:20,931 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_2
+2025-09-30 09:22:20,935 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_3
+2025-09-30 09:22:20,937 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_4
+2025-09-30 09:22:20,938 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_5
+2025-09-30 09:22:20,941 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_6
+2025-09-30 09:22:20,942 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_7
+2025-09-30 09:22:20,945 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_8
+2025-09-30 09:22:20,946 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_9
+2025-09-30 09:22:20,948 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_10
+2025-09-30 09:22:20,950 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_11
+2025-09-30 09:22:20,953 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_1
+2025-09-30 09:22:20,954 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_2
+2025-09-30 09:22:20,957 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_3
+2025-09-30 09:22:20,958 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_4
+2025-09-30 09:22:20,961 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_5
+2025-09-30 09:22:20,964 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_6
+2025-09-30 09:22:20,967 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_7
+2025-09-30 09:22:20,969 [DEBUG] ---> flagging 2023-06-01 00:00:00 2025-09-28T11:00:00.000000000 t_i_8
+2025-09-30 09:22:20,971 [DEBUG] ---> flagging 2023-12-18 00:00:00 2024-01-07 00:00:00 p_u
+2025-09-30 09:22:20,976 [DEBUG] ---> flagging 2023-12-18 00:00:00 2024-01-07 00:00:00 p_l
+2025-09-30 09:22:20,978 [DEBUG] ---> flagging 2023-12-18 00:00:00 2024-01-07 00:00:00 p_i
+2025-09-30 09:22:20,980 [DEBUG] ---> flagging 2024-01-18 00:00:00 2024-02-18 00:00:00 p_u
+2025-09-30 09:22:20,982 [DEBUG] ---> flagging 2024-01-18 00:00:00 2024-02-18 00:00:00 p_l
+2025-09-30 09:22:20,984 [DEBUG] ---> flagging 2024-01-18 00:00:00 2024-02-18 00:00:00 p_i
+2025-09-30 09:22:20,988 [DEBUG] ---> flagging 2024-02-25 00:00:00 2024-03-01 00:00:00 p_u
+2025-09-30 09:22:20,990 [DEBUG] ---> flagging 2024-02-25 00:00:00 2024-03-01 00:00:00 p_l
+2025-09-30 09:22:20,992 [DEBUG] ---> flagging 2024-02-25 00:00:00 2024-03-01 00:00:00 p_i
+2025-09-30 09:22:20,995 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-20 00:00:00 p_u
+2025-09-30 09:22:20,999 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-20 00:00:00 p_l
+2025-09-30 09:22:21,002 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-20 00:00:00 p_i
+2025-09-30 09:22:21,004 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wspd_l
+2025-09-30 09:22:21,006 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wspd_i
+2025-09-30 09:22:21,008 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wdir_l
+2025-09-30 09:22:21,009 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wdir_i
+2025-09-30 09:22:21,018 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NAE.csv
+2025-09-30 09:22:21,033 [DEBUG] ---> None None z_boom_l max_filter 3
+2025-09-30 09:22:21,036 [DEBUG] ---> None None z_boom_u min_filter 2
+2025-09-30 09:22:21,044 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:22:21,051 [DEBUG] Applying persistent QC in t_i. Filtering 349/20079 samples
+2025-09-30 09:22:21,056 [DEBUG] Applying persistent QC in t_u. Filtering 97/20079 samples
+2025-09-30 09:22:21,062 [DEBUG] Applying persistent QC in t_l. Filtering 74/20079 samples
+2025-09-30 09:22:21,065 [DEBUG] Applying persistent QC in p_i. Filtering 476/20079 samples
+2025-09-30 09:22:21,155 [DEBUG] Applying persistent QC in p_u. Filtering 0/20079 samples
+2025-09-30 09:22:21,244 [DEBUG] Applying persistent QC in p_l. Filtering 0/20079 samples
+2025-09-30 09:22:21,256 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 142/20079 samples
+2025-09-30 09:22:21,263 [DEBUG] Applying persistent QC in gps_alt. Filtering 143/20079 samples
+2025-09-30 09:22:21,265 [DEBUG] Applying persistent QC in t_rad. Filtering 4/20079 samples
+2025-09-30 09:22:21,269 [DEBUG] Applying persistent QC in rh_i. Filtering 379/20079 samples
+2025-09-30 09:22:21,272 [DEBUG] Applying persistent QC in rh_u. Filtering 134/20079 samples
+2025-09-30 09:22:21,277 [DEBUG] Applying persistent QC in rh_l. Filtering 143/20079 samples
+2025-09-30 09:22:21,282 [DEBUG] Applying persistent QC in wspd_i. Filtering 142/20079 samples
+2025-09-30 09:22:21,289 [DEBUG] Applying persistent QC in wspd_u. Filtering 45/20079 samples
+2025-09-30 09:22:21,296 [DEBUG] Applying persistent QC in wspd_l. Filtering 0/20079 samples
+2025-09-30 09:22:21,893 [INFO] Resampling to 60min
+2025-09-30 09:22:22,015 [INFO] Writing to files...
+2025-09-30 09:22:23,045 [INFO] Written to L2_test/tx/NAE/NAE_hour.csv
+2025-09-30 09:22:23,045 [INFO] Written to L2_test/tx/NAE/NAE_hour.nc
+2025-09-30 09:22:23,046 [INFO] AWS(config_file=../aws-l0//raw/config/NAE.toml, inpath=../aws-l0//raw/NAE/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:22:23,323 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'NAE.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:22:23,329 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/NAE/NAE_2022_raw_transmitted.txt
+2025-09-30 09:22:23,331 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/raw/NAE/NAE_2022_raw_transmitted.txt
+2025-09-30 09:22:23,348 [INFO] L0 data successfully loaded from NAE_2022_raw_transmitted.txt
+2025-09-30 09:22:23,351 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NAE/NAE_2024_raw.txt
+2025-09-30 09:22:23,455 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/NAE/NAE_2024_raw.txt
+2025-09-30 09:22:23,673 [INFO] L0 data successfully loaded from NAE_2024_raw.txt
+2025-09-30 09:22:23,680 [INFO] Level 1 processing...
+2025-09-30 09:22:23,748 [WARNING] bedrock attribute is not set
+2025-09-30 09:22:23,952 [WARNING] bedrock attribute is not set
+2025-09-30 09:22:24,117 [INFO] Level 2 processing...
+2025-09-30 09:22:24,120 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NAE.csv
+2025-09-30 09:22:24,126 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/NAE.csv
+2025-09-30 09:22:24,131 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_1
+2025-09-30 09:22:24,133 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_2
+2025-09-30 09:22:24,135 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_3
+2025-09-30 09:22:24,137 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_4
+2025-09-30 09:22:24,138 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_5
+2025-09-30 09:22:24,140 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_6
+2025-09-30 09:22:24,142 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_7
+2025-09-30 09:22:24,144 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_8
+2025-09-30 09:22:24,145 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_9
+2025-09-30 09:22:24,147 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_10
+2025-09-30 09:22:24,149 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-18 00:00:00 t_i_11
+2025-09-30 09:22:24,151 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_1
+2025-09-30 09:22:24,153 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_2
+2025-09-30 09:22:24,154 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_3
+2025-09-30 09:22:24,156 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_4
+2025-09-30 09:22:24,157 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_5
+2025-09-30 09:22:24,159 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_6
+2025-09-30 09:22:24,161 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_7
+2025-09-30 09:22:24,162 [DEBUG] ---> flagging 2023-06-01 00:00:00 2024-06-13T16:30:00.000000000 t_i_8
+2025-09-30 09:22:24,165 [DEBUG] ---> flagging 2023-12-18 00:00:00 2024-01-07 00:00:00 p_u
+2025-09-30 09:22:24,166 [DEBUG] ---> flagging 2023-12-18 00:00:00 2024-01-07 00:00:00 p_l
+2025-09-30 09:22:24,168 [DEBUG] ---> flagging 2023-12-18 00:00:00 2024-01-07 00:00:00 p_i
+2025-09-30 09:22:24,170 [DEBUG] ---> flagging 2024-01-18 00:00:00 2024-02-18 00:00:00 p_u
+2025-09-30 09:22:24,172 [DEBUG] ---> flagging 2024-01-18 00:00:00 2024-02-18 00:00:00 p_l
+2025-09-30 09:22:24,173 [DEBUG] ---> flagging 2024-01-18 00:00:00 2024-02-18 00:00:00 p_i
+2025-09-30 09:22:24,175 [DEBUG] ---> flagging 2024-02-25 00:00:00 2024-03-01 00:00:00 p_u
+2025-09-30 09:22:24,177 [DEBUG] ---> flagging 2024-02-25 00:00:00 2024-03-01 00:00:00 p_l
+2025-09-30 09:22:24,179 [DEBUG] ---> flagging 2024-02-25 00:00:00 2024-03-01 00:00:00 p_i
+2025-09-30 09:22:24,181 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-20 00:00:00 p_u
+2025-09-30 09:22:24,182 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-20 00:00:00 p_l
+2025-09-30 09:22:24,184 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-20 00:00:00 p_i
+2025-09-30 09:22:24,186 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wspd_l
+2025-09-30 09:22:24,187 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wspd_i
+2025-09-30 09:22:24,189 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wdir_l
+2025-09-30 09:22:24,190 [DEBUG] ---> flagging 2024-03-03 00:00:00 2024-03-25 03:00:00 wdir_i
+2025-09-30 09:22:24,195 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NAE.csv
+2025-09-30 09:22:24,201 [DEBUG] ---> None None z_boom_l max_filter 3
+2025-09-30 09:22:24,203 [DEBUG] ---> None None z_boom_u min_filter 2
+2025-09-30 09:22:24,213 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:22:24,217 [DEBUG] Applying persistent QC in t_i. Filtering 76/51686 samples
+2025-09-30 09:22:24,221 [DEBUG] Applying persistent QC in t_u. Filtering 213/51686 samples
+2025-09-30 09:22:24,225 [DEBUG] Applying persistent QC in t_l. Filtering 98/51686 samples
+2025-09-30 09:22:24,229 [DEBUG] Applying persistent QC in p_i. Filtering 99/51686 samples
+2025-09-30 09:22:24,296 [DEBUG] Applying persistent QC in p_u. Filtering 0/51686 samples
+2025-09-30 09:22:24,363 [DEBUG] Applying persistent QC in p_l. Filtering 0/51686 samples
+2025-09-30 09:22:24,373 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 116/51686 samples
+2025-09-30 09:22:24,378 [DEBUG] Applying persistent QC in gps_alt. Filtering 117/51686 samples
+2025-09-30 09:22:24,382 [DEBUG] Applying persistent QC in t_rad. Filtering 0/51686 samples
+2025-09-30 09:22:24,385 [DEBUG] Applying persistent QC in rh_i. Filtering 68/51686 samples
+2025-09-30 09:22:24,389 [DEBUG] Applying persistent QC in rh_u. Filtering 26/51686 samples
+2025-09-30 09:22:24,392 [DEBUG] Applying persistent QC in rh_l. Filtering 30/51686 samples
+2025-09-30 09:22:24,397 [DEBUG] Applying persistent QC in wspd_i. Filtering 116/51686 samples
+2025-09-30 09:22:24,402 [DEBUG] Applying persistent QC in wspd_u. Filtering 221/51686 samples
+2025-09-30 09:22:24,407 [DEBUG] Applying persistent QC in wspd_l. Filtering 2/51686 samples
+2025-09-30 09:22:24,994 [INFO] Resampling to 10min
+2025-09-30 09:22:25,140 [INFO] Writing to files...
+2025-09-30 09:22:27,818 [INFO] Written to L2_test/raw/NAE/NAE_10min.csv
+2025-09-30 09:22:27,818 [INFO] Written to L2_test/raw/NAE/NAE_10min.nc
+2025-09-30 09:22:27,992 [INFO] Resampling to 60min
+2025-09-30 09:22:28,076 [INFO] Writing to files...
+2025-09-30 09:22:28,635 [INFO] Written to L2_test/raw/NAE/NAE_hour.csv
+2025-09-30 09:22:28,635 [INFO] Written to L2_test/raw/NAE/NAE_hour.nc
+2025-09-30 09:22:28,680 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:22:28,681 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:22:28,681 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:22:28,768 [INFO] NAE array loaded from L2_test/raw/NAE/NAE_hour.nc
+2025-09-30 09:22:28,802 [INFO] NAE array loaded from L2_test/tx/NAE/NAE_hour.nc
+2025-09-30 09:22:28,802 [INFO] Combining L2_test/raw/NAE/NAE_hour.nc with L2_test/tx/NAE/NAE_hour.nc...
+2025-09-30 09:22:28,918 [INFO] Writing to files...
+2025-09-30 09:22:29,822 [INFO] Written to L2_test/level_2/NAE/NAE_hour.csv
+2025-09-30 09:22:29,823 [INFO] Written to L2_test/level_2/NAE/NAE_hour.nc
+2025-09-30 09:22:29,823 [INFO] Files saved to L2_test/level_2/NAE...
+2025-09-30 09:22:29,868 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:22:33,381 [INFO] processing gps_lat with relocation on 2023-06-26T07:00:00
+2025-09-30 09:22:33,388 [INFO] processing gps_lon with relocation on 2023-06-26T07:00:00
+2025-09-30 09:22:33,393 [INFO] processing gps_alt with relocation on 2023-06-26T07:00:00
+2025-09-30 09:22:33,411 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/NAE.csv
+2025-09-30 09:22:33,417 [INFO] Combining surface height
+2025-09-30 09:22:33,418 [INFO] -> did not find z_ice_surf
+2025-09-30 09:22:33,418 [INFO] -> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2
+2025-09-30 09:22:33,469 [INFO] Calculating thermistor depth
+2025-09-30 09:22:33,511 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:22:34,068 [INFO] Resampling to 60min
+2025-09-30 09:22:34,213 [INFO] Writing to files...
+2025-09-30 09:22:35,312 [INFO] Written to L3_test/stations/NAE/NAE_hour.csv
+2025-09-30 09:22:35,313 [INFO] Written to L3_test/stations/NAE/NAE_hour.nc
+2025-09-30 09:22:35,389 [INFO] Resampling to 1D
+2025-09-30 09:22:35,495 [INFO] Writing to files...
+2025-09-30 09:22:35,656 [INFO] Written to L3_test/stations/NAE/NAE_day.csv
+2025-09-30 09:22:35,656 [INFO] Written to L3_test/stations/NAE/NAE_day.nc
+2025-09-30 09:22:35,735 [INFO] Resampling to ME
+2025-09-30 09:22:35,846 [INFO] Writing to files...
+2025-09-30 09:22:35,972 [INFO] Written to L3_test/stations/NAE/NAE_month.csv
+2025-09-30 09:22:35,972 [INFO] Written to L3_test/stations/NAE/NAE_month.nc
+/n ======== test join_l3 ========= 
+
+NAE
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

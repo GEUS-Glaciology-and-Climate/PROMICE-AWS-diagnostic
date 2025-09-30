@@ -1,0 +1,108 @@
+2025-09-30 09:18:25,275 [INFO] AWS(config_file=../aws-l0//raw/config/CEN1.toml, inpath=../aws-l0//raw/CEN1/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:18:25,605 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'CEN1.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:18:25,606 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/CEN1/CEN1_2019_raw.txt
+2025-09-30 09:18:25,816 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/CEN1/CEN1_2019_raw.txt
+2025-09-30 09:18:26,303 [INFO] L0 data successfully loaded from CEN1_2019_raw.txt
+2025-09-30 09:18:26,303 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/CEN1/CEN1_2021_raw.txt
+2025-09-30 09:18:26,608 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/CEN1/CEN1_2021_raw.txt
+2025-09-30 09:18:27,566 [INFO] L0 data successfully loaded from CEN1_2021_raw.txt
+2025-09-30 09:18:27,584 [INFO] Level 1 processing...
+2025-09-30 09:18:27,794 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:28,733 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:29,023 [INFO] Level 2 processing...
+2025-09-30 09:18:29,033 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/CEN1.csv
+2025-09-30 09:18:29,046 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/CEN1.csv
+2025-09-30 09:18:29,051 [DEBUG] ---> flagging 2020-12-18 00:00:00 2021-03-31 20:00:00 wspd_u
+2025-09-30 09:18:29,057 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_1
+2025-09-30 09:18:29,059 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_2
+2025-09-30 09:18:29,062 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_3
+2025-09-30 09:18:29,064 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_4
+2025-09-30 09:18:29,066 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_5
+2025-09-30 09:18:29,068 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_6
+2025-09-30 09:18:29,070 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_7
+2025-09-30 09:18:29,072 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-08-12T20:40:00.000000000 t_i_8
+2025-09-30 09:18:29,076 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_1
+2025-09-30 09:18:29,079 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_2
+2025-09-30 09:18:29,081 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_3
+2025-09-30 09:18:29,084 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_4
+2025-09-30 09:18:29,086 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_5
+2025-09-30 09:18:29,088 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_6
+2025-09-30 09:18:29,090 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_7
+2025-09-30 09:18:29,092 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 00:00:00 t_i_8
+2025-09-30 09:18:29,095 [DEBUG] ---> flagging 2017-07-24T18:00:00.000000000 2017-07-27 12:00:00 z_boom_u
+2025-09-30 09:18:29,105 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/CEN1.csv
+2025-09-30 09:18:29,120 [DEBUG] ---> 2019-10-24 14:00:00 2020-03-28 14:00:00 z_boom_u min_filter 1.7
+2025-09-30 09:18:29,121 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:18:29,122 [DEBUG] ---> None 2017-08-16 00:00:00 z_boom_u min_filter 2.56
+2025-09-30 09:18:29,123 [DEBUG] ---> None 2017-09-25 00:00:00 z_boom_u min_filter 2.09
+2025-09-30 09:18:29,126 [DEBUG] ---> 2017-07-01 00:00:00 2017-08-15 00:00:00 z_stake min_filter 2.56
+2025-09-30 09:18:29,127 [DEBUG] ---> 2019-10-24 14:00:00 2020-03-28 14:00:00 z_stake min_filter 1.81
+2025-09-30 09:18:29,128 [DEBUG] ---> None None z_stake max_filter 3.0
+2025-09-30 09:18:29,128 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:18:29,128 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:18:29,156 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:18:29,165 [DEBUG] Applying persistent QC in t_i. Filtering 0/213135 samples
+2025-09-30 09:18:29,173 [DEBUG] Applying persistent QC in t_u. Filtering 0/213135 samples
+2025-09-30 09:18:29,181 [DEBUG] Applying persistent QC in p_i. Filtering 0/213135 samples
+2025-09-30 09:18:29,263 [DEBUG] Applying persistent QC in p_u. Filtering 0/213135 samples
+2025-09-30 09:18:29,286 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 46327/213135 samples
+2025-09-30 09:18:29,307 [DEBUG] Applying persistent QC in gps_alt. Filtering 46296/213135 samples
+2025-09-30 09:18:29,319 [DEBUG] Applying persistent QC in t_rad. Filtering 0/213135 samples
+2025-09-30 09:18:29,334 [DEBUG] Applying persistent QC in rh_i. Filtering 0/213135 samples
+2025-09-30 09:18:29,346 [DEBUG] Applying persistent QC in rh_u. Filtering 46/213135 samples
+2025-09-30 09:18:29,361 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/213135 samples
+2025-09-30 09:18:29,376 [DEBUG] Applying persistent QC in wspd_u. Filtering 5263/213135 samples
+2025-09-30 09:18:30,278 [INFO] Resampling to 10min
+2025-09-30 09:18:30,477 [INFO] Writing to files...
+2025-09-30 09:18:36,158 [INFO] Written to L2_test/raw/CEN1/CEN1_10min.csv
+2025-09-30 09:18:36,158 [INFO] Written to L2_test/raw/CEN1/CEN1_10min.nc
+2025-09-30 09:18:36,483 [INFO] Resampling to 60min
+2025-09-30 09:18:36,560 [INFO] Writing to files...
+2025-09-30 09:18:37,755 [INFO] Written to L2_test/raw/CEN1/CEN1_hour.csv
+2025-09-30 09:18:37,756 [INFO] Written to L2_test/raw/CEN1/CEN1_hour.nc
+2025-09-30 09:18:37,806 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:18:37,807 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:18:37,807 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:18:37,901 [INFO] CEN1 array loaded from L2_test/raw/CEN1/CEN1_hour.nc
+2025-09-30 09:18:37,902 [INFO] Only one file found L2_test/raw/CEN1/CEN1_hour.nc...
+2025-09-30 09:18:37,978 [INFO] Writing to files...
+2025-09-30 09:18:39,127 [INFO] Written to L2_test/level_2/CEN1/CEN1_hour.csv
+2025-09-30 09:18:39,127 [INFO] Written to L2_test/level_2/CEN1/CEN1_hour.nc
+2025-09-30 09:18:39,127 [INFO] Files saved to L2_test/level_2/CEN1...
+2025-09-30 09:18:39,164 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:18:39,576 [INFO] processing gps_lat without relocation
+2025-09-30 09:18:39,580 [INFO] processing gps_lon without relocation
+2025-09-30 09:18:39,584 [INFO] processing gps_alt without relocation
+2025-09-30 09:18:39,600 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/CEN1.csv
+2025-09-30 09:18:39,608 [DEBUG] ---> 2019-05-16 14:00:00 None z_surf_1 add 1.4
+2025-09-30 09:18:39,609 [DEBUG] ---> 2019-05-16 00:00:00 None z_surf_2 add 1.45
+2025-09-30 09:18:39,610 [INFO] Combining surface height
+2025-09-30 09:18:39,611 [INFO] -> did not find z_ice_surf
+2025-09-30 09:18:39,611 [INFO] -> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2
+2025-09-30 09:18:39,673 [INFO] Calculating thermistor depth
+2025-09-30 09:18:39,680 [INFO] No maintenance at CEN1
+2025-09-30 09:18:39,694 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:18:42,789 [INFO] Resampling to 60min
+2025-09-30 09:18:42,893 [INFO] Writing to files...
+2025-09-30 09:18:44,169 [INFO] Written to L3_test/stations/CEN1/CEN1_hour.csv
+2025-09-30 09:18:44,169 [INFO] Written to L3_test/stations/CEN1/CEN1_hour.nc
+2025-09-30 09:18:44,232 [INFO] Resampling to 1D
+2025-09-30 09:18:44,311 [INFO] Writing to files...
+2025-09-30 09:18:44,452 [INFO] Written to L3_test/stations/CEN1/CEN1_day.csv
+2025-09-30 09:18:44,453 [INFO] Written to L3_test/stations/CEN1/CEN1_day.nc
+2025-09-30 09:18:44,501 [INFO] Resampling to ME
+2025-09-30 09:18:44,578 [INFO] Writing to files...
+2025-09-30 09:18:44,678 [INFO] Written to L3_test/stations/CEN1/CEN1_month.csv
+2025-09-30 09:18:44,678 [INFO] Written to L3_test/stations/CEN1/CEN1_month.nc
+/n ======== test join_l3 ========= 
+
+CEN1
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

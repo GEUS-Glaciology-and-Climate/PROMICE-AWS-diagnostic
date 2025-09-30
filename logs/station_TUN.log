@@ -1,0 +1,194 @@
+2025-09-30 09:27:50,246 [INFO] AWS(config_file=../aws-l0//tx/config/TUN.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:27:50,531 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'TUN.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:27:50,538 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/TUN_300534063816570_1.txt
+2025-09-30 09:27:50,647 [INFO] L0 data successfully loaded from TUN_300534063816570_1.txt
+2025-09-30 09:27:50,647 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/TUN_300534063819800_2.txt
+2025-09-30 09:27:50,671 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/TUN_300534063819800_2.txt
+2025-09-30 09:27:50,739 [INFO] L0 data successfully loaded from TUN_300534063819800_2.txt
+2025-09-30 09:27:50,747 [INFO] Level 1 processing...
+2025-09-30 09:27:50,898 [WARNING] bedrock attribute is not set
+2025-09-30 09:27:51,179 [WARNING] bedrock attribute is not set
+2025-09-30 09:27:51,374 [INFO] Level 2 processing...
+2025-09-30 09:27:51,377 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TUN.csv
+2025-09-30 09:27:51,383 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/TUN.csv
+2025-09-30 09:27:51,391 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_1
+2025-09-30 09:27:51,393 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_2
+2025-09-30 09:27:51,395 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_3
+2025-09-30 09:27:51,396 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_4
+2025-09-30 09:27:51,398 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_5
+2025-09-30 09:27:51,400 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_6
+2025-09-30 09:27:51,401 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_7
+2025-09-30 09:27:51,403 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_8
+2025-09-30 09:27:51,405 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_9
+2025-09-30 09:27:51,407 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_10
+2025-09-30 09:27:51,409 [DEBUG] ---> flagging 2022-05-27T17:00:00.000000000 2022-05-29 19:00:00 t_i_11
+2025-09-30 09:27:51,412 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_1
+2025-09-30 09:27:51,414 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_2
+2025-09-30 09:27:51,418 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_3
+2025-09-30 09:27:51,422 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_4
+2025-09-30 09:27:51,423 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_5
+2025-09-30 09:27:51,425 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_6
+2025-09-30 09:27:51,427 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_7
+2025-09-30 09:27:51,429 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_8
+2025-09-30 09:27:51,430 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_9
+2025-09-30 09:27:51,432 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_10
+2025-09-30 09:27:51,434 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_11
+2025-09-30 09:27:51,436 [DEBUG] ---> flagging 2023-12-19 00:00:00 2024-01-10 19:00:00 p_i
+2025-09-30 09:27:51,438 [DEBUG] ---> flagging 2023-12-19 00:00:00 2024-01-10 19:00:00 p_u
+2025-09-30 09:27:51,439 [DEBUG] ---> flagging 2023-12-19 00:00:00 2024-01-10 19:00:00 p_l
+2025-09-30 09:27:51,441 [DEBUG] ---> flagging 2024-01-17 00:00:00 2024-02-18 19:00:00 p_i
+2025-09-30 09:27:51,443 [DEBUG] ---> flagging 2024-01-17 00:00:00 2024-02-18 19:00:00 p_u
+2025-09-30 09:27:51,445 [DEBUG] ---> flagging 2024-01-17 00:00:00 2024-02-18 19:00:00 p_l
+2025-09-30 09:27:51,447 [DEBUG] ---> flagging 2024-02-27 00:00:00 2024-03-02 19:00:00 p_i
+2025-09-30 09:27:51,448 [DEBUG] ---> flagging 2024-02-27 00:00:00 2024-03-02 19:00:00 p_u
+2025-09-30 09:27:51,450 [DEBUG] ---> flagging 2024-02-27 00:00:00 2024-03-02 19:00:00 p_l
+2025-09-30 09:27:51,452 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-26 19:00:00 p_i
+2025-09-30 09:27:51,453 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-26 19:00:00 p_u
+2025-09-30 09:27:51,455 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-26 19:00:00 p_l
+2025-09-30 09:27:51,457 [DEBUG] ---> flagging 2023-04-04 00:00:00 2023-04-13 00:00:00 p_i
+2025-09-30 09:27:51,458 [DEBUG] ---> flagging 2023-04-04 00:00:00 2023-04-13 00:00:00 p_u
+2025-09-30 09:27:51,460 [DEBUG] ---> flagging 2023-04-04 00:00:00 2023-04-13 00:00:00 p_l
+2025-09-30 09:27:51,463 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TUN.csv
+2025-09-30 09:27:51,470 [INFO] could not adjust p_u p_l not in dataset
+2025-09-30 09:27:51,479 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:27:51,484 [DEBUG] Applying persistent QC in t_i. Filtering 497/26825 samples
+2025-09-30 09:27:51,488 [DEBUG] Applying persistent QC in t_u. Filtering 49/26825 samples
+2025-09-30 09:27:51,491 [DEBUG] Applying persistent QC in t_l. Filtering 53/26825 samples
+2025-09-30 09:27:51,494 [DEBUG] Applying persistent QC in p_i. Filtering 543/26825 samples
+2025-09-30 09:27:51,552 [DEBUG] Applying persistent QC in p_u. Filtering 0/26825 samples
+2025-09-30 09:27:51,625 [DEBUG] Applying persistent QC in p_l. Filtering 0/26825 samples
+2025-09-30 09:27:51,633 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 64/26825 samples
+2025-09-30 09:27:51,638 [DEBUG] Applying persistent QC in gps_alt. Filtering 64/26825 samples
+2025-09-30 09:27:51,641 [DEBUG] Applying persistent QC in t_rad. Filtering 0/26825 samples
+2025-09-30 09:27:51,644 [DEBUG] Applying persistent QC in rh_i. Filtering 472/26825 samples
+2025-09-30 09:27:51,646 [DEBUG] Applying persistent QC in rh_u. Filtering 101/26825 samples
+2025-09-30 09:27:51,649 [DEBUG] Applying persistent QC in rh_l. Filtering 105/26825 samples
+2025-09-30 09:27:51,654 [DEBUG] Applying persistent QC in wspd_i. Filtering 64/26825 samples
+2025-09-30 09:27:51,658 [DEBUG] Applying persistent QC in wspd_u. Filtering 3/26825 samples
+2025-09-30 09:27:51,662 [DEBUG] Applying persistent QC in wspd_l. Filtering 0/26825 samples
+2025-09-30 09:27:52,199 [INFO] Resampling to 60min
+2025-09-30 09:27:52,337 [INFO] Writing to files...
+2025-09-30 09:27:53,498 [INFO] Written to L2_test/tx/TUN/TUN_hour.csv
+2025-09-30 09:27:53,498 [INFO] Written to L2_test/tx/TUN/TUN_hour.nc
+2025-09-30 09:27:53,499 [INFO] AWS(config_file=../aws-l0//raw/config/TUN.toml, inpath=../aws-l0//raw/TUN/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:27:53,775 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'TUN.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:27:53,789 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/TUN/TUN_2023_raw.txt
+2025-09-30 09:27:53,901 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/TUN/TUN_2023_raw.txt
+2025-09-30 09:27:54,098 [INFO] L0 data successfully loaded from TUN_2023_raw.txt
+2025-09-30 09:27:54,103 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/TUN/TUN_2024_raw.txt
+2025-09-30 09:27:54,223 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/TUN/TUN_2024_raw.txt
+2025-09-30 09:27:54,526 [INFO] L0 data successfully loaded from TUN_2024_raw.txt
+2025-09-30 09:27:54,535 [INFO] Level 1 processing...
+2025-09-30 09:27:54,629 [WARNING] bedrock attribute is not set
+2025-09-30 09:27:54,835 [WARNING] bedrock attribute is not set
+2025-09-30 09:27:55,042 [INFO] Level 2 processing...
+2025-09-30 09:27:55,046 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TUN.csv
+2025-09-30 09:27:55,053 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/TUN.csv
+2025-09-30 09:27:55,058 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_1
+2025-09-30 09:27:55,060 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_2
+2025-09-30 09:27:55,062 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_3
+2025-09-30 09:27:55,064 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_4
+2025-09-30 09:27:55,066 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_5
+2025-09-30 09:27:55,068 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_6
+2025-09-30 09:27:55,069 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_7
+2025-09-30 09:27:55,071 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_8
+2025-09-30 09:27:55,073 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_9
+2025-09-30 09:27:55,075 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_10
+2025-09-30 09:27:55,076 [DEBUG] ---> flagging 2022-05-27T18:10:00.000000000 2022-05-29 19:00:00 t_i_11
+2025-09-30 09:27:55,080 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_1
+2025-09-30 09:27:55,082 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_2
+2025-09-30 09:27:55,083 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_3
+2025-09-30 09:27:55,085 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_4
+2025-09-30 09:27:55,087 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_5
+2025-09-30 09:27:55,089 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_6
+2025-09-30 09:27:55,090 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_7
+2025-09-30 09:27:55,092 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_8
+2025-09-30 09:27:55,094 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_9
+2025-09-30 09:27:55,096 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_10
+2025-09-30 09:27:55,097 [DEBUG] ---> flagging 2023-10-26 00:00:00 2024-06-16 19:00:00 t_i_11
+2025-09-30 09:27:55,100 [DEBUG] ---> flagging 2023-12-19 00:00:00 2024-01-10 19:00:00 p_i
+2025-09-30 09:27:55,102 [DEBUG] ---> flagging 2023-12-19 00:00:00 2024-01-10 19:00:00 p_u
+2025-09-30 09:27:55,103 [DEBUG] ---> flagging 2023-12-19 00:00:00 2024-01-10 19:00:00 p_l
+2025-09-30 09:27:55,105 [DEBUG] ---> flagging 2024-01-17 00:00:00 2024-02-18 19:00:00 p_i
+2025-09-30 09:27:55,107 [DEBUG] ---> flagging 2024-01-17 00:00:00 2024-02-18 19:00:00 p_u
+2025-09-30 09:27:55,109 [DEBUG] ---> flagging 2024-01-17 00:00:00 2024-02-18 19:00:00 p_l
+2025-09-30 09:27:55,111 [DEBUG] ---> flagging 2024-02-27 00:00:00 2024-03-02 19:00:00 p_i
+2025-09-30 09:27:55,112 [DEBUG] ---> flagging 2024-02-27 00:00:00 2024-03-02 19:00:00 p_u
+2025-09-30 09:27:55,114 [DEBUG] ---> flagging 2024-02-27 00:00:00 2024-03-02 19:00:00 p_l
+2025-09-30 09:27:55,116 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-26 19:00:00 p_i
+2025-09-30 09:27:55,118 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-26 19:00:00 p_u
+2025-09-30 09:27:55,119 [DEBUG] ---> flagging 2024-03-15 00:00:00 2024-03-26 19:00:00 p_l
+2025-09-30 09:27:55,121 [DEBUG] ---> flagging 2023-04-04 00:00:00 2023-04-13 00:00:00 p_i
+2025-09-30 09:27:55,123 [DEBUG] ---> flagging 2023-04-04 00:00:00 2023-04-13 00:00:00 p_u
+2025-09-30 09:27:55,125 [DEBUG] ---> flagging 2023-04-04 00:00:00 2023-04-13 00:00:00 p_l
+2025-09-30 09:27:55,132 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TUN.csv
+2025-09-30 09:27:55,137 [INFO] could not adjust p_u p_l not in dataset
+2025-09-30 09:27:55,152 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:27:55,157 [DEBUG] Applying persistent QC in t_i. Filtering 0/95481 samples
+2025-09-30 09:27:55,162 [DEBUG] Applying persistent QC in t_u. Filtering 268/95481 samples
+2025-09-30 09:27:55,166 [DEBUG] Applying persistent QC in t_l. Filtering 285/95481 samples
+2025-09-30 09:27:55,172 [DEBUG] Applying persistent QC in p_i. Filtering 0/95481 samples
+2025-09-30 09:27:55,251 [DEBUG] Applying persistent QC in p_u. Filtering 0/95481 samples
+2025-09-30 09:27:55,338 [DEBUG] Applying persistent QC in p_l. Filtering 0/95481 samples
+2025-09-30 09:27:55,352 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 10/95481 samples
+2025-09-30 09:27:55,359 [DEBUG] Applying persistent QC in gps_alt. Filtering 10/95481 samples
+2025-09-30 09:27:55,364 [DEBUG] Applying persistent QC in t_rad. Filtering 0/95481 samples
+2025-09-30 09:27:55,369 [DEBUG] Applying persistent QC in rh_i. Filtering 0/95481 samples
+2025-09-30 09:27:55,374 [DEBUG] Applying persistent QC in rh_u. Filtering 300/95481 samples
+2025-09-30 09:27:55,379 [DEBUG] Applying persistent QC in rh_l. Filtering 337/95481 samples
+2025-09-30 09:27:55,385 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/95481 samples
+2025-09-30 09:27:55,392 [DEBUG] Applying persistent QC in wspd_u. Filtering 79/95481 samples
+2025-09-30 09:27:55,398 [DEBUG] Applying persistent QC in wspd_l. Filtering 44/95481 samples
+2025-09-30 09:27:56,109 [INFO] Resampling to 10min
+2025-09-30 09:27:56,241 [INFO] Writing to files...
+2025-09-30 09:27:59,531 [INFO] Written to L2_test/raw/TUN/TUN_10min.csv
+2025-09-30 09:27:59,531 [INFO] Written to L2_test/raw/TUN/TUN_10min.nc
+2025-09-30 09:27:59,746 [INFO] Resampling to 60min
+2025-09-30 09:27:59,830 [INFO] Writing to files...
+2025-09-30 09:28:00,571 [INFO] Written to L2_test/raw/TUN/TUN_hour.csv
+2025-09-30 09:28:00,571 [INFO] Written to L2_test/raw/TUN/TUN_hour.nc
+2025-09-30 09:28:00,619 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:28:00,619 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:28:00,619 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:28:00,710 [INFO] TUN array loaded from L2_test/raw/TUN/TUN_hour.nc
+2025-09-30 09:28:00,744 [INFO] TUN array loaded from L2_test/tx/TUN/TUN_hour.nc
+2025-09-30 09:28:00,744 [INFO] Combining L2_test/raw/TUN/TUN_hour.nc with L2_test/tx/TUN/TUN_hour.nc...
+2025-09-30 09:28:00,860 [INFO] Writing to files...
+2025-09-30 09:28:01,897 [INFO] Written to L2_test/level_2/TUN/TUN_hour.csv
+2025-09-30 09:28:01,897 [INFO] Written to L2_test/level_2/TUN/TUN_hour.nc
+2025-09-30 09:28:01,897 [INFO] Files saved to L2_test/level_2/TUN...
+2025-09-30 09:28:01,940 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:28:05,499 [INFO] processing gps_lat without relocation
+2025-09-30 09:28:05,504 [INFO] processing gps_lon without relocation
+2025-09-30 09:28:05,509 [INFO] processing gps_alt without relocation
+2025-09-30 09:28:05,529 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/TUN.csv
+2025-09-30 09:28:05,536 [INFO] Combining surface height
+2025-09-30 09:28:05,536 [INFO] -> did not find z_ice_surf
+2025-09-30 09:28:05,536 [INFO] -> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2
+2025-09-30 09:28:05,589 [INFO] Calculating thermistor depth
+2025-09-30 09:28:05,597 [INFO] No maintenance at TUN
+2025-09-30 09:28:05,615 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:28:07,740 [INFO] Resampling to 60min
+2025-09-30 09:28:07,866 [INFO] Writing to files...
+2025-09-30 09:28:09,101 [INFO] Written to L3_test/stations/TUN/TUN_hour.csv
+2025-09-30 09:28:09,101 [INFO] Written to L3_test/stations/TUN/TUN_hour.nc
+2025-09-30 09:28:09,197 [INFO] Resampling to 1D
+2025-09-30 09:28:09,302 [INFO] Writing to files...
+2025-09-30 09:28:09,420 [INFO] Written to L3_test/stations/TUN/TUN_day.csv
+2025-09-30 09:28:09,420 [INFO] Written to L3_test/stations/TUN/TUN_day.nc
+2025-09-30 09:28:09,489 [INFO] Resampling to ME
+2025-09-30 09:28:09,592 [INFO] Writing to files...
+2025-09-30 09:28:09,692 [INFO] Written to L3_test/stations/TUN/TUN_month.csv
+2025-09-30 09:28:09,692 [INFO] Written to L3_test/stations/TUN/TUN_month.nc
+/n ======== test join_l3 ========= 
+
+TUN
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

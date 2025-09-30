@@ -1,0 +1,23 @@
+2025-09-30 09:37:05,912 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:05,913 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:05,913 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:06,166 [INFO] joining SCO_Lv3 SCO_L
+2025-09-30 09:37:06,414 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:06,982 [INFO] Resampling to 60min
+2025-09-30 09:37:07,241 [INFO] Writing to files...
+2025-09-30 09:37:13,394 [INFO] Written to L3_test/sites/SCO_L/SCO_L_hour.csv
+2025-09-30 09:37:13,394 [INFO] Written to L3_test/sites/SCO_L/SCO_L_hour.nc
+2025-09-30 09:37:13,504 [INFO] Resampling to 1D
+2025-09-30 09:37:13,580 [INFO] Writing to files...
+2025-09-30 09:37:13,869 [INFO] Written to L3_test/sites/SCO_L/SCO_L_day.csv
+2025-09-30 09:37:13,869 [INFO] Written to L3_test/sites/SCO_L/SCO_L_day.nc
+2025-09-30 09:37:13,986 [INFO] Resampling to MS
+2025-09-30 09:37:14,060 [INFO] Writing to files...
+2025-09-30 09:37:14,130 [INFO] Written to L3_test/sites/SCO_L/SCO_L_month.csv
+2025-09-30 09:37:14,130 [INFO] Written to L3_test/sites/SCO_L/SCO_L_month.nc
+/n ======== test join_l3 ========= 
+
+SCO_L
+SCO_Lv3 array loaded from L3_test/stations/SCO_Lv3/SCO_Lv3_hour.nc
+SCO_L array loaded from L3_test/stations/SCO_L/SCO_L_hour.nc

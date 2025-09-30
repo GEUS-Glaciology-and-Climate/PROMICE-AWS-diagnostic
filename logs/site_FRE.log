@@ -1,0 +1,22 @@
+2025-09-30 09:36:10,434 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:10,435 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:10,435 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:10,625 [INFO] joining FRE
+2025-09-30 09:36:10,768 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:11,038 [INFO] Resampling to 60min
+2025-09-30 09:36:11,259 [INFO] Writing to files...
+2025-09-30 09:36:13,613 [INFO] Written to L3_test/sites/FRE/FRE_hour.csv
+2025-09-30 09:36:13,613 [INFO] Written to L3_test/sites/FRE/FRE_hour.nc
+2025-09-30 09:36:13,662 [INFO] Resampling to 1D
+2025-09-30 09:36:13,740 [INFO] Writing to files...
+2025-09-30 09:36:13,926 [INFO] Written to L3_test/sites/FRE/FRE_day.csv
+2025-09-30 09:36:13,926 [INFO] Written to L3_test/sites/FRE/FRE_day.nc
+2025-09-30 09:36:13,975 [INFO] Resampling to MS
+2025-09-30 09:36:14,112 [INFO] Writing to files...
+2025-09-30 09:36:14,222 [INFO] Written to L3_test/sites/FRE/FRE_month.csv
+2025-09-30 09:36:14,223 [INFO] Written to L3_test/sites/FRE/FRE_month.nc
+/n ======== test join_l3 ========= 
+
+FRE
+FRE array loaded from L3_test/stations/FRE/FRE_hour.nc

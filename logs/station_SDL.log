@@ -1,0 +1,185 @@
+2025-09-30 09:25:50,557 [INFO] AWS(config_file=../aws-l0//tx/config/SDL.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:25:51,115 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'SDL.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:25:51,123 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/SDL_300534063815680_1.txt
+2025-09-30 09:25:51,280 [INFO] L0 data successfully loaded from SDL_300534063815680_1.txt
+2025-09-30 09:25:51,286 [INFO] Level 1 processing...
+2025-09-30 09:25:51,512 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:51,789 [INFO] Level 2 processing...
+2025-09-30 09:25:51,791 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SDL.csv
+2025-09-30 09:25:51,798 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/SDL.csv
+2025-09-30 09:25:51,812 [DEBUG] ---> flagging 2023-06-24 10:00:00 2024-05-24 16:00:00 p_l
+2025-09-30 09:25:51,815 [DEBUG] ---> flagging 2023-06-24 10:00:00 2024-05-24 16:00:00 rh_l
+2025-09-30 09:25:51,821 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_1
+2025-09-30 09:25:51,825 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_2
+2025-09-30 09:25:51,829 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_3
+2025-09-30 09:25:51,832 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_4
+2025-09-30 09:25:51,834 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_5
+2025-09-30 09:25:51,838 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_6
+2025-09-30 09:25:51,841 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_7
+2025-09-30 09:25:51,843 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_8
+2025-09-30 09:25:51,847 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_9
+2025-09-30 09:25:51,851 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_10
+2025-09-30 09:25:51,853 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_11
+2025-09-30 09:25:51,857 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SDL.csv
+2025-09-30 09:25:51,879 [DEBUG] ---> None None t_i_1 min_filter -30.0
+2025-09-30 09:25:51,881 [DEBUG] ---> None None t_i_10 min_filter -30.0
+2025-09-30 09:25:51,883 [DEBUG] ---> None None t_i_11 min_filter -30.0
+2025-09-30 09:25:51,885 [DEBUG] ---> None None t_i_2 min_filter -30.0
+2025-09-30 09:25:51,886 [DEBUG] ---> None None t_i_3 min_filter -30.0
+2025-09-30 09:25:51,891 [DEBUG] ---> None None t_i_4 min_filter -30.0
+2025-09-30 09:25:51,893 [DEBUG] ---> None None t_i_5 min_filter -30.0
+2025-09-30 09:25:51,895 [DEBUG] ---> None None t_i_6 min_filter -30.0
+2025-09-30 09:25:51,897 [DEBUG] ---> None None t_i_7 min_filter -30.0
+2025-09-30 09:25:51,900 [DEBUG] ---> None None t_i_8 min_filter -30.0
+2025-09-30 09:25:51,902 [DEBUG] ---> None None t_i_9 min_filter -30.0
+2025-09-30 09:25:51,905 [DEBUG] ---> None 2025-05-24 00:00:00 z_boom_l min_filter 1.0
+2025-09-30 09:25:51,908 [DEBUG] ---> None 2025-05-24 00:00:00 z_boom_u min_filter 1.76
+2025-09-30 09:25:51,908 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:25:51,909 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:25:51,919 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:25:51,925 [DEBUG] Applying persistent QC in t_i. Filtering 167/11781 samples
+2025-09-30 09:25:51,928 [DEBUG] Applying persistent QC in t_u. Filtering 7/11781 samples
+2025-09-30 09:25:51,933 [DEBUG] Applying persistent QC in t_l. Filtering 14/11781 samples
+2025-09-30 09:25:51,938 [DEBUG] Applying persistent QC in p_i. Filtering 210/11781 samples
+2025-09-30 09:25:52,041 [DEBUG] Applying persistent QC in p_u. Filtering 0/11781 samples
+2025-09-30 09:25:52,150 [DEBUG] Applying persistent QC in p_l. Filtering 0/11781 samples
+2025-09-30 09:25:52,164 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/11781 samples
+2025-09-30 09:25:52,173 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/11781 samples
+2025-09-30 09:25:52,179 [DEBUG] Applying persistent QC in t_rad. Filtering 2/11781 samples
+2025-09-30 09:25:52,184 [DEBUG] Applying persistent QC in rh_i. Filtering 157/11781 samples
+2025-09-30 09:25:52,191 [DEBUG] Applying persistent QC in rh_u. Filtering 142/11781 samples
+2025-09-30 09:25:52,195 [DEBUG] Applying persistent QC in rh_l. Filtering 121/11781 samples
+2025-09-30 09:25:52,202 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/11781 samples
+2025-09-30 09:25:52,208 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/11781 samples
+2025-09-30 09:25:52,215 [DEBUG] Applying persistent QC in wspd_l. Filtering 0/11781 samples
+2025-09-30 09:25:52,739 [INFO] Resampling to 60min
+2025-09-30 09:25:52,834 [INFO] Writing to files...
+2025-09-30 09:25:53,465 [INFO] Written to L2_test/tx/SDL/SDL_hour.csv
+2025-09-30 09:25:53,465 [INFO] Written to L2_test/tx/SDL/SDL_hour.nc
+2025-09-30 09:25:53,466 [INFO] AWS(config_file=../aws-l0//raw/config/SDL.toml, inpath=../aws-l0//raw/SDL/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:25:53,802 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'SDL.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:25:53,812 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2022_raw_corrected.txt
+2025-09-30 09:25:53,967 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2022_raw_corrected.txt
+2025-09-30 09:25:54,321 [INFO] L0 data successfully loaded from SDL_2022_raw_corrected.txt
+2025-09-30 09:25:55,142 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2023_raw.txt
+2025-09-30 09:25:55,173 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2023_raw.txt
+2025-09-30 09:25:55,257 [INFO] L0 data successfully loaded from SDL_2023_raw.txt
+2025-09-30 09:25:55,260 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2024_raw.txt
+2025-09-30 09:25:55,347 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2024_raw.txt
+2025-09-30 09:25:55,581 [INFO] L0 data successfully loaded from SDL_2024_raw.txt
+2025-09-30 09:25:55,584 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2025_raw.txt
+2025-09-30 09:25:55,681 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/SDL/SDL_2025_raw.txt
+2025-09-30 09:25:55,903 [INFO] L0 data successfully loaded from SDL_2025_raw.txt
+2025-09-30 09:25:55,922 [INFO] Level 1 processing...
+2025-09-30 09:25:56,024 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:56,216 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:56,424 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:56,639 [WARNING] bedrock attribute is not set
+2025-09-30 09:25:57,094 [INFO] Level 2 processing...
+2025-09-30 09:25:57,103 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SDL.csv
+2025-09-30 09:25:57,112 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/SDL.csv
+2025-09-30 09:25:57,116 [DEBUG] ---> flagging 2023-06-24 10:00:00 2024-05-24 16:00:00 p_l
+2025-09-30 09:25:57,119 [DEBUG] ---> flagging 2023-06-24 10:00:00 2024-05-24 16:00:00 rh_l
+2025-09-30 09:25:57,122 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_1
+2025-09-30 09:25:57,124 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_2
+2025-09-30 09:25:57,126 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_3
+2025-09-30 09:25:57,128 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_4
+2025-09-30 09:25:57,130 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_5
+2025-09-30 09:25:57,132 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_6
+2025-09-30 09:25:57,134 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_7
+2025-09-30 09:25:57,136 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_8
+2025-09-30 09:25:57,138 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_9
+2025-09-30 09:25:57,140 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_10
+2025-09-30 09:25:57,142 [DEBUG] ---> flagging 2023-09-15 00:00:00 2024-05-25 00:00:00 t_i_11
+2025-09-30 09:25:57,152 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SDL.csv
+2025-09-30 09:25:57,168 [DEBUG] ---> None None t_i_1 min_filter -30.0
+2025-09-30 09:25:57,169 [DEBUG] ---> None None t_i_10 min_filter -30.0
+2025-09-30 09:25:57,170 [DEBUG] ---> None None t_i_11 min_filter -30.0
+2025-09-30 09:25:57,172 [DEBUG] ---> None None t_i_2 min_filter -30.0
+2025-09-30 09:25:57,173 [DEBUG] ---> None None t_i_3 min_filter -30.0
+2025-09-30 09:25:57,174 [DEBUG] ---> None None t_i_4 min_filter -30.0
+2025-09-30 09:25:57,175 [DEBUG] ---> None None t_i_5 min_filter -30.0
+2025-09-30 09:25:57,177 [DEBUG] ---> None None t_i_6 min_filter -30.0
+2025-09-30 09:25:57,178 [DEBUG] ---> None None t_i_7 min_filter -30.0
+2025-09-30 09:25:57,179 [DEBUG] ---> None None t_i_8 min_filter -30.0
+2025-09-30 09:25:57,180 [DEBUG] ---> None None t_i_9 min_filter -30.0
+2025-09-30 09:25:57,186 [DEBUG] ---> None 2025-05-24 00:00:00 z_boom_l min_filter 1.0
+2025-09-30 09:25:57,188 [DEBUG] ---> None 2025-05-24 00:00:00 z_boom_u min_filter 1.76
+2025-09-30 09:25:57,188 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:25:57,188 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:25:57,213 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:25:57,220 [DEBUG] Applying persistent QC in t_i. Filtering 0/170853 samples
+2025-09-30 09:25:57,228 [DEBUG] Applying persistent QC in t_u. Filtering 137/170853 samples
+2025-09-30 09:25:57,235 [DEBUG] Applying persistent QC in t_l. Filtering 75/170853 samples
+2025-09-30 09:25:57,243 [DEBUG] Applying persistent QC in p_i. Filtering 0/170853 samples
+2025-09-30 09:25:57,339 [DEBUG] Applying persistent QC in p_u. Filtering 0/170853 samples
+2025-09-30 09:25:57,438 [DEBUG] Applying persistent QC in p_l. Filtering 0/170853 samples
+2025-09-30 09:25:57,456 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 15110/170853 samples
+2025-09-30 09:25:57,466 [DEBUG] Applying persistent QC in gps_alt. Filtering 15111/170853 samples
+2025-09-30 09:25:57,473 [DEBUG] Applying persistent QC in t_rad. Filtering 0/170853 samples
+2025-09-30 09:25:57,480 [DEBUG] Applying persistent QC in rh_i. Filtering 0/170853 samples
+2025-09-30 09:25:57,487 [DEBUG] Applying persistent QC in rh_u. Filtering 76/170853 samples
+2025-09-30 09:25:57,495 [DEBUG] Applying persistent QC in rh_l. Filtering 42/170853 samples
+2025-09-30 09:25:57,504 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/170853 samples
+2025-09-30 09:25:57,514 [DEBUG] Applying persistent QC in wspd_u. Filtering 4370/170853 samples
+2025-09-30 09:25:57,523 [DEBUG] Applying persistent QC in wspd_l. Filtering 5861/170853 samples
+2025-09-30 09:25:58,530 [INFO] Resampling to 10min
+2025-09-30 09:25:58,725 [INFO] Writing to files...
+2025-09-30 09:26:04,258 [INFO] Written to L2_test/raw/SDL/SDL_10min.csv
+2025-09-30 09:26:04,258 [INFO] Written to L2_test/raw/SDL/SDL_10min.nc
+2025-09-30 09:26:04,633 [INFO] Resampling to 60min
+2025-09-30 09:26:04,725 [INFO] Writing to files...
+2025-09-30 09:26:05,801 [INFO] Written to L2_test/raw/SDL/SDL_hour.csv
+2025-09-30 09:26:05,802 [INFO] Written to L2_test/raw/SDL/SDL_hour.nc
+2025-09-30 09:26:05,850 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:26:05,851 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:26:05,851 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:26:05,942 [INFO] SDL array loaded from L2_test/raw/SDL/SDL_hour.nc
+2025-09-30 09:26:05,976 [INFO] SDL array loaded from L2_test/tx/SDL/SDL_hour.nc
+2025-09-30 09:26:05,976 [INFO] Combining L2_test/raw/SDL/SDL_hour.nc with L2_test/tx/SDL/SDL_hour.nc...
+2025-09-30 09:26:06,111 [INFO] Writing to files...
+2025-09-30 09:26:07,304 [INFO] Written to L2_test/level_2/SDL/SDL_hour.csv
+2025-09-30 09:26:07,304 [INFO] Written to L2_test/level_2/SDL/SDL_hour.nc
+2025-09-30 09:26:07,304 [INFO] Files saved to L2_test/level_2/SDL...
+2025-09-30 09:26:07,348 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:26:11,043 [INFO] processing gps_lat with relocation on 2023-06-16T01:00:00
+2025-09-30 09:26:11,050 [INFO] processing gps_lon with relocation on 2023-06-16T01:00:00
+2025-09-30 09:26:11,055 [INFO] processing gps_alt with relocation on 2023-06-16T01:00:00
+2025-09-30 09:26:11,073 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/SDL.csv
+2025-09-30 09:26:11,089 [DEBUG] ---> 2022-06-23 14:00:00 None z_surf_1 add 0.5
+2025-09-30 09:26:11,090 [DEBUG] ---> 2023-06-01 00:00:00 None z_surf_1 add 2.25
+2025-09-30 09:26:11,091 [DEBUG] ---> 2024-05-24 18:00:00 None z_surf_1 add 1.575
+2025-09-30 09:26:11,092 [DEBUG] ---> 2025-05-20 14:00:00 None z_surf_1 add 1.5
+2025-09-30 09:26:11,094 [DEBUG] ---> 2022-06-23 14:00:00 None z_surf_2 add 0.5
+2025-09-30 09:26:11,095 [DEBUG] ---> 2023-06-01 00:00:00 None z_surf_2 add 2.15
+2025-09-30 09:26:11,096 [DEBUG] ---> 2024-05-24 18:00:00 None z_surf_2 add 1.525
+2025-09-30 09:26:11,097 [DEBUG] ---> 2025-05-20 14:00:00 None z_surf_2 add 1.5
+2025-09-30 09:26:11,098 [INFO] Combining surface height
+2025-09-30 09:26:11,098 [INFO] -> did not find z_ice_surf
+2025-09-30 09:26:11,099 [INFO] -> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2
+2025-09-30 09:26:11,165 [INFO] Calculating thermistor depth
+2025-09-30 09:26:11,218 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:26:15,930 [INFO] Resampling to 60min
+2025-09-30 09:26:16,059 [INFO] Writing to files...
+2025-09-30 09:26:17,416 [INFO] Written to L3_test/stations/SDL/SDL_hour.csv
+2025-09-30 09:26:17,416 [INFO] Written to L3_test/stations/SDL/SDL_hour.nc
+2025-09-30 09:26:17,501 [INFO] Resampling to 1D
+2025-09-30 09:26:17,607 [INFO] Writing to files...
+2025-09-30 09:26:17,733 [INFO] Written to L3_test/stations/SDL/SDL_day.csv
+2025-09-30 09:26:17,733 [INFO] Written to L3_test/stations/SDL/SDL_day.nc
+2025-09-30 09:26:17,813 [INFO] Resampling to ME
+2025-09-30 09:26:17,916 [INFO] Writing to files...
+2025-09-30 09:26:17,990 [INFO] Written to L3_test/stations/SDL/SDL_month.csv
+2025-09-30 09:26:17,990 [INFO] Written to L3_test/stations/SDL/SDL_month.nc
+/n ======== test join_l3 ========= 
+
+SDL
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

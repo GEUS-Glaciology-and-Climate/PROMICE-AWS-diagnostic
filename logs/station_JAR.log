@@ -1,0 +1,130 @@
+2025-09-30 09:19:20,727 [INFO] AWS(config_file=../aws-l0//tx/config/JAR.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:21,254 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'JAR.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:21,262 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/JAR_300534060520350_1.txt
+2025-09-30 09:19:21,348 [INFO] L0 data successfully loaded from JAR_300534060520350_1.txt
+2025-09-30 09:19:21,358 [INFO] Level 1 processing...
+2025-09-30 09:19:21,556 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:21,715 [INFO] Level 2 processing...
+2025-09-30 09:19:21,716 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/JAR.csv
+2025-09-30 09:19:21,723 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/JAR.csv
+2025-09-30 09:19:21,731 [DEBUG] ---> flagging 2021-05-26T13:00:00.000000000 2022-07-17 00:00:00 z_pt_cor
+2025-09-30 09:19:21,735 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-07-02 00:00:00 z_boom_u
+2025-09-30 09:19:21,738 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/JAR.csv
+2025-09-30 09:19:21,747 [DEBUG] ---> None None gps_lat min_filter 69.488
+2025-09-30 09:19:21,749 [DEBUG] ---> None None gps_lon min_filter 49.717
+2025-09-30 09:19:21,751 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:19:21,752 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:19:21,752 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:19:21,762 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:21,767 [DEBUG] Applying persistent QC in t_i. Filtering 217/6321 samples
+2025-09-30 09:19:21,771 [DEBUG] Applying persistent QC in t_u. Filtering 20/6321 samples
+2025-09-30 09:19:21,775 [DEBUG] Applying persistent QC in p_i. Filtering 84/6321 samples
+2025-09-30 09:19:21,913 [DEBUG] Applying persistent QC in p_u. Filtering 0/6321 samples
+2025-09-30 09:19:21,926 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 13/6321 samples
+2025-09-30 09:19:21,935 [DEBUG] Applying persistent QC in gps_alt. Filtering 19/6321 samples
+2025-09-30 09:19:21,941 [DEBUG] Applying persistent QC in t_rad. Filtering 0/6321 samples
+2025-09-30 09:19:21,946 [DEBUG] Applying persistent QC in rh_i. Filtering 58/6321 samples
+2025-09-30 09:19:21,950 [DEBUG] Applying persistent QC in rh_u. Filtering 32/6321 samples
+2025-09-30 09:19:21,957 [DEBUG] Applying persistent QC in wspd_i. Filtering 42/6321 samples
+2025-09-30 09:19:21,964 [DEBUG] Applying persistent QC in wspd_u. Filtering 23/6321 samples
+2025-09-30 09:19:22,509 [INFO] Resampling to 60min
+2025-09-30 09:19:22,620 [INFO] Writing to files...
+2025-09-30 09:19:23,188 [INFO] Written to L2_test/tx/JAR/JAR_hour.csv
+2025-09-30 09:19:23,188 [INFO] Written to L2_test/tx/JAR/JAR_hour.nc
+2025-09-30 09:19:23,189 [INFO] AWS(config_file=../aws-l0//raw/config/JAR.toml, inpath=../aws-l0//raw/JAR/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:23,557 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'JAR.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:23,904 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/JAR/JAR_2022_raw.dat
+2025-09-30 09:19:23,918 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/JAR/JAR_2022_raw.dat
+2025-09-30 09:19:23,960 [INFO] L0 data successfully loaded from JAR_2022_raw.dat
+2025-09-30 09:19:23,966 [INFO] Level 1 processing...
+2025-09-30 09:19:24,046 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:24,207 [INFO] Level 2 processing...
+2025-09-30 09:19:24,208 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/JAR.csv
+2025-09-30 09:19:24,210 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/JAR.csv
+2025-09-30 09:19:24,215 [DEBUG] ---> flagging 2022-06-16T16:30:00.000000000 2022-07-17 00:00:00 z_pt_cor
+2025-09-30 09:19:24,217 [DEBUG] ---> flagging 2021-07-01 00:00:00 2021-07-02 00:00:00 z_boom_u
+2025-09-30 09:19:24,220 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/JAR.csv
+2025-09-30 09:19:24,227 [DEBUG] ---> None None gps_lat min_filter 69.488
+2025-09-30 09:19:24,228 [DEBUG] ---> None None gps_lon min_filter 49.717
+2025-09-30 09:19:24,230 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:19:24,230 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:19:24,231 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:19:24,233 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:24,237 [DEBUG] Applying persistent QC in t_i. Filtering 0/6909 samples
+2025-09-30 09:19:24,241 [DEBUG] Applying persistent QC in t_u. Filtering 0/6909 samples
+2025-09-30 09:19:24,244 [DEBUG] Applying persistent QC in p_i. Filtering 0/6909 samples
+2025-09-30 09:19:24,311 [DEBUG] Applying persistent QC in p_u. Filtering 0/6909 samples
+2025-09-30 09:19:24,322 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/6909 samples
+2025-09-30 09:19:24,326 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/6909 samples
+2025-09-30 09:19:24,330 [DEBUG] Applying persistent QC in t_rad. Filtering 0/6909 samples
+2025-09-30 09:19:24,333 [DEBUG] Applying persistent QC in rh_i. Filtering 0/6909 samples
+2025-09-30 09:19:24,336 [DEBUG] Applying persistent QC in rh_u. Filtering 0/6909 samples
+2025-09-30 09:19:24,340 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/6909 samples
+2025-09-30 09:19:24,344 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/6909 samples
+2025-09-30 09:19:24,649 [INFO] Resampling to 10min
+2025-09-30 09:19:24,708 [INFO] Writing to files...
+2025-09-30 09:19:24,989 [INFO] Written to L2_test/raw/JAR/JAR_10min.csv
+2025-09-30 09:19:24,989 [INFO] Written to L2_test/raw/JAR/JAR_10min.nc
+2025-09-30 09:19:25,048 [INFO] Resampling to 60min
+2025-09-30 09:19:25,107 [INFO] Writing to files...
+2025-09-30 09:19:25,236 [INFO] Written to L2_test/raw/JAR/JAR_hour.csv
+2025-09-30 09:19:25,236 [INFO] Written to L2_test/raw/JAR/JAR_hour.nc
+2025-09-30 09:19:25,485 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:19:25,486 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:19:25,486 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:19:25,579 [INFO] JAR array loaded from L2_test/raw/JAR/JAR_hour.nc
+2025-09-30 09:19:25,612 [INFO] JAR array loaded from L2_test/tx/JAR/JAR_hour.nc
+2025-09-30 09:19:25,612 [INFO] Combining L2_test/raw/JAR/JAR_hour.nc with L2_test/tx/JAR/JAR_hour.nc...
+2025-09-30 09:19:25,699 [INFO] Writing to files...
+2025-09-30 09:19:26,097 [INFO] Written to L2_test/level_2/JAR/JAR_hour.csv
+2025-09-30 09:19:26,097 [INFO] Written to L2_test/level_2/JAR/JAR_hour.nc
+2025-09-30 09:19:26,097 [INFO] Files saved to L2_test/level_2/JAR...
+2025-09-30 09:19:26,138 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:19:27,669 [INFO] processing gps_lat with relocation on 2022-06-16T16:00:00
+2025-09-30 09:19:27,675 [INFO] processing gps_lon with relocation on 2022-06-16T16:00:00
+2025-09-30 09:19:27,679 [INFO] processing gps_alt with relocation on 2022-06-16T16:00:00
+2025-09-30 09:19:27,693 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/JAR.csv
+2025-09-30 09:19:27,700 [DEBUG] ---> 2022-06-01 00:00:00 None z_surf_1 add 0.4
+2025-09-30 09:19:27,702 [DEBUG] ---> 2022-06-01 00:00:00 None z_surf_2 add 1.4
+2025-09-30 09:19:27,704 [INFO] Combining surface height
+2025-09-30 09:19:27,704 [INFO] -> ablation site
+2025-09-30 09:19:27,760 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:19:27,761 [DEBUG] 2021 no z_ice_surf, just using JJA
+2025-09-30 09:19:27,762 [DEBUG] 2022 derived from z_ice_surf
+2025-09-30 09:19:27,764 [DEBUG] 2023 no z_ice_surf, just using JJA
+2025-09-30 09:19:27,764 [DEBUG] 2023 could not estimate ablation season
+2025-09-30 09:19:27,764 [DEBUG] 2021: Ablation from 2021-06-01 00:00:00 to 2021-08-31 23:00:00
+2025-09-30 09:19:27,772 [DEBUG] 2022: Ablation from 2022-07-06 18:00:00 to 2022-09-19 10:00:00
+2025-09-30 09:19:27,778 [DEBUG] adjusting z to hs1
+2025-09-30 09:19:27,778 [DEBUG] adjusting hs2 to z
+2025-09-30 09:19:27,779 [DEBUG] using end of melt season
+2025-09-30 09:19:27,782 [DEBUG] adjusting hs1
+2025-09-30 09:19:27,782 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:19:27,783 [DEBUG] 2023: Ablation from 2022-12-16 02:00:00 to 2022-12-16 02:00:00
+2025-09-30 09:19:27,804 [INFO] surface height combination finished
+2025-09-30 09:19:27,828 [INFO] Calculating thermistor depth
+2025-09-30 09:19:27,850 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:19:28,044 [INFO] Resampling to 60min
+2025-09-30 09:19:28,134 [INFO] Writing to files...
+2025-09-30 09:19:28,555 [INFO] Written to L3_test/stations/JAR/JAR_hour.csv
+2025-09-30 09:19:28,555 [INFO] Written to L3_test/stations/JAR/JAR_hour.nc
+2025-09-30 09:19:28,596 [INFO] Resampling to 1D
+2025-09-30 09:19:28,675 [INFO] Writing to files...
+2025-09-30 09:19:28,747 [INFO] Written to L3_test/stations/JAR/JAR_day.csv
+2025-09-30 09:19:28,747 [INFO] Written to L3_test/stations/JAR/JAR_day.nc
+2025-09-30 09:19:28,788 [INFO] Resampling to ME
+2025-09-30 09:19:28,869 [INFO] Writing to files...
+2025-09-30 09:19:28,925 [INFO] Written to L3_test/stations/JAR/JAR_month.csv
+2025-09-30 09:19:28,925 [INFO] Written to L3_test/stations/JAR/JAR_month.nc
+/n ======== test join_l3 ========= 
+
+JAR
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

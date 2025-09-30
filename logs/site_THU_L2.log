@@ -1,0 +1,22 @@
+2025-09-30 09:37:34,808 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:34,809 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:34,809 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:34,980 [INFO] joining THU_L2
+2025-09-30 09:37:35,220 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:35,441 [INFO] Resampling to 60min
+2025-09-30 09:37:35,536 [INFO] Writing to files...
+2025-09-30 09:37:36,798 [INFO] Written to L3_test/sites/THU_L2/THU_L2_hour.csv
+2025-09-30 09:37:36,798 [INFO] Written to L3_test/sites/THU_L2/THU_L2_hour.nc
+2025-09-30 09:37:36,849 [INFO] Resampling to 1D
+2025-09-30 09:37:36,968 [INFO] Writing to files...
+2025-09-30 09:37:37,141 [INFO] Written to L3_test/sites/THU_L2/THU_L2_day.csv
+2025-09-30 09:37:37,141 [INFO] Written to L3_test/sites/THU_L2/THU_L2_day.nc
+2025-09-30 09:37:37,213 [INFO] Resampling to MS
+2025-09-30 09:37:37,331 [INFO] Writing to files...
+2025-09-30 09:37:37,434 [INFO] Written to L3_test/sites/THU_L2/THU_L2_month.csv
+2025-09-30 09:37:37,434 [INFO] Written to L3_test/sites/THU_L2/THU_L2_month.nc
+/n ======== test join_l3 ========= 
+
+THU_L2
+THU_L2 array loaded from L3_test/stations/THU_L2/THU_L2_hour.nc

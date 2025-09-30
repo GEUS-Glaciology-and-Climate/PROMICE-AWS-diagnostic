@@ -1,0 +1,26 @@
+2025-09-30 09:37:51,609 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:51,611 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:51,611 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:51,790 [ERROR] 
+***
+ZAC_U was listed as station but could not be found in L3_test/stations/ nor ../GC-Net-Level-1-data-processing/L1/hourly
+***
+2025-09-30 09:37:51,791 [INFO] joining ZAC_Uv3
+2025-09-30 09:37:51,988 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:52,175 [INFO] Resampling to 60min
+2025-09-30 09:37:52,325 [INFO] Writing to files...
+2025-09-30 09:37:53,402 [INFO] Written to L3_test/sites/ZAC_U/ZAC_U_hour.csv
+2025-09-30 09:37:53,402 [INFO] Written to L3_test/sites/ZAC_U/ZAC_U_hour.nc
+2025-09-30 09:37:53,443 [INFO] Resampling to 1D
+2025-09-30 09:37:53,515 [INFO] Writing to files...
+2025-09-30 09:37:53,621 [INFO] Written to L3_test/sites/ZAC_U/ZAC_U_day.csv
+2025-09-30 09:37:53,622 [INFO] Written to L3_test/sites/ZAC_U/ZAC_U_day.nc
+2025-09-30 09:37:53,662 [INFO] Resampling to MS
+2025-09-30 09:37:53,733 [INFO] Writing to files...
+2025-09-30 09:37:53,793 [INFO] Written to L3_test/sites/ZAC_U/ZAC_U_month.csv
+2025-09-30 09:37:53,793 [INFO] Written to L3_test/sites/ZAC_U/ZAC_U_month.nc
+/n ======== test join_l3 ========= 
+
+ZAC_U
+ZAC_Uv3 array loaded from L3_test/stations/ZAC_Uv3/ZAC_Uv3_hour.nc

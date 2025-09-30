@@ -1,0 +1,22 @@
+2025-09-30 09:37:51,566 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:51,566 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:51,567 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:51,707 [INFO] joining WEG_L
+2025-09-30 09:37:51,875 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:52,054 [INFO] Resampling to 60min
+2025-09-30 09:37:52,169 [INFO] Writing to files...
+2025-09-30 09:37:53,398 [INFO] Written to L3_test/sites/WEG_L/WEG_L_hour.csv
+2025-09-30 09:37:53,399 [INFO] Written to L3_test/sites/WEG_L/WEG_L_hour.nc
+2025-09-30 09:37:53,443 [INFO] Resampling to 1D
+2025-09-30 09:37:53,517 [INFO] Writing to files...
+2025-09-30 09:37:53,648 [INFO] Written to L3_test/sites/WEG_L/WEG_L_day.csv
+2025-09-30 09:37:53,649 [INFO] Written to L3_test/sites/WEG_L/WEG_L_day.nc
+2025-09-30 09:37:53,694 [INFO] Resampling to MS
+2025-09-30 09:37:53,766 [INFO] Writing to files...
+2025-09-30 09:37:53,831 [INFO] Written to L3_test/sites/WEG_L/WEG_L_month.csv
+2025-09-30 09:37:53,832 [INFO] Written to L3_test/sites/WEG_L/WEG_L_month.nc
+/n ======== test join_l3 ========= 
+
+WEG_L
+WEG_L array loaded from L3_test/stations/WEG_L/WEG_L_hour.nc

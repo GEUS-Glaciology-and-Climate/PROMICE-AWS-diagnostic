@@ -1,0 +1,22 @@
+2025-09-30 09:37:35,420 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:37:35,420 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:37:35,420 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:37:35,591 [INFO] joining UWN
+2025-09-30 09:37:35,765 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:37:36,055 [INFO] Resampling to 60min
+2025-09-30 09:37:36,171 [INFO] Writing to files...
+2025-09-30 09:37:37,891 [INFO] Written to L3_test/sites/UWN/UWN_hour.csv
+2025-09-30 09:37:37,891 [INFO] Written to L3_test/sites/UWN/UWN_hour.nc
+2025-09-30 09:37:37,962 [INFO] Resampling to 1D
+2025-09-30 09:37:38,032 [INFO] Writing to files...
+2025-09-30 09:37:38,194 [INFO] Written to L3_test/sites/UWN/UWN_day.csv
+2025-09-30 09:37:38,194 [INFO] Written to L3_test/sites/UWN/UWN_day.nc
+2025-09-30 09:37:38,240 [INFO] Resampling to MS
+2025-09-30 09:37:38,309 [INFO] Writing to files...
+2025-09-30 09:37:38,404 [INFO] Written to L3_test/sites/UWN/UWN_month.csv
+2025-09-30 09:37:38,404 [INFO] Written to L3_test/sites/UWN/UWN_month.nc
+/n ======== test join_l3 ========= 
+
+UWN
+UWN array loaded from L3_test/stations/UWN/UWN_hour.nc

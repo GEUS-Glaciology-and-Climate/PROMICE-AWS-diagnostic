@@ -1,0 +1,23 @@
+2025-09-30 09:36:39,484 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:39,486 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:39,486 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:40,288 [INFO] joining NEM NEEM
+2025-09-30 09:36:40,754 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:41,484 [INFO] Resampling to 60min
+2025-09-30 09:36:41,779 [INFO] Writing to files...
+2025-09-30 09:36:47,298 [INFO] Written to L3_test/sites/NEM/NEM_hour.csv
+2025-09-30 09:36:47,298 [INFO] Written to L3_test/sites/NEM/NEM_hour.nc
+2025-09-30 09:36:47,444 [INFO] Resampling to 1D
+2025-09-30 09:36:47,547 [INFO] Writing to files...
+2025-09-30 09:36:47,888 [INFO] Written to L3_test/sites/NEM/NEM_day.csv
+2025-09-30 09:36:47,888 [INFO] Written to L3_test/sites/NEM/NEM_day.nc
+2025-09-30 09:36:48,070 [INFO] Resampling to MS
+2025-09-30 09:36:48,188 [INFO] Writing to files...
+2025-09-30 09:36:48,286 [INFO] Written to L3_test/sites/NEM/NEM_month.csv
+2025-09-30 09:36:48,286 [INFO] Written to L3_test/sites/NEM/NEM_month.nc
+/n ======== test join_l3 ========= 
+
+NEM
+NEM array loaded from L3_test/stations/NEM/NEM_hour.nc
+NEEM array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/NEEM.csv

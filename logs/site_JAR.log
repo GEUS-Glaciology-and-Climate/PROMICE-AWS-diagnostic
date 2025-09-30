@@ -1,0 +1,25 @@
+2025-09-30 09:36:10,104 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:10,105 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:10,105 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:11,648 [INFO] joining JAR_O JAR JAR1
+2025-09-30 09:36:12,394 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:13,401 [INFO] wdir_l in dataframe but not wspd_x_l nor wspd_y_l, recalculating them
+2025-09-30 09:36:13,792 [INFO] Resampling to 60min
+2025-09-30 09:36:14,193 [INFO] Writing to files...
+2025-09-30 09:36:22,044 [INFO] Written to L3_test/sites/JAR/JAR_hour.csv
+2025-09-30 09:36:22,044 [INFO] Written to L3_test/sites/JAR/JAR_hour.nc
+2025-09-30 09:36:22,231 [INFO] Resampling to 1D
+2025-09-30 09:36:22,333 [INFO] Writing to files...
+2025-09-30 09:36:22,730 [INFO] Written to L3_test/sites/JAR/JAR_day.csv
+2025-09-30 09:36:22,730 [INFO] Written to L3_test/sites/JAR/JAR_day.nc
+2025-09-30 09:36:22,943 [INFO] Resampling to MS
+2025-09-30 09:36:23,039 [INFO] Writing to files...
+2025-09-30 09:36:23,132 [INFO] Written to L3_test/sites/JAR/JAR_month.csv
+2025-09-30 09:36:23,132 [INFO] Written to L3_test/sites/JAR/JAR_month.nc
+/n ======== test join_l3 ========= 
+
+JAR
+JAR_O array loaded from L3_test/stations/JAR_O/JAR_O_hour.nc
+JAR1 array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/JAR1.csv
+JAR array loaded from L3_test/stations/JAR/JAR_hour.nc

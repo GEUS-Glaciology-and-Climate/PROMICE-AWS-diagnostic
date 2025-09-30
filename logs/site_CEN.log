@@ -1,0 +1,24 @@
+2025-09-30 09:36:10,300 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:10,301 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:10,301 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:11,824 [INFO] joining CEN2 CEN1 GITS
+2025-09-30 09:36:12,408 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:13,432 [INFO] Resampling to 60min
+2025-09-30 09:36:13,921 [INFO] Writing to files...
+2025-09-30 09:36:22,715 [INFO] Written to L3_test/sites/CEN/CEN_hour.csv
+2025-09-30 09:36:22,715 [INFO] Written to L3_test/sites/CEN/CEN_hour.nc
+2025-09-30 09:36:22,970 [INFO] Resampling to 1D
+2025-09-30 09:36:23,082 [INFO] Writing to files...
+2025-09-30 09:36:23,518 [INFO] Written to L3_test/sites/CEN/CEN_day.csv
+2025-09-30 09:36:23,518 [INFO] Written to L3_test/sites/CEN/CEN_day.nc
+2025-09-30 09:36:23,779 [INFO] Resampling to MS
+2025-09-30 09:36:23,881 [INFO] Writing to files...
+2025-09-30 09:36:23,979 [INFO] Written to L3_test/sites/CEN/CEN_month.csv
+2025-09-30 09:36:23,980 [INFO] Written to L3_test/sites/CEN/CEN_month.nc
+/n ======== test join_l3 ========= 
+
+CEN
+CEN1 array loaded from L3_test/stations/CEN1/CEN1_hour.nc
+GITS array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/GITS.csv
+CEN2 array loaded from L3_test/stations/CEN2/CEN2_hour.nc

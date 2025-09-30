@@ -1,0 +1,121 @@
+2025-09-30 09:24:34,433 [INFO] AWS(config_file=../aws-l0//raw/config/QAS_A.toml, inpath=../aws-l0//raw/QAS_A/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:24:34,812 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'QAS_A.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:24:35,045 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_A/QAS_A_2013_raw.txt
+2025-09-30 09:24:35,061 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_A/QAS_A_2013_raw.txt
+2025-09-30 09:24:35,118 [INFO] L0 data successfully loaded from QAS_A_2013_raw.txt
+2025-09-30 09:24:35,124 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_A/QAS_A_2014_raw.txt
+2025-09-30 09:24:35,279 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_A/QAS_A_2014_raw.txt
+2025-09-30 09:24:35,615 [INFO] L0 data successfully loaded from QAS_A_2014_raw.txt
+2025-09-30 09:24:35,862 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_A/QAS_A_2015_raw_SlimTableMem.txt
+2025-09-30 09:24:35,878 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_A/QAS_A_2015_raw_SlimTableMem.txt
+2025-09-30 09:24:35,937 [INFO] L0 data successfully loaded from QAS_A_2015_raw_SlimTableMem.txt
+2025-09-30 09:24:35,962 [INFO] Level 1 processing...
+2025-09-30 09:24:36,094 [WARNING] bedrock attribute is not set
+2025-09-30 09:24:36,599 [WARNING] bedrock attribute is not set
+2025-09-30 09:24:36,783 [WARNING] bedrock attribute is not set
+2025-09-30 09:24:36,974 [INFO] Level 2 processing...
+2025-09-30 09:24:36,977 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_A.csv
+2025-09-30 09:24:36,991 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/QAS_A.csv
+2025-09-30 09:24:36,999 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 rh_u
+2025-09-30 09:24:37,002 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 t_u
+2025-09-30 09:24:37,004 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 wspd_u
+2025-09-30 09:24:37,006 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 wdir_u
+2025-09-30 09:24:37,008 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 p_u
+2025-09-30 09:24:37,010 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 dsr
+2025-09-30 09:24:37,013 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 usr
+2025-09-30 09:24:37,015 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 dlr
+2025-09-30 09:24:37,018 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 ulr
+2025-09-30 09:24:37,020 [DEBUG] ---> flagging 2015-01-26 00:00:00 2015-08-15 12:00:00 z_boom_u
+2025-09-30 09:24:37,024 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_A.csv
+2025-09-30 09:24:37,041 [DEBUG] ---> None None t_i_1 min_filter -2.0
+2025-09-30 09:24:37,043 [DEBUG] ---> None None t_i_2 min_filter -2.0
+2025-09-30 09:24:37,044 [DEBUG] ---> None None t_i_3 min_filter -2.0
+2025-09-30 09:24:37,046 [DEBUG] ---> None None t_i_4 min_filter -2.0
+2025-09-30 09:24:37,047 [DEBUG] ---> None None t_i_5 min_filter -2.0
+2025-09-30 09:24:37,049 [DEBUG] ---> None None t_i_6 min_filter -2.0
+2025-09-30 09:24:37,052 [DEBUG] ---> 2013-12-01 00:00:00 2013-12-31 00:00:00 t_i_7 min_filter -1.0
+2025-09-30 09:24:37,053 [DEBUG] ---> None None t_i_7 min_filter -2.0
+2025-09-30 09:24:37,056 [DEBUG] ---> 2013-12-01 00:00:00 2013-12-31 00:00:00 t_i_8 min_filter -1.0
+2025-09-30 09:24:37,056 [DEBUG] ---> None None t_i_8 min_filter -2.0
+2025-09-30 09:24:37,059 [DEBUG] ---> 2014-03-15 00:00:00 2014-05-15 00:00:00 z_boom_u max_filter 0.6
+2025-09-30 09:24:37,060 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:24:37,063 [DEBUG] ---> 2014-01-01 00:00:00 2014-04-15 00:00:00 z_stake max_filter 3.4
+2025-09-30 09:24:37,063 [DEBUG] ---> None None z_stake max_filter 3.6
+2025-09-30 09:24:37,076 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:24:37,081 [DEBUG] Applying persistent QC in t_i. Filtering 0/58898 samples
+2025-09-30 09:24:37,085 [DEBUG] Applying persistent QC in t_u. Filtering 0/58898 samples
+2025-09-30 09:24:37,089 [DEBUG] Applying persistent QC in p_i. Filtering 0/58898 samples
+2025-09-30 09:24:37,162 [DEBUG] Applying persistent QC in p_u. Filtering 0/58898 samples
+2025-09-30 09:24:37,173 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 40227/58898 samples
+2025-09-30 09:24:37,179 [DEBUG] Applying persistent QC in gps_alt. Filtering 40263/58898 samples
+2025-09-30 09:24:37,182 [DEBUG] Applying persistent QC in t_rad. Filtering 118/58898 samples
+2025-09-30 09:24:37,186 [DEBUG] Applying persistent QC in rh_i. Filtering 0/58898 samples
+2025-09-30 09:24:37,190 [DEBUG] Applying persistent QC in rh_u. Filtering 57/58898 samples
+2025-09-30 09:24:37,196 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/58898 samples
+2025-09-30 09:24:37,201 [DEBUG] Applying persistent QC in wspd_u. Filtering 519/58898 samples
+2025-09-30 09:24:37,727 [INFO] Resampling to 10min
+2025-09-30 09:24:37,952 [INFO] Writing to files...
+2025-09-30 09:24:39,575 [INFO] Written to L2_test/raw/QAS_A/QAS_A_10min.csv
+2025-09-30 09:24:39,576 [INFO] Written to L2_test/raw/QAS_A/QAS_A_10min.nc
+2025-09-30 09:24:39,707 [INFO] Resampling to 60min
+2025-09-30 09:24:39,779 [INFO] Writing to files...
+2025-09-30 09:24:40,229 [INFO] Written to L2_test/raw/QAS_A/QAS_A_hour.csv
+2025-09-30 09:24:40,229 [INFO] Written to L2_test/raw/QAS_A/QAS_A_hour.nc
+2025-09-30 09:24:40,274 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:24:40,274 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:24:40,275 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:24:40,388 [INFO] QAS_A array loaded from L2_test/raw/QAS_A/QAS_A_hour.nc
+2025-09-30 09:24:40,388 [INFO] Only one file found L2_test/raw/QAS_A/QAS_A_hour.nc...
+2025-09-30 09:24:40,491 [INFO] Writing to files...
+2025-09-30 09:24:41,121 [INFO] Written to L2_test/level_2/QAS_A/QAS_A_hour.csv
+2025-09-30 09:24:41,121 [INFO] Written to L2_test/level_2/QAS_A/QAS_A_hour.nc
+2025-09-30 09:24:41,122 [INFO] Files saved to L2_test/level_2/QAS_A...
+2025-09-30 09:24:41,259 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:24:43,534 [INFO] processing gps_lat without relocation
+2025-09-30 09:24:43,537 [INFO] processing gps_lon without relocation
+2025-09-30 09:24:43,541 [INFO] processing gps_alt without relocation
+2025-09-30 09:24:43,557 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_A.csv
+2025-09-30 09:24:43,570 [INFO] Combining surface height
+2025-09-30 09:24:43,570 [INFO] -> ablation site
+2025-09-30 09:24:43,632 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:24:43,634 [DEBUG] 2012 no z_ice_surf, just using JJA
+2025-09-30 09:24:43,636 [DEBUG] 2013 no z_ice_surf, just using JJA
+2025-09-30 09:24:43,638 [DEBUG] 2014 no z_ice_surf, just using JJA
+2025-09-30 09:24:43,640 [DEBUG] 2015 no z_ice_surf, just using JJA
+2025-09-30 09:24:43,640 [DEBUG] 2012: Ablation from 2012-08-20 17:00:00 to 2012-08-31 23:00:00
+2025-09-30 09:24:43,649 [DEBUG] adjusting hs1
+2025-09-30 09:24:43,649 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:24:43,651 [DEBUG] 2013: Ablation from 2013-06-01 00:00:00 to 2013-08-31 23:00:00
+2025-09-30 09:24:43,658 [DEBUG] adjusting hs1
+2025-09-30 09:24:43,658 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:24:43,659 [DEBUG] 2014: Ablation from 2014-06-01 00:00:00 to 2014-08-31 23:00:00
+2025-09-30 09:24:43,668 [DEBUG] adjusting hs1
+2025-09-30 09:24:43,668 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:24:43,669 [DEBUG] 2015: Ablation from 2015-06-01 00:00:00 to 2015-08-24 17:00:00
+2025-09-30 09:24:43,692 [INFO] surface height combination finished
+2025-09-30 09:24:43,721 [INFO] Calculating thermistor depth
+2025-09-30 09:24:43,749 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:24:44,670 [INFO] Resampling to 60min
+2025-09-30 09:24:44,768 [INFO] Writing to files...
+2025-09-30 09:24:45,440 [INFO] Written to L3_test/stations/QAS_A/QAS_A_hour.csv
+2025-09-30 09:24:45,440 [INFO] Written to L3_test/stations/QAS_A/QAS_A_hour.nc
+2025-09-30 09:24:45,482 [INFO] Resampling to 1D
+2025-09-30 09:24:45,563 [INFO] Writing to files...
+2025-09-30 09:24:45,652 [INFO] Written to L3_test/stations/QAS_A/QAS_A_day.csv
+2025-09-30 09:24:45,652 [INFO] Written to L3_test/stations/QAS_A/QAS_A_day.nc
+2025-09-30 09:24:45,697 [INFO] Resampling to ME
+2025-09-30 09:24:45,775 [INFO] Writing to files...
+2025-09-30 09:24:45,846 [INFO] Written to L3_test/stations/QAS_A/QAS_A_month.csv
+2025-09-30 09:24:45,846 [INFO] Written to L3_test/stations/QAS_A/QAS_A_month.nc
+/n ======== test join_l3 ========= 
+
+QAS_A
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

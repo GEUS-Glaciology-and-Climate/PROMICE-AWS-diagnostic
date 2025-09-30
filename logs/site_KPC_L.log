@@ -1,0 +1,22 @@
+2025-09-30 09:36:26,520 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:26,521 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:26,521 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:26,797 [INFO] joining KPC_L
+2025-09-30 09:36:26,958 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:27,481 [INFO] Resampling to 60min
+2025-09-30 09:36:27,706 [INFO] Writing to files...
+2025-09-30 09:36:33,657 [INFO] Written to L3_test/sites/KPC_L/KPC_L_hour.csv
+2025-09-30 09:36:33,657 [INFO] Written to L3_test/sites/KPC_L/KPC_L_hour.nc
+2025-09-30 09:36:33,758 [INFO] Resampling to 1D
+2025-09-30 09:36:33,833 [INFO] Writing to files...
+2025-09-30 09:36:34,097 [INFO] Written to L3_test/sites/KPC_L/KPC_L_day.csv
+2025-09-30 09:36:34,097 [INFO] Written to L3_test/sites/KPC_L/KPC_L_day.nc
+2025-09-30 09:36:34,196 [INFO] Resampling to MS
+2025-09-30 09:36:34,265 [INFO] Writing to files...
+2025-09-30 09:36:34,334 [INFO] Written to L3_test/sites/KPC_L/KPC_L_month.csv
+2025-09-30 09:36:34,334 [INFO] Written to L3_test/sites/KPC_L/KPC_L_month.nc
+/n ======== test join_l3 ========= 
+
+KPC_L
+KPC_L array loaded from L3_test/stations/KPC_L/KPC_L_hour.nc

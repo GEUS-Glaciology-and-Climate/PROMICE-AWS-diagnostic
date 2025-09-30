@@ -1,0 +1,152 @@
+2025-09-30 09:24:34,757 [INFO] AWS(config_file=../aws-l0//tx/config/QAS_Mv3.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:24:35,156 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'QAS_Mv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:24:35,164 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/QAS_Mv3_300534063811790_1.txt
+2025-09-30 09:24:35,205 [INFO] L0 data successfully loaded from QAS_Mv3_300534063811790_1.txt
+2025-09-30 09:24:35,211 [INFO] Level 1 processing...
+2025-09-30 09:24:35,345 [WARNING] bedrock attribute is not set
+2025-09-30 09:24:35,470 [INFO] Level 2 processing...
+2025-09-30 09:24:35,471 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_Mv3.csv
+2025-09-30 09:24:35,473 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/QAS_Mv3.csv
+2025-09-30 09:24:35,478 [DEBUG] ---> flagging 2023-09-23 12:00:00 2024-05-01 12:00:00 z_pt_cor
+2025-09-30 09:24:35,480 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 p_u
+2025-09-30 09:24:35,481 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 p_i
+2025-09-30 09:24:35,483 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 t_u
+2025-09-30 09:24:35,484 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 t_i
+2025-09-30 09:24:35,486 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 rh_u
+2025-09-30 09:24:35,488 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 rh_i
+2025-09-30 09:24:35,490 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_Mv3.csv
+2025-09-30 09:24:35,503 [DEBUG] ---> None None t_i_1 min_filter -20.0
+2025-09-30 09:24:35,504 [DEBUG] ---> None None t_i_2 min_filter -20.0
+2025-09-30 09:24:35,505 [DEBUG] ---> None None t_i_3 min_filter -20.0
+2025-09-30 09:24:35,507 [DEBUG] ---> None None t_i_4 min_filter -20.0
+2025-09-30 09:24:35,509 [DEBUG] ---> None None t_i_5 min_filter -20.0
+2025-09-30 09:24:35,510 [DEBUG] ---> None None t_i_6 min_filter -20.0
+2025-09-30 09:24:35,511 [DEBUG] ---> None None t_i_7 min_filter -20.0
+2025-09-30 09:24:35,512 [DEBUG] ---> None None t_i_8 min_filter -20.0
+2025-09-30 09:24:35,514 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:24:35,514 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:24:35,517 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:24:35,520 [DEBUG] Applying persistent QC in t_i. Filtering 23/2403 samples
+2025-09-30 09:24:35,522 [DEBUG] Applying persistent QC in t_u. Filtering 2/2403 samples
+2025-09-30 09:24:35,525 [DEBUG] Applying persistent QC in p_i. Filtering 13/2403 samples
+2025-09-30 09:24:35,577 [DEBUG] Applying persistent QC in p_u. Filtering 0/2403 samples
+2025-09-30 09:24:35,584 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/2403 samples
+2025-09-30 09:24:35,588 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/2403 samples
+2025-09-30 09:24:35,590 [DEBUG] Applying persistent QC in t_rad. Filtering 0/2403 samples
+2025-09-30 09:24:35,592 [DEBUG] Applying persistent QC in rh_i. Filtering 3/2403 samples
+2025-09-30 09:24:35,594 [DEBUG] Applying persistent QC in rh_u. Filtering 0/2403 samples
+2025-09-30 09:24:35,597 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/2403 samples
+2025-09-30 09:24:35,600 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/2403 samples
+2025-09-30 09:24:35,915 [INFO] Resampling to 60min
+2025-09-30 09:24:35,975 [INFO] Writing to files...
+2025-09-30 09:24:36,167 [INFO] Written to L2_test/tx/QAS_Mv3/QAS_Mv3_hour.csv
+2025-09-30 09:24:36,169 [INFO] Written to L2_test/tx/QAS_Mv3/QAS_Mv3_hour.nc
+2025-09-30 09:24:36,170 [INFO] AWS(config_file=../aws-l0//raw/config/QAS_Mv3.toml, inpath=../aws-l0//raw/QAS_Mv3/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:24:36,485 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'QAS_Mv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:24:36,912 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_Mv3/QAS_Mv3_2024_STM.txt
+2025-09-30 09:24:37,262 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/QAS_Mv3/QAS_Mv3_2024_STM.txt
+2025-09-30 09:24:37,324 [INFO] L0 data successfully loaded from QAS_Mv3_2024_STM.txt
+2025-09-30 09:24:37,329 [INFO] Level 1 processing...
+2025-09-30 09:24:37,521 [WARNING] bedrock attribute is not set
+2025-09-30 09:24:37,677 [INFO] Level 2 processing...
+2025-09-30 09:24:37,679 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_Mv3.csv
+2025-09-30 09:24:37,683 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/QAS_Mv3.csv
+2025-09-30 09:24:37,687 [DEBUG] ---> flagging 2023-09-23 12:00:00 2024-05-01 12:00:00 z_pt_cor
+2025-09-30 09:24:37,689 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 p_u
+2025-09-30 09:24:37,692 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 p_i
+2025-09-30 09:24:37,694 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 t_u
+2025-09-30 09:24:37,701 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 t_i
+2025-09-30 09:24:37,703 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 rh_u
+2025-09-30 09:24:37,705 [DEBUG] ---> flagging 2025-06-29 12:00:00 2025-09-05 12:00:00 rh_i
+2025-09-30 09:24:37,708 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_Mv3.csv
+2025-09-30 09:24:37,726 [DEBUG] ---> None None t_i_1 min_filter -20.0
+2025-09-30 09:24:37,730 [DEBUG] ---> None None t_i_2 min_filter -20.0
+2025-09-30 09:24:37,731 [DEBUG] ---> None None t_i_3 min_filter -20.0
+2025-09-30 09:24:37,733 [DEBUG] ---> None None t_i_4 min_filter -20.0
+2025-09-30 09:24:37,735 [DEBUG] ---> None None t_i_5 min_filter -20.0
+2025-09-30 09:24:37,736 [DEBUG] ---> None None t_i_6 min_filter -20.0
+2025-09-30 09:24:37,737 [DEBUG] ---> None None t_i_7 min_filter -20.0
+2025-09-30 09:24:37,739 [DEBUG] ---> None None t_i_8 min_filter -20.0
+2025-09-30 09:24:37,741 [DEBUG] ---> None None z_boom_u max_filter 2.8
+2025-09-30 09:24:37,741 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:24:37,743 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:24:37,746 [DEBUG] Applying persistent QC in t_i. Filtering 147/8802 samples
+2025-09-30 09:24:37,749 [DEBUG] Applying persistent QC in t_u. Filtering 6/8802 samples
+2025-09-30 09:24:37,753 [DEBUG] Applying persistent QC in p_i. Filtering 75/8802 samples
+2025-09-30 09:24:37,821 [DEBUG] Applying persistent QC in p_u. Filtering 0/8802 samples
+2025-09-30 09:24:37,830 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/8802 samples
+2025-09-30 09:24:37,833 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/8802 samples
+2025-09-30 09:24:37,836 [DEBUG] Applying persistent QC in t_rad. Filtering 0/8802 samples
+2025-09-30 09:24:37,838 [DEBUG] Applying persistent QC in rh_i. Filtering 13/8802 samples
+2025-09-30 09:24:37,840 [DEBUG] Applying persistent QC in rh_u. Filtering 16/8802 samples
+2025-09-30 09:24:37,844 [DEBUG] Applying persistent QC in wspd_i. Filtering 51/8802 samples
+2025-09-30 09:24:37,849 [DEBUG] Applying persistent QC in wspd_u. Filtering 48/8802 samples
+2025-09-30 09:24:38,133 [INFO] Resampling to 60min
+2025-09-30 09:24:38,215 [INFO] Writing to files...
+2025-09-30 09:24:38,575 [INFO] Written to L2_test/raw/QAS_Mv3/QAS_Mv3_hour.csv
+2025-09-30 09:24:38,575 [INFO] Written to L2_test/raw/QAS_Mv3/QAS_Mv3_hour.nc
+2025-09-30 09:24:38,620 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:24:38,620 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:24:38,620 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:24:38,715 [INFO] QAS_Mv3 array loaded from L2_test/raw/QAS_Mv3/QAS_Mv3_hour.nc
+2025-09-30 09:24:38,745 [INFO] QAS_Mv3 array loaded from L2_test/tx/QAS_Mv3/QAS_Mv3_hour.nc
+2025-09-30 09:24:38,745 [INFO] Combining L2_test/raw/QAS_Mv3/QAS_Mv3_hour.nc with L2_test/tx/QAS_Mv3/QAS_Mv3_hour.nc...
+2025-09-30 09:24:38,836 [INFO] Writing to files...
+2025-09-30 09:24:39,268 [INFO] Written to L2_test/level_2/QAS_Mv3/QAS_Mv3_hour.csv
+2025-09-30 09:24:39,268 [INFO] Written to L2_test/level_2/QAS_Mv3/QAS_Mv3_hour.nc
+2025-09-30 09:24:39,269 [INFO] Files saved to L2_test/level_2/QAS_Mv3...
+2025-09-30 09:24:39,310 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:24:40,062 [INFO] processing gps_lat without relocation
+2025-09-30 09:24:40,065 [INFO] processing gps_lon without relocation
+2025-09-30 09:24:40,068 [INFO] processing gps_alt without relocation
+2025-09-30 09:24:40,079 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/QAS_Mv3.csv
+2025-09-30 09:24:40,093 [DEBUG] ---> 2024-09-01 15:00:00 None z_surf_2 add -2.4
+2025-09-30 09:24:40,095 [INFO] Combining surface height
+2025-09-30 09:24:40,095 [INFO] -> ablation site
+2025-09-30 09:24:40,148 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:24:40,150 [DEBUG] 2023 no z_ice_surf, just using JJA
+2025-09-30 09:24:40,151 [DEBUG] 2024 derived from z_ice_surf
+2025-09-30 09:24:40,151 [DEBUG] 2025 derived from z_ice_surf
+2025-09-30 09:24:40,152 [DEBUG] 2023: Ablation from 2023-08-31 20:00:00 to 2023-08-31 23:00:00
+2025-09-30 09:24:40,159 [DEBUG] adjusting hs1
+2025-09-30 09:24:40,159 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:24:40,161 [DEBUG] 2024: Ablation from 2024-07-03 07:00:00 to 2024-09-01 13:00:00
+2025-09-30 09:24:40,166 [DEBUG] adjusting z to hs1
+2025-09-30 09:24:40,167 [DEBUG] adjusting hs2 to z
+2025-09-30 09:24:40,167 [DEBUG] using end of melt season
+2025-09-30 09:24:40,169 [DEBUG] adjusting hs1
+2025-09-30 09:24:40,169 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:24:40,170 [DEBUG] 2025: Ablation from 2025-07-04 03:00:00 to 2025-09-25 23:00:00
+2025-09-30 09:24:40,176 [DEBUG] adjusting z to hs1
+2025-09-30 09:24:40,176 [DEBUG] adjusting hs2 to z
+2025-09-30 09:24:40,176 [DEBUG] using end of melt season
+2025-09-30 09:24:40,178 [DEBUG] adjusting hs1
+2025-09-30 09:24:40,179 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:24:40,190 [INFO] surface height combination finished
+2025-09-30 09:24:40,219 [INFO] Calculating thermistor depth
+2025-09-30 09:24:40,225 [INFO] No maintenance at QAS_Mv3
+2025-09-30 09:24:40,237 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:24:41,727 [INFO] Resampling to 60min
+2025-09-30 09:24:41,819 [INFO] Writing to files...
+2025-09-30 09:24:42,377 [INFO] Written to L3_test/stations/QAS_Mv3/QAS_Mv3_hour.csv
+2025-09-30 09:24:42,377 [INFO] Written to L3_test/stations/QAS_Mv3/QAS_Mv3_hour.nc
+2025-09-30 09:24:42,419 [INFO] Resampling to 1D
+2025-09-30 09:24:42,498 [INFO] Writing to files...
+2025-09-30 09:24:42,590 [INFO] Written to L3_test/stations/QAS_Mv3/QAS_Mv3_day.csv
+2025-09-30 09:24:42,590 [INFO] Written to L3_test/stations/QAS_Mv3/QAS_Mv3_day.nc
+2025-09-30 09:24:42,629 [INFO] Resampling to ME
+2025-09-30 09:24:42,706 [INFO] Writing to files...
+2025-09-30 09:24:42,773 [INFO] Written to L3_test/stations/QAS_Mv3/QAS_Mv3_month.csv
+2025-09-30 09:24:42,773 [INFO] Written to L3_test/stations/QAS_Mv3/QAS_Mv3_month.nc
+/n ======== test join_l3 ========= 
+
+QAS_Mv3
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

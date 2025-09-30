@@ -1,0 +1,22 @@
+2025-09-30 09:36:54,901 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:54,902 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:54,902 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:55,102 [INFO] joining NUK_N
+2025-09-30 09:36:55,239 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:55,428 [INFO] Resampling to 60min
+2025-09-30 09:36:55,527 [INFO] Writing to files...
+2025-09-30 09:36:57,033 [INFO] Written to L3_test/sites/NUK_N/NUK_N_hour.csv
+2025-09-30 09:36:57,033 [INFO] Written to L3_test/sites/NUK_N/NUK_N_hour.nc
+2025-09-30 09:36:57,075 [INFO] Resampling to 1D
+2025-09-30 09:36:57,146 [INFO] Writing to files...
+2025-09-30 09:36:57,277 [INFO] Written to L3_test/sites/NUK_N/NUK_N_day.csv
+2025-09-30 09:36:57,277 [INFO] Written to L3_test/sites/NUK_N/NUK_N_day.nc
+2025-09-30 09:36:57,319 [INFO] Resampling to MS
+2025-09-30 09:36:57,388 [INFO] Writing to files...
+2025-09-30 09:36:57,449 [INFO] Written to L3_test/sites/NUK_N/NUK_N_month.csv
+2025-09-30 09:36:57,449 [INFO] Written to L3_test/sites/NUK_N/NUK_N_month.nc
+/n ======== test join_l3 ========= 
+
+NUK_N
+NUK_N array loaded from L3_test/stations/NUK_N/NUK_N_hour.nc

@@ -1,0 +1,153 @@
+2025-09-30 09:18:25,629 [INFO] AWS(config_file=../aws-l0//tx/config/FRE.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:18:25,977 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'FRE.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:18:25,979 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/FRE_300234061852400_1.txt
+2025-09-30 09:18:26,057 [INFO] L0 data successfully loaded from FRE_300234061852400_1.txt
+2025-09-30 09:18:26,066 [INFO] Level 1 processing...
+2025-09-30 09:18:26,257 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:26,403 [INFO] Level 2 processing...
+2025-09-30 09:18:26,404 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/FRE.csv
+2025-09-30 09:18:26,407 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/FRE.csv
+2025-09-30 09:18:26,413 [DEBUG] ---> flagging 2023-04-29T15:00:00.000000000 2023-04-29 14:10:00 p_u
+2025-09-30 09:18:26,418 [DEBUG] ---> flagging 2023-04-29T15:00:00.000000000 2023-07-12 14:10:00 z_pt
+2025-09-30 09:18:26,419 [DEBUG] ---> flagging 2023-04-29T15:00:00.000000000 2023-07-12 14:10:00 z_pt_cor
+2025-09-30 09:18:26,424 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/FRE.csv
+2025-09-30 09:18:26,433 [INFO] ---> 2022-09-09 12:00:00 2022-09-25 12:00:00 z_boom_u max_filter 2.955
+2025-09-30 09:18:26,433 [INFO] Time range does not intersect with dataset
+2025-09-30 09:18:26,434 [DEBUG] ---> None None z_boom_u max_filter 3.3
+2025-09-30 09:18:26,435 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:18:26,435 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:18:26,444 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:18:26,449 [DEBUG] Applying persistent QC in t_i. Filtering 12/13563 samples
+2025-09-30 09:18:26,454 [DEBUG] Applying persistent QC in t_u. Filtering 2/13563 samples
+2025-09-30 09:18:26,459 [DEBUG] Applying persistent QC in p_i. Filtering 17/13563 samples
+2025-09-30 09:18:26,550 [DEBUG] Applying persistent QC in p_u. Filtering 0/13563 samples
+2025-09-30 09:18:26,563 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 25/13563 samples
+2025-09-30 09:18:26,570 [DEBUG] Applying persistent QC in gps_alt. Filtering 48/13563 samples
+2025-09-30 09:18:26,574 [DEBUG] Applying persistent QC in t_rad. Filtering 0/13563 samples
+2025-09-30 09:18:26,577 [DEBUG] Applying persistent QC in rh_i. Filtering 12/13563 samples
+2025-09-30 09:18:26,580 [DEBUG] Applying persistent QC in rh_u. Filtering 3/13563 samples
+2025-09-30 09:18:26,587 [DEBUG] Applying persistent QC in wspd_i. Filtering 12/13563 samples
+2025-09-30 09:18:26,591 [DEBUG] Applying persistent QC in wspd_u. Filtering 10/13563 samples
+2025-09-30 09:18:27,055 [INFO] Resampling to 60min
+2025-09-30 09:18:27,163 [INFO] Writing to files...
+2025-09-30 09:18:27,613 [INFO] Written to L2_test/tx/FRE/FRE_hour.csv
+2025-09-30 09:18:27,613 [INFO] Written to L2_test/tx/FRE/FRE_hour.nc
+2025-09-30 09:18:27,614 [INFO] AWS(config_file=../aws-l0//raw/config/FRE.toml, inpath=../aws-l0//raw/FRE/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:18:28,013 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'FRE.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:18:28,014 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/FRE/FRE_2023_raw.txt
+2025-09-30 09:18:28,277 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/FRE/FRE_2023_raw.txt
+2025-09-30 09:18:28,815 [INFO] L0 data successfully loaded from FRE_2023_raw.txt
+2025-09-30 09:18:28,815 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/FRE/FRE_2024_raw.txt
+2025-09-30 09:18:28,924 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/FRE/FRE_2024_raw.txt
+2025-09-30 09:18:29,181 [INFO] L0 data successfully loaded from FRE_2024_raw.txt
+2025-09-30 09:18:29,192 [INFO] Level 1 processing...
+2025-09-30 09:18:29,793 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:30,225 [WARNING] bedrock attribute is not set
+2025-09-30 09:18:30,475 [INFO] Level 2 processing...
+2025-09-30 09:18:30,481 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/FRE.csv
+2025-09-30 09:18:30,492 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/FRE.csv
+2025-09-30 09:18:30,496 [DEBUG] ---> flagging 2021-07-27T17:30:00.000000000 2023-04-29 14:10:00 p_u
+2025-09-30 09:18:30,499 [DEBUG] ---> flagging 2021-07-27T17:30:00.000000000 2023-07-12 14:10:00 z_pt
+2025-09-30 09:18:30,501 [DEBUG] ---> flagging 2021-07-27T17:30:00.000000000 2023-07-12 14:10:00 z_pt_cor
+2025-09-30 09:18:30,509 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/FRE.csv
+2025-09-30 09:18:30,521 [DEBUG] ---> 2022-09-09 12:00:00 2022-09-25 12:00:00 z_boom_u max_filter 2.955
+2025-09-30 09:18:30,522 [DEBUG] ---> None None z_boom_u max_filter 3.3
+2025-09-30 09:18:30,522 [INFO] could not adjust z_surf_1 not in dataset
+2025-09-30 09:18:30,523 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:18:30,544 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:18:30,551 [DEBUG] Applying persistent QC in t_i. Filtering 0/143877 samples
+2025-09-30 09:18:30,557 [DEBUG] Applying persistent QC in t_u. Filtering 0/143877 samples
+2025-09-30 09:18:30,564 [DEBUG] Applying persistent QC in p_i. Filtering 0/143877 samples
+2025-09-30 09:18:30,668 [DEBUG] Applying persistent QC in p_u. Filtering 0/143877 samples
+2025-09-30 09:18:30,685 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 59382/143877 samples
+2025-09-30 09:18:30,695 [DEBUG] Applying persistent QC in gps_alt. Filtering 59751/143877 samples
+2025-09-30 09:18:30,703 [DEBUG] Applying persistent QC in t_rad. Filtering 11/143877 samples
+2025-09-30 09:18:30,710 [DEBUG] Applying persistent QC in rh_i. Filtering 0/143877 samples
+2025-09-30 09:18:30,716 [DEBUG] Applying persistent QC in rh_u. Filtering 0/143877 samples
+2025-09-30 09:18:30,727 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/143877 samples
+2025-09-30 09:18:30,737 [DEBUG] Applying persistent QC in wspd_u. Filtering 133/143877 samples
+2025-09-30 09:18:31,430 [INFO] Resampling to 10min
+2025-09-30 09:18:31,572 [INFO] Writing to files...
+2025-09-30 09:18:35,735 [INFO] Written to L2_test/raw/FRE/FRE_10min.csv
+2025-09-30 09:18:35,735 [INFO] Written to L2_test/raw/FRE/FRE_10min.nc
+2025-09-30 09:18:35,949 [INFO] Resampling to 60min
+2025-09-30 09:18:36,023 [INFO] Writing to files...
+2025-09-30 09:18:36,935 [INFO] Written to L2_test/raw/FRE/FRE_hour.csv
+2025-09-30 09:18:36,936 [INFO] Written to L2_test/raw/FRE/FRE_hour.nc
+2025-09-30 09:18:36,997 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:18:36,997 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:18:36,998 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:18:37,106 [INFO] FRE array loaded from L2_test/raw/FRE/FRE_hour.nc
+2025-09-30 09:18:37,140 [INFO] FRE array loaded from L2_test/tx/FRE/FRE_hour.nc
+2025-09-30 09:18:37,140 [INFO] Combining L2_test/raw/FRE/FRE_hour.nc with L2_test/tx/FRE/FRE_hour.nc...
+2025-09-30 09:18:37,253 [INFO] Writing to files...
+2025-09-30 09:18:38,463 [INFO] Written to L2_test/level_2/FRE/FRE_hour.csv
+2025-09-30 09:18:38,464 [INFO] Written to L2_test/level_2/FRE/FRE_hour.nc
+2025-09-30 09:18:38,464 [INFO] Files saved to L2_test/level_2/FRE...
+2025-09-30 09:18:38,505 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:18:40,471 [INFO] processing gps_lat without relocation
+2025-09-30 09:18:40,476 [INFO] processing gps_lon without relocation
+2025-09-30 09:18:40,480 [INFO] processing gps_alt without relocation
+2025-09-30 09:18:40,495 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/FRE.csv
+2025-09-30 09:18:40,503 [DEBUG] ---> 2023-04-29 12:00:00 None z_surf_1 add 0.3
+2025-09-30 09:18:40,505 [DEBUG] ---> 2022-04-19 12:00:00 None z_surf_2 add -0.65
+2025-09-30 09:18:40,506 [DEBUG] ---> 2023-04-29 12:00:00 None z_surf_2 add -0.6
+2025-09-30 09:18:40,507 [DEBUG] ---> 2024-04-25 12:00:00 None z_surf_2 add -1.8
+2025-09-30 09:18:40,509 [INFO] Combining surface height
+2025-09-30 09:18:40,509 [INFO] -> ablation site
+2025-09-30 09:18:40,657 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:18:40,659 [DEBUG] 2021 no z_ice_surf, just using JJA
+2025-09-30 09:18:40,662 [DEBUG] 2022 no z_ice_surf, just using JJA
+2025-09-30 09:18:40,664 [DEBUG] 2023 derived from z_ice_surf
+2025-09-30 09:18:40,665 [DEBUG] 2024 derived from z_ice_surf
+2025-09-30 09:18:40,667 [DEBUG] 2025 derived from z_ice_surf
+2025-09-30 09:18:40,667 [DEBUG] 2021: Ablation from 2021-07-27 17:00:00 to 2021-08-31 23:00:00
+2025-09-30 09:18:40,676 [DEBUG] adjusting hs1
+2025-09-30 09:18:40,676 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:18:40,678 [DEBUG] 2022: Ablation from 2022-06-01 00:00:00 to 2022-08-31 23:00:00
+2025-09-30 09:18:40,684 [DEBUG] adjusting hs1
+2025-09-30 09:18:40,685 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:18:40,686 [DEBUG] 2023: Ablation from 2023-07-01 15:00:00 to 2023-09-06 02:00:00
+2025-09-30 09:18:40,691 [DEBUG] adjusting z to hs1
+2025-09-30 09:18:40,692 [DEBUG] adjusting hs2 to z
+2025-09-30 09:18:40,692 [DEBUG] using end of melt season
+2025-09-30 09:18:40,694 [DEBUG] adjusting hs1
+2025-09-30 09:18:40,694 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:18:40,696 [DEBUG] 2024: Ablation from 2024-07-08 21:00:00 to 2024-08-31 06:00:00
+2025-09-30 09:18:40,702 [DEBUG] adjusting hs2 to z
+2025-09-30 09:18:40,703 [DEBUG] using end of melt season
+2025-09-30 09:18:40,705 [DEBUG] adjusting hs1
+2025-09-30 09:18:40,705 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:18:40,706 [DEBUG] 2025: Ablation from 2025-07-19 03:00:00 to 2025-09-03 18:00:00
+2025-09-30 09:18:40,712 [DEBUG] adjusting hs2 to z
+2025-09-30 09:18:40,712 [DEBUG] using end of melt season
+2025-09-30 09:18:40,715 [DEBUG] adjusting hs1
+2025-09-30 09:18:40,715 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:18:40,737 [INFO] surface height combination finished
+2025-09-30 09:18:40,775 [INFO] Calculating thermistor depth
+2025-09-30 09:18:40,781 [INFO] No maintenance at FRE
+2025-09-30 09:18:40,794 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:18:44,033 [INFO] Resampling to 60min
+2025-09-30 09:18:44,142 [INFO] Writing to files...
+2025-09-30 09:18:45,246 [INFO] Written to L3_test/stations/FRE/FRE_hour.csv
+2025-09-30 09:18:45,246 [INFO] Written to L3_test/stations/FRE/FRE_hour.nc
+2025-09-30 09:18:45,302 [INFO] Resampling to 1D
+2025-09-30 09:18:45,387 [INFO] Writing to files...
+2025-09-30 09:18:45,522 [INFO] Written to L3_test/stations/FRE/FRE_day.csv
+2025-09-30 09:18:45,522 [INFO] Written to L3_test/stations/FRE/FRE_day.nc
+2025-09-30 09:18:45,581 [INFO] Resampling to ME
+2025-09-30 09:18:45,664 [INFO] Writing to files...
+2025-09-30 09:18:45,753 [INFO] Written to L3_test/stations/FRE/FRE_month.csv
+2025-09-30 09:18:45,753 [INFO] Written to L3_test/stations/FRE/FRE_month.nc
+/n ======== test join_l3 ========= 
+
+FRE
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

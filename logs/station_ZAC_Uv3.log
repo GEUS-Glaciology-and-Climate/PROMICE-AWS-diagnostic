@@ -1,0 +1,138 @@
+2025-09-30 09:28:53,257 [INFO] AWS(config_file=../aws-l0//tx/config/ZAC_Uv3.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:28:53,599 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'ZAC_Uv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:28:53,604 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/ZAC_Uv3_300234068329190_1.txt
+2025-09-30 09:28:53,707 [INFO] L0 data successfully loaded from ZAC_Uv3_300234068329190_1.txt
+2025-09-30 09:28:53,711 [INFO] Level 1 processing...
+2025-09-30 09:28:53,831 [WARNING] bedrock attribute is not set
+2025-09-30 09:28:53,947 [INFO] Level 2 processing...
+2025-09-30 09:28:53,949 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/ZAC_Uv3.csv
+2025-09-30 09:28:53,959 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/ZAC_Uv3.csv
+2025-09-30 09:28:53,966 [DEBUG] ---> flagging 2022-04-21T12:00:00.000000000 2022-04-24 00:00:00 z_pt_cor
+2025-09-30 09:28:53,971 [DEBUG] ---> flagging 2022-08-30 00:00:00 2024-02-10 00:00:00 z_pt_cor
+2025-09-30 09:28:53,974 [DEBUG] ---> flagging 2023-11-20 00:00:00 2023-11-25 00:00:00 z_stake
+2025-09-30 09:28:53,979 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/ZAC_Uv3.csv
+2025-09-30 09:28:53,987 [DEBUG] ---> None None z_boom_u max_filter 2.5
+2025-09-30 09:28:53,989 [DEBUG] ---> None 2023-07-01 00:00:00 z_boom_u min_filter 1.5
+2025-09-30 09:28:53,990 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:28:53,997 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:28:54,001 [DEBUG] Applying persistent QC in t_i. Filtering 285/18712 samples
+2025-09-30 09:28:54,004 [DEBUG] Applying persistent QC in t_u. Filtering 19/18712 samples
+2025-09-30 09:28:54,008 [DEBUG] Applying persistent QC in p_i. Filtering 241/18712 samples
+2025-09-30 09:28:54,095 [DEBUG] Applying persistent QC in p_u. Filtering 0/18712 samples
+2025-09-30 09:28:54,107 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 5/18712 samples
+2025-09-30 09:28:54,113 [DEBUG] Applying persistent QC in gps_alt. Filtering 6/18712 samples
+2025-09-30 09:28:54,116 [DEBUG] Applying persistent QC in t_rad. Filtering 1/18712 samples
+2025-09-30 09:28:54,118 [DEBUG] Applying persistent QC in rh_i. Filtering 38/18712 samples
+2025-09-30 09:28:54,125 [DEBUG] Applying persistent QC in rh_u. Filtering 18/18712 samples
+2025-09-30 09:28:54,133 [DEBUG] Applying persistent QC in wspd_i. Filtering 21/18712 samples
+2025-09-30 09:28:54,140 [DEBUG] Applying persistent QC in wspd_u. Filtering 16/18712 samples
+2025-09-30 09:28:54,485 [INFO] Resampling to 60min
+2025-09-30 09:28:54,561 [INFO] Writing to files...
+2025-09-30 09:28:55,383 [INFO] Written to L2_test/tx/ZAC_Uv3/ZAC_Uv3_hour.csv
+2025-09-30 09:28:55,383 [INFO] Written to L2_test/tx/ZAC_Uv3/ZAC_Uv3_hour.nc
+2025-09-30 09:28:55,385 [INFO] AWS(config_file=../aws-l0//raw/config/ZAC_Uv3.toml, inpath=../aws-l0//raw/ZAC_Uv3/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:28:55,662 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'ZAC_Uv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:28:56,391 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/ZAC_Uv3/ZAC_Uv3_2025_raw.dat
+2025-09-30 09:28:56,422 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/ZAC_Uv3/ZAC_Uv3_2025_raw.dat
+2025-09-30 09:28:56,496 [INFO] L0 data successfully loaded from ZAC_Uv3_2025_raw.dat
+2025-09-30 09:28:56,505 [INFO] Level 1 processing...
+2025-09-30 09:28:56,598 [WARNING] bedrock attribute is not set
+2025-09-30 09:28:56,745 [INFO] Level 2 processing...
+2025-09-30 09:28:56,749 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/ZAC_Uv3.csv
+2025-09-30 09:28:56,754 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/ZAC_Uv3.csv
+2025-09-30 09:28:56,758 [DEBUG] ---> flagging 2024-04-24T12:40:00.000000000 2022-04-24 00:00:00 z_pt_cor
+2025-09-30 09:28:56,761 [DEBUG] ---> flagging 2022-08-30 00:00:00 2024-02-10 00:00:00 z_pt_cor
+2025-09-30 09:28:56,763 [DEBUG] ---> flagging 2023-11-20 00:00:00 2023-11-25 00:00:00 z_stake
+2025-09-30 09:28:56,765 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/ZAC_Uv3.csv
+2025-09-30 09:28:56,771 [DEBUG] ---> None None z_boom_u max_filter 2.5
+2025-09-30 09:28:56,773 [INFO] ---> None 2023-07-01 00:00:00 z_boom_u min_filter 1.5
+2025-09-30 09:28:56,773 [INFO] Time range does not intersect with dataset
+2025-09-30 09:28:56,773 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:28:56,781 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:28:56,785 [DEBUG] Applying persistent QC in t_i. Filtering 0/17754 samples
+2025-09-30 09:28:56,789 [DEBUG] Applying persistent QC in t_u. Filtering 22/17754 samples
+2025-09-30 09:28:56,793 [DEBUG] Applying persistent QC in p_i. Filtering 0/17754 samples
+2025-09-30 09:28:56,849 [DEBUG] Applying persistent QC in p_u. Filtering 0/17754 samples
+2025-09-30 09:28:56,857 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/17754 samples
+2025-09-30 09:28:56,861 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/17754 samples
+2025-09-30 09:28:56,866 [DEBUG] Applying persistent QC in t_rad. Filtering 0/17754 samples
+2025-09-30 09:28:56,870 [DEBUG] Applying persistent QC in rh_i. Filtering 0/17754 samples
+2025-09-30 09:28:56,875 [DEBUG] Applying persistent QC in rh_u. Filtering 0/17754 samples
+2025-09-30 09:28:56,880 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/17754 samples
+2025-09-30 09:28:56,887 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/17754 samples
+2025-09-30 09:28:57,208 [INFO] Resampling to 10min
+2025-09-30 09:28:57,302 [INFO] Writing to files...
+2025-09-30 09:28:57,808 [INFO] Written to L2_test/raw/ZAC_Uv3/ZAC_Uv3_10min.csv
+2025-09-30 09:28:57,808 [INFO] Written to L2_test/raw/ZAC_Uv3/ZAC_Uv3_10min.nc
+2025-09-30 09:28:57,903 [INFO] Resampling to 60min
+2025-09-30 09:28:57,987 [INFO] Writing to files...
+2025-09-30 09:28:58,165 [INFO] Written to L2_test/raw/ZAC_Uv3/ZAC_Uv3_hour.csv
+2025-09-30 09:28:58,165 [INFO] Written to L2_test/raw/ZAC_Uv3/ZAC_Uv3_hour.nc
+2025-09-30 09:28:58,225 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:28:58,226 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:28:58,227 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:28:58,317 [INFO] ZAC_Uv3 array loaded from L2_test/raw/ZAC_Uv3/ZAC_Uv3_hour.nc
+2025-09-30 09:28:58,348 [INFO] ZAC_Uv3 array loaded from L2_test/tx/ZAC_Uv3/ZAC_Uv3_hour.nc
+2025-09-30 09:28:58,349 [INFO] Combining L2_test/raw/ZAC_Uv3/ZAC_Uv3_hour.nc with L2_test/tx/ZAC_Uv3/ZAC_Uv3_hour.nc...
+2025-09-30 09:28:58,456 [INFO] Writing to files...
+2025-09-30 09:28:59,250 [INFO] Written to L2_test/level_2/ZAC_Uv3/ZAC_Uv3_hour.csv
+2025-09-30 09:28:59,250 [INFO] Written to L2_test/level_2/ZAC_Uv3/ZAC_Uv3_hour.nc
+2025-09-30 09:28:59,251 [INFO] Files saved to L2_test/level_2/ZAC_Uv3...
+2025-09-30 09:28:59,289 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:29:00,947 [INFO] processing gps_lat with relocation on 2023-04-25T19:00:00, 2024-04-25T19:00:00
+2025-09-30 09:29:00,954 [INFO] processing gps_lon with relocation on 2023-04-25T19:00:00, 2024-04-25T19:00:00
+2025-09-30 09:29:00,960 [INFO] processing gps_alt with relocation on 2023-04-25T19:00:00, 2024-04-25T19:00:00
+2025-09-30 09:29:00,981 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/ZAC_Uv3.csv
+2025-09-30 09:29:00,989 [DEBUG] ---> 2023-04-27 00:00:00 None z_surf_2 add -1.0
+2025-09-30 09:29:00,990 [DEBUG] ---> 2023-11-22 00:00:00 None z_surf_2 add -3.2
+2025-09-30 09:29:00,992 [INFO] Combining surface height
+2025-09-30 09:29:00,992 [INFO] -> ablation site
+2025-09-30 09:29:01,102 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:29:01,104 [DEBUG] 2022 derived from z_ice_surf
+2025-09-30 09:29:01,107 [DEBUG] 2023 no z_ice_surf, just using JJA
+2025-09-30 09:29:01,108 [DEBUG] 2024 derived from z_ice_surf
+2025-09-30 09:29:01,111 [DEBUG] 2025 no z_ice_surf, just using JJA
+2025-09-30 09:29:01,111 [DEBUG] 2022: Ablation from 2022-06-04 00:00:00 to 2022-08-23 22:00:00
+2025-09-30 09:29:01,118 [DEBUG] adjusting z to hs1
+2025-09-30 09:29:01,119 [DEBUG] adjusting hs2 to z
+2025-09-30 09:29:01,119 [DEBUG] using end of melt season
+2025-09-30 09:29:01,122 [DEBUG] adjusting hs1
+2025-09-30 09:29:01,122 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:29:01,123 [DEBUG] 2023: Ablation from 2023-06-01 00:00:00 to 2023-08-31 23:00:00
+2025-09-30 09:29:01,130 [DEBUG] adjusting hs1
+2025-09-30 09:29:01,130 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:29:01,132 [DEBUG] 2024: Ablation from 2024-06-21 02:00:00 to 2024-08-31 07:00:00
+2025-09-30 09:29:01,138 [DEBUG] adjusting z to hs1
+2025-09-30 09:29:01,139 [DEBUG] adjusting hs2 to z
+2025-09-30 09:29:01,139 [DEBUG] using end of melt season
+2025-09-30 09:29:01,142 [DEBUG] 2025: Ablation from 2025-06-01 00:00:00 to 2025-08-31 23:00:00
+2025-09-30 09:29:01,148 [DEBUG] adjusting hs1
+2025-09-30 09:29:01,149 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:29:01,177 [INFO] surface height combination finished
+2025-09-30 09:29:01,209 [INFO] Calculating thermistor depth
+2025-09-30 09:29:01,215 [INFO] No maintenance at ZAC_Uv3
+2025-09-30 09:29:01,226 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:29:02,499 [INFO] Resampling to 60min
+2025-09-30 09:29:02,601 [INFO] Writing to files...
+2025-09-30 09:29:03,608 [INFO] Written to L3_test/stations/ZAC_Uv3/ZAC_Uv3_hour.csv
+2025-09-30 09:29:03,608 [INFO] Written to L3_test/stations/ZAC_Uv3/ZAC_Uv3_hour.nc
+2025-09-30 09:29:03,693 [INFO] Resampling to 1D
+2025-09-30 09:29:03,827 [INFO] Writing to files...
+2025-09-30 09:29:03,962 [INFO] Written to L3_test/stations/ZAC_Uv3/ZAC_Uv3_day.csv
+2025-09-30 09:29:03,962 [INFO] Written to L3_test/stations/ZAC_Uv3/ZAC_Uv3_day.nc
+2025-09-30 09:29:04,022 [INFO] Resampling to ME
+2025-09-30 09:29:04,101 [INFO] Writing to files...
+2025-09-30 09:29:04,198 [INFO] Written to L3_test/stations/ZAC_Uv3/ZAC_Uv3_month.csv
+2025-09-30 09:29:04,198 [INFO] Written to L3_test/stations/ZAC_Uv3/ZAC_Uv3_month.nc
+/n ======== test join_l3 ========= 
+
+ZAC_Uv3
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

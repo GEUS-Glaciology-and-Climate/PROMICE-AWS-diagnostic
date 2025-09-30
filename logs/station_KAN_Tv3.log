@@ -1,0 +1,135 @@
+2025-09-30 09:19:19,999 [INFO] AWS(config_file=../aws-l0//tx/config/KAN_Tv3.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:20,397 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'KAN_Tv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:20,415 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/KAN_Tv3_300534064383800_1.txt
+2025-09-30 09:19:20,521 [INFO] L0 data successfully loaded from KAN_Tv3_300534064383800_1.txt
+2025-09-30 09:19:20,529 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/KAN_Tv3_300534064383800_2.txt
+2025-09-30 09:19:20,558 [INFO] L0 data successfully loaded from KAN_Tv3_300534064383800_2.txt
+2025-09-30 09:19:20,572 [INFO] Level 1 processing...
+2025-09-30 09:19:20,718 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:20,914 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:21,031 [INFO] Level 2 processing...
+2025-09-30 09:19:21,032 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_Tv3.csv
+2025-09-30 09:19:21,035 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/KAN_Tv3.csv
+2025-09-30 09:19:21,039 [DEBUG] ---> flagging 2025-01-29 00:00:00 2025-05-14 00:00:00 z_stake
+2025-09-30 09:19:21,041 [DEBUG] ---> flagging 2025-02-11 00:00:00 2025-03-01 00:00:00 z_pt_cor
+2025-09-30 09:19:21,043 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_Tv3.csv
+2025-09-30 09:19:21,049 [DEBUG] ---> None None p_u max_filter 1000.0
+2025-09-30 09:19:21,051 [DEBUG] ---> None None z_boom_u max_filter 2.7
+2025-09-30 09:19:21,052 [DEBUG] ---> None None z_boom_u min_filter 1.0
+2025-09-30 09:19:21,054 [DEBUG] ---> 2024-07-01 00:00:00 2024-07-30 00:00:00 z_pt_cor max_filter 13.9
+2025-09-30 09:19:21,055 [DEBUG] ---> None 2024-06-15 00:00:00 z_pt_cor min_filter 14.6
+2025-09-30 09:19:21,056 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:19:21,060 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:21,063 [DEBUG] Applying persistent QC in t_i. Filtering 798/10941 samples
+2025-09-30 09:19:21,066 [DEBUG] Applying persistent QC in t_u. Filtering 54/10941 samples
+2025-09-30 09:19:21,069 [DEBUG] Applying persistent QC in p_i. Filtering 502/10941 samples
+2025-09-30 09:19:21,131 [DEBUG] Applying persistent QC in p_u. Filtering 0/10941 samples
+2025-09-30 09:19:21,138 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 55/10941 samples
+2025-09-30 09:19:21,142 [DEBUG] Applying persistent QC in gps_alt. Filtering 58/10941 samples
+2025-09-30 09:19:21,145 [DEBUG] Applying persistent QC in t_rad. Filtering 4/10941 samples
+2025-09-30 09:19:21,147 [DEBUG] Applying persistent QC in rh_i. Filtering 564/10941 samples
+2025-09-30 09:19:21,149 [DEBUG] Applying persistent QC in rh_u. Filtering 33/10941 samples
+2025-09-30 09:19:21,153 [DEBUG] Applying persistent QC in wspd_i. Filtering 55/10941 samples
+2025-09-30 09:19:21,157 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/10941 samples
+2025-09-30 09:19:21,544 [INFO] Resampling to 60min
+2025-09-30 09:19:21,632 [INFO] Writing to files...
+2025-09-30 09:19:22,197 [INFO] Written to L2_test/tx/KAN_Tv3/KAN_Tv3_hour.csv
+2025-09-30 09:19:22,197 [INFO] Written to L2_test/tx/KAN_Tv3/KAN_Tv3_hour.nc
+2025-09-30 09:19:22,198 [INFO] AWS(config_file=../aws-l0//raw/config/KAN_Tv3.toml, inpath=../aws-l0//raw/KAN_Tv3/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:19:22,571 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'KAN_Tv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:19:23,232 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_Tv3/KAN_Tv3_2024_raw.txt
+2025-09-30 09:19:23,254 [INFO] Detected L0 file type 'toa5' for ../aws-l0/raw/KAN_Tv3/KAN_Tv3_2024_raw.txt
+2025-09-30 09:19:23,353 [INFO] L0 data successfully loaded from KAN_Tv3_2024_raw.txt
+2025-09-30 09:19:23,362 [INFO] Level 1 processing...
+2025-09-30 09:19:23,468 [WARNING] bedrock attribute is not set
+2025-09-30 09:19:23,606 [INFO] Level 2 processing...
+2025-09-30 09:19:23,609 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_Tv3.csv
+2025-09-30 09:19:23,612 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/KAN_Tv3.csv
+2025-09-30 09:19:23,617 [DEBUG] ---> flagging 2025-01-29 00:00:00 2025-05-14 00:00:00 z_stake
+2025-09-30 09:19:23,619 [DEBUG] ---> flagging 2025-02-11 00:00:00 2025-03-01 00:00:00 z_pt_cor
+2025-09-30 09:19:23,622 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_Tv3.csv
+2025-09-30 09:19:23,628 [DEBUG] ---> None None p_u max_filter 1000.0
+2025-09-30 09:19:23,630 [DEBUG] ---> None None z_boom_u max_filter 2.7
+2025-09-30 09:19:23,631 [DEBUG] ---> None None z_boom_u min_filter 1.0
+2025-09-30 09:19:23,633 [DEBUG] ---> 2024-07-01 00:00:00 2024-07-30 00:00:00 z_pt_cor max_filter 13.9
+2025-09-30 09:19:23,634 [DEBUG] ---> None 2024-06-15 00:00:00 z_pt_cor min_filter 14.6
+2025-09-30 09:19:23,635 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:19:23,639 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:19:23,641 [DEBUG] Applying persistent QC in t_i. Filtering 0/13953 samples
+2025-09-30 09:19:23,644 [DEBUG] Applying persistent QC in t_u. Filtering 5/13953 samples
+2025-09-30 09:19:23,648 [DEBUG] Applying persistent QC in p_i. Filtering 0/13953 samples
+2025-09-30 09:19:23,711 [DEBUG] Applying persistent QC in p_u. Filtering 0/13953 samples
+2025-09-30 09:19:23,719 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/13953 samples
+2025-09-30 09:19:23,723 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/13953 samples
+2025-09-30 09:19:23,726 [DEBUG] Applying persistent QC in t_rad. Filtering 0/13953 samples
+2025-09-30 09:19:23,729 [DEBUG] Applying persistent QC in rh_i. Filtering 0/13953 samples
+2025-09-30 09:19:23,732 [DEBUG] Applying persistent QC in rh_u. Filtering 0/13953 samples
+2025-09-30 09:19:23,738 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/13953 samples
+2025-09-30 09:19:23,742 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/13953 samples
+2025-09-30 09:19:24,029 [INFO] Resampling to 10min
+2025-09-30 09:19:24,093 [INFO] Writing to files...
+2025-09-30 09:19:24,579 [INFO] Written to L2_test/raw/KAN_Tv3/KAN_Tv3_10min.csv
+2025-09-30 09:19:24,579 [INFO] Written to L2_test/raw/KAN_Tv3/KAN_Tv3_10min.nc
+2025-09-30 09:19:24,656 [INFO] Resampling to 60min
+2025-09-30 09:19:24,735 [INFO] Writing to files...
+2025-09-30 09:19:24,896 [INFO] Written to L2_test/raw/KAN_Tv3/KAN_Tv3_hour.csv
+2025-09-30 09:19:24,896 [INFO] Written to L2_test/raw/KAN_Tv3/KAN_Tv3_hour.nc
+2025-09-30 09:19:24,949 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:19:24,950 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:19:24,950 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:19:25,048 [INFO] KAN_Tv3 array loaded from L2_test/raw/KAN_Tv3/KAN_Tv3_hour.nc
+2025-09-30 09:19:25,089 [INFO] KAN_Tv3 array loaded from L2_test/tx/KAN_Tv3/KAN_Tv3_hour.nc
+2025-09-30 09:19:25,090 [INFO] Combining L2_test/raw/KAN_Tv3/KAN_Tv3_hour.nc with L2_test/tx/KAN_Tv3/KAN_Tv3_hour.nc...
+2025-09-30 09:19:25,182 [INFO] Writing to files...
+2025-09-30 09:19:25,681 [INFO] Written to L2_test/level_2/KAN_Tv3/KAN_Tv3_hour.csv
+2025-09-30 09:19:25,681 [INFO] Written to L2_test/level_2/KAN_Tv3/KAN_Tv3_hour.nc
+2025-09-30 09:19:25,681 [INFO] Files saved to L2_test/level_2/KAN_Tv3...
+2025-09-30 09:19:25,718 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:19:26,796 [INFO] processing gps_lat without relocation
+2025-09-30 09:19:26,799 [INFO] processing gps_lon without relocation
+2025-09-30 09:19:26,801 [INFO] processing gps_alt without relocation
+2025-09-30 09:19:26,813 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KAN_Tv3.csv
+2025-09-30 09:19:26,820 [DEBUG] ---> 2025-05-15 00:00:00 None z_surf_2 add -4.8
+2025-09-30 09:19:26,821 [INFO] Combining surface height
+2025-09-30 09:19:26,821 [INFO] -> ablation site
+2025-09-30 09:19:26,871 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:19:26,872 [DEBUG] 2024 derived from z_ice_surf
+2025-09-30 09:19:26,873 [DEBUG] 2025 derived from z_ice_surf
+2025-09-30 09:19:26,874 [DEBUG] 2024: Ablation from 2024-06-04 00:00:00 to 2024-09-30 23:00:00
+2025-09-30 09:19:26,880 [DEBUG] adjusting z to hs1
+2025-09-30 09:19:26,881 [DEBUG] adjusting hs2 to z
+2025-09-30 09:19:26,881 [DEBUG] using end of melt season
+2025-09-30 09:19:26,883 [DEBUG] adjusting hs1
+2025-09-30 09:19:26,883 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:19:26,885 [DEBUG] 2025: Ablation from 2025-06-04 00:00:00 to 2025-09-27 16:00:00
+2025-09-30 09:19:26,891 [DEBUG] adjusting hs2 to z
+2025-09-30 09:19:26,892 [DEBUG] using end of melt season
+2025-09-30 09:19:26,895 [DEBUG] adjusting hs1
+2025-09-30 09:19:26,896 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:19:26,904 [INFO] surface height combination finished
+2025-09-30 09:19:26,926 [INFO] Calculating thermistor depth
+2025-09-30 09:19:26,949 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:19:27,120 [INFO] Resampling to 60min
+2025-09-30 09:19:27,210 [INFO] Writing to files...
+2025-09-30 09:19:27,653 [INFO] Written to L3_test/stations/KAN_Tv3/KAN_Tv3_hour.csv
+2025-09-30 09:19:27,653 [INFO] Written to L3_test/stations/KAN_Tv3/KAN_Tv3_hour.nc
+2025-09-30 09:19:27,694 [INFO] Resampling to 1D
+2025-09-30 09:19:27,776 [INFO] Writing to files...
+2025-09-30 09:19:27,889 [INFO] Written to L3_test/stations/KAN_Tv3/KAN_Tv3_day.csv
+2025-09-30 09:19:27,889 [INFO] Written to L3_test/stations/KAN_Tv3/KAN_Tv3_day.nc
+2025-09-30 09:19:27,928 [INFO] Resampling to ME
+2025-09-30 09:19:28,007 [INFO] Writing to files...
+2025-09-30 09:19:28,080 [INFO] Written to L3_test/stations/KAN_Tv3/KAN_Tv3_month.csv
+2025-09-30 09:19:28,080 [INFO] Written to L3_test/stations/KAN_Tv3/KAN_Tv3_month.nc
+/n ======== test join_l3 ========= 
+
+KAN_Tv3
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

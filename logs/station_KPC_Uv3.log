@@ -1,0 +1,105 @@
+2025-09-30 09:20:43,766 [INFO] AWS(config_file=../aws-l0//tx/config/KPC_Uv3.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:20:44,068 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'KPC_Uv3.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:20:44,076 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/KPC_Uv3_300534063810550_1.txt
+2025-09-30 09:20:44,138 [INFO] L0 data successfully loaded from KPC_Uv3_300534063810550_1.txt
+2025-09-30 09:20:44,145 [INFO] Level 1 processing...
+2025-09-30 09:20:44,255 [WARNING] bedrock attribute is not set
+2025-09-30 09:20:44,356 [INFO] Level 2 processing...
+2025-09-30 09:20:44,357 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KPC_Uv3.csv
+/home/bav/pypromice/src/pypromice/core/qc/github_data_issues.py:100: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  time_shifts.t0 = pd.to_datetime(time_shifts.t0).dt.tz_localize(None)
+/home/bav/pypromice/src/pypromice/core/qc/github_data_issues.py:101: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  time_shifts.t1 = pd.to_datetime(time_shifts.t1).dt.tz_localize(None)
+2025-09-30 09:20:44,396 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/KPC_Uv3.csv
+2025-09-30 09:20:44,405 [DEBUG] ---> flagging 2021-07-10 00:00:00 2023-06-10 00:00:00 z_pt
+2025-09-30 09:20:44,407 [DEBUG] ---> flagging 2021-07-10 00:00:00 2023-06-10 00:00:00 z_pt_cor
+2025-09-30 09:20:44,410 [DEBUG] ---> flagging 2021-07-10 00:00:00 2023-06-10 00:00:00 wspd_u
+2025-09-30 09:20:44,412 [DEBUG] ---> flagging 2021-07-10 00:00:00 2023-06-10 00:00:00 wspd_i
+2025-09-30 09:20:44,414 [DEBUG] ---> flagging 2022-06-03 00:00:00 2022-07-10 00:00:00 z_stake
+2025-09-30 09:20:44,419 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KPC_Uv3.csv
+2025-09-30 09:20:44,435 [DEBUG] ---> None None t_i_1 min_filter -30.0
+2025-09-30 09:20:44,438 [DEBUG] ---> None None t_i_2 min_filter -30.0
+2025-09-30 09:20:44,439 [DEBUG] ---> None None t_i_3 min_filter -30.0
+2025-09-30 09:20:44,441 [DEBUG] ---> None None t_i_4 min_filter -30.0
+2025-09-30 09:20:44,442 [DEBUG] ---> None None t_i_5 min_filter -30.0
+2025-09-30 09:20:44,446 [DEBUG] ---> None None t_i_6 min_filter -30.0
+2025-09-30 09:20:44,447 [DEBUG] ---> None None t_i_7 min_filter -30.0
+2025-09-30 09:20:44,448 [DEBUG] ---> None None t_i_8 min_filter -30.0
+2025-09-30 09:20:44,450 [INFO] could not adjust z_surf_2 not in dataset
+2025-09-30 09:20:44,455 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:20:44,461 [DEBUG] Applying persistent QC in t_i. Filtering 151/5688 samples
+2025-09-30 09:20:44,464 [DEBUG] Applying persistent QC in t_u. Filtering 13/5688 samples
+2025-09-30 09:20:44,470 [DEBUG] Applying persistent QC in p_i. Filtering 95/5688 samples
+2025-09-30 09:20:44,550 [DEBUG] Applying persistent QC in p_u. Filtering 0/5688 samples
+2025-09-30 09:20:44,561 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 0/5688 samples
+2025-09-30 09:20:44,565 [DEBUG] Applying persistent QC in gps_alt. Filtering 0/5688 samples
+2025-09-30 09:20:44,569 [DEBUG] Applying persistent QC in t_rad. Filtering 0/5688 samples
+2025-09-30 09:20:44,572 [DEBUG] Applying persistent QC in rh_i. Filtering 55/5688 samples
+2025-09-30 09:20:44,574 [DEBUG] Applying persistent QC in rh_u. Filtering 70/5688 samples
+2025-09-30 09:20:44,579 [DEBUG] Applying persistent QC in wspd_i. Filtering 0/5688 samples
+2025-09-30 09:20:44,586 [DEBUG] Applying persistent QC in wspd_u. Filtering 0/5688 samples
+2025-09-30 09:20:44,966 [INFO] Resampling to 60min
+2025-09-30 09:20:45,048 [INFO] Writing to files...
+2025-09-30 09:20:45,413 [INFO] Written to L2_test/tx/KPC_Uv3/KPC_Uv3_hour.csv
+2025-09-30 09:20:45,413 [INFO] Written to L2_test/tx/KPC_Uv3/KPC_Uv3_hour.nc
+2025-09-30 09:20:45,531 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:20:45,532 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:20:45,532 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:20:45,656 [INFO] KPC_Uv3 array loaded from L2_test/tx/KPC_Uv3/KPC_Uv3_hour.nc
+2025-09-30 09:20:45,657 [INFO] Only one file found L2_test/tx/KPC_Uv3/KPC_Uv3_hour.nc...
+2025-09-30 09:20:45,731 [INFO] Writing to files...
+2025-09-30 09:20:46,003 [INFO] Written to L2_test/level_2/KPC_Uv3/KPC_Uv3_hour.csv
+2025-09-30 09:20:46,003 [INFO] Written to L2_test/level_2/KPC_Uv3/KPC_Uv3_hour.nc
+2025-09-30 09:20:46,003 [INFO] Files saved to L2_test/level_2/KPC_Uv3...
+2025-09-30 09:20:46,053 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:20:46,158 [INFO] processing gps_lat without relocation
+2025-09-30 09:20:46,161 [INFO] processing gps_lon without relocation
+2025-09-30 09:20:46,164 [INFO] processing gps_alt without relocation
+2025-09-30 09:20:46,176 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/KPC_Uv3.csv
+2025-09-30 09:20:46,196 [INFO] ---> None 2022-05-22 00:00:00 z_surf_2 min_filter 0.36
+2025-09-30 09:20:46,196 [INFO] Time range does not intersect with dataset
+2025-09-30 09:20:46,197 [INFO] Combining surface height
+2025-09-30 09:20:46,197 [INFO] -> ablation site
+2025-09-30 09:20:46,226 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:20:46,228 [DEBUG] 2022 no z_ice_surf, just using JJA
+2025-09-30 09:20:46,229 [DEBUG] 2023 no z_ice_surf, just using JJA
+2025-09-30 09:20:46,230 [DEBUG] 2023 could not estimate ablation season
+2025-09-30 09:20:46,230 [DEBUG] 2022: Ablation from 2022-06-01 00:00:00 to 2022-08-31 23:00:00
+2025-09-30 09:20:46,237 [DEBUG] adjusting hs1
+2025-09-30 09:20:46,238 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:20:46,239 [DEBUG] 2023: Ablation from 2022-12-09 21:00:00 to 2022-12-09 21:00:00
+2025-09-30 09:20:46,258 [INFO] surface height combination finished
+2025-09-30 09:20:46,294 [INFO] Calculating thermistor depth
+2025-09-30 09:20:46,320 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:20:47,627 [INFO] Resampling to 60min
+2025-09-30 09:20:47,720 [INFO] Writing to files...
+2025-09-30 09:20:48,003 [INFO] Written to L3_test/stations/KPC_Uv3/KPC_Uv3_hour.csv
+2025-09-30 09:20:48,004 [INFO] Written to L3_test/stations/KPC_Uv3/KPC_Uv3_hour.nc
+2025-09-30 09:20:48,040 [INFO] Resampling to 1D
+2025-09-30 09:20:48,116 [INFO] Writing to files...
+2025-09-30 09:20:48,227 [INFO] Written to L3_test/stations/KPC_Uv3/KPC_Uv3_day.csv
+2025-09-30 09:20:48,227 [INFO] Written to L3_test/stations/KPC_Uv3/KPC_Uv3_day.nc
+2025-09-30 09:20:48,263 [INFO] Resampling to ME
+2025-09-30 09:20:48,347 [INFO] Writing to files...
+2025-09-30 09:20:48,479 [INFO] Written to L3_test/stations/KPC_Uv3/KPC_Uv3_month.csv
+2025-09-30 09:20:48,479 [INFO] Written to L3_test/stations/KPC_Uv3/KPC_Uv3_month.nc
+/n ======== test join_l3 ========= 
+
+KPC_Uv3
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

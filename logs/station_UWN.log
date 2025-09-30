@@ -1,0 +1,110 @@
+2025-09-30 09:28:54,052 [INFO] AWS(config_file=../aws-l0//tx/config/UWN.toml, inpath=../aws-l0//tx/, data_issues_repository=../PROMICE-AWS-data-issues, var_file=None, meta_file=None)
+2025-09-30 09:28:54,405 [DEBUG] Source information: {'pypromice': '1.5.1', 'l0_config_file': 'UWN.toml:016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'l0_data_root': '016a28db7b1c6dc223642f5fa4e0a0249a3cdac3', 'data_issues': 'd1389d62adb1864056bb11f559d4785105b56943'}
+2025-09-30 09:28:54,413 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/UWN_300234061217540_1.txt
+2025-09-30 09:28:54,487 [INFO] L0 data successfully loaded from UWN_300234061217540_1.txt
+2025-09-30 09:28:54,487 [INFO] Detected L0 file type 'csv_default' for ../aws-l0/tx/UWN_300234061217540_2.txt
+2025-09-30 09:28:54,539 [INFO] L0 data successfully loaded from UWN_300234061217540_2.txt
+2025-09-30 09:28:54,556 [INFO] Level 1 processing...
+2025-09-30 09:28:54,742 [WARNING] bedrock attribute is not set
+2025-09-30 09:28:55,057 [WARNING] bedrock attribute is not set
+2025-09-30 09:28:55,197 [INFO] Level 2 processing...
+2025-09-30 09:28:55,198 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/UWN.csv
+2025-09-30 09:28:55,198 [INFO] No ../PROMICE-AWS-data-issues/adjustments/UWN.csv file to read.
+2025-09-30 09:28:55,199 [INFO] Using file: ../PROMICE-AWS-data-issues/flags/UWN.csv
+2025-09-30 09:28:55,209 [DEBUG] ---> flagging 2024-02-09 00:00:00 2025-09-28T13:00:00.000000000 dlr
+2025-09-30 09:28:55,211 [DEBUG] ---> flagging 2024-02-09 00:00:00 2025-09-28T13:00:00.000000000 ulr
+2025-09-30 09:28:55,213 [DEBUG] ---> flagging 2024-02-09 00:00:00 2025-09-28T13:00:00.000000000 t_rad
+2025-09-30 09:28:55,216 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/UWN.csv
+2025-09-30 09:28:55,216 [INFO] No ../PROMICE-AWS-data-issues/adjustments/UWN.csv file to read.
+2025-09-30 09:28:55,222 [DEBUG] Running persistence_qc using {'t_i': {'max_diff': 0.0001, 'period': 2}, 't_u': {'max_diff': 0.0001, 'period': 2}, 't_l': {'max_diff': 0.0001, 'period': 2}, 'p_i': {'max_diff': 0.0001, 'period': 3}, 'p_u': {'max_diff': 0.0001, 'period': 150}, 'p_l': {'max_diff': 0.0001, 'period': 150}, 'gps_lat_lon': {'max_diff': 1e-06, 'period': 6}, 'gps_alt': {'max_diff': 0.0001, 'period': 6}, 't_rad': {'max_diff': 0.0001, 'period': 2}, 'rh_i': {'max_diff': 0.0001, 'period': 2}, 'rh_u': {'max_diff': 0.0001, 'period': 2}, 'rh_l': {'max_diff': 0.0001, 'period': 2}, 'wspd_i': {'max_diff': 0.0001, 'period': 6}, 'wspd_u': {'max_diff': 0.0001, 'period': 6}, 'wspd_l': {'max_diff': 0.0001, 'period': 6}}
+2025-09-30 09:28:55,225 [DEBUG] Applying persistent QC in t_i. Filtering 22/22142 samples
+2025-09-30 09:28:55,229 [DEBUG] Applying persistent QC in t_u. Filtering 0/22142 samples
+2025-09-30 09:28:55,232 [DEBUG] Applying persistent QC in p_i. Filtering 34/22142 samples
+2025-09-30 09:28:55,289 [DEBUG] Applying persistent QC in p_u. Filtering 1/22142 samples
+2025-09-30 09:28:55,298 [DEBUG] Applying persistent QC in gps_lat_lon. Filtering 285/22142 samples
+2025-09-30 09:28:55,302 [DEBUG] Applying persistent QC in gps_alt. Filtering 319/22142 samples
+2025-09-30 09:28:55,304 [DEBUG] Applying persistent QC in t_rad. Filtering 1/22142 samples
+2025-09-30 09:28:55,307 [DEBUG] Applying persistent QC in rh_i. Filtering 72/22142 samples
+2025-09-30 09:28:55,310 [DEBUG] Applying persistent QC in rh_u. Filtering 39/22142 samples
+2025-09-30 09:28:55,314 [DEBUG] Applying persistent QC in wspd_i. Filtering 42/22142 samples
+2025-09-30 09:28:55,319 [DEBUG] Applying persistent QC in wspd_u. Filtering 51/22142 samples
+2025-09-30 09:28:55,787 [INFO] Resampling to 60min
+2025-09-30 09:28:55,875 [INFO] Writing to files...
+2025-09-30 09:28:56,552 [INFO] Written to L2_test/tx/UWN/UWN_hour.csv
+2025-09-30 09:28:56,552 [INFO] Written to L2_test/tx/UWN/UWN_hour.nc
+2025-09-30 09:28:56,630 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:28:56,631 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:28:56,632 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:28:56,749 [INFO] UWN array loaded from L2_test/tx/UWN/UWN_hour.nc
+2025-09-30 09:28:56,750 [INFO] Only one file found L2_test/tx/UWN/UWN_hour.nc...
+2025-09-30 09:28:56,849 [INFO] Writing to files...
+2025-09-30 09:28:57,456 [INFO] Written to L2_test/level_2/UWN/UWN_hour.csv
+2025-09-30 09:28:57,456 [INFO] Written to L2_test/level_2/UWN/UWN_hour.nc
+2025-09-30 09:28:57,458 [INFO] Files saved to L2_test/level_2/UWN...
+2025-09-30 09:28:57,510 [WARNING] data_issues_path is missing. Using default data issues path: ../PROMICE-AWS-data-issues
+2025-09-30 09:28:58,739 [INFO] processing gps_lat without relocation
+2025-09-30 09:28:58,744 [INFO] processing gps_lon without relocation
+2025-09-30 09:28:58,748 [INFO] processing gps_alt without relocation
+2025-09-30 09:28:58,778 [INFO] Using file: ../PROMICE-AWS-data-issues/adjustments/UWN.csv
+2025-09-30 09:28:58,778 [INFO] No ../PROMICE-AWS-data-issues/adjustments/UWN.csv file to read.
+2025-09-30 09:28:58,780 [INFO] Combining surface height
+2025-09-30 09:28:58,780 [INFO] -> ablation site
+2025-09-30 09:28:58,960 [DEBUG] -> estimating ablation period for each year
+2025-09-30 09:28:58,962 [DEBUG] 2020 derived from z_ice_surf
+2025-09-30 09:28:58,965 [DEBUG] 2021 derived from z_ice_surf
+2025-09-30 09:28:58,967 [DEBUG] 2022 derived from z_ice_surf
+2025-09-30 09:28:58,969 [DEBUG] 2023 derived from z_ice_surf
+2025-09-30 09:28:58,971 [DEBUG] 2024 derived from z_ice_surf
+2025-09-30 09:28:58,973 [DEBUG] 2025 derived from z_ice_surf
+2025-09-30 09:28:58,973 [DEBUG] 2020: Ablation from 2020-08-18 16:00:00 to 2020-09-22 07:00:00
+2025-09-30 09:28:58,983 [DEBUG] adjusting hs1
+2025-09-30 09:28:58,984 [DEBUG] 2021: Ablation from 2021-07-15 10:00:00 to 2021-08-21 11:00:00
+2025-09-30 09:28:58,990 [DEBUG] adjusting z to hs1
+2025-09-30 09:28:58,991 [DEBUG] adjusting hs2 to z
+2025-09-30 09:28:58,991 [DEBUG] using end of melt season
+2025-09-30 09:28:58,993 [DEBUG] adjusting hs1
+2025-09-30 09:28:58,993 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:28:58,995 [DEBUG] 2022: Ablation from 2022-06-04 00:00:00 to 2022-09-22 09:00:00
+2025-09-30 09:28:59,001 [DEBUG] adjusting hs2 to z
+2025-09-30 09:28:59,002 [DEBUG] using end of melt season
+2025-09-30 09:28:59,004 [DEBUG] adjusting hs1
+2025-09-30 09:28:59,004 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:28:59,006 [DEBUG] 2023: Ablation from 2023-06-23 20:00:00 to 2023-09-30 23:00:00
+2025-09-30 09:28:59,011 [DEBUG] adjusting hs2 to z
+2025-09-30 09:28:59,011 [DEBUG] using end of melt season
+2025-09-30 09:28:59,013 [DEBUG] adjusting hs1
+2025-09-30 09:28:59,013 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:28:59,015 [DEBUG] 2024: Ablation from 2024-06-17 06:00:00 to 2024-07-14 09:00:00
+2025-09-30 09:28:59,023 [DEBUG] adjusting hs1
+2025-09-30 09:28:59,023 [DEBUG] to hs2, minimizing winter difference
+2025-09-30 09:28:59,024 [DEBUG] 2025: Ablation from 2025-06-23 11:00:00 to 2025-09-25 18:00:00
+2025-09-30 09:28:59,031 [DEBUG] adjusting hs2 to z
+2025-09-30 09:28:59,031 [DEBUG] using end of melt season
+2025-09-30 09:28:59,066 [INFO] surface height combination finished
+2025-09-30 09:28:59,109 [INFO] Calculating thermistor depth
+2025-09-30 09:28:59,120 [INFO] No maintenance at UWN
+2025-09-30 09:28:59,131 [INFO] interpolating 10 m firn/ice temperature (on hourly values)
+2025-09-30 09:28:59,772 [INFO] Resampling to 60min
+2025-09-30 09:28:59,886 [INFO] Writing to files...
+2025-09-30 09:29:01,072 [INFO] Written to L3_test/stations/UWN/UWN_hour.csv
+2025-09-30 09:29:01,072 [INFO] Written to L3_test/stations/UWN/UWN_hour.nc
+2025-09-30 09:29:01,132 [INFO] Resampling to 1D
+2025-09-30 09:29:01,212 [INFO] Writing to files...
+2025-09-30 09:29:01,385 [INFO] Written to L3_test/stations/UWN/UWN_day.csv
+2025-09-30 09:29:01,385 [INFO] Written to L3_test/stations/UWN/UWN_day.nc
+2025-09-30 09:29:01,442 [INFO] Resampling to ME
+2025-09-30 09:29:01,519 [INFO] Writing to files...
+2025-09-30 09:29:01,621 [INFO] Written to L3_test/stations/UWN/UWN_month.csv
+2025-09-30 09:29:01,621 [INFO] Written to L3_test/stations/UWN/UWN_month.nc
+/n ======== test join_l3 ========= 
+
+UWN
+
+ ======== test get_l2 ========= 
+
+
+ ======== test join_l2 ========= 
+
+
+ ======== test l2tol3 ========= 
+

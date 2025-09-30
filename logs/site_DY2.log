@@ -1,0 +1,23 @@
+2025-09-30 09:36:10,145 [DEBUG] Could not import boto3, continuing with reduced functionality.
+2025-09-30 09:36:10,146 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
+2025-09-30 09:36:10,147 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
+2025-09-30 09:36:11,575 [INFO] joining DY2 DYE-2
+2025-09-30 09:36:11,985 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-30 09:36:13,151 [INFO] Resampling to 60min
+2025-09-30 09:36:13,545 [INFO] Writing to files...
+2025-09-30 09:36:22,750 [INFO] Written to L3_test/sites/DY2/DY2_hour.csv
+2025-09-30 09:36:22,751 [INFO] Written to L3_test/sites/DY2/DY2_hour.nc
+2025-09-30 09:36:22,977 [INFO] Resampling to 1D
+2025-09-30 09:36:23,083 [INFO] Writing to files...
+2025-09-30 09:36:23,542 [INFO] Written to L3_test/sites/DY2/DY2_day.csv
+2025-09-30 09:36:23,542 [INFO] Written to L3_test/sites/DY2/DY2_day.nc
+2025-09-30 09:36:23,774 [INFO] Resampling to MS
+2025-09-30 09:36:23,871 [INFO] Writing to files...
+2025-09-30 09:36:23,962 [INFO] Written to L3_test/sites/DY2/DY2_month.csv
+2025-09-30 09:36:23,962 [INFO] Written to L3_test/sites/DY2/DY2_month.nc
+/n ======== test join_l3 ========= 
+
+DY2
+DY2 array loaded from L3_test/stations/DY2/DY2_hour.nc
+DYE-2 array loaded from ../GC-Net-Level-1-data-processing/L1/hourly/DYE-2.csv
