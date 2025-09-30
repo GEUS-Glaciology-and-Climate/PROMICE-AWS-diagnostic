@@ -14,10 +14,10 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-# new_version = 'aws-l3-dev'
-new_version = 'thredds'
+new_version = 'aws-l3-dev'
+# new_version = 'thredds'
 # new_version = 'level_2_stations'
-old_version = 'V25'
+old_version = 'V27'
 
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
