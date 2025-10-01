@@ -64,17 +64,12 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['WEG_B']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
     df_flags = load_flags_and_adjustments(path_to_qc_files, station)
     ds, ds_save, pAWS_tx, pAWS_raw = load_L1(path_to_l0, station)
-
-    # try:
-    #     pAWS_tx.getL2()
-    # except:
-    #     pass
 
     #%% Flagging, adjusting, filtering
 
@@ -83,6 +78,9 @@ for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
     ds22 = persistence_qc(ds2)
+
+    ds22 = process_precip(ds22)
+
     vars_df = load_variables(var_file)
     ds3 = clip_values(ds22.copy(), vars_df)
 
@@ -116,6 +114,8 @@ for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 
             if ds_save[v].isnull().all():
                 var_list = var_list[~np.isin(var_list, v)]
+    else:
+        var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
     Msg('# '+station)
     # var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
@@ -131,10 +131,10 @@ for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'gps_lat','gps_lon','gps_alt'
                         # 'z_boom_u', 't_u'
                         # 't_u']+['t_i_'+str(i+1) for i in range(11)
-                        'p_u','z_pt','z_pt_cor',
+                        # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
                         # 'rh_u','rh_l','rh_i',
-                        #'t_u','t_l','t_i',
+                        # 't_u','t_l','t_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
                         # 'z_boom_l', 'z_boom_u', 'z_stake',
@@ -145,8 +145,11 @@ for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
                         # 'dlr','ulr','t_rad',
-                        # 'dsr_cor','usr_cor',
-                        #            'albedo',#'tilt_x','tilt_y','cc',
+                        "precip_u", "rainfall_u", "rainfall_cor_u",
+                        "precip_l", "rainfall_l", "rainfall_cor_l",
+                        # 'dsr','usr',
+                        # 'albedo',
+                        # 'tilt_x','tilt_y','cc',
                         ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
@@ -166,11 +169,6 @@ for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         ds4[var].values,
                         marker='.',color='gray', linestyle='None',
                         label='uncorrected for air temperature')
-                var_cor = var.replace('_u','_cor_u').replace('_l','_cor_l')
-                ax.plot(ds4.time,
-                        ds4[var_cor].values,
-                        marker='.', linestyle='None',
-                        label='corrected for air temperature')
             if var in ds.data_vars:
                 ax.plot(ds.time,
                         ds[var].values,
@@ -215,12 +213,12 @@ for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
             if var[:-4] in ds4.data_vars:
                 if var in ['dsr_cor','usr_cor']:
                     if var == 'dsr_cor':
-                        ax.plot(ds3.time,(1.2* isr_toa + 150),
+                        ax.plot(ds3.time,(1.2* geo["isr_toa"] + 150),
                                 c='k', alpha=0.7)
                         ax_list[0].plot(np.nan,np.nan,
                                 c='k',label='TOA irradiance + margin (W m-2)')
                     else:
-                        ax.plot(ds3.time, 0.8*(1.2 * isr_toa + 150),
+                        ax.plot(ds3.time, 0.8*(1.2 * geo["isr_toa"] + 150),
                                 c='k', alpha=0.7)
                     ax.plot(ds.time,
                             ds[var[:-4]].values,
@@ -233,33 +231,34 @@ for station in ['KAN_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                     if var == 'dsr_cor':
                         ax.plot(ds3.time,
                                 ds3[var[:-4]].where(
-                                    TOA_crit_nopass | TOA_crit_nopass_cor).values,
+                                    flags.TOA_crit_nopass_dsr | TOA_crit_nopass_cor).values,
                                 marker='.',color='k', linestyle='None',
                                 label='removed, dsr above TOA irradiance')
                     else:
                         ax.plot(ds3.time,
                                 ds3[var[:-4]].where(
-                                    TOA_crit_nopass | TOA_crit_nopass_cor).values,
+                                    flags.TOA_crit_nopass_usr | TOA_crit_nopass_cor).values,
                                 marker='.',color='k', linestyle='None',
                                 label='removed, dsr above TOA irradiance')
-                        if TOA_crit_nopass_usr.any():
+                        if flags.TOA_crit_nopass_usr.any():
                             ax.plot(ds3.time,
-                                ds3[var[:-4]].where(TOA_crit_nopass_usr).values,
+                                ds3[var[:-4]].where(flags.TOA_crit_nopass_usr).values,
                                 marker='.',color='tab:orange', linestyle='None')
                             ax_list[0].plot(np.nan,np.nan,marker='.',ls='None',
                                     c='tab:orange',label='removed, usr above TOA irradiance')
 
                     ax.plot(ds3.time,
-                            ds3[var[:-4]].where(bad).values,
+                            ds3[var[:-4]].where(flags.bad).values,
                             marker='.',color='tab:green', linestyle='None',
                             label='sun below horizon zenith angle or negative reading')
 
 
             if var in ds4.data_vars:
-                ax.plot(ds4.time,
-                        ds4[var].values,
-                        marker='.',color='tab:blue', linestyle='None',
-                        label='final')
+                if var not in ['z_boom_u','z_boom_l','z_stake']:
+                    ax.plot(ds4.time,
+                            ds4[var].values,
+                            marker='.',color='tab:blue', linestyle='None',
+                            label='final')
 
         for var, ax in zip(var_list, ax_list):
             if zoom_to_good:

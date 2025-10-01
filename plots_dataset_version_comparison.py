@@ -19,42 +19,31 @@ new_version = 'aws-l3-dev'
 # new_version = 'level_2_stations'
 old_version = 'V27'
 
+res = 'month'
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
 else:
-    path_old = 'C:/Users/bav/Downloads/'+old_version+'/hour/'
+    path_old = f'C:/Users/bav/Downloads/{old_version}/{res}/'
 
 if 'thredds' in new_version:
-    path_new = '../thredds-data/level_3_sites/csv/hour/'
+    path_new = f'../thredds-data/level_3_sites/csv/{res}/'
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 elif 'dev' in new_version:
-    path_new = '../aws-l3-dev/csv/hour/'
+    path_new = f'../aws-l3-dev/csv/{res}/'
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-
-# elif 'level_3' in new_version:
-#     # path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_3_sites/csv/hour/'
-#     path_new = 'C:/Users/bav/Downloads/level_3_sites/hour/'
-#     df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_sites_metadata.csv')
-# elif 'level_2' in new_version:
-#     path_new = 'C:/Users/bav/GitHub/PROMICE data/thredds/level_2_stations/csv/hour/'
-#     df_meta = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds/metadata/AWS_stations_metadata.csv')
 
 else:
     path_new = '../aws-l3/'
     df_meta = pd.read_csv(path_new+'/AWS_latest_locations.csv')
     df_meta2 = pd.read_csv(path_new+'/AWS_metadata.csv')
     path_new = '../aws-l3/level_3/'
-    # path_new = 'C:/Users/bav/Downloads/V15/hour/'
-    # path_new = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'
-    # path_new = 'https://thredds.geus.dk/thredds/fileServer/aws_l3_time_csv/level_3/hour/'
-    # path_new = 'https://thredds.geus.dk/thredds/dodsC/aws_l3_time_netcdf/level_3/hour/'
 
 from datetime import date
 today = date.today().strftime("%Y%m%d")
 
-filename = 'plot_compilations/'+old_version+'_versus_'+new_version+'.md' #'_'+today+'.md'
-figure_folder='figures/'+old_version+'_versus_'+new_version #+'_'+today
+filename = f'plot_compilations/{old_version}_versus_{new_version}_{res}.md'
+figure_folder=f'figures/{old_version}_versus_{new_version}_{res}'
 try:
     os.mkdir(figure_folder)
 except:
@@ -89,7 +78,7 @@ for station in np.unique(df_meta.site_id):
     if station in ['UWN','ORO','NUK_P']:
         continue
 
-    file = path_new+station+'_hour.csv'
+    file = f'{path_new}{station}_{res}.csv'
     try:
         df_new = pd.read_csv(file, index_col=0, parse_dates=True)
     except:
@@ -114,11 +103,9 @@ for station in np.unique(df_meta.site_id):
     df_old = pd.DataFrame()
     df_old['time'] = df_new.index.values
 
-    file = path_old+station+'/'+station+'_hour.csv'
+    file = f'{path_old}{station}_{res}.csv'
     if not os.path.isfile(file):
-        file = path_old+station+'_hour.csv'
-        if not os.path.isfile(file):
-            Msg('cannot find old file for '+station)
+        Msg('cannot find old file for '+station)
 
     if os.path.isfile(file):
         print(file)
@@ -175,10 +162,10 @@ for station in np.unique(df_meta.site_id):
             ax.grid()
             # ax.set_xlim(pd.to_datetime(['2022-02-01','2025-04-03']))
 
-        plt.suptitle('%s %i/%i'%(station, k+1, len(var_list_list)))
+        plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
         plt.close(fig)
-        Msg('![%s](../%s/%s_%i.png)'%(station, figure_folder, station,k))
+        Msg(f'![{station}](../{figure_folder}/{station}_{res}_{k}.png)')
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()

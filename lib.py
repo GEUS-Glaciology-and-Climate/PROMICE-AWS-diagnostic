@@ -12,13 +12,27 @@ import numpy as np
 import os, glob
 import pandas as pd
 from pypromice.pipeline import AWS
-from pypromice.core.variables import (station_pose,
-                                      radiation,
-                                      air_temperature)
+# from pypromice.core.variables import (station_pose,
+#                                       radiation,
+#                                       air_temperature,
+#                                       precipitation)
 
 from pypromice.pipeline.get_l2 import get_l2
 from pypromice.pipeline.join_l2 import join_l2
 from pypromice.pipeline.join_l2 import loadArr
+
+def process_precip(ds):
+    if ~ds["precip_u"].isnull().all():
+        ds["precip_u"] = precipitation.filter_lufft_errors(ds["precip_u"], ds["t_u"], ds["p_u"], ds["rh_u"])
+        ds["rainfall_u"] = precipitation.get_rainfall_per_timestep(ds["precip_u"], ds["t_u"])
+        ds["rainfall_cor_u"] = precipitation.correct_rainfall_undercatch(ds["rainfall_u"], ds["wspd_u"])
+
+    if ds.attrs["number_of_booms"]==2:
+        if ~ds["precip_l"].isnull().all():
+            ds["precip_l"] = precipitation.filter_lufft_errors(ds["precip_l"], ds["t_l"], ds["p_l"], ds["rh_l"])
+            ds["rainfall_l"] = precipitation.get_rainfall_per_timestep(ds["precip_l"], ds["t_l"])
+            ds["rainfall_cor_l"] = precipitation.correct_rainfall_undercatch(ds["rainfall_l"], ds["wspd_l"])
+    return ds
 
 def remove_old_plots(figure_folder, station):
     pattern = os.path.join(figure_folder, f'{station}*')
@@ -143,6 +157,7 @@ def solar_geometry(ds):
     ZenithAngle_rad, ZenithAngle_deg = station_pose.calculate_zenith(lat, Declination_rad, HourAngle_rad)
     AngleDif_deg = station_pose.calculate_angle_difference(ZenithAngle_rad, HourAngle_rad,
                                                            phi_sensor_rad, theta_sensor_rad)
+    isr_toa = radiation.calculate_TOA(ZenithAngle_deg, ZenithAngle_rad)
 
     return {
         "lat": lat, "lon": lon,
@@ -152,7 +167,8 @@ def solar_geometry(ds):
         "HourAngle_rad": HourAngle_rad,
         "ZenithAngle_rad": ZenithAngle_rad,
         "ZenithAngle_deg": ZenithAngle_deg,
-        "AngleDif_deg": AngleDif_deg
+        "AngleDif_deg": AngleDif_deg,
+        "isr_toa":isr_toa
     }
 
 def filter_shortwave(ds, geo):
@@ -161,7 +177,16 @@ def filter_shortwave(ds, geo):
         ds["dsr"], ds["usr"], ds["cc"],
         geo["ZenithAngle_rad"], geo["ZenithAngle_deg"], geo["AngleDif_deg"]
     )
-    return ds, flags
+    ds_flags = xr.Dataset(
+        {
+            "bad": flags[0],
+            "sunonlowerdome": flags[1],
+            "TOA_crit_nopass_dsr": flags[2],
+            "TOA_crit_nopass_usr": flags[3],
+        },
+        coords={"time": flags[0].time},
+    )
+    return ds, ds_flags
 
 def correct_shortwave(ds, geo):
     ds = ds.copy()

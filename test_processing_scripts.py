@@ -31,9 +31,9 @@ path_to_l0 = '../aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
-#for station in []:
+for station in ['SWC_O']:
 # for station in np.unique(np.array(df_metadata.station_id)):
-def process_l2_l3(station):
+# def process_l2_l3(station):
     print(station)
     # Loading the L1 data:
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
@@ -131,9 +131,9 @@ folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("/n ======== test join_l3 ========= \n")
 
-# for site in ['TUN']:
+for site in ['SWC']:
 # for site in df_metadata.site_id:
-def get_join_l3(site):
+# def get_join_l3(site):
     print(site)
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
                         folder_gcnet, # folder_glaciobasis,

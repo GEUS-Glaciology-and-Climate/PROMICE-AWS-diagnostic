@@ -32,12 +32,12 @@ var_list = [
         # 't_u','z_boom_u','z_stake'
         # 'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
-        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
+        'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
         ]
 
 
 # station_list = df_meta.stid
-station_list = ['DY2']
+station_list = ['WEG_B']
 
 # plt.close('all')
 # gps_info=[]
@@ -47,7 +47,7 @@ for station in station_list:
 
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
-    df_l3=df_l3.loc['2025':]
+    # df_l3=df_l3.loc['2025':]
     if len(var_list) == 0:
         var_list=df_l3.columns
     var_list = np.array(var_list)
