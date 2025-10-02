@@ -1229,3 +1229,12 @@ precip_u, precip_u_cor, precip_u_rate
 ![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_2.png)
 ![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_3.png)
 ![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_4.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_5.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_6.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_7.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_8.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_9.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_10.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_11.png)
+![ZAC_U](../figures/V27_versus_aws-l3-dev_month/ZAC_U_month_12.png)
+ 
