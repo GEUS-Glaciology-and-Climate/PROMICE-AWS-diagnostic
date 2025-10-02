@@ -9,22 +9,22 @@ z_boom_cor_u, z_boom_cor_l, z_stake_cor, rainfall_u, rainfall_cor_u, rainfall_l,
 Old variables removed from new files:
 albedo, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate
  
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_0.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_1.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_2.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_3.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_4.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_5.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_6.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_7.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_8.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_9.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_10.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_11.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_12.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_13.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_14.png)
-![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_month_15.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_0.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_1.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_2.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_3.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_4.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_5.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_6.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_7.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_8.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_9.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_10.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_11.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_12.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_13.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_14.png)
+![CEN](../figures/V27_versus_aws-l3-dev_month/CEN_15.png)
  
 ## CP1
 Variables in new file:
@@ -36,5 +36,5 @@ z_boom_cor_u, z_boom_cor_l, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor
 Old variables removed from new files:
 albedo, precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate
  
-![CP1](../figures/V27_versus_aws-l3-dev_month/CP1_month_0.png)
-![CP1](../figures/V27_versus_aws-l3-dev_month/CP1_month_1.png)
+![CP1](../figures/V27_versus_aws-l3-dev_month/CP1_0.png)
+![CP1](../figures/V27_versus_aws-l3-dev_month/CP1_1.png)

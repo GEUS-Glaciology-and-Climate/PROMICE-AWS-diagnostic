@@ -50,7 +50,7 @@ df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 
-for station in ['NUK_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['SWC_O']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
 
@@ -60,7 +60,7 @@ for station in ['NUK_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     pAWS_tx.getL2()
     # pAWS_raw.getL3()
 # %%
-    ds = pAWS_raw.L2
+    ds = pAWS_tx.L2
     from pypromice.pipeline.resample import resample_dataset
     import matplotlib.dates as mdates
     L2_raw_h=resample_dataset(ds, '60min')
@@ -71,9 +71,9 @@ for station in ['NUK_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 
     fig, ax = plt.subplots()
     ds[var].plot(marker='^',label='raw or tx', alpha=0.7)
-    L2_raw_h[var].plot(drawstyle="steps-post", marker='o',label='hour', alpha=0.7)
-    L2_raw_d[var].plot(drawstyle="steps-post", marker='o',label='day', alpha=0.7)
-    L2_raw_m[var].plot(drawstyle="steps-post", marker='o',label='month', alpha=0.7)
+    L2_raw_h[var].plot(drawstyle="steps-post", marker='o',label='resampled hour', alpha=0.7)
+    L2_raw_d[var].plot(drawstyle="steps-post", marker='o',label='resampled day', alpha=0.7)
+    L2_raw_m[var].plot(drawstyle="steps-post", marker='o',label='resampled month', alpha=0.7)
     plt.legend()
 
     ax.xaxis.set_major_locator(mdates.AutoDateLocator())
