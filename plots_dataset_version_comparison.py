@@ -10,8 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import matplotlib
-matplotlib.use('Agg')
+# import matplotlib
+# matplotlib.use('Agg')
 import tocgen
 
 new_version = 'aws-l3-dev'
@@ -19,7 +19,7 @@ new_version = 'aws-l3-dev'
 # new_version = 'level_2_stations'
 old_version = 'V27'
 
-res = 'month'
+res = 'hour'
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
 else:
@@ -64,9 +64,9 @@ import toml
 import xarray as xr
 import numpy as np
 # plt.close('all')
-# for station in ['DY2']: #
+for station in ['JAR']: #
 # for station in np.unique(df_meta.station_id):
-for station in np.unique(df_meta.site_id):
+# for station in np.unique(df_meta.site_id):
     Msg('## '+station)
     # if path_new == 'aws-l3-dev':
     #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
@@ -88,17 +88,6 @@ for station in np.unique(df_meta.site_id):
         else:
             Msg('No new file for this station')
             continue
-
-    # df_new = pd.read_csv('../aws-l3/'+station+'_hour.csv', index_col=0, parse_dates=True)
-    # df_new = pd.read_csv(
-    #     'https://thredds.geus.dk/thredds/fileServer/aws_l3_station_csv/level_3/'+station+'/'+station+'_hour.csv',
-    #     index_col=0, parse_dates=True)
-
-    # if not os.path.isfile(path_old+'/'+station+'_hour.csv'):
-    #     Msg(path_old+'/'+station+'_hour.csv cannot be found in old data')
-    #     continue
-    # if path_l3 == 'aws-l3-dev':
-    #     station = station_save
 
     df_old = pd.DataFrame()
     df_old['time'] = df_new.index.values
@@ -123,10 +112,9 @@ for station in np.unique(df_meta.site_id):
         ))
     Msg(' ')
     var_list = df_new.columns.values
+    var_list = ['rainfall_u','rainfall_cor_u','rainfall_l','rainfall_cor_l']
     var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
 
-    # df_old = df_old.loc['2020-02-01':'2025-08-01',:]
-    # df_new = df_new.loc['2020-02-01':'2025-08-01',:]
     if res == 'month':
         size=8
     else:
@@ -139,10 +127,18 @@ for station in np.unique(df_meta.site_id):
 
         for var, ax in zip(var_list, ax_list):
             ax.set_ylabel(var)
+            
+            var_old = var.replace('rainfall_cor_u','precip_u_rate').replace('rainfall_cor_l','precip_l_rate')
+            var_old = var.replace('rainfall_u','precip_u_cor').replace('rainfall_l','precip_l_cor')
 
             if var in df_old.columns:
                 ax.plot(df_old[var].index, df_old[var].values,
                         marker='^',linestyle='None', label=old_version,
+                        alpha=0.7, markersize=size*1.3, color='tab:blue')
+            elif var_old in df_old.columns:
+                ax.plot(df_old[var_old].index,
+                        df_old[var_old].values,
+                        marker='^',linestyle='None', label=f'{old_version} - old name {var_old}',
                         alpha=0.7, markersize=size*1.3, color='tab:blue')
             else:
                 print(var,'not in old data')
@@ -161,7 +157,7 @@ for station in np.unique(df_meta.site_id):
 
         plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
         fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
-        plt.close(fig)
+        # plt.close(fig)
         Msg(f'![{station}](../{figure_folder}/{station}_{res}_{k}.png)')
     Msg(' ')
 tocgen.processFile(filename, filename[:-3]+"_toc.md")

@@ -31,7 +31,7 @@ path_to_l0 = '../aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
-for station in ['CEN1','CEN2']:
+for station in ['JAR_O']:
 # for station in np.unique(np.array(df_metadata.station_id)):
 # def process_l2_l3(station):
     print(station)
@@ -71,7 +71,9 @@ for station in ['CEN1','CEN2']:
     l3 = get_l2tol3(config_folder,
                     'L2_test/level_2/'+station+'/'+station+'_hour.nc',
                     'L3_test/stations/', None, None, None)
-
+    plt.figure()
+    l2_merged.precip_u.plot(ax=plt.gca(), marker='o')
+    l2_merged.precip_u.plot(ax=plt.gca(), marker='o')
     # % plotting L3 lat, lon alt
     if False:
         try:
@@ -131,7 +133,7 @@ folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("/n ======== test join_l3 ========= \n")
 
-for site in ['CEN']:
+for site in ['JAR']:
 # for site in df_metadata.site_id:
 # def get_join_l3(site):
     print(site)
@@ -139,11 +141,11 @@ for site in ['CEN']:
                         folder_gcnet, # folder_glaciobasis,
                         'L3_test/sites/', None, None)
 
-    plt.figure()
-    l3_merged.z_surf_combined.plot(marker='o')
-    l3_merged.z_ice_surf.plot()
-    l3_merged.z_boom_u.plot(marker='.')
-    plt.title(site)
+    # plt.figure()
+    # l3_merged.z_surf_combined.plot(marker='o')
+    # l3_merged.z_ice_surf.plot()
+    # l3_merged.z_boom_u.plot(marker='.')
+    # plt.title(site)
 
     # plt.figure()
     # l3_merged.rh_u_wrt_ice_or_water.plot()
@@ -156,17 +158,18 @@ for site in ['CEN']:
     #     tmp[0].snow_height.plot(label=tmp[1]['stid'])
 
     # plt.legend()
+    # %%
 if False:
     # %% Test precipitation
     with xr.open_dataset(f'L3_test/sites/{site}/{site}_hour.nc', lock=False) as ds_h, \
-          xr.open_dataset(f'L3_test/sites/{station}/{station}_day.nc', lock=False) as ds_d, \
-          xr.open_dataset(f'L3_test/sites/{station}/{station}_month.nc', lock=False) as ds_m:
+          xr.open_dataset(f'L3_test/sites/{site}/{site}_day.nc', lock=False) as ds_d, \
+          xr.open_dataset(f'L3_test/sites/{site}/{site}_month.nc', lock=False) as ds_m:
 
         ds_h.load()
         ds_d.load()
         ds_m.load()
     # %%
-    with xr.open_dataset(f'L2_test/level_2/{site}/{site}_hour.nc', lock=False) as ds_h:
+    with xr.open_dataset(f'L2_test/level_2/{station}/{station}_hour.nc', lock=False) as ds_h:
         plt.figure()
         ds_h.precip_u.plot(ax=plt.gca())
 
@@ -176,6 +179,7 @@ if False:
     (ds_m.rainfall_cor_u/30).plot(ax=plt.gca(), marker='o')
 
     plt.figure()
+    l2_merged.precip_u.plot(ax=plt.gca(), marker='o')
     ds_h.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
     ds_d.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
     ds_m.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
