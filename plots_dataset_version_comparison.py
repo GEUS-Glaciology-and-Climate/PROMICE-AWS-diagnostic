@@ -19,7 +19,7 @@ new_version = 'aws-l3-dev'
 # new_version = 'level_2_stations'
 old_version = 'V27'
 
-res = 'day'
+res = 'month'
 if old_version == 'aws-l3':
     path_old = '../aws-l3/level_3/'
 else:

@@ -24,7 +24,7 @@ username = "bav"
 password = prompt_password()
 
 remote_base = "/home/bav/PROMICE-AWS-diagnostic/L3_test/sites"
-for res in ['day','month']:
+for res in ['day','month','hour']:
     local_base = f"../aws-l3-dev/csv/{res}"
     from pathlib import Path
 

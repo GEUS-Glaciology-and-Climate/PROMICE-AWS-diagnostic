@@ -31,7 +31,7 @@ path_to_l0 = '../aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
-for station in ['SWC_O']:
+for station in ['CEN1','CEN2']:
 # for station in np.unique(np.array(df_metadata.station_id)):
 # def process_l2_l3(station):
     print(station)
@@ -131,7 +131,7 @@ folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
 folder_glaciobasis = '../GlacioBasis_ESSD/'
 print("/n ======== test join_l3 ========= \n")
 
-for site in ['SWC']:
+for site in ['CEN']:
 # for site in df_metadata.site_id:
 # def get_join_l3(site):
     print(site)
@@ -139,11 +139,11 @@ for site in ['SWC']:
                         folder_gcnet, # folder_glaciobasis,
                         'L3_test/sites/', None, None)
 
-    # plt.figure()
-    # l3_merged.z_surf_combined.plot()
-    # l3_merged.z_ice_surf.plot()
-    # l3_merged.z_boom_u.plot(marker='.')
-    # plt.title(site)
+    plt.figure()
+    l3_merged.z_surf_combined.plot(marker='o')
+    l3_merged.z_ice_surf.plot()
+    l3_merged.z_boom_u.plot(marker='.')
+    plt.title(site)
 
     # plt.figure()
     # l3_merged.rh_u_wrt_ice_or_water.plot()
