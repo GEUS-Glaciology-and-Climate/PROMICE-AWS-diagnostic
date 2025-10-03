@@ -33,7 +33,8 @@ from pypromice.core.qc.persistence import persistence_qc
 from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
 from lib import (remove_old_plots, load_flags_and_adjustments, load_L1,
                  clean_gps, smooth_pose, compute_cloud_cover,
-                 solar_geometry, filter_shortwave, correct_shortwave, compute_albedo)
+                 solar_geometry, filter_shortwave, correct_shortwave, compute_albedo,
+                 process_precip)
 import tocgen
 
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
@@ -64,7 +65,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['WEG_B']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['THU_U2']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -95,7 +96,7 @@ for station in ['WEG_B']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     ds4, TOA_crit_nopass_cor = correct_shortwave(ds4, geo)
     ds4, OKalbedos = compute_albedo(ds4, geo)
 
-    # %% plotting
+    # % plotting
     df_L1 = ds.to_dataframe().copy()
 
     if len(df_flags)>0:
@@ -119,7 +120,6 @@ for station in ['WEG_B']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     Msg('# '+station)
     # var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
-    # var_list = [ 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u',  'tilt_y', 'tilt_x', 'rot',  'gps_lat', 'gps_lon', 'gps_alt',  'batt_v',]
     var_list = [v for v in var_list if v in ds1.data_vars]
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
@@ -137,7 +137,8 @@ for station in ['WEG_B']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 't_u','t_l','t_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
-                        # 'z_boom_l', 'z_boom_u', 'z_stake',
+                        'z_boom_l', 'z_boom_u', 'z_stake',
+                        'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
                         # 'wdir_u','wdir_l','wdir_i'
@@ -145,8 +146,8 @@ for station in ['WEG_B']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
                         # 'dlr','ulr','t_rad',
-                        "precip_u", "rainfall_u", "rainfall_cor_u",
-                        "precip_l", "rainfall_l", "rainfall_cor_l",
+                        # "precip_u", "rainfall_u", "rainfall_cor_u",
+                        # "precip_l", "rainfall_l", "rainfall_cor_l",
                         # 'dsr','usr',
                         # 'albedo',
                         # 'tilt_x','tilt_y','cc',

@@ -12,10 +12,10 @@ import numpy as np
 import os, glob
 import pandas as pd
 from pypromice.pipeline import AWS
-# from pypromice.core.variables import (station_pose,
-#                                       radiation,
-#                                       air_temperature,
-#                                       precipitation)
+from pypromice.core.variables import (station_pose,
+                                      radiation,
+                                      air_temperature,
+                                      precipitation)
 
 from pypromice.pipeline.get_l2 import get_l2
 from pypromice.pipeline.join_l2 import join_l2

@@ -13,6 +13,11 @@ import os, logging
 import pandas as pd
 import matplotlib.pyplot as plt
 import xarray as xr
+import sys, importlib
+for name in list(sys.modules):
+    if name == "pypromice" or name.startswith("pypromice."):
+        del sys.modules[name]
+importlib.invalidate_caches()
 from pypromice.pipeline.get_l2 import get_l2
 from pypromice.pipeline.join_l2 import join_l2
 from pypromice.pipeline.join_l2 import loadArr
@@ -31,7 +36,7 @@ path_to_l0 = '../aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
-for station in ['JAR_O']:
+for station in ['WEG_B']:
 # for station in np.unique(np.array(df_metadata.station_id)):
 # def process_l2_l3(station):
     print(station)
@@ -122,6 +127,14 @@ for station in ['JAR_O']:
             pass
 
 # %% test join_l3
+import sys, importlib
+
+# purge cached package + submodules
+for name in list(sys.modules):
+    if name == "pypromice" or name.startswith("pypromice."):
+        del sys.modules[name]
+importlib.invalidate_caches()
+
 from pypromice.pipeline.join_l3 import join_l3
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -131,48 +144,46 @@ df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 config_folder = '../aws-l0/metadata/station_configurations/'
 folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
 folder_glaciobasis = '../GlacioBasis_ESSD/'
-print("/n ======== test join_l3 ========= \n")
+print(" ======== test join_l3 ========= \n")
+import os
 
-for site in ['JAR']:
+
+for site in ['WEG_B']:
 # for site in df_metadata.site_id:
 # def get_join_l3(site):
     print(site)
+    for f in [f'L3_test/sites/{site}/{site}_hour.nc',
+              f'L3_test/sites/{site}/{site}_day.nc',
+              f'L3_test/sites/{site}/{site}_month.nc']:
+        if os.path.exists(f):
+            os.remove(f)
+
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
                         folder_gcnet, # folder_glaciobasis,
                         'L3_test/sites/', None, None)
 
-    # plt.figure()
-    # l3_merged.z_surf_combined.plot(marker='o')
-    # l3_merged.z_ice_surf.plot()
-    # l3_merged.z_boom_u.plot(marker='.')
-    # plt.title(site)
+def fresh_load(path):
+    ds = xr.open_dataset(path, lock=False, cache=False)
+    ds.load()
+    ds.close()
+    return ds
 
-    # plt.figure()
-    # l3_merged.rh_u_wrt_ice_or_water.plot()
-    # plt.title(site)
+ds_h = fresh_load(f'L3_test/sites/{site}/{site}_hour.nc')
+ds_d = fresh_load(f'L3_test/sites/{site}/{site}_day.nc')
+ds_m = fresh_load(f'L3_test/sites/{site}/{site}_month.nc')
 
-    # plt.figure()
-    # for tmp in sorted_list_station_data[::-1]:
-    #     tmp[0].z_surf_combined.plot(label=tmp[1]['stid'])
-    #     tmp[0].z_ice_surf.plot(label=tmp[1]['stid'])
-    #     tmp[0].snow_height.plot(label=tmp[1]['stid'])
+var = 'albedo'
 
-    # plt.legend()
+plt.figure()
+ds_h[var].plot(ax=plt.gca(), marker='o', label='hour')
+ds_d[var].plot(ax=plt.gca(), marker='o', label='day')
+ds_m[var].plot(ax=plt.gca(), marker='o', label='month')
+
     # %%
 if False:
     # %% Test precipitation
-    with xr.open_dataset(f'L3_test/sites/{site}/{site}_hour.nc', lock=False) as ds_h, \
-          xr.open_dataset(f'L3_test/sites/{site}/{site}_day.nc', lock=False) as ds_d, \
-          xr.open_dataset(f'L3_test/sites/{site}/{site}_month.nc', lock=False) as ds_m:
 
-        ds_h.load()
-        ds_d.load()
-        ds_m.load()
     # %%
-    with xr.open_dataset(f'L2_test/level_2/{station}/{station}_hour.nc', lock=False) as ds_h:
-        plt.figure()
-        ds_h.precip_u.plot(ax=plt.gca())
-
     plt.figure()
     (ds_h.rainfall_cor_u*24).plot(ax=plt.gca(), marker='o')
     ds_d.rainfall_cor_u.plot(ax=plt.gca(), marker='o')
@@ -184,59 +195,8 @@ if False:
     ds_d.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
     ds_m.rainfall_cor_u.cumsum().plot(ax=plt.gca(), marker='o')
 
-    # %% Testing resampling
-
-    with xr.open_dataset(f'L2_test/raw/{station}/{station}_10min.nc', lock=False) as ds_l2_10min, \
-          xr.open_dataset(f'L2_test/raw/{station}/{station}_hour.nc', lock=False) as ds_l2_h:
-
-        ds_l2_10min.load()
-        ds_l2_h.load()
-
-    with xr.open_dataset(f'L3_test/stations/{station}/{station}_hour.nc', lock=False) as ds_h, \
-          xr.open_dataset(f'L3_test/stations/{station}/{station}_day.nc', lock=False) as ds_d, \
-          xr.open_dataset(f'L3_test/stations/{station}/{station}_month.nc', lock=False) as ds_m:
-
-        ds_h.load()
-        ds_d.load()
-        ds_m.load()
-
-    with xr.open_dataset(f'L3_test/stations/{station}_comp_filt/{station}_hour.nc', lock=False) as ds_h_f, \
-          xr.open_dataset(f'L3_test/stations/{station}_comp_filt/{station}_day.nc', lock=False) as ds_d_f, \
-          xr.open_dataset(f'L3_test/stations/{station}_comp_filt/{station}_month.nc', lock=False) as ds_m_f:
-
-        ds_h_f.load()
-        ds_d_f.load()
-        ds_m_f.load()
-
-    import matplotlib.pyplot as plt
-    import math
 
 
-    vars_list = ['t_u'] #[v for v in ds_h.data_vars if ds_h[v].notnull().any()]
-    nvars = len(vars_list)
-    ncols = 1
-    nrows = math.ceil(nvars / 6)  # groups of 6 plots per figure
-
-    for g in range(nrows):
-        fig, axes = plt.subplots(1, 1, figsize=(10, 12), sharex=True)
-        axes = np.atleast_1d(axes)
-
-        for i in range(6):
-            idx = g * 6 + i
-            if idx >= nvars:
-                axes[i].set_visible(False)
-                continue
-            var = vars_list[idx]
-            ds_l2_10min[var].plot(ax=axes[i], marker=".", ls="None", label="L2 10min w/o completeness")
-            ds_l2_h[var].plot(ax=axes[i], marker="o", ls="None", label="L2 hourly w/o completeness")
-            ds_h[var].plot(ax=axes[i], marker=".", ls="None", label="L3 hourly w/o completeness")
-            ds_h_f[var].plot(ax=axes[i], marker="o", ls="None", label="L3 hourly filtered")
-            axes[i].set_title(var)
-            axes[i].legend()
-
-        plt.tight_layout()
-        plt.show()
-        break
     # %%
 
     import matplotlib.pyplot as plt
