@@ -7,6 +7,9 @@ tip list:
     %matplotlib qt
     import pdb; pdb.set_trace()
 """
+from download_ssh import main
+main()
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
