@@ -35,7 +35,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['TAS_Av3']:
+for station in ['EGP']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -83,7 +83,9 @@ for station in ['TAS_Av3']:
     ax[2].set_ylabel('Height (m)')
     ax[2].grid()
     fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
-# %%
+
+calc_yearly_abaltion = False
+if calc_yearly_abaltion:
     time = pd.DatetimeIndex(l3.index.values)
 
     # all September 1st from first to last timestamp
@@ -101,72 +103,73 @@ for station in ['TAS_Av3']:
     for t, v in abl.diff().dropna().items():
         print(f"{t.year}: {v:.2f} m")
 
-# %%
-    # df_new=l3.copy()
+plot_thermistor_depth = False
+if plot_thermistor_depth:
+    df_new=l3.copy()
 
-    # fig, ax_list = plt.subplots(3,1,sharex=True, figsize=(10,15))
-    # plt.subplots_adjust(right=0.75,left=0.08,hspace=0.02)
+    fig, ax_list = plt.subplots(3,1,sharex=True, figsize=(10,15))
+    plt.subplots_adjust(right=0.75,left=0.08,hspace=0.02)
 
-    # var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] \
-    #                   if v in df_new.columns]
-    # for var in var_list:
-    #     if var in df_new.columns:
-    #         if not df_new[var].isnull().all():
-    #             ax_list[0].plot(df_new.index, df_new[var].values,
-    #                     marker='.',markeredgecolor='None', linestyle='None',
-    #                     label=var)
+    var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt_cor'] \
+                      if v in df_new.columns]
+    for var in var_list:
+        if var in df_new.columns:
+            if not df_new[var].isnull().all():
+                ax_list[0].plot(df_new.index, df_new[var].values,
+                        marker='.',markeredgecolor='None', linestyle='None',
+                        label=var)
 
-    # var_list = [v for v in ['z_surf_combined','z_ice_surf'] \
-    #                   if v in df_new.columns]
-    # for var in var_list:
-    #     if var in df_new.columns:
-    #         if not df_new[var].isnull().all():
-    #             ax_list[1].plot(df_new.index, df_new[var].values,
-    #                     marker='.',markeredgecolor='None', linestyle='None',
-    #                    label=var)
-    #         else:
-    #             print(var,'all nan')
-    # depth_var = ['d_t_i_'+str(i) for i in range(1,12) \
-    #                   if 'd_t_i_'+str(i) in df_new.columns]
-    # for var in depth_var:
-    #     if var in df_new.columns:
-    #         if not df_new[var].isnull().all():
-    #             ax_list[1].plot(df_new.index, -df_new[var].values + df_new.z_surf_combined,
+    var_list = [v for v in ['z_surf_combined','z_ice_surf'] \
+                      if v in df_new.columns]
+    for var in var_list:
+        if var in df_new.columns:
+            if not df_new[var].isnull().all():
+                ax_list[1].plot(df_new.index, df_new[var].values,
+                        marker='.',markeredgecolor='None', linestyle='None',
+                        label=var)
+            else:
+                print(var,'all nan')
+    depth_var = ['d_t_i_'+str(i) for i in range(1,12) \
+                      if 'd_t_i_'+str(i) in df_new.columns]
+    for var in depth_var:
+        if var in df_new.columns:
+            if not df_new[var].isnull().all():
+                ax_list[1].plot(df_new.index, -df_new[var].values + df_new.z_surf_combined,
 
-    #                    label=var)
+                        label=var)
 
 
-    # var_list = ['t_i_'+str(i) for i in range(1,12) \
-    #                   if 't_i_'+str(i) in df_new.columns]
-    # for var in var_list:
-    #     if var in df_new.columns:
-    #         if not df_new[var].isnull().all():
-    #             ax_list[2].plot(df_new.index, df_new[var].values,
-    #                     marker='.',markeredgecolor='None', linestyle='None',
-    #                    label=var)
-    # if 't_i_10m' in df_new.columns:
-    #     ax_list[2].plot(df_new.index, df_new['t_i_10m'].values,
-    #             marker='o',color='k',markeredgecolor='None', linestyle='None',
-    #            label='t_i_10m')
+    var_list = ['t_i_'+str(i) for i in range(1,12) \
+                      if 't_i_'+str(i) in df_new.columns]
+    for var in var_list:
+        if var in df_new.columns:
+            if not df_new[var].isnull().all():
+                ax_list[2].plot(df_new.index, df_new[var].values,
+                        marker='.',markeredgecolor='None', linestyle='None',
+                        label=var)
+    if 't_i_10m' in df_new.columns:
+        ax_list[2].plot(df_new.index, df_new['t_i_10m'].values,
+                marker='o',color='k',markeredgecolor='None', linestyle='None',
+                label='t_i_10m')
 
-    # for i in range(3):
-    #     ax_list[i].set_ylabel('Height (m)')
-    #     ax_list[i].grid()
-    #     ax_list[i].legend(loc='center left', bbox_to_anchor=(1, 0.5))
-    #     if i > 1:
-    #         ax_list[i].legend(loc='center left', bbox_to_anchor=(1, 0.5),ncols=2)
+    for i in range(3):
+        ax_list[i].set_ylabel('Height (m)')
+        ax_list[i].grid()
+        ax_list[i].legend(loc='center left', bbox_to_anchor=(1, 0.5))
+        if i > 1:
+            ax_list[i].legend(loc='center left', bbox_to_anchor=(1, 0.5),ncols=2)
 
-    # ax_list[2].set_ylabel('Depth (m)')
-    # ax_list[2].set_ylabel('Temperature (°C)')
-    # ax_list[0].set_title(station)
+    ax_list[2].set_ylabel('Depth (m)')
+    ax_list[2].set_ylabel('Temperature (°C)')
+    ax_list[0].set_title(station)
 
-    # # xlim1 = df_new.index[0]
-    # # xlim1 = '2022-03-01'
-    # # xlim2 = df_new.index[-1]
-    # # xlim2 = '2025-09-20'
-    # # ax_list[0].set_xlim(pd.to_datetime([xlim1,xlim2]))
-    # # if len(depth_var)>0:
-    # #     ax_list[1].set_ylim(
-    # #                        (df_new['z_surf_combined'].min() - df_new.loc[slice(xlim1, xlim2),depth_var].max().max())-0.5,
-    # #                            df_new.loc[slice(xlim1, xlim2), 'z_surf_combined'].max()+0.5
-    # #                            )
+    # xlim1 = df_new.index[0]
+    # xlim1 = '2022-03-01'
+    # xlim2 = df_new.index[-1]
+    # xlim2 = '2025-09-20'
+    # ax_list[0].set_xlim(pd.to_datetime([xlim1,xlim2]))
+    # if len(depth_var)>0:
+    #     ax_list[1].set_ylim(
+    #                        (df_new['z_surf_combined'].min() - df_new.loc[slice(xlim1, xlim2),depth_var].max().max())-0.5,
+    #                            df_new.loc[slice(xlim1, xlim2), 'z_surf_combined'].max()+0.5
+    #                            )

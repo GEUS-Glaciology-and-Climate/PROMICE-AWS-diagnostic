@@ -1,8 +1,6 @@
+z_ice_surf not in variables
+z_surf_1 not in variables
 z_surf_2 not in variables
-# THU_U2
-![](../figures/flags/THU_U2_0.png)
- 
-z_surf_2 not in variables
-# THU_U2
-![](../figures/flags/THU_U2_0.png)
+# SWC_O
+![](../figures/flags/SWC_O_0.png)
  

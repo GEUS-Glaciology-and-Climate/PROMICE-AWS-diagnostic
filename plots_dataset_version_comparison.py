@@ -13,8 +13,8 @@ main()
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import tocgen
 
 new_version = 'aws-l3-dev'
@@ -23,7 +23,7 @@ new_version = 'aws-l3-dev'
 old_version = 'V27'
 
 res = 'hour'
-for res in ['month','day','hour']:
+for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
     else:
