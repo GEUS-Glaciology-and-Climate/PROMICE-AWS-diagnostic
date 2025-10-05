@@ -321,3 +321,260 @@ z_boom_cor_u, z_stake_cor
 Old variables removed from new files:
 
  
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_0.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_1.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_2.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_3.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_4.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_5.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_6.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_7.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_8.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_9.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_10.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_11.png)
+![KPC_L](../figures/V27_versus_aws-l3-dev_hour/KPC_L_12.png)
+ 
+## KPC_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_stake_cor
+
+Old variables removed from new files:
+
+ 
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_0.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_1.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_2.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_3.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_4.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_5.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_6.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_7.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_8.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_9.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_10.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_11.png)
+![KPC_U](../figures/V27_versus_aws-l3-dev_hour/KPC_U_12.png)
+ 
+## LYN_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_stake_cor
+
+Old variables removed from new files:
+
+ 
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_0.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_1.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_2.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_3.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_4.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_5.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_6.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_7.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_8.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_9.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_10.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_11.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_hour/LYN_L_12.png)
+ 
+## LYN_T
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_stake_cor
+
+Old variables removed from new files:
+
+ 
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_0.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_1.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_2.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_3.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_4.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_5.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_6.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_7.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_8.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_9.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_10.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_11.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_hour/LYN_T_12.png)
+ 
+## MIT
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_stake_cor
+
+Old variables removed from new files:
+
+ 
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_0.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_1.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_2.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_3.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_4.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_5.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_6.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_7.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_8.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_9.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_10.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_11.png)
+![MIT](../figures/V27_versus_aws-l3-dev_hour/MIT_12.png)
+ 
+## NAE
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_cor_u, z_boom_l, z_boom_cor_l, z_surf_combined, snow_height, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_boom_cor_l, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l
+
+Old variables removed from new files:
+precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate
+ 
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_0.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_1.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_2.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_3.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_4.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_5.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_6.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_7.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_8.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_9.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_10.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_11.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_12.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_13.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_14.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_15.png)
+![NAE](../figures/V27_versus_aws-l3-dev_hour/NAE_16.png)
+ 
+## NAU
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_cor_u, z_boom_l, z_boom_cor_l, z_surf_combined, snow_height, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_boom_cor_l, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l
+
+Old variables removed from new files:
+precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate
+ 
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_0.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_1.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_2.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_3.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_4.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_5.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_6.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_7.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_8.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_9.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_10.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_11.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_12.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_13.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_14.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_15.png)
+![NAU](../figures/V27_versus_aws-l3-dev_hour/NAU_16.png)
+ 
+## NEM
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_cor_u, z_boom_l, z_boom_cor_l, z_surf_combined, snow_height, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_boom_cor_l, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l
+
+Old variables removed from new files:
+precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate
+ 
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_0.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_1.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_2.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_3.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_4.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_5.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_6.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_7.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_8.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_9.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_10.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_11.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_12.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_13.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_14.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_15.png)
+![NEM](../figures/V27_versus_aws-l3-dev_hour/NEM_16.png)
+ 
+## NSE
+Variables in new file:
+p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_cor_u, z_boom_l, z_boom_cor_l, z_surf_combined, snow_height, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_boom_cor_l, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l
+
+Old variables removed from new files:
+precip_u, precip_u_cor, precip_u_rate, precip_l, precip_l_cor, precip_l_rate
+ 
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_0.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_1.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_2.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_3.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_4.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_5.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_6.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_7.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_8.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_9.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_10.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_11.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_12.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_13.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_14.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_15.png)
+![NSE](../figures/V27_versus_aws-l3-dev_hour/NSE_16.png)
+ 
+## NUK_B
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, usr, albedo, dlr, ulr, t_surf, z_boom_u, z_boom_cor_u, z_stake_cor, z_surf_combined, snow_height, rainfall_u, rainfall_cor_u, t_i_2, t_i_4, t_i_6, t_i_8, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_stake_cor, rainfall_u, rainfall_cor_u, t_i_2, t_i_4, t_i_6, t_i_8
+
+Old variables removed from new files:
+z_stake, precip_u, precip_u_cor, precip_u_rate, t_i_1, t_i_3, t_i_5, t_i_7
+ 
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_0.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_1.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_2.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_3.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_4.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_5.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_6.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_7.png)
+![NUK_B](../figures/V27_versus_aws-l3-dev_hour/NUK_B_8.png)
+ 
+## NUK_K
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+z_boom_cor_u, z_stake_cor, rainfall_u, rainfall_cor_u
+
+Old variables removed from new files:
+precip_u, precip_u_cor, precip_u_rate
+ 
+![NUK_K](../figures/V27_versus_aws-l3-dev_hour/NUK_K_0.png)
+![NUK_K](../figures/V27_versus_aws-l3-dev_hour/NUK_K_1.png)
+![NUK_K](../figures/V27_versus_aws-l3-dev_hour/NUK_K_2.png)
+![NUK_K](../figures/V27_versus_aws-l3-dev_hour/NUK_K_3.png)
+![NUK_K](../figures/V27_versus_aws-l3-dev_hour/NUK_K_4.png)

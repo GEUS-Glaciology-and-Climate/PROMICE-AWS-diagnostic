@@ -65,7 +65,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['SWC_O']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['UPE_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -132,7 +132,7 @@ for station in ['SWC_O']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'z_boom_u', 't_u'
                         # 't_u']+['t_i_'+str(i+1) for i in range(11)
                         # 'p_u','z_pt','z_pt_cor',
-                        'p_u','p_l','p_i',
+                        # 'p_u','p_l','p_i',
                         # 'rh_u','rh_l','rh_i',
                         # 't_u','t_l','t_i',
                         # 'wspd_u','wspd_l','wspd_i',
@@ -159,17 +159,39 @@ for station in ['SWC_O']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
         var_list = var_list[np.isin(var_list, ds4.data_vars)]
-        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,len(var_list)*2.3))
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, sharey=True, figsize=(12,len(var_list)*2.3))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
 
         if len(var_list)==1: ax_list = [ax_list]
         for var, ax in zip(var_list, ax_list):
             if var in ['z_boom_u','z_boom_l','z_stake']:
+                valid = df_L1.z_stake.notna() & df_L1.z_boom_u.notna()
+                m = valid & ((df_L1.z_stake - df_L1.z_boom_u).abs() <= 1e-6)
+                
+                # merge groups with small gaps
+                gap = pd.Timedelta("1D")  # max gap to merge
+                grp = (m != m.shift()).cumsum()
+                true_runs = []
+                for _, s in m.groupby(grp):
+                    if not s.iloc[0]:
+                        continue
+                    t0, t1 = s.index[0], s.index[-1]
+                    if true_runs and t0 - true_runs[-1][1] <= gap:
+                        true_runs[-1] = (true_runs[-1][0], t1)
+                    else:
+                        true_runs.append((t0, t1))
+                
+                for t0, t1 in true_runs:
+                    ax.axvspan(t0, t1, color="darkorange", alpha=0.3)
+
+
+            if var in ['z_boom_cor_u','z_boom_cor_l','z_stake_cor']:
                 ax.plot(ds4.time,
-                        ds4[var].values,
+                        ds4[var.replace('_cor','')].values,
                         marker='.',color='gray', linestyle='None',
                         label='uncorrected for air temperature')
+                
             if var in ds.data_vars:
                 ax.plot(ds.time,
                         ds[var].values,
@@ -255,11 +277,10 @@ for station in ['SWC_O']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 
 
             if var in ds4.data_vars:
-                if var not in ['z_boom_u','z_boom_l','z_stake']:
-                    ax.plot(ds4.time,
-                            ds4[var].values,
-                            marker='.',color='tab:blue', linestyle='None',
-                            label='final')
+                ax.plot(ds4.time,
+                        ds4[var].values,
+                        marker='.',color='tab:blue', linestyle='None',
+                        label='final')
 
         for var, ax in zip(var_list, ax_list):
             if zoom_to_good:
