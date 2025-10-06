@@ -23,7 +23,7 @@ new_version = 'aws-l3-dev'
 old_version = 'V27'
 
 res = 'hour'
-for res in ['hour']:
+for res in ['month','day','hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
     else:
