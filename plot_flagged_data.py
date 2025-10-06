@@ -137,18 +137,19 @@ for station in ['UPE_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 't_u','t_l','t_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
-                        'z_boom_l', 'z_boom_u', 'z_stake',
-                        'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
+                        # 'z_boom_l', 'z_boom_u', 'z_stake',
+                        # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
-                        # 'wdir_u','wdir_l','wdir_i'
+                        # 'wdir_u','wdir_l','wdir_i',
                         # 't_l','p_l','rh_l','fan_dc_l'
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
-                        # 'dlr','ulr','t_rad',
+                        'dlr','ulr','t_rad',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
                         # 'dsr','usr',
+                        # 'dsr_cor','usr_cor',
                         # 'albedo',
                         # 'tilt_x','tilt_y','cc',
                         ])]
@@ -159,7 +160,8 @@ for station in ['UPE_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
         var_list = var_list[np.isin(var_list, ds4.data_vars)]
-        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, sharey=True, figsize=(12,len(var_list)*2.3))
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True,# sharey=True,
+                                    figsize=(12,len(var_list)*2.2))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
 
