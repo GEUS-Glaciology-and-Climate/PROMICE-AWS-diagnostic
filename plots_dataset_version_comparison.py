@@ -8,7 +8,7 @@ tip list:
     import pdb; pdb.set_trace()
 """
 from download_ssh import main
-main()
+# main()
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -23,7 +23,7 @@ new_version = 'aws-l3-dev'
 old_version = 'V27'
 
 res = 'hour'
-for res in ['month','day','hour']:
+for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
     else:
@@ -70,7 +70,8 @@ for res in ['month','day','hour']:
     # plt.close('all')
     # for station in ['JAR']: #
     # for station in np.unique(df_meta.station_id):
-    for station in np.unique(df_meta.site_id):
+    for station in np.unique(df_meta.site_id)[33:]:
+        plt.close('all')
         Msg('## '+station)
         # if path_new == 'aws-l3-dev':
         #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
