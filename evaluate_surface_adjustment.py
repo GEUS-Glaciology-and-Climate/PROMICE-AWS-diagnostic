@@ -35,7 +35,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['EGP']:
+for station in ['WEG_L']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -102,8 +102,9 @@ if calc_yearly_abaltion:
     print("Yearly ice ablation:")
     for t, v in abl.diff().dropna().items():
         print(f"{t.year}: {v:.2f} m")
-
-plot_thermistor_depth = False
+        
+# %% 
+plot_thermistor_depth = True
 if plot_thermistor_depth:
     df_new=l3.copy()
 

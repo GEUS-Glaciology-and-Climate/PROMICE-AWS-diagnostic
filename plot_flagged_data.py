@@ -96,7 +96,7 @@ for station in ['WEG_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     ds4, TOA_crit_nopass_cor = correct_shortwave(ds4, geo)
     ds4, OKalbedos = compute_albedo(ds4, geo)
 
-    # % plotting
+    # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
     if len(df_flags)>0:
@@ -130,7 +130,7 @@ for station in ['WEG_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 'z_boom_u', 't_u'
-                        # 't_u']+['t_i_'+str(i+1) for i in range(11)
+                        't_u']+['t_i_'+str(i+1) for i in range(11)
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
                         # 'rh_u','rh_l','rh_i',
@@ -145,7 +145,7 @@ for station in ['WEG_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 't_l','p_l','rh_l','fan_dc_l'
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
-                        'dlr','ulr','t_rad',
+                        # 'dlr','ulr','t_rad',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
                         # 'dsr','usr',
