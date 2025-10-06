@@ -307,13 +307,13 @@ Old variables removed from new files:
  
 ## <a id='s1-11' />KAN_T
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_5, t_i_7, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
 
 New variables not in old files:
 z_boom_cor_u, z_stake_cor, rainfall_u, rainfall_cor_u
 
 Old variables removed from new files:
-precip_u, precip_u_cor, precip_u_rate, t_i_4, t_i_6, t_i_8, d_t_i_1
+precip_u, precip_u_cor, precip_u_rate, d_t_i_2
  
 ![KAN_T](../figures/V27_versus_aws-l3-dev_month/KAN_T_0.png)
 ![KAN_T](../figures/V27_versus_aws-l3-dev_month/KAN_T_1.png)
@@ -327,6 +327,7 @@ precip_u, precip_u_cor, precip_u_rate, t_i_4, t_i_6, t_i_8, d_t_i_1
 ![KAN_T](../figures/V27_versus_aws-l3-dev_month/KAN_T_9.png)
 ![KAN_T](../figures/V27_versus_aws-l3-dev_month/KAN_T_10.png)
 ![KAN_T](../figures/V27_versus_aws-l3-dev_month/KAN_T_11.png)
+![KAN_T](../figures/V27_versus_aws-l3-dev_month/KAN_T_12.png)
  
 ## <a id='s1-12' />KAN_U
 Variables in new file:
@@ -404,13 +405,13 @@ Old variables removed from new files:
  
 ## <a id='s1-15' />LYN_L
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_cor_u, z_stake_cor, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_2, t_i_4, t_i_6, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_alt, lat, lon, alt, t_rad, rh_i_wrt_ice_or_water, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, rh_i_wrt_ice_or_water, wspd_y_i
 
 New variables not in old files:
-z_boom_cor_u, z_stake_cor, t_i_8
+z_boom_cor_u, z_stake_cor
 
 Old variables removed from new files:
-dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, t_i_1, t_i_3, t_i_5, t_i_7, gps_lon, batt_v, t_i, wdir_i
+dlhf_u, dshf_u, z_pt, t_i, wdir_i
  
 ![LYN_L](../figures/V27_versus_aws-l3-dev_month/LYN_L_0.png)
 ![LYN_L](../figures/V27_versus_aws-l3-dev_month/LYN_L_1.png)
@@ -422,16 +423,17 @@ dlhf_u, dshf_u, z_boom_u, z_stake, z_pt, t_i_1, t_i_3, t_i_5, t_i_7, gps_lon, ba
 ![LYN_L](../figures/V27_versus_aws-l3-dev_month/LYN_L_7.png)
 ![LYN_L](../figures/V27_versus_aws-l3-dev_month/LYN_L_8.png)
 ![LYN_L](../figures/V27_versus_aws-l3-dev_month/LYN_L_9.png)
+![LYN_L](../figures/V27_versus_aws-l3-dev_month/LYN_L_10.png)
  
 ## <a id='s1-16' />LYN_T
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_cor_u, z_stake_cor, z_surf_combined, z_ice_surf, snow_height, t_i_2, t_i_4, t_i_6, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_alt, lat, lon, alt, t_rad, rh_i_wrt_ice_or_water, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, rh_i_wrt_ice_or_water, wspd_y_i
 
 New variables not in old files:
-z_boom_cor_u, z_stake_cor, t_i_8
+z_boom_cor_u, z_stake_cor
 
 Old variables removed from new files:
-dlhf_u, dshf_u, z_boom_u, z_stake, t_i_1, t_i_3, t_i_5, t_i_7, gps_lon, batt_v, t_i, wdir_i
+dlhf_u, dshf_u, t_i, wdir_i
  
 ![LYN_T](../figures/V27_versus_aws-l3-dev_month/LYN_T_0.png)
 ![LYN_T](../figures/V27_versus_aws-l3-dev_month/LYN_T_1.png)
@@ -443,6 +445,7 @@ dlhf_u, dshf_u, z_boom_u, z_stake, t_i_1, t_i_3, t_i_5, t_i_7, gps_lon, batt_v, 
 ![LYN_T](../figures/V27_versus_aws-l3-dev_month/LYN_T_7.png)
 ![LYN_T](../figures/V27_versus_aws-l3-dev_month/LYN_T_8.png)
 ![LYN_T](../figures/V27_versus_aws-l3-dev_month/LYN_T_9.png)
+![LYN_T](../figures/V27_versus_aws-l3-dev_month/LYN_T_10.png)
  
 ## <a id='s1-17' />MIT
 Variables in new file:
@@ -694,13 +697,13 @@ precip_u, precip_u_cor, precip_u_rate
 ## <a id='s1-28' />ORO
 ## <a id='s1-29' />QAS_A
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
 
 New variables not in old files:
 z_boom_cor_u, z_stake_cor
 
 Old variables removed from new files:
-t_i_6
+
  
 ![QAS_A](../figures/V27_versus_aws-l3-dev_month/QAS_A_0.png)
 ![QAS_A](../figures/V27_versus_aws-l3-dev_month/QAS_A_1.png)
@@ -1055,13 +1058,13 @@ Old variables removed from new files:
  
 ## <a id='s1-44' />THU_L2
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, rh_i_wrt_ice_or_water, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, rh_i_wrt_ice_or_water, wspd_y_i
 
 New variables not in old files:
 z_boom_cor_u, z_stake_cor
 
 Old variables removed from new files:
-z_stake, t_i, wdir_i
+t_i, wdir_i
  
 ![THU_L2](../figures/V27_versus_aws-l3-dev_month/THU_L2_0.png)
 ![THU_L2](../figures/V27_versus_aws-l3-dev_month/THU_L2_1.png)

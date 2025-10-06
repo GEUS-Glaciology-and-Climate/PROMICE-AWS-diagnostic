@@ -36,7 +36,7 @@ path_to_l0 = '../aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
-for station in ['UPE_L']:
+for station in ['WEG_L']:
 # for station in np.unique(np.array(df_metadata.station_id)):
 # def process_l2_l3(station):
     print(station)
@@ -145,7 +145,7 @@ print(" ======== test join_l3 ========= \n")
 import os
 
 
-for site in ['UPE_L']:
+for site in ['WEG_L']:
 # for site in df_metadata.site_id:
 # def get_join_l3(site):
     print(site)
@@ -169,7 +169,7 @@ ds_h = fresh_load(f'L3_test/sites/{site}/{site}_hour.nc')
 ds_d = fresh_load(f'L3_test/sites/{site}/{site}_day.nc')
 ds_m = fresh_load(f'L3_test/sites/{site}/{site}_month.nc')
 
-var = 'z_boom_u'
+var = 'ulr'
 
 plt.figure()
 ds_h[var].plot(ax=plt.gca(), marker='o', label='hour')
