@@ -7,19 +7,21 @@ tip list:
     %matplotlib qt
     import pdb; pdb.set_trace()
 """
-from download_ssh import main
+# if the first thing you want to do is downloading the remote data
+# from download_ssh import main
 # main()
 
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import toml
+import xarray as xr
+import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
 new_version = 'aws-l3-dev'
-# new_version = 'thredds'
-# new_version = 'level_2_stations'
 old_version = 'V27'
 
 res = 'hour'
@@ -64,21 +66,9 @@ for res in ['hour']:
     plt.close('all')
 
     #%%
-    import toml
-    import xarray as xr
-    import numpy as np
-    # plt.close('all')
-    # for station in ['JAR']: #
-    # for station in np.unique(df_meta.station_id):
     for station in np.unique(df_meta.site_id)[33:]:
         plt.close('all')
         Msg('## '+station)
-        # if path_new == 'aws-l3-dev':
-        #     config_path = '../aws-l0/metadata/station_configurations/'+station+'.toml'
-        #     with open(config_path, 'r') as file:
-        #         data = toml.load(file)  # Load the TOML file
-        #     station_save=station
-        #     station = data.get("station_site")  # Get the station site
 
         if station in ['UWN','ORO','NUK_P']:
             continue
@@ -167,8 +157,3 @@ for res in ['hour']:
         Msg(' ')
     tocgen.processFile(filename, filename[:-3]+"_toc.md")
     f.close()
-    # os.remove(filename)
-    # os.rename(filename[:-3]+"_toc.md", filename)
-
-    # if __name__ == '__main__':
-    #     main()
