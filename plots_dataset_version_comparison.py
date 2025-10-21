@@ -23,9 +23,9 @@ import tocgen
 
 new_version = 'aws-l3-dev'
 old_version = 'V27'
-
-res = 'hour'
-for res in ['hour']:
+# %%
+# res = 'hour'
+for res in ['hour', 'day','month']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
     else:
@@ -66,7 +66,7 @@ for res in ['hour']:
     plt.close('all')
 
     #%%
-    for station in np.unique(df_meta.site_id)[33:]:
+    for station in np.unique(df_meta.site_id):
         plt.close('all')
         Msg('## '+station)
 
