@@ -21,7 +21,7 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'aws-l3-dev'
+new_version = 'thredds'
 old_version = 'V27'
 
 for res in ['month', 'day','hour']:
