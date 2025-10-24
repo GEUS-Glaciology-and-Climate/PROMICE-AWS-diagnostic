@@ -35,7 +35,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['WEG_L']:
+for station in ['MIT']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -83,7 +83,7 @@ for station in ['WEG_L']:
     ax[2].set_ylabel('Height (m)')
     ax[2].grid()
     fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
-
+# %%
 calc_yearly_abaltion = False
 if calc_yearly_abaltion:
     time = pd.DatetimeIndex(l3.index.values)
@@ -102,9 +102,9 @@ if calc_yearly_abaltion:
     print("Yearly ice ablation:")
     for t, v in abl.diff().dropna().items():
         print(f"{t.year}: {v:.2f} m")
-        
-# %% 
-plot_thermistor_depth = True
+
+# %%
+plot_thermistor_depth = False
 if plot_thermistor_depth:
     df_new=l3.copy()
 

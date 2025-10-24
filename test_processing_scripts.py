@@ -36,7 +36,7 @@ logging.getLogger('numba').setLevel(logging.WARNING)
 path_to_l0 = '../aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-
+# %%
 
 def process_l2_l3(station):
 # for station in ['DY2']:
