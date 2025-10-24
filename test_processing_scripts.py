@@ -33,16 +33,15 @@ logging.basicConfig(
 )
 logging.getLogger('numba').setLevel(logging.WARNING)
 
-path_to_l0 = '../aws-l0/'
-config_folder = '../aws-l0/metadata/station_configurations/'
-df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
+
 # %%
 
 def process_l2_l3(station):
-# for station in ['DY2']:
-# for station in np.unique(np.array(df_metadata.station_id)):
+
     print(station)
     # Loading the L1 data:
+    path_to_l0 = '../aws-l0/'
+    config_folder = '../aws-l0/metadata/station_configurations/'
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
     output_path = 'L2_test'
@@ -78,19 +77,20 @@ def process_l2_l3(station):
     l3 = get_l2tol3(config_folder,
                     'L2_test/level_2/'+station+'/'+station+'_hour.nc',
                     'L3_test/stations/', None, None, None)
+    return pAWS_tx, pAWS_raw, l2_merged, l3
 
 
 # %% test join_l3
-print(" ======== test join_l3 ========= \n")
-path_l3_stations = 'L3_test/stations/'
-df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-config_folder = '../aws-l0/metadata/station_configurations/'
-folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
-folder_glaciobasis = '../GlacioBasis_ESSD/'
+
 
 def get_join_l3(site):
-# for site in ['WEG_B']:
-# for site in df_metadata.site_id:
+
+    print(" ======== test join_l3 ========= \n")
+    path_l3_stations = 'L3_test/stations/'
+    config_folder = '../aws-l0/metadata/station_configurations/'
+    folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
+    folder_glaciobasis = '../GlacioBasis_ESSD/'
+
     print(site)
     for f in [f'L3_test/sites/{site}/{site}_hour.nc',
               f'L3_test/sites/{site}/{site}_day.nc',
@@ -101,3 +101,16 @@ def get_join_l3(site):
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
                         folder_gcnet, # folder_glaciobasis,
                         'L3_test/sites/', None, None)
+    return l3_merged, sorted_list_station_data
+
+
+if __name__ == '__main__':
+    df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
+    for station in ['WEG_B']:
+    # for station in np.unique(np.array(df_metadata.station_id)):
+        pAWS_tx, pAWS_raw, l2_merged, l3 = process_l2_l3(station)
+
+    df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
+    for site in ['WEG_B']:
+    # for site in df_metadata.site_id:
+        l3_merged, sorted_list_station_data = get_join_l3(site)
