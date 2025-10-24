@@ -170,7 +170,7 @@ for station in ['WEG_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
             if var in ['z_boom_u','z_boom_l','z_stake']:
                 valid = df_L1.z_stake.notna() & df_L1.z_boom_u.notna()
                 m = valid & ((df_L1.z_stake - df_L1.z_boom_u).abs() <= 1e-6)
-                
+
                 # merge groups with small gaps
                 gap = pd.Timedelta("1D")  # max gap to merge
                 grp = (m != m.shift()).cumsum()
@@ -183,7 +183,7 @@ for station in ['WEG_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         true_runs[-1] = (true_runs[-1][0], t1)
                     else:
                         true_runs.append((t0, t1))
-                
+
                 for t0, t1 in true_runs:
                     ax.axvspan(t0, t1, color="darkorange", alpha=0.3)
 
