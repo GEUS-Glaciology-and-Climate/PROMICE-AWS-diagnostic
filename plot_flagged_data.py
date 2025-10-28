@@ -130,7 +130,7 @@ for station in ['WEG_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 'z_boom_u', 't_u'
-                        't_u']+['t_i_'+str(i+1) for i in range(11)
+                        't_i_'+str(i+1) for i in range(11)
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
                         # 'rh_u','rh_l','rh_i',
@@ -160,7 +160,7 @@ for station in ['WEG_L']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
         var_list = var_list[np.isin(var_list, ds4.data_vars)]
-        fig, ax_list = plt.subplots(len(var_list),1,sharex=True,# sharey=True,
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, sharey=True,
                                     figsize=(12,len(var_list)*2.2))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)

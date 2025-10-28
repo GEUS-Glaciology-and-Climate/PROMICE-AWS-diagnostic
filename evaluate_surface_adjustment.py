@@ -12,6 +12,15 @@ import pandas as pd
 import numpy as np
 import xarray as xr
 import logging, toml, os
+
+import sys, importlib
+# purge cached package + submodules
+# only useful in debugging mode
+for name in list(sys.modules):
+    if name == "pypromice" or name.startswith("pypromice."):
+        del sys.modules[name]
+importlib.invalidate_caches()
+
 from pypromice.pipeline.L2toL3 import process_surface_height
 from pathlib import Path
 # import matplotlib
@@ -35,7 +44,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['MIT']:
+for station in ['FRE']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")

@@ -32,7 +32,7 @@ def Msg(txt):
 
 
 # for file in os.listdir(path_new):
-for file in ['WEG_L_day.csv']:
+for file in ['KAN_U_day.csv']:
     try:
         station = file.replace('_day.csv','')
         Msg('## '+station)

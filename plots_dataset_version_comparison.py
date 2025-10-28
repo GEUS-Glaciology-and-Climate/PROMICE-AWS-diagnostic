@@ -8,8 +8,8 @@ tip list:
     import pdb; pdb.set_trace()
 """
 # if the first thing you want to do is downloading the remote data
-# from download_ssh import main
-# main()
+from download_ssh import main
+main()
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -21,13 +21,15 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'thredds'
-old_version = 'V27'
+new_version = 'aws-l3-dev'
+old_version = 'thredds'
 
-for res in ['month', 'day','hour']:
-# for res in ['hour']:
+# for res in ['month', 'day','hour']:
+for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
+    elif old_version == 'thredds':
+        path_old = f'../thredds-data/level_3_sites/csv/{res}/'
     else:
         path_old = f'C:/Users/bav/Downloads/{old_version}/{res}/'
 
@@ -67,6 +69,7 @@ for res in ['month', 'day','hour']:
 
     #%%
     for station in np.unique(df_meta.site_id):
+    # for station in ['KAN_U', 'KAN_M', 'KAN_L', 'QAS_L']:
         plt.close('all')
         Msg('## '+station)
 
