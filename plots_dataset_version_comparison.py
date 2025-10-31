@@ -8,8 +8,8 @@ tip list:
     import pdb; pdb.set_trace()
 """
 # if the first thing you want to do is downloading the remote data
-from download_ssh import main
-main()
+# from download_ssh import main
+# main()
 
 import matplotlib.pyplot as plt
 import pandas as pd
