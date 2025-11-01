@@ -88,8 +88,7 @@ accumulation site
 ![KPC_U](../figures/ablation/KPC_U_ice_surface.png)
  
 ## <a id='s0-15' />LYN_L
-![LYN_L](../figures/ablation/LYN_L_ice_surface.png)
- 
+accumulation site
 ## <a id='s0-16' />LYN_T
 accumulation site
 ## <a id='s0-17' />MIT
@@ -116,8 +115,7 @@ accumulation site
 ![NUK_N](../figures/ablation/NUK_N_ice_surface.png)
  
 ## <a id='s0-26' />NUK_P
-![NUK_P](../figures/ablation/NUK_P_ice_surface.png)
- 
+accumulation site
 ## <a id='s0-27' />NUK_U
 ![NUK_U](../figures/ablation/NUK_U_ice_surface.png)
  
@@ -136,7 +134,8 @@ accumulation site
 ![QAS_U](../figures/ablation/QAS_U_ice_surface.png)
  
 ## <a id='s0-33' />RED_L
-accumulation site
+![RED_L](../figures/ablation/RED_L_ice_surface.png)
+ 
 ## <a id='s0-34' />SCO_L
 ![SCO_L](../figures/ablation/SCO_L_ice_surface.png)
  
@@ -183,7 +182,8 @@ accumulation site
 ![UWN](../figures/ablation/UWN_ice_surface.png)
  
 ## <a id='s0-50' />WEG_B
-accumulation site
+![WEG_B](../figures/ablation/WEG_B_ice_surface.png)
+ 
 ## <a id='s0-51' />WEG_L
 ![WEG_L](../figures/ablation/WEG_L_ice_surface.png)
  

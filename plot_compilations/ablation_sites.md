@@ -28,6 +28,7 @@ accumulation site
 ![KPC_U](../figures/snow_height/sites/KPC_U_ablation.png)
  
 ## LYN_L
+accumulation site
 ## LYN_T
 accumulation site
 ## MIT
@@ -48,6 +49,7 @@ accumulation site
 ![NUK_N](../figures/snow_height/sites/NUK_N_ablation.png)
  
 ## NUK_P
+accumulation site
 ## NUK_U
 ![NUK_U](../figures/snow_height/sites/NUK_U_ablation.png)
  
@@ -66,7 +68,6 @@ accumulation site
 ![QAS_U](../figures/snow_height/sites/QAS_U_ablation.png)
  
 ## RED_L
-accumulation site
 ## SCO_L
 ![SCO_L](../figures/snow_height/sites/SCO_L_ablation.png)
  
@@ -105,7 +106,6 @@ accumulation site
  
 ## UWN
 ## WEG_B
-accumulation site
 ## WEG_L
 ## ZAC_A
 accumulation site
