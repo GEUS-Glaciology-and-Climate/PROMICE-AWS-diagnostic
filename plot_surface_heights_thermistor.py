@@ -31,8 +31,8 @@ def Msg(txt):
 # plt.close('all')
 
 
-# for file in os.listdir(path_new):
-for file in ['KAN_U_day.csv']:
+for file in os.listdir(path_new):
+# for file in ['KAN_U_day.csv']:
     try:
         station = file.replace('_day.csv','')
         Msg('## '+station)
