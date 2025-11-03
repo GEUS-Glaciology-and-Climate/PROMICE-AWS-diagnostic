@@ -32,8 +32,8 @@ def Msg(txt):
 
 plt.close('all')
 
-# Loop over each station
-for file in os.listdir(path_new+'/hour'):
+# %% Loop over each station
+for file in os.listdir(path_new+'/hour')[25:]:
 # for file in ['KAN_L_hour.csv']:
    
     site = file.replace('_hour.csv', '')
@@ -74,15 +74,18 @@ for file in os.listdir(path_new+'/hour'):
     
     # Panel (a): Rainfall amount per time step
     axs[1].set_title('(b) rainfall_cor_u: \nCorrected rainfall amount per time step.')
-    df_h[var].plot(ax=axs[1], marker='o',alpha=0.6, label='hourly',drawstyle="steps-post")
-    df_d[var].plot(ax=axs[1], marker='x',alpha=0.6, label='daily',drawstyle="steps-post")
-    df_m[var].plot(ax=axs[1], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
-
+    if var in df_h.columns:
+        df_h[var].plot(ax=axs[1], marker='o',alpha=0.6, label='hourly',drawstyle="steps-post")
+        df_h[var].cumsum().plot(ax=axs[3], marker='o',alpha=0.6, label='hourly',drawstyle="steps-post")
+    if var in df_d.columns:
+        df_d[var].plot(ax=axs[1], marker='x',alpha=0.6, label='daily',drawstyle="steps-post")
+        df_d[var].cumsum().plot(ax=axs[3], marker='x',alpha=0.6, label='daily',drawstyle="steps-post")
+    if var in df_m.columns:
+        df_m[var].plot(ax=axs[1], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
+        df_m[var].cumsum().plot(ax=axs[3], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
+    
     # Panel (b): Cumulated rainfall
     axs[3].set_title('(d) Cumulated corrected rainfall.\n Data gaps are not filled.')
-    df_h[var].cumsum().plot(ax=axs[3], marker='o',alpha=0.6, label='hourly',drawstyle="steps-post")
-    df_d[var].cumsum().plot(ax=axs[3], marker='x',alpha=0.6, label='daily',drawstyle="steps-post")
-    df_m[var].cumsum().plot(ax=axs[3], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
     for ax in axs:
         ax.set_ylabel('mm')
         ax.legend()
