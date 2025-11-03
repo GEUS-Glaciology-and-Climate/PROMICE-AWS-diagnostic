@@ -49,6 +49,7 @@ for file in os.listdir(path_new+'/hour'):
     df_h = fresh_load(f'{path_new}/hour/{site}_hour.csv')
     if var not in df_h.columns:
         Msg('No rainfall measurements')
+        continue
 
     df_h = df_h.loc[slice(df_h[var].first_valid_index(), df_h[var].last_valid_index())]
     df_d = fresh_load(f'{path_new}/day/{site}_day.csv').loc[slice(df_h[var].first_valid_index(), df_h[var].last_valid_index())]
@@ -64,12 +65,11 @@ for file in os.listdir(path_new+'/hour'):
     df_m[var].plot(ax=axs[0], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
     
     # Panel (b): Cumulated rainfall
-    axs[2].set_title('(c) Cumulated rainfall derived\nfrom rainfall_u. Data gaps are not filled.')
+    axs[2].set_title('(c) Cumulated rainfall.\n Data gaps are not filled.')
     df_h[var].cumsum().plot(ax=axs[2], marker='o',alpha=0.6, label='hourly',drawstyle="steps-post")
     df_d[var].cumsum().plot(ax=axs[2], marker='x',alpha=0.6, label='daily',drawstyle="steps-post")
     df_m[var].cumsum().plot(ax=axs[2], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
 
-    
     var = 'rainfall_cor_u'
     
     # Panel (a): Rainfall amount per time step
@@ -79,11 +79,12 @@ for file in os.listdir(path_new+'/hour'):
     df_m[var].plot(ax=axs[1], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
 
     # Panel (b): Cumulated rainfall
-    axs[3].set_title('(d) Cumulated corrected rainfall derived\nfrom rainfall_cor_u. Data gaps are not filled.')
+    axs[3].set_title('(d) Cumulated corrected rainfall.\n Data gaps are not filled.')
     df_h[var].cumsum().plot(ax=axs[3], marker='o',alpha=0.6, label='hourly',drawstyle="steps-post")
     df_d[var].cumsum().plot(ax=axs[3], marker='x',alpha=0.6, label='daily',drawstyle="steps-post")
     df_m[var].cumsum().plot(ax=axs[3], marker='o',alpha=0.6, label='monthly',drawstyle="steps-post")
     for ax in axs:
+        ax.set_ylabel('mm')
         ax.legend()
         ax.grid()
     fig.savefig('figures/precipitation/%s_precipitation.png' % ( site), dpi=300)
