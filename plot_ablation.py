@@ -13,8 +13,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import matplotlib
-import matplotlib.dates as mdates
-from datetime import datetime
 matplotlib.use('Agg')
 import tocgen
 import numpy as np
