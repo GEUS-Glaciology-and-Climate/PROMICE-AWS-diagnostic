@@ -254,3 +254,66 @@ for station in df_meta.index:
     Msg(' ')
 
 f.close()
+
+# # %% Map ablation
+# import geopandas as gpd
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import numpy as np
+
+# # load shapefile (epsg:3413)
+# land = gpd.read_file("ancil/greenland_land_3413.shp")
+# ice = gpd.read_file("ancil/greenland_ice_3413.shp")
+
+# # station metadata
+# df = df_meta.copy()
+# df['geometry'] = gpd.points_from_xy(df.longitude_last_valid, df.latitude_last_valid, crs=4326)
+# gdf = gpd.GeoDataFrame(df).to_crs(3413)
+
+# records = []
+# for station in gdf.index:
+#     d = pd.read_csv(f"{path_new}/{station}_day.csv", parse_dates=['time']).set_index('time')
+#     if 'z_surf_combined' not in d: continue
+#     d['z_ice_surf'] = d['z_surf_combined'].cummin()
+#     z = d['z_ice_surf'].resample('YE').last() - d['z_ice_surf'].resample('YE').first()
+#     yearly = z.dropna()
+#     if len(yearly)==0: continue
+#     med = yearly.median()
+#     mn = yearly.min()
+#     mx = yearly.max()
+#     y2025 = np.nan
+#     if yearly.index.year.isin([2025]).any():
+#         y2025 = yearly[yearly.index.year==2025].values[0]
+#     records.append([station, med, mn, mx, y2025])
+
+# df_ab = pd.DataFrame(records, columns=['station','med','min','max','y2025']).set_index('station')
+# gdf = gdf.join(df_ab)
+
+# # %%
+# fig, ax = plt.subplots(figsize=(12,12))
+# land.plot(ax=ax, color='lightgrey')
+# ice.plot(ax=ax, color='white', edgecolor='grey')
+
+# for i, row in gdf.dropna(subset=['med']).iterrows():
+#     if row.stations in ['UWN','ORO','SER_B','NUK_B','KAN_B']:
+#         continue
+#     x, y = row.geometry.x, row.geometry.y
+
+#     # scale factor for visibility
+#     s = 100  # increase if too small
+
+#     ax.plot([x, x],
+#             [y + s*row['min'], y + s*row['max']],
+#             color='k', lw=1)
+
+#     ax.plot([x - 2000, x + 2000],
+#             [y + s*row['med'], y + s*row['med']],
+#             color='k', lw=3)
+
+#     if not np.isnan(row['y2025']):
+#         ax.plot(x, y + s*row['y2025'], 'o', color='red')
+
+
+# ax.set_axis_off()
+# plt.tight_layout()
+# plt.savefig("ablation_map.png", dpi=300)
