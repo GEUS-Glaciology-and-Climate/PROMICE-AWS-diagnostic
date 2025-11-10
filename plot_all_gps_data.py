@@ -16,7 +16,7 @@ import geopandas as gpd
 from shapely.ops import unary_union
 
 # can be run both for stations or for sites, sites are recommended
-data_type = 'stations'
+data_type = 'sites'
 if data_type == 'sites':
     path_new = '../thredds-data/level_3_sites/csv/day/'
     df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
@@ -46,10 +46,10 @@ for v in ['lat','lon','elev']:
     gps_obs[v] = pd.to_numeric(gps_obs[v], errors='coerce')
 
 
-# for file in os.listdir(path_new): # for all sites, even though where there's no GNSS survey
-for file in ['NUK_Lv3_hour.csv']: # for a specific site
-    date = '2025-05-19'
-    site = file.replace('_hour.csv','')
+for file in os.listdir(path_new): # for all sites, even though where there's no GNSS survey
+# for file in ['NUK_Lv3_hour.csv']: # for a specific site
+    date = '2025-11-01'
+    site = file.replace('_day.csv','')
 
     # if you want only the sites where there's accurate GNSS survey
     # if site not in np.unique(gnss_df.index):
@@ -78,9 +78,12 @@ for file in ['NUK_Lv3_hour.csv']: # for a specific site
             print('Multiple geoid separation: ', geoid_separation_station)
         if len(geoid_separation_station)>0:
             geoid_separation_station=geoid_separation_station[0]
+    if date in df_new.index:
+        print(site, date, df_new.loc[date,['lat','lon','alt']].values)
+    else:
+        print(site, "last date:", df_new.index[-1],
+              df_new.loc[ df_new.index[-1],['lat','lon','alt']].values)
 
-    print(site, date, df_new.loc[date,['lat','lon','alt']].values)
-    #%%
     var_list_list = [['gps_lat','gps_lon','gps_alt']]
     for k, var_list in enumerate(var_list_list):
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True, figsize=(12,8))

@@ -1,66 +1,73 @@
 ## CEN
+![CEN](../figures/surface_height/sites/CEN.png)
+ 
 ## CP1
+![CP1](../figures/surface_height/sites/CP1.png)
+ 
 ## DY2
+![DY2](../figures/surface_height/sites/DY2.png)
+ 
 ## EGP
+![EGP](../figures/surface_height/sites/EGP.png)
+ 
 ## FRE
+![FRE](../figures/surface_height/sites/FRE.png)
+ 
 ## HUM
+![HUM](../figures/surface_height/sites/HUM.png)
+ 
 ## JAR
+![JAR](../figures/surface_height/sites/JAR.png)
+ 
 ## KAN_B
 ![KAN_B](../figures/surface_height/sites/KAN_B.png)
  
 ## KAN_L
+![KAN_L](../figures/surface_height/sites/KAN_L.png)
+ 
 ## KAN_M
+![KAN_M](../figures/surface_height/sites/KAN_M.png)
+ 
 ## KAN_T
+![KAN_T](../figures/surface_height/sites/KAN_T.png)
+ 
 ## KAN_U
+![KAN_U](../figures/surface_height/sites/KAN_U.png)
+ 
 ## KPC_L
+![KPC_L](../figures/surface_height/sites/KPC_L.png)
+ 
 ## KPC_U
+![KPC_U](../figures/surface_height/sites/KPC_U.png)
+ 
 ## LYN_L
+![LYN_L](../figures/surface_height/sites/LYN_L.png)
+ 
 ## LYN_T
+![LYN_T](../figures/surface_height/sites/LYN_T.png)
+ 
 ## MIT
+![MIT](../figures/surface_height/sites/MIT.png)
+ 
 ## NAE
+![NAE](../figures/surface_height/sites/NAE.png)
+ 
 ## NAU
+![NAU](../figures/surface_height/sites/NAU.png)
+ 
 ## NEM
+![NEM](../figures/surface_height/sites/NEM.png)
+ 
 ## NSE
+![NSE](../figures/surface_height/sites/NSE.png)
+ 
 ## NUK_B
 ![NUK_B](../figures/surface_height/sites/NUK_B.png)
  
 ## NUK_K
+![NUK_K](../figures/surface_height/sites/NUK_K.png)
+ 
 ## NUK_L
+![NUK_L](../figures/surface_height/sites/NUK_L.png)
+ 
 ## NUK_N
-## NUK_P
-![NUK_P](../figures/surface_height/sites/NUK_P.png)
- 
-## NUK_U
-## ORO
-![ORO](../figures/surface_height/sites/ORO.png)
- 
-## QAS_A
-## QAS_L
-## QAS_M
-## QAS_U
-## RED_L
-## SCO_L
-## SCO_U
-## SDL
-## SDM
-## SER_B
-![SER_B](../figures/surface_height/sites/SER_B.png)
- 
-## SWC
-## TAS_A
-## TAS_L
-## TAS_U
-## THU_L2
-## THU_L
-## THU_U
-## TUN
-## UPE_L
-## UPE_U
-## UWN
-## WEG_B
-![WEG_B](../figures/surface_height/sites/WEG_B.png)
- 
-## WEG_L
-## ZAC_A
-## ZAC_L
-## ZAC_U
