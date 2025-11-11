@@ -39,15 +39,15 @@ from pathlib import Path
 
 # Loop over each station
 # for file in os.listdir(path_new):
-for file in ['KAN_L_hour.csv']:
+for file in ['DY2_hour.csv']:
     print(file)
-    
+
     station = file.replace('_hour.csv', '')
     df_new = pd.read_csv(f'{path_new}/{station}_hour.csv')
     df_new['time'] = pd.to_datetime(df_new['time'], utc=True)
     df_new = df_new.set_index('time')
-    
-    df_new = df_new.loc['2012']
+
+    df_new = df_new.loc['2024']
 
     # Create a 4-panel figure
     fig, axs = plt.subplots(4, 1, figsize=(10, 12), sharex=True)

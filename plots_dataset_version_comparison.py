@@ -21,8 +21,8 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'aws-l3-dev'
-old_version = 'thredds'
+new_version = 'thredds'
+old_version = 'V27'
 
 # for res in ['month', 'day','hour']:
 for res in ['hour']:
@@ -68,8 +68,8 @@ for res in ['hour']:
     plt.close('all')
 
     #%%
-    for station in np.unique(df_meta.site_id):
-    # for station in ['KAN_U', 'KAN_M', 'KAN_L', 'QAS_L']:
+    # for station in np.unique(df_meta.site_id):
+    for station in ['FRE','LYN_L']:
         plt.close('all')
         Msg('## '+station)
 
