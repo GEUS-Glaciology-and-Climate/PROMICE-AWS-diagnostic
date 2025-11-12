@@ -642,3 +642,176 @@ Old variables removed from new files:
 ![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_1.png)
 ![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_2.png)
 ![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_3.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_4.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_5.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_6.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_7.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_8.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_9.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_10.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_11.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_12.png)
+![NUK_U](../figures/thredds_versus_aws-l3-dev_hour/NUK_U_13.png)
+ 
+## ORO
+## QAS_A
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+z_pt_cor
+ 
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_0.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_1.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_2.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_3.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_4.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_5.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_6.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_7.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_8.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_9.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_10.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_11.png)
+![QAS_A](../figures/thredds_versus_aws-l3-dev_hour/QAS_A_12.png)
+ 
+## QAS_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_0.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_1.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_2.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_3.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_4.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_5.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_6.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_7.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_8.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_9.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_10.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_11.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_12.png)
+![QAS_L](../figures/thredds_versus_aws-l3-dev_hour/QAS_L_13.png)
+ 
+## QAS_M
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_0.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_1.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_2.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_3.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_4.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_5.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_6.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_7.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_8.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_9.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_10.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_11.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_12.png)
+![QAS_M](../figures/thredds_versus_aws-l3-dev_hour/QAS_M_13.png)
+ 
+## QAS_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_0.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_1.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_2.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_3.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_4.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_5.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_6.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_7.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_8.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_9.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_10.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_11.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_12.png)
+![QAS_U](../figures/thredds_versus_aws-l3-dev_hour/QAS_U_13.png)
+ 
+## RED_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_0.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_1.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_2.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_3.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_4.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_5.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_6.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_7.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_8.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_9.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_10.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_11.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_12.png)
+![RED_L](../figures/thredds_versus_aws-l3-dev_hour/RED_L_13.png)
+ 
+## SCO_L
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_0.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_1.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_2.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_3.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_4.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_5.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_6.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_7.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_8.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_9.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_10.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_11.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_12.png)
+![SCO_L](../figures/thredds_versus_aws-l3-dev_hour/SCO_L_13.png)
+ 
+## SCO_U
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![SCO_U](../figures/thredds_versus_aws-l3-dev_hour/SCO_U_0.png)
+![SCO_U](../figures/thredds_versus_aws-l3-dev_hour/SCO_U_1.png)

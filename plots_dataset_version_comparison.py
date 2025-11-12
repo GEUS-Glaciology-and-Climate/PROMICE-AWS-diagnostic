@@ -155,6 +155,7 @@ for res in ['hour']:
                 ax.legend(loc='lower left')
                 ax.grid()
                 # ax.set_xlim(pd.to_datetime(['2022-02-01','2025-04-03']))
+                ax.set_xlim(df_new.index[0], df_new.index[-1])
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
