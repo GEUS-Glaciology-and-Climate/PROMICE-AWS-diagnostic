@@ -1,5 +1,11 @@
-z_ice_surf not in variables
+z_surf_1 not in variables
 z_surf_2 not in variables
-# TAS_A
-![](../figures/flags/TAS_A_0.png)
+# FRE
+![](../figures/flags/FRE_0.png)
+![](../figures/flags/FRE_1.png)
  
+z_surf_1 not in variables
+z_surf_2 not in variables
+z_surf_1 not in variables
+z_surf_2 not in variables
+# FRE
