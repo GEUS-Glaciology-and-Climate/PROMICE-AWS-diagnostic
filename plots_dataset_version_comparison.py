@@ -21,8 +21,8 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'thredds'
-old_version = 'V27'
+new_version = 'L3_test'
+old_version = 'thredds'
 
 # for res in ['month', 'day','hour']:
 for res in ['hour']:
@@ -33,13 +33,16 @@ for res in ['hour']:
     else:
         path_old = f'C:/Users/bav/Downloads/{old_version}/{res}/'
 
+
+    df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
+    df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     if 'thredds' in new_version:
         path_new = f'../thredds-data/level_3_sites/csv/{res}/'
-        df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-        df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     elif 'dev' in new_version:
         path_new = f'../aws-l3-dev/csv/{res}/'
-        df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
+
+    elif 'test' in new_version:
+        path_new = './L3_test/sites/'
 
     else:
         path_new = '../aws-l3/'
@@ -69,7 +72,7 @@ for res in ['hour']:
 
     #%%
     # for station in np.unique(df_meta.site_id):
-    for station in ['FRE','LYN_L']:
+    for station in ['ZAC_A','ZAC_U','ZAC_U']:
         plt.close('all')
         Msg('## '+station)
 

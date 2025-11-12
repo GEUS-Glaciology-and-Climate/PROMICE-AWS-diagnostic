@@ -116,7 +116,7 @@ for file in os.listdir(path_new):
     fig.savefig('figures/surface_height/%s/%s.png' % (data_type, station), dpi=300, bbox_inches="tight")
     Msg('![%s](../figures/surface_height/%s/%s.png)'%(station,data_type, station))
     Msg(' ')
-    
+
 tocgen.processFile(filename, filename[:-3]+"_toc.md")
 f.close()
 
@@ -139,9 +139,9 @@ station_list_list = [[v for v in df_meta.index if st in v] for st in region_list
 region_list = region_list + ['SWC-JAR']
 station_list_list = station_list_list + [['SWC', 'JAR']]
 
-fig, ax_list = plt.subplots(4, 3, figsize=(12, 18))  # Increased figure size
+fig, ax_list = plt.subplots(4, 3, figsize=(15, 15))  # Increased figure size
 ax_list = ax_list.flatten()
-plt.subplots_adjust(right=0.7, left=0.15, hspace=0.3, wspace=0.4)  # Increased space
+plt.subplots_adjust(right=0.7, left=0.07, hspace=0.1, wspace=0.4)  # Increased space
 abc = 'abcdefghijklmno'
 # Make the last two panels (11th and 12th) invisible
 for ax in ax_list[10:]:
@@ -164,34 +164,34 @@ for i, station_list in enumerate(station_list_list[:9]):  # Limit to the first 9
                                 marker='.', markeredgecolor='None', linestyle='None',
                                 alpha=0.7, label=station)
 
-    ax_list[i].legend(loc='lower left', markerscale=2)
+    ax_list[i].legend(loc='lower left', markerscale=2, fontsize=12)
+    for h in ax_list[i].get_legend().legendHandles:
+        h.set_alpha(1)
     ax_list[i].grid(True)
     ax_list[i].tick_params(axis='x', rotation=45)
-    ax_list[i].text(
-    0.03, 0.96,  # Adjust these values for fine-tuning position
-    abc[i]+') '+region_list[i],
-    fontsize=14,
-    ha='left',
-    va='top',
-    transform=ax_list[i].transAxes,
-    # bbox=dict(facecolor='white', alpha=0.8, edgecolor='none')  # Optional: add background
-)
+    ax_list[i].text( 0.03, 0.96,  # Adjust these values for fine-tuning position
+                    f'({abc[i]}) '+region_list[i],
+                    fontsize=14, ha='left', va='top',
+                    transform=ax_list[i].transAxes)
 
     if i < 6:
         ax_list[i].set_xticklabels([])
     ax_list[i].set_ylim(-100, 20)
     ax_list[i].set_xlim(pd.to_datetime('1995'), pd.to_datetime('2025-07-01'))
+    ax_list[i].tick_params(axis='both', labelsize=12)
 
 # Combine the 10th panel across the 11th and 12th positions
 gs = ax_list[9].get_gridspec()
 ax_list[9].remove()  # Remove the 10th panel from its current spot
 ax_large = fig.add_subplot(gs[3, :])  # Create a large subplot spanning 11th and 12th positions
-
+pos = ax_large.get_position()
+ax_large.set_position([pos.x0, pos.y0, pos.width, pos.height * 0.85])
 for station in ['DY2', 'NAU', 'CEN', 'TUN', 'NAE', 'NSE', 'SDL', 'SDM']:
     if station in ['KAN_B', 'NUK_K']:
         continue
     if not os.path.isfile(path_new + '/' + station + '_day.csv'):
         continue
+    print('## ' + station)
     df_new = pd.read_csv(path_new + '/' + station + '_day.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
@@ -203,22 +203,23 @@ for station in ['DY2', 'NAU', 'CEN', 'TUN', 'NAE', 'NSE', 'SDL', 'SDM']:
                           marker='.', markeredgecolor='None', linestyle='None',
                           alpha=0.7, label=station)
 
-ax_large.legend(loc='upper left', ncols=3, bbox_to_anchor=(0, 0.8), markerscale=2)
+ax_large.legend(loc='upper left', ncols=3, bbox_to_anchor=(0, 0.85  ), markerscale=2, fontsize=12)
+for h in ax_large.get_legend().legendHandles:
+    h.set_alpha(1)
 ax_large.grid(True)
 ax_large.tick_params(axis='x', rotation=45)
+ax_large.tick_params(axis='both', labelsize=12)
+
 ax_large.text(
-    0.02, 0.96,  # Adjust these values for fine-tuning position
-    "j) Accumulation sites",
-    fontsize=14,
-    ha='left',
-    va='top',
-    transform=ax_large.transAxes,
-    bbox=dict(facecolor='white', alpha=0.85, edgecolor='none')  # Optional: add background
-)
+            0.02, 0.96,  # Adjust these values for fine-tuning position
+            "(j) Accumulation sites",
+            fontsize=14, ha='left', va='top',
+            transform=ax_large.transAxes,
+            bbox=dict(facecolor='white', alpha=0.85, edgecolor='none')
+        )
 ax_large.set_xlim(pd.to_datetime('1995'), pd.to_datetime('2025-07-01'))
 
-for ax in [ax_large, ax_list[0], ax_list[3],]:
-    ax.set_ylabel('Surface height relative to installation (m)')
+fig.supylabel('Surface height relative to installation (m)', fontsize=14)
 
 # Save the figure with tight layout to remove excess white space
 fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')

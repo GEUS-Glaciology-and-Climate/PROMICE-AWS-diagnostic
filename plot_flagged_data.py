@@ -65,7 +65,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -126,19 +126,20 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    var_list_list = [np.array([
+    # var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
-                        # 'z_boom_u', 't_u'
-                        # 't_i_'+str(i+1) for i in range(11)
+                        # 't_u','wspd_u',
+
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
                         # 'rh_u','rh_l','rh_i',
                         # 't_u','t_l','t_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
-                        'z_boom_l', 'z_boom_u', 'z_stake',
-                        'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
+                        # 'z_boom_l', 'z_boom_u', 'z_stake',
+                        # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
+                        # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
                         # 'wdir_u','wdir_l','wdir_i',
@@ -152,7 +153,9 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'dsr_cor','usr_cor',
                         # 'albedo',
                         # 'tilt_x','tilt_y','cc',
-                        ])]
+                        # ]\
+                        # + ['t_i_'+str(i+1) for i in range(11)]
+                        # )]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
@@ -160,8 +163,8 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
         var_list = var_list[np.isin(var_list, ds4.data_vars)]
-        fig, ax_list = plt.subplots(len(var_list),1,sharex=True, sharey=True,
-                                    figsize=(12,len(var_list)*2.2))
+        fig, ax_list = plt.subplots(len(var_list),1,sharex=True,  #sharey=True,
+                                    figsize=(12,len(var_list)*2.1))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
 
@@ -193,11 +196,23 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         ds4[var.replace('_cor','')].values,
                         marker='.',color='gray', linestyle='None',
                         label='uncorrected for air temperature')
-            for data in pAWS_raw.L0:
-                ax.plot(data.time,
-                        data[var].values,
-                        marker='.',color='k', linestyle='None',
-                        label='in L0')
+
+            if var in ['t_i_'+str(i+1) for i in range(11)]:
+                ax.plot(ds4.time,
+                        ds4['t_u'].values,
+                        marker='.',color='lightgray',
+                        label='air temperature')
+
+            if pAWS_raw is not None:
+                for data in pAWS_raw.L0:
+                    if var in data.data_vars:
+                        ax.plot(data.time,
+                                data[var].values,
+                                marker='.',color='k', linestyle='None',
+                                label='__nolegend__')
+
+                ax.plot(np.nan,np.nan, marker='.',color='k',
+                        linestyle='None', label='in L0')
             if var in ds.data_vars:
                 ax.plot(ds.time,
                         ds[var].values,

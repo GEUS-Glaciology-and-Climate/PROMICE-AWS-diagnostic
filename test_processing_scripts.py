@@ -89,7 +89,7 @@ def get_join_l3(site):
     path_l3_stations = 'L3_test/stations/'
     config_folder = '../aws-l0/metadata/station_configurations/'
     folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
-    folder_glaciobasis = '../GlacioBasis_ESSD/'
+    folder_glaciobasis = '../historical-zac-data/'
 
     print(site)
     for f in [f'L3_test/sites/{site}/{site}_hour.nc',
@@ -99,18 +99,18 @@ def get_join_l3(site):
             os.remove(f)
 
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
-                        folder_gcnet, # folder_glaciobasis,
+                        folder_gcnet, folder_glaciobasis,
                         'L3_test/sites/', None, None)
     return l3_merged, sorted_list_station_data
 
 
 if __name__ == '__main__':
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    for station in ['LYN_L']:
+    for station in ['ZAC_Lv3','ZAC_Uv3',]:
     # for station in np.unique(np.array(df_metadata.station_id)):
         pAWS_tx, pAWS_raw, l2_merged, l3 = process_l2_l3(station)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    for site in ['LYN_L']:
+    for site in ['ZAC_L','ZAC_U']:
     # for site in df_metadata.site_id:
         l3_merged, sorted_list_station_data = get_join_l3(site)
