@@ -126,7 +126,7 @@ for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
@@ -141,7 +141,7 @@ for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
                         # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
-                        # 'p_u','t_u','z_pt','z_pt_cor',
+                        'p_u','t_u','z_pt','z_pt_cor',
                         # 'wdir_u','wdir_l','wdir_i',
                         # 't_l','p_l','rh_l','fan_dc_l'
                           # 'precip_l', 'precip_u',
@@ -153,9 +153,9 @@ for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'dsr_cor','usr_cor',
                         # 'albedo',
                         # 'tilt_x','tilt_y','cc',
-                        # ]\
+                        ]\
                         # + ['t_i_'+str(i+1) for i in range(11)]
-                        # )]
+                        )]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):

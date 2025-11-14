@@ -21,11 +21,11 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'L3_test'
+new_version = 'aws-l3-dev'
 old_version = 'thredds'
 
-# for res in ['month', 'day','hour']:
-for res in ['hour']:
+for res in ['month', 'day','hour']:
+# for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
     elif old_version == 'thredds':
@@ -72,7 +72,7 @@ for res in ['hour']:
 
     #%%
     # for station in np.unique(df_meta.site_id):
-    for station in ['FRE']:
+    for station in ['SWC']:
         plt.close('all')
         Msg('## '+station)
 
@@ -154,8 +154,8 @@ for res in ['hour']:
                     print(var,'not in new data')
                 ax.legend(loc='lower left')
                 ax.grid()
-                # ax.set_xlim(pd.to_datetime(['2022-02-01','2025-04-03']))
-                ax.set_xlim(df_new.index[0], df_new.index[-1])
+                ax.set_xlim(pd.to_datetime(['2018-02-01','2024-04-03']))
+                # ax.set_xlim(df_new.index[0], df_new.index[-1])
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
