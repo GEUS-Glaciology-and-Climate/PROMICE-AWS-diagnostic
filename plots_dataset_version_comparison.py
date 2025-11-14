@@ -71,8 +71,8 @@ for res in ['month', 'day','hour']:
     plt.close('all')
 
     #%%
-    # for station in np.unique(df_meta.site_id):
-    for station in ['SWC']:
+    for station in np.unique(df_meta.site_id):
+    # for station in ['SWC']:
         plt.close('all')
         Msg('## '+station)
 
@@ -154,7 +154,7 @@ for res in ['month', 'day','hour']:
                     print(var,'not in new data')
                 ax.legend(loc='lower left')
                 ax.grid()
-                ax.set_xlim(pd.to_datetime(['2018-02-01','2024-04-03']))
+                # ax.set_xlim(pd.to_datetime(['2018-02-01','2024-04-03']))
                 # ax.set_xlim(df_new.index[0], df_new.index[-1])
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
