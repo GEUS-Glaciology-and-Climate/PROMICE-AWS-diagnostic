@@ -1,22 +1,19 @@
-2025-09-30 09:37:35,336 [DEBUG] Could not import boto3, continuing with reduced functionality.
-2025-09-30 09:37:35,337 [DEBUG] GDAL data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/gdal_data'.
-2025-09-30 09:37:35,337 [DEBUG] PROJ data found in package: path='/home/bav/miniforge3/lib/python3.12/site-packages/rasterio/proj_data'.
-2025-09-30 09:37:35,525 [INFO] joining UPE_L
-2025-09-30 09:37:35,691 [WARNING] Error: fatal: not a git repository (or any of the parent directories): .git
-
-2025-09-30 09:37:36,252 [INFO] Resampling to 60min
-2025-09-30 09:37:36,565 [INFO] Writing to files...
-2025-09-30 09:37:42,442 [INFO] Written to L3_test/sites/UPE_L/UPE_L_hour.csv
-2025-09-30 09:37:42,442 [INFO] Written to L3_test/sites/UPE_L/UPE_L_hour.nc
-2025-09-30 09:37:42,536 [INFO] Resampling to 1D
-2025-09-30 09:37:42,608 [INFO] Writing to files...
-2025-09-30 09:37:42,881 [INFO] Written to L3_test/sites/UPE_L/UPE_L_day.csv
-2025-09-30 09:37:42,881 [INFO] Written to L3_test/sites/UPE_L/UPE_L_day.nc
-2025-09-30 09:37:42,972 [INFO] Resampling to MS
-2025-09-30 09:37:43,039 [INFO] Writing to files...
-2025-09-30 09:37:43,100 [INFO] Written to L3_test/sites/UPE_L/UPE_L_month.csv
-2025-09-30 09:37:43,100 [INFO] Written to L3_test/sites/UPE_L/UPE_L_month.nc
-/n ======== test join_l3 ========= 
+ ======== test join_l3 ========= 
 
 UPE_L
 UPE_L array loaded from L3_test/stations/UPE_L/UPE_L_hour.nc
+2025-11-14 10:01:13,401; INFO; pypromice.pipeline.join_l3; joining UPE_L
+2025-11-14 10:01:13,558; WARNING; pypromice.io.ingest.git; Error: fatal: not a git repository (or any of the parent directories): .git
+
+2025-11-14 10:01:14,602; INFO; pypromice.io.write; Resampling to 60min
+2025-11-14 10:01:14,810; INFO; pypromice.io.write; Writing to files...
+2025-11-14 10:01:20,243; INFO; pypromice.io.write; Written to L3_test/sites/UPE_L/UPE_L_hour.csv
+2025-11-14 10:01:20,243; INFO; pypromice.io.write; Written to L3_test/sites/UPE_L/UPE_L_hour.nc
+2025-11-14 10:01:20,430; INFO; pypromice.io.write; Resampling to 1D
+2025-11-14 10:01:20,505; INFO; pypromice.io.write; Writing to files...
+2025-11-14 10:01:20,766; INFO; pypromice.io.write; Written to L3_test/sites/UPE_L/UPE_L_day.csv
+2025-11-14 10:01:20,767; INFO; pypromice.io.write; Written to L3_test/sites/UPE_L/UPE_L_day.nc
+2025-11-14 10:01:20,916; INFO; pypromice.io.write; Resampling to MS
+2025-11-14 10:01:20,985; INFO; pypromice.io.write; Writing to files...
+2025-11-14 10:01:21,044; INFO; pypromice.io.write; Written to L3_test/sites/UPE_L/UPE_L_month.csv
+2025-11-14 10:01:21,045; INFO; pypromice.io.write; Written to L3_test/sites/UPE_L/UPE_L_month.nc
