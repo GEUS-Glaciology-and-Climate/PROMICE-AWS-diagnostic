@@ -21,10 +21,10 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'V29'
-old_version = 'V27'
+new_version = 'aws-l3-dev'
+old_version = 'V29'
 
-for res in ['month', 'day','hour']:
+for res in ['month', 'day']:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
