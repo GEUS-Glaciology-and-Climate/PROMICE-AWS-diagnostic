@@ -21,8 +21,8 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'aws-l3-dev'
-old_version = 'thredds'
+new_version = 'V29'
+old_version = 'V27'
 
 for res in ['month', 'day','hour']:
 # for res in ['hour']:
@@ -43,6 +43,9 @@ for res in ['month', 'day','hour']:
 
     elif 'test' in new_version:
         path_new = './L3_test/sites/'
+
+    elif 'V' in new_version:
+        path_new = f'C:/Users/bav/Downloads/{new_version}/{res}/'
 
     else:
         path_new = '../aws-l3/'
