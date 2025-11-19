@@ -75,8 +75,8 @@ for res in ['month', 'day', 'hour']:
     plt.close('all')
 
     #%%
-    for station in np.unique(df_meta.site_id):
-    # for station in ['SWC']:
+    # for station in np.unique(df_meta.site_id):
+    for station in ['FRE']:
         plt.close('all')
         Msg('## '+station)
 
