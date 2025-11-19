@@ -65,8 +65,8 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-# for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
-for station in np.unique(np.array(all_dirs)):
+# for station in ['CEN1']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
     df_flags = load_flags_and_adjustments(path_to_qc_files, station)
@@ -205,7 +205,7 @@ for station in np.unique(np.array(all_dirs)):
 
             if pAWS_raw is not None:
                 for data in pAWS_raw.L0:
-                    if var in data.data_vars:
+                    if (var in data.data_vars) and (var not in ['dlr','ulr']):
                         ax.plot(data.time,
                                 data[var].values,
                                 marker='.',color='k', linestyle='None',
