@@ -13,7 +13,7 @@ import numpy as np
 # from sklearn.linear_model import LinearRegression
 import os, logging, glob
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -65,8 +65,8 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
-# for station in np.unique(np.array(all_dirs)):
+# for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in np.unique(np.array(all_dirs)):
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
     df_flags = load_flags_and_adjustments(path_to_qc_files, station)
@@ -141,15 +141,15 @@ for station in ['FRE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
                         # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
-                        'p_u','t_u','z_pt','z_pt_cor',
+                        # 'p_u','t_u','z_pt','z_pt_cor',
                         # 'wdir_u','wdir_l','wdir_i',
                         # 't_l','p_l','rh_l','fan_dc_l'
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
-                        # 'dlr','ulr','t_rad',
+                        'dlr','ulr',#'t_rad',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
-                        # 'dsr','usr',
+                        'dsr','usr',
                         # 'dsr_cor','usr_cor',
                         # 'albedo',
                         # 'tilt_x','tilt_y','cc',

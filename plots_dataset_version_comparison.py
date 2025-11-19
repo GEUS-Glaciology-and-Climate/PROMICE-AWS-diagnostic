@@ -21,10 +21,10 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'aws-l3-dev'
+new_version = 'geuspromiceaws03'
 old_version = 'V29'
 
-for res in ['month', 'day']:
+for res in ['month', 'day', 'hour']:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
@@ -46,7 +46,8 @@ for res in ['month', 'day']:
 
     elif 'V' in new_version:
         path_new = f'C:/Users/bav/Downloads/{new_version}/{res}/'
-
+    elif 'geuspromiceaws03' in new_version:
+        path_new = '../geuspromiceaws03/'
     else:
         path_new = '../aws-l3/'
         df_meta = pd.read_csv(path_new+'/AWS_latest_locations.csv')
@@ -86,7 +87,7 @@ for res in ['month', 'day']:
         try:
             df_new = pd.read_csv(file, index_col=0, parse_dates=True)
         except:
-            file = path_new+station+'/'+station+'_hour.csv'
+            file =f'{path_new}/{station}/{station}_{res}.csv'
             if os.path.isfile(file):
                 df_new = pd.read_csv(file, index_col=0, parse_dates=True)
             else:
