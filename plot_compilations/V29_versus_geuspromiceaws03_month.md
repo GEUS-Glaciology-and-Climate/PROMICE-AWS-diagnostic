@@ -19,6 +19,3 @@ Old variables removed from new files:
 ![FRE](../figures/V29_versus_geuspromiceaws03_month/FRE_7.png)
 ![FRE](../figures/V29_versus_geuspromiceaws03_month/FRE_8.png)
 ![FRE](../figures/V29_versus_geuspromiceaws03_month/FRE_9.png)
-![FRE](../figures/V29_versus_geuspromiceaws03_month/FRE_10.png)
-![FRE](../figures/V29_versus_geuspromiceaws03_month/FRE_11.png)
- 

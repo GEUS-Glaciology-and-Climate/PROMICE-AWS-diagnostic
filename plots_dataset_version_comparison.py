@@ -24,7 +24,7 @@ import tocgen
 new_version = 'geuspromiceaws03'
 old_version = 'V29'
 
-for res in ['month', 'day', 'hour']:
+for res in ['day']:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
@@ -75,8 +75,8 @@ for res in ['month', 'day', 'hour']:
     plt.close('all')
 
     #%%
-    # for station in np.unique(df_meta.site_id):
-    for station in ['FRE']:
+    for station in np.unique(df_meta.site_id):
+    # for station in ['FRE']:
         plt.close('all')
         Msg('## '+station)
 
