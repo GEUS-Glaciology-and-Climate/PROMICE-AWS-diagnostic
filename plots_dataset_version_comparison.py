@@ -21,7 +21,7 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'geuspromiceaws03'
+new_version = 'thredds'
 old_version = 'V29'
 
 for res in ['day']:

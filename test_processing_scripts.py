@@ -105,7 +105,7 @@ def get_join_l3(site):
 
 if __name__ == '__main__':
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    for station in ['FRE']:
+    for station in ['DY2']:
     # for station in np.unique(np.array(df_metadata.station_id)):
         pAWS_tx, pAWS_raw, l2_merged, l3 = process_l2_l3(station)
 
