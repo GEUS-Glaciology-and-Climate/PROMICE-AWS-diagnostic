@@ -127,4 +127,83 @@ files = sorted(glob.glob("figures/flagged_data/*.png"))
 files = [f for f in files if f.split('\\')[-1].split('_1')[0].split('_2')[0] in \
          station_list]
 images = [imageio.imread(f) for f in files]
-imageio.mimsave("figures/flagged_data/all.gif", images, fps=1.5)
+imageio.mimsave("figures/flagged_data/all.gif", images, fps=1.2)
+
+# %%
+import pandas as pd
+import matplotlib.pyplot as plt
+import glob
+import numpy as np
+
+station_list = ['CEN1','CEN2','EGP','HUM','KAN_M','NEM',
+                'NUK_L','QAS_U','QAS_Uv3','SDM','TAS_A','TAS_U']
+
+files = glob.glob("logs/flagged_data_count/nan_counts_*.csv")
+
+df_all = []
+all_stations = []
+
+for f in files:
+    st = f.split("nan_counts_")[1].split(".csv")[0]
+    df = pd.read_csv(f)
+    df = df.rename(columns={df.columns[0]: "variable"})
+    df["station"] = st
+    df_all.append(df)
+    all_stations.append(st)
+
+df_all = pd.concat(df_all)
+
+# reversed variable order
+order = ["usr","dsr","ulr","dlr","z_boom_u","wspd_i","rh_i","p_i","t_u"]
+variable_labels = ["Upward\nshortwave\nradiation",
+                   "Downward\nshortwave\nradiation",
+                   "Upward\nlongwave\nradiation",
+                   "Downward\nlongwave\nradiation",
+                   "Boom height",
+                   "Wind speed",
+                   "Relative\nhumidity",
+                   "Air pressure",
+                   "Air temperature"]
+
+df_all = df_all[df_all.variable.isin(order)].copy()
+df_all["variable"] = pd.Categorical(df_all.variable, categories=order, ordered=True)
+df_all = df_all.sort_values("variable")
+
+primary = set(station_list)
+others = sorted(set(all_stations) - primary - {'LYN_L','NUK_B','LYN_T'})
+
+# --- plotting
+fig, ax = plt.subplots(1,1,figsize=(7,7))
+fig.subplots_adjust(left=0.23, top=0.9, bottom=0.06, right=0.99)
+# ---- other stations first (thin gray lines)
+for st in others:
+    sub = df_all[df_all.station == st]
+    pct = 100 * sub.missing / sub.expected
+    plt.plot(pct, sub.variable, color='lightgray', lw=1, label='__nolegend__')
+
+# dummy for legend entry (last)
+
+# ---- primary stations (colored, thicker, markers)
+cmap = plt.cm.tab20
+colors = cmap(np.linspace(0, 1, len(primary)))
+
+for st, c in zip(primary, colors):
+    sub = df_all[df_all.station == st]
+    pct = 100 * sub.missing / sub.expected
+    plt.plot(pct, sub.variable, marker='o', lw=2, color=c, label=st)
+plt.plot(np.nan, np.nan, color='lightgray', lw=1, label='other stations')
+
+plt.xlabel("% removed through QC", fontsize=14)
+
+ax.xaxis.set_label_position('top')
+ax.tick_params(axis="x", bottom=True, top=True, labelbottom=True, labeltop=True)
+plt.grid(True, alpha=0.3)
+plt.yticks(ticks=range(len(order)), labels=variable_labels)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.legend(ncol=2, fontsize=12,
+           bbox_to_anchor=(1, 0.90), loc="upper right")
+
+plt.savefig("figures/flagged_data/all_summary.png", dpi=200)
+plt.show()
+

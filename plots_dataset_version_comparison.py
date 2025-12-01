@@ -58,7 +58,7 @@ for res in ['day']:
     today = date.today().strftime("%Y%m%d")
 
     filename = f'plot_compilations/{old_version}_versus_{new_version}_{res}.md'
-    figure_folder=f'figures/{old_version}_versus_{new_version}_{res}'
+    figure_folder=f'figures/version_comparisons/{old_version}_versus_{new_version}_{res}'
     try:
         os.mkdir(figure_folder)
     except:
