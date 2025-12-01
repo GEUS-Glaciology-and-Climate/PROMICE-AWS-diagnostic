@@ -24,13 +24,9 @@ from pypromice.pipeline.get_l2tol3 import get_l2tol3
 from pypromice.pipeline.join_l3 import join_l3
 
 logging.getLogger('matplotlib.font_manager').disabled = True
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.StreamHandler()
-    ]
-)
+logging.getLogger("pypromice").setLevel(logging.DEBUG)
+logging.getLogger("pypromice.pipeline").setLevel(logging.DEBUG)
+logging.getLogger("pypromice.pipeline.get_l2").setLevel(logging.DEBUG)
 logging.getLogger('numba').setLevel(logging.WARNING)
 
 
@@ -105,14 +101,11 @@ def get_join_l3(site):
 
 if __name__ == '__main__':
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    # for station in ['TUN']:
+    for station in ['CEN1']:
     # for station in np.unique(np.array(df_metadata.station_id)):
-        # pAWS_tx, pAWS_raw, l2_merged, l3 = process_l2_l3(station)
+        pAWS_tx, pAWS_raw, l2_merged, l3 = process_l2_l3(station)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     for site in ['TUN']:
     # for site in df_metadata.site_id:
         l3_merged, sorted_list_station_data = get_join_l3(site)
-
-# %%
-l3_merged.z_surf_combined.plot(marker='o')

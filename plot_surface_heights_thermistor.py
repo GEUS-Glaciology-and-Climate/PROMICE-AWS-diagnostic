@@ -353,3 +353,74 @@ for file in os.listdir(path_new):
 
 tocgen.processFile(filename, filename[:-3] + "_toc.md")
 f.close()
+
+# %%
+
+# %% gif thermistor depth
+if True:
+    import imageio
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    data_type = 'sites'
+    if data_type == 'sites':
+        path_new = '../thredds-data/level_3_sites/csv/day/'
+    else:
+        path_new = '../thredds-data//level_2_stations/csv/day/'
+
+    filename = 'plot_compilations/surface_height_'+data_type+'.md'
+
+    for file in os.listdir(path_new):
+    # for file in ['UPE_U_day.csv']:
+        station = file.replace('_day.csv','')
+        if not os.path.isfile(path_new+file):
+            Msg("cannot find"+path_new+file)
+            continue
+
+        df_new = pd.read_csv(path_new+file)
+        df_new.time = pd.to_datetime(df_new.time, utc=True)
+        df_new = df_new.set_index('time')
+
+        if df_new.index.year[0]<2000:
+            df_new=df_new.loc['2021':,:]
+
+        dt_vars = [f'd_t_i_{i}' for i in range(1,11) if f'd_t_i_{i}' in df_new.columns]
+        new_dt_vars = [s+'_new' for s in dt_vars]
+        for v in dt_vars:
+            df_new[v+'_new'] =  df_new.z_surf_combined-df_new[v]
+
+        times = df_new.index.values
+        frames = []
+        steps = 50
+        indices = np.linspace(1, len(times)-1, steps).astype(int)
+
+        from tqdm import tqdm
+
+        fig, ax = plt.subplots(figsize=(10,4), dpi=150)
+        df_new.z_surf_combined.plot(ax=ax, color='black')
+        # df_new.z_surf_combined.cummin().plot(ax=ax, color='gray')
+        if df_new.z_surf_combined.loc[df_new.z_surf_combined.last_valid_index()] <0:
+            ax.set_ylim(df_new.z_surf_combined.min()-10, 3)
+        else:
+            ax.set_ylim(df_new.z_surf_combined.min()-10,
+                        df_new.z_surf_combined.max()+2)
+        ax.set_title(station)
+
+        prev = 0
+
+        for k in tqdm(indices):
+            colors = plt.cm.tab10.colors   # tuple of 10 nice colors
+            for v, c in zip(new_dt_vars, colors):
+                df_new[v].iloc[prev:k].plot(ax=ax, color=c)
+
+            prev = k
+
+            fig.canvas.draw()
+            img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+            img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+            frames.append(img)
+            if k ==1:
+                for i in range(11): frames.append(img)
+        for i in range(11): frames.append(img)
+        imageio.mimsave(f"figures/string_processing/gif/{station}.gif", frames, fps=10)
+        plt.close(fig)

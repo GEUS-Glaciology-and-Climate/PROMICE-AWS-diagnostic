@@ -44,7 +44,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['FRE']:
+for station in ['UPE_U']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -58,8 +58,8 @@ for station in ['FRE']:
     station_config = lib.load_station_config(config_folder, l2.attrs['station_id'])
 
 
-    # %% Perform Level 3 processing
-    l3 = process_surface_height(l2,
+    # % Perform Level 3 processing
+    l3 = lib.process_surface_height(l2,
                                 Path('../PROMICE-AWS-data-issues')/'adjustments',
                                 station_config).to_dataframe()
 
@@ -113,7 +113,7 @@ if calc_yearly_abaltion:
         print(f"{t.year}: {v:.2f} m")
 
 # %%
-plot_thermistor_depth = True
+plot_thermistor_depth = False
 if plot_thermistor_depth:
     df_new=l3.copy()
 

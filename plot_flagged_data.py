@@ -65,7 +65,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['CEN1','CEN2','EGP']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['CEN2']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -133,12 +133,12 @@ for station in ['CEN1','CEN2','EGP']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3',
 
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
-                        'rh_u','rh_l','rh_i',
+                        # 'rh_u','rh_l','rh_i',
                         # 't_u','t_l','t_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
                         # 'z_boom_l', 'z_boom_u', 'z_stake',
-                        # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
+                        'z_boom_cor_l', 'z_boom_cor_u',# 'z_stake_cor',
                         # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
@@ -146,7 +146,7 @@ for station in ['CEN1','CEN2','EGP']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3',
                         # 't_l','p_l','rh_l','fan_dc_l'
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
-                        'dlr','ulr',#'t_rad',
+                        # 'dlr','ulr',#'t_rad',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
                         # 'dsr','usr',
