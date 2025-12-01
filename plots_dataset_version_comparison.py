@@ -21,8 +21,8 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'V30'
-old_version = 'V29'
+new_version = 'V31'
+old_version = 'V30'
 
 for res in ['day']:
 # for res in ['hour']:

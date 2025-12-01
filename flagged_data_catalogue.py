@@ -18,8 +18,9 @@ path_w_flag= './L2_test/level_2'
 
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 # for station in ['CEN1']:
-for station in np.unique(np.array(df_metadata.station_id)):
-
+station_list = ['CEN1', 'CEN2','EGP','HUM','KAN_M','NAE','NAU','NEM', 'NUK_L','QAS_U', 'QAS_Uv3','SDM','TAS_A','TAS_U']
+for station in station_list:
+# for station in np.unique(np.array(df_metadata.station_id)):
     var_list = [
             't_u','t_l','t_i'
             'p_u','p_l','p_i',
@@ -69,10 +70,15 @@ for station in np.unique(np.array(df_metadata.station_id)):
         ax.set_ylabel(var)
 
         ax.plot(df_no_flags[var].index, df_no_flags[var].values, marker='.', lw=3,
-                color='tab:blue', label='all measurements'
+                color='tab:red', label='bad measurements'
+                )
+        
+        ax.plot(df_no_flags[var].index, df_no_flags[var].values, marker='.', lw=3,
+                color='tab:blue', label='good measurements'
                 )
 
     t_i_vars = [f't_i_{i}' for i in range(1,11) if f't_i_{i}' in df_no_flags.columns]
+
     ax_list[-1].plot(df_no_flags[t_i_vars].index, df_no_flags[t_i_vars].values, marker='.',
             color='tab:blue',
             )
@@ -108,3 +114,17 @@ for station in np.unique(np.array(df_metadata.station_id)):
         bbox_transform=fig.transFigure,
         fontsize=12, title=station )
     fig.savefig('figures/flagged_data/'+station+'_2.png',dpi=300)
+
+#%% 
+
+import pandas as pd
+df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
+df_metadata = df_metadata.loc[df_metadata.location_type=='ice sheet',:]
+import imageio.v2 as imageio
+import glob
+
+files = sorted(glob.glob("figures/flagged_data/*.png"))
+files = [f for f in files if f.split('\\')[-1].split('_1')[0].split('_2')[0] in \
+         station_list]
+images = [imageio.imread(f) for f in files]
+imageio.mimsave("figures/flagged_data/all.gif", images, fps=1.5)
