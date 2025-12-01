@@ -28,7 +28,7 @@ from pathlib import Path
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler()
@@ -44,7 +44,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['UPE_U']:
+for station in ['QAS_L']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")

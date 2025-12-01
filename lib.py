@@ -445,7 +445,7 @@ def process_surface_height(ds, data_adjustments_dir, station_config={}):
 from matplotlib.patches import Rectangle
 
 def plot_series_to_frame(hs1, hs2, z, series, title, add_rectangle=True):
-    fig, ax = plt.subplots(figsize=(10,8),dpi=220)
+    fig, ax = plt.subplots(figsize=(10,6),dpi=220)
     ax.plot(hs1.index, hs1.values, color='tab:blue',  lw=2)
     ax.plot(hs2.index, hs2.values, color='tab:orange', lw=2)
     ax.plot(z.index, z.values, color='tab:green', lw=2)
@@ -496,7 +496,7 @@ def animate_adjustment(frames, hs1, hs2, z, series, idx_start, shift, title_pref
         partial_shift = shift * (k / n_snapshot)
         s_step.loc[idx_start:] = s_base.loc[idx_start:] + partial_shift
 
-        title = f"{title_prefix} ({k}/{n_snapshot})"
+        title = f"{title_prefix}"
         frame = plot_series_to_frame(hs1, hs2, z, s_step.loc[idx_start:], title)
         frames.append(frame)
 
@@ -759,7 +759,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                                     first_index = hs1.iloc[ind_start[i]:].first_valid_index()
 
                                 shift =-  z[first_index]   +  hs1[first_index]
-                                animate_adjustment(frames,hs1, hs2, z,  z, first_index, shift, title_prefix=str(y))
+                                animate_adjustment(frames,hs1, hs2, z,  z, first_index, shift, title_prefix=f'{station} {y}')
 
                                 z[first_index:] = z[first_index:] -  z[first_index]   +  hs1[first_index]
                             else:
@@ -767,14 +767,14 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                                 first_index = hs2.iloc[ind_start[i]:].first_valid_index()
 
                                 shift =-  z[first_index]   +  hs2[first_index]
-                                animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=str(y))
+                                animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=f'{station} {y}')
 
                                 z[first_index:] = z[first_index:] -  z[first_index]   +  hs2[first_index]
                         else:
                             logger.debug('adjusting z to hs1')
 
                             shift =-  z[first_index]   +  hs2[first_index]
-                            animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=str(y))
+                            animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=f'{station} {y}')
 
                             z[first_index:] = z[first_index:] -  z[first_index]   +  hs2[first_index]
                         hs2_ref = 0 # from now on PT is the reference
@@ -809,7 +809,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                                         shift = -  np.nanmean(hs1[first_index:first_index+pd.to_timedelta('1D')])  \
                                              +  np.nanmean(z[first_index:first_index+pd.to_timedelta('1D')])
-                                        animate_adjustment(frames, hs1, hs2, z, hs1, first_index, shift, title_prefix=str(y))
+                                        animate_adjustment(frames, hs1, hs2, z, hs1, first_index, shift, title_prefix=f'{station} {y}')
 
                                         hs1[first_index:] = hs1[first_index:] \
                                             -  np.nanmean(hs1[first_index:first_index+pd.to_timedelta('1D')])  \
@@ -818,7 +818,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                                         shift =-  np.nanmean(hs2[first_index:first_index+pd.to_timedelta('1D')])  \
                                             +  np.nanmean(z[first_index:first_index+pd.to_timedelta('1D')])
-                                        animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=str(y))
+                                        animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
 
                                         hs2[first_index:] = hs2[first_index:] \
                                             -  np.nanmean(hs2[first_index:first_index+pd.to_timedelta('1D')])  \
@@ -839,7 +839,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                         shift = - np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])  + \
                              np.nanmean(z.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])
-                        animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=str(y))
+                        animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
 
                         hs2.iloc[ind_end[i]:] = hs2.iloc[ind_end[i]:] - \
                             np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])  + \
@@ -851,7 +851,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                             shift = - np.nanmean(hs2.iloc[(ind_start[i+1]-24*7):(ind_start[i+1]+24*7)])  + \
                                 np.nanmean(z.iloc[(ind_start[i+1]-24*7):(ind_start[i+1]+24*7)])
-                            animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=str(y))
+                            animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
 
                             hs2.iloc[ind_end[i]:] = hs2.iloc[ind_end[i]:] - \
                                 np.nanmean(hs2.iloc[(ind_start[i+1]-24*7):(ind_start[i+1]+24*7)])  + \
@@ -875,7 +875,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                         hs1_following_winter[np.isnan(hs2_following_winter)] = np.nan
 
                         shift = -  np.nanmean(hs2_following_winter)  +  np.nanmean(hs1_following_winter)
-                        animate_adjustment(frames, hs1, hs2, z, hs2, str(y)+'-01-01', shift, title_prefix=str(y))
+                        animate_adjustment(frames, hs1, hs2, z, hs2, str(y)+'-01-01', shift, title_prefix=f'{station} {y}')
 
 
                         hs2[str(y)+'-01-01':] = hs2[str(y)+'-01-01':] \
@@ -898,7 +898,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                         hs2_following_winter[np.isnan(hs1_following_winter)] = np.nan
 
                         shift = -  np.nanmean(hs1_following_winter)  +  np.nanmean(hs2_following_winter)
-                        animate_adjustment(frames, hs1, hs2, z, hs1, str(y)+'-09-01', shift, title_prefix=str(y))
+                        animate_adjustment(frames, hs1, hs2, z, hs1, str(y)+'-09-01', shift, title_prefix=f'{station} {y}')
 
                         hs1[str(y)+'-09-01':] = hs1[str(y)+'-09-01':] \
                             -  np.nanmean(hs1_following_winter)  +  np.nanmean(hs2_following_winter)
@@ -929,7 +929,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                             tmp2[np.isnan(tmp1)] = np.nan
 
                             shift =  -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
-                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=str(y))
+                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                         hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
 
@@ -943,7 +943,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                             shift =  -np.nanmean(hs1.iloc[(ind_end[i]-24*14):(ind_end[i]+24*30)])  + \
                                 np.nanmean(z.iloc[(ind_end[i]-24*14):(ind_end[i]+24*30)])
-                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=str(y))
+                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                             hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] - \
                                 np.nanmean(hs1.iloc[(ind_end[i]-24*14):(ind_end[i]+24*30)])  + \
@@ -954,7 +954,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                             shift =  -np.nanmean(hs1.iloc[(ind_start[i+1]-24*14):(ind_start[i+1]+24*7)])  + \
                                 np.nanmean(z.iloc[(ind_start[i+1]-24*14):(ind_start[i+1]+24*7)])
-                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=str(y))
+                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                             hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] - \
                                 np.nanmean(hs1.iloc[(ind_start[i+1]-24*14):(ind_start[i+1]+24*7)])  + \
@@ -970,7 +970,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
 
                         shift =   -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
-                        animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=str(y))
+                        animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                         hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
 

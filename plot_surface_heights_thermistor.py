@@ -354,7 +354,6 @@ for file in os.listdir(path_new):
 tocgen.processFile(filename, filename[:-3] + "_toc.md")
 f.close()
 
-# %%
 
 # %% gif thermistor depth
 if True:
@@ -370,8 +369,8 @@ if True:
 
     filename = 'plot_compilations/surface_height_'+data_type+'.md'
 
-    for file in os.listdir(path_new):
-    # for file in ['UPE_U_day.csv']:
+    # for file in os.listdir(path_new):
+    for file in ['UPE_U_day.csv']:
         station = file.replace('_day.csv','')
         if not os.path.isfile(path_new+file):
             Msg("cannot find"+path_new+file)
@@ -423,4 +422,59 @@ if True:
                 for i in range(11): frames.append(img)
         for i in range(11): frames.append(img)
         imageio.mimsave(f"figures/string_processing/gif/{station}.gif", frames, fps=10)
+        plt.close(fig)
+
+
+# %% 
+if True:
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    data_type = 'sites'
+    if data_type == 'sites':
+        path_new = '../thredds-data/level_3_sites/csv/day/'
+    else:
+        path_new = '../thredds-data//level_2_stations/csv/day/'
+
+    filename = 'plot_compilations/surface_height_'+data_type+'.md'
+
+    # for file in os.listdir(path_new):
+    for file in ['KAN_L_day.csv','NUK_L_day.csv','KPC_L_day.csv','NAU_day.csv']:
+        station = file.replace('_day.csv','')
+        if not os.path.isfile(path_new+file):
+            Msg("cannot find"+path_new+file)
+            continue
+
+        df_new = pd.read_csv(path_new+file)
+        df_new.time = pd.to_datetime(df_new.time, utc=True)
+        df_new = df_new.set_index('time')
+
+        if df_new.index.year[0]<2000:
+            df_new=df_new.loc['2021':,:]
+
+        dt_vars = [f'd_t_i_{i}' for i in range(1,11) if f'd_t_i_{i}' in df_new.columns]
+        temp_vars = [f't_i_{i}' for i in range(1,11) if f't_i_{i}' in df_new.columns]
+        new_dt_vars = [s+'_new' for s in dt_vars]
+        for v in dt_vars:
+            df_new[v+'_new'] =  df_new.z_surf_combined-df_new[v]
+
+        times = df_new.index.values
+
+        fig, ax = plt.subplots(figsize=(10,4), dpi=150)
+        ax.set_title(station)
+        sc = None
+        for depth, temp in zip(dt_vars, temp_vars):
+            sc = ax.scatter(df_new.index,
+                            df_new[depth],
+                            c=df_new[temp],
+                            cmap='plasma',
+                            s=8)
+        plt.plot(df_new.index[[0, -1]],[0, 0],'k')
+        ax.set_xlim(df_new.index[[0, -1]])
+        ax.set_ylabel('Depth (m)')
+        ax.invert_yaxis()
+        plt.colorbar(sc, ax=ax, label="Temperature (°C)")
+
+
+        fig.savefig(f"figures/string_processing/scatters/{station}.png", dpi=300)
         plt.close(fig)

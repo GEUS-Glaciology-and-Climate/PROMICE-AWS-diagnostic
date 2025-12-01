@@ -29,15 +29,15 @@ var_list = [
         # 'gps_lat', 'gps_lon','gps_alt'
         # 'z_surf_combined','z_ice_surf','snow_height','z_pt_cor'
         # 'p_u','t_u','z_surf_combined', 'lat', 'lon'
-        # 't_u','z_boom_u','z_stake'
+        'z_boom_cor_u','z_stake_cor','z_pt_cor'
         # 'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
-        'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
+        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
         ]
 
 
 # station_list = df_meta.stid
-station_list = ['WEG_B']
+station_list = ['TAS_A']
 
 # plt.close('all')
 # gps_info=[]
@@ -95,5 +95,5 @@ for station in station_list:
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
                 # print(station, Y_pred[-1] - Y[~np.isnan(X+Y)][0])
 
-        plt.suptitle('%s site'%(station))
+        plt.suptitle('%s'%(station))
         fig.savefig('figures/'+station+'_'+str( k+1)+'.png',dpi=300)
