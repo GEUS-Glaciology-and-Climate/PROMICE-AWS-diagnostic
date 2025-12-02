@@ -21,8 +21,8 @@ import matplotlib
 matplotlib.use('Agg')
 import tocgen
 
-new_version = 'V31'
-old_version = 'V30'
+new_version = 'thredds'
+old_version = 'V31'
 
 for res in ['day']:
 # for res in ['hour']:
@@ -75,8 +75,8 @@ for res in ['day']:
     plt.close('all')
 
     #%%
-    for station in np.unique(df_meta.site_id):
-    # for station in ['FRE']:
+    # for station in np.unique(df_meta.site_id):
+    for station in ['FRE']:
         plt.close('all')
         Msg('## '+station)
 
