@@ -470,7 +470,7 @@ def plot_series_to_frame(hs1, hs2, z, series, title, add_rectangle=True):
     return img
 
 def plot_final_frame(hs1, hs2, z, series, title):
-    fig, ax = plt.subplots(figsize=(10,8),dpi=220)
+    fig, ax = plt.subplots(figsize=(10,6),dpi=220)
     ax.plot(hs1.index, hs1.values, color='tab:blue',  alpha=0.5, lw=2)
     ax.plot(hs2.index, hs2.values, color='tab:orange',  alpha=0.5, lw=2)
     ax.plot(z.index, z.values, color='tab:green',  alpha=0.5, lw=2)

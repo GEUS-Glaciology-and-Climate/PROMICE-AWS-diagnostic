@@ -23,8 +23,8 @@ importlib.invalidate_caches()
 
 from pypromice.pipeline.L2toL3 import process_surface_height
 from pathlib import Path
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
@@ -44,7 +44,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['QAS_L']:
+for station in ['UPE_U']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
