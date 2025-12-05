@@ -101,11 +101,11 @@ def get_join_l3(site):
 
 if __name__ == '__main__':
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    for station in ['CEN1']:
+    for station in ['EGP']:
     # for station in np.unique(np.array(df_metadata.station_id)):
         pAWS_tx, pAWS_raw, l2_merged, l3 = process_l2_l3(station)
 
-    df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    for site in ['TUN']:
+    # df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
+    # for site in ['TUN']:
     # for site in df_metadata.site_id:
-        l3_merged, sorted_list_station_data = get_join_l3(site)
+        # l3_merged, sorted_list_station_data = get_join_l3(site)
