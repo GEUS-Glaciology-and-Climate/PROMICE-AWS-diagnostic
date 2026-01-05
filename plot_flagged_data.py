@@ -10,9 +10,7 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-# from sklearn.linear_model import LinearRegression
-import os, logging, glob
-import matplotlib
+import os, logging, matplotlib, tocgen
 # matplotlib.use('Agg')
 
 logging.basicConfig(
@@ -26,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 matplotlib.set_loglevel("warning")
 logging.getLogger('numba').setLevel(logging.WARNING)
-import os, pypromice.resources
+import pypromice.resources
 from pypromice.core.qc.value_clipping import clip_values
 from pypromice.resources import load_variables
 from pypromice.core.qc.persistence import persistence_qc
@@ -35,37 +33,26 @@ from lib import (remove_old_plots, load_flags_and_adjustments, load_L1,
                  clean_gps, smooth_pose, compute_cloud_cover,
                  solar_geometry, filter_shortwave, correct_shortwave, compute_albedo,
                  process_precip)
-import tocgen
 
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
-path_to_l1 = 'C:/Users/bav/GitHub/PROMICE data/aws-l1/'
-path_tx = '../aws-l3/tx/'
-
-from datetime import date
-today = date.today().strftime("%Y%m%d")
 filename = './plot_compilations/flags.md'
 figure_folder='figures/flags'
-try:
-    os.mkdir(figure_folder)
-except:
-    pass
+os.makedirs(figure_folder, exist_ok=True)
 
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
 f = open(filename, "w")
 def Msg(txt):
-    f = open(filename, "a")
-    print(txt)
-    f.write(txt + "\n")
+    f = open(filename, "a"); print(txt); f.write(txt + "\n")
 
-# plt.close('all')
+plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
-zoom_to_good = False
+zoom_to_good = True
 
-for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['TUN']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -79,7 +66,6 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
     ds22 = persistence_qc(ds2)
-
     ds22 = process_precip(ds22)
 
     vars_df = load_variables(var_file)
@@ -118,7 +104,7 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     else:
         var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
     Msg('# '+station)
-    # var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
+    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
     var_list = [v for v in var_list if v in ds1.data_vars]
 
@@ -126,7 +112,7 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    var_list_list = [np.array([
+    # var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
@@ -138,8 +124,8 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
                         # 'z_boom_l', 'z_boom_u', 'z_stake',
-                        'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
-                        'z_pt','z_pt_cor',
+                        # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
+                        # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
                         # 'wdir_u','wdir_l','wdir_i',
@@ -153,9 +139,9 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'dsr_cor','usr_cor',
                         # 'albedo',
                         # 'tilt_x','tilt_y','cc',
-                        ]\
+                        # ]\
                         # + ['t_i_'+str(i+1) for i in range(11)]
-                        )]
+                        # )]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
@@ -167,10 +153,11 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                                     figsize=(12,len(var_list)*2.1))
         fig.subplots_adjust(top=0.83)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
-
         if len(var_list)==1: ax_list = [ax_list]
+
         for var, ax in zip(var_list, ax_list):
-            if var in ['z_boom_u','z_boom_l','z_stake']:
+
+            if (var in ['z_boom_u','z_boom_l','z_stake']) and ('z_stake' in df_L1.columns):
                 valid = df_L1.z_stake.notna() & df_L1.z_boom_u.notna()
                 m = valid & ((df_L1.z_stake - df_L1.z_boom_u).abs() <= 1e-6)
 
@@ -197,21 +184,21 @@ for station in ['TAS_A']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         marker='.',color='gray', linestyle='None',
                         label='uncorrected for air temperature')
 
-            if var in ['t_i_'+str(i+1) for i in range(11)]:
-                ax.plot(ds4.time,
-                        ds4['t_u'].values,
-                        marker='.',color='lightgray',
-                        label='air temperature')
+            # if var in ['t_i_'+str(i+1) for i in range(11)]:
+            #     ax.plot(ds4.time,
+            #             ds4['t_u'].values,
+            #             marker='.',color='lightgray',
+            #             label='air temperature')
 
             if pAWS_raw is not None:
                 for data in pAWS_raw.L0:
-                    if (var in data.data_vars) and (var not in ['dlr','ulr']):
+                    if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon']):
                         ax.plot(data.time,
                                 data[var].values,
-                                marker='.',color='k', linestyle='None',
+                                marker='+',color='k', linestyle='None',
                                 label='__nolegend__')
 
-                ax.plot(np.nan,np.nan, marker='.',color='k',
+                ax.plot(np.nan,np.nan, marker='+',color='k',
                         linestyle='None', label='in L0')
             if var in ds.data_vars:
                 ax.plot(ds.time,
