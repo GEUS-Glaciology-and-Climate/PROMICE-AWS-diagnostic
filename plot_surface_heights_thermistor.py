@@ -32,7 +32,7 @@ def Msg(txt):
 
 
 for file in os.listdir(path_new):
-# for file in ['KAN_U_day.csv']:
+# for file in ['CP1_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -102,7 +102,7 @@ for file in os.listdir(path_new):
     # xlim1 = df_new.index[0]
     xlim1 = pd.to_datetime('2022-03-01', utc=True)
     xlim2 = df_new.index[-1]
-    xlim2 = pd.to_datetime('2025-11-10', utc=True)
+    xlim2 = pd.to_datetime('2026-01-10', utc=True)
     ax_list[0].set_xlim(xlim1, xlim2)
     if len(depth_var)>0:
         try:
@@ -425,7 +425,7 @@ if True:
         plt.close(fig)
 
 
-# %% 
+# %%
 if True:
     import matplotlib.pyplot as plt
     import numpy as np

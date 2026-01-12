@@ -45,7 +45,7 @@ f = open(filename, "w")
 def Msg(txt):
     f = open(filename, "a"); print(txt); f.write(txt + "\n")
 
-plt.close('all')
+# plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
@@ -112,17 +112,20 @@ for station in ['TUN']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
+                        # 't_u','t_l',
+                        # 'rh_u','rh_l',
 
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
-                        # 'rh_u','rh_l','rh_i',
                         # 't_u','t_l','t_i',
-                        # 'wspd_u','wspd_l','wspd_i',
-                        # 'wdir_u','wdir_l','wdir_i',
+                        'wspd_u','wspd_l',
+                        'wdir_u','wdir_l',
+                        'fan_dc_l','fan_dc_u',
+                        'rot'
                         # 'z_boom_l', 'z_boom_u', 'z_stake',
                         # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
                         # 'z_pt','z_pt_cor',
@@ -141,7 +144,7 @@ for station in ['TUN']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'tilt_x','tilt_y','cc',
                         # ]\
                         # + ['t_i_'+str(i+1) for i in range(11)]
-                        # )]
+                        ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
