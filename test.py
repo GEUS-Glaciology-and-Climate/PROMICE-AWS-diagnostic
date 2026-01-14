@@ -52,7 +52,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = True
 
-for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -63,10 +63,34 @@ for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 
     # The following steps are from L1toL2
     ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
-    ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
-    ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
+    # ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
+    # ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
+    ds1 = ds.copy()
+    ds2 = ds1.copy()
+    import numpy as np
+    import xarray as xr
     
     ds22 = persistence_qc(ds2)
+
+    def filter_max_rate_iterative_bidir(da, rmax, n=20):
+        def run(x):
+            t = x.time.values.view("i8")
+            v = x.values.astype("float64")
+            h = 3600e9
+            for _ in range(n):
+                ok = np.isfinite(v)
+                i = np.flatnonzero(ok)
+                if i.size < 2: break
+                p, c = i[:-1], i[1:]
+                bad = np.abs((v[c]-v[p]) / ((t[c]-t[p])/h)) > rmax
+                if not bad.any(): break
+                j = np.flatnonzero(bad)
+                drop = c[j[np.r_[True, np.diff(j)>1]]]
+                v[drop] = np.nan
+            return x.copy(data=v)
+        return run(run(da)).isel(time=slice(None,None,-1)).pipe(run).isel(time=slice(None,None,-1))
+
+    ds22["t_u"] = filter_max_rate_iterative_bidir(ds22["t_u"], rmax=5.0)
     ds22 = process_precip(ds22)
 
     vars_df = load_variables(var_file)
@@ -113,7 +137,7 @@ for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
@@ -121,7 +145,7 @@ for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
-                        # 't_u','t_l','t_i',
+                        't_u','t_l','t_i',
                         # 'rh_u','rh_l','rh_i',
                         # 'wspd_u','wspd_l',
                         # 'wdir_u','wdir_l',
@@ -145,7 +169,7 @@ for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'tilt_x','tilt_y','cc',
                         # ]\
                         # + ['t_i_'+str(i+1) for i in range(11)]
-                        # ])]
+                        ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
