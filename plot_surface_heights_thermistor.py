@@ -300,7 +300,7 @@ for file in os.listdir(path_new):
                 first_valid_value = df_year['snow_height'].loc[
                     slice(df_year['snow_height'].first_valid_index(),
                           df_year['snow_height'].first_valid_index()+pd.to_timedelta('30 days'))].min()
-                if year == 2025:
+                if year == 2026:
                     ax_list[1].plot(df_year['day_of_year'],
                                      df_year['snow_height'] - first_valid_value,
                                      label='_no_legend_', linestyle='-', color='w',lw=6, alpha=0.7)
