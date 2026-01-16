@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os, logging, matplotlib, tocgen
-matplotlib.use('Agg')
-
+# matplotlib.use('Agg')
+import matplotlib.dates as mdates
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -50,10 +50,10 @@ plt.close('all')
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
-zoom_to_good = True
+zoom_to_good = False
 
-for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
-# for station in df_metadata.station_id:
+for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
+    # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
     df_flags = load_flags_and_adjustments(path_to_qc_files, station)
@@ -83,7 +83,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]: #['KAN_Lv3','QAS_Lv3','
     ds4, TOA_crit_nopass_cor = correct_shortwave(ds4, geo)
     ds4, OKalbedos = compute_albedo(ds4, geo)
 
-    # %plotting
+    # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
     if len(df_flags)>0:
@@ -118,7 +118,6 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]: #['KAN_Lv3','QAS_Lv3','
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
                         # 't_u','t_l',
-
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
                         # 't_u','t_l','t_i',
@@ -127,7 +126,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]: #['KAN_Lv3','QAS_Lv3','
                         # 'wdir_u','wdir_l',
                         # 'fan_dc_l','fan_dc_u',
                         # 'rot'
-                        # 'z_boom_l', 'z_boom_u', 'z_stake',
+                        # 'z_boom_l', 'z_boom_u', #'z_stake',
                         # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
                         # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
@@ -200,6 +199,16 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]: #['KAN_Lv3','QAS_Lv3','
                         ax.plot(data.time,
                                 data[var].values,
                                 marker='+',color='k', linestyle='None',
+                                label='__nolegend__')
+
+                ax.plot(np.nan,np.nan, marker='+',color='k',
+                        linestyle='None', label='in L0')
+            if pAWS_raw is not None:
+                for data in pAWS_tx.L0:
+                    if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
+                        ax.plot(data.time,
+                                data[var].values,
+                                marker='x',color='k', linestyle='None',
                                 label='__nolegend__')
 
                 ax.plot(np.nan,np.nan, marker='+',color='k',
@@ -295,13 +304,23 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]: #['KAN_Lv3','QAS_Lv3','
                         label='final')
 
         for var, ax in zip(var_list, ax_list):
+            ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
             if zoom_to_good:
                 ax.set_ylim(ds4[var].min(), ds4[var].max())
+            else:
+                xmin, xmax = ax.get_xlim()
+                xmin = mdates.num2date(xmin)
+                xmin = pd.Timestamp(xmin).tz_localize(None)
+                xmax = mdates.num2date(xmax)
+                xmax = pd.Timestamp(xmax).tz_localize(None)
+                ymin = ds.sel(time=slice(xmin, xmax))[var].min()
+                ymax = ds.sel(time=slice(xmin, xmax))[var].max()
+                ax.set_ylim(ymin, ymax)
+
             ax.set_ylabel(var)
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)
             ax.grid(True, which='major', linestyle='-', linewidth=1)
 
-        ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')

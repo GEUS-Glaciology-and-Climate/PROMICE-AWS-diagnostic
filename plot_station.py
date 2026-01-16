@@ -23,13 +23,13 @@ var_list = [
         # 't_u','t_l','t_i'
         # 'rh_l','rh_i','rh_l_cor',
         # 't_i','rh_i','p_i','wspd_i','wdir_i',
-        # 'z_boom_u', 'z_boom_l', 'gps_lat','gps_lon','gps_alt'
+        'z_boom_u', 'z_boom_l', 'z_boom_cor_u','z_boom_cor_l',
         # 'gps_geounit'
         # 't_u', 't_l','ts'
         # 'gps_lat', 'gps_lon','gps_alt'
         # 'z_surf_combined','z_ice_surf','snow_height','z_pt_cor'
         # 'p_u','t_u','z_surf_combined', 'lat', 'lon'
-        'z_boom_cor_u','z_stake_cor','z_pt_cor'
+        # 'z_boom_cor_u','z_stake_cor','z_pt_cor'
         # 'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
         # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
@@ -37,7 +37,7 @@ var_list = [
 
 
 # station_list = df_meta.stid
-station_list = ['TAS_A']
+station_list = ['CP1']
 
 # plt.close('all')
 # gps_info=[]
