@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os, logging, matplotlib, tocgen
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -52,7 +52,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = True
 
-for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
+for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -65,7 +65,7 @@ for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
     ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
     ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
-    
+
     ds22 = persistence_qc(ds2)
     ds22 = process_precip(ds22)
 
@@ -201,7 +201,7 @@ for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                                 data[var].values,
                                 marker='+',color='k', linestyle='None',
                                 label='__nolegend__')
-                        
+
                 ax.plot(np.nan,np.nan, marker='+',color='k',
                         linestyle='None', label='in L0')
             if var in ds.data_vars:
@@ -301,7 +301,7 @@ for station in ['SDL']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)
             ax.grid(True, which='major', linestyle='-', linewidth=1)
 
-        # ax.set_xlim(pd.to_datetime(['2025-06-01','2025-09-08']))
+        ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
