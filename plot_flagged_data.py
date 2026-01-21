@@ -45,14 +45,14 @@ f = open(filename, "w")
 def Msg(txt):
     f = open(filename, "a"); print(txt); f.write(txt + "\n")
 
-plt.close('all')
+# plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
+for station in ['CP1']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -83,6 +83,15 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
     ds4, TOA_crit_nopass_cor = correct_shortwave(ds4, geo)
     ds4, OKalbedos = compute_albedo(ds4, geo)
 
+    from pypromice.core.variables import humidity
+    ds4["rh_u_wrt_ice_or_water"] = humidity.adjust(ds4["rh_u"], ds4["t_u"])
+    if "t_l" in ds4.data_vars:
+        ds4["rh_l_wrt_ice_or_water"] = humidity.adjust(ds4["rh_l"], ds4["t_l"])
+
+
+    for var in ["t", "rh","p"]:
+        ds4[var+'_diff'] = ds4[var+'_u'] - ds4[var+'_l']
+    ds4['rh_wrt_ice_or_water_diff'] = ds4['rh_u_wrt_ice_or_water'] - ds4['rh_l_wrt_ice_or_water']
     # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
@@ -113,21 +122,24 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
                         # 't_u','t_l',
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
-                        # 't_u','t_l','t_i',
-                        # 'rh_u','rh_l','rh_i',
+                        # 't_u','t_l',#'t_i',
+                        'rh_u','rh_l',#'rh_i',
+                        "rh_diff",
+                        'rh_u_wrt_ice_or_water','rh_l_wrt_ice_or_water',#'rh_i_wrt_ice_or_water',
+                        "rh_wrt_ice_or_water_diff",
                         # 'wspd_u','wspd_l',
                         # 'wdir_u','wdir_l',
                         # 'fan_dc_l','fan_dc_u',
                         # 'rot'
                         # 'z_boom_l', 'z_boom_u', #'z_stake',
-                        # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
+                        # 'z_boom_cor_l', 'z_boom_cor_u', #'z_stake_cor',
                         # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
@@ -135,7 +147,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                         # 't_l','p_l','rh_l','fan_dc_l'
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
-                        # 'dlr','ulr',#'t_rad',
+                        # 'dlr','ulr','t_rad',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
                         # 'dsr','usr',
@@ -144,7 +156,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                         # 'tilt_x','tilt_y','cc',
                         # ]\
                         # + ['t_i_'+str(i+1) for i in range(11)]
-                        # ])]
+                        ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
@@ -202,7 +214,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                                 label='__nolegend__')
 
                 ax.plot(np.nan,np.nan, marker='+',color='k',
-                        linestyle='None', label='in L0')
+                        linestyle='None', label='in L0 raw')
             if pAWS_raw is not None:
                 for data in pAWS_tx.L0:
                     if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
@@ -211,8 +223,8 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                                 marker='x',color='k', linestyle='None',
                                 label='__nolegend__')
 
-                ax.plot(np.nan,np.nan, marker='+',color='k',
-                        linestyle='None', label='in L0')
+                ax.plot(np.nan,np.nan, marker='x',color='k',
+                        linestyle='None', label='in L0 tx')
             if var in ds.data_vars:
                 ax.plot(ds.time,
                         ds[var].values,
@@ -304,7 +316,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                         label='final')
 
         for var, ax in zip(var_list, ax_list):
-            ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
+            ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
             if zoom_to_good:
                 ax.set_ylim(ds4[var].min(), ds4[var].max())
             else:
@@ -313,9 +325,12 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                 xmin = pd.Timestamp(xmin).tz_localize(None)
                 xmax = mdates.num2date(xmax)
                 xmax = pd.Timestamp(xmax).tz_localize(None)
-                ymin = ds.sel(time=slice(xmin, xmax))[var].min()
-                ymax = ds.sel(time=slice(xmin, xmax))[var].max()
-                ax.set_ylim(ymin, ymax)
+                try:
+                    ymin = ds.sel(time=slice(xmin, xmax))[var].min()
+                    ymax = ds.sel(time=slice(xmin, xmax))[var].max()
+                    ax.set_ylim(ymin, ymax)
+                except:
+                    pass
 
             ax.set_ylabel(var)
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)

@@ -139,6 +139,86 @@ for station in df_meta.index:
 tocgen.processFile(filename, filename[:-3] + "_toc.md")
 f.close()
 
+# %% Mosaic
+import math
+from pathlib import Path
+import matplotlib.pyplot as plt
+import numpy as np, pandas as pd
+
+path_new=Path("../thredds-data/level_3_sites")
+df_meta=pd.read_csv(path_new/"../metadata/AWS_sites_metadata.csv").set_index("site_id")
+csv_dir=path_new/"csv/day"
+out=Path("figures/ablation/ablation_mosaic.png")
+
+N_COLS=4; XMIN,XMAX=120,290
+ticks=list(np.cumsum([30,31,30,31,31,29,31,30,31,30,31,31]))
+def labs(ts):
+    return ["Jan." if i<30 else "Feb." if i<60 else "Mar." if i<90 else
+            "Apr." if i<120 else "May" if i<150 else
+            "Jun." if i<180 else "Jul." if i<210 else
+            "Aug." if i<240 else "Sept." if i<270 else "Oct." if i<300 else
+            "Nov." if i<330 else "Dec." if i<360 else "" for i in ts]
+
+labels=labs(ticks)
+
+years=np.arange(1996,2026)
+cmap=plt.get_cmap("tab20",len(years))
+year_color={y:cmap(i) for i,y in enumerate(years)}
+year_color[2025] = 'k'
+stations = [
+ 'KAN_T','KAN_L','KAN_M','KPC_L','KPC_U',
+ #'MIT','NUK_B','NUK_K', 'SER_B',
+ # 'NUK_N','QAS_A',
+ # 'RED_L','ZAC_L', 'ZAC_U','FRE',
+ 'NUK_L','NUK_U','QAS_L','QAS_M','QAS_U', 'SCO_L', 'SCO_U',
+ 'SWC', 'JAR','TAS_A','TAS_L', 'THU_L', 'THU_L2', 'THU_U',
+ 'UPE_L', 'UPE_U', 'WEG_L',]
+
+n=len(stations); nrows=math.ceil(n/N_COLS)
+fig,ax=plt.subplots(nrows,N_COLS,figsize=(N_COLS*3.2,nrows*2.2),sharex=True)
+ax=np.atleast_2d(ax)
+
+handles={}
+for i,s in enumerate(stations):
+    r,c=divmod(i,N_COLS); a=ax[r,c]
+    d=pd.read_csv(csv_dir/f"{s}_day.csv",usecols=lambda c:c in["time","z_surf_combined"])
+    d["time"]=pd.to_datetime(d["time"],errors="coerce")
+    d["z_surf_combined"]=pd.to_numeric(d["z_surf_combined"],errors="coerce")
+    d=d.dropna(subset=["time"]).set_index("time").sort_index()
+    d["z_ice_surf"]=d["z_surf_combined"].cummin()
+    m=d[d.index.month.isin([6,7,8])]["z_surf_combined"].isnull().resample("YE").sum()
+    for t,v in m.items():
+        if v>15: d.loc[str(t.year),"z_ice_surf"]=np.nan
+    for y in np.sort(d.index.year.unique()):
+        # if y<2007 or y not in year_color: continue
+        dy=d.loc[(d.index>=f"{y}-04-01")&(d.index<f"{y}-10-31"),["z_surf_combined","z_ice_surf"]].copy()
+        if dy.empty or dy["z_surf_combined"].isnull().all(): continue
+        dy["doy"]=dy.index.dayofyear
+        fvi=dy["z_ice_surf"].first_valid_index()
+        if fvi is None: continue
+        z0=dy["z_ice_surf"].loc[slice(fvi,fvi+pd.to_timedelta("10D"))].mean()
+        ln=a.plot(dy["doy"],dy["z_ice_surf"]-z0,
+                  color=year_color[y], lw=1.2 if year != 2025 else 3)[0]
+        handles.setdefault(y,ln)
+    a.set_title(s); a.grid(True); a.set_xlim(XMIN,XMAX)
+
+for j in range(n,nrows*N_COLS):
+    r,c=divmod(j,N_COLS)
+    ax[r,c].axis("off")
+
+for a in ax[-1,:2].tolist() + ax[-2,-2:].tolist():
+    a.tick_params(axis="x", labelbottom=True)
+    a.set_xticks(ticks)
+    a.set_xticklabels(labels, rotation=45, ha="right")
+handles = dict(sorted(handles.items(), reverse=True))
+fig.legend(handles.values(),[str(y) for y in handles.keys()],
+           loc="center right",bbox_to_anchor=(0.9,0.11),title="Year",ncol=4)
+fig.text(0.01,0.5,"Ice surface height (m)",va="center",rotation="vertical")
+fig.tight_layout(rect=[0.03,0.02,0.95,1])
+out.parent.mkdir(parents=True,exist_ok=True)
+fig.savefig(out,dpi=300)
+
+
 # %% Comparison ablation with Robert's product
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -155,7 +235,7 @@ df_meta = df_meta.set_index(data_type[:-1] + '_id')
 f = open(filename, "w")
 
 # Load the ablation data
-df_ablation = pd.read_csv('ancil/promice_ice_ablation_2024.txt', delim_whitespace=True, na_values=-999).set_index('Year')
+df_ablation = pd.read_csv('ancil/promice_ice_ablation_2025.txt', delim_whitespace=True, na_values=-999).set_index('Year')
 
 def Msg(txt):
     with open(filename, "a") as f:
@@ -168,7 +248,6 @@ plt.close('all')
 for station in df_meta.index:
 # for station in ['KAN_L']:
     Msg('## ' + station)
-
 
     # Read the station data
     df_new = pd.read_csv(path_new + '/' + station + '_day.csv')
@@ -245,75 +324,75 @@ for station in df_meta.index:
     # Add a single legend on the right side with custom arrow marker
     handles, labels = ax_list[0].get_legend_handles_labels()
     handles.append(arrow_marker)  # Add custom arrow marker to legend
-    labels.append('Expert assessment')  # Add custom arrow marker to legend
+    labels.append('RSF assessment')  # Add custom arrow marker to legend
     fig.legend(handles, labels, loc='center right', bbox_to_anchor=(0.99, 0.5), title='Legend')
 
     # Save the figure
-    fig.savefig(f'figures/snow_height/{data_type}/{station}_ablation.png', dpi=300)
+    fig.savefig(f'figures/ablation/evaluation/{station}_ablation.png', dpi=300)
     Msg(f'![{station}](../figures/snow_height/{data_type}/{station}_ablation.png)')
     Msg(' ')
 
 f.close()
 
-# # %% Map ablation
-# import geopandas as gpd
-# import pandas as pd
-# import matplotlib.pyplot as plt
-# import numpy as np
+# %% Map ablation
+import geopandas as gpd
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
-# # load shapefile (epsg:3413)
-# land = gpd.read_file("ancil/greenland_land_3413.shp")
-# ice = gpd.read_file("ancil/greenland_ice_3413.shp")
+# load shapefile (epsg:3413)
+land = gpd.read_file("ancil/greenland_land_3413.shp")
+ice = gpd.read_file("ancil/greenland_ice_3413.shp")
 
-# # station metadata
-# df = df_meta.copy()
-# df['geometry'] = gpd.points_from_xy(df.longitude_last_valid, df.latitude_last_valid, crs=4326)
-# gdf = gpd.GeoDataFrame(df).to_crs(3413)
+# station metadata
+df = df_meta.copy()
+df['geometry'] = gpd.points_from_xy(df.longitude_last_valid, df.latitude_last_valid, crs=4326)
+gdf = gpd.GeoDataFrame(df).to_crs(3413)
 
-# records = []
-# for station in gdf.index:
-#     d = pd.read_csv(f"{path_new}/{station}_day.csv", parse_dates=['time']).set_index('time')
-#     if 'z_surf_combined' not in d: continue
-#     d['z_ice_surf'] = d['z_surf_combined'].cummin()
-#     z = d['z_ice_surf'].resample('YE').last() - d['z_ice_surf'].resample('YE').first()
-#     yearly = z.dropna()
-#     if len(yearly)==0: continue
-#     med = yearly.median()
-#     mn = yearly.min()
-#     mx = yearly.max()
-#     y2025 = np.nan
-#     if yearly.index.year.isin([2025]).any():
-#         y2025 = yearly[yearly.index.year==2025].values[0]
-#     records.append([station, med, mn, mx, y2025])
+records = []
+for station in gdf.index:
+    d = pd.read_csv(f"{path_new}/csv/day/{station}_day.csv", parse_dates=['time']).set_index('time')
+    if 'z_surf_combined' not in d: continue
+    d['z_ice_surf'] = d['z_surf_combined'].cummin()
+    z = d['z_ice_surf'].resample('YE').last() - d['z_ice_surf'].resample('YE').first()
+    yearly = z.dropna()
+    if len(yearly)==0: continue
+    med = yearly.median()
+    mn = yearly.min()
+    mx = yearly.max()
+    y2025 = np.nan
+    if yearly.index.year.isin([2025]).any():
+        y2025 = yearly[yearly.index.year==2025].values[0]
+    records.append([station, med, mn, mx, y2025])
 
-# df_ab = pd.DataFrame(records, columns=['station','med','min','max','y2025']).set_index('station')
-# gdf = gdf.join(df_ab)
+df_ab = pd.DataFrame(records, columns=['station','med','min','max','y2025']).set_index('station')
+gdf = gdf.join(df_ab)
 
-# # %%
-# fig, ax = plt.subplots(figsize=(12,12))
-# land.plot(ax=ax, color='lightgrey')
-# ice.plot(ax=ax, color='white', edgecolor='grey')
+# %%
+fig, ax = plt.subplots(figsize=(6,6))
+land.plot(ax=ax, color='lightgrey')
+ice.plot(ax=ax, color='white', edgecolor='grey')
 
-# for i, row in gdf.dropna(subset=['med']).iterrows():
-#     if row.stations in ['UWN','ORO','SER_B','NUK_B','KAN_B']:
-#         continue
-#     x, y = row.geometry.x, row.geometry.y
+for i, row in gdf.dropna(subset=['med']).iterrows():
+    if row.stations in ['UWN','ORO','SER_B','NUK_B','KAN_B']:
+        continue
+    x, y = row.geometry.x, row.geometry.y
 
-#     # scale factor for visibility
-#     s = 100  # increase if too small
+    # scale factor for visibility
+    s = 100  # increase if too small
 
-#     ax.plot([x, x],
-#             [y + s*row['min'], y + s*row['max']],
-#             color='k', lw=1)
+    ax.plot([x, x],
+            [y + s*row['min'], y + s*row['max']],
+            color='k', lw=1)
 
-#     ax.plot([x - 2000, x + 2000],
-#             [y + s*row['med'], y + s*row['med']],
-#             color='k', lw=3)
+    ax.plot([x - 2000, x + 2000],
+            [y + s*row['med'], y + s*row['med']],
+            color='k', lw=3)
 
-#     if not np.isnan(row['y2025']):
-#         ax.plot(x, y + s*row['y2025'], 'o', color='red')
+    if not np.isnan(row['y2025']):
+        ax.plot(x, y + s*row['y2025'], 'o', color='red')
 
 
-# ax.set_axis_off()
-# plt.tight_layout()
-# plt.savefig("ablation_map.png", dpi=300)
+ax.set_axis_off()
+plt.tight_layout()
+plt.savefig("ablation_map.png", dpi=300)

@@ -9,3 +9,7 @@ __pycache__/tocgen.cpython-39.pyc
 /figures/GPS/coordinates_sites
 *.pyc
 /L2_no_qc
+/data/L2_no_qc
+/data/L2_test
+/data/L3_test
+/data/logs
