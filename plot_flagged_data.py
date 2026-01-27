@@ -52,7 +52,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
+for station in ['QAS_Lv3',]:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -113,9 +113,9 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
-                        # 'gps_lat','gps_lon','gps_alt'
+                        'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
                         # 't_u','t_l',
                         # 'p_u','z_pt','z_pt_cor',
@@ -144,7 +144,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                         # 'tilt_x','tilt_y','cc',
                         # ]\
                         # + ['t_i_'+str(i+1) for i in range(11)]
-                        # ])]
+                        ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):
@@ -196,8 +196,12 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
             if pAWS_raw is not None:
                 for data in pAWS_raw.L0:
                     if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
+                        if not var.endswith('_i'):
+                            tmp=data[var].shift(time=-1)
+                        else:
+                            tmp=data[var]
                         ax.plot(data.time,
-                                data[var].values,
+                                tmp,
                                 marker='+',color='k', linestyle='None',
                                 label='__nolegend__')
 
@@ -206,8 +210,12 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
             if pAWS_raw is not None:
                 for data in pAWS_tx.L0:
                     if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
+                        if not var.endswith('_i'):
+                            tmp=data[var].shift(time=-1)
+                        else:
+                            tmp=data[var]
                         ax.plot(data.time,
-                                data[var].values,
+                                tmp,
                                 marker='x',color='k', linestyle='None',
                                 label='__nolegend__')
 
@@ -304,7 +312,7 @@ for station in ['SDL','CP1','DY2','KAN_U','NSE','SDM',]:
                         label='final')
 
         for var, ax in zip(var_list, ax_list):
-            ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
+            # ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
             if zoom_to_good:
                 ax.set_ylim(ds4[var].min(), ds4[var].max())
             else:
