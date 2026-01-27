@@ -52,7 +52,8 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['CP1']:
+
+for station in ['QAS_Lv3',]:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -124,7 +125,7 @@ for station in ['CP1']:
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
-                        # 'gps_lat','gps_lon','gps_alt'
+                        'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
                         # 't_u','t_l',
                         # 'p_u','z_pt','z_pt_cor',
@@ -208,8 +209,12 @@ for station in ['CP1']:
             if pAWS_raw is not None:
                 for data in pAWS_raw.L0:
                     if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
+                        if not var.endswith('_i'):
+                            tmp=data[var].shift(time=-1)
+                        else:
+                            tmp=data[var]
                         ax.plot(data.time,
-                                data[var].values,
+                                tmp,
                                 marker='+',color='k', linestyle='None',
                                 label='__nolegend__')
 
@@ -218,8 +223,12 @@ for station in ['CP1']:
             if pAWS_raw is not None:
                 for data in pAWS_tx.L0:
                     if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
+                        if not var.endswith('_i'):
+                            tmp=data[var].shift(time=-1)
+                        else:
+                            tmp=data[var]
                         ax.plot(data.time,
-                                data[var].values,
+                                tmp,
                                 marker='x',color='k', linestyle='None',
                                 label='__nolegend__')
 
@@ -316,7 +325,8 @@ for station in ['CP1']:
                         label='final')
 
         for var, ax in zip(var_list, ax_list):
-            ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
+
+            # ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
             if zoom_to_good:
                 ax.set_ylim(ds4[var].min(), ds4[var].max())
             else:

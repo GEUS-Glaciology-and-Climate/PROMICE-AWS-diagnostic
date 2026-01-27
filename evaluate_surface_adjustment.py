@@ -24,7 +24,7 @@ importlib.invalidate_caches()
 from pypromice.pipeline.L2toL3 import process_surface_height
 from pathlib import Path
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
@@ -44,7 +44,7 @@ path_l2 = 'L2_test/'
 
 # plt.close('all')
 
-for station in ['UPE_U']:
+for station in ['FRE']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -58,13 +58,14 @@ for station in ['UPE_U']:
     station_config = lib.load_station_config(config_folder, l2.attrs['station_id'])
 
 
+    # %%
     # % Perform Level 3 processing
     l3 = lib.process_surface_height(l2,
                                 Path('../PROMICE-AWS-data-issues')/'adjustments',
-                                station_config).to_dataframe()
+                                station_config,
+                                make_gif=False).to_dataframe()
 
-    # %%
-
+    print('plotting')
     fig, ax = plt.subplots(3,1, sharex=True, figsize=(10,10))
     plt.subplots_adjust(right=0.8)
     var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt'] if v in l3.columns]
@@ -91,6 +92,7 @@ for station in ['UPE_U']:
     l3[var_list].plot(ax=ax[2],marker='.',alpha=0.6)
     ax[2].set_ylabel('Height (m)')
     ax[2].grid()
+    print("saving")
     fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
 # %%
 calc_yearly_abaltion = False
