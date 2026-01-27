@@ -9,6 +9,7 @@ tip list:
     import pdb; pdb.set_trace()
 """
 
+# %% plot all ablation and surface height time series
 import matplotlib.pyplot as plt
 import pandas as pd
 import os

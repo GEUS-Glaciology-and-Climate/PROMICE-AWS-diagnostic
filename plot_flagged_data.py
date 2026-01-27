@@ -10,7 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import os, logging, matplotlib, tocgen
+import os, logging, matplotlib
+import lib.tocgen
 # matplotlib.use('Agg')
 import matplotlib.dates as mdates
 logging.basicConfig(
@@ -29,7 +30,7 @@ from pypromice.core.qc.value_clipping import clip_values
 from pypromice.resources import load_variables
 from pypromice.core.qc.persistence import persistence_qc
 from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
-from lib import (remove_old_plots, load_flags_and_adjustments, load_L1,
+from lib.process import (remove_old_plots, load_flags_and_adjustments, load_L1,
                  clean_gps, smooth_pose, compute_cloud_cover,
                  solar_geometry, filter_shortwave, correct_shortwave, compute_albedo,
                  process_precip)
@@ -52,8 +53,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-
-for station in ['QAS_Lv3',]:
+for station in ['CP1']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -90,9 +90,11 @@ for station in ['QAS_Lv3',]:
         ds4["rh_l_wrt_ice_or_water"] = humidity.adjust(ds4["rh_l"], ds4["t_l"])
 
 
-    for var in ["t", "rh","p"]:
-        ds4[var+'_diff'] = ds4[var+'_u'] - ds4[var+'_l']
-    ds4['rh_wrt_ice_or_water_diff'] = ds4['rh_u_wrt_ice_or_water'] - ds4['rh_l_wrt_ice_or_water']
+    for var in ["t", "rh","p","wspd"]:
+        if (var+'_u' in ds4.data_vars) and (var+'_l' in ds4.data_vars):
+            ds4[var+'_diff'] = ds4[var+'_u'] - ds4[var+'_l']
+    if ('rh_u_wrt_ice_or_water' in ds4.data_vars) and ('rh_l_wrt_ice_or_water' in ds4.data_vars):
+        ds4['rh_wrt_ice_or_water_diff'] = ds4['rh_u_wrt_ice_or_water'] - ds4['rh_l_wrt_ice_or_water']
     # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
@@ -125,16 +127,18 @@ for station in ['QAS_Lv3',]:
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
     var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
-                        'gps_lat','gps_lon','gps_alt'
+                        # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
                         # 't_u','t_l',
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
-                        # 't_u','t_l',#'t_i',
-                        'rh_u','rh_l',#'rh_i',
-                        "rh_diff",
-                        'rh_u_wrt_ice_or_water','rh_l_wrt_ice_or_water',#'rh_i_wrt_ice_or_water',
-                        "rh_wrt_ice_or_water_diff",
+                        't_u','t_l',"t_diff" #'t_i',
+                        'rh_u','rh_l',"rh_diff", #'rh_i',
+                        'wspd_u','wspd_l',"wspd_diff" #'t_i',
+                        'p_u','p_l',"p_diff" #'t_i',
+
+                        # 'rh_u_wrt_ice_or_water','rh_l_wrt_ice_or_water',"rh_wrt_ice_or_water_diff",#'rh_i_wrt_ice_or_water',
+
                         # 'wspd_u','wspd_l',
                         # 'wdir_u','wdir_l',
                         # 'fan_dc_l','fan_dc_u',
@@ -325,8 +329,7 @@ for station in ['QAS_Lv3',]:
                         label='final')
 
         for var, ax in zip(var_list, ax_list):
-
-            # ax.set_xlim(pd.to_datetime(['2025-05-01','2026-01-16']))
+            ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
             if zoom_to_good:
                 ax.set_ylim(ds4[var].min(), ds4[var].max())
             else:
@@ -351,4 +354,4 @@ for station in ['QAS_Lv3',]:
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
         Msg('![](../%s/%s_%i.png)'%(figure_folder, station,i))
     Msg(' ')
-tocgen.processFile(filename, filename[:-3]+"_toc.md")
+# tocgen.processFile(filename, filename[:-3]+"_toc.md")

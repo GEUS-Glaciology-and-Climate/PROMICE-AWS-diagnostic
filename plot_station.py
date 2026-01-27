@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 # path_l3 = '../aws-l3-dev/sites/'
 # path_tx = '../aws-l3/tx/'
-path_thredds = '../thredds-data/level_3_sites/csv/hour'
+path_thredds = '../thredds-data/level_3_sites/csv/day'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 # df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
@@ -37,13 +37,13 @@ var_list = [
 
 
 # station_list = df_meta.stid
-station_list = ['CP1']
+station_list = ['DY2']
 
 # plt.close('all')
 # gps_info=[]
 for station in station_list:
     print(station)
-    df_l3 = pd.read_csv(path_thredds+'/'+station+'_hour.csv')
+    df_l3 = pd.read_csv(path_thredds+'/'+station+'_day.csv')
 
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
@@ -94,6 +94,6 @@ for station in station_list:
                 # ax.plot(df_l3[var].index,Y_pred)
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
                 # print(station, Y_pred[-1] - Y[~np.isnan(X+Y)][0])
-
+        ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-01-21']))
         plt.suptitle('%s'%(station))
         fig.savefig('figures/'+station+'_'+str( k+1)+'.png',dpi=300)

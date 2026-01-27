@@ -40,7 +40,7 @@ def process_l2_l3(station):
     config_folder = '../aws-l0/metadata/station_configurations/'
     config_file_tx = path_to_l0 + '/tx/config/{}.toml'.format(station)
     config_file_raw = path_to_l0 + '/raw/config/{}.toml'.format(station)
-    output_path = 'L2_test'
+    output_path = 'data/L2_test'
 
     print("\n ======== test get_l2 ========= \n")
     if os.path.isfile(config_file_tx):
@@ -65,14 +65,14 @@ def process_l2_l3(station):
         pAWS_raw = None
 
     print("\n ======== test join_l2 ========= \n")
-    l2_merged = join_l2('L2_test/raw/'+station+'/'+station+'_hour.nc',
-                        'L2_test/tx/'+station+'/'+station+'_hour.nc',
-                        'L2_test/level_2/',None,None)
+    l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_hour.nc',
+                        'data/L2_test/tx/'+station+'/'+station+'_hour.nc',
+                        'data/L2_test/level_2/',None,None)
 
     print("\n ======== test l2tol3 ========= \n")
     l3 = get_l2tol3(config_folder,
-                    'L2_test/level_2/'+station+'/'+station+'_hour.nc',
-                    'L3_test/stations/', None, None, None)
+                    'data/L2_test/level_2/'+station+'/'+station+'_hour.nc',
+                    'data/L3_test/stations/', None, None, None)
     return pAWS_tx, pAWS_raw, l2_merged, l3
 
 
@@ -82,30 +82,30 @@ def process_l2_l3(station):
 def get_join_l3(site):
 
     print(" ======== test join_l3 ========= \n")
-    path_l3_stations = 'L3_test/stations/'
+    path_l3_stations = 'data/L3_test/stations/'
     config_folder = '../aws-l0/metadata/station_configurations/'
     folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
     folder_glaciobasis = '../historical-zac-data/'
 
     print(site)
-    for f in [f'L3_test/sites/{site}/{site}_hour.nc',
-              f'L3_test/sites/{site}/{site}_day.nc',
-              f'L3_test/sites/{site}/{site}_month.nc']:
+    for f in [f'data/L3_test/sites/{site}/{site}_hour.nc',
+              f'data/L3_test/sites/{site}/{site}_day.nc',
+              f'data/L3_test/sites/{site}/{site}_month.nc']:
         if os.path.exists(f):
             os.remove(f)
 
     l3_merged, sorted_list_station_data = join_l3(config_folder, site, path_l3_stations,
-                        folder_gcnet, folder_glaciobasis, 'L3_test/sites/', None, None)
+                        folder_gcnet, folder_glaciobasis, 'data/L3_test/sites/', None, None)
     return l3_merged, sorted_list_station_data
 
 
 if __name__ == '__main__':
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    for station in ['EGP']:
+    for station in ['SWC', 'SWC_O']:
     # for station in np.unique(np.array(df_metadata.station_id)):
         pAWS_tx, pAWS_raw, l2_merged, l3 = process_l2_l3(station)
 
     # df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    # for site in ['TUN']:
     # for site in df_metadata.site_id:
-        # l3_merged, sorted_list_station_data = get_join_l3(site)
+    for site in ['SWC']:
+        l3_merged, sorted_list_station_data = get_join_l3(site)

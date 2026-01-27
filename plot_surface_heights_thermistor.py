@@ -224,7 +224,6 @@ fig.supylabel('Surface height relative to installation (m)', fontsize=14)
 # Save the figure with tight layout to remove excess white space
 fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')
 
-
 # %% gif thermistor depth
 if True:
     import imageio
@@ -293,6 +292,88 @@ if True:
         for i in range(11): frames.append(img)
         imageio.mimsave(f"figures/string_processing/gif/{station}.gif", frames, fps=10)
         plt.close(fig)
+
+# %%
+import math, os
+from pathlib import Path
+import matplotlib; matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np, pandas as pd
+
+data_type="sites"
+path_new=Path("../thredds-data/level_3_sites/csv/day") if data_type=="sites" else Path("../thredds-data/level_2_stations/csv/day")
+out=Path(f"figures/snow_height/snow_height_mosaic.png")
+
+N_COLS=6
+ticks=list(np.cumsum([30,31,30,31,31,29,31,30,31,30,31,31]))
+labels=["Sept." if i<30 else "Oct." if i<60 else
+        "Nov." if i<90 else "Dec." if i<120 else "Jan." if i<150 else
+        "Feb." if i<180 else "Mar." if i<210 else "Apr." if i<240 else
+        "May"  if i<270 else "Jun." if i<300 else
+        "Jul." if i<330 else "Aug." if i<360 else "" for i in ticks]
+
+years=np.arange(1996,2027)
+cmap=plt.get_cmap("tab20",len(years))
+year_color={y:cmap(i) for i,y in enumerate(years)}
+year_color[2026] = 'k'
+
+stations= [ 'KAN_T',  'KAN_L', 'KAN_M', 'KAN_U','DY2', 'EGP', 'CEN', 'HUM', 'KPC_L', 'KPC_U','NAE', 'NAU', 'NEM', 'NSE', 'NUK_L', 'NUK_U',  'QAS_L', 'QAS_M','QAS_U', 'SCO_L', 'SCO_U', 'SDL', 'SDM', 'JAR','SWC','CP1', 'TAS_A', 'TAS_L', 'TAS_U', 'THU_L2', 'THU_L', 'THU_U', 'TUN', 'UPE_L','UPE_U', 'WEG_L']
+
+# stations= ['FRE', 'LYN_L', 'LYN_T', 'MIT',  'NUK_K', 'RED_L',  'WEG_B', 'WEG_L', 'ZAC_A', 'ZAC_L', 'ZAC_U']
+
+n=len(stations); nrows=math.ceil(n/N_COLS)
+fig,ax=plt.subplots(nrows,N_COLS,figsize=(N_COLS*3.2,nrows*2.2),sharex=True,sharey=False)
+ax=np.atleast_2d(ax)
+
+handles={}
+for i,st in enumerate(stations):
+    r,c=divmod(i,N_COLS); a=ax[r,c]
+    fp=path_new/f"{st}_day.csv"
+    d=pd.read_csv(fp,usecols=lambda c:c in["time","snow_height"])
+    if "snow_height" not in d.columns: a.axis("off"); continue
+    d["time"]=pd.to_datetime(d["time"],errors="coerce")
+    d["snow_height"]=pd.to_numeric(d["snow_height"],errors="coerce")
+    d=d.dropna(subset=["time"]).set_index("time").sort_index()
+    if d["snow_height"].dropna().empty: a.axis("off"); continue
+
+    for y in sorted(d.index.year.unique().tolist()+[d.index.year.max()+1]):
+        start=pd.Timestamp(f"{y-1}-09-01"); end=pd.Timestamp(f"{y}-08-31")
+        dy=d.loc[(d.index>=start)&(d.index<end),["snow_height"]].copy()
+        if dy.empty or dy["snow_height"].isnull().all(): continue
+        dy["doy"]=dy.index.dayofyear.values-244
+        dy.loc[dy["doy"]<0,"doy"]=365+dy.loc[dy["doy"]<0,"doy"]
+        fvi=dy["snow_height"].first_valid_index()
+        if fvi is None: continue
+        ref=dy["snow_height"].loc[slice(fvi,fvi+pd.to_timedelta("30D"))].min()
+        yy=dy["snow_height"]-ref
+        if y in year_color:
+            if y == 2026:
+                a.plot(dy["doy"],yy,color='w',lw=5)[0]
+            ln=a.plot(dy["doy"],yy,color=year_color[y],lw=1.2 if year != 2026 else 4.5)[0]
+            handles.setdefault(y,ln)
+
+    a.set_title(st)
+    a.grid(True)
+    a.set_xlim(1,365)
+    a.set_ylim(0, 2.8)
+    a.tick_params(axis="x", labelbottom=True)
+    a.set_xticks(ticks)
+    a.set_xticklabels(labels, rotation=45, ha="right")
+
+for j in range(n,nrows*N_COLS):
+    r,c=divmod(j,N_COLS); ax[r,c].axis("off")
+
+
+
+handles=dict(sorted(handles.items(),reverse=True))
+fig.legend(handles.values(),[str(y) for y in handles.keys()],
+           loc="center right",bbox_to_anchor=(1,0.5),title="Year",ncol=1)
+
+fig.text(0.01,0.5,"Snow Height (m)",va="center",rotation="vertical")
+fig.tight_layout(rect=[0.03,0.02,0.95,1])
+out.parent.mkdir(parents=True,exist_ok=True)
+fig.savefig(out,dpi=300)
+plt.close(fig)
 
 
 # %%
