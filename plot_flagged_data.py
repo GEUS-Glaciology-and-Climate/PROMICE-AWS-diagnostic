@@ -53,7 +53,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['CP1']:
+for station in ['JAR']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)

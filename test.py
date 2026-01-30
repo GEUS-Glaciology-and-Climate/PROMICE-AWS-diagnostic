@@ -10,7 +10,8 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import os, logging, matplotlib, tocgen
+import os, logging, matplotlib
+import lib.tocgen as tocgen
 # matplotlib.use('Agg')
 
 logging.basicConfig(
@@ -29,7 +30,7 @@ from pypromice.core.qc.value_clipping import clip_values
 from pypromice.resources import load_variables
 from pypromice.core.qc.persistence import persistence_qc
 from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
-from lib import (remove_old_plots, load_flags_and_adjustments, load_L1,
+from lib.utilities import (remove_old_plots, load_flags_and_adjustments, load_L1,
                  clean_gps, smooth_pose, compute_cloud_cover,
                  solar_geometry, filter_shortwave, correct_shortwave, compute_albedo,
                  process_precip)
@@ -67,30 +68,85 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     # ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
     ds1 = ds.copy()
     ds2 = ds1.copy()
-    import numpy as np
-    import xarray as xr
-    
+
     ds22 = persistence_qc(ds2)
 
-    def filter_max_rate_iterative_bidir(da, rmax, n=20):
-        def run(x):
-            t = x.time.values.view("i8")
-            v = x.values.astype("float64")
-            h = 3600e9
-            for _ in range(n):
-                ok = np.isfinite(v)
-                i = np.flatnonzero(ok)
-                if i.size < 2: break
-                p, c = i[:-1], i[1:]
-                bad = np.abs((v[c]-v[p]) / ((t[c]-t[p])/h)) > rmax
-                if not bad.any(): break
-                j = np.flatnonzero(bad)
-                drop = c[j[np.r_[True, np.diff(j)>1]]]
-                v[drop] = np.nan
-            return x.copy(data=v)
-        return run(run(da)).isel(time=slice(None,None,-1)).pipe(run).isel(time=slice(None,None,-1))
+    # def filter_max_rate_iterative_bidir(da, rmax, n=30):
+    #     def run(x):
+    #         t = x.time.values.view("i8")
+    #         v = x.values.astype("float64")
+    #         h = 3600e9
+    #         for _ in range(n):
+    #             ok = np.isfinite(v)
+    #             i = np.flatnonzero(ok)
+    #             if i.size < 2: break
+    #             p, c = i[:-1], i[1:]
+    #             bad = np.abs((v[c]-v[p]) / ((t[c]-t[p])/h)) > rmax
+    #             if not bad.any(): break
+    #             j = np.flatnonzero(bad)
+    #             drop = c[j[np.r_[True, np.diff(j)>1]]]
+    #             v[drop] = np.nan
+    #         return x.copy(data=v)
+    #     return run(run(da)).isel(time=slice(None,None,-1)).pipe(run).isel(time=slice(None,None,-1))
+    import numpy as np
 
-    ds22["t_u"] = filter_max_rate_iterative_bidir(ds22["t_u"], rmax=5.0)
+    def filter_max_rate_iterative_bidir(da, rmax, n=30):
+        """
+        Iteratively remove samples that deviate too much from a linear extrapolation
+        built from the two preceding valid samples, applied forward and backward.
+
+        Args:
+            da (xarray.DataArray): 1D time series with dimension 'time'.
+            rmax (float): Maximum allowed rate of change (units per hour).
+            n (int, optional): Maximum number of filtering iterations. Default is 30.
+
+        Returns:
+            xarray.DataArray: Filtered time series with outliers set to NaN.
+        """
+        h = 3600e9  # nanoseconds per hour (time is in ns)
+
+        def run(x):
+            t = x.time.values.view("i8").astype("int64")   # time as int64 ns
+            v = x.values.astype("float64")                 # data as float
+
+            for _ in range(n):
+                ok = np.isfinite(v)                        # valid samples mask
+                i = np.flatnonzero(ok)                     # indices of valid samples
+                if i.size < 3:                             # need at least 3 points
+                    break
+
+                p2, p1, c = i[:-2], i[1:-1], i[2:]         # two previous + current
+
+                dt = (t[p1] - t[p2]).astype("float64")     # time step between p2→p1
+                good_dt = dt != 0                          # avoid zero time diff
+                if not np.all(good_dt):
+                    p2, p1, c, dt = p2[good_dt], p1[good_dt], c[good_dt], dt[good_dt]
+
+                slope = (v[p1] - v[p2]) / (dt / h)         # rate (units/hour)
+                dt_fwd = (t[c] - t[p1]).astype("float64")  # time p1→c
+                v_hat = v[p1] + slope * (dt_fwd / h)       # extrapolated value at c
+
+                bad = np.abs(v[c] - v_hat) > rmax * (dt_fwd / h)  # threshold test
+                if not bad.any():
+                    break
+
+                j = np.flatnonzero(bad)                    # indices of bad points
+                drop = c[j[np.r_[True, np.diff(j) > 1]]]   # drop first in each cluster
+                v[drop] = np.nan                           # mark as invalid
+
+            return x.copy(data=v)
+
+        # forward pass twice, then reverse and repeat (bidirectional filtering)
+        return (
+            run(run(da))
+            .isel(time=slice(None, None, -1)).pipe(run)
+            .isel(time=slice(None, None, -1))
+        )
+
+
+    ds22["t_u"] = filter_max_rate_iterative_bidir(ds22["t_u"], rmax=15.0)
+    ds22["t_l"] = filter_max_rate_iterative_bidir(ds22["t_l"], rmax=15.0)
+    ds22["t_i"] = filter_max_rate_iterative_bidir(ds22["t_i"], rmax=15.0)
     ds22 = process_precip(ds22)
 
     vars_df = load_variables(var_file)
@@ -225,7 +281,7 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                                 data[var].values,
                                 marker='+',color='k', linestyle='None',
                                 label='__nolegend__')
-                        
+
                 ax.plot(np.nan,np.nan, marker='+',color='k',
                         linestyle='None', label='in L0')
             if var in ds.data_vars:
