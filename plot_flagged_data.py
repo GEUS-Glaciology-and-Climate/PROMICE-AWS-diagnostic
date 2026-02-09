@@ -43,9 +43,9 @@ def Msg(txt):
 # plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
-zoom_to_good = False
+zoom_to_good = True
 
-for station in ['KPC_Uv3']:
+for station in ['SWC_O']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -72,11 +72,11 @@ for station in ['KPC_Uv3']:
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
-                        # 't_u','t_i',
+                        # 't_u','t_l','t_i',
                         # 'p_u','z_pt','z_pt_cor',
-                        # 'p_u', 'p_l','p_i',
+                        'p_u', #'p_l','p_i',
                         # 't_u','t_l',"t_diff" #'t_i',
-                        # 'rh_u','rh_l',"rh_diff", #'rh_i',
+                        # 'rh_u','rh_l','rh_i',
                         # 'wspd_u','wspd_l',"wspd_diff" #'t_i',
                         # 'p_u','p_l',"p_diff"
                         # 'rh_u_wrt_ice_or_water', 'rh_l_wrt_ice_or_water',
@@ -88,14 +88,14 @@ for station in ['KPC_Uv3']:
                         # 'z_boom_l', 'z_boom_u', #'z_stake',
                         # 'z_boom_cor_l', 'z_boom_cor_u', #'z_stake_cor',
                         # 'z_pt','z_pt_cor',
-                        'gps_lat', 'gps_lon','gps_alt'
+                        # 'gps_lat', 'gps_lon','gps_alt'
                         # 'wdir_u','wdir_l','wdir_i',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
                         # 'dsr','usr', 'dsr_cor','usr_cor', 'albedo',
                         # 'tilt_x','tilt_y','rot',
                         # 'dlr','ulr','t_rad','cc',
-                        # ] + ['t_i_'+str(i+1) for i in range(11)
+                        # ]), np.array( ['t_i_'+str(i+1) for i in range(11)
                         ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
@@ -139,7 +139,8 @@ for station in ['KPC_Uv3']:
         for var, ax in zip(var_list, ax_list):
             # ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
             if zoom_to_good:
-                ax.set_ylim(ds[var].min(), ds[var].max())
+                ax.set_ylim(ds[var].sel(time=ds[var+'_qc'] == 'OK').min(),
+                            ds[var].sel(time=ds[var+'_qc'] == 'OK').max())
             else:
                 xmin, xmax = ax.get_xlim()
                 xmin = mdates.num2date(xmin)

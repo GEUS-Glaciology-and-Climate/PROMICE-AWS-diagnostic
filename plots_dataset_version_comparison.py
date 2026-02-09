@@ -19,10 +19,10 @@ import matplotlib
 matplotlib.use('Agg')
 from lib import tocgen
 
-new_version = 'V34'
-old_version = 'V33'
+new_version = 'ice'
+old_version = 'thredds'
 
-for res in ['day']:
+for res in ['day', 'hour']:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
@@ -46,6 +46,8 @@ for res in ['day']:
         path_new = f'C:/Users/bav/Downloads/{new_version}/{res}/'
     elif 'geuspromiceaws03' in new_version:
         path_new = '../geuspromiceaws03/'
+    elif 'ice' in new_version:
+        path_new = '//geodata/Ice/Baptiste/geussnow01/aws-dev/L3_test/sites/'
     else:
         path_new = '../aws-l3/'
         df_meta = pd.read_csv(path_new+'/AWS_latest_locations.csv')
@@ -153,7 +155,8 @@ for res in ['day']:
                     print(var,'not in new data')
                 ax.legend(loc='lower left')
                 ax.grid()
-                # ax.set_xlim(pd.to_datetime(['2018-02-01','2024-04-03']))
+                if res == 'hour':
+                    ax.set_xlim(pd.to_datetime(['2025-02-01','2026-02-09']))
                 # ax.set_xlim(df_new.index[0], df_new.index[-1])
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
