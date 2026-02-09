@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os, logging, matplotlib
-import lib.tocgen as tocgen
+import lib.tocgen
 # matplotlib.use('Agg')
-
+import matplotlib.dates as mdates
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -30,7 +30,7 @@ from pypromice.core.qc.value_clipping import clip_values
 from pypromice.resources import load_variables
 from pypromice.core.qc.persistence import persistence_qc
 from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
-from lib.utilities import (remove_old_plots, load_flags_and_adjustments, load_L1,
+from lib.process import (remove_old_plots, load_flags_and_adjustments, load_L1,
                  clean_gps, smooth_pose, compute_cloud_cover,
                  solar_geometry, filter_shortwave, correct_shortwave, compute_albedo,
                  process_precip)
@@ -46,15 +46,15 @@ f = open(filename, "w")
 def Msg(txt):
     f = open(filename, "a"); print(txt); f.write(txt + "\n")
 
-plt.close('all')
+# plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
-zoom_to_good = True
+zoom_to_good = False
 
-for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
-# for station in df_metadata.station_id:
+for station in ['QAS_Lv3']:
+    # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
     df_flags = load_flags_and_adjustments(path_to_qc_files, station)
@@ -62,91 +62,13 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
 
     #%% Flagging, adjusting, filtering
 
+    ds22 = persistence_qc(ds)
+
     # The following steps are from L1toL2
     ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
-    # ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
-    # ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
-    ds1 = ds.copy()
-    ds2 = ds1.copy()
+    ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
+    ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
 
-    ds22 = persistence_qc(ds2)
-
-    # def filter_max_rate_iterative_bidir(da, rmax, n=30):
-    #     def run(x):
-    #         t = x.time.values.view("i8")
-    #         v = x.values.astype("float64")
-    #         h = 3600e9
-    #         for _ in range(n):
-    #             ok = np.isfinite(v)
-    #             i = np.flatnonzero(ok)
-    #             if i.size < 2: break
-    #             p, c = i[:-1], i[1:]
-    #             bad = np.abs((v[c]-v[p]) / ((t[c]-t[p])/h)) > rmax
-    #             if not bad.any(): break
-    #             j = np.flatnonzero(bad)
-    #             drop = c[j[np.r_[True, np.diff(j)>1]]]
-    #             v[drop] = np.nan
-    #         return x.copy(data=v)
-    #     return run(run(da)).isel(time=slice(None,None,-1)).pipe(run).isel(time=slice(None,None,-1))
-    import numpy as np
-
-    def filter_max_rate_iterative_bidir(da, rmax, n=30):
-        """
-        Iteratively remove samples that deviate too much from a linear extrapolation
-        built from the two preceding valid samples, applied forward and backward.
-
-        Args:
-            da (xarray.DataArray): 1D time series with dimension 'time'.
-            rmax (float): Maximum allowed rate of change (units per hour).
-            n (int, optional): Maximum number of filtering iterations. Default is 30.
-
-        Returns:
-            xarray.DataArray: Filtered time series with outliers set to NaN.
-        """
-        h = 3600e9  # nanoseconds per hour (time is in ns)
-
-        def run(x):
-            t = x.time.values.view("i8").astype("int64")   # time as int64 ns
-            v = x.values.astype("float64")                 # data as float
-
-            for _ in range(n):
-                ok = np.isfinite(v)                        # valid samples mask
-                i = np.flatnonzero(ok)                     # indices of valid samples
-                if i.size < 3:                             # need at least 3 points
-                    break
-
-                p2, p1, c = i[:-2], i[1:-1], i[2:]         # two previous + current
-
-                dt = (t[p1] - t[p2]).astype("float64")     # time step between p2→p1
-                good_dt = dt != 0                          # avoid zero time diff
-                if not np.all(good_dt):
-                    p2, p1, c, dt = p2[good_dt], p1[good_dt], c[good_dt], dt[good_dt]
-
-                slope = (v[p1] - v[p2]) / (dt / h)         # rate (units/hour)
-                dt_fwd = (t[c] - t[p1]).astype("float64")  # time p1→c
-                v_hat = v[p1] + slope * (dt_fwd / h)       # extrapolated value at c
-
-                bad = np.abs(v[c] - v_hat) > rmax * (dt_fwd / h)  # threshold test
-                if not bad.any():
-                    break
-
-                j = np.flatnonzero(bad)                    # indices of bad points
-                drop = c[j[np.r_[True, np.diff(j) > 1]]]   # drop first in each cluster
-                v[drop] = np.nan                           # mark as invalid
-
-            return x.copy(data=v)
-
-        # forward pass twice, then reverse and repeat (bidirectional filtering)
-        return (
-            run(run(da))
-            .isel(time=slice(None, None, -1)).pipe(run)
-            .isel(time=slice(None, None, -1))
-        )
-
-
-    ds22["t_u"] = filter_max_rate_iterative_bidir(ds22["t_u"], rmax=15.0)
-    ds22["t_l"] = filter_max_rate_iterative_bidir(ds22["t_l"], rmax=15.0)
-    ds22["t_i"] = filter_max_rate_iterative_bidir(ds22["t_i"], rmax=15.0)
     ds22 = process_precip(ds22)
 
     vars_df = load_variables(var_file)
@@ -163,7 +85,18 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
     ds4, TOA_crit_nopass_cor = correct_shortwave(ds4, geo)
     ds4, OKalbedos = compute_albedo(ds4, geo)
 
-    # %plotting
+    from pypromice.core.variables import humidity
+    ds4["rh_u_wrt_ice_or_water"] = humidity.adjust(ds4["rh_u"], ds4["t_u"])
+    if "t_l" in ds4.data_vars:
+        ds4["rh_l_wrt_ice_or_water"] = humidity.adjust(ds4["rh_l"], ds4["t_l"])
+
+
+    for var in ["t", "rh","p","wspd"]:
+        if (var+'_u' in ds4.data_vars) and (var+'_l' in ds4.data_vars):
+            ds4[var+'_diff'] = ds4[var+'_u'] - ds4[var+'_l']
+    if ('rh_u_wrt_ice_or_water' in ds4.data_vars) and ('rh_l_wrt_ice_or_water' in ds4.data_vars):
+        ds4['rh_wrt_ice_or_water_diff'] = ds4['rh_u_wrt_ice_or_water'] - ds4['rh_l_wrt_ice_or_water']
+    # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
     if len(df_flags)>0:
@@ -198,17 +131,21 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
                         # 't_u','t_l',
-
                         # 'p_u','z_pt','z_pt_cor',
                         # 'p_u','p_l','p_i',
-                        't_u','t_l','t_i',
-                        # 'rh_u','rh_l','rh_i',
+                        # 't_u','t_l',"t_diff" #'t_i',
+                        # 'rh_u','rh_l',"rh_diff", #'rh_i',
+                        # 'wspd_u','wspd_l',"wspd_diff" #'t_i',
+                        # 'p_u','p_l',"p_diff" #'t_i',
+
+                        # 'rh_u_wrt_ice_or_water','rh_l_wrt_ice_or_water',"rh_wrt_ice_or_water_diff",#'rh_i_wrt_ice_or_water',
+
                         # 'wspd_u','wspd_l',
                         # 'wdir_u','wdir_l',
                         # 'fan_dc_l','fan_dc_u',
                         # 'rot'
-                        # 'z_boom_l', 'z_boom_u', 'z_stake',
-                        # 'z_boom_cor_l', 'z_boom_cor_u', 'z_stake_cor',
+                        'z_boom_l', 'z_boom_u', #'z_stake',
+                        'z_boom_cor_l', 'z_boom_cor_u', #'z_stake_cor',
                         # 'z_pt','z_pt_cor',
                         # 't_u','t_rad',
                         # 'p_u','t_u','z_pt','z_pt_cor',
@@ -216,15 +153,14 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         # 't_l','p_l','rh_l','fan_dc_l'
                           # 'precip_l', 'precip_u',
                           # 'precip_l_cor', 'precip_u_cor',
-                        # 'dlr','ulr',#'t_rad',
+                        # 'dlr','ulr','t_rad',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
                         # 'dsr','usr',
                         # 'dsr_cor','usr_cor',
                         # 'albedo',
                         # 'tilt_x','tilt_y','cc',
-                        # ]\
-                        # + ['t_i_'+str(i+1) for i in range(11)]
+                        # ]\+ ['t_i_'+str(i+1) for i in range(11)
                         ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
@@ -277,13 +213,27 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
             if pAWS_raw is not None:
                 for data in pAWS_raw.L0:
                     if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
-                        ax.plot(data.time,
-                                data[var].values,
+                        if not var.endswith('_i'):
+                            tmp=data[var].shift(time=-1)
+                        else:
+                            tmp=data[var]
+                        ax.plot(tmp.time,
+                                tmp,
                                 marker='+',color='k', linestyle='None',
                                 label='__nolegend__')
 
                 ax.plot(np.nan,np.nan, marker='+',color='k',
-                        linestyle='None', label='in L0')
+                        linestyle='None', label='in L0 raw')
+            if pAWS_raw is not None:
+                for data in pAWS_tx.L0:
+                    if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
+                        ax.plot(data.time,
+                                data[var],
+                                marker='x',color='k', linestyle='None',
+                                label='__nolegend__')
+
+                ax.plot(np.nan,np.nan, marker='x',color='k',
+                        linestyle='None', label='in L0 tx')
             if var in ds.data_vars:
                 ax.plot(ds.time,
                         ds[var].values,
@@ -375,16 +325,29 @@ for station in ['NAE']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
                         label='final')
 
         for var, ax in zip(var_list, ax_list):
+            ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
             if zoom_to_good:
                 ax.set_ylim(ds4[var].min(), ds4[var].max())
+            else:
+                xmin, xmax = ax.get_xlim()
+                xmin = mdates.num2date(xmin)
+                xmin = pd.Timestamp(xmin).tz_localize(None)
+                xmax = mdates.num2date(xmax)
+                xmax = pd.Timestamp(xmax).tz_localize(None)
+                try:
+                    ymin = ds.sel(time=slice(xmin, xmax))[var].min()
+                    ymax = ds.sel(time=slice(xmin, xmax))[var].max()
+                    ax.set_ylim(ymin, ymax)
+                except:
+                    pass
+
             ax.set_ylabel(var)
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)
             ax.grid(True, which='major', linestyle='-', linewidth=1)
 
-        # ax.set_xlim(pd.to_datetime(['2025-06-01','2025-09-08']))
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
         Msg('![](../%s/%s_%i.png)'%(figure_folder, station,i))
     Msg(' ')
-tocgen.processFile(filename, filename[:-3]+"_toc.md")
+# tocgen.processFile(filename, filename[:-3]+"_toc.md")

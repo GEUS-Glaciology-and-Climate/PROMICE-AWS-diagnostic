@@ -25,6 +25,7 @@ from pypromice.pipeline.join_l2 import join_l2
 from pypromice.pipeline.L2toL3 import (get_thermistor_depth,
                                    hampel)
 
+from pypromice.pipeline.L1toL2 import toL2
 
 from sklearn.linear_model import LinearRegression
 
@@ -35,6 +36,7 @@ import imageio.v2 as imageio
 
 import logging
 logger = logging.getLogger(__name__)
+
 
 def process_precip(ds):
     if ~ds["precip_u"].isnull().all():
@@ -81,7 +83,7 @@ def load_flags_and_adjustments(path_to_qc_files, station):
 
     return df_flags
 
-def load_L1(path_to_l0, station):
+def load_L2(path_to_l0, station, keep_flagged_data=True):
     config_file_tx  = os.path.join(path_to_l0, 'tx',  'config', f'{station}.toml')
     config_file_raw = os.path.join(path_to_l0, 'raw', 'config', f'{station}.toml')
 
@@ -90,6 +92,15 @@ def load_L1(path_to_l0, station):
         pAWS_tx = AWS(config_file_tx, inpath_tx, var_file=None, meta_file=None,
                       data_issues_repository='../PROMICE-AWS-data-issues')
         pAWS_tx.getL1()
+        logger.info("Level 2 processing...")
+
+        pAWS_tx.L2 = toL2(
+            pAWS_tx.L1A,
+            vars_df=pAWS_tx.vars,
+            data_flags_dir=pAWS_tx.data_issues_repository / "flags",
+            data_adjustments_dir=pAWS_tx.data_issues_repository / "adjustments",
+            keep_flagged_data=keep_flagged_data,
+        )
     else:
         pAWS_tx = None
 
@@ -98,6 +109,13 @@ def load_L1(path_to_l0, station):
         pAWS_raw = AWS(config_file_raw, inpath_raw, var_file=None, meta_file=None,
                        data_issues_repository='../PROMICE-AWS-data-issues')
         pAWS_raw.getL1()
+        pAWS_raw.L2 = toL2(
+            pAWS_raw.L1A,
+            vars_df=pAWS_raw.vars,
+            data_flags_dir=pAWS_raw.data_issues_repository / "flags",
+            data_adjustments_dir=pAWS_raw.data_issues_repository / "adjustments",
+            keep_flagged_data=keep_flagged_data,
+        )
     else:
         pAWS_raw = None
 
@@ -106,19 +124,16 @@ def load_L1(path_to_l0, station):
 
     if pAWS_raw is None:
         print('No raw logger file for', station)
-        ds = pAWS_tx.L1A.copy(deep=True)
+        ds = pAWS_tx.L2.copy()
     elif pAWS_tx is None:
         print('No transmission toml file for', station)
-        ds = pAWS_raw.L1A.copy(deep=True)
+        ds = pAWS_raw.L2.copy()
     else:
         print('Combining L1 data for', station)
-        ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
+        ds = pAWS_raw.L2.combine_first(pAWS_tx.L2).copy()
 
     ds.attrs['bedrock'] = str(ds.attrs.get('bedrock'))
-    ds_save = ds.copy(deep=True)
-    return ds, ds_save, pAWS_tx, pAWS_raw
-
-
+    return ds, pAWS_tx, pAWS_raw
 
 
 def clean_gps(ds):
@@ -155,63 +170,6 @@ def compute_cloud_cover(ds):
         out['cc'] = out['t_u'].copy() * np.nan
     return out
 
-def solar_geometry(ds):
-    if 'latitude' in ds.attrs and 'longitude' in ds.attrs:
-        lat, lon = ds.attrs['latitude'], ds.attrs['longitude']
-    else:
-        lat = float(ds['gps_lat'].mean())
-        lon = float(ds['gps_lon'].mean())
-
-    doy    = ds['time'].dt.dayofyear
-    hour   = ds['time'].dt.hour
-    minute = ds['time'].dt.minute
-
-    phi_sensor_rad, theta_sensor_rad = station_pose.calculate_spherical_tilt(ds['tilt_x'], ds['tilt_y'])
-    Declination_rad = station_pose.calculate_declination(doy, hour, minute)
-    HourAngle_rad   = station_pose.calculate_hour_angle(hour, minute, lon)
-    ZenithAngle_rad, ZenithAngle_deg = station_pose.calculate_zenith(lat, Declination_rad, HourAngle_rad)
-    AngleDif_deg = station_pose.calculate_angle_difference(ZenithAngle_rad, HourAngle_rad,
-                                                           phi_sensor_rad, theta_sensor_rad)
-    isr_toa = radiation.calculate_TOA(ZenithAngle_deg, ZenithAngle_rad)
-
-    return {
-        "lat": lat, "lon": lon,
-        "phi_sensor_rad": phi_sensor_rad,
-        "theta_sensor_rad": theta_sensor_rad,
-        "Declination_rad": Declination_rad,
-        "HourAngle_rad": HourAngle_rad,
-        "ZenithAngle_rad": ZenithAngle_rad,
-        "ZenithAngle_deg": ZenithAngle_deg,
-        "AngleDif_deg": AngleDif_deg,
-        "isr_toa":isr_toa
-    }
-
-def filter_shortwave(ds, geo):
-    ds = ds.copy()
-    ds["dsr"], ds["usr"], flags = radiation.filter_sr(
-        ds["dsr"], ds["usr"], ds["cc"],
-        geo["ZenithAngle_rad"], geo["ZenithAngle_deg"], geo["AngleDif_deg"]
-    )
-    ds_flags = xr.Dataset(
-        {
-            "bad": flags[0],
-            "sunonlowerdome": flags[1],
-            "TOA_crit_nopass_dsr": flags[2],
-            "TOA_crit_nopass_usr": flags[3],
-        },
-        coords={"time": flags[0].time},
-    )
-    return ds, ds_flags
-
-def correct_shortwave(ds, geo):
-    ds = ds.copy()
-    ds["dsr_cor"], ds["usr_cor"], TOA_crit_nopass_cor = radiation.correct_sr(
-        ds["dsr"], ds["usr"], ds["cc"],
-        geo["phi_sensor_rad"], geo["theta_sensor_rad"],
-        geo["lat"], geo["Declination_rad"], geo["HourAngle_rad"],
-        geo["ZenithAngle_rad"], geo["ZenithAngle_deg"], geo["AngleDif_deg"]
-    )
-    return ds, TOA_crit_nopass_cor
 
 def compute_albedo(ds, geo):
     ds = ds.copy()
@@ -266,7 +224,7 @@ def load_station_config(config_folder, station_id):
 
 
 
-def process_surface_height(ds, data_adjustments_dir, station_config={}):
+def process_surface_height(ds, data_adjustments_dir, station_config={}, make_gif=False):
     """
     Process surface height data for different site types and create
     surface height variables.
@@ -351,7 +309,9 @@ def process_surface_height(ds, data_adjustments_dir, station_config={}):
     df_in = ds[[v for v in ['z_surf_1', 'z_surf_2', 'z_ice_surf'] if v in ds.data_vars]].to_dataframe()
 
     (ds['z_surf_combined'], ds['z_ice_surf'],
-     ds['z_surf_1_adj'], ds['z_surf_2_adj']) = combine_surface_height(df_in, ds.attrs['site_type'], station=station_config['stid'])
+     ds['z_surf_1_adj'], ds['z_surf_2_adj']) = combine_surface_height(df_in, ds.attrs['site_type'],
+                                                                      station=station_config['stid'],
+                                                                      make_gif = make_gif)
 
 
     if ds.attrs['site_type'] == 'ablation':
@@ -500,7 +460,7 @@ def animate_adjustment(frames, hs1, hs2, z, series, idx_start, shift, title_pref
         frame = plot_series_to_frame(hs1, hs2, z, s_step.loc[idx_start:], title)
         frames.append(frame)
 
-def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station="station"):
+def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station="station", make_gif=False):
     '''Combines the data from three sensor: the two sonic rangers and the
     pressure transducer, to recreate the surface height, the ice surface height
     and the snow depth through the years. For the accumulation sites, it is
@@ -759,7 +719,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                                     first_index = hs1.iloc[ind_start[i]:].first_valid_index()
 
                                 shift =-  z[first_index]   +  hs1[first_index]
-                                animate_adjustment(frames,hs1, hs2, z,  z, first_index, shift, title_prefix=f'{station} {y}')
+                                if make_gif: animate_adjustment(frames,hs1, hs2, z,  z, first_index, shift, title_prefix=f'{station} {y}')
 
                                 z[first_index:] = z[first_index:] -  z[first_index]   +  hs1[first_index]
                             else:
@@ -767,14 +727,14 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                                 first_index = hs2.iloc[ind_start[i]:].first_valid_index()
 
                                 shift =-  z[first_index]   +  hs2[first_index]
-                                animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=f'{station} {y}')
+                                if make_gif: animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=f'{station} {y}')
 
                                 z[first_index:] = z[first_index:] -  z[first_index]   +  hs2[first_index]
                         else:
                             logger.debug('adjusting z to hs1')
 
                             shift =-  z[first_index]   +  hs2[first_index]
-                            animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=f'{station} {y}')
+                            if make_gif: animate_adjustment(frames, hs1, hs2, z, z, first_index, shift, title_prefix=f'{station} {y}')
 
                             z[first_index:] = z[first_index:] -  z[first_index]   +  hs2[first_index]
                         hs2_ref = 0 # from now on PT is the reference
@@ -809,7 +769,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                                         shift = -  np.nanmean(hs1[first_index:first_index+pd.to_timedelta('1D')])  \
                                              +  np.nanmean(z[first_index:first_index+pd.to_timedelta('1D')])
-                                        animate_adjustment(frames, hs1, hs2, z, hs1, first_index, shift, title_prefix=f'{station} {y}')
+                                        if make_gif: animate_adjustment(frames, hs1, hs2, z, hs1, first_index, shift, title_prefix=f'{station} {y}')
 
                                         hs1[first_index:] = hs1[first_index:] \
                                             -  np.nanmean(hs1[first_index:first_index+pd.to_timedelta('1D')])  \
@@ -818,7 +778,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                                         shift =-  np.nanmean(hs2[first_index:first_index+pd.to_timedelta('1D')])  \
                                             +  np.nanmean(z[first_index:first_index+pd.to_timedelta('1D')])
-                                        animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
+                                        if make_gif: animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
 
                                         hs2[first_index:] = hs2[first_index:] \
                                             -  np.nanmean(hs2[first_index:first_index+pd.to_timedelta('1D')])  \
@@ -839,7 +799,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                         shift = - np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])  + \
                              np.nanmean(z.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])
-                        animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
+                        if make_gif: animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
 
                         hs2.iloc[ind_end[i]:] = hs2.iloc[ind_end[i]:] - \
                             np.nanmean(hs2.iloc[(ind_end[i]-24*7):(ind_end[i]+24*30)])  + \
@@ -851,7 +811,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                             shift = - np.nanmean(hs2.iloc[(ind_start[i+1]-24*7):(ind_start[i+1]+24*7)])  + \
                                 np.nanmean(z.iloc[(ind_start[i+1]-24*7):(ind_start[i+1]+24*7)])
-                            animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
+                            if make_gif: animate_adjustment(frames, hs1, hs2, z, hs2, first_index, shift, title_prefix=f'{station} {y}')
 
                             hs2.iloc[ind_end[i]:] = hs2.iloc[ind_end[i]:] - \
                                 np.nanmean(hs2.iloc[(ind_start[i+1]-24*7):(ind_start[i+1]+24*7)])  + \
@@ -875,7 +835,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                         hs1_following_winter[np.isnan(hs2_following_winter)] = np.nan
 
                         shift = -  np.nanmean(hs2_following_winter)  +  np.nanmean(hs1_following_winter)
-                        animate_adjustment(frames, hs1, hs2, z, hs2, str(y)+'-01-01', shift, title_prefix=f'{station} {y}')
+                        if make_gif: animate_adjustment(frames, hs1, hs2, z, hs2, str(y)+'-01-01', shift, title_prefix=f'{station} {y}')
 
 
                         hs2[str(y)+'-01-01':] = hs2[str(y)+'-01-01':] \
@@ -898,7 +858,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                         hs2_following_winter[np.isnan(hs1_following_winter)] = np.nan
 
                         shift = -  np.nanmean(hs1_following_winter)  +  np.nanmean(hs2_following_winter)
-                        animate_adjustment(frames, hs1, hs2, z, hs1, str(y)+'-09-01', shift, title_prefix=f'{station} {y}')
+                        if make_gif: animate_adjustment(frames, hs1, hs2, z, hs1, str(y)+'-09-01', shift, title_prefix=f'{station} {y}')
 
                         hs1[str(y)+'-09-01':] = hs1[str(y)+'-09-01':] \
                             -  np.nanmean(hs1_following_winter)  +  np.nanmean(hs2_following_winter)
@@ -929,7 +889,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
                             tmp2[np.isnan(tmp1)] = np.nan
 
                             shift =  -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
-                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
+                            if make_gif: animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                         hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
 
@@ -943,7 +903,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                             shift =  -np.nanmean(hs1.iloc[(ind_end[i]-24*14):(ind_end[i]+24*30)])  + \
                                 np.nanmean(z.iloc[(ind_end[i]-24*14):(ind_end[i]+24*30)])
-                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
+                            if make_gif: animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                             hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] - \
                                 np.nanmean(hs1.iloc[(ind_end[i]-24*14):(ind_end[i]+24*30)])  + \
@@ -954,7 +914,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
                             shift =  -np.nanmean(hs1.iloc[(ind_start[i+1]-24*14):(ind_start[i+1]+24*7)])  + \
                                 np.nanmean(z.iloc[(ind_start[i+1]-24*14):(ind_start[i+1]+24*7)])
-                            animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
+                            if make_gif: animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                             hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] - \
                                 np.nanmean(hs1.iloc[(ind_start[i+1]-24*14):(ind_start[i+1]+24*7)])  + \
@@ -970,7 +930,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
 
                         shift =   -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
-                        animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
+                        if make_gif: animate_adjustment(frames, hs1, hs2, z, hs1, hs1.index[ind_end[i]], shift, title_prefix=f'{station} {y}')
 
                         hs1.iloc[ind_end[i]:] = hs1.iloc[ind_end[i]:] -  np.nanmean(tmp1)  +  np.nanmean(tmp2)
 
@@ -1002,13 +962,14 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
         df.loc[ind_update,"z_surf_combined"] = data_update[ind_update]
 
     logger.info('surface height combination finished')
-    frame = plot_series_to_frame(hs1, hs2, z, z*np.nan, "final")
-    frames.append(frame)
-    frames.append(frame)
-    frames.append(frame)
-    frame = plot_final_frame(hs1, hs2, z, df["z_surf_combined"], "final")
-    for i in range(16): frames.append(frame)
+    if make_gif:
+        frame = plot_series_to_frame(hs1, hs2, z, z*np.nan, "final")
+        frames.append(frame)
+        frames.append(frame)
+        frames.append(frame)
+        frame = plot_final_frame(hs1, hs2, z, df["z_surf_combined"], "final")
+        for i in range(16): frames.append(frame)
 
-    imageio.mimsave(f"figures/surface_height/{station}.gif", frames, fps=8)
-    logger.info('gif produced')
+        imageio.mimsave(f"figures/surface_height/{station}.gif", frames, fps=8)
+        logger.info('gif produced')
     return df['z_surf_combined'], df["z_ice_surf_adj"], df["z_surf_1_adj"], df["z_surf_2_adj"]

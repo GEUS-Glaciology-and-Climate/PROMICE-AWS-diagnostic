@@ -34,17 +34,18 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-import logging, lib
+import logging
+import lib.process as lib
 logging.getLogger('numba').setLevel(logging.WARNING)
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
 df_metadata = pd.read_csv('C:/Users/bav/GitHub/PROMICE data/thredds-data/metadata/AWS_stations_metadata.csv')
 
-path_l2 = 'L2_test/'
+path_l2 = 'data/L2_test/'
 
 # plt.close('all')
 
-for station in ['FRE']:
+for station in ['NUK_Uv3']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")

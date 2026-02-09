@@ -14,15 +14,13 @@ tip list:
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import toml
-import xarray as xr
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-import tocgen
+from lib import tocgen
 
-new_version = 'V32'
-old_version = 'V31'
+new_version = 'V34'
+old_version = 'V33'
 
 for res in ['day']:
 # for res in ['hour']:
@@ -59,10 +57,7 @@ for res in ['day']:
 
     filename = f'plot_compilations/{old_version}_versus_{new_version}_{res}.md'
     figure_folder=f'figures/version_comparisons/{old_version}_versus_{new_version}_{res}'
-    try:
-        os.mkdir(figure_folder)
-    except:
-        pass
+    os.makedirs(figure_folder, exist_ok=True)
 
     f = open(filename, "w")
     def Msg(txt):
@@ -75,8 +70,8 @@ for res in ['day']:
     plt.close('all')
 
     #%%
-    # for station in np.unique(df_meta.site_id):
-    for station in ['EGP']:
+    for station in np.unique(df_meta.site_id):
+    # for station in ['EGP']:
         plt.close('all')
         Msg('## '+station)
 

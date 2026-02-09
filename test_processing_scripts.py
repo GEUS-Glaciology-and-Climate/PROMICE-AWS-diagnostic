@@ -84,7 +84,7 @@ def get_join_l3(site):
     print(" ======== test join_l3 ========= \n")
     path_l3_stations = 'data/L3_test/stations/'
     config_folder = '../aws-l0/metadata/station_configurations/'
-    folder_gcnet = '../GC-Net-Level-1-data-processing/L1/hourly'
+    folder_gcnet = '../GC-Net-level-1-data-processing/L1/hourly'
     folder_glaciobasis = '../historical-zac-data/'
 
     print(site)

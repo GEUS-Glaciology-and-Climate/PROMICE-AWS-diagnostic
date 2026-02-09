@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os, logging, matplotlib
-import lib.tocgen
 # matplotlib.use('Agg')
 import matplotlib.dates as mdates
 logging.basicConfig(
@@ -26,14 +25,9 @@ logger = logging.getLogger(__name__)
 matplotlib.set_loglevel("warning")
 logging.getLogger('numba').setLevel(logging.WARNING)
 import pypromice.resources
-from pypromice.core.qc.value_clipping import clip_values
-from pypromice.resources import load_variables
-from pypromice.core.qc.persistence import persistence_qc
-from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
-from lib.process import (remove_old_plots, load_flags_and_adjustments, load_L1,
-                 clean_gps, smooth_pose, compute_cloud_cover,
-                 solar_geometry, filter_shortwave, correct_shortwave, compute_albedo,
-                 process_precip)
+from lib.process import (load_L2, remove_old_plots)
+from lib.plot import (DEFAULT_VAR_LIST, flag_handles, flag_colors, plot_L0,
+                      plot_identical_SR50)
 
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 filename = './plot_compilations/flags.md'
@@ -49,77 +43,26 @@ def Msg(txt):
 # plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
-all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
-var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = False
 
-for station in ['JAR']:
+for station in ['KPC_Uv3']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
-    df_flags = load_flags_and_adjustments(path_to_qc_files, station)
-    ds, ds_save, pAWS_tx, pAWS_raw = load_L1(path_to_l0, station)
+    ds, pAWS_tx, pAWS_raw = load_L2(path_to_l0, station, keep_flagged_data=True)
 
     #%% Flagging, adjusting, filtering
-
-    # The following steps are from L1toL2
-    ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
-    ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
-    ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
-
-    ds22 = persistence_qc(ds2)
-    ds22 = process_precip(ds22)
-
-    vars_df = load_variables(var_file)
-    ds3 = clip_values(ds22.copy(), vars_df)
-
-    # The following steps are from L2toL3
-    ds4, baseline_elevation = clean_gps(ds3)
-    ds4 = smooth_pose(ds4)
-    ds4 = compute_cloud_cover(ds4)
-
-    geo = solar_geometry(ds4)
-
-    ds4, flags = filter_shortwave(ds4, geo)
-    ds4, TOA_crit_nopass_cor = correct_shortwave(ds4, geo)
-    ds4, OKalbedos = compute_albedo(ds4, geo)
-
-    from pypromice.core.variables import humidity
-    ds4["rh_u_wrt_ice_or_water"] = humidity.adjust(ds4["rh_u"], ds4["t_u"])
-    if "t_l" in ds4.data_vars:
-        ds4["rh_l_wrt_ice_or_water"] = humidity.adjust(ds4["rh_l"], ds4["t_l"])
-
-
     for var in ["t", "rh","p","wspd"]:
-        if (var+'_u' in ds4.data_vars) and (var+'_l' in ds4.data_vars):
-            ds4[var+'_diff'] = ds4[var+'_u'] - ds4[var+'_l']
-    if ('rh_u_wrt_ice_or_water' in ds4.data_vars) and ('rh_l_wrt_ice_or_water' in ds4.data_vars):
-        ds4['rh_wrt_ice_or_water_diff'] = ds4['rh_u_wrt_ice_or_water'] - ds4['rh_l_wrt_ice_or_water']
+        if (var+'_u' in ds.data_vars) and (var+'_l' in ds.data_vars):
+            ds[var+'_diff'] = ds[var+'_u'] - ds[var+'_l']
+    if ('rh_u_wrt_ice_or_water' in ds.data_vars) and ('rh_l_wrt_ice_or_water' in ds.data_vars):
+        ds['rh_wrt_ice_or_water_diff'] = ds['rh_u_wrt_ice_or_water'] - ds['rh_l_wrt_ice_or_water']
     # %% plotting
     df_L1 = ds.to_dataframe().copy()
 
-    if len(df_flags)>0:
-        for ind, var_list in zip(df_flags.index, df_flags.variable):
-            if var_list == '*':
-                df_flags.loc[ind,'variable'] = ' '.join(df_L1.columns)
-            elif '*' in var_list:
-                df_flags.loc[ind,'variable'] = ' '.join(df_L1.filter(regex=var_list).columns)
-
-        var_list = np.unique(' '.join(df_flags.variable.to_list()).split(' '))
-        for v in var_list:
-            if v not in ds_save.data_vars:
-                Msg(v+' not in variables')
-                var_list = var_list[~np.isin(var_list, v)]
-                continue
-
-            if ds_save[v].isnull().all():
-                var_list = var_list[~np.isin(var_list, v)]
-    else:
-        var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
     Msg('# '+station)
-    var_list = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l', 'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u', 'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5', 't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y', 'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt', 'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i', 'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
-    var_list = [v for v in var_list if v in ds1.data_vars]
+    var_list = [v for v in DEFAULT_VAR_LIST if v in ds.data_vars]
 
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [['']]
@@ -129,38 +72,30 @@ for station in ['JAR']:
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
-                        # 't_u','t_l',
+                        # 't_u','t_i',
                         # 'p_u','z_pt','z_pt_cor',
-                        # 'p_u','p_l','p_i',
-                        't_u','t_l',"t_diff" #'t_i',
-                        'rh_u','rh_l',"rh_diff", #'rh_i',
-                        'wspd_u','wspd_l',"wspd_diff" #'t_i',
-                        'p_u','p_l',"p_diff" #'t_i',
-
-                        # 'rh_u_wrt_ice_or_water','rh_l_wrt_ice_or_water',"rh_wrt_ice_or_water_diff",#'rh_i_wrt_ice_or_water',
-
+                        # 'p_u', 'p_l','p_i',
+                        # 't_u','t_l',"t_diff" #'t_i',
+                        # 'rh_u','rh_l',"rh_diff", #'rh_i',
+                        # 'wspd_u','wspd_l',"wspd_diff" #'t_i',
+                        # 'p_u','p_l',"p_diff"
+                        # 'rh_u_wrt_ice_or_water', 'rh_l_wrt_ice_or_water',
+                        # "rh_wrt_ice_or_water_diff",
+                        # 'rh_i_wrt_ice_or_water',
                         # 'wspd_u','wspd_l',
                         # 'wdir_u','wdir_l',
                         # 'fan_dc_l','fan_dc_u',
-                        # 'rot'
                         # 'z_boom_l', 'z_boom_u', #'z_stake',
                         # 'z_boom_cor_l', 'z_boom_cor_u', #'z_stake_cor',
                         # 'z_pt','z_pt_cor',
-                        # 't_u','t_rad',
-                        # 'p_u','t_u','z_pt','z_pt_cor',
+                        'gps_lat', 'gps_lon','gps_alt'
                         # 'wdir_u','wdir_l','wdir_i',
-                        # 't_l','p_l','rh_l','fan_dc_l'
-                          # 'precip_l', 'precip_u',
-                          # 'precip_l_cor', 'precip_u_cor',
-                        # 'dlr','ulr','t_rad',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",
                         # "precip_l", "rainfall_l", "rainfall_cor_l",
-                        # 'dsr','usr',
-                        # 'dsr_cor','usr_cor',
-                        # 'albedo',
-                        # 'tilt_x','tilt_y','cc',
-                        # ]\
-                        # + ['t_i_'+str(i+1) for i in range(11)]
+                        # 'dsr','usr', 'dsr_cor','usr_cor', 'albedo',
+                        # 'tilt_x','tilt_y','rot',
+                        # 'dlr','ulr','t_rad','cc',
+                        # ] + ['t_i_'+str(i+1) for i in range(11)
                         ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
@@ -168,190 +103,62 @@ for station in ['JAR']:
         if len(var_list) == 0: continue
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
-        var_list = var_list[np.isin(var_list, ds4.data_vars)]
+        var_list = var_list[np.isin(var_list, ds.data_vars)]
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True,  #sharey=True,
                                     figsize=(12,len(var_list)*2.1))
-        fig.subplots_adjust(top=0.83)
+        fig.subplots_adjust(top=0.8)
         if len(var_list) == 1: fig.subplots_adjust(top=0.7)
         if len(var_list)==1: ax_list = [ax_list]
 
         for var, ax in zip(var_list, ax_list):
 
             if (var in ['z_boom_u','z_boom_l','z_stake']) and ('z_stake' in df_L1.columns):
-                valid = df_L1.z_stake.notna() & df_L1.z_boom_u.notna()
-                m = valid & ((df_L1.z_stake - df_L1.z_boom_u).abs() <= 1e-6)
-
-                # merge groups with small gaps
-                gap = pd.Timedelta("1D")  # max gap to merge
-                grp = (m != m.shift()).cumsum()
-                true_runs = []
-                for _, s in m.groupby(grp):
-                    if not s.iloc[0]:
-                        continue
-                    t0, t1 = s.index[0], s.index[-1]
-                    if true_runs and t0 - true_runs[-1][1] <= gap:
-                        true_runs[-1] = (true_runs[-1][0], t1)
-                    else:
-                        true_runs.append((t0, t1))
-
-                for t0, t1 in true_runs:
-                    ax.axvspan(t0, t1, color="darkorange", alpha=0.3)
-
+                ax = plot_identical_SR50(df_L1, ax)
 
             if var in ['z_boom_cor_u','z_boom_cor_l','z_stake_cor']:
-                ax.plot(ds4.time,
-                        ds4[var.replace('_cor','')].values,
+                ax.plot(ds.time,
+                        ds[var.replace('_cor','')].values,
                         marker='.',color='gray', linestyle='None',
                         label='uncorrected for air temperature')
 
-            # if var in ['t_i_'+str(i+1) for i in range(11)]:
-            #     ax.plot(ds4.time,
-            #             ds4['t_u'].values,
-            #             marker='.',color='lightgray',
-            #             label='air temperature')
+            # plotting L0 TX
+            ax = plot_L0(pAWS_raw, ax, var, s='x', label='in L0 raw')
 
-            if pAWS_raw is not None:
-                for data in pAWS_raw.L0:
-                    if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
-                        if not var.endswith('_i'):
-                            tmp=data[var].shift(time=-1)
-                        else:
-                            tmp=data[var]
-                        ax.plot(data.time,
-                                tmp,
-                                marker='+',color='k', linestyle='None',
-                                label='__nolegend__')
+            # plotting L0 RAW
+            ax= plot_L0(pAWS_tx, ax, var, s='+', label='in L0 tx')
 
-                ax.plot(np.nan,np.nan, marker='+',color='k',
-                        linestyle='None', label='in L0 raw')
-            if pAWS_raw is not None:
-                for data in pAWS_tx.L0:
-                    if (var in data.data_vars) and (var not in ['dlr','ulr','gps_lat','gps_lon','gps_alt']):
-                        if not var.endswith('_i'):
-                            tmp=data[var].shift(time=-1)
-                        else:
-                            tmp=data[var]
-                        ax.plot(data.time,
-                                tmp,
-                                marker='x',color='k', linestyle='None',
-                                label='__nolegend__')
-
-                ax.plot(np.nan,np.nan, marker='x',color='k',
-                        linestyle='None', label='in L0 tx')
+            # plot data with flags
+            var_qc=var+'_qc'
             if var in ds.data_vars:
-                ax.plot(ds.time,
-                        ds[var].values,
-                        marker='.',color='tab:red', linestyle='None',
-                        label='removed by flag')
-                if var == 'albedo':
-                    albedo_raw = ds['usr'] / ds['dsr']
-                    albedo_raw = albedo_raw.where(albedo_raw>0).where(albedo_raw<1)
-
-                    ax.plot(ds.time,
-                            albedo_raw.values,
-                            marker='.',color='tab:pink', linestyle='None',
-                            label='unfiltered, uncorrected')
-
-            if var in ds1.data_vars:
-                ax.plot(ds1.time,
-                        ds1[var].values,
-                        marker='.',color='tab:orange', linestyle='None',
-                        label='removed or changed by adjustment')
-            if var in ds2.data_vars and var in ds22.data_vars:
-                mask = np.isnan(ds22[var].values) & ~np.isnan(ds2[var].values)
-                ax.plot(ds22.time[mask],
-                        ds2[var].values[mask],
-                        marker='.',color='tab:pink', linestyle='None',
-                        label='filtered with persistence')
-            if var in ds22.data_vars and var in ds3.data_vars:
-                mask = np.isnan(ds3[var].values) & ~np.isnan(ds22[var].values)
-                ax.plot(ds3.time[mask],
-                        ds22[var].values[mask],
-                        marker='o',color='tab:brown', linestyle='None',
-                        label='filtered with dependency')
-            if var in ds3.data_vars:
-                ax.plot(ds3.time,
-                        ds3[var].values,
-                        marker='.',color='tab:pink', linestyle='None',
-                        label='removed by custom filter (gps_alt, tilt or rot)')
-                if var == 'gps_alt':
-                    ax.plot(ds3.time,
-                            baseline_elevation,
-                            ls='--', c='k')
-
-            if var[:-4] in ds4.data_vars:
-                if var in ['dsr_cor','usr_cor']:
-                    if var == 'dsr_cor':
-                        ax.plot(ds3.time,(1.2* geo["isr_toa"] + 150),
-                                c='k', alpha=0.7)
-                        ax_list[0].plot(np.nan,np.nan,
-                                c='k',label='TOA irradiance + margin (W m-2)')
-                    else:
-                        ax.plot(ds3.time, 0.8*(1.2 * geo["isr_toa"] + 150),
-                                c='k', alpha=0.7)
-                    ax.plot(ds.time,
-                            ds[var[:-4]].values,
-                            marker='.',color='tab:red', linestyle='None',
-                            label='removed by flag')
-                    ax.plot(ds3.time,
-                            ds3[var[:-4]].values,
-                            marker='.',color='tab:pink', linestyle='None',
-                            label='value before tilt correction')
-                    if var == 'dsr_cor':
-                        ax.plot(ds3.time,
-                                ds3[var[:-4]].where(
-                                    flags.TOA_crit_nopass_dsr | TOA_crit_nopass_cor).values,
-                                marker='.',color='k', linestyle='None',
-                                label='removed, dsr above TOA irradiance')
-                    else:
-                        ax.plot(ds3.time,
-                                ds3[var[:-4]].where(
-                                    flags.TOA_crit_nopass_usr | TOA_crit_nopass_cor).values,
-                                marker='.',color='k', linestyle='None',
-                                label='removed, dsr above TOA irradiance')
-                        if flags.TOA_crit_nopass_usr.any():
-                            ax.plot(ds3.time,
-                                ds3[var[:-4]].where(flags.TOA_crit_nopass_usr).values,
-                                marker='.',color='tab:orange', linestyle='None')
-                            ax_list[0].plot(np.nan,np.nan,marker='.',ls='None',
-                                    c='tab:orange',label='removed, usr above TOA irradiance')
-
-                    ax.plot(ds3.time,
-                            ds3[var[:-4]].where(flags.bad).values,
-                            marker='.',color='tab:green', linestyle='None',
-                            label='sun below horizon zenith angle or negative reading')
-
-
-            if var in ds4.data_vars:
-                ax.plot(ds4.time,
-                        ds4[var].values,
-                        marker='.',color='tab:blue', linestyle='None',
-                        label='final')
+                for flag, col in flag_colors.items():
+                    da = ds[var].where(ds[var_qc] == flag)
+                    if da.notnull().any():
+                        da.plot(ax=ax, marker='.', linestyle='None',
+                                color=col, label=flag)
 
         for var, ax in zip(var_list, ax_list):
-            ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
+            # ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
             if zoom_to_good:
-                ax.set_ylim(ds4[var].min(), ds4[var].max())
+                ax.set_ylim(ds[var].min(), ds[var].max())
             else:
                 xmin, xmax = ax.get_xlim()
                 xmin = mdates.num2date(xmin)
                 xmin = pd.Timestamp(xmin).tz_localize(None)
                 xmax = mdates.num2date(xmax)
                 xmax = pd.Timestamp(xmax).tz_localize(None)
-                try:
-                    ymin = ds.sel(time=slice(xmin, xmax))[var].min()
-                    ymax = ds.sel(time=slice(xmin, xmax))[var].max()
-                    ax.set_ylim(ymin, ymax)
-                except:
-                    pass
 
             ax.set_ylabel(var)
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)
             ax.grid(True, which='major', linestyle='-', linewidth=1)
 
         title = station+'_%i/%i'%(i+1,len(var_list_list))
-        ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
-        fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
-        Msg('![](../%s/%s_%i.png)'%(figure_folder, station,i))
+        ax_list[0].legend(handles=flag_handles,
+                          loc='lower left',
+                          title=title,
+                          bbox_to_anchor=(0,1.1),
+                          ncol=3,
+                          markerscale=2)
+        # fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
+        # Msg('![](../%s/%s_%i.png)'%(figure_folder, station,i))
     Msg(' ')
 # tocgen.processFile(filename, filename[:-3]+"_toc.md")
