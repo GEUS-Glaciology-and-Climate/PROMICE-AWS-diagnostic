@@ -37,6 +37,52 @@ import imageio.v2 as imageio
 import logging
 logger = logging.getLogger(__name__)
 
+import xarray as xr
+
+
+def combine_first_with_flags(ds_raw: xr.Dataset, ds_tx: xr.Dataset) -> xr.Dataset:
+    """Merge two datasets using `combine_first` logic while keeping QC flags aligned."""
+    # ensure common time axis so xr.where can align
+    time = ds_raw.indexes["time"].union(ds_tx.indexes["time"])
+    ds_raw = ds_raw.reindex(time=time)
+    ds_tx = ds_tx.reindex(time=time)
+
+    ds_out = xr.Dataset(coords={"time": time})
+
+    all_vars = set(ds_raw.data_vars) | set(ds_tx.data_vars)
+
+    for v in all_vars:
+        if v.endswith("_qc"):
+            continue
+
+        raw_v = ds_raw.get(v)
+        tx_v = ds_tx.get(v)
+
+        vqc = f"{v}_qc"
+        raw_q = ds_raw.get(vqc)
+        tx_q = ds_tx.get(vqc)
+
+        if raw_v is not None and tx_v is not None:
+            merged_v = raw_v.combine_first(tx_v)
+            use_raw = raw_v.notnull()
+        elif raw_v is not None:
+            merged_v = raw_v
+            use_raw = xr.ones_like(raw_v, dtype=bool)
+        else:
+            merged_v = tx_v
+            use_raw = xr.zeros_like(tx_v, dtype=bool)
+
+        ds_out[v] = merged_v
+
+        if raw_q is not None and tx_q is not None:
+            ds_out[vqc] = xr.where(use_raw, raw_q, tx_q)
+        elif raw_q is not None:
+            ds_out[vqc] = xr.where(use_raw, raw_q, "OK")
+        elif tx_q is not None:
+            ds_out[vqc] = xr.where(~use_raw, tx_q, "OK")
+
+    return ds_out
+
 
 def process_precip(ds):
     if ~ds["precip_u"].isnull().all():
@@ -130,7 +176,7 @@ def load_L2(path_to_l0, station, keep_flagged_data=True):
         ds = pAWS_raw.L2.copy()
     else:
         print('Combining L1 data for', station)
-        ds = pAWS_raw.L2.combine_first(pAWS_tx.L2).copy()
+        ds = combine_first_with_flags(pAWS_raw.L2, pAWS_tx.L2)
 
     ds.attrs['bedrock'] = str(ds.attrs.get('bedrock'))
     return ds, pAWS_tx, pAWS_raw

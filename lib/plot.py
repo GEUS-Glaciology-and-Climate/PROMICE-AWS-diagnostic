@@ -27,6 +27,7 @@ flag_colors = {
     "ADJ_GRAD": "gold",
     "ADJ_SAME_TO_OTHER_SENSOR": "black",
     "GPS_FILTER": "teal",
+    "ZERO_WSPD": "turquoise",
 }
 
 flag_handles = [
@@ -36,8 +37,8 @@ flag_handles = [
 ]
 
 DEFAULT_VAR_LIST = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd_u', 'wdir_l',
-        'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l', 'z_boom_u',
-        'z_stake', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5',
+        'wdir_u', 'dsr', 'usr', 'dlr', 'ulr', 't_rad', 'z_boom_l','z_boom_cor_l', 'z_boom_u','z_boom_cor_u',
+        'z_stake','z_stake_cor', 'z_pt','z_pt_cor', 't_i_1', 't_i_2', 't_i_3', 't_i_4', 't_i_5',
         't_i_6', 't_i_7', 't_i_8', 't_i_9', 't_i_10', 't_i_11', 'tilt_y',
         'tilt_x', 'rot', 'precip_l', 'precip_u', 'gps_lat', 'gps_lon', 'gps_alt',
         'fan_dc_l', 'fan_dc_u', 'batt_v', 't_log', 'p_i', 't_i', 'rh_i', 'wspd_i',
