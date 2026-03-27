@@ -129,6 +129,116 @@ def load_flags_and_adjustments(path_to_qc_files, station):
 
     return df_flags
 
+
+def load_L1(path_to_l0, station):
+    config_file_tx  = os.path.join(path_to_l0, 'tx',  'config', f'{station}.toml')
+    config_file_raw = os.path.join(path_to_l0, 'raw', 'config', f'{station}.toml')
+
+    if os.path.isfile(config_file_tx):
+        inpath_tx = os.path.join(path_to_l0, 'tx')
+        pAWS_tx = AWS(config_file_tx, inpath_tx, var_file=None, meta_file=None,
+                      data_issues_repository='../PROMICE-AWS-data-issues')
+        pAWS_tx.getL1()
+    else:
+        pAWS_tx = None
+
+    if os.path.isfile(config_file_raw):
+        inpath_raw = os.path.join(path_to_l0, 'raw', station)
+        pAWS_raw = AWS(config_file_raw, inpath_raw, var_file=None, meta_file=None,
+                       data_issues_repository='../PROMICE-AWS-data-issues')
+        pAWS_raw.getL1()
+    else:
+        pAWS_raw = None
+
+    if pAWS_raw is None and pAWS_tx is None:
+        raise FileNotFoundError(f'No raw or tx config for {station}')
+
+    if pAWS_raw is None:
+        print('No raw logger file for', station)
+        ds = pAWS_tx.L1A.copy(deep=True)
+    elif pAWS_tx is None:
+        print('No transmission toml file for', station)
+        ds = pAWS_raw.L1A.copy(deep=True)
+    else:
+        print('Combining L1 data for', station)
+        ds = pAWS_raw.L1A.combine_first(pAWS_tx.L1A).copy(deep=True)
+
+    ds.attrs['bedrock'] = str(ds.attrs.get('bedrock'))
+    ds_save = ds.copy(deep=True)
+    return ds, ds_save, pAWS_tx, pAWS_raw
+
+
+def solar_geometry(ds):
+    if 'latitude' in ds.attrs and 'longitude' in ds.attrs:
+        lat, lon = ds.attrs['latitude'], ds.attrs['longitude']
+    else:
+        lat = float(ds['gps_lat'].mean())
+        lon = float(ds['gps_lon'].mean())
+
+    doy    = ds['time'].dt.dayofyear
+    hour   = ds['time'].dt.hour
+    minute = ds['time'].dt.minute
+
+    phi_sensor_rad, theta_sensor_rad = station_pose.calculate_spherical_tilt(ds['tilt_x'], ds['tilt_y'])
+    Declination_rad = station_pose.calculate_declination(doy, hour, minute)
+    HourAngle_rad   = station_pose.calculate_hour_angle(hour, minute, lon)
+    ZenithAngle_rad, ZenithAngle_deg = station_pose.calculate_zenith(lat, Declination_rad, HourAngle_rad)
+    AngleDif_deg = station_pose.calculate_angle_difference(ZenithAngle_rad, HourAngle_rad,
+                                                           phi_sensor_rad, theta_sensor_rad)
+    isr_toa = radiation.calculate_TOA(ZenithAngle_deg, ZenithAngle_rad)
+
+    return {
+        "lat": lat, "lon": lon,
+        "phi_sensor_rad": phi_sensor_rad,
+        "theta_sensor_rad": theta_sensor_rad,
+        "Declination_rad": Declination_rad,
+        "HourAngle_rad": HourAngle_rad,
+        "ZenithAngle_rad": ZenithAngle_rad,
+        "ZenithAngle_deg": ZenithAngle_deg,
+        "AngleDif_deg": AngleDif_deg,
+        "isr_toa":isr_toa
+    }
+
+def filter_shortwave(ds, geo):
+    ds = ds.copy()
+    ds["dsr"], ds["usr"], flags = radiation.filter_sr(
+        ds["dsr"], ds["usr"], ds["cc"],
+        geo["ZenithAngle_rad"], geo["ZenithAngle_deg"], geo["AngleDif_deg"]
+    )
+    ds_flags = xr.Dataset(
+        {
+            "bad": flags[0],
+            "sunonlowerdome": flags[1],
+            "TOA_crit_nopass_dsr": flags[2],
+            "TOA_crit_nopass_usr": flags[3],
+        },
+        coords={"time": flags[0].time},
+    )
+    return ds, ds_flags
+
+def correct_shortwave(ds, geo):
+    ds = ds.copy()
+    ds["dsr_cor"], ds["usr_cor"], TOA_crit_nopass_cor = radiation.correct_sr(
+        ds["dsr"], ds["usr"], ds["cc"],
+        geo["phi_sensor_rad"], geo["theta_sensor_rad"],
+        geo["lat"], geo["Declination_rad"], geo["HourAngle_rad"],
+        geo["ZenithAngle_rad"], geo["ZenithAngle_deg"], geo["AngleDif_deg"]
+    )
+    return ds, TOA_crit_nopass_cor
+
+def compute_albedo(ds, geo):
+    ds = ds.copy()
+    ds['albedo'], OKalbedos = radiation.calculate_albedo(
+        ds["dsr"], ds["usr"], ds["dsr_cor"], ds["cc"],
+        geo["ZenithAngle_deg"], geo["AngleDif_deg"]
+    )
+    return ds, OKalbedos
+
+import xarray as xr
+import toml
+
+
+
 def load_L2(path_to_l0, station, keep_flagged_data=True):
     config_file_tx  = os.path.join(path_to_l0, 'tx',  'config', f'{station}.toml')
     config_file_raw = os.path.join(path_to_l0, 'raw', 'config', f'{station}.toml')
@@ -145,7 +255,7 @@ def load_L2(path_to_l0, station, keep_flagged_data=True):
             vars_df=pAWS_tx.vars,
             data_flags_dir=pAWS_tx.data_issues_repository / "flags",
             data_adjustments_dir=pAWS_tx.data_issues_repository / "adjustments",
-            keep_flagged_data=keep_flagged_data,
+            # keep_flagged_data=keep_flagged_data,
         )
     else:
         pAWS_tx = None
@@ -160,7 +270,7 @@ def load_L2(path_to_l0, station, keep_flagged_data=True):
             vars_df=pAWS_raw.vars,
             data_flags_dir=pAWS_raw.data_issues_repository / "flags",
             data_adjustments_dir=pAWS_raw.data_issues_repository / "adjustments",
-            keep_flagged_data=keep_flagged_data,
+            # keep_flagged_data=keep_flagged_data,
         )
     else:
         pAWS_raw = None
@@ -184,7 +294,7 @@ def load_L2(path_to_l0, station, keep_flagged_data=True):
 
 def clean_gps(ds):
     out = ds.copy()
-    baseline = (ds.gps_alt.to_series().resample('M').median()
+    baseline = (ds.gps_alt.to_series().resample('ME').median()
                 .reindex(ds.time.to_series().index, method='nearest')
                 .ffill().bfill())
     mask = (np.abs(ds.gps_alt - baseline) < 100) | ds.gps_alt.isnull()

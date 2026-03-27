@@ -151,7 +151,7 @@ for station in station_list:
         ax.plot(df_no_flags[var].index, df_no_flags[var].values, marker='.', lw=3,
                 color='tab:red', label='bad measurements'
                 )
-        
+
         ax.plot(df_no_flags[var].index, df_no_flags[var].values, marker='.', lw=3,
                 color='tab:blue', label='good measurements'
                 )
@@ -194,7 +194,7 @@ for station in station_list:
         fontsize=12, title=station )
     fig.savefig('figures/flagged_data/'+station+'_2.png',dpi=300)
 
-#%% 
+#%%
 
 import pandas as pd
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
@@ -282,6 +282,91 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.legend(ncol=2, fontsize=12,
            bbox_to_anchor=(1, 0.90), loc="upper right")
+
+plt.savefig("figures/flagged_data/all_summary.png", dpi=200)
+plt.show()
+# %%import pandas as pd
+import matplotlib.pyplot as plt
+import glob
+import numpy as np
+from pathlib import Path
+
+station_list = ['CEN1','CEN2','EGP','HUM','KAN_M','NEM',
+                'NUK_L','QAS_U','QAS_Uv3','SDM','TAS_A','TAS_U']
+
+files = glob.glob("metadata/qc_info/*_flagged_pct.csv")
+
+df_all = []
+all_stations = []
+
+for f in files:
+    st = Path(f).name.replace("_flagged_pct.csv", "")
+    df = pd.read_csv(f)
+    df = df.rename(columns={df.columns[0]: "variable", df.columns[1]: "pct"})
+    df = df.dropna(subset=["variable"]).groupby("variable", as_index=False)["pct"].max()
+    df["station"] = st
+    df_all.append(df)
+    all_stations.append(st)
+
+df_all = pd.concat(df_all, ignore_index=True)
+
+order = ["usr","dsr","ulr","dlr","z_boom_u","wspd_u","rh_u","p_u","t_u"]
+variable_labels = ["Upward\nshortwave\nradiation",
+                   "Downward\nshortwave\nradiation",
+                   "Upward\nlongwave\nradiation",
+                   "Downward\nlongwave\nradiation",
+                   "Boom height",
+                   "Wind speed",
+                   "Relative\nhumidity",
+                   "Air pressure",
+                   "Air temperature"]
+
+df_all = df_all[df_all.variable.isin(order)].copy()
+df_all["variable"] = pd.Categorical(df_all.variable, categories=order, ordered=True)
+df_all = df_all.sort_values("variable")
+df_all["y"] = df_all["variable"].cat.codes
+
+primary = station_list
+others = sorted(set(all_stations) - set(primary) - {'LYN_L','NUK_B','LYN_T'})
+
+fig, ax = plt.subplots(figsize=(7,7))
+fig.subplots_adjust(left=0.23, top=0.9, bottom=0.06, right=0.99)
+
+# other stations: gray markers only
+for st in others:
+    sub = df_all[df_all.station == st]
+    jitter = 0.15
+    y_jittered = sub["y"] + np.random.uniform(-jitter, jitter, size=len(sub))
+
+    ax.plot(sub["pct"], y_jittered, ls="None", marker="o", ms=4,
+            color="lightgray", alpha=0.7)
+
+
+# highlighted stations: varying color + marker
+markers = ['o','s','^','D','v','P','X','<','>','*','h','p']
+colors = plt.cm.tab20(np.linspace(0, 1, len(primary)))
+
+for st, c, m in zip(primary, colors, markers):
+    sub = df_all[df_all.station == st]
+    y_jittered = sub["y"] + np.random.uniform(-jitter, jitter, size=len(sub))
+
+    ax.plot(sub["pct"], y_jittered, ls="None", marker=m, ms=10,
+            color=c, label=st)
+
+ax.plot(np.nan, np.nan, ls="None", marker="o", ms=5, color="lightgray", label="other stations")
+# mean value for each variable across all stations shown
+mean_df = df_all.groupby("variable", observed=True)["pct"].mean().reindex(order).reset_index()
+mean_df["y"] = np.arange(len(order))
+ax.plot(mean_df["pct"], mean_df["y"],
+        marker='|', ms=20, mew=4,   # mew controls thickness
+        ls='None', c='k', label="mean")
+ax.set_xlabel("% removed through QC", fontsize=14)
+ax.xaxis.set_label_position('top')
+ax.tick_params(axis="x", bottom=True, top=True, labelbottom=True, labeltop=True)
+ax.grid(True, alpha=0.3)
+ax.set_yticks(np.arange(len(order)), variable_labels)
+ax.tick_params(axis='both', labelsize=12)
+ax.legend(ncol=2, fontsize=12, loc="upper right")
 
 plt.savefig("figures/flagged_data/all_summary.png", dpi=200)
 plt.show()

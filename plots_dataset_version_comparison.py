@@ -16,13 +16,13 @@ import pandas as pd
 import os
 import numpy as np
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 from lib import tocgen
 
-new_version = 'ice'
-old_version = 'thredds'
+new_version = 'thredds'
+old_version = 'V35'
 
-for res in ['day', 'hour']:
+for res in ['hour']:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
@@ -69,11 +69,11 @@ for res in ['day', 'hour']:
 
     Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 
-    plt.close('all')
+    # plt.close('all')
 
     #%%
-    for station in np.unique(df_meta.site_id):
-    # for station in ['EGP']:
+    # for station in np.unique(df_meta.site_id):
+    for station in ['CEN']:
         plt.close('all')
         Msg('## '+station)
 
@@ -114,7 +114,7 @@ for res in ['day', 'hour']:
             ))
         Msg(' ')
         var_list = df_new.columns.values
-        # var_list = ['rainfall_u','rainfall_cor_u','rainfall_l','rainfall_cor_l']
+        var_list = ['t_u', 't_l', 't_i']
         var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
 
         if res == 'month':
@@ -155,14 +155,15 @@ for res in ['day', 'hour']:
                     print(var,'not in new data')
                 ax.legend(loc='lower left')
                 ax.grid()
-                if res == 'hour':
-                    ax.set_xlim(pd.to_datetime(['2025-02-01','2026-02-09']))
+                # if res == 'hour':
+                #     ax.set_xlim(pd.to_datetime(['2025-02-01','2026-02-09']))
                 # ax.set_xlim(df_new.index[0], df_new.index[-1])
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
             # plt.close(fig)
             Msg(f'![{station}](../{figure_folder}/{station}_{k}.png)')
+            break
         Msg(' ')
     tocgen.processFile(filename, filename[:-3]+"_toc.md")
     f.close()

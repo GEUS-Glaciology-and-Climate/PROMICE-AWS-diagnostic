@@ -17,6 +17,47 @@ import xarray as xr
 SIGMA_SB = 5.670374419e-8
 
 
+import numpy as np
+import xarray as xr
+
+def _expand_runs(flag: xr.DataArray, dt_hours: xr.DataArray, persistence_hours: float, buffer_hours: float, time_dim: str):
+    f = flag.fillna(False).astype(bool)
+
+    # run ids for flagged periods
+    rid = (f != f.shift({time_dim: 1}, fill_value=False)).cumsum(time_dim)
+
+    # start/end markers for flagged runs
+    prev = f.shift({time_dim: 1}, fill_value=False)
+    nxt  = f.shift({time_dim: -1}, fill_value=False)
+
+    is_start = f & (~prev)
+    is_end   = f & (~nxt)
+
+    idx = xr.DataArray(np.arange(f.sizes[time_dim], dtype=np.int64), coords={time_dim: f[time_dim]}, dims=(time_dim,))
+
+    # run start/end index and time (hours)
+    start_idx = idx.where(is_start).groupby(rid).min()
+    end_idx   = idx.where(is_end).groupby(rid).max()
+
+    h = xr.zeros_like(idx, dtype="float64")
+    h.values = np.cumsum(dt_hours.fillna(0).values)
+
+    start_h = h.where(is_start).groupby(rid).min()
+    end_h   = h.where(is_end).groupby(rid).max()
+
+    # map per-timepoint run start/end (only for flagged points; others NaN)
+    s_idx = start_idx.sel({rid.name: rid}).rename(None)
+    e_idx = end_idx.sel({rid.name: rid}).rename(None)
+    s_h   = start_h.sel({rid.name: rid}).rename(None)
+    e_h   = end_h.sel({rid.name: rid}).rename(None)
+
+    # within persistence_hours from run start (before start) and within buffer_hours after run end
+    near_start = (idx >= (s_idx - 10_000_000)) & (idx <= s_idx) & ((s_h - h) <= persistence_hours)
+    near_end   = (idx >= e_idx) & ((h - e_h) <= buffer_hours)
+
+    return (f | near_start | near_end).rename(flag.name)
+
+
 def flag_persistent_radiative_temp_close_to_body(
     ds: xr.Dataset,
     flux_var: str,
@@ -25,61 +66,32 @@ def flag_persistent_radiative_temp_close_to_body(
     persistence_hours: float = 1.0,
     sigma_sb: float = SIGMA_SB,
     emissivity: float | None = None,
+    buffer_hours: float = 5.0,
     time_dim: str = "time",
 ) -> xr.DataArray:
-    """Flags periods where radiative temperature stays close to body temperature.
-
-    Converts a longwave flux (e.g., 'dlr' or 'ulr') to a radiative brightness temperature
-    using Stefan–Boltzmann, computes the absolute difference to the radiometer body
-    temperature, and flags times when that difference remains below a threshold for
-    longer than a specified persistence (in hours), accounting for irregular timesteps.
-
-    Args:
-        ds: Dataset containing the flux and body temperature variables.
-        flux_var: Name of the longwave flux variable (W m-2), e.g. 'dlr' or 'ulr'.
-        body_temp_var: Name of the radiometer body temperature variable (degC).
-        diff_thr_K: Threshold for |T_rad - T_body| in Kelvin.
-        persistence_hours: Minimum consecutive time below threshold to flag (hours).
-        sigma_sb: Stefan–Boltzmann constant.
-        emissivity: Optional emissivity (use e.g. 0.99 for surface ULR); if None, use 1.0.
-        time_dim: Name of the time dimension.
-
-    Returns:
-        Boolean DataArray (same time coordinate) where True indicates persistent closeness.
-    """
-    # Pick emissivity (DLR typically uses 1.0; ULR may use ~0.99 for snow/ice).
     eps = 1.0 if emissivity is None else float(emissivity)
 
-    # Radiative temperature from flux (Kelvin).
     t_rad_K = (ds[flux_var] / (eps * sigma_sb)) ** 0.25
-
-    # Body temperature in Kelvin (input assumed degC).
     t_body_K = ds[body_temp_var] + 273.15
-
-    # Absolute difference in Kelvin.
     dK = np.abs(t_rad_K - t_body_K)
 
-    # Threshold test.
     below = dK < diff_thr_K
-    print(diff_thr_K)
 
-    # Identify consecutive runs of equal boolean values.
     run_id = (below != below.shift({time_dim: 1}, fill_value=False)).cumsum(time_dim)
-
-    # Count consecutive samples within each "below" run; reset to 0 outside.
     consec = below.groupby(run_id).cumsum().where(below, 0)
 
-    # Irregular timestep duration in hours (assign dt to the interval starting at each sample).
     dt = ds[time_dim].diff(time_dim)
     dt = dt.reindex({time_dim: ds[time_dim]}, method=None).shift({time_dim: -1})
     dt[{time_dim: -1}] = dt[{time_dim: -2}]
-    dt_hours = dt / np.timedelta64(1, "h")
+    dt_hours = (dt / np.timedelta64(1, "h")).astype("float64")
 
-    # Convert consecutive counts to consecutive hours below threshold.
     consec_hours = consec * dt_hours
 
-    # Persistence flag.
-    return (consec_hours >= persistence_hours).rename(f"{flux_var}_close_to_{body_temp_var}_flag")
+    base_flag = (consec_hours >= persistence_hours).rename(f"{flux_var}_close_to_{body_temp_var}_flag")
+
+    # postprocess: include all points within persistence_hours of run start, and within buffer_hours after run end
+    return _expand_runs(base_flag, dt_hours, persistence_hours=persistence_hours, buffer_hours=buffer_hours, time_dim=time_dim)
+
 
 
 # Examples:
@@ -111,5 +123,28 @@ for a in [ax2, ax4]:
     a.set_ylabel("Abs diff (K)")
 for a in (ax1, ax2, ax3, ax4):
     a.legend()
+
+# --- improved y-labels ---
+ax1.set_ylabel("DLR brightness temperature (°C)")
+ax2.set_ylabel("ULR brightness temperature (°C)")
+ax3.set_ylabel("|DLR Tb − body temperature| (K)")
+ax4.set_ylabel("|ULR Tb − body temperature| (K)")
+
+# --- compute flags for shortwave as well ---
+flag_dsr =flag_ulr
+flag_usr = flag_ulr
+
+# --- show flagged timesteps (example plots) ---
+fig2, (ax5, ax6) = plt.subplots(2, 1, sharex=True)
+
+ax5.plot(ds.time, ds.dsr, label="dsr")
+ax5.plot(ds.time, ds.dsr.where(flag_dsr), marker="o", linestyle="none", label="flagged")
+ax5.set_ylabel("Downwelling shortwave (W m$^{-2}$)")
+ax5.legend()
+
+ax6.plot(ds.time, ds.usr, label="usr")
+ax6.plot(ds.time, ds.usr.where(flag_usr), marker="o", linestyle="none", label="flagged")
+ax6.set_ylabel("Upwelling shortwave (W m$^{-2}$)")
+ax6.legend()
 
 plt.show()

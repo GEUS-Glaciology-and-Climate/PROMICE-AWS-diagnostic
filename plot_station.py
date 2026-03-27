@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 # path_l3 = '../aws-l3-dev/sites/'
 # path_tx = '../aws-l3/tx/'
-path_thredds = '../thredds-data/level_3_sites/csv/day'
+path_thredds = '../thredds-data/level_3_sites/csv/hour'
 path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 # df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
@@ -23,7 +23,7 @@ var_list = [
         # 't_u','t_l','t_i'
         # 'rh_l','rh_i','rh_l_cor',
         # 't_i','rh_i','p_i','wspd_i','wdir_i',
-        'z_boom_u', 'z_boom_l', 'z_boom_cor_u','z_boom_cor_l',
+        # 'z_boom_u', 'z_boom_l', 'z_boom_cor_u','z_boom_cor_l',
         # 'gps_geounit'
         # 't_u', 't_l','ts'
         # 'gps_lat', 'gps_lon','gps_alt'
@@ -32,22 +32,24 @@ var_list = [
         # 'z_boom_cor_u','z_stake_cor','z_pt_cor'
         # 'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
-        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo','tilt_x','tilt_y','cc','t_surf'
+        # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo',
+        'tilt_x','tilt_y','cc','t_surf'
+        # 't_i_1','t_i_2','t_i_3'
         ]
 
 
 # station_list = df_meta.stid
-station_list = ['DY2']
+station_list = ['TAS_L']
 
 # plt.close('all')
 # gps_info=[]
 for station in station_list:
     print(station)
-    df_l3 = pd.read_csv(path_thredds+'/'+station+'_day.csv')
+    df_l3 = pd.read_csv(path_thredds+'/'+station+'_hour.csv')
 
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
-    # df_l3=df_l3.loc['2025':]
+    df_l3=df_l3.loc['2025-03-27':]
     if len(var_list) == 0:
         var_list=df_l3.columns
     var_list = np.array(var_list)
@@ -94,6 +96,6 @@ for station in station_list:
                 # ax.plot(df_l3[var].index,Y_pred)
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
                 # print(station, Y_pred[-1] - Y[~np.isnan(X+Y)][0])
-        ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-01-21']))
+        # ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-03-20']))
         plt.suptitle('%s'%(station))
         fig.savefig('figures/'+station+'_'+str( k+1)+'.png',dpi=300)

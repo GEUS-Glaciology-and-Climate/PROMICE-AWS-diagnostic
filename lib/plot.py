@@ -49,10 +49,10 @@ def plot_L0(pAWS_raw, ax, var, s='+', label='in L0 tx'):
     if pAWS_raw is not None:
         for data in pAWS_raw.L0:
             if (var in data.data_vars) and (var not in skip_L0_var):
-                if not var.endswith('_i'):
+                tmp=data[var]
+                if 'tx' in label and not var.endswith('_i'):
                     tmp=data[var].shift(time=-1)
-                else:
-                    tmp=data[var]
+
                 ax.plot(tmp.time,
                         tmp,
                         marker=s,color='k', linestyle='None',

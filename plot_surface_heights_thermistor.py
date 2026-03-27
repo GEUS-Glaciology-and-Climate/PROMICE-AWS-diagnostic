@@ -31,8 +31,8 @@ def Msg(txt):
 # plt.close('all')
 
 
-for file in os.listdir(path_new):
-# for file in ['CP1_day.csv']:
+# for file in os.listdir(path_new):
+for file in ['KAN_L_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -225,73 +225,177 @@ fig.supylabel('Surface height relative to installation (m)', fontsize=14)
 fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')
 
 # %% gif thermistor depth
-if True:
-    import imageio
-    import matplotlib.pyplot as plt
-    import numpy as np
+# if True
 
-    data_type = 'sites'
-    if data_type == 'sites':
-        path_new = '../thredds-data/level_3_sites/csv/day/'
+import numpy as np
+import matplotlib.pyplot as plt
+import imageio.v2 as imageio
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+
+out_gif = f"figures/string_processing/gif/{station}.gif"
+fps = 30
+future_offset = 100
+link_color = "0.75"
+link_lw = 0.8
+drop_lw = 0.0
+drop_alpha = 0.9
+steps = 100
+
+dt_vars = [f'd_t_i_{i}' for i in range(1,11) if f'd_t_i_{i}' in df_new.columns]
+new_dt_vars = [s+'_new' for s in dt_vars]
+times = df_new.index.values
+indices = np.linspace(1, len(times)-1, steps).astype(int)
+
+frames = []
+
+fig, ax = plt.subplots(figsize=(10, 4), dpi=150)
+ax.set_title(station)
+
+# IMPORTANT: use Matplotlib date numbers (not python datetimes)
+xdt = df_new.index.to_pydatetime()
+x = mdates.date2num(xdt)
+n = len(df_new)
+
+y0 = df_new["z_surf_combined"].to_numpy()
+y1 = df_new["z_pt_cor"].to_numpy()
+y2 = (5 - df_new["z_stake"]).to_numpy()
+y3 = (3 - df_new["z_boom_cor_u"]).to_numpy()  # replace with SR50 2 if different
+
+# persistent artists (must be global / outer scope for plot_* to see them)
+ln0, = ax.plot([], [], color="black", lw=2)
+ln1, = ax.plot([], [], color="tab:orange", lw=1.6)
+ln2, = ax.plot([], [], color="tab:green", lw=1.6)
+ln3, = ax.plot([], [], color="tab:blue", lw=1.6)
+
+ln1b, = ax.plot(x,y1, color="tab:orange", lw=1.6, alpha=0.3)
+ln2b, = ax.plot(x,y2, color="tab:green", lw=1.6, alpha=0.3)
+ln3b, = ax.plot(x,y3, color="tab:blue", lw=1.6, alpha=0.3)
+
+lk1, = ax.plot([], [], color=link_color, lw=link_lw, zorder=4)
+lk2, = ax.plot([], [], color=link_color, lw=link_lw, zorder=4)
+lk3, = ax.plot([], [], color=link_color, lw=link_lw, zorder=4)
+
+def set_axes_once():
+    ax.set_xlim(x[0], x[-1])
+    finite = np.isfinite(y0)
+    if np.any(finite):
+        ax.set_ylim(np.nanmin(y0[finite]) - 10, np.nanmax(y0[finite]) + 20)
+    ax.xaxis_date()
+    ax.set_ylabel('Relative height (m)')
+    ax.set_xlabel('Year')
+
+def snap(hold=1):
+    fig.canvas.draw()
+    img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+    for _ in range(hold):
+        frames.append(img)
+
+def make_legend():
+    h0 = plt.Line2D([0], [0], color="black", lw=2)
+    h1 = plt.Line2D([0], [0], color="tab:orange", lw=1.6)
+    h2 = plt.Line2D([0], [0], color="tab:green", lw=1.6)
+    h3 = plt.Line2D([0], [0], color="tab:blue", lw=1.6)
+    ax.legend(
+        [h0, h1, h2, h3],
+        ["reconstructed surface", "PTA", "SR50 1", "SR50 2"],
+        loc="lower left",
+        frameon=True,
+    )
+
+def plot_l0(k):
+    xs = x[: k + 1]
+    ys = y0[: k + 1]
+    m = np.isfinite(ys)
+    ln0.set_data(xs[m], ys[m])
+
+def plot_l1_l2_l3(k):
+    kf = min(n, k + future_offset)
+    ln1.set_data(x[kf:], y1[kf:])
+    ln2.set_data(x[kf:], y2[kf:])
+    ln3.set_data(x[kf:],  y3[kf:])
+
+def clear_drops():
+    lk1.set_data([], [])
+    lk2.set_data([], [])
+    lk3.set_data([], [])
+
+
+def animate_drops(k):
+    y0k = y0[k]
+    if not np.isfinite(y0k):
+        clear_drops()
+        snap()
+        return
+
+    kf = min(n - 1, k + future_offset)
+
+    y1s, y2s, y3s = y1[kf], y2[kf], y3[kf]
+    x0, xs = x[k], x[kf]
+
+    # link lines from source (future) to target (current)
+    if np.isfinite(y1s):
+        lk1.set_data([xs, x0], [y1s, y0k])
     else:
-        path_new = '../thredds-data//level_2_stations/csv/day/'
+        lk1.set_data([], [])
+    if np.isfinite(y2s):
+        lk2.set_data([xs, x0], [y2s, y0k])
+    else:
+        lk2.set_data([], [])
+    if np.isfinite(y3s):
+        lk3.set_data([xs, x0], [y3s, y0k])
+    else:
+        lk3.set_data([], [])
+    snap()
+    clear_drops()
 
-    filename = 'plot_compilations/surface_height_'+data_type+'.md'
+# make_legend()
+set_axes_once()
 
-    # for file in os.listdir(path_new):
-    for file in ['UPE_U_day.csv']:
-        station = file.replace('_day.csv','')
-        if not os.path.isfile(path_new+file):
-            Msg("cannot find"+path_new+file)
-            continue
+# quick sanity frame (should show full l0 immediately)
+plot_l0(0)
+plot_l1_l2_l3(0)
+snap(hold=50)
 
-        df_new = pd.read_csv(path_new+file)
-        df_new.time = pd.to_datetime(df_new.time, utc=True)
-        df_new = df_new.set_index('time')
+# pass 1
+for k in tqdm(indices):
+    k = int(k)
+    if k < 0 or k >= n:
+        continue
+    plot_l0(k)
+    plot_l1_l2_l3(k)
+    animate_drops(k)
 
-        if df_new.index.year[0]<2000:
-            df_new=df_new.loc['2021':,:]
+# pass 2 (dt vars)
+colors = plt.cm.tab10.colors
+prev = 0
+for k in tqdm(indices):
+    k = int(k)
+    if k < 0 or k >= n:
+        continue
+    for v, c in zip(new_dt_vars, colors):
+        yy = df_new[v].to_numpy()
+        xs = np.array(x[prev:k])
+        ys = yy[prev:k]
+        m = np.isfinite(ys)
+        ax.plot(xs[m], ys[m], color=c, lw=1.4)
+    prev = k
+    snap(hold=1)
+    if k == 1:
+        snap(hold=11)
 
-        dt_vars = [f'd_t_i_{i}' for i in range(1,11) if f'd_t_i_{i}' in df_new.columns]
-        new_dt_vars = [s+'_new' for s in dt_vars]
-        for v in dt_vars:
-            df_new[v+'_new'] =  df_new.z_surf_combined-df_new[v]
+snap(hold=50)
 
-        times = df_new.index.values
-        frames = []
-        steps = 50
-        indices = np.linspace(1, len(times)-1, steps).astype(int)
+target_fps = 24
+keep_every = max(1, int(round(fps / target_fps)))
 
-        from tqdm import tqdm
-
-        fig, ax = plt.subplots(figsize=(10,4), dpi=150)
-        df_new.z_surf_combined.plot(ax=ax, color='black')
-        # df_new.z_surf_combined.cummin().plot(ax=ax, color='gray')
-        if df_new.z_surf_combined.loc[df_new.z_surf_combined.last_valid_index()] <0:
-            ax.set_ylim(df_new.z_surf_combined.min()-10, 3)
-        else:
-            ax.set_ylim(df_new.z_surf_combined.min()-10,
-                        df_new.z_surf_combined.max()+2)
-        ax.set_title(station)
-
-        prev = 0
-
-        for k in tqdm(indices):
-            colors = plt.cm.tab10.colors   # tuple of 10 nice colors
-            for v, c in zip(new_dt_vars, colors):
-                df_new[v].iloc[prev:k].plot(ax=ax, color=c)
-
-            prev = k
-
-            fig.canvas.draw()
-            img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-            img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-            frames.append(img)
-            if k ==1:
-                for i in range(11): frames.append(img)
-        for i in range(11): frames.append(img)
-        imageio.mimsave(f"figures/string_processing/gif/{station}.gif", frames, fps=10)
-        plt.close(fig)
+with imageio.get_writer(out_gif, mode="I", fps=target_fps) as w:
+    for i, fr in enumerate(frames):
+        if i % keep_every == 0:
+            w.append_data(fr)
+plt.close(fig)
 
 # %%
 import math, os

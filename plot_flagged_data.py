@@ -45,7 +45,7 @@ def Msg(txt):
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 zoom_to_good = True
 
-for station in ['TAS_Av3']:
+for station in ['ZAC_Uv3']:
 # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -63,21 +63,20 @@ for station in ['TAS_Av3']:
     Msg('# '+station)
 
     var_list = [v for v in DEFAULT_VAR_LIST if v in ds.data_vars]
-
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
     # var_list_list = [['']]
     # var_list_list = ['tilt_x','tilt_y','rot'])]
     # var_list_list = ['t_u','rh_u','wspd_u','z_boom_u','dlr','ulr','dsr','usr'])]
-    # var_list_list = [np.array([
+    var_list_list = [np.array([
     #                     'tilt_x','tilt_y',
                         # 'gps_lat','gps_lon','gps_alt'
                         # 't_u','wspd_u',
-                        # 't_u','t_l','t_i',
+                        't_u','t_l','t_i',
                         # 'p_u','z_pt','z_pt_cor',
-                        # 'p_u', #'p_l','p_i',
+                        'p_u','p_l','p_i',
                         # 't_u','t_l',"t_diff" #'t_i',
                         # 'rh_u','rh_l','rh_i',
-                        # 'wspd_u','wspd_l',"wspd_diff" #'t_i',
+                        'wspd_u','wspd_l',"wspd_diff" #'t_i',
                         # 'p_u','p_l',"p_diff"
                         # 'rh_u_wrt_ice_or_water', 'rh_l_wrt_ice_or_water',
                         # "rh_wrt_ice_or_water_diff",
@@ -85,8 +84,8 @@ for station in ['TAS_Av3']:
                         # 'wspd_u','wspd_l',
                         # 'wdir_u','wdir_l',
                         # 'fan_dc_l','fan_dc_u',
-                        # 'z_boom_l', 'z_boom_u', #'z_stake',
-                        # 'z_boom_cor_l', 'z_boom_cor_u', #'z_stake_cor',
+                        'z_boom_l', 'z_boom_u', #'z_stake',
+                        'z_boom_cor_l', 'z_boom_cor_u', #'z_stake_cor',
                         # 'z_pt','z_pt_cor',
                         # 'gps_lat', 'gps_lon','gps_alt'
                         # 'wdir_u','wdir_l','wdir_i',
@@ -96,7 +95,7 @@ for station in ['TAS_Av3']:
                         # 'tilt_x','tilt_y','rot',
                         # 'dlr','ulr','t_rad','cc',
                         # ]), np.array( ['t_i_'+str(i+1) for i in range(11)
-                        # ])]
+                        ])]
                       # ,'t_u','t_l','t_i', 'rh_u','rh_i','rh_l'])]
 
     for i, var_list in enumerate(var_list_list):

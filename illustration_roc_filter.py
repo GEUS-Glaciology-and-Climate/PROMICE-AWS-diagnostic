@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on %(date)s
-@author: bav@geus.dk
-"""
-
-# -*- coding: utf-8 -*-
-"""
 @author: bav@geus.dk
 
 tip list:
@@ -18,7 +12,6 @@ import pandas as pd
 import numpy as np
 import os, logging, matplotlib
 import lib.tocgen as tocgen
-matplotlib.use('Agg')
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -32,14 +25,9 @@ logger = logging.getLogger(__name__)
 matplotlib.set_loglevel("warning")
 logging.getLogger('numba').setLevel(logging.WARNING)
 import pypromice.resources
-from pypromice.core.qc.value_clipping import clip_values
-from pypromice.resources import load_variables
 from pypromice.core.qc.persistence import persistence_qc
-from pypromice.core.qc.github_data_issues import adjustTime, adjustData, flagNAN
-from lib.utilities import (remove_old_plots, load_flags_and_adjustments, load_L1,
-                 clean_gps, smooth_pose, compute_cloud_cover,
-                 solar_geometry, filter_shortwave, correct_shortwave, compute_albedo,
-                 process_precip)
+from pypromice.core.qc.github_data_issues import adjustTime
+from lib.utilities import (remove_old_plots, load_flags_and_adjustments, load_L1)
 from pypromice.core.qc.rate_of_change_filter import flag_high_rate_of_change, rate_of_change_fwd_bwd_and_thresholds
 
 
@@ -59,42 +47,109 @@ plt.close('all')
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
+
+station = 'NAE'
+df_flags = load_flags_and_adjustments(path_to_qc_files, station)
+ds, ds_save, pAWS_tx, pAWS_raw = load_L1(path_to_l0, station)
+
+# The following steps are from L1toL2
+ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
+ds1 = ds.copy()
+ds2 = ds1.copy()
+
+ds22 = persistence_qc(ds2)
+
+#% Flagging, adjusting, filtering
+var = "t_u"
+ds22['t_u'] = ds22.t_u.where(ds22.t_u<800)
+ds22["t_u"] = ds22["t_u"].where(ds22["t_u_qc"]=="OK")
 # %%
-# for station in ['TAS_Av3']: #['KAN_Lv3','QAS_Lv3','QAS_Mv3','SCO_Lv3','SCO_Uv3']:
-for station in df_metadata.station_id.values[62:]:
-    # %%
-    station = 'ZAC_A'
-    station = station.replace('.csv','')
-    remove_old_plots(figure_folder, station)
-    df_flags = load_flags_and_adjustments(path_to_qc_files, station)
-    ds, ds_save, pAWS_tx, pAWS_raw = load_L1(path_to_l0, station)
+roc_ds, fwd_full, bwd_full = rate_of_change_fwd_bwd_and_thresholds(ds22[var].dropna("time"), var)
 
+_, _, flag_combined, flag_final = flag_high_rate_of_change(ds22, var, window="7D")
 
-    # The following steps are from L1toL2
-    ds  = adjustTime(ds, adj_dir=path_to_qc_files+'adjustments')
-    # ds1 = flagNAN(ds,  flag_dir=path_to_qc_files+'flags')
-    # ds2 = adjustData(ds1, adj_dir=path_to_qc_files+'adjustments')
-    ds1 = ds.copy()
-    ds2 = ds1.copy()
+tmp = ds22.copy(deep=True)
+tmp[var].loc[{"time": flag_final.time[flag_final]}] = np.nan  # apply first pass to temporary object
 
-    ds22 = persistence_qc(ds2)
+if flag_final.any():
+    _, _, flag_combined2, flag2 = flag_high_rate_of_change(tmp, var, window="7D")
+    flag_combined2 = flag_combined2.reindex_like(flag_combined, fill_value=False)
+    flag2 = flag2.reindex_like(flag_final, fill_value=False)
 
-    ds23 = ds22.copy(deep=True)
-    #% Flagging, adjusting, filtering
-    for var in ["rh_l"]:
-    # for var in ["t_u","t_l","t_i",
-    #             "rh_u","rh_l","rh_i",
-    #             "p_u","p_l","p_i",
-    #             "p_u","p_l","p_i",
-    #                         ]+[f't_i_{k}' for k in range(1,12)]:
-        if var not in ds22.data_vars: continue
-        if ds22[var].isnull().all(): continue
+    flag_combined = (flag_combined | flag_combined2)
+    flag_final = (flag_final | flag2)
+else:
+    flag2 = None
+flag_final = flag_final.reindex_like(ds.time, fill_value=False)
+
+ds23 = ds22.copy(deep=True)
+ds23[var].loc[{"time": flag_final.time[flag_final]}] = np.nan  # apply first pass
+flagged_t_u = ds22[var].to_series().loc[flag_final.time[flag_final]]
+
+import matplotlib.pyplot as plt
+factor = 2.2
+#%%
+fig, ax = plt.subplots(4, 1, figsize=(10, 6), sharex=True, constrained_layout=True)
+
+# --- temperature ---
+ds22.t_u.plot(ax=ax[0], c='tab:blue', lw=1.5)
+ax[0].set_ylabel('Air temperature\n(°C)')
+ax[0].set_xlabel('')
+ax[0].set_title('(a)', loc='left')
+ax[0].grid(ls='--', alpha=0.4)
+
+# --- rate of change ---
+roc_ds.s_fwd.plot(ax=ax[1], c='k', lw=1, label='ROC forward')
+roc_ds.roc_thr_fwd.plot(ax=ax[1], c='tab:orange', lw=3,
+                        label=f'threshold: {factor}x weekly 95th percentile')
+
+ax[1].set_ylabel('ROC forward\n (°C / hr)')
+ax[1].grid(ls='--', alpha=0.4)
+ax[1].legend(loc="lower left", ncols=2)
+ax[1].set_title('(b)', loc='left')
+ax[1].set_yscale('log')
+
+roc_ds.s_bwd.plot(ax=ax[2], c='k', lw=1, label='ROC backward')
+roc_ds.roc_thr_bwd.plot(ax=ax[2], c='tab:orange', lw=3,
+                        label=f'threshold: {factor}x weekly 95th percentile')
+
+ax[2].set_ylabel('ROC backward\n (°C / hr)')
+ax[2].grid(ls='--', alpha=0.4)
+ax[2].legend(loc="lower left", ncols=2)
+ax[2].set_title('(c)', loc='left')
+ax[2].set_yscale('log')
+
+ds23.t_u.plot(ax=ax[3], c='tab:green', lw=1.5, label='cleaned data')
+flagged_t_u.plot(ax=ax[3], c='tab:red', marker='o',ls='None',label='flagged data')
+ax[3].legend(loc="lower center", ncols=2)
+ax[3].set_ylabel('Air temperature\n(°C)')
+ax[3].set_xlabel('Time')
+ax[3].set_ylim(-80,5)
+ax[3].grid(ls='--', alpha=0.4)
+ax[3].set_title('(d)', loc='left')
+fig.suptitle('NAE')
+import matplotlib.dates as mdates
+
+date = pd.Timestamp("2024-06-13")
+
+# vertical dashed line across ALL panels
+for a in ax:
+    a.axvline(date, color='k', ls='--', lw=3,c='gray')
+
+# annotations above top panel (in figure coords)
+x = mdates.date2num(date)
+x_fig = ax[0].transData.transform((x, 0))[0]
+x_fig = fig.transFigure.inverted().transform((x_fig, 0))[0]
+
+fig.text(0.48, 0.94, "10 minute data ⟵", ha='right', va='top', c='gray',fontweight='bold')
+fig.text(0.505, 0.94, "⟶ hourly transmissions", ha='left', va='top', c='gray',fontweight='bold')
+
+ax[3].set_xlim("2024-01-01", "2025-01-01")
+fig.savefig('roc_illustration.png',dpi=300)
+
 # %%
     # %
-        roc_ds, _, _ = rate_of_change_fwd_bwd_and_thresholds(ds22[var].dropna("time"), var)
 
-        _, _, flag_combined, flag_final = flag_high_rate_of_change(ds22, var, window="7D")
-        ds23[var].loc[{"time": flag_final.time[flag_final]}] = np.nan  # apply first pass
 
         if flag_final.any():
             roc_ds_2, _, _ = rate_of_change_fwd_bwd_and_thresholds(ds23[var].dropna("time"), var)
