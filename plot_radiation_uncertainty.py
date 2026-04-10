@@ -44,10 +44,6 @@ os.makedirs(figure_folder, exist_ok=True)
 
 df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
-f = open(filename, "w")
-def Msg(txt):
-    f = open(filename, "a"); print(txt); f.write(txt + "\n")
-
 # plt.close('all')
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
@@ -177,6 +173,5 @@ for station in ['TAS_L']:
         title = station+'_%i/%i'%(i+1,len(var_list_list))
         ax_list[0].legend(loc='lower left', title = title, bbox_to_anchor=(0,1.1), ncol=3)
         fig.savefig('%s/%s_%i.png'%(figure_folder, station,i), dpi=120,bbox_inches='tight')
-        Msg('![](../%s/%s_%i.png)'%(figure_folder, station,i))
-    Msg(' ')
+
 # tocgen.processFile(filename, filename[:-3]+"_toc.md")
