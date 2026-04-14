@@ -94,17 +94,16 @@ for station in ['TAS_L']:
             ds_final[var] = geo[var].copy()
         ds_list[perturbation] = ds_final.copy()
 
-    # %% plotting
+    # % plotting
     df_L1 = ds.to_dataframe().copy()
-    Msg('# '+station)
+    print('# '+station)
     var_list = [v for v in DEFAULT_VAR_LIST if v in ds.data_vars]
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
 
     var_list_list = [np.array([
-                        'dsr','dsr_cor','usr','albedo',
+                        'dsr_cor','albedo',
                         'tilt_x','tilt_y','rot',
-                        'phi_sensor_rad', 'theta_sensor_rad','Declination_rad',
-                        'HourAngle_rad','ZenithAngle_rad','AngleDif_deg',
+                        'phi_sensor_rad', 'theta_sensor_rad','AngleDif_deg',
                         # 'dlr','ulr','cc',
                         ])
                         ] #])]
@@ -121,16 +120,10 @@ for station in ['TAS_L']:
         if len(var_list)==1: ax_list = [ax_list]
 
         for var, ax in zip(var_list, ax_list):
-            # plotting L0 TX
-            # ax = plot_L0(pAWS_raw, ax, var, s='x', label='in L0 raw')
-
-            # plotting L0 RAW
-            # ax= plot_L0(pAWS_tx, ax, var, s='+', label='in L0 tx')
 
             # final data
             if var in ["albedo", "dsr_cor", var_perturb, 'phi_sensor_rad',
-                       'theta_sensor_rad','Declination_rad',
-                       'HourAngle_rad','ZenithAngle_rad','AngleDif_deg',]:
+                       'theta_sensor_rad','AngleDif_deg',]:
                 for perturbation in list(ds_list.keys()) + [0]:
                     ds_final = ds_list[perturbation].copy()
                     if var in ds_final.data_vars:
@@ -141,16 +134,23 @@ for station in ['TAS_L']:
                         ax.plot(ds_final.time,
                                 ds_final[var].values,
                                 marker='.',color=c, #linestyle='None',
-                                label='{var_perturb} {perturbation}')
+                                label='__nolegend_')
+                        
+                ax.plot(np.nan,np.nan,
+                        marker='.',color='lightgray', #linestyle='None',
+                        label=f'{var_perturb} +/- perturbation')
+                ax.plot(np.nan,np.nan,
+                        marker='.',color='tab:blue', #linestyle='None',
+                        label=f'{var_perturb} no perturbation')
             else:
                 ax.plot(ds_final.time,
                         ds_final[var].values,
                         marker='.',color='tab:blue', #linestyle='None',
-                        label='No perturbation')
+                        label='__nolegend_')
 
 
         for var, ax in zip(var_list, ax_list):
-            ax.set_xlim(pd.to_datetime(['2025-05-01','2026-04-16']))
+            ax.set_xlim(pd.to_datetime(['2025-09-07','2025-09-17']))
             if zoom_to_good:
                 ax.set_ylim(ds_final[var].min(), ds_final[var].max())
             else:

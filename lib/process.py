@@ -179,7 +179,7 @@ def solar_geometry(ds):
     hour   = ds['time'].dt.hour
     minute = ds['time'].dt.minute
 
-    phi_sensor_rad, theta_sensor_rad = station_pose.calculate_spherical_tilt(ds['tilt_x'], ds['tilt_y'])
+    phi_sensor_rad, theta_sensor_rad = station_pose.calculate_spherical_tilt(ds['tilt_x'], ds['tilt_y'], ds['rot'])
     Declination_rad = station_pose.calculate_declination(doy, hour, minute)
     HourAngle_rad   = station_pose.calculate_hour_angle(hour, minute, lon)
     ZenithAngle_rad, ZenithAngle_deg = station_pose.calculate_zenith(lat, Declination_rad, HourAngle_rad)

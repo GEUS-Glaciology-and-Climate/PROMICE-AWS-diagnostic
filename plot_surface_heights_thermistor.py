@@ -179,13 +179,15 @@ for i, station_list in enumerate(station_list_list[:9]):  # Limit to the first 9
     ax_list[i].set_ylim(-100, 20)
     ax_list[i].set_xlim(pd.to_datetime('1995'), pd.to_datetime('2025-07-01'))
     ax_list[i].tick_params(axis='both', labelsize=12)
-
 # Combine the 10th panel across the 11th and 12th positions
 gs = ax_list[9].get_gridspec()
 ax_list[9].remove()  # Remove the 10th panel from its current spot
 ax_large = fig.add_subplot(gs[3, :])  # Create a large subplot spanning 11th and 12th positions
 pos = ax_large.get_position()
 ax_large.set_position([pos.x0, pos.y0, pos.width, pos.height * 0.85])
+# %% 
+fig =  plt.figure() 
+ax_large = plt.gca()
 for station in ['DY2', 'NAU', 'CEN', 'TUN', 'NAE', 'NSE', 'SDL', 'SDM']:
     if station in ['KAN_B', 'NUK_K']:
         continue
@@ -195,6 +197,7 @@ for station in ['DY2', 'NAU', 'CEN', 'TUN', 'NAE', 'NSE', 'SDL', 'SDM']:
     df_new = pd.read_csv(path_new + '/' + station + '_day.csv')
     df_new.time = pd.to_datetime(df_new.time, utc=True)
     df_new = df_new.set_index('time')
+    df_new=df_new.loc['2021':,]
 
     var_list = [v for v in ['z_surf_combined'] if v in df_new.columns]
     for var in var_list:
@@ -217,13 +220,67 @@ ax_large.text(
             transform=ax_large.transAxes,
             bbox=dict(facecolor='white', alpha=0.85, edgecolor='none')
         )
-ax_large.set_xlim(pd.to_datetime('1995'), pd.to_datetime('2025-07-01'))
+# ax_large.set_xlim(pd.to_datetime('1995'), pd.to_datetime('2025-07-01'))
 
 fig.supylabel('Surface height relative to installation (m)', fontsize=14)
 
 # Save the figure with tight layout to remove excess white space
 fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')
 
+# %% Accumulation stations only 
+import numpy as np
+from scipy.stats import linregress
+
+fig = plt.figure()
+ax_large = plt.gca()
+
+for station in ['DY2', 'NAU', 'CEN', 'TUN', 'NAE', 'NSE', 'SDL', 'SDM']:
+    if station in ['KAN_B', 'NUK_K']:
+        continue
+    if not os.path.isfile(path_new + '/' + station + '_day.csv'):
+        continue
+
+    print('## ' + station)
+
+    df_new = pd.read_csv(path_new + '/' + station + '_day.csv')
+    df_new.time = pd.to_datetime(df_new.time, utc=True)
+    df_new = df_new.set_index('time')
+    df_new = df_new.loc['2023':,]
+
+    var = 'z_surf_combined'
+    if var in df_new.columns and not df_new[var].isnull().all():
+        y = df_new[var].dropna()
+        x = (y.index - y.index[0]).total_seconds() / (365.25 * 24 * 3600)
+
+        slope, intercept, r_value, p_value, std_err = linregress(x, y.values)
+
+        print(f"{station}: trend = {slope:.3f} m/yr")
+
+        ax_large.plot(
+            y.index, y.values,
+            marker='.', markeredgecolor='None', linestyle='None',
+            alpha=0.7, label=f"{station} ({slope:.2f} m/yr)"
+        )
+
+        ax_large.plot(
+            y.index,
+            intercept + slope * x,
+            linestyle='-',
+            alpha=0.8
+        )
+
+ax_large.legend(loc='upper left', ncols=3, bbox_to_anchor=(0, 0.85), markerscale=2, fontsize=12)
+
+for h in ax_large.get_legend().legendHandles:
+    h.set_alpha(1)
+
+ax_large.grid(True)
+ax_large.tick_params(axis='x', rotation=45)
+ax_large.tick_params(axis='both', labelsize=12)
+
+fig.supylabel('Surface height relative to installation (m)', fontsize=14)
+
+fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')
 # %% gif thermistor depth
 # if True
 
