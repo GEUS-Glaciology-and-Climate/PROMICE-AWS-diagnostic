@@ -110,55 +110,15 @@ if __name__ == '__main__':
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
         # %%
-    import matplotlib.pyplot as plt
-    # df_day_org = pd.read_csv('data/L3_test/sites/LYN_L/LYN_L_day_org.csv')
-    # df_day_org.time = pd.to_datetime(df_day_org.time)
-    # df_day_org = df_day_org.set_index('time')
+    # import matplotlib.pyplot as plt
+    
+    # df_hour = pd.read_csv(f'data/L3_test/sites/{site}/{site}_hour.csv')
+    # df_hour.time = pd.to_datetime(df_hour.time)
+    # df_hour = df_hour.set_index('time')
+    # df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/hour/{site}_hour.csv')
+    # df_org.time = pd.to_datetime(df_org.time)
+    # df_org = df_org.set_index('time')
+    # var = 'p_u'
     # plt.figure()
-    # df_day_org.loc['2026':,'z_surf_combined'].plot(marker='o')
-    # df_day_org.loc['2026':,'t_u'].plot(marker='o')
-
-    # df_day = pd.read_csv(f'data/L3_test/sites/{site}/{site}_hour.csv')
-    # df_day.time = pd.to_datetime(df_day.time)
-    # df_day = df_day.set_index('time')
-    # plt.figure()
-    # df_day.loc['2025-03-27':,'tilt_x'].plot(marker='o')
-    # df_day.loc['2025-03-27':,'tilt_y'].plot(marker='o')
-    # plt.figure()
-    # df_day.loc['2025-03-27':,'cc'].plot(marker='o')
-    # plt.figure()
-    # df_day.loc['2025-03-27':,'t_surf'].plot(marker='o')
-
-    df_hour = pd.read_csv(f'data/L3_test/sites/{site}/{site}_hour.csv')
-    df_hour.time = pd.to_datetime(df_hour.time)
-    df_hour = df_hour.set_index('time')
-    plt.figure()
-    df_hour.loc['2025':,'p_u'].plot(marker='o')
-        # df_hour.loc['2026':,'z_boom_u'].plot(marker='o')
-        # df_hour.loc['2026':,'t_u'].plot(marker='o')
-        # df_day = pd.read_csv(f'data/L3_test/sites/{site}/{site}_day.csv')
-        # df_day.time = pd.to_datetime(df_day.time)
-        # df_day = df_day.set_index('time')
-        # df_day.loc['2026':,'z_surf_combined'].plot(marker='^')
-        # df_day.loc['2026':,'z_boom_u'].plot(marker='^')
-        # df_day.loc['2026':,'t_u'].plot(marker='^')
-        
-        # # %%
-        # import matplotlib.pyplot as plt
-        # df_day_org = pd.read_csv('data/L3_test/sites/LYN_L/LYN_L_day_org.csv')
-        # df_day_org.time = pd.to_datetime(df_day_org.time)
-        # df_day_org = df_day_org.set_index('time')
-        # df_day = pd.read_csv('data/L3_test/sites/LYN_L/LYN_L_day.csv')
-        # df_day.time = pd.to_datetime(df_day.time)
-        # df_day = df_day.set_index('time')
-
-        # plt.figure()
-        # df_day_org.loc['2026':,'z_surf_combined'].plot(marker='o')
-        # df_day.loc['2026':,'z_surf_combined'].plot(marker='o')
-
-        # df_hour = pd.read_csv('data/L3_test/sites/LYN_L/LYN_L_hour.csv')
-        # df_hour.time = pd.to_datetime(df_hour.time)
-        # df_hour = df_hour.set_index('time')
-        # plt.figure()
-        # df_hour.loc['2026':,'z_surf_combined'].plot(marker='o')
-        # df_hour.loc['2026':,'t_u'].plot(marker='o')
+    # df_org.loc[:,var].plot(marker='^')
+    # df_hour.loc[:,var].plot(marker='o')
