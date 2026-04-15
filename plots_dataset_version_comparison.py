@@ -22,7 +22,7 @@ from lib import tocgen
 new_version = 'thredds'
 old_version = 'V35'
 
-for res in ['hour']:
+for res in ['hour', 'day']:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
@@ -72,8 +72,8 @@ for res in ['hour']:
     # plt.close('all')
 
     #%%
-    # for station in np.unique(df_meta.site_id):
-    for station in ['CEN']:
+    for station in np.unique(df_meta.site_id):
+    # for station in ['CEN']:
         plt.close('all')
         Msg('## '+station)
 
@@ -114,7 +114,7 @@ for res in ['hour']:
             ))
         Msg(' ')
         var_list = df_new.columns.values
-        var_list = ['t_u', 't_l', 't_i']
+        # var_list = ['t_u', 't_l', 't_i']
         var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
 
         if res == 'month':
@@ -163,7 +163,6 @@ for res in ['hour']:
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
             # plt.close(fig)
             Msg(f'![{station}](../{figure_folder}/{station}_{k}.png)')
-            break
         Msg(' ')
     tocgen.processFile(filename, filename[:-3]+"_toc.md")
     f.close()
