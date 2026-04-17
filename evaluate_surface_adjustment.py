@@ -28,7 +28,7 @@ import matplotlib
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler()
@@ -45,7 +45,7 @@ path_l2 = 'data/L2_test/'
 
 # plt.close('all')
 
-for station in ['NUK_Uv3']:
+for station in ['ZAC_Uv3']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -70,7 +70,7 @@ for station in ['NUK_Uv3']:
     fig, ax = plt.subplots(3,1, sharex=True, figsize=(10,10))
     plt.subplots_adjust(right=0.8)
     var_list = [v for v in ['z_boom_u','z_boom_l','z_stake','z_pt'] if v in l3.columns]
-    l3[var_list].plot(ax=ax[0],marker='.',color='lightgray', ls='None', legend='__nolabel__')
+    l3[var_list].plot(ax=ax[0],marker='.', ls='None', legend='__nolabel__')
     var_list_cor = [(v.replace('_u','_cor_u')
                      .replace('_l','_cor_l')
                      .replace('_stake','_stake_cor')
@@ -93,8 +93,8 @@ for station in ['NUK_Uv3']:
     l3[var_list].plot(ax=ax[2],marker='.',alpha=0.6)
     ax[2].set_ylabel('Height (m)')
     ax[2].grid()
-    print("saving")
-    fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
+    # print("saving")
+    # fig.savefig('figures/surface_height_assessment/'+station+'.png', dpi=300)
 # %%
 calc_yearly_abaltion = False
 if calc_yearly_abaltion:

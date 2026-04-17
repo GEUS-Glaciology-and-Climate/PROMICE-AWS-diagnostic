@@ -30,7 +30,6 @@ logging.getLogger("pypromice.pipeline.get_l2").setLevel(logging.INFO)
 logging.getLogger('numba').setLevel(logging.WARNING)
 
 config_folder = '../aws-l0/metadata/station_configurations/'
-# %%
 
 def process_l2(station):
 
@@ -88,29 +87,29 @@ def get_join_l3(site):
 
 if __name__ == '__main__':
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    # for station in np.unique(np.array(df_metadata.station_id)):
-    for station in ['CEN1', 'CEN2']:
+    for station in np.unique(np.array(df_metadata.station_id)):
+    # for station in ['FRE']:
         print("\n ======== test get_l2 ========= \n")
         pAWS_tx, pAWS_raw = process_l2(station)
 
         print("\n ======== test join_l2 ========= \n")
-        l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_hour.nc',
-                            'data/L2_test/tx/'+station+'/'+station+'_hour.nc',
+        l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
+                            'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
                             'data/L2_test/level_2/',None,None)
 
         print("\n ======== test l2tol3 ========= \n")
         l3 = get_l2tol3(config_folder,
-                        'data/L2_test/level_2/'+station+'/'+station+'_hour.nc',
+                        'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
                         'data/L3_test/stations/', None, None, None)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    # for site in df_metadata.site_id:
-    for site in ['CEN']:
+    for site in df_metadata.site_id:
+    # for site in ['FRE']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
         # %%
-    # import matplotlib.pyplot as plt
+    import matplotlib.pyplot as plt
     
     # df_hour = pd.read_csv(f'data/L3_test/sites/{site}/{site}_hour.csv')
     # df_hour.time = pd.to_datetime(df_hour.time)
@@ -122,3 +121,21 @@ if __name__ == '__main__':
     # plt.figure()
     # df_org.loc[:,var].plot(marker='^')
     # df_hour.loc[:,var].plot(marker='o')
+
+    # data_version = 'L3_test/sites'
+    # data_version = 'L3_test/sites/'
+    # res = 'hour'
+    # site = 'FRE'
+    # var = 'z_surf_combined'
+
+    # df_mixed = pd.read_csv(f'data/{data_version}/{site}/{site}_{res}.csv')
+    # df_mixed.time = pd.to_datetime(df_mixed.time)
+    # df_mixed = df_mixed.set_index('time')
+    # # df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/day/{site}_day.csv')
+    # # df_org.time = pd.to_datetime(df_org.time)
+    # # df_org = df_org.set_index('time')
+    # plt.figure()
+    # # df_org.loc[:,var].plot(marker='^')
+    # df_mixed.loc['2025':,var].plot(marker='o')
+    # plt.title(data_version + ' ' + site)
+    # plt.ylabel(var)

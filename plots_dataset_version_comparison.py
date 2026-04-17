@@ -16,13 +16,13 @@ import pandas as pd
 import os
 import numpy as np
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 from lib import tocgen
 
-new_version = 'thredds'
-old_version = 'V35'
+new_version = 'test'
+old_version = 'thredds'
 
-for res in ['hour', 'day']:
+for res in ['day', 'hour', ]:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
@@ -40,7 +40,7 @@ for res in ['hour', 'day']:
         path_new = f'../aws-l3-dev/csv/{res}/'
 
     elif 'test' in new_version:
-        path_new = './L3_test/sites/'
+        path_new = './data/L3_test/sites/'
 
     elif 'V' in new_version:
         path_new = f'C:/Users/bav/Downloads/{new_version}/{res}/'
@@ -73,7 +73,7 @@ for res in ['hour', 'day']:
 
     #%%
     for station in np.unique(df_meta.site_id):
-    # for station in ['CEN']:
+    # for station in ['FRE']:
         plt.close('all')
         Msg('## '+station)
 
@@ -161,7 +161,7 @@ for res in ['hour', 'day']:
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
-            # plt.close(fig)
+            plt.close(fig)
             Msg(f'![{station}](../{figure_folder}/{station}_{k}.png)')
         Msg(' ')
     tocgen.processFile(filename, filename[:-3]+"_toc.md")
