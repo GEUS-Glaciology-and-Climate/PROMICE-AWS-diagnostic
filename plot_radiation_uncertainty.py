@@ -51,7 +51,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = True
 
-for station in ['TAS_L']:
+for station in ['DY2']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -77,7 +77,7 @@ for station in ['TAS_L']:
     import xarray as xr
 
     ds_list = {}
-    var_perturb = 'tilt_x'
+    var_perturb = 'tilt_y'
     for perturbation in range(-5, 6):
         print(f"Perturbating {var_perturb} by {perturbation}")
         ds_final = smooth_pose(ds_post_clip.copy())
@@ -94,17 +94,17 @@ for station in ['TAS_L']:
             ds_final[var] = geo[var].copy()
         ds_list[perturbation] = ds_final.copy()
 
-    # % plotting
+    # %% plotting
     df_L1 = ds.to_dataframe().copy()
     print('# '+station)
     var_list = [v for v in DEFAULT_VAR_LIST if v in ds.data_vars]
     var_list_list = [np.array(var_list[i:(i+6)]) for i in range(0,len(var_list),6)]
 
     var_list_list = [np.array([
-                        'dsr_cor','albedo',
+                        'dsr_cor','usr','albedo',
                         'tilt_x','tilt_y','rot',
-                        'phi_sensor_rad', 'theta_sensor_rad','AngleDif_deg',
-                        # 'dlr','ulr','cc',
+                        'phi_sensor_rad', 'theta_sensor_rad',
+                        'cc',
                         ])
                         ] #])]
 
@@ -134,23 +134,23 @@ for station in ['TAS_L']:
                         ax.plot(ds_final.time,
                                 ds_final[var].values,
                                 marker='.',color=c, #linestyle='None',
-                                label='__nolegend_')
-                        
-                ax.plot(np.nan,np.nan,
+                                label='__nolegend__')
+                ax.plot(np.nan, np.nan,
                         marker='.',color='lightgray', #linestyle='None',
                         label=f'{var_perturb} +/- perturbation')
-                ax.plot(np.nan,np.nan,
+                ax.plot(np.nan, np.nan,
                         marker='.',color='tab:blue', #linestyle='None',
                         label=f'{var_perturb} no perturbation')
             else:
                 ax.plot(ds_final.time,
                         ds_final[var].values,
                         marker='.',color='tab:blue', #linestyle='None',
-                        label='__nolegend_')
+                        label='__nolegend__')
 
 
         for var, ax in zip(var_list, ax_list):
-            ax.set_xlim(pd.to_datetime(['2025-09-07','2025-09-17']))
+            ax.set_xlim(pd.to_datetime(['2024-07-01','2024-07-01']))
+            # ax.set_xlim(pd.to_datetime(['2025-09-07','2025-09-16']))
             if zoom_to_good:
                 ax.set_ylim(ds_final[var].min(), ds_final[var].max())
             else:

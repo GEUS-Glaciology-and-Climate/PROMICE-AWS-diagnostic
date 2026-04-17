@@ -50,8 +50,8 @@ def plot_L0(pAWS_raw, ax, var, s='+', label='in L0 tx'):
         for data in pAWS_raw.L0:
             if (var in data.data_vars) and (var not in skip_L0_var):
                 tmp=data[var]
-                if 'tx' in label and not var.endswith('_i'):
-                    tmp=data[var].shift(time=-1)
+                if 'tx' in label and not var.endswith('_i') and var not in ["batt_v"]:
+                    tmp['time'] = tmp.time - np.timedelta64(1, 'h')
 
                 ax.plot(tmp.time,
                         tmp,
