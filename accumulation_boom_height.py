@@ -24,10 +24,11 @@ from scipy.stats import linregress
 
 import pandas as pd
 
-# df_sb = pd.read_excel("C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Data/Snowboards/GC-NET_Snowboard_data_bav.xlsx", sheet_name=0, engine="openpyxl")
+df_sb = pd.read_excel("C:/Users/bav/OneDrive - Geological survey of Denmark and Greenland/Data/Snowboards/GC-NET_Snowboard_data_bav.xlsx", sheet_name=0, engine="openpyxl")
 df_sb['date of placement [yyy-mm-dd]'] = pd.to_datetime(df_sb['date of placement [yyy-mm-dd]'], utc=True).dt.floor('D')
 df_sb['date of measurement [yyy-mm-dd]'] = pd.to_datetime(df_sb['date of measurement [yyy-mm-dd]'], utc=True).dt.floor('D')
 df_sb['SB depth [m]'] = pd.to_numeric(df_sb['SB depth [m]'], errors='coerce')
+
 # for station in ['DY2', 'NAU', 'CEN', 'TUN', 'NAE', 'NSE', 'SDL', 'SDM']:
 factors = {
     'DY2': 1.1,
@@ -35,6 +36,7 @@ factors = {
     'SDM': 1.3,
     'NSE': 1.2,
     'SDL':1.2,
+    'KAN_U':1.2,
     
     
 }
@@ -53,7 +55,7 @@ def get_period_change(df, x1, x2, col):
     return y1, y2, dh
 
 
-for station in ['SDL']:
+for station in ['KAN_U']:
     df_sb_site = df_sb.loc[df_sb.Site == station].copy()
 
     fig = plt.figure()
@@ -149,3 +151,105 @@ for station in ['SDL']:
     ax.tick_params(axis='both', labelsize=12)
     ax.set_ylabel('Surface height relative to installation (m)', fontsize=14)
 # fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')
+
+# %% 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import linregress
+
+date_extrapolate='2026-05-01'
+col='z_boom_cor_l'
+print('site\tlast_available_time\tlast_available_boom_height\textrapolation_time\textrapolated_boom_height')
+
+for station in ['KAN_U','DY2','CP1','SDL','NSE','SDM']:
+    df_new = pd.read_csv(path_new + '/' + station + '_day.csv')
+    df_new.time = pd.to_datetime(df_new.time, utc=True)
+    df_new = df_new.set_index('time').loc['2025-09-01':,]
+
+    s = df_new[col].copy().dropna()
+    if len(s) == 0:
+        s = df_new.z_boom_cor_l.fillna(df_new.z_boom_cor_u -1.2).copy().dropna()
+        
+    s.index = pd.to_datetime(s.index, utc=True)
+    
+    end_date = s.index.max()
+    start_date = end_date - pd.Timedelta(days=150)
+    
+    s_last = s.loc[start_date:end_date]
+    
+    x = (s_last.index - s_last.index[0]).total_seconds() / (24 * 3600)
+    slope, intercept, *_ = linregress(x, s_last.values)
+    
+    date_extrapolate = pd.to_datetime(date_extrapolate, utc=True)
+    future_index = pd.date_range(s_last.index[0], date_extrapolate, freq='D', tz='UTC')
+    
+    x_future = (future_index - s_last.index[0]).total_seconds() / (24 * 3600)
+    y_future = intercept + slope * x_future
+    
+    plt.figure(figsize=(10, 5))
+    plt.plot(df_new.index, df_new.z_boom_cor_l, marker='.', linestyle='None', 
+             markersize=10, color='k', label='z_boom_cor_l')
+    
+    plt.plot(df_new.index, df_new.z_boom_cor_u-1.2, marker='.', linestyle='None', 
+             markersize=10, color='gray', label='z_boom_cor_u - offset', zorder=0)
+    plt.plot(future_index, y_future, linestyle='-', c='tab:orange',label='linear extrapolation')
+    plt.plot(future_index[-1], y_future[-1], linestyle='None',marker='o', 
+             markersize=10, c='tab:orange',
+             label=f'extrapolated height')
+    
+        # last observation
+    x_last = s.index[-1]
+    y_last = s.iloc[-1]
+    
+    plt.scatter(x_last, y_last, c='k', zorder=3)
+    
+    plt.annotate(
+        f"last obs\n{x_last.date()}\n {y_last:.2f} m",
+        xy=(x_last, y_last),
+        ha='center',   # horizontal center
+        xytext=(-50, 100),
+        textcoords='offset points',
+        bbox=dict(
+            boxstyle='round',
+            facecolor='white',
+            alpha=0.6,
+            edgecolor='lightgray'
+        ),
+        arrowprops=dict(arrowstyle='->'),
+    )
+    
+    # extrapolated point
+    x_ext = future_index[-1]
+    y_ext = y_future[-1]
+    
+    plt.scatter(x_ext, y_ext, c='tab:orange', zorder=3)
+    
+    plt.annotate(
+        f"extrapolated\n{x_ext.date()}\n {y_ext:.2f} m",
+        xy=(x_ext, y_ext),
+        xytext=(-10, 50),
+        ha='center',   # horizontal center
+        textcoords='offset points',
+        arrowprops=dict(arrowstyle='->'),
+        bbox=dict(
+            boxstyle='round',
+            facecolor='white',
+            alpha=0.6,
+            edgecolor='lightgray'
+        )
+    )
+    
+
+    # plt.xlim(s_last.index[0], date_extrapolate)
+    plt.ylabel(col)
+    plt.title(f'{col} extrapolation at {station}')
+    plt.legend()
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    print(f'{station}\t{x_last.date()}\t{y_last:.2f}\t{x_ext.date()}\t{y_ext:.2f}')
+    
+    fig.savefig(f'figures/fieldwork/{station}_boom_height_prediction.png')
+    
+    
