@@ -19,7 +19,7 @@ import matplotlib
 matplotlib.use('Agg')
 from lib import tocgen
 
-new_version = 'test'
+new_version = 'dev'
 old_version = 'thredds'
 
 # for res in ['day', 'hour', ]:
@@ -38,6 +38,7 @@ for res in ['hour']:
         path_new = f'../thredds-data/level_3_sites/csv/{res}/'
     elif 'dev' in new_version:
         path_new = f'../aws-l3-dev/csv/{res}/'
+        path_new = f'../aws-l3-dev/sites/'
 
     elif 'test' in new_version:
         path_new = './data/L3_test/sites/'

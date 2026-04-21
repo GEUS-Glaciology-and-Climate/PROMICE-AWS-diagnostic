@@ -30,7 +30,7 @@ logging.getLogger("pypromice.pipeline.get_l2").setLevel(logging.INFO)
 logging.getLogger('numba').setLevel(logging.WARNING)
 
 config_folder = '../aws-l0/metadata/station_configurations/'
-
+# %%
 def process_l2(station):
 
     print(station)
@@ -104,7 +104,7 @@ if __name__ == '__main__':
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     for site in df_metadata.site_id:
-    # for site in ['FRE']:
+    # for site in ['CP1']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
@@ -122,20 +122,20 @@ if __name__ == '__main__':
     # df_org.loc[:,var].plot(marker='^')
     # df_hour.loc[:,var].plot(marker='o')
 
-    # data_version = 'L3_test/sites'
-    # data_version = 'L3_test/sites/'
-    # res = 'hour'
-    # site = 'FRE'
-    # var = 'z_surf_combined'
+    data_version = 'L3_test/sites'
+    data_version = 'L3_test/sites/'
+    res = 'hour'
+    site = 'CP1'
+    var = 'p_i'
 
-    # df_mixed = pd.read_csv(f'data/{data_version}/{site}/{site}_{res}.csv')
-    # df_mixed.time = pd.to_datetime(df_mixed.time)
-    # df_mixed = df_mixed.set_index('time')
-    # # df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/day/{site}_day.csv')
-    # # df_org.time = pd.to_datetime(df_org.time)
-    # # df_org = df_org.set_index('time')
-    # plt.figure()
-    # # df_org.loc[:,var].plot(marker='^')
-    # df_mixed.loc['2025':,var].plot(marker='o')
-    # plt.title(data_version + ' ' + site)
-    # plt.ylabel(var)
+    df_mixed = pd.read_csv(f'data/{data_version}/{site}/{site}_{res}.csv')
+    df_mixed.time = pd.to_datetime(df_mixed.time)
+    df_mixed = df_mixed.set_index('time')
+    df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res}/{site}_{res}.csv')
+    df_org.time = pd.to_datetime(df_org.time)
+    df_org = df_org.set_index('time')
+    plt.figure()
+    df_org.loc[:,var].plot(marker='^')
+    df_mixed.loc['2025':,var].plot(marker='o')
+    plt.title(data_version + ' ' + site)
+    plt.ylabel(var)
