@@ -19,11 +19,11 @@ import matplotlib
 matplotlib.use('Agg')
 from lib import tocgen
 
-new_version = 'dev'
+new_version = 'test'
 old_version = 'thredds'
 
-# for res in ['day', 'hour', ]:
-for res in ['hour']:
+for res in ['day', 'hour', ]:
+# for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
     elif old_version == 'thredds':
@@ -73,8 +73,8 @@ for res in ['hour']:
     # plt.close('all')
 
     #%%
-    for station in np.unique(df_meta.site_id):
-    # for station in ['FRE']:
+    # for station in np.unique(df_meta.site_id):
+    for station in ['CP1']:
         plt.close('all')
         Msg('## '+station)
 
@@ -157,8 +157,10 @@ for res in ['hour']:
                 ax.legend(loc='lower left')
                 ax.grid()
                 if res == 'hour':
-                    ax.set_xlim(pd.to_datetime(['2024-02-01','2026-04-19']))
-                # ax.set_xlim(df_new.index[0], df_new.index[-1])
+                    ax.set_xlim(pd.to_datetime(['2024-02-01','2026-04-21']))
+                else:
+                    ax.set_xlim(pd.to_datetime(['2010-01-01','2026-04-21']))
+# ax.set_xlim(df_new.index[0], df_new.index[-1])
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
