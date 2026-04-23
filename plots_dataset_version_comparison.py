@@ -22,7 +22,7 @@ from lib import tocgen
 new_version = 'test'
 old_version = 'thredds'
 
-for res in ['day', 'hour', ]:
+for res in ['hour','day' ]:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'

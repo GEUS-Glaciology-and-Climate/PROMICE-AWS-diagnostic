@@ -86,25 +86,25 @@ def get_join_l3(site):
 
 
 if __name__ == '__main__':
-    df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    for station in np.unique(np.array(df_metadata.station_id)):
-    # for station in ['FRE']:
-        print("\n ======== test get_l2 ========= \n")
-        pAWS_tx, pAWS_raw = process_l2(station)
+    # df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
+    # for station in np.unique(np.array(df_metadata.station_id)):
+    # # for station in ['FRE']:
+    #     print("\n ======== test get_l2 ========= \n")
+    #     pAWS_tx, pAWS_raw = process_l2(station)
 
-        print("\n ======== test join_l2 ========= \n")
-        l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
-                            'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
-                            'data/L2_test/level_2/',None,None)
+    #     print("\n ======== test join_l2 ========= \n")
+    #     l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
+    #                         'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
+    #                         'data/L2_test/level_2/',None,None)
 
-        print("\n ======== test l2tol3 ========= \n")
-        l3 = get_l2tol3(config_folder,
-                        'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
-                        'data/L3_test/stations/', None, None, None)
+    #     print("\n ======== test l2tol3 ========= \n")
+    #     l3 = get_l2tol3(config_folder,
+    #                     'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
+    #                     'data/L3_test/stations/', None, None, None)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     for site in df_metadata.site_id:
-    # for site in ['FRE']:
+    # for site in ['KAN_M']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
@@ -123,16 +123,15 @@ if __name__ == '__main__':
     # df_hour.loc[:,var].plot(marker='o')
 
     data_version = 'L3_test/sites/'
-    res = 'hour'
+    res = 'day'
     res_org = res if res!='mixed' else 'hour'
     
-    site = 'CEN'
-    var = 'p_u'
+    site = 'KAN_M'
+    var = 'z_surf_combined'
 
     df_mixed = pd.read_csv(f'data/{data_version}/{site}/{site}_{res}.csv')
     df_mixed.time = pd.to_datetime(df_mixed.time)
     df_mixed = df_mixed.set_index('time')
-    site='CEN'
     df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site}_{res_org}.csv')
     df_org.time = pd.to_datetime(df_org.time)
     df_org = df_org.set_index('time')
