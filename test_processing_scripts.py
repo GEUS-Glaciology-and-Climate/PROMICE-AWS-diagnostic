@@ -88,23 +88,23 @@ def get_join_l3(site):
 if __name__ == '__main__':
     # df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     # for station in np.unique(np.array(df_metadata.station_id)):
-    # # for station in ['FRE']:
-    #     print("\n ======== test get_l2 ========= \n")
-    #     pAWS_tx, pAWS_raw = process_l2(station)
+    for station in ['MIT']:
+        print("\n ======== test get_l2 ========= \n")
+        pAWS_tx, pAWS_raw = process_l2(station)
 
-    #     print("\n ======== test join_l2 ========= \n")
-    #     l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
-    #                         'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
-    #                         'data/L2_test/level_2/',None,None)
+        print("\n ======== test join_l2 ========= \n")
+        l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
+                            'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
+                            'data/L2_test/level_2/',None,None)
 
-    #     print("\n ======== test l2tol3 ========= \n")
-    #     l3 = get_l2tol3(config_folder,
-    #                     'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
-    #                     'data/L3_test/stations/', None, None, None)
+        print("\n ======== test l2tol3 ========= \n")
+        l3 = get_l2tol3(config_folder,
+                        'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
+                        'data/L3_test/stations/', None, None, None)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    for site in df_metadata.site_id:
-    # for site in ['KAN_M']:
+    # for site in df_metadata.site_id:
+    for site in ['MIT']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
