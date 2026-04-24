@@ -22,7 +22,7 @@ from lib import tocgen
 new_version = 'test'
 old_version = 'thredds'
 
-for res in ['hour','day' ]:
+for res in ['hour','day', 'month' ]:
 # for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
@@ -73,8 +73,8 @@ for res in ['hour','day' ]:
     # plt.close('all')
 
     #%%
-    # for station in np.unique(df_meta.site_id):
-    for station in ['MIT']:
+    for station in np.unique(df_meta.site_id):
+    # for station in ['MIT']:
         plt.close('all')
         Msg('## '+station)
 
@@ -158,7 +158,7 @@ for res in ['hour','day' ]:
                 ax.grid()
                 if res == 'hour':
                     ax.set_xlim(pd.to_datetime(['2024-02-01','2026-04-21']))
-                else:
+                elif res == 'day':
                     ax.set_xlim(pd.to_datetime(['2010-01-01','2026-04-21']))
 # ax.set_xlim(df_new.index[0], df_new.index[-1])
 
