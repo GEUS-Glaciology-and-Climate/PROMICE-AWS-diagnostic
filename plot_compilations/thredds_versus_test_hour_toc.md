@@ -146,7 +146,7 @@ New variables not in old files:
 
 
 Old variables removed from new files:
-p_l, rainfall_l
+
  
 ![EGP](../figures/version_comparisons/thredds_versus_test_hour/EGP_0.png)
 ![EGP](../figures/version_comparisons/thredds_versus_test_hour/EGP_1.png)

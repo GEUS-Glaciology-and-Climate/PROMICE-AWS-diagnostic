@@ -86,7 +86,7 @@ New variables not in old files:
 
 
 Old variables removed from new files:
-p_l, rainfall_l, t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
+t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
  
 ![EGP](../figures/version_comparisons/thredds_versus_test_day/EGP_0.png)
 ![EGP](../figures/version_comparisons/thredds_versus_test_day/EGP_1.png)
