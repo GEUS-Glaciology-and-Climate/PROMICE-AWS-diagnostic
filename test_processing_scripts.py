@@ -87,8 +87,8 @@ def get_join_l3(site):
 
 if __name__ == '__main__':
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    for station in np.unique(np.array(df_metadata.station_id)):
-    # for station in ['MIT']:
+    # for station in np.unique(np.array(df_metadata.station_id)):
+    for station in ['NSE']:
         print("\n ======== test get_l2 ========= \n")
         pAWS_tx, pAWS_raw = process_l2(station)
 
@@ -103,14 +103,14 @@ if __name__ == '__main__':
                         'data/L3_test/stations/', None, None, None)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    for site in df_metadata.site_id:
-    # for site in ['MIT']:
+    # for site in df_metadata.site_id:
+    for site in ['NSE']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
         # %%
     import matplotlib.pyplot as plt
-    
+
     # df_hour = pd.read_csv(f'data/L3_test/sites/{site}/{site}_hour.csv')
     # df_hour.time = pd.to_datetime(df_hour.time)
     # df_hour = df_hour.set_index('time')
@@ -122,21 +122,27 @@ if __name__ == '__main__':
     # df_org.loc[:,var].plot(marker='^')
     # df_hour.loc[:,var].plot(marker='o')
 
+    data_version = 'L2_test/level_2/'
     data_version = 'L3_test/sites/'
-    res = 'day'
+
+    res = 'hour'
     res_org = res if res!='mixed' else 'hour'
-    
+
     site = 'KAN_M'
+    site_org = site.replace('v3','')
+
     var = 'z_surf_combined'
 
     df_mixed = pd.read_csv(f'data/{data_version}/{site}/{site}_{res}.csv')
     df_mixed.time = pd.to_datetime(df_mixed.time)
     df_mixed = df_mixed.set_index('time')
-    df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site}_{res_org}.csv')
-    df_org.time = pd.to_datetime(df_org.time)
-    df_org = df_org.set_index('time')
+
     plt.figure()
-    df_org.loc[:,var].plot(marker='^')
-    df_mixed.loc[:,var].plot(marker='o')
+    df_mixed.loc[:,var].plot(marker='o', label='new')
     plt.title(data_version + ' ' + site)
     plt.ylabel(var)
+    df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site_org}_{res_org}.csv')
+    df_org.time = pd.to_datetime(df_org.time)
+    df_org = df_org.set_index('time')
+    df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
+    plt.legend()

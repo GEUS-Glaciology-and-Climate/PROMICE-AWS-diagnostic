@@ -45,7 +45,7 @@ path_l2 = 'data/L2_test/'
 
 # plt.close('all')
 
-for station in ['DY2']:
+for station in ['NSE']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")

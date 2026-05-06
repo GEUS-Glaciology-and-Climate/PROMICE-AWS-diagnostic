@@ -360,8 +360,8 @@ def run_L2(path_to_l0, path_l2, station):
     return pAWS_tx, pAWS_raw
 
 def join_L2(path_l2, station):
-    inpath_raw = os.path.join(path_l2, 'raw', station, f'{station}_hour.nc')
-    inpath_tx  = os.path.join(path_l2, 'tx',  station, f'{station}_hour.nc')
+    inpath_raw = os.path.join(path_l2, 'raw', station, f'{station}_mixed.nc')
+    inpath_tx  = os.path.join(path_l2, 'tx',  station, f'{station}_mixed.nc')
     return join_l2(inpath_raw, inpath_tx, os.path.join(path_l2, 'level_2'), None, None)
 
 def open_l2_clean(path_l2, station):
@@ -410,7 +410,6 @@ def process_surface_height(ds, data_adjustments_dir, station_config={}, make_gif
     z_boom_best_u = station_boom_height.include_uncorrected_values(
                                 ds["z_boom_u"],
                                 ds["z_boom_cor_u"],
-                                ds["t_u"],
                                 ds["t_l"] if "t_l" in ds.data_vars else None,
                                 ds["t_rad"] if "t_rad" in ds.data_vars else None)
 
@@ -421,7 +420,6 @@ def process_surface_height(ds, data_adjustments_dir, station_config={}, make_gif
         z_stake_best = station_boom_height.include_uncorrected_values(
                                     ds["z_stake"],
                                     ds["z_stake_cor"],
-                                    ds["t_u"],
                                     ds["t_l"] if "t_l" in ds.data_vars else None,
                                     ds["t_rad"] if "t_rad" in ds.data_vars else None)
 
@@ -451,7 +449,6 @@ def process_surface_height(ds, data_adjustments_dir, station_config={}, make_gif
             z_boom_best_l = station_boom_height.include_uncorrected_values(
                                         ds["z_boom_l"],
                                         ds["z_boom_cor_l"],
-                                        ds["t_l"],
                                         ds["t_u"] if "t_u" in ds.data_vars else None,
                                         ds["t_rad"] if "t_rad" in ds.data_vars else None)
 

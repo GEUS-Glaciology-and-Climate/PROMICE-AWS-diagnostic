@@ -1,0 +1,7 @@
+Site,Elevation (m.a.s.l.),Temperature Mean,Temperature Max.,Temperature Min.,Wind Mean,Wind Max.,Wind Direction
+EastGRIP (EGP),2663 m,-28.4°C,-0.8°C,-66.0°C,5.3 m/s,15.1 m/s,238° (WSW)
+NASA-East (NAE),2624 m,-24.7°C,-0.4°C,-54.7°C,5.3 m/s,21.4 m/s,283° (WNW)
+Humboldt (HUM),1967 m,-19.7°C,1.6°C,-53.1°C,6.0 m/s,23.0 m/s,172° (S)
+Tunu-North (TUN),2076 m,-25.2°C,0.9°C,-54.8°C,6.1 m/s,17.7 m/s,260° (W)
+Century (CEN),1891 m,-21.1°C,0.7°C,-49.6°C,5.8 m/s,19.9 m/s,148° (SSE)
+NEEM (NEM),2451 m,-24.3°C,0.4°C,-56.1°C,5.0 m/s,18.3 m/s,172° (S)

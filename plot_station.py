@@ -30,16 +30,16 @@ var_list = [
         # 'z_surf_combined','z_ice_surf','snow_height','z_pt_cor'
         # 'p_u','t_u','z_surf_combined', 'lat', 'lon'
         # 'z_boom_cor_u','z_stake_cor','z_pt_cor'
-        # 'wspd_u','wspd_l',
+        'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
         # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo',
-        'tilt_x','tilt_y','cc','t_surf'
+        # 'tilt_x','tilt_y','cc','t_surf'
         # 't_i_1','t_i_2','t_i_3'
         ]
 
 
 # station_list = df_meta.stid
-station_list = ['TAS_L']
+station_list = ['TAS_A']
 
 # plt.close('all')
 # gps_info=[]
@@ -49,7 +49,7 @@ for station in station_list:
 
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
-    df_l3=df_l3.loc['2025-03-27':]
+    # df_l3=df_l3.loc['2025-03-27':]
     if len(var_list) == 0:
         var_list=df_l3.columns
     var_list = np.array(var_list)
@@ -92,6 +92,7 @@ for station in station_list:
                 plt.legend(reversed(handles), reversed(labels),
                             loc='upper left', bbox_to_anchor=(0.25, 6.2),
                             ncols=2, scatterpoints=4, markerscale=4)
+
             ax.grid()
                 # ax.plot(df_l3[var].index,Y_pred)
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
