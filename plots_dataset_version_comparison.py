@@ -15,15 +15,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import numpy as np
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 from lib import tocgen
 
-new_version = 'dev'
+new_version = 'test'
 old_version = 'thredds'
 
-# for res in ['day', 'month','hour', ]:
-for res in ['hour']:
+for res in ['day', 'month','hour', ]:
+# for res in ['hour']:
     if old_version == 'aws-l3':
         path_old = '../aws-l3/level_3/'
     elif old_version == 'thredds':
@@ -70,12 +70,9 @@ for res in ['hour']:
 
     Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 
-    # plt.close('all')
-
     #%%
-    for station in np.unique(df_meta.site_id)[18:]:
-    # for station in ['NSE', 'TAS_A','TUN']:
-        plt.close('all')
+    for station in np.unique(df_meta.site_id):
+    # for station in ['MIT_B']:
         Msg('## '+station)
 
         if station in ['UWN','ORO','NUK_P']:
@@ -95,6 +92,7 @@ for res in ['hour']:
         df_old = pd.DataFrame()
         df_old['time'] = df_new.index.values
 
+
         file = f'{path_old}{station}_{res}.csv'
         if not os.path.isfile(file):
             Msg('cannot find old file for '+station)
@@ -105,6 +103,10 @@ for res in ['hour']:
 
         df_old.time = pd.to_datetime(df_old.time, utc=True)
         df_old = df_old.set_index('time')
+
+        if res == 'hour':
+            df_old = df_old.loc['2025':]
+            df_new = df_new.loc['2025':]
 
         Msg('Variables in new file:\n'+ ', '.join(df_new.columns.values))
         Msg('\nNew variables not in old files:\n'+ ', '.join(
@@ -164,7 +166,7 @@ for res in ['hour']:
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
-            plt.close(fig)
+            # plt.close(fig)
             Msg(f'![{station}](../{figure_folder}/{station}_{k}.png)')
         Msg(' ')
     tocgen.processFile(filename, filename[:-3]+"_toc.md")

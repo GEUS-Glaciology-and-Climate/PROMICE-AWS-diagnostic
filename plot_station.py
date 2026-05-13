@@ -17,7 +17,6 @@ path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 
 # df_meta = pd.read_csv(path_l3+'../AWS_latest_locations.csv')
 var_list = [
-    # 'gps_geoid']
         # 't_i_'+str(i) for i in range(1,12)
         # 'p_u','p_l','p_i',
         # 't_u','t_l','t_i'
@@ -30,7 +29,7 @@ var_list = [
         # 'z_surf_combined','z_ice_surf','snow_height','z_pt_cor'
         # 'p_u','t_u','z_surf_combined', 'lat', 'lon'
         # 'z_boom_cor_u','z_stake_cor','z_pt_cor'
-        'wspd_u','wspd_l',
+        # 'wspd_u','wspd_l',
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
         # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo',
         # 'tilt_x','tilt_y','cc','t_surf'
@@ -39,7 +38,7 @@ var_list = [
 
 
 # station_list = df_meta.stid
-station_list = ['TAS_A']
+station_list = ['MIT_B']
 
 # plt.close('all')
 # gps_info=[]
@@ -97,6 +96,6 @@ for station in station_list:
                 # ax.plot(df_l3[var].index,Y_pred)
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
                 # print(station, Y_pred[-1] - Y[~np.isnan(X+Y)][0])
-        # ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-03-20']))
+        ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-05-20']))
         plt.suptitle('%s'%(station))
         fig.savefig('figures/'+station+'_'+str( k+1)+'.png',dpi=300)

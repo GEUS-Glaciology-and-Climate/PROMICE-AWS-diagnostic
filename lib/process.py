@@ -303,9 +303,6 @@ def clean_gps(ds):
 
 def smooth_pose(ds):
     out = ds.copy()
-    out['tilt_x'] = out['tilt_x'].fillna(0)
-    out['tilt_y'] = out['tilt_y'].fillna(0)
-    out['rot'] = out['rot'].fillna(0)
     out['tilt_x'] = station_pose.smooth_tilt_with_moving_window(out['tilt_x'])
     out['tilt_y'] = station_pose.smooth_tilt_with_moving_window(out['tilt_y'])
     out['rot']    = station_pose.interpolate_rotation(out['rot'])
