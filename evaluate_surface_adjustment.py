@@ -36,6 +36,7 @@ logging.basicConfig(
 )
 import logging
 import lib.process as lib
+from pypromice.pipeline.L2toL3 import process_surface_height
 logging.getLogger('numba').setLevel(logging.WARNING)
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
@@ -45,7 +46,7 @@ path_l2 = 'data/L2_test/'
 
 # plt.close('all')
 
-for station in ['MIT']:
+for station in ['TAS_A']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -61,10 +62,10 @@ for station in ['MIT']:
 
     # %%
     # % Perform Level 3 processing
-    l3 = lib.process_surface_height(l2,
+    l3 = process_surface_height(l2,
                                 Path('../PROMICE-AWS-data-issues')/'adjustments',
                                 station_config,
-                                make_gif=False).to_dataframe()
+                                ).to_dataframe()
 
     print('plotting')
     fig, ax = plt.subplots(3,1, sharex=True, figsize=(10,10))

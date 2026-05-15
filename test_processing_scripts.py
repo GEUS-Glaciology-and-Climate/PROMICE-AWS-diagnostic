@@ -90,10 +90,10 @@ def get_join_l3(site):
 if __name__ == '__main__':
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
-    for station in np.unique(np.array(df_metadata.station_id))[15:]:
+    for station in np.unique(np.array(df_metadata.station_id)):
     # t0 = time.perf_counter()
 
-    # for station in ['TAS_L']:
+    # for station in ['CEN2']:
         print("\n ======== test get_l2 ========= \n")
         pAWS_tx, pAWS_raw = process_l2(station)
 
@@ -109,7 +109,7 @@ if __name__ == '__main__':
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     for site in df_metadata.site_id:
-    # for site in ['TAS_L']:
+    # for site in ['CEN']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
@@ -122,16 +122,16 @@ if __name__ == '__main__':
         # %%
     import matplotlib.pyplot as plt
 
-    data_version = 'L2_test/tx/'
-    # data_version = 'L3_test/sites/'
+    # data_version = 'L2_test/tx/'
+    data_version = 'L3_test/sites/'
 
-    res = 'mixed'
+    res = 'hour'
     res_org = res if res!='mixed' else 'hour'
 
-    site = 'TAS_L'
+    site = 'CEN'
     site_org = site.replace('v3','')
 
-    var = 'tilt_x'
+    var = 'alt'
 
     df_mixed = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc').to_dataframe()
 
@@ -143,6 +143,6 @@ if __name__ == '__main__':
     df_org.time = pd.to_datetime(df_org.time)
     df_org = df_org.set_index('time')
     df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
-    pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
-    pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
+    # pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
+    # pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
     plt.legend()

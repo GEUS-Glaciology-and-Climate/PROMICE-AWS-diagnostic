@@ -22,6 +22,9 @@ from lib import tocgen
 new_version = 'test'
 old_version = 'thredds'
 
+df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
+df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
+
 for res in ['hour','day', 'month', ]:
 # for res in ['hour']:
     if old_version == 'aws-l3':
@@ -31,9 +34,6 @@ for res in ['hour','day', 'month', ]:
     else:
         path_old = f'C:/Users/bav/Downloads/{old_version}/{res}/'
 
-
-    df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     if 'thredds' in new_version:
         path_new = f'../thredds-data/level_3_sites/csv/{res}/'
     elif 'dev' in new_version:
