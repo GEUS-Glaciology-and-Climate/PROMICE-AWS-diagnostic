@@ -15,17 +15,21 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import numpy as np
-# import matplotlib
-# matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 from lib import tocgen
 from pathlib import Path
 from datetime import date
-
-new_version = 'dev'
-old_version = 'thredds'
-
 df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
+
+
+new_version = 'test'
+old_version = 'thredds'
+site_list = np.unique(df_meta.site_id)
+# site_list = ['CEN']
+var_list_overwrite= None
+# var_list_overwrite = ['dlhf_u','dshf_u', 'tilt_x','tilt_y','t_u']
 
 
 PATHS = {
@@ -57,8 +61,8 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
 
-# for res in ['hour','day', 'month', ]:
-for res in ['hour']:
+for res in ['hour','day', 'month', ]:
+# for res in ['month']:
     path_old = get_l3_path(old_version, res)
     path_new = get_l3_path(new_version, res)
 
@@ -73,8 +77,7 @@ for res in ['hour']:
     Msg('# Comparison of data '+new_version+' to '+old_version+' (old).')
 
     #%%
-    for station in np.unique(df_meta.site_id):
-    # for station in ['CEN']:
+    for station in site_list:
         Msg('## '+station)
 
         if station in ['UWN','ORO','NUK_P']:
@@ -118,8 +121,12 @@ for res in ['hour']:
             [v for v in df_old.columns if v not in df_new.columns]
             ))
         Msg(' ')
-        var_list = df_new.columns.values
-        # var_list = ['z_boom_cor_u','z_boom_u','z_boom_cor_l','z_boom_l','z_surf_combined']
+
+        if var_list_overwrite:
+            var_list = var_list_overwrite
+        else:
+            var_list = df_new.columns.values
+
         var_list_list = [var_list[i:i+5] for i in range(0, len(var_list), 5)]
 
         if res == 'month':
@@ -168,7 +175,7 @@ for res in ['hour']:
 
             plt.suptitle(f'{station} {k+1}/{len(var_list_list)}')
             fig.savefig(figure_folder+'/%s_%i.png'%(station,k), dpi =120)
-            # plt.close(fig)
+            plt.close(fig)
             Msg(f'![{station}](../{figure_folder}/{station}_{k}.png)')
         Msg(' ')
     tocgen.processFile(filename, filename[:-3]+"_toc.md")

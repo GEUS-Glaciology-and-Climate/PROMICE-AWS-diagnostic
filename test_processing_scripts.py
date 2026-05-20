@@ -91,9 +91,8 @@ if __name__ == '__main__':
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     for station in np.unique(np.array(df_metadata.station_id)):
-    # t0 = time.perf_counter()
-
-    # for station in ['CEN2']:
+    # for station in ['KAN_Tv3']:
+        t0 = time.perf_counter()
         print("\n ======== test get_l2 ========= \n")
         pAWS_tx, pAWS_raw = process_l2(station)
 
@@ -108,41 +107,41 @@ if __name__ == '__main__':
                         'data/L3_test/stations/', None, None, None)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    # for site in df_metadata.site_id:
-    for site in ['CEN']:
+    for site in df_metadata.site_id:
+    # for site in ['KAN_T']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
-    # dt = time.perf_counter() - t0
+    dt = time.perf_counter() - t0
     # print(f"Elapsed time: {dt:.3f} s")
-    # latest Elapsed time: 192.545 s
-    # v1.11.0 Elapsed time: 174.473 s
+    # new Elapsed time: 45.259 s
+    # v1.11.0 Elapsed time: 138.733 s
     # v1.10.2 Elapsed time: 187.174 s
 
         # %%
-    import matplotlib.pyplot as plt
+    # import matplotlib.pyplot as plt
 
-    # data_version = 'L2_test/tx/'
-    data_version = 'L3_test/stations/'
+    # # data_version = 'L2_test/tx/'
+    # data_version = 'L3_test/stations/'
 
-    res = 'mixed'
-    res_org = res if res!='mixed' else 'hour'
+    # res = 'mixed'
+    # res_org = res if res!='mixed' else 'hour'
 
-    site = 'CEN2'
-    site_org = site.replace('v3','')
+    # site = 'CEN2'
+    # site_org = site.replace('v3','')
 
-    var = 'z_surf_combined'
+    # var = 'z_surf_combined'
 
-    df_mixed = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc').to_dataframe()
+    # df_mixed = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc').to_dataframe()
 
-    plt.figure()
-    df_mixed.loc[:,var].plot(marker='o', label='new')
-    plt.title(data_version + ' ' + site)
-    plt.ylabel(var)
-    df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site_org}_{res_org}.csv')
-    df_org.time = pd.to_datetime(df_org.time)
-    df_org = df_org.set_index('time')
-    df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
-    # pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
-    # pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
-    plt.legend()
+    # plt.figure()
+    # df_mixed.loc[:,var].plot(marker='o', label='new')
+    # plt.title(data_version + ' ' + site)
+    # plt.ylabel(var)
+    # df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site_org}_{res_org}.csv')
+    # df_org.time = pd.to_datetime(df_org.time)
+    # df_org = df_org.set_index('time')
+    # df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
+    # # pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
+    # # pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
+    # plt.legend()
