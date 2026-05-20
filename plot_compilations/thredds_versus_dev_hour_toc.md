@@ -390,13 +390,13 @@ Old variables removed from new files:
  
 ## <a id='s1-14' />KPC_U
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_surf_combined, z_ice_surf, snow_height, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
 
 
 Old variables removed from new files:
-
+z_pt
  
 ![KPC_U](../figures/version_comparisons/thredds_versus_dev_hour/KPC_U_0.png)
 ![KPC_U](../figures/version_comparisons/thredds_versus_dev_hour/KPC_U_1.png)
@@ -508,7 +508,7 @@ Old variables removed from new files:
 ![NAE](../figures/version_comparisons/thredds_versus_dev_hour/NAE_14.png)
 ![NAE](../figures/version_comparisons/thredds_versus_dev_hour/NAE_15.png)
 ![NAE](../figures/version_comparisons/thredds_versus_dev_hour/NAE_16.png)
-
+ 
 ## <a id='s1-19' />NAU
 Variables in new file:
 p_u, p_l, t_u, t_l, rh_u, rh_u_wrt_ice_or_water, qh_u, rh_l, rh_l_wrt_ice_or_water, qh_l, wspd_u, wspd_l, wdir_u, wdir_l, wspd_x_u, wspd_y_u, wspd_x_l, wspd_y_l, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dlhf_l, dshf_u, dshf_l, z_boom_u, z_boom_cor_u, z_boom_l, z_boom_cor_l, z_surf_combined, snow_height, rainfall_u, rainfall_cor_u, rainfall_l, rainfall_cor_l, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, t_i_9, t_i_10, t_i_11, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, d_t_i_9, d_t_i_10, d_t_i_11, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
@@ -527,6 +527,7 @@ Old variables removed from new files:
 ![NAU](../figures/version_comparisons/thredds_versus_dev_hour/NAU_5.png)
 ![NAU](../figures/version_comparisons/thredds_versus_dev_hour/NAU_6.png)
 ![NAU](../figures/version_comparisons/thredds_versus_dev_hour/NAU_7.png)
+![NAU](../figures/version_comparisons/thredds_versus_dev_hour/NAU_8.png)
 ![NAU](../figures/version_comparisons/thredds_versus_dev_hour/NAU_9.png)
 ![NAU](../figures/version_comparisons/thredds_versus_dev_hour/NAU_10.png)
 ![NAU](../figures/version_comparisons/thredds_versus_dev_hour/NAU_11.png)
@@ -813,13 +814,13 @@ Old variables removed from new files:
  
 ## <a id='s1-33' />RED_L
 Variables in new file:
-p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
 
 New variables not in old files:
 
 
 Old variables removed from new files:
-
+z_pt
  
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_0.png)
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_1.png)
@@ -834,7 +835,6 @@ Old variables removed from new files:
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_10.png)
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_11.png)
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_12.png)
-![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_13.png)
  
 ## <a id='s1-34' />SCO_L
 Variables in new file:
