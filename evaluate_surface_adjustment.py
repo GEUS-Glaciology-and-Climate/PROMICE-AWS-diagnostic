@@ -13,6 +13,15 @@ import numpy as np
 import xarray as xr
 import logging, toml, os
 
+logging.getLogger('matplotlib.font_manager').disabled = True
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
+
 import sys, importlib
 # purge cached package + submodules
 # only useful in debugging mode
@@ -26,15 +35,6 @@ from pathlib import Path
 import matplotlib
 # matplotlib.use('Agg')
 
-logging.getLogger('matplotlib.font_manager').disabled = True
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.StreamHandler()
-    ]
-)
-import logging
 import lib.process as lib
 from pypromice.pipeline.L2toL3 import process_surface_height
 logging.getLogger('numba').setLevel(logging.WARNING)
@@ -46,7 +46,7 @@ path_l2 = 'data/L2_test/'
 
 # plt.close('all')
 
-for station in ['TAS_A']:
+for station in ['NAE']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")

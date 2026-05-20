@@ -108,8 +108,8 @@ if __name__ == '__main__':
                         'data/L3_test/stations/', None, None, None)
 
     df_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    for site in df_metadata.site_id:
-    # for site in ['CEN']:
+    # for site in df_metadata.site_id:
+    for site in ['CEN']:
         print(" ======== test join_l3 ========= \n")
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
@@ -123,15 +123,15 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
 
     # data_version = 'L2_test/tx/'
-    data_version = 'L3_test/sites/'
+    data_version = 'L3_test/stations/'
 
-    res = 'hour'
+    res = 'mixed'
     res_org = res if res!='mixed' else 'hour'
 
-    site = 'CEN'
+    site = 'CEN2'
     site_org = site.replace('v3','')
 
-    var = 'alt'
+    var = 'z_surf_combined'
 
     df_mixed = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc').to_dataframe()
 
