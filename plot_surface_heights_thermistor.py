@@ -32,7 +32,7 @@ def Msg(txt):
 
 
 # for file in os.listdir(path_new):
-for file in ['KAN_L_day.csv']:
+for file in ['MIT_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -185,8 +185,8 @@ ax_list[9].remove()  # Remove the 10th panel from its current spot
 ax_large = fig.add_subplot(gs[3, :])  # Create a large subplot spanning 11th and 12th positions
 pos = ax_large.get_position()
 ax_large.set_position([pos.x0, pos.y0, pos.width, pos.height * 0.85])
-# %% 
-fig =  plt.figure() 
+# %%
+fig =  plt.figure()
 ax_large = plt.gca()
 for station in ['DY2', 'NAU', 'CEN', 'TUN', 'NAE', 'NSE', 'SDL', 'SDM']:
     if station in ['KAN_B', 'NUK_K']:
@@ -227,7 +227,7 @@ fig.supylabel('Surface height relative to installation (m)', fontsize=14)
 # Save the figure with tight layout to remove excess white space
 fig.savefig('figures/surface_height/overview.png', dpi=300, bbox_inches='tight')
 
-# %% Accumulation stations only 
+# %% Accumulation stations only
 import numpy as np
 from scipy.stats import linregress
 

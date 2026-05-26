@@ -55,7 +55,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = True
 
-for station in ['CEN2']:
+for station in ['UWN']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -113,14 +113,15 @@ for station in ['CEN2']:
                         # 'p_u','p_l','p_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
-                        # 'dsr','dsr_cor','usr','albedo',
-                        # 'tilt_x','tilt_y',"rot"
+                        'dsr','dsr_cor','usr','albedo',
+                        'tilt_x','tilt_y',"rot",
+                        "dlr","ulr","t_rad"
                         # 't_i_1','t_i_2','t_i_8',
-                        'z_boom_l','z_boom_cor_l',
-                        'z_boom_u', 'z_boom_cor_u',
-                        'z_stake', 'z_stake_cor',
+                        # 'z_boom_l','z_boom_cor_l',
+                        # 'z_boom_u', 'z_boom_cor_u',
+                        # 'z_stake', 'z_stake_cor',
                         # 'p_u',
-                        'z_pt','z_pt_cor',
+                        # 'z_pt','z_pt_cor',
                         ])
                         ] #])]
 
@@ -129,6 +130,7 @@ for station in ['CEN2']:
         if len(var_list[~np.isin(var_list, df_L1.columns)]) >0:
             print(var_list[~np.isin(var_list, df_L1.columns)], 'not in L1 data')
         var_list = var_list[np.isin(var_list, ds_final.data_vars)]
+
         fig, ax_list = plt.subplots(len(var_list),1,sharex=True,  #sharey=True,
                                     figsize=(12,len(var_list)*2.1))
         fig.subplots_adjust(top=0.83)
@@ -261,12 +263,12 @@ for station in ['CEN2']:
                 xmin = pd.Timestamp(xmin).tz_localize(None)
                 xmax = mdates.num2date(xmax)
                 xmax = pd.Timestamp(xmax).tz_localize(None)
-                try:
-                    ymin = ds.sel(time=slice(xmin, xmax))[var].min()
-                    ymax = ds.sel(time=slice(xmin, xmax))[var].max()
-                    ax.set_ylim(ymin, ymax)
-                except:
-                    pass
+                # try:
+                #     ymin = ds.sel(time=slice(xmin, xmax))[var].min()
+                #     ymax = ds.sel(time=slice(xmin, xmax))[var].max()
+                #     ax.set_ylim(ymin, ymax)
+                # except:
+                #     pass
 
             ax.set_ylabel(var)
             ax.grid(True, which='minor', linestyle='--', linewidth=0.5)

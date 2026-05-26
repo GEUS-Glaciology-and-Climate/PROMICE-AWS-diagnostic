@@ -45,7 +45,8 @@ DEFAULT_VAR_LIST = [ 'p_l', 'p_u', 't_l','t_u', 'rh_l',  'rh_u', 'wspd_l', 'wspd
         'wdir_i', 'gps_lat_i', 'gps_lon_i']
 
 def plot_L0(pAWS_raw, ax, var, s='+', label='in L0 tx'):
-    skip_L0_var = ['dlr','ulr','gps_lat','gps_lon','gps_alt']
+    skip_L0_var = [ # 'dlr','ulr',
+                   'gps_lat','gps_lon','gps_alt']
     if pAWS_raw is not None:
         for data in pAWS_raw.L0:
             if (var in data.data_vars) and (var not in skip_L0_var):
@@ -53,8 +54,14 @@ def plot_L0(pAWS_raw, ax, var, s='+', label='in L0 tx'):
                 if 'tx' in label and not var.endswith('_i') and var not in ["batt_v"]:
                     tmp['time'] = tmp.time - np.timedelta64(1, 'h')
 
-                ax.plot(tmp.time,
+                if var not in [ 'dlr','ulr',]:
+                    ax.plot(tmp.time,
                         tmp,
+                        marker=s,color='k', linestyle='None',
+                        label='__nolegend__')
+                else:
+                    ax.plot(tmp.time,
+                        -10 * tmp,
                         marker=s,color='k', linestyle='None',
                         label='__nolegend__')
 
