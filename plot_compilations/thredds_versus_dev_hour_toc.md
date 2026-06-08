@@ -396,7 +396,7 @@ New variables not in old files:
 
 
 Old variables removed from new files:
-z_pt
+
  
 ![KPC_U](../figures/version_comparisons/thredds_versus_dev_hour/KPC_U_0.png)
 ![KPC_U](../figures/version_comparisons/thredds_versus_dev_hour/KPC_U_1.png)
@@ -820,7 +820,7 @@ New variables not in old files:
 
 
 Old variables removed from new files:
-z_pt
+
  
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_0.png)
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_hour/RED_L_1.png)
