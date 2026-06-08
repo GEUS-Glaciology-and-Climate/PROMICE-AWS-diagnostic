@@ -322,7 +322,7 @@ New variables not in old files:
 
 
 Old variables removed from new files:
-z_pt, t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
+t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
  
 ![KPC_U](../figures/version_comparisons/thredds_versus_dev_day/KPC_U_0.png)
 ![KPC_U](../figures/version_comparisons/thredds_versus_dev_day/KPC_U_1.png)
@@ -716,7 +716,7 @@ New variables not in old files:
 
 
 Old variables removed from new files:
-z_pt, t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
+t_i, rh_i_wrt_ice_or_water, wdir_i, wspd_y_i
  
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_day/RED_L_0.png)
 ![RED_L](../figures/version_comparisons/thredds_versus_dev_day/RED_L_1.png)

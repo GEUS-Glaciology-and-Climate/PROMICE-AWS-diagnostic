@@ -1,3 +1,3 @@
-## KAN_L
-![KAN_L](../figures/surface_height/sites/KAN_L.png)
+## TAS_L
+![TAS_L](../figures/surface_height/sites/TAS_L.png)
  
