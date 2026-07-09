@@ -55,7 +55,7 @@ all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_fil
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
 zoom_to_good = True
 
-for station in ['UWN']:
+for station in ['DY2']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -110,12 +110,12 @@ for station in ['UWN']:
     var_list_list = [np.array([
                         # 't_u','t_l','t_i',
                         # 'rh_u','rh_l','rh_i',
-                        # 'p_u','p_l','p_i',
+                        'p_u','p_l','p_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
-                        'dsr','dsr_cor','usr','albedo',
-                        'tilt_x','tilt_y',"rot",
-                        "dlr","ulr","t_rad"
+                        # 'dsr','dsr_cor','usr','albedo',
+                        # 'tilt_x','tilt_y',"rot",
+                        # "dlr","ulr","t_rad"
                         # 't_i_1','t_i_2','t_i_8',
                         # 'z_boom_l','z_boom_cor_l',
                         # 'z_boom_u', 'z_boom_cor_u',

@@ -24,8 +24,8 @@ df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
 
-new_version = 'test'
-old_version = 'thredds'
+new_version = 'V39'
+old_version = 'V38'
 site_list = np.unique(df_meta.site_id)
 # site_list = ['CEN']
 var_list_overwrite= None
@@ -61,7 +61,7 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
 
-for res in ['hour','day', 'month', ]:
+for res in [ 'month', 'day','hour',]:
 # for res in ['month']:
     path_old = get_l3_path(old_version, res)
     path_new = get_l3_path(new_version, res)

@@ -23,6 +23,7 @@ var_list = [
         # 'rh_l','rh_i','rh_l_cor',
         # 't_i','rh_i','p_i','wspd_i','wdir_i',
         # 'z_boom_u', 'z_boom_l', 'z_boom_cor_u','z_boom_cor_l',
+        'snow_height', 'z_surf_combined',
         # 'gps_geounit'
         # 't_u', 't_l','ts'
         # 'gps_lat', 'gps_lon','gps_alt'
@@ -38,7 +39,7 @@ var_list = [
 
 
 # station_list = df_meta.stid
-station_list = ['MIT_B']
+station_list = ['THU_U']
 
 # plt.close('all')
 # gps_info=[]
@@ -96,6 +97,6 @@ for station in station_list:
                 # ax.plot(df_l3[var].index,Y_pred)
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
                 # print(station, Y_pred[-1] - Y[~np.isnan(X+Y)][0])
-        ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-05-20']))
+        # ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-05-20']))
         plt.suptitle('%s'%(station))
         fig.savefig('figures/'+station+'_'+str( k+1)+'.png',dpi=300)

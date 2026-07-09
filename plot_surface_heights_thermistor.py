@@ -12,7 +12,7 @@ import pandas as pd
 import os
 import matplotlib
 matplotlib.use('Agg')
-import tocgen
+from lib import tocgen
 
 # %% Surface height reconstruction + thermistor depth + subsurface temperature
 data_type = 'sites'
@@ -31,8 +31,8 @@ def Msg(txt):
 # plt.close('all')
 
 
-# for file in os.listdir(path_new):
-for file in ['MIT_day.csv']:
+for file in os.listdir(path_new):
+# for file in ['KPC_L_day.csv']:
     station = file.replace('_day.csv','')
     Msg('## '+station)
     if not os.path.isfile(path_new+file):
@@ -99,17 +99,18 @@ for file in ['MIT_day.csv']:
     ax_list[2].set_ylabel('Temperature (°C)')
     ax_list[0].set_title(station)
 
-    # xlim1 = df_new.index[0]
+    xlim1 = df_new.index[0]
     xlim1 = pd.to_datetime('2022-03-01', utc=True)
     xlim2 = df_new.index[-1]
-    xlim2 = pd.to_datetime('2026-01-10', utc=True)
+    xlim2 = pd.Timestamp.now(tz='UTC') + pd.Timedelta(days=5)
     ax_list[0].set_xlim(xlim1, xlim2)
     if len(depth_var)>0:
         try:
             ax_list[1].set_ylim(
-                               (df_new['z_surf_combined'].min() - df_new.loc[slice(xlim1, xlim2),depth_var].max().max())-0.5,
+                               (df_new.loc[slice(xlim1, xlim2), 'z_surf_combined'] - df_new.loc[slice(xlim1, xlim2),depth_var[-1]].ffill()).min()-0.5,
                                    df_new.loc[slice(xlim1, xlim2), 'z_surf_combined'].max()+0.5
                                    )
+
         except:
             pass
 

@@ -46,11 +46,12 @@ def process_l2(station):
     if os.path.isfile(config_file_tx):
         inpath = path_to_l0 + '/tx/'
         pAWS_tx = get_l2(config_file_tx,
-                         inpath,
-                          output_path+'/tx/',
-                         variables=None, metadata=None,
-                         data_issues_path='../PROMICE-AWS-data-issues',
-                         write_60min=True)
+                        inpath,
+                         output_path+'/tx/',
+                        variables=None, metadata=None,
+                        data_issues_path='../PROMICE-AWS-data-issues',
+                        declination_path=f"{path_to_l0}/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml",
+                        write_60min=True)
 
     else:
         pAWS_tx = None
@@ -63,6 +64,7 @@ def process_l2(station):
                     variables=None,
                     metadata=None,
                     data_issues_path='../PROMICE-AWS-data-issues',
+                    declination_path=f"{path_to_l0}/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml",
                     write_60min=True)
 
     else:
@@ -91,23 +93,24 @@ if __name__ == '__main__':
 
     station_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     site_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    for site in site_metadata.site_id:
-    # for site in ['CEN']:
+    # for site in site_metadata.site_id:
+    for site in ['THU_U']:
         t0 = time.perf_counter()
         for station in site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' '):
-            if station in station_metadata.station_id.values:
+        # for station in ['SUM']:
+            if True: #station in station_metadata.station_id.values:
                 print("\n ======== test get_l2 ========= \n")
-                pAWS_tx, pAWS_raw = process_l2(station)
+                # pAWS_tx, pAWS_raw = process_l2(station)
 
                 print("\n ======== test join_l2 ========= \n")
-                l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
-                                    'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
-                                    'data/L2_test/level_2/',None,None)
+                # l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
+                #                     'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
+                #                     'data/L2_test/level_2/',None,None)
 
                 print("\n ======== test l2tol3 ========= \n")
-                l3 = get_l2tol3(config_folder,
-                                'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
-                                'data/L3_test/stations/', None, None, None)
+                # l3 = get_l2tol3(config_folder,
+                #                 'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
+                #                 'data/L3_test/stations/', None, None, None)
             else:
                 print(f"==== skipping {station} ====")
 
@@ -121,29 +124,48 @@ if __name__ == '__main__':
     # v1.10.2 Elapsed time: 187.174 s
 
         # %%
-    # import matplotlib.pyplot as plt
+    import matplotlib.pyplot as plt
 
-    # # data_version = 'L2_test/tx/'
-    # data_version = 'L3_test/stations/'
+    # data_version = 'L2_test/tx/'
+    data_version = 'L3_test/sites/'
 
-    # res = 'mixed'
-    # res_org = res if res!='mixed' else 'hour'
+    res = 'hour'
+    res_org = res if res!='mixed' else 'hour'
 
     # site = 'CEN2'
-    # site_org = site.replace('v3','')
+    site_org = site.replace('v3','')
 
-    # var = 'z_surf_combined'
+    var = 'z_surf_combined'
 
-    # df_mixed = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc').to_dataframe()
+    ds_new = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc',
+                             decode_times=True)
+    df_new = ds_new.to_dataframe()
+    df_new.index = df_new.index.astype('datetime64[ns]')
 
-    # plt.figure()
-    # df_mixed.loc[:,var].plot(marker='o', label='new')
-    # plt.title(data_version + ' ' + site)
-    # plt.ylabel(var)
+
+
+    plt.figure()
+    plt.plot(df_new.index, df_new[var], marker='o', label='new')
+    plt.plot(df_new.index, df_new['z_ice_surf'], label='z_ice_surf')
+    # df_new.loc[:,'snow_height'].plot(label='snow_height')
+    plt.title(data_version + ' ' + site)
+    plt.ylabel(var)
+
+    station_list = ds_new.attrs['stations'].split(' ')
+    for station in station_list:
+        df_l2 = xr.open_dataset(f'data/L3_test/stations/{station}/{station}_mixed.nc',
+                                decode_times=True).to_dataframe()
+        df_l2.index = df_l2.index.astype('datetime64[ns]')
+
+        plt.plot(df_l2.index, df_l2['z_surf_combined'], marker='^',
+                                      label=f'{station} z_surf_combined')
+
+
     # df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site_org}_{res_org}.csv')
     # df_org.time = pd.to_datetime(df_org.time)
     # df_org = df_org.set_index('time')
     # df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
-    # # pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
-    # # pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
-    # plt.legend()
+    # df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
+    # pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
+    # pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
+    plt.legend()

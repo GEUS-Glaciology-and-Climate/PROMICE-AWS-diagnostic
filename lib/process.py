@@ -347,14 +347,16 @@ def run_L2(path_to_l0, path_l2, station):
         inpath_tx = os.path.join(path_to_l0, 'tx')
         pAWS_tx = get_l2(config_file_tx, inpath_tx,
                          os.path.join(path_l2, 'tx'), None, None,
-                         data_issues_path='../PROMICE-AWS-data-issues')
+                         data_issues_path='../PROMICE-AWS-data-issues',
+                         declination_path='../aws-l0/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml')
 
     pAWS_raw = None
     if os.path.isfile(config_file_raw):
         inpath_raw = os.path.join(path_to_l0, 'raw', station)
         pAWS_raw = get_l2(config_file_raw, inpath_raw,
                           os.path.join(path_l2, 'raw'), None, None,
-                          data_issues_path='../PROMICE-AWS-data-issues')
+                          data_issues_path='../PROMICE-AWS-data-issues',
+                          declination_path='../aws-l0/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml')
 
     return pAWS_tx, pAWS_raw
 
