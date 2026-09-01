@@ -96,9 +96,9 @@ if __name__ == '__main__':
     for site in site_metadata.site_id:
     # for site in ['SWC']:
         t0 = time.perf_counter()
-        # for station in site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' '):
-        for station in ['SUM']:
-            if True: #station in station_metadata.station_id.values:
+        for station in site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' '):
+        # for station in ['SUM']:
+            if station in station_metadata.station_id.values:
                 print("\n ======== test get_l2 ========= \n")
                 pAWS_tx, pAWS_raw = process_l2(station)
 
@@ -123,48 +123,46 @@ if __name__ == '__main__':
     # v1.11.0 Elapsed time: 138.733 s
     # v1.10.2 Elapsed time: 187.174 s
 # %%
-l3_merged, sorted_list_station_data = get_join_l3(site)
-import matplotlib.pyplot as plt
-plt.figure()
-for (ds, attrs) in sorted_list_station_data:
-    ds.t_u.plot(label=attrs['stid'])
-    # l3_merged.t_u.plot()
-plt.legend()
+# l3_merged, sorted_list_station_data = get_join_l3(site)
+# import matplotlib.pyplot as plt
+# plt.figure()
+# for (ds, attrs) in sorted_list_station_data:
+#     ds.t_u.plot(label=attrs['stid'])
+#     # l3_merged.t_u.plot()
+#     plt.legend()
+#     # data_version = 'L2_test/tx/'
+#     data_version = 'L3_test/sites/'
 
-# %%
-    # data_version = 'L2_test/tx/'
-    data_version = 'L3_test/sites/'
+#     res = 'hour'
+#     res_org = res if res!='mixed' else 'hour'
 
-    res = 'hour'
-    res_org = res if res!='mixed' else 'hour'
+#     # site = 'CEN2'
+#     site_org = site.replace('v3','')
 
-    # site = 'CEN2'
-    site_org = site.replace('v3','')
+#     var = 'dsr'
 
-    var = 'dsr'
-
-    ds_new = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc',
-                             decode_times=True)
-    df_new = ds_new.to_dataframe()
-    df_new.index = df_new.index.astype('datetime64[ns]')
+#     ds_new = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc',
+#                              decode_times=True)
+#     df_new = ds_new.to_dataframe()
+#     df_new.index = df_new.index.astype('datetime64[ns]')
 
 
 
-    plt.figure()
-    plt.plot(df_new.index, df_new[var], marker='o', label='new')
-    plt.plot(df_new.index, df_new['z_ice_surf'], label='z_ice_surf')
-    # df_new.loc[:,'snow_height'].plot(label='snow_height')
-    plt.title(data_version + ' ' + site)
-    plt.ylabel(var)
+#     plt.figure()
+#     plt.plot(df_new.index, df_new[var], marker='o', label='new')
+#     plt.plot(df_new.index, df_new['z_ice_surf'], label='z_ice_surf')
+#     # df_new.loc[:,'snow_height'].plot(label='snow_height')
+#     plt.title(data_version + ' ' + site)
+#     plt.ylabel(var)
 
-    station_list = ds_new.attrs['stations'].split(' ')
-    for station in station_list:
-        df_l2 = xr.open_dataset(f'data/L3_test/stations/{station}/{station}_mixed.nc',
-                                decode_times=True).to_dataframe()
-        df_l2.index = df_l2.index.astype('datetime64[ns]')
+#     station_list = ds_new.attrs['stations'].split(' ')
+#     for station in station_list:
+#         df_l2 = xr.open_dataset(f'data/L3_test/stations/{station}/{station}_mixed.nc',
+#                                 decode_times=True).to_dataframe()
+#         df_l2.index = df_l2.index.astype('datetime64[ns]')
 
-        plt.plot(df_l2.index, df_l2['z_surf_combined'], marker='^',
-                                      label=f'{station} z_surf_combined')
+#         plt.plot(df_l2.index, df_l2['z_surf_combined'], marker='^',
+#                                       label=f'{station} z_surf_combined')
 
 
     # df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site_org}_{res_org}.csv')
@@ -174,4 +172,4 @@ plt.legend()
     # df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
     # pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
     # pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
-    plt.legend()
+    # plt.legend()
