@@ -93,24 +93,24 @@ if __name__ == '__main__':
 
     station_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     site_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    # for site in site_metadata.site_id:
-    for site in ['THU_U']:
+    for site in site_metadata.site_id:
+    # for site in ['SWC']:
         t0 = time.perf_counter()
-        for station in site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' '):
-        # for station in ['SUM']:
+        # for station in site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' '):
+        for station in ['SUM']:
             if True: #station in station_metadata.station_id.values:
                 print("\n ======== test get_l2 ========= \n")
-                # pAWS_tx, pAWS_raw = process_l2(station)
+                pAWS_tx, pAWS_raw = process_l2(station)
 
                 print("\n ======== test join_l2 ========= \n")
-                # l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
-                #                     'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
-                #                     'data/L2_test/level_2/',None,None)
+                l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
+                                    'data/L2_test/tx/'+station+'/'+station+'_mixed.nc',
+                                    'data/L2_test/level_2/',None,None)
 
                 print("\n ======== test l2tol3 ========= \n")
-                # l3 = get_l2tol3(config_folder,
-                #                 'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
-                #                 'data/L3_test/stations/', None, None, None)
+                l3 = get_l2tol3(config_folder,
+                                'data/L2_test/level_2/'+station+'/'+station+'_mixed.nc',
+                                'data/L3_test/stations/', None, None, None)
             else:
                 print(f"==== skipping {station} ====")
 
@@ -122,10 +122,16 @@ if __name__ == '__main__':
     # new Elapsed time: 45.259 s
     # v1.11.0 Elapsed time: 138.733 s
     # v1.10.2 Elapsed time: 187.174 s
+# %%
+l3_merged, sorted_list_station_data = get_join_l3(site)
+import matplotlib.pyplot as plt
+plt.figure()
+for (ds, attrs) in sorted_list_station_data:
+    ds.t_u.plot(label=attrs['stid'])
+    # l3_merged.t_u.plot()
+plt.legend()
 
-        # %%
-    import matplotlib.pyplot as plt
-
+# %%
     # data_version = 'L2_test/tx/'
     data_version = 'L3_test/sites/'
 
@@ -135,7 +141,7 @@ if __name__ == '__main__':
     # site = 'CEN2'
     site_org = site.replace('v3','')
 
-    var = 'z_surf_combined'
+    var = 'dsr'
 
     ds_new = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc',
                              decode_times=True)

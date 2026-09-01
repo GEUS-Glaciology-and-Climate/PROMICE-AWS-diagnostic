@@ -15,7 +15,7 @@ import logging, toml, os
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler()
@@ -46,7 +46,7 @@ path_l2 = 'data/L2_test/'
 
 # plt.close('all')
 
-for station in ['THU_U2']:
+for station in ['WEG_L']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -117,7 +117,7 @@ if calc_yearly_abaltion:
         print(f"{t.year}: {v:.2f} m")
 
 # %%
-plot_thermistor_depth = True
+plot_thermistor_depth = False
 if plot_thermistor_depth:
     df_new=l3.copy()
 

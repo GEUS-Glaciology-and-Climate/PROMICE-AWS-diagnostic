@@ -137,7 +137,9 @@ def load_L1(path_to_l0, station):
     if os.path.isfile(config_file_tx):
         inpath_tx = os.path.join(path_to_l0, 'tx')
         pAWS_tx = AWS(config_file_tx, inpath_tx, var_file=None, meta_file=None,
-                      data_issues_repository='../PROMICE-AWS-data-issues')
+                      data_issues_repository='../PROMICE-AWS-data-issues',
+                      magnetic_declination_file=f"{path_to_l0}/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml",
+                      )
         pAWS_tx.getL1()
     else:
         pAWS_tx = None
@@ -145,7 +147,9 @@ def load_L1(path_to_l0, station):
     if os.path.isfile(config_file_raw):
         inpath_raw = os.path.join(path_to_l0, 'raw', station)
         pAWS_raw = AWS(config_file_raw, inpath_raw, var_file=None, meta_file=None,
-                       data_issues_repository='../PROMICE-AWS-data-issues')
+                       data_issues_repository='../PROMICE-AWS-data-issues',
+                       magnetic_declination_file=f"{path_to_l0}/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml",
+                       )
         pAWS_raw.getL1()
     else:
         pAWS_raw = None
