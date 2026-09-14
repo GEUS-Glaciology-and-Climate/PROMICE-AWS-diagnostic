@@ -49,6 +49,13 @@ def Msg(txt):
     f = open(filename, "a"); print(txt); f.write(txt + "\n")
 
 # plt.close('all')
+
+path_to_qc_files = '../PROMICE-AWS-data-issues/'
+all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
+var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
+zoom_to_good = True
+
+
 def detect_rime(ds, threshold=3):
     sigma = 5.670374419e-8
 
@@ -74,16 +81,11 @@ def detect_rime(ds, threshold=3):
 
     # Return to original timestamps
     ds["rime_flag"] = flag.reindex(time=ds.time, method="ffill").astype(bool)
-
     return ds
 
-path_to_qc_files = '../PROMICE-AWS-data-issues/'
-all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
-var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
-zoom_to_good = False
 
-for station in ['KPC_L']:
-    # for station in df_metadata.station_id:
+# for station in ['KPC_L']:
+for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
     df_flags = load_flags_and_adjustments(path_to_qc_files, station)
@@ -125,12 +127,13 @@ for station in ['KPC_L']:
     for var in ["t", "rh","p","wspd"]:
         if (var+'_u' in ds_final.data_vars) and (var+'_l' in ds_final.data_vars):
             ds_final[var+'_diff'] = ds_final[var+'_u'] - ds_final[var+'_l']
-    if ('rh_u_wrt_ice_or_water' in ds_final.data_vars) and ('rh_l_wrt_ice_or_water' in ds_final.data_vars):
-        ds_final['rh_wrt_ice_or_water_diff'] = ds_final['rh_u_wrt_ice_or_water'] - ds_final['rh_l_wrt_ice_or_water']
+    if ('rh_u_wrt_ice_or_water' in ds_final.data_vars) \
+        and ('rh_l_wrt_ice_or_water' in ds_final.data_vars):
+        ds_final['rh_wrt_ice_or_water_diff'] = ds_final['rh_u_wrt_ice_or_water'] \
+            - ds_final['rh_l_wrt_ice_or_water']
 
     ds_final['lr_diff'] = ds_final['dlr'] - ds_final['ulr']
-    ds_final = detect_rime(ds_final, threshold=3)
-
+    ds_final = detect_rime(ds_post_roc, threshold=3)
 
     # %%  plotting
     df_L1 = ds.to_dataframe().copy()
@@ -145,8 +148,8 @@ for station in ['KPC_L']:
                         # 'p_u','p_l','p_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
-                        'dsr','dsr_cor','usr',#'albedo',
-                        'tilt_x','tilt_y',"rot_true",
+                        # 'dsr','dsr_cor','usr',#'albedo',
+                        # 'tilt_x','tilt_y',"rot_true",
                         "dlr","ulr","t_rad", 'lr_diff',
                         # 't_i_1','t_i_2','t_i_8',
                         # 'z_boom_l','z_boom_cor_l',
