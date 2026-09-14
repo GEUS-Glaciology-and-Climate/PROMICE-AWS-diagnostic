@@ -1,106 +1,26 @@
 # Comparison of data test to thredds (old).
-## CEN
-No new file for this station
-## CP1
-No new file for this station
-## DY2
-No new file for this station
-## EGP
-No new file for this station
-## FRE
-No new file for this station
-## HUM
-No new file for this station
-## JAR
-No new file for this station
-## KAN_B
-No new file for this station
-## KAN_L
-No new file for this station
-## KAN_M
-No new file for this station
-## KAN_T
-No new file for this station
-## KAN_U
-No new file for this station
 ## KPC_L
-No new file for this station
-## KPC_U
-No new file for this station
-## LYN_L
-No new file for this station
-## LYN_T
-No new file for this station
-## MIT
-No new file for this station
-## NAE
-No new file for this station
-## NAU
-No new file for this station
-## NEM
-No new file for this station
-## NSE
-No new file for this station
-## NUK_B
-No new file for this station
-## NUK_K
-No new file for this station
-## NUK_L
-No new file for this station
-## NUK_N
-No new file for this station
-## NUK_P
-## NUK_U
-No new file for this station
-## ORO
-## QAS_A
-No new file for this station
-## QAS_L
-No new file for this station
-## QAS_M
-No new file for this station
-## QAS_U
-No new file for this station
-## RED_L
-No new file for this station
-## SCO_L
-No new file for this station
-## SCO_U
-No new file for this station
-## SDL
-No new file for this station
-## SDM
-No new file for this station
-## SER_B
-No new file for this station
-## SWC
-No new file for this station
-## TAS_A
-No new file for this station
-## TAS_L
-No new file for this station
-## TAS_U
-No new file for this station
-## THU_L
-No new file for this station
-## THU_L2
-No new file for this station
-## THU_U
-No new file for this station
-## TUN
-No new file for this station
-## UPE_L
-No new file for this station
-## UPE_U
-No new file for this station
-## UWN
-## WEG_B
-No new file for this station
-## WEG_L
-No new file for this station
-## ZAC_A
-No new file for this station
-## ZAC_L
-No new file for this station
-## ZAC_U
-No new file for this station
+Variables in new file:
+p_u, t_u, rh_u, rh_u_wrt_ice_or_water, qh_u, wspd_u, wdir_u, wspd_x_u, wspd_y_u, dsr, dsr_cor, usr, usr_cor, albedo, dlr, ulr, cc, t_surf, dlhf_u, dshf_u, z_boom_u, z_boom_cor_u, z_stake, z_stake_cor, z_pt, z_pt_cor, z_surf_combined, z_ice_surf, snow_height, rainfall_u, rainfall_cor_u, t_i_1, t_i_2, t_i_3, t_i_4, t_i_5, t_i_6, t_i_7, t_i_8, d_t_i_1, d_t_i_2, d_t_i_3, d_t_i_4, d_t_i_5, d_t_i_6, d_t_i_7, d_t_i_8, t_i_10m, tilt_x, tilt_y, rot_magnetic, rot_true, gps_lat, gps_lon, gps_alt, lat, lon, alt, batt_v, t_rad, p_i, t_i, rh_i, rh_i_wrt_ice_or_water, wspd_i, wdir_i, wspd_x_i, wspd_y_i
+
+New variables not in old files:
+
+
+Old variables removed from new files:
+
+ 
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_0.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_1.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_2.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_3.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_4.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_5.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_6.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_7.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_8.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_9.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_10.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_11.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_12.png)
+![KPC_L](../figures/version_comparisons/thredds_versus_test_hour/KPC_L_13.png)
+ 

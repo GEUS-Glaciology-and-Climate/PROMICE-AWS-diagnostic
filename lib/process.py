@@ -12,25 +12,16 @@ import numpy as np
 import os, glob
 import pandas as pd
 from pypromice.pipeline import AWS
-from pypromice.core.qc.github_data_issues import adjustData
 from pypromice.core.variables import (station_pose,
                                       radiation,
                                       air_temperature,
                                       precipitation,
-                                      station_boom_height)
+                                      )
 
 from pypromice.pipeline.get_l2 import get_l2
 from pypromice.pipeline.join_l2 import join_l2
-
-from pypromice.pipeline.L2toL3 import (get_thermistor_depth,
-                                   hampel)
-
 from pypromice.pipeline.L1toL2 import toL2
-
 from sklearn.linear_model import LinearRegression
-
-
-
 import matplotlib.pyplot as plt
 import imageio.v2 as imageio
 
@@ -309,7 +300,7 @@ def smooth_pose(ds):
     out = ds.copy()
     out['tilt_x'] = station_pose.smooth_tilt_with_moving_window(out['tilt_x'])
     out['tilt_y'] = station_pose.smooth_tilt_with_moving_window(out['tilt_y'])
-    out['rot']    = station_pose.interpolate_rotation(out['rot'])
+    out['rot']    = station_pose.interpolate_rotation(out['rot_true'])
     return out
 
 def compute_cloud_cover(ds):
@@ -387,241 +378,6 @@ def load_station_config(config_folder, station_id):
         return toml.load(fp)
 
 
-
-def process_surface_height(ds, data_adjustments_dir, station_config={}, make_gif=False):
-    """
-    Process surface height data for different site types and create
-    surface height variables.
-
-    Parameters
-    ----------
-    ds : xarray.Dataset
-        The dataset containing various measurements and attributes including
-        'site_type' which determines the type of site (e.g., 'ablation',
-        'accumulation', 'bedrock') and other relevant data variables such as
-        'z_boom_u', 'z_stake', 'z_pt_cor', etc.
-
-    Returns
-    -------
-    xarray.Dataset
-        The dataset with additional processed surface height variables:
-        'z_surf_1', 'z_surf_2', 'z_ice_surf', 'z_surf_combined', 'snow_height',
-        and possibly depth variables derived from temperature measurements.
-    """
-    # Initialize surface height variables with NaNs
-    ds['z_surf_1'] = ('time', ds['z_boom_u'].data * np.nan)
-    ds['z_surf_2'] = ('time', ds['z_boom_u'].data * np.nan)
-
-    z_boom_best_u = station_boom_height.include_uncorrected_values(
-                                ds["z_boom_u"],
-                                ds["z_boom_cor_u"],
-                                ds["t_l"] if "t_l" in ds.data_vars else None,
-                                ds["t_rad"] if "t_rad" in ds.data_vars else None)
-
-
-
-    if 'z_stake' in ds.data_vars and ds.z_stake.notnull().any():
-        # Calculate stake boom height correction with uncorrected values where needed
-        z_stake_best = station_boom_height.include_uncorrected_values(
-                                    ds["z_stake"],
-                                    ds["z_stake_cor"],
-                                    ds["t_l"] if "t_l" in ds.data_vars else None,
-                                    ds["t_rad"] if "t_rad" in ds.data_vars else None)
-
-    if ds.attrs['site_type'] == 'ablation':
-        # Calculate surface heights for ablation sites
-        ds['z_surf_1'] = 2.6 - z_boom_best_u
-        if ds.z_stake.notnull().any():
-            first_valid_index = ds.time.where((z_stake_best + z_boom_best_u).notnull(), drop=True).data[0]
-            ds['z_surf_2'] = ds.z_surf_1.sel(time=first_valid_index) + z_stake_best.sel(time=first_valid_index) - z_stake_best
-
-        # Use corrected point data if available
-        if 'z_pt_cor' in ds.data_vars:
-            ds['z_ice_surf'] = ('time', ds['z_pt_cor'].data)
-
-    else:
-        # Calculate surface heights for other site types
-        first_valid_index = ds.time.where(z_boom_best_u.notnull(), drop=True).data[0]
-        ds['z_surf_1'] = z_boom_best_u.sel(time=first_valid_index) - z_boom_best_u
-
-        if 'z_stake' in ds.data_vars and ds.z_stake.notnull().any():
-            first_valid_index = ds.time.where(z_stake_best.notnull(), drop=True).data[0]
-            ds['z_surf_2'] = z_stake_best.sel(time=first_valid_index) - z_stake_best
-
-        if 'z_boom_l' in ds.data_vars:
-
-            # Calculate lower boom height correction with uncorrected values where needed
-            z_boom_best_l = station_boom_height.include_uncorrected_values(
-                                        ds["z_boom_l"],
-                                        ds["z_boom_cor_l"],
-                                        ds["t_u"] if "t_u" in ds.data_vars else None,
-                                        ds["t_rad"] if "t_rad" in ds.data_vars else None)
-
-            # need a combine first because KAN_U switches from having a z_stake_best
-            # to having a z_boom_best_l
-            first_valid_index = ds.time.where(z_boom_best_l.notnull(), drop=True).data[0]
-            ds['z_surf_2'] = ds['z_surf_2'].combine_first(
-                z_boom_best_l.sel(time=first_valid_index) - z_boom_best_l)
-
-    # Adjust data for the created surface height variables
-    ds = adjustData(ds, data_adjustments_dir, var_list=['z_surf_1', 'z_surf_2', 'z_ice_surf'])
-
-    # Convert to dataframe and combine surface height variables
-    df_in = ds[[v for v in ['z_surf_1', 'z_surf_2', 'z_ice_surf'] if v in ds.data_vars]].to_dataframe()
-
-    (ds['z_surf_combined'], ds['z_ice_surf'],
-     ds['z_surf_1_adj'], ds['z_surf_2_adj']) = combine_surface_height(df_in, ds.attrs['site_type'],
-                                                                      station=station_config['stid'],
-                                                                      make_gif = make_gif)
-
-
-    if ds.attrs['site_type'] == 'ablation':
-        # Calculate rolling minimum for ice surface height and snow height
-        ts_interpolated = np.minimum(
-            xr.where(ds.z_ice_surf.notnull(),
-                     ds.z_ice_surf,ds.z_surf_combined),
-            ds.z_surf_combined).to_series().resample('h').interpolate(limit=72)
-
-        if len(ts_interpolated)>24*7:
-            # Apply the rolling window with median calculation
-            z_ice_surf = (ts_interpolated
-                          .rolling('14D', center=True, min_periods=1)
-                          .median())
-            # Overprint the first and last 7 days with interpolated values
-            # because of edge effect of rolling windows
-            z_ice_surf.iloc[:24*7] = (ts_interpolated.iloc[:24*7]
-                                      .rolling('1D', center=True, min_periods=1)
-                                      .median().values)
-            z_ice_surf.iloc[-24*7:] = (ts_interpolated.iloc[-24*7:]
-                                       .rolling('1D', center=True, min_periods=1)
-                                       .median().values)
-        else:
-            z_ice_surf = (ts_interpolated
-                                       .rolling('1D', center=True, min_periods=1)
-                                       .median())
-
-        z_ice_surf = z_ice_surf.reindex(ds.time,
-                                        method=None).interpolate(method='time')
-
-        # here we make sure that the periods where both z_stake_best and z_pt are
-        # missing are also missing in z_ice_surf
-        msk = ds['z_ice_surf'].notnull() | ds['z_surf_2_adj'].notnull()
-        z_ice_surf = z_ice_surf.where(msk)
-
-        # taking running minimum to get ice
-        z_ice_surf = z_ice_surf.cummin()
-
-        # filling gaps only if they are less than a year long and if values on both
-        # sides are less than 0.01 m appart
-
-        # Forward and backward fill to identify bounds of gaps
-        df_filled = z_ice_surf.ffill().bfill()
-
-        # Identify gaps and their start and end dates
-        gaps = pd.DataFrame(index=z_ice_surf[z_ice_surf.isna()].index)
-        gaps['prev_value'] = df_filled.shift(1)
-        gaps['next_value'] = df_filled.shift(-1)
-        gaps['gap_start'] = gaps.index.to_series().shift(1)
-        gaps['gap_end'] = gaps.index.to_series().shift(-1)
-        gaps['gap_duration'] = (gaps['gap_end'] - gaps['gap_start']).dt.days
-        gaps['value_diff'] = (gaps['next_value'] - gaps['prev_value']).abs()
-
-        # Determine which gaps to fill
-        mask = (gaps['gap_duration'] < 365) & (gaps['value_diff'] < 0.01)
-        gaps_to_fill = gaps[mask].index
-
-        # Fill gaps in the original Series
-        z_ice_surf.loc[gaps_to_fill] = df_filled.loc[gaps_to_fill]
-
-        # bringing the variable into the dataset
-        ds['z_ice_surf'] = ('time', z_ice_surf.values)
-
-        ds['z_surf_combined'] = np.maximum(ds['z_surf_combined'], ds['z_ice_surf'])
-        ds['snow_height'] = np.maximum(0, ds['z_surf_combined'] - ds['z_ice_surf'])
-        ds['z_ice_surf'] = ds['z_ice_surf'].where(ds.snow_height.notnull())
-    elif ds.attrs['site_type'] in ['accumulation', 'bedrock']:
-        # Handle accumulation and bedrock site types
-        ds['z_ice_surf'] = ('time', ds['z_surf_1'].data * np.nan)
-        ds['snow_height'] = ds['z_surf_combined']
-    else:
-        # Log info for other site types
-        logger.info('other site type')
-
-    if ds.attrs['site_type'] != 'bedrock':
-        # Process ice temperature data and create depth variables
-        ice_temp_vars = [v for v in ds.data_vars if 't_i_' in v]
-        vars_out = [v.replace('t', 'd_t') for v in ice_temp_vars]
-        vars_out.append('t_i_10m')
-
-        # df_out = get_thermistor_depth(
-        #     ds[ice_temp_vars + ['z_surf_combined']].to_dataframe(),
-        #     ds.attrs['station_id'],
-        #     station_config)
-        # for var in df_out.columns:
-        #     ds[var] = ('time', df_out[var].values)
-
-    return ds
-
-
-from matplotlib.patches import Rectangle
-
-def plot_series_to_frame(hs1, hs2, z, series, title, add_rectangle=True):
-    fig, ax = plt.subplots(figsize=(10,6),dpi=220)
-    ax.plot(hs1.index, hs1.values, color='tab:blue',  lw=2)
-    ax.plot(hs2.index, hs2.values, color='tab:orange', lw=2)
-    ax.plot(z.index, z.values, color='tab:green', lw=2)
-    ax.plot(series.index, series.values, color='lightgray', lw=3)
-
-    if add_rectangle:
-        rect = Rectangle((series.index[0]-pd.Timedelta("60D"), series.values[0]-1.5),
-                 pd.Timedelta("120D"), 3, fill=False, color='red', lw=2,
-                 transform=ax.transData)
-        ax.add_patch(rect)
-
-    ax.set_title(title)
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Height (m)")
-    # ax.set_ylim(-10,10)
-    fig.tight_layout()
-
-    fig.canvas.draw()
-    img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-    plt.close(fig)
-    return img
-
-def plot_final_frame(hs1, hs2, z, series, title):
-    fig, ax = plt.subplots(figsize=(10,6),dpi=220)
-    ax.plot(hs1.index, hs1.values, color='tab:blue',  alpha=0.5, lw=2)
-    ax.plot(hs2.index, hs2.values, color='tab:orange',  alpha=0.5, lw=2)
-    ax.plot(z.index, z.values, color='tab:green',  alpha=0.5, lw=2)
-    ax.plot(series.index, series.values, color='k', lw=4)
-
-    ax.set_title(title)
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Height (m)")
-    # ax.set_ylim(-10,10)
-    fig.tight_layout()
-
-    fig.canvas.draw()
-    img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
-    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-    plt.close(fig)
-    return img
-
-def animate_adjustment(frames, hs1, hs2, z, series, idx_start, shift, title_prefix, n_snapshot=8):
-    s_base = series.copy()
-
-    for k in range(1, n_snapshot + 1):
-        s_step = s_base.copy()
-        partial_shift = shift * (k / n_snapshot)
-        s_step.loc[idx_start:] = s_base.loc[idx_start:] + partial_shift
-
-        title = f"{title_prefix}"
-        frame = plot_series_to_frame(hs1, hs2, z, s_step.loc[idx_start:], title)
-        frames.append(frame)
-
-def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station="station", make_gif=False):
     '''Combines the data from three sensor: the two sonic rangers and the
     pressure transducer, to recreate the surface height, the ice surface height
     and the snow depth through the years. For the accumulation sites, it is
@@ -659,8 +415,8 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
 
     if site_type in ['accumulation', 'bedrock']:
         logger.info('-> no z_pt or accumulation site: averaging z_surf_1 and z_surf_2')
-        df["z_surf_1_adj"] = hampel(df["z_surf_1"].interpolate(limit=72)).values
-        df["z_surf_2_adj"] = hampel(df["z_surf_2"].interpolate(limit=72)).values
+        df["z_surf_1_adj"] = subsurface_temperature.hampel(df["z_surf_1"].interpolate(limit=72)).values
+        df["z_surf_2_adj"] = subsurface_temperature.hampel(df["z_surf_2"].interpolate(limit=72)).values
         # adjusting z_surf_2 to z_surf_1
         df["z_surf_2_adj"]  = df["z_surf_2_adj"]  + (df["z_surf_1_adj"]- df["z_surf_2_adj"]).mean()
         # z_surf_combined is the average of the two z_surf

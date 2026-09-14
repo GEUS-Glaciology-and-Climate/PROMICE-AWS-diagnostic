@@ -49,13 +49,40 @@ def Msg(txt):
     f = open(filename, "a"); print(txt); f.write(txt + "\n")
 
 # plt.close('all')
+def detect_rime(ds, threshold=3):
+    sigma = 5.670374419e-8
+
+    lw_rad = sigma * (ds["t_rad"] + 273.15)**4
+
+    ds["dlr_rad_diff"] = abs(ds["dlr"] - lw_rad)
+    ds["ulr_rad_diff"] = abs(ds["ulr"] - lw_rad)
+    ds["lr_diff_abs"] = abs(ds["dlr"] - ds["ulr"])
+
+    flag = (
+        (ds["dlr_rad_diff"] < threshold) &
+        (ds["ulr_rad_diff"] < threshold) &
+        (ds["lr_diff_abs"] < threshold)
+    )
+
+    flag = flag.resample(time="1D").mean() >= 0.7
+
+    # Inflate -> deflate -> deflate -> inflate
+    flag = flag.rolling(time=3, center=True, min_periods=1).max()
+    flag = flag.rolling(time=3, center=True, min_periods=1).min()
+    flag = flag.rolling(time=3, center=True, min_periods=1).min()
+    flag = flag.rolling(time=3, center=True, min_periods=1).max()
+
+    # Return to original timestamps
+    ds["rime_flag"] = flag.reindex(time=ds.time, method="ffill").astype(bool)
+
+    return ds
 
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 all_dirs = os.listdir(path_to_qc_files+'adjustments' )+os.listdir(path_to_qc_files+'flags')
 var_file = os.path.join(os.path.dirname(pypromice.resources.__file__), "variables.csv")
-zoom_to_good = True
+zoom_to_good = False
 
-for station in ['DY2']:
+for station in ['KPC_L']:
     # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -101,7 +128,11 @@ for station in ['DY2']:
     if ('rh_u_wrt_ice_or_water' in ds_final.data_vars) and ('rh_l_wrt_ice_or_water' in ds_final.data_vars):
         ds_final['rh_wrt_ice_or_water_diff'] = ds_final['rh_u_wrt_ice_or_water'] - ds_final['rh_l_wrt_ice_or_water']
 
-    # % plotting
+    ds_final['lr_diff'] = ds_final['dlr'] - ds_final['ulr']
+    ds_final = detect_rime(ds_final, threshold=3)
+
+
+    # %%  plotting
     df_L1 = ds.to_dataframe().copy()
     Msg('# '+station)
     var_list = [v for v in DEFAULT_VAR_LIST if v in ds.data_vars]
@@ -110,12 +141,13 @@ for station in ['DY2']:
     var_list_list = [np.array([
                         # 't_u','t_l','t_i',
                         # 'rh_u','rh_l','rh_i',
-                        'p_u','p_l','p_i',
+                        # 'rh_u_wrt_ice_or_water','rh_l_wrt_ice_or_water',
+                        # 'p_u','p_l','p_i',
                         # 'wspd_u','wspd_l','wspd_i',
                         # 'wdir_u','wdir_l','wdir_i',
-                        # 'dsr','dsr_cor','usr','albedo',
-                        # 'tilt_x','tilt_y',"rot",
-                        # "dlr","ulr","t_rad"
+                        'dsr','dsr_cor','usr',#'albedo',
+                        'tilt_x','tilt_y',"rot_true",
+                        "dlr","ulr","t_rad", 'lr_diff',
                         # 't_i_1','t_i_2','t_i_8',
                         # 'z_boom_l','z_boom_cor_l',
                         # 'z_boom_u', 'z_boom_cor_u',
@@ -205,6 +237,16 @@ for station in ['DY2']:
                 if var == 'gps_alt':
                     ax.plot(ds_post_clip.time, baseline_elevation,
                             ls='--', c='k')
+
+            if var in ["dlr", "ulr","lr_diff"]:
+                ax.fill_between(
+                    ds_final.time,
+                    0, 1,
+                    where=ds_final["rime_flag"],
+                    transform=ax.get_xaxis_transform(),
+                    alpha=0.25,
+                    label="possible rime"
+                )
 
             if var[:-4] in ds_final.data_vars:
                 if var in ['dsr_cor','usr_cor']:

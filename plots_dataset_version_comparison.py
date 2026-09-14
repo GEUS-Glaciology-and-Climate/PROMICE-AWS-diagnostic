@@ -24,10 +24,10 @@ df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
 
-new_version = 'V39'
-old_version = 'V38'
+new_version = 'test'
+old_version = 'thredds'
 site_list = np.unique(df_meta.site_id)
-# site_list = ['CEN']
+site_list = ['KPC_L']
 var_list_overwrite= None
 # var_list_overwrite = ['dlhf_u','dshf_u', 'tilt_x','tilt_y','t_u']
 

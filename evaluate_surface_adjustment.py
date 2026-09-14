@@ -30,13 +30,12 @@ for name in list(sys.modules):
         del sys.modules[name]
 importlib.invalidate_caches()
 
-from pypromice.pipeline.L2toL3 import process_surface_height
+from pypromice.core.variables import surface_height
 from pathlib import Path
-import matplotlib
+# import matplotlib
 # matplotlib.use('Agg')
 
 import lib.process as lib
-from pypromice.pipeline.L2toL3 import process_surface_height
 logging.getLogger('numba').setLevel(logging.WARNING)
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 config_folder = '../aws-l0/metadata/station_configurations/'
@@ -46,7 +45,7 @@ path_l2 = 'data/L2_test/'
 
 # plt.close('all')
 
-for station in ['WEG_L']:
+for station in ['KPC_Lv3']:
 # for station in df_metadata.station_id:
 #
     print("\n ======== Processing L2 ========= \n")
@@ -55,14 +54,13 @@ for station in ['WEG_L']:
     print("\n ======== Joining L2 ========= \n")
     l2_merged = lib.join_L2(path_l2, station)
 
+    # %%
     print("\n ======== Processing L3 surface heights ========= \n")
     l2 = lib.open_l2_clean(path_l2, station)
     station_config = lib.load_station_config(config_folder, l2.attrs['station_id'])
 
-
-    # %%
     # % Perform Level 3 processing
-    l3 = process_surface_height(l2,
+    l3 = surface_height.process_surface_height(l2,
                                 Path('../PROMICE-AWS-data-issues')/'adjustments',
                                 station_config,
                                 ).to_dataframe()
@@ -108,9 +106,9 @@ if calc_yearly_abaltion:
         pd.Series([0], index=[abl.index.min() - pd.Timedelta(365, "D")]),
         abl
     ])
-    # plt.figure()
-    # l3['z_ice_surf'].plot()
-    # abl.plot(marker='o')
+    plt.figure()
+    l3['z_ice_surf'].plot()
+    abl.plot(marker='o')
 
     print("Yearly ice ablation:")
     for t, v in abl.diff().dropna().items():

@@ -88,13 +88,12 @@ def get_join_l3(site):
                         folder_gcnet, folder_glaciobasis, 'data/L3_test/sites/', None, None)
     return l3_merged, sorted_list_station_data
 
-
 if __name__ == '__main__':
 
     station_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     site_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
-    for site in site_metadata.site_id:
-    # for site in ['SWC']:
+    # for site in site_metadata.site_id:
+    for site in ['KPC_L']:
         t0 = time.perf_counter()
         for station in site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' '):
         # for station in ['SUM']:
@@ -122,6 +121,7 @@ if __name__ == '__main__':
     # new Elapsed time: 45.259 s
     # v1.11.0 Elapsed time: 138.733 s
     # v1.10.2 Elapsed time: 187.174 s
+
 # %%
 # l3_merged, sorted_list_station_data = get_join_l3(site)
 # import matplotlib.pyplot as plt
