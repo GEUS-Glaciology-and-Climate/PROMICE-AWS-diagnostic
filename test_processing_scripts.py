@@ -93,10 +93,12 @@ if __name__ == '__main__':
     station_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     site_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     # for site in site_metadata.site_id:
-    for site in ['KPC_L']:
+    for site in ['NEM']:
         t0 = time.perf_counter()
-        for station in site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' '):
-        # for station in ['SUM']:
+        station_list = site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' ')
+        # station_list = ['SUM']
+
+        for station in station_list:
             if station in station_metadata.station_id.values:
                 print("\n ======== test get_l2 ========= \n")
                 pAWS_tx, pAWS_raw = process_l2(station)

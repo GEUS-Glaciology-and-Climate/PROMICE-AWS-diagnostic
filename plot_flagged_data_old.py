@@ -84,8 +84,8 @@ def detect_rime(ds, threshold=3):
     return ds
 
 
-# for station in ['KPC_L']:
-for station in df_metadata.station_id:
+for station in ['NEM']:
+# for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
     df_flags = load_flags_and_adjustments(path_to_qc_files, station)
@@ -133,7 +133,7 @@ for station in df_metadata.station_id:
             - ds_final['rh_l_wrt_ice_or_water']
 
     ds_final['lr_diff'] = ds_final['dlr'] - ds_final['ulr']
-    ds_final = detect_rime(ds_post_roc, threshold=3)
+    ds_final['rime_flag']    = detect_rime(ds_post_roc, threshold=3)['rime_flag']
 
     # %%  plotting
     df_L1 = ds.to_dataframe().copy()
@@ -146,11 +146,11 @@ for station in df_metadata.station_id:
                         # 'rh_u','rh_l','rh_i',
                         # 'rh_u_wrt_ice_or_water','rh_l_wrt_ice_or_water',
                         # 'p_u','p_l','p_i',
-                        # 'wspd_u','wspd_l','wspd_i',
-                        # 'wdir_u','wdir_l','wdir_i',
+                        'wspd_u','wspd_l','wspd_i',
+                        'wdir_u','wdir_l','wdir_i',
                         # 'dsr','dsr_cor','usr',#'albedo',
                         # 'tilt_x','tilt_y',"rot_true",
-                        "dlr","ulr","t_rad", 'lr_diff',
+                        # "dlr","ulr","t_rad", 'lr_diff',
                         # 't_i_1','t_i_2','t_i_8',
                         # 'z_boom_l','z_boom_cor_l',
                         # 'z_boom_u', 'z_boom_cor_u',

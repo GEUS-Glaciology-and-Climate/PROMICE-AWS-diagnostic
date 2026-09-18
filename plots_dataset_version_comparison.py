@@ -27,9 +27,9 @@ df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 new_version = 'test'
 old_version = 'thredds'
 site_list = np.unique(df_meta.site_id)
-site_list = ['KPC_L']
+# site_list = ['NEM']
 var_list_overwrite= None
-# var_list_overwrite = ['dlhf_u','dshf_u', 'tilt_x','tilt_y','t_u']
+# var_list_overwrite = ['t_u','wspd_u','wdir_u','wspd_l','wdir_l']
 
 
 PATHS = {
@@ -179,4 +179,4 @@ for res in [ 'month', 'day','hour',]:
             Msg(f'![{station}](../{figure_folder}/{station}_{k}.png)')
         Msg(' ')
     tocgen.processFile(filename, filename[:-3]+"_toc.md")
-    f.close()
+    # f.close()

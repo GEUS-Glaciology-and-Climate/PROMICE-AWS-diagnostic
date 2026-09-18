@@ -37,14 +37,17 @@ import logging
 logger = logging.getLogger(__name__)
 
 def process_precip(ds):
+    # filter_lufft_errors now returns (filtered, bad_mask) instead of just
+    # the filtered array (pypromice QC-flags rework) -- the mask is unused
+    # here since this script isn't wired into the qc flag system.
     if ~ds["precip_u"].isnull().all():
-        ds["precip_u"] = precipitation.filter_lufft_errors(ds["precip_u"], ds["t_u"], ds["p_u"], ds["rh_u"])
+        ds["precip_u"], _ = precipitation.filter_lufft_errors(ds["precip_u"], ds["t_u"], ds["p_u"], ds["rh_u"])
         ds["rainfall_u"] = precipitation.get_rainfall_per_timestep(ds["precip_u"], ds["t_u"])
         ds["rainfall_cor_u"] = precipitation.correct_rainfall_undercatch(ds["rainfall_u"], ds["wspd_u"])
 
     if ds.attrs["number_of_booms"]==2:
         if ~ds["precip_l"].isnull().all():
-            ds["precip_l"] = precipitation.filter_lufft_errors(ds["precip_l"], ds["t_l"], ds["p_l"], ds["rh_l"])
+            ds["precip_l"], _ = precipitation.filter_lufft_errors(ds["precip_l"], ds["t_l"], ds["p_l"], ds["rh_l"])
             ds["rainfall_l"] = precipitation.get_rainfall_per_timestep(ds["precip_l"], ds["t_l"])
             ds["rainfall_cor_l"] = precipitation.correct_rainfall_undercatch(ds["rainfall_l"], ds["wspd_l"])
     return ds
