@@ -247,7 +247,9 @@ def load_L2(path_to_l0, station, keep_flagged_data=True):
     if os.path.isfile(config_file_tx):
         inpath_tx = os.path.join(path_to_l0, 'tx')
         pAWS_tx = AWS(config_file_tx, inpath_tx, var_file=None, meta_file=None,
-                      data_issues_repository='../PROMICE-AWS-data-issues')
+                      data_issues_repository='../PROMICE-AWS-data-issues',
+                         magnetic_declination_file='../aws-l0/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml')
+
         pAWS_tx.getL1()
         logger.info("Level 2 processing...")
 
@@ -256,23 +258,24 @@ def load_L2(path_to_l0, station, keep_flagged_data=True):
             vars_df=pAWS_tx.vars,
             data_flags_dir=pAWS_tx.data_issues_repository / "flags",
             data_adjustments_dir=pAWS_tx.data_issues_repository / "adjustments",
-            # keep_flagged_data=keep_flagged_data,
-        )
+            keep_flagged_data=keep_flagged_data)
     else:
         pAWS_tx = None
 
     if os.path.isfile(config_file_raw):
         inpath_raw = os.path.join(path_to_l0, 'raw', station)
         pAWS_raw = AWS(config_file_raw, inpath_raw, var_file=None, meta_file=None,
-                       data_issues_repository='../PROMICE-AWS-data-issues')
+                       data_issues_repository='../PROMICE-AWS-data-issues',
+                         magnetic_declination_file='../aws-l0/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml')
+
         pAWS_raw.getL1()
         pAWS_raw.L2 = toL2(
             pAWS_raw.L1A,
             vars_df=pAWS_raw.vars,
             data_flags_dir=pAWS_raw.data_issues_repository / "flags",
             data_adjustments_dir=pAWS_raw.data_issues_repository / "adjustments",
-            # keep_flagged_data=keep_flagged_data,
-        )
+            keep_flagged_data=keep_flagged_data)
+
     else:
         pAWS_raw = None
 

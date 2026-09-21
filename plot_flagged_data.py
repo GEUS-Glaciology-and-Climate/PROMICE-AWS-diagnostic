@@ -26,8 +26,21 @@ matplotlib.set_loglevel("warning")
 logging.getLogger('numba').setLevel(logging.WARNING)
 from lib import tocgen
 from lib.process import (load_L2, remove_old_plots)
-from lib.plot import (DEFAULT_VAR_LIST, flag_handles, flag_colors, plot_L0,
-                      plot_identical_SR50)
+from lib.plot import (DEFAULT_VAR_LIST, plot_L0, plot_identical_SR50)
+from matplotlib.lines import Line2D
+from pypromice.core.qc.common import FLAG_MEANINGS
+
+# pypromice's <var>_qc flags are int8 codes (index into FLAG_MEANINGS, "OK" == 0),
+# not the flag-name strings this script used to compare against -- build the
+# color map straight from the canonical list so it always matches what's
+# actually being written to <var>_qc.
+_flag_palette = ["green", "purple", "orange", "red", "brown", "lightgray",
+                 "teal", "blue", "gold", "darkred", "cyan"]
+flag_colors = dict(zip(FLAG_MEANINGS, _flag_palette[:len(FLAG_MEANINGS)]))
+flag_handles = [
+    Line2D([0], [0], marker='.', linestyle='None', color=c, label=f)
+    for f, c in flag_colors.items()
+]
 
 path_to_l0 = 'C:/Users/bav/GitHub/PROMICE data/aws-l0/'
 filename = './plot_compilations/flags.md'
@@ -45,7 +58,7 @@ def Msg(txt):
 path_to_qc_files = '../PROMICE-AWS-data-issues/'
 zoom_to_good = True
 
-for station in ['ZAC_Uv3']:
+for station in ['TAS_Av3']:
 # for station in df_metadata.station_id:
     station = station.replace('.csv','')
     remove_old_plots(figure_folder, station)
@@ -129,17 +142,28 @@ for station in ['ZAC_Uv3']:
             # plot data with flags
             var_qc=var+'_qc'
             if var in ds.data_vars:
-                for flag, col in flag_colors.items():
-                    da = ds[var].where(ds[var_qc] == flag)
-                    if da.notnull().any():
-                        da.plot(ax=ax, marker='.', linestyle='None',
-                                color=col, label=flag)
+                if var_qc in ds.data_vars:
+                    # <var>_qc holds int8 codes; FLAG_MEANINGS[code] is the name
+                    for code, flag in enumerate(FLAG_MEANINGS):
+                        if flag not in flag_colors:
+                            continue
+                        da = ds[var].where(ds[var_qc] == code)
+                        if da.notnull().any():
+                            da.plot(ax=ax, marker='.', linestyle='None',
+                                    color=flag_colors[flag], label=flag)
+                else:
+                    # never flagged by anything -> no <var>_qc was created
+                    ds[var].plot(ax=ax, marker='.', linestyle='None',
+                                 color=flag_colors["OK"], label="OK")
 
         for var, ax in zip(var_list, ax_list):
             # ax.set_xlim(pd.to_datetime(['2020-05-01','2026-01-16']))
             if zoom_to_good:
-                ax.set_ylim(ds[var].sel(time=ds[var+'_qc'] == 'OK').min(),
-                            ds[var].sel(time=ds[var+'_qc'] == 'OK').max())
+                if var+'_qc' in ds.data_vars:
+                    good = ds[var].where(ds[var+'_qc'] == 0)  # 0 == "OK"
+                else:
+                    good = ds[var]  # never flagged -> everything is "OK"
+                ax.set_ylim(good.min(), good.max())
             else:
                 xmin, xmax = ax.get_xlim()
                 xmin = mdates.num2date(xmin)
