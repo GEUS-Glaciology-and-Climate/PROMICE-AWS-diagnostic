@@ -86,10 +86,10 @@ for station in ['TAS_Av3']:
                         # 't_u','wspd_u',
                         't_u','t_l','t_i',
                         # 'p_u','z_pt','z_pt_cor',
-                        'p_u','p_l','p_i',
+                        # 'p_u','p_l','p_i',
                         # 't_u','t_l',"t_diff" #'t_i',
                         # 'rh_u','rh_l','rh_i',
-                        'wspd_u','wspd_l',"wspd_diff" #'t_i',
+                        # 'wspd_u','wspd_l',"wspd_diff" #'t_i',
                         # 'p_u','p_l',"p_diff"
                         # 'rh_u_wrt_ice_or_water', 'rh_l_wrt_ice_or_water',
                         # "rh_wrt_ice_or_water_diff",
@@ -98,8 +98,8 @@ for station in ['TAS_Av3']:
                         # 'wdir_u','wdir_l',
                         # 'fan_dc_l','fan_dc_u',
                         'z_boom_l', 'z_boom_u', #'z_stake',
-                        'z_boom_cor_l', 'z_boom_cor_u', #'z_stake_cor',
-                        # 'z_pt','z_pt_cor',
+                        'z_boom_cor_l', 'z_boom_cor_u', 'z_stake','z_stake_cor',
+                        'z_pt','z_pt_cor',
                         # 'gps_lat', 'gps_lon','gps_alt'
                         # 'wdir_u','wdir_l','wdir_i',
                         # "precip_u", "rainfall_u", "rainfall_cor_u",

@@ -370,7 +370,7 @@ def join_L2(path_l2, station):
     return join_l2(inpath_raw, inpath_tx, os.path.join(path_l2, 'level_2'), None, None)
 
 def open_l2_clean(path_l2, station):
-    inpath = os.path.join(path_l2, 'level_2', station, f'{station}_hour.nc')
+    inpath = os.path.join(path_l2, 'level_2', station, f'{station}_mixed.nc')
     with xr.open_dataset(inpath) as l2:
         l2.load()
     for varname in l2.variables:
