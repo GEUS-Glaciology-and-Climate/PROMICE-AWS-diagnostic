@@ -33,7 +33,7 @@ logging.getLogger('numba').setLevel(logging.WARNING)
 
 config_folder = '../aws-l0/metadata/station_configurations/'
 # %%
-def process_l2(station):
+def process_l2(station, keep_flagged_data=False):
 
     print(station)
     # Loading the L1 data:
@@ -51,7 +51,8 @@ def process_l2(station):
                         variables=None, metadata=None,
                         data_issues_path='../PROMICE-AWS-data-issues',
                         declination_path=f"{path_to_l0}/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml",
-                        write_60min=True)
+                        write_60min=True,
+                        keep_flagged_data=keep_flagged_data)
 
     else:
         pAWS_tx = None
@@ -65,7 +66,8 @@ def process_l2(station):
                     metadata=None,
                     data_issues_path='../PROMICE-AWS-data-issues',
                     declination_path=f"{path_to_l0}/magnetic_declination_coefs/magnetic_declination_igrf_coefs.toml",
-                    write_60min=True)
+                    write_60min=True,
+                    keep_flagged_data=keep_flagged_data)
 
     else:
         pAWS_raw = None
@@ -93,15 +95,30 @@ if __name__ == '__main__':
     station_metadata = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
     site_metadata = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
     # for site in site_metadata.site_id:
-    for site in ['NEM']:
+    for site in ['NUK_K']:
         t0 = time.perf_counter()
         station_list = site_metadata.loc[site_metadata.site_id == site, 'stations'].values[0].split(' ')
         # station_list = ['SUM']
 
         for station in station_list:
+        # for station in ['KPC_L','TUN','NAE','NAU']:
             if station in station_metadata.station_id.values:
                 print("\n ======== test get_l2 ========= \n")
-                pAWS_tx, pAWS_raw = process_l2(station)
+                pAWS_tx, pAWS_raw = process_l2(station,
+                                               # keep_flagged_data = True
+                                               )
+
+                # for k, v in pAWS_raw.L2.attrs.items():
+                #     if isinstance(v, (bool, np.bool_)):
+                #         pAWS_raw.L2.attrs[k] = int(v)
+                # pAWS_raw.L2.to_netcdf(f'data/{station}_L2_raw_with_flags.nc')
+                # if pAWS_tx is not None:
+                #     for k, v in pAWS_tx.L2.attrs.items():
+                #         if isinstance(v, (bool, np.bool_)):
+                #             pAWS_tx.L2.attrs[k] = int(v)
+                #     if "msg_i" in pAWS_tx.L2:
+                #         pAWS_tx.L2["msg_i"] = pAWS_tx.L2["msg_i"].fillna("").astype(str)
+                #     pAWS_tx.L2.to_netcdf(f'data/{station}_L2_tx_with_flags.nc')
 
                 print("\n ======== test join_l2 ========= \n")
                 l2_merged = join_l2('data/L2_test/raw/'+station+'/'+station+'_mixed.nc',
@@ -119,59 +136,51 @@ if __name__ == '__main__':
         l3_merged, sorted_list_station_data = get_join_l3(site)
 
     dt = time.perf_counter() - t0
-    # print(f"Elapsed time: {dt:.3f} s")
-    # new Elapsed time: 45.259 s
-    # v1.11.0 Elapsed time: 138.733 s
-    # v1.10.2 Elapsed time: 187.174 s
+
 
 # %%
 # l3_merged, sorted_list_station_data = get_join_l3(site)
-# import matplotlib.pyplot as plt
-# plt.figure()
-# for (ds, attrs) in sorted_list_station_data:
-#     ds.t_u.plot(label=attrs['stid'])
-#     # l3_merged.t_u.plot()
-#     plt.legend()
-#     # data_version = 'L2_test/tx/'
-#     data_version = 'L3_test/sites/'
 
-#     res = 'hour'
-#     res_org = res if res!='mixed' else 'hour'
+import matplotlib.pyplot as plt
+plt.figure()
+for (ds, attrs) in sorted_list_station_data:
+    # data_version = 'L2_test/tx/'
+    data_version = 'L3_test/stations/'
 
-#     # site = 'CEN2'
-#     site_org = site.replace('v3','')
+    res = 'mixed'
+    res_org = res if res!='mixed' else 'hour'
 
-#     var = 'dsr'
+    # site = 'CEN2'
+    site_org = site.replace('v3','')
 
-#     ds_new = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc',
-#                              decode_times=True)
-#     df_new = ds_new.to_dataframe()
-#     df_new.index = df_new.index.astype('datetime64[ns]')
+    var = 'snow_height'
+
+    ds_new = xr.open_dataset(f'data/{data_version}/{site}/{site}_{res}.nc',
+                              decode_times=True)
+    df_new = ds_new.to_dataframe()
+    df_new.index = df_new.index.astype('datetime64[ns]')
 
 
 
-#     plt.figure()
-#     plt.plot(df_new.index, df_new[var], marker='o', label='new')
-#     plt.plot(df_new.index, df_new['z_ice_surf'], label='z_ice_surf')
-#     # df_new.loc[:,'snow_height'].plot(label='snow_height')
-#     plt.title(data_version + ' ' + site)
-#     plt.ylabel(var)
+    plt.figure()
+    plt.plot(df_new.index, df_new[var], marker='o', label='new')
+    plt.title(data_version + ' ' + site)
+    plt.ylabel(var)
 
-#     station_list = ds_new.attrs['stations'].split(' ')
-#     for station in station_list:
-#         df_l2 = xr.open_dataset(f'data/L3_test/stations/{station}/{station}_mixed.nc',
-#                                 decode_times=True).to_dataframe()
-#         df_l2.index = df_l2.index.astype('datetime64[ns]')
+    if 'stations' in ds_new.attrs.keys():
+        station_list = ds_new.attrs['stations'].split(' ')
+    else:
+        station_list = [site]
+    for station in station_list:
+        df_l2 = xr.open_dataset(f'data/L2_test/level_2/{station}/{station}_mixed.nc',
+                                decode_times=True).to_dataframe()
+        df_l2.index = df_l2.index.astype('datetime64[ns]')
 
-#         plt.plot(df_l2.index, df_l2['z_surf_combined'], marker='^',
-#                                       label=f'{station} z_surf_combined')
+    df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site_org}_{res_org}.csv')
+    df_org.time = pd.to_datetime(df_org.time)
+    df_org = df_org.set_index('time')
+    df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
+    if var in df_l2.columns:
+        df_l2.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
 
-
-    # df_org = pd.read_csv(f'../thredds-data/level_3_sites/csv/{res_org}/{site_org}_{res_org}.csv')
-    # df_org.time = pd.to_datetime(df_org.time)
-    # df_org = df_org.set_index('time')
-    # df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
-    # df_org.loc[:,var].plot(marker='^',zorder=0, c='k', label='thredds')
-    # pAWS_tx.L1A.tilt_x.plot(marker='d',label='L1 tilt_x')
-    # pAWS_tx.L2.t_rad.plot(marker='d',label='L1 t_rad')
-    # plt.legend()
+    plt.legend()

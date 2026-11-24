@@ -24,21 +24,21 @@ df_meta = pd.read_csv('../thredds-data/metadata/AWS_sites_metadata.csv')
 df_meta2 = pd.read_csv('../thredds-data/metadata/AWS_stations_metadata.csv')
 
 
-new_version = 'test'
+new_version = 'ice'
 old_version = 'thredds'
 site_list = np.unique(df_meta.site_id)
-# site_list = ['NEM']
+# site_list = ['THU_L2']
 var_list_overwrite= None
-# var_list_overwrite = ['t_u','wspd_u','wdir_u','wspd_l','wdir_l']
+var_list_overwrite = ['z_surf_combined', 'z_ice_surf', 'snow_height']
 
 
 PATHS = {
     "aws-l3": "../aws-l3/level_3/",
     "thredds": "../thredds-data/level_3_sites/csv/{res}/",
-    "dev": "../aws-l3-dev/sites/",
+    "dev": "../aws-l3-dev/",
     "test": "./data/L3_test/sites/",
     "geuspromiceaws03": "../geuspromiceaws03/",
-    "ice": "//geodata/Ice/Baptiste/geussnow01/aws-dev/L3_test/sites/",
+    "ice": "//geodata/Ice/Baptiste/geussnow01/PROMICE-AWS-diagnostic/data/L3_test/sites/",
     "default": "../aws-l3/level_3/",
 }
 
@@ -61,8 +61,8 @@ def Msg(txt):
     print(txt)
     f.write(txt + "\n")
 
-for res in [ 'month', 'day','hour',]:
-# for res in ['month']:
+for res in ['day','hour','month']:
+# for res in ['hour','day','month']:
     path_old = get_l3_path(old_version, res)
     path_new = get_l3_path(new_version, res)
 
@@ -78,12 +78,14 @@ for res in [ 'month', 'day','hour',]:
 
     #%%
     for station in site_list:
+    # for station in ['NUK_K']:
         Msg('## '+station)
 
-        if station in ['UWN','ORO','NUK_P']:
-            continue
+        if station in ['UWN','ORO','NUK_P']: continue
+        # if station in ['CEN','CP1','EGP','DY2','HUM','SDM','NAE','NAU','NSE','SDL','KAN_U','SUM','STA','TUN']: continue
 
-        file = f'{path_new}{station}_{res}.csv'
+        file = f'{path_new}{station}/{station}_{res}.csv'
+        file = f'{path_new}/{station}_{res}.csv'
         try:
             df_new = pd.read_csv(file, index_col=0, parse_dates=True)
         except:

@@ -31,6 +31,71 @@ logger = logging.getLogger(__name__)
 import xarray as xr
 
 
+ADJUSTMENT_COLUMNS = ['t0', 't1', 'variable', 'adjust_function',
+                      'adjust_value', 'comment', 'URL_graphic']
+import re
+from pathlib import Path
+
+def read_adjustment_file(adj_dir, station):
+    """Adjustment file of a station, read as in pypromice (None if missing)."""
+    f = Path(adj_dir) / f'{station}.csv'
+    if not f.exists():
+        return None
+    return pd.read_csv(f, comment='#', skipinitialspace=True
+                       ).dropna(how='all', axis='rows')
+
+
+def is_surface_height_variable(variable):
+    """Variable (or regular expression, if it has a *) of a surface height series."""
+    if not isinstance(variable, str):
+        return False
+    if '*' in variable and variable != '*':
+        return any(re.search(variable, v) for v in ['z_surf_1', 'z_surf_2', 'z_ice_surf'])
+    return variable in ['z_surf_1', 'z_surf_2', 'z_ice_surf']
+
+
+def to_naive_time(s):
+    """Timestamps of the adjustment files as timezone-naive times (NaT if empty)."""
+    return pd.to_datetime(s.replace('', np.nan), utc=True).dt.tz_localize(None)
+
+
+def manual_shifts(adj_dir, station):
+    """The "add" rows of the adjustment file that shift a surface height series."""
+    adj = read_adjustment_file(adj_dir, station)
+    if adj is None:
+        return pd.DataFrame(columns=['t0', 't1', 'variable', 'adjust_value', 'comment'])
+    sel = (adj['adjust_function'] == 'add') & adj['variable'].map(is_surface_height_variable)
+    shifts = adj.loc[sel].copy()
+    shifts['t0'] = to_naive_time(shifts['t0'].astype(object))
+    shifts['t1'] = to_naive_time(shifts['t1'].astype(object))
+    shifts['adjust_value'] = shifts['adjust_value'].astype(float)
+    if 'comment' not in shifts.columns:
+        shifts['comment'] = ''
+    return shifts[['t0', 't1', 'variable', 'adjust_value', 'comment']].reset_index(drop=True)
+
+
+def write_adjustments_without_manual_shifts(adj_dir, station, out_dir):
+    """Copy of the adjustment file of the station without its manual surface
+    height shifts and its dynamic_adjust_after row."""
+    adj = read_adjustment_file(adj_dir, station)
+    if adj is None:
+        return
+    shift = (adj['adjust_function'] == 'add') & adj['variable'].map(is_surface_height_variable)
+    marker = adj['adjust_function'] == 'dynamic_adjust_after'
+    adj.loc[~(shift | marker)].to_csv(Path(out_dir) / f'{station}.csv', index=False)
+
+
+def read_suggestions(path):
+    """Shifts written by the automated processor (its dynamic_adjust_after
+    row, which ends the file, is not a shift)."""
+    sugg = pd.read_csv(path)
+    sugg = sugg.loc[sugg['adjust_function'] == 'add'].copy()
+    sugg['t0'] = to_naive_time(sugg['t0'].astype(object))
+    sugg['t1'] = pd.NaT
+    return sugg[['t0', 't1', 'variable', 'adjust_value', 'comment']]
+
+
+
 def combine_first_with_flags(ds_raw: xr.Dataset, ds_tx: xr.Dataset) -> xr.Dataset:
     """Merge two datasets using `combine_first` logic while keeping QC flags aligned."""
     # ensure common time axis so xr.where can align

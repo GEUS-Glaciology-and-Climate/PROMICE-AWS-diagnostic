@@ -29,12 +29,11 @@ from pypromice.pipeline.L2toL3 import (get_thermistor_depth,
 from sklearn.linear_model import LinearRegression
 
 
-
 import matplotlib.pyplot as plt
 import imageio.v2 as imageio
-
 import logging
 logger = logging.getLogger(__name__)
+
 
 def process_precip(ds):
     # filter_lufft_errors now returns (filtered, bad_mask) instead of just
@@ -1012,7 +1011,7 @@ def combine_surface_height(df, site_type, threshold_ablation = -0.0002, station=
         frames.append(frame)
         frame = plot_final_frame(hs1, hs2, z, df["z_surf_combined"], "final")
         for i in range(16): frames.append(frame)
-    
+
         imageio.mimsave(f"figures/surface_height/{station}.gif", frames, fps=8)
         logger.info('gif produced')
     return df['z_surf_combined'], df["z_ice_surf_adj"], df["z_surf_1_adj"], df["z_surf_2_adj"]

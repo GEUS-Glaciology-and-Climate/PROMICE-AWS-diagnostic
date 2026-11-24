@@ -89,3 +89,60 @@ def plot_identical_SR50(df_L1, ax):
     for t0, t1 in true_runs:
         ax.axvspan(t0, t1, color="darkorange", alpha=0.3)
     return ax
+
+
+
+def print_comparison(auto, manual, max_days=30):
+    """For each manual shift, the closest automated shift of the same variable."""
+    print(f'\n{len(manual)} manual and {len(auto)} automated surface height shifts')
+    for _, m in manual.sort_values(['variable', 't0']).iterrows():
+        t0 = 'start' if pd.isnull(m.t0) else f'{m.t0:%Y-%m-%d %H:%M}'
+        text = f'  manual {m.variable:10s} {t0}  {m.adjust_value:+.3f} m'
+        a = auto[auto.variable == m.variable]
+        if len(a) > 0 and not pd.isnull(m.t0):
+            dt = (a['t0'] - m.t0)
+            i = dt.abs().idxmin()
+            if abs(dt[i]) <= pd.Timedelta(days=max_days):
+                text += (f'  <->  automated {a.loc[i, "t0"]:%Y-%m-%d %H:%M}'
+                         f' ({dt[i] / pd.Timedelta(days=1):+.1f} d)'
+                         f'  {a.loc[i, "adjust_value"]:+.3f} m')
+            else:
+                text += f'  <->  no automated shift within {max_days} d'
+        print(text)
+    matched = set()
+    for _, m in manual.iterrows():
+        a = auto[auto.variable == m.variable]
+        if len(a) > 0 and not pd.isnull(m.t0):
+            dt = (a['t0'] - m.t0).abs()
+            if dt.min() <= pd.Timedelta(days=max_days):
+                matched.add(dt.idxmin())
+    for i, a in auto.drop(index=list(matched)).sort_values(['variable', 't0']).iterrows():
+        print(f'  automated {a.variable:10s} {a.t0:%Y-%m-%d %H:%M}  {a.adjust_value:+.3f} m'
+              f'  <->  no manual shift within {max_days} d')
+
+
+def plot_shifts(ax_series, ax_shifts, shifts, colors, source, t_start):
+    """Mark the shifts on the series (vertical lines) and show their magnitudes.
+
+    Manual shifts are plain lines and filled circles, automated ones dashed
+    lines and open triangles. A manual shift with a t1 is a temporary offset:
+    it is shown at t0 and again at t1 with the opposite sign, the net step of
+    the series.
+    """
+    style = {'manual': dict(ls='-', marker='o', filled=True),
+             'auto': dict(ls='--', marker='^', filled=False)}[source]
+    for _, s in shifts.iterrows():
+        color = colors.get(s.variable, 'k')
+        steps = [(t_start if pd.isnull(s.t0) else s.t0, s.adjust_value)]
+        if 't1' in s and not pd.isnull(s.t1):
+            steps.append((s.t1, -s.adjust_value))
+        for t, v in steps:
+            ax_series.axvline(t, color=color, ls=style['ls'], lw=0.8, alpha=0.6)
+            ax_shifts.vlines(t, 0, v, color=color, ls=style['ls'], lw=1)
+            ax_shifts.plot(t, v, ls='None', marker=style['marker'], ms=6,
+                           color=color, mfc=color if style['filled'] else 'none')
+            if abs(v) >= 0.1:
+                ax_shifts.annotate(f'{v:+.2f}', (t, v), xytext=(0, 3 if v > 0 else -3),
+                                   textcoords='offset points', rotation=90, fontsize=6,
+                                   ha='center', va='bottom' if v > 0 else 'top',
+                                   color=color)

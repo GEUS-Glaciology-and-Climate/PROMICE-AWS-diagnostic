@@ -20,7 +20,7 @@ path_gcn= 'C:/Users/bav/GitHub/PROMICE data/GC-Net-Level-1-data-processing/L1/'
 var_list = [
         # 't_i_'+str(i) for i in range(1,12)
         # 'p_u','p_l','p_i',
-        # 't_u','t_l','t_i'
+        # 't_u','t_l',#'t_i'
         # 'rh_l','rh_i','rh_l_cor',
         # 't_i','rh_i','p_i','wspd_i','wdir_i',
         # 'z_boom_u', 'z_boom_l', 'z_boom_cor_u','z_boom_cor_l',
@@ -28,10 +28,10 @@ var_list = [
         # 'gps_geounit'
         # 't_u', 't_l','ts'
         # 'gps_lat', 'gps_lon','gps_alt'
-        # 'z_surf_combined','z_ice_surf','snow_height','z_pt_cor'
+        'z_surf_combined','z_ice_surf','snow_height',# 'z_pt_cor'
         # 'p_u','t_u','z_surf_combined', 'lat', 'lon'
-        # 'z_boom_cor_u','z_stake_cor','z_pt_cor'
-        'wspd_u','wspd_l','wspd_i'
+        'z_boom_cor_u','z_stake_cor','z_pt_cor'
+        # 'wspd_u','wspd_l','wspd_i'
         # 'dlr','ulr','cc', 't_u','wspd_u','t_surf'
         # 'dlr','ulr','t_rad', 'dsr_cor','usr_cor', 'dsr','usr','albedo',
         # 'tilt_x','tilt_y','cc','t_surf'
@@ -40,17 +40,19 @@ var_list = [
 
 
 # station_list = df_meta.stid
-station_list = ['TUN']
+station_list = ['NUK_K']
+focus_period = None
+# focus_period = pd.to_datetime(['2026-08-01', '2026-10-07'], utc=True)
 
 # plt.close('all')
-# gps_info=[]
 for station in station_list:
     print(station)
     df_l3 = pd.read_csv(path_thredds+'/'+station+'_hour.csv')
 
     df_l3.time = pd.to_datetime(df_l3.time, utc=True)
     df_l3 = df_l3.set_index('time')
-    # df_l3=df_l3.loc['2025-03-27':]
+    if focus_period is not None:
+        df_l3=df_l3.loc[focus_period[0]:focus_period[1]]
     if len(var_list) == 0:
         var_list=df_l3.columns
     var_list = np.array(var_list)
@@ -98,6 +100,7 @@ for station in station_list:
                 # ax.plot(df_l3[var].index,Y_pred)
                 # ax.plot(df_l3[var].index,Y_pred*0, 'k', ls=':')
                 # print(station, Y_pred[-1] - Y[~np.isnan(X+Y)][0])
-        # ax.set_xlim(pd.to_datetime(['2025-11-01', '2026-05-20']))
+        if focus_period is not None:
+            ax.set_xlim(focus_period)
         plt.suptitle('%s'%(station))
         fig.savefig('figures/'+station+'_'+str( k+1)+'.png',dpi=300)
