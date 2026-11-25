@@ -63,10 +63,18 @@ path_suggestions = Path('data/surface_height_suggestions/')
 #       These shifts replace the manual ones: do not add them on top of them.
 compare_from_scratch = False
 
+# True: the suggested shifts and the dynamic_adjust_after row are appended to
+#       PROMICE-AWS-data-issues/adjustments/<station>.csv (see
+#       lib.add_suggestions_to_adjustments). Review the plot first, and the
+#       result with "git diff" in PROMICE-AWS-data-issues afterwards.
+# add_dry_run: only prints what would be added
+add_auto_shift_to_adjustments = True
+add_dry_run = False
+
 # plt.close('all')
 
-for station in ['KAN_Lv3']:
-# for station in df_metadata.station_id:
+# for station in ['KAN_Lv3']:
+for station in df_metadata.station_id:
 
     print("\n ======== Processing L2 ========= \n")
     pAWS_tx, pAWS_raw = lib.run_L2(path_to_l0, path_l2, station)
@@ -96,6 +104,13 @@ for station in ['KAN_Lv3']:
     auto_shifts = lib.read_suggestions(file_suggestions)
     manual = lib.manual_shifts(issues_adjustments, station)
     lp.print_comparison(auto_shifts, manual)
+
+    if add_auto_shift_to_adjustments:
+        # appends the new rows (and the new dynamic_adjust_after) to
+        # ../PROMICE-AWS-data-issues/adjustments/<station>.csv, leaving its
+        # comment lines, blank lines and existing rows untouched
+        lib.add_suggestions_to_adjustments(file_suggestions, issues_adjustments,
+                                           station, dry_run=add_dry_run)
 
     # what the automated procedure would do without the manual shifts
     l3_auto = None

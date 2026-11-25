@@ -95,6 +95,109 @@ def read_suggestions(path):
     return sugg[['t0', 't1', 'variable', 'adjust_value', 'comment']]
 
 
+def add_suggestions_to_adjustments(file_suggestions, adj_dir, station,
+                                   dry_run=False, label=None):
+    """Add the rows of a suggestions file (written by process_surface_height)
+    to the adjustment file of the station in PROMICE-AWS-data-issues.
+
+    The adjustment file is edited as text: its comment lines, blank lines and
+    existing rows are left untouched and the new rows are appended at the end.
+    - rows already in the file (same t0, variable, function and value) are
+      not added twice, so the function can be run several times;
+    - the dynamic_adjust_after row of the suggestions replaces the one of the
+      file, if any. It is not moved backward in time, in order not to hand
+      the already reviewed period back to the automated procedure;
+    - the file is created, with its header, if the station has none.
+
+    Returns the (number of rows added, number of rows already present).
+    """
+    import csv, io, datetime
+
+    cols = ['t0', 't1', 'variable', 'adjust_function', 'adjust_value',
+            'comment', 'URL_graphic']
+    sugg = pd.read_csv(file_suggestions, dtype=str, keep_default_na=False)
+    if len(sugg) == 0:
+        print(f'{station}: no suggestion to add')
+        return 0, 0
+    for c in cols:
+        if c not in sugg.columns:
+            sugg[c] = ''
+
+    def key(row):
+        # same shift, whatever the formatting of the time or of the value
+        t0 = pd.to_datetime(row['t0'], utc=True) if row['t0'] else None
+        value = float(row['adjust_value']) if row['adjust_value'] != '' else None
+        return (t0, row['variable'].strip(), row['adjust_function'].strip(),
+                None if value is None else round(value, 4))
+
+    f = Path(adj_dir) / f'{station}.csv'
+    if f.exists():
+        lines = f.read_text(encoding='utf-8').splitlines()
+    else:
+        lines = [','.join(cols)]
+
+    # existing rows (comment lines, blank lines and the header are skipped)
+    existing, old_marker, kept = set(), None, []
+    for line in lines:
+        s = line.strip()
+        if s == '' or s.startswith('#') or s.startswith('t0,'):
+            kept.append(line)
+            continue
+        row = dict(zip(cols, next(csv.reader([line], skipinitialspace=True))))
+        row = {c: row.get(c, '') for c in cols}
+        if row['adjust_function'].strip() == 'dynamic_adjust_after':
+            old_marker = pd.to_datetime(row['t0'], utc=True)
+            continue   # rewritten below, at the end of the file
+        existing.add(key(row))
+        kept.append(line)
+
+    new_rows, n_present, marker = [], 0, None
+    for _, row in sugg.iterrows():
+        if row['adjust_function'].strip() == 'dynamic_adjust_after':
+            marker = row
+        elif key(row) in existing:
+            n_present += 1
+        else:
+            new_rows.append(row)
+
+    # a marker that would move backward is not written: the old one is kept
+    keep_old_marker = False
+    if marker is not None and old_marker is not None:
+        if pd.to_datetime(marker['t0'], utc=True) < old_marker:
+            print(f'{station}: the dynamic_adjust_after of the suggestions '
+                  f'({marker["t0"]}) is before the one of the adjustment file '
+                  f'({old_marker}): the latter is kept')
+            keep_old_marker = True
+    if keep_old_marker:
+        old_line = [l for l in lines if 'dynamic_adjust_after' in l and
+                    not l.strip().startswith('#')]
+        kept += old_line
+
+    out = io.StringIO()
+    w = csv.writer(out, lineterminator='\n')
+    if len(new_rows) > 0:
+        stamp = label or f'auto-suggested {datetime.date.today().isoformat()}'
+        out.write(f'# {stamp}\n')
+    for row in new_rows:
+        w.writerow([row[c] for c in cols])
+    if marker is not None and not keep_old_marker:
+        w.writerow([marker[c] for c in cols])
+
+    print(f'{station}: {len(new_rows)} row(s) to add, {n_present} already in '
+          f'{f.name}' + (', dynamic_adjust_after '
+                         + ('kept' if keep_old_marker or marker is None
+                            else f'set to {marker["t0"]}')))
+    print(out.getvalue())
+    if dry_run:
+        print('dry run, nothing written')
+        return len(new_rows), n_present
+
+    text = '\n'.join(kept).rstrip('\n') + '\n' + out.getvalue()
+    f.write_text(text, encoding='utf-8', newline='\n')
+    print(f'written to {f}')
+    return len(new_rows), n_present
+
+
 
 def combine_first_with_flags(ds_raw: xr.Dataset, ds_tx: xr.Dataset) -> xr.Dataset:
     """Merge two datasets using `combine_first` logic while keeping QC flags aligned."""
